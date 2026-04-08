@@ -1,6 +1,7 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
 {% from "components/macros/speakers.html" import speaker_card %}
+{% from "components/macros/subpage_hero.html" import subpage_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -16,9 +17,7 @@
 
 {% block content %}
 <main>
-	<section class="subpage-hero-media" style="--subpage-hero-image-x: 50%; --subpage-hero-image-y: 0%;" aria-label="Freedom Con speakers">
-		<img class="subpage-hero-media__image" src="{{ url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') }}" alt="Freedom Con speakers">
-	</section>
+	{{ subpage_hero('img/TheGuys-WithLogoNoFeet.avif', 'Freedom Con speakers', 'Freedom Con speakers', '50%', '50%', contain=True) }}
 	{{ slim_banner("Speakers") }}
 	<section class="speakers-section" aria-label="Voices of the conference">
 		<div class="speakers-section__notch" aria-hidden="true"></div>

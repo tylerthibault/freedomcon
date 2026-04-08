@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, redirect, render_template, url_for
 from src.data.accommodations import camping_options, hotel_options, travel_info
 from src.data.artists import artists
 from src.data.social_proof import social_proof
@@ -10,7 +10,8 @@ public_bp = Blueprint("public", __name__)
 
 @public_bp.get("/")
 def landing() -> str:
-	return render_template("public/landing/index1.html", social_proof=social_proof)
+	return redirect(url_for("public.landing_12c"))
+	# return render_template("public/landing/index.html", social_proof=social_proof)
 
 
 @public_bp.get("/landing-2")
@@ -38,6 +39,35 @@ def landing_10() -> str:
 	return render_template("public/landing/index10.html", social_proof=social_proof)
 
 
+@public_bp.get("/landing-12")
+def landing_12() -> str:
+	return render_template("public/landing/index12.html", social_proof=social_proof)
+
+
+@public_bp.get("/landing-12a")
+def landing_12a() -> str:
+	return render_template("public/landing/index12a.html", social_proof=social_proof)
+
+
+@public_bp.get("/landing-12b")
+def landing_12b() -> str:
+	return render_template("public/landing/index12b.html", social_proof=social_proof)
+
+@public_bp.get("/landing-12c")
+def landing_12c() -> str:
+	return render_template("public/landing/index12c.html", social_proof=social_proof)
+
+
+@public_bp.get("/landing-13")
+def landing_13() -> str:
+	return render_template("public/landing/index14.html", social_proof=social_proof)
+
+
+@public_bp.get("/landing-15")
+def landing_15() -> str:
+	return render_template("public/landing/landing15.html", social_proof=social_proof)
+
+
 @public_bp.get("/faqs")
 def faqs() -> str:
     return render_template("public/FAQs/index.html")
@@ -61,6 +91,11 @@ def accommodations_page() -> str:
 		camping_options=camping_options,
 		hotel_options=hotel_options,
 	)
+
+
+@public_bp.get("/where")
+def where_page() -> str:
+	return render_template("public/where/index.html")
 
 
 @public_bp.get("/tickets")

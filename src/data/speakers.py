@@ -22,7 +22,7 @@ speakers = [
 		'image': 'img/speakers/ChadR (3).png',
 		'alt': 'Chad Robichaux',
 		'titles': ['Force Recon Marine, DoD Contractor', 'Founder, Mighty Oaks Foundation', 'Host, The Resilient Show', 'Best Selling Author & Speaker', 'Pro MMA Champion'],
-		'image_y': 20,
+		'image_y': -20,
 	},
 	{
 		'name': 'Josh Howerton',
@@ -46,7 +46,7 @@ speakers = [
 		'name': 'Eric Metaxas',
 		'image': 'img/speakers/EricM (3).png',
 		'alt': 'Eric Metaxas',
-		'titles': ['#1 New York Times best-selling author', 'Founder, Socrates in the City', 'Host, The Eric Metaxas Show']
+		'titles': ['#1 New York Times best-selling author', 'Founder, Socrates in the City', 'Host, The Eric Metaxas Show'],
 	},
 	{
 		'name': 'Russell Johnson',
@@ -64,7 +64,8 @@ speakers = [
 		'name': 'Dave Barton',
 		'image': 'img/speakers/DaveB 2.png',
 		'alt': 'Dave Barton',
-		'titles': ['Founder of WallBuilders', 'Host, The WallBuilders Show', 'Author & Historian']
+		'titles': ['Founder of WallBuilders', 'Host, The WallBuilders Show', 'Author & Historian'],
+		'image_y': -20,
 	},
 	{
 		'name': 'Adam James',

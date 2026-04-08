@@ -5,6 +5,7 @@
 	<div class="main-nav__left">
 		<a class="main-nav__link{% if is_landing %} main-nav__link--active{% endif %}" href="{{ url_for('public.landing') }}">HOME</a>
 		<a class="main-nav__link{% if current_endpoint == 'public.faqs' %} main-nav__link--active{% endif %}" href="{{ url_for('public.faqs') }}">FAQ'S</a>
+		<a class="main-nav__link{% if current_endpoint == 'public.where_page' %} main-nav__link--active{% endif %}" href="{{ url_for('public.where_page') }}">WHERE</a>
 		<a class="main-nav__link{% if current_endpoint == 'public.speakers' %} main-nav__link--active{% endif %}" href="{{ url_for('public.speakers') }}">SPEAKERS</a>
 		<a class="main-nav__link{% if current_endpoint == 'public.artists_page' %} main-nav__link--active{% endif %}" href="{{ url_for('public.artists_page') }}">ARTISTS</a>
 		<a class="main-nav__link{% if current_endpoint == 'public.accommodations_page' %} main-nav__link--active{% endif %}" href="{{ url_for('public.accommodations_page') }}">ACCOMMODATIONS</a>
@@ -35,6 +36,7 @@
 	<div class="offcanvas-body mobile-nav-menu__body">
 		<a class="mobile-nav-menu__link main-nav__link{% if is_landing %} main-nav__link--active{% endif %}" href="{{ url_for('public.landing') }}">HOME</a>
 		<a class="mobile-nav-menu__link main-nav__link{% if current_endpoint == 'public.faqs' %} main-nav__link--active{% endif %}" href="{{ url_for('public.faqs') }}">FAQ'S</a>
+		<a class="mobile-nav-menu__link main-nav__link{% if current_endpoint == 'public.where_page' %} main-nav__link--active{% endif %}" href="{{ url_for('public.where_page') }}">WHERE</a>
 		<a class="mobile-nav-menu__link main-nav__link{% if current_endpoint == 'public.speakers' %} main-nav__link--active{% endif %}" href="{{ url_for('public.speakers') }}">SPEAKERS</a>
 		<a class="mobile-nav-menu__link main-nav__link{% if current_endpoint == 'public.artists_page' %} main-nav__link--active{% endif %}" href="{{ url_for('public.artists_page') }}">ARTISTS</a>
 		<a class="mobile-nav-menu__link main-nav__link{% if current_endpoint == 'public.accommodations_page' %} main-nav__link--active{% endif %}" href="{{ url_for('public.accommodations_page') }}">ACCOMMODATIONS</a>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FREEDOM CON | The Sovereign Editorial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e5e2da",
+                    "tertiary-container": "#281a00",
+                    "secondary-fixed": "#ffdad4",
+                    "surface-container": "#f1eee5",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#d6e3ff",
+                    "outline": "#75777e",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5d4200",
+                    "on-secondary-fixed": "#410000",
+                    "secondary-fixed-dim": "#ffb4a8",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c5c6ce",
+                    "surface-bright": "#fcf9f0",
+                    "surface": "#fcf9f0",
+                    "on-tertiary-container": "#ac7c00",
+                    "background": "#fcf9f0",
+                    "surface-container-low": "#f6f3ea",
+                    "on-tertiary-fixed": "#271900",
+                    "on-secondary-fixed-variant": "#920703",
+                    "on-secondary-container": "#610000",
+                    "primary-fixed-dim": "#b6c7e9",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#31312b",
+                    "inverse-primary": "#b6c7e9",
+                    "on-primary-container": "#7586a5",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#ebe8df",
+                    "on-background": "#1c1c17",
+                    "inverse-on-surface": "#f4f1e8",
+                    "on-primary-fixed-variant": "#364763",
+                    "tertiary-fixed": "#ffdea6",
+                    "on-primary-fixed": "#081c36",
+                    "on-surface-variant": "#44474d",
+                    "primary": "#00030a",
+                    "on-surface": "#1c1c17",
+                    "tertiary-fixed-dim": "#f7bd48",
+                    "tertiary": "#030200",
+                    "surface-dim": "#dddad1",
+                    "secondary-container": "#ff5c47",
+                    "primary-container": "#0a1d37",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#4e5f7c",
+                    "surface-variant": "#e5e2da",
+                    "secondary": "#b52619"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Work Sans", "sans-serif"],
+                    "label": ["Work Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.grain-overlay {
+    position: relative
+    }
+.grain-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCLecBvL57orMDMQoMzmvbSyPC5z_WRh83hhOTCTZFK13KYPWZALG1nl5Qth3pOWjKpt84YHdl2UhMUfVCVKN85hxid0Aq-e3OJwY9dFsWGqKotfHpvTmQmOpjzeBOQZvPULQBuGTfeoMyYwvSNq3cLfARflSHUaF4eCmQpRhTqmfbAolpBOLv5YrOKScOIZna9LoW9FRT6_bWzv7JlcggEiTFbNF3SDqLFd_x8mV4cK2tOC_zhpdk1j9OP5AiSTPAcHIuz_tz8f_4);
+    opacity: 0.05;
+    pointer-events: none
+    }
+.text-pressed {
+    letter-spacing: -0.02em
+    }
+/* Custom underline for editorial feel */
+.editorial-underline {
+    background-image: linear-gradient(to right, #b52619 100%, transparent 100%);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size 0.3s
+    }
+.editorial-underline:hover {
+    background-size: 100% 2px
+    }</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary selection:text-white">
+<!-- TopNavBar -->
+<header class="bg-[#fcf9f0] dark:bg-[#00030a] sticky top-0 z-50 transition-colors duration-300">
+<nav class="flex justify-between items-center w-full px-12 py-6 max-w-none">
+<div class="font-['Newsreader'] font-black tracking-widest text-2xl text-[#00030a] dark:text-[#fcf9f0]">
+                FREEDOM CON
+            </div>
+<div class="hidden md:flex gap-12 items-center">
+<a class="text-[#b52619] dark:text-[#f7bd48] font-bold border-b-2 border-[#b52619] font-['Newsreader'] italic tracking-tighter text-2xl" href="#">Speakers</a>
+<a class="text-[#00030a] dark:text-[#fcf9f0] opacity-80 hover:text-[#b52619] transition-colors duration-300 font-['Newsreader'] italic tracking-tighter text-2xl" href="#">Schedule</a>
+<a class="text-[#00030a] dark:text-[#fcf9f0] opacity-80 hover:text-[#b52619] transition-colors duration-300 font-['Newsreader'] italic tracking-tighter text-2xl" href="#">Venue</a>
+<a class="text-[#00030a] dark:text-[#fcf9f0] opacity-80 hover:text-[#b52619] transition-colors duration-300 font-['Newsreader'] italic tracking-tighter text-2xl" href="#">About</a>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 font-bold active:scale-95 duration-150 hover:bg-secondary transition-colors">
+                REGISTER NOW
+            </button>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="relative min-height-[921px] flex flex-col md:flex-row items-stretch overflow-hidden bg-surface">
+<div class="w-full md:w-1/2 flex flex-col justify-center px-12 py-20 z-10">
+<span class="font-label uppercase tracking-[0.3em] text-secondary font-bold mb-6 block">ESTABLISHED 2024</span>
+<h1 class="font-headline italic font-black text-7xl md:text-8xl leading-tight text-pressed text-primary mb-8">
+                FREEDOM CON:<br/>
+                Rise Of The<br/>
+                Statesman
+            </h1>
+<p class="font-body text-xl max-w-lg mb-12 opacity-80 leading-relaxed">
+                A definitive gathering for the modern man. Iron sharpens iron. We convene to forge the future of our families, our faith, and our nation through uncompromising truth and brotherhood.
+            </p>
+<div class="flex gap-4">
+<button class="bg-secondary text-white px-10 py-5 text-lg font-bold hover:brightness-110 transition-all">
+                    GET YOUR TICKETS
+                </button>
+<button class="border-2 border-primary text-primary px-10 py-5 text-lg font-bold hover:bg-primary hover:text-white transition-all">
+                    VIEW THE MANIFESTO
+                </button>
+</div>
+</div>
+<div class="w-full md:w-1/2 relative bg-primary overflow-hidden">
+<img alt="speaker lineup" class="absolute inset-0 w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="High-contrast portrait of distinguished leaders standing together in front of an architectural stone background, cinematic lighting, moody and authoritative atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhypmYbKdi2FmrLJOERzqBXSVyPgVOD91Supe91d_71vSzX8bf_uS4a4jnsgdh2ZYpIQwisZwmyEXGzLgW5WDpeIO0fDlb_zweWb1U06CkT1rz8lJ4-GOKo3qmnfgaKKaonZ50zhPur93ygZi8UMdfZmNv42F_wmxSEMO7I8seTemoiVoIQgSp7ZbTBTYuGSIWflMGd7iAHn4oqskHpl2Go2THAQQb84lT4xhMJWy_3Dqja-xA7a5TFv-00BT5IGig9bzQ4sRqmNI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-12 right-12 text-right">
+<p class="font-headline italic text-tertiary-fixed-dim text-4xl mb-2">FEATURING</p>
+<p class="font-label uppercase tracking-widest text-surface text-xl">STEVEN CROWDER &amp; SPECIAL GUESTS</p>
+</div>
+</div>
+</section>
+<!-- Marquee Testimonials (The Registry of Impact) -->
+<div class="bg-primary-container py-8 overflow-hidden flex whitespace-nowrap">
+<div class="flex animate-marquee items-center gap-16 min-w-full">
+<span class="font-headline italic text-surface text-2xl opacity-60">"The most essential gathering for constitutional defenders." — THE SOVEREIGN NEWS</span>
+<span class="text-tertiary-fixed-dim material-symbols-outlined">stars</span>
+<span class="font-headline italic text-surface text-2xl opacity-60">"Where statesmanship is reborn." — LIBERTY COLLECTIVE</span>
+<span class="text-tertiary-fixed-dim material-symbols-outlined">stars</span>
+<span class="font-headline italic text-surface text-2xl opacity-60">"A line in the sand for our generation." — CITIZEN ARCHIVE</span>
+<span class="text-tertiary-fixed-dim material-symbols-outlined">stars</span>
+<span class="font-headline italic text-surface text-2xl opacity-60">"The most essential gathering for constitutional defenders." — THE SOVEREIGN NEWS</span>
+</div>
+</div>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+    </style>
+<!-- The Convening Pillars -->
+<section class="py-32 px-12 bg-surface-container-low">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-l border-outline/15">
+<div class="p-12 border-r border-b border-outline/15 flex flex-col justify-between hover:bg-surface transition-colors group">
+<div>
+<span class="font-label text-secondary font-bold mb-4 block">PILLAR 01</span>
+<h3 class="font-headline italic text-4xl mb-6">Unfiltered Discourse</h3>
+</div>
+<p class="font-body opacity-70 group-hover:opacity-100 transition-opacity">Engage with voices like Steven Crowder in a space where political correctness is left at the gates. Hard truths for hard times.</p>
+</div>
+<div class="p-12 border-r border-b border-outline/15 flex flex-col justify-between hover:bg-surface transition-colors group">
+<div>
+<span class="font-label text-secondary font-bold mb-4 block">PILLAR 02</span>
+<h3 class="font-headline italic text-4xl mb-6">Primitive Ground</h3>
+</div>
+<p class="font-body opacity-70 group-hover:opacity-100 transition-opacity">Camping, wilderness training, and the raw experience of the American landscape. Return to your roots.</p>
+</div>
+<div class="p-12 border-r border-b border-outline/15 flex flex-col justify-between hover:bg-surface transition-colors group">
+<div>
+<span class="font-label text-secondary font-bold mb-4 block">PILLAR 03</span>
+<h3 class="font-headline italic text-4xl mb-6">Sacred Assembly</h3>
+</div>
+<p class="font-body opacity-70 group-hover:opacity-100 transition-opacity">Worship that echoes through the valleys. Reconnecting the spirit of the patriot with the foundation of faith.</p>
+</div>
+<div class="p-12 border-r border-b border-outline/15 flex flex-col justify-between hover:bg-surface transition-colors group">
+<div>
+<span class="font-label text-secondary font-bold mb-4 block">PILLAR 04</span>
+<h3 class="font-headline italic text-4xl mb-6">Tactical Commerce</h3>
+</div>
+<p class="font-body opacity-70 group-hover:opacity-100 transition-opacity">A curated marketplace of vendors who share your values. Support the ecosystem of freedom.</p>
+</div>
+<div class="p-12 border-r border-b border-outline/15 flex flex-col justify-between hover:bg-surface transition-colors group">
+<div>
+<span class="font-label text-secondary font-bold mb-4 block">PILLAR 05</span>
+<h3 class="font-headline italic text-4xl mb-6">The Grand Venue</h3>
+</div>
+<p class="font-body opacity-70 group-hover:opacity-100 transition-opacity">Nestled in the heart of the heartland, providing the scale and dignity a movement of this magnitude deserves.</p>
+</div>
+<div class="p-12 border-r border-b border-outline/15 flex flex-col justify-center items-center bg-primary text-surface hover:bg-secondary transition-all cursor-pointer">
+<span class="font-label tracking-[0.2em] mb-4">JOIN THE BROTHERHOOD</span>
+<h3 class="font-headline italic text-3xl text-center">Get Your Pass Now</h3>
+</div>
+</div>
+</section>
+<!-- Speaker Grid (Voices of the Brotherhood) -->
+<section class="py-32 px-12 bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+<div class="max-w-2xl">
+<h2 class="font-headline italic text-6xl text-primary mb-6">Voices of the Brotherhood</h2>
+<p class="font-body text-xl opacity-80 leading-relaxed">The vanguard of truth. A collection of minds dedicated to the preservation of heritage and the pursuit of excellence.</p>
+</div>
+<div class="pb-4">
+<a class="font-label tracking-widest text-secondary font-bold border-b-2 border-secondary pb-1 hover:text-primary hover:border-primary transition-all" href="#">SEE FULL LINEUP</a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<!-- Speaker 1 -->
+<div class="bg-surface-container-lowest transition-transform duration-300">
+<div class="aspect-[3/4] bg-surface-dim overflow-hidden relative">
+<img alt="Speaker 1" class="w-full h-full object-cover grayscale mix-blend-multiply opacity-90" data-alt="Close-up portrait of a rugged man with a beard, wearing an editorial navy suit, moody lighting, dark grain texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWgahWUJtObWznyIexah8hmklcuYidvj9xYSaT_rxvKpfmKPKKQGqnSJQ6gGyjdeGUSb0Ea87M1EruxoCO7B3oOrjwW3DWQgeTOeJ2t41bSNY5PK7kWOYbcbWdSGsQtgXw87gZIWBUMoLSMktOW0asYaCWiSbUu_iStAiX44PuQ4UHFVqjXXNkQDdxLZiFebz_Bnb1K7S33r_h611Xc02EYU4JsUAx3_3OMABHEgZQhrw9LiZpOe7_VvJCPxFyKvNzFnrDE5FZEoU"/>
+<div class="absolute inset-0 bg-primary/20"></div>
+</div>
+<div class="pt-8 pb-4">
+<h4 class="font-headline text-2xl font-bold mb-1">STEVEN CROWDER</h4>
+<p class="font-label uppercase tracking-widest text-xs text-secondary font-bold">KEYNOTE / DISCOURSE</p>
+</div>
+</div>
+<!-- Speaker 2 -->
+<div class="bg-surface-container-lowest pt-12">
+<div class="aspect-[3/4] bg-surface-dim overflow-hidden relative">
+<img alt="Speaker 2" class="w-full h-full object-cover grayscale mix-blend-multiply opacity-90" data-alt="Portrait of an older distinguished gentleman in military-inspired clothing, stoic expression, editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKMOQk5MWcoHk8GBa-Q7IR23qaEdKVLxOHbiAWCGoQJrCQMldrBDz-imUyYHA9j5K2Ij6aEEYFtK-MlzNXrpLR5piIvKz0W7yZLDtjzhq72LUsto-KJCTV5TP_oHJH41Q1ro55BTtorCebqbfBtmKGfmX1d9Jsb1vqbY87vf64mseuPHqVaxQ8y0whFjnm_oGF0iQD_ODhahXjVONQ_KBATb8E-urObn4OJg5Op7MtYV7Z2P42XkNa5QOc4PoC3bZwxMRlEMrVzGk"/>
+<div class="absolute inset-0 bg-primary/20"></div>
+</div>
+<div class="pt-8 pb-4">
+<h4 class="font-headline text-2xl font-bold mb-1">COL. J.R. STERLING</h4>
+<p class="font-label uppercase tracking-widest text-xs text-secondary font-bold">STRATEGY / TACTICS</p>
+</div>
+</div>
+<!-- Speaker 3 -->
+<div class="bg-surface-container-lowest">
+<div class="aspect-[3/4] bg-surface-dim overflow-hidden relative">
+<img alt="Speaker 3" class="w-full h-full object-cover grayscale mix-blend-multiply opacity-90" data-alt="Profile shot of a man in deep thought, focused lighting on his face, wearing high-quality workwear, grainy editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC447u3DdSLn6GZz8okjsQoVWSE4a231gkmSpFLIJa3EKwb5chcAHmhLTNtqh_kqN9DOTKDPWEKAzJNITk3II3qYePCmWXka1zfWsVouQ39NR8Jmo2OCw_bpdQGpU63AEnuRh4p3mABNBtRoNA4nVY83gcsSr9nrRq-Gb7rthWD_rCXMwbWmZ8yB7XfNw3SKDctlNv-UxHZLawAEX497S56O5woCcUULeC7VBB6L5n2OiMsAqsvrzYjm9Bm_UuHcyM0_mC4gjJbuzg"/>
+<div class="absolute inset-0 bg-primary/20"></div>
+</div>
+<div class="pt-8 pb-4">
+<h4 class="font-headline text-2xl font-bold mb-1">DAVID VANCE</h4>
+<p class="font-label uppercase tracking-widest text-xs text-secondary font-bold">FAITH / FOUNDATION</p>
+</div>
+</div>
+<!-- Speaker 4 -->
+<div class="bg-surface-container-lowest pt-12">
+<div class="aspect-[3/4] bg-surface-dim overflow-hidden relative">
+<img alt="Speaker 4" class="w-full h-full object-cover grayscale mix-blend-multiply opacity-90" data-alt="Portrait of a young patriot, intense gaze, outdoor setting with soft mountain background, cinematic editorial look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCytHXqt-82_QsC7l81Qkquw__hzdSjUi3VpTgBiPYq9RNP8qF3k4LbxKpOhZ4xAyzBPAWdYdO1DTqchPviZOPEeWlQx00wqdOGSmuwRuZBhQdx8yJ3ouwOh0UBnFjrcTpfLN9s3V8iCfiWjPnzmwyx_u6HZJshgQioEsRxyKb5rcCCcQdsk2ExjRXGTqyvzZrVyc5kig7Er0PuzPdCTm6VgGEDYVAaQhV4cLVJDnFkb0Wq77LgGy-R6BOQahYe1if_Dt5aKavooDM"/>
+<div class="absolute inset-0 bg-primary/20"></div>
+</div>
+<div class="pt-8 pb-4">
+<h4 class="font-headline text-2xl font-bold mb-1">LUKE HARDRY</h4>
+<p class="font-label uppercase tracking-widest text-xs text-secondary font-bold">YOUTH / LEGACY</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonial Section (The Registry of Impact) -->
+<section class="py-32 px-12 bg-primary text-surface relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-secondary/10 skew-x-[-12deg] translate-x-1/2"></div>
+<div class="max-w-4xl mx-auto text-center relative z-10">
+<span class="font-label uppercase tracking-[0.4em] text-tertiary-fixed-dim block mb-12">THE REGISTRY OF IMPACT</span>
+<div class="space-y-24">
+<blockquote class="group">
+<p class="font-headline italic text-4xl md:text-5xl leading-tight mb-8">"Freedom Con is not just a weekend; it’s a realignment of the soul. I left with a clear vision for my family and my role in this nation's defense."</p>
+<cite class="font-label uppercase tracking-widest text-secondary font-bold not-italic">— MARCUS THORNE, 2023 ATTENDEE</cite>
+</blockquote>
+<blockquote class="opacity-40 hover:opacity-100 transition-opacity duration-500">
+<p class="font-headline italic text-4xl md:text-5xl leading-tight mb-8">"The only place where truth isn't whispered, it's shouted from the mountaintops. A life-changing experience for any man of faith."</p>
+<cite class="font-label uppercase tracking-widest text-secondary font-bold not-italic">— REV. SAMUEL COLLINS</cite>
+</blockquote>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 px-12 bg-surface text-center">
+<h2 class="font-headline italic text-6xl md:text-8xl text-primary mb-12">Will You Stand?</h2>
+<div class="flex flex-col md:flex-row justify-center gap-8">
+<div class="bg-surface-container border border-outline/10 p-12 text-left max-w-md">
+<h3 class="font-headline italic text-3xl mb-4">Patriot Pass</h3>
+<p class="font-body mb-8 opacity-70">General access to all speakers, vendor halls, and daytime workshops. Includes official manifesto kit.</p>
+<div class="text-4xl font-headline font-black text-primary mb-8">$299</div>
+<button class="w-full bg-primary text-white py-5 font-bold hover:bg-secondary transition-all">GET PATRIOT PASS</button>
+</div>
+<div class="bg-primary text-surface p-12 text-left max-w-md relative">
+<div class="absolute top-0 right-0 bg-tertiary-fixed-dim text-primary font-bold px-4 py-1 text-xs font-label">MOST COMMANDED</div>
+<h3 class="font-headline italic text-3xl mb-4">Statesman VIP</h3>
+<p class="font-body mb-8 opacity-70">Includes front-row seating, private dinner with Steven Crowder, and exclusive camping grounds.</p>
+<div class="text-4xl font-headline font-black text-surface mb-8">$850</div>
+<button class="w-full bg-secondary text-white py-5 font-bold hover:brightness-110 transition-all">GET VIP PASS</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#00030a] dark:bg-[#00030a] border-t border-[#fcf9f0]/10">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-12 py-16 gap-8">
+<div class="font-['Newsreader'] text-[#fcf9f0] italic font-bold text-3xl tracking-tight">
+                FREEDOM CON
+            </div>
+<div class="flex flex-wrap justify-center gap-x-12 gap-y-4">
+<a class="font-['Work_Sans'] uppercase tracking-[0.2em] text-[10px] text-[#fcf9f0]/60 hover:text-[#fcf9f0] transition-opacity" href="#">Privacy Policy</a>
+<a class="font-['Work_Sans'] uppercase tracking-[0.2em] text-[10px] text-[#fcf9f0]/60 hover:text-[#fcf9f0] transition-opacity" href="#">Terms of Service</a>
+<a class="font-['Work_Sans'] uppercase tracking-[0.2em] text-[10px] text-[#fcf9f0]/60 hover:text-[#fcf9f0] transition-opacity" href="#">Contact</a>
+<a class="font-['Work_Sans'] uppercase tracking-[0.2em] text-[10px] text-[#fcf9f0]/60 hover:text-[#fcf9f0] transition-opacity" href="#">Press Kit</a>
+</div>
+<div class="font-['Work_Sans'] uppercase tracking-[0.2em] text-[10px] text-[#fcf9f0]">
+                © 2024 THE SOVEREIGN EDITORIAL. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+</body></html>

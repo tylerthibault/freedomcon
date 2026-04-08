@@ -37,9 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	const speakerCards = document.querySelectorAll("[data-speaker-card]");
+	const normalizeCssLength = (value) => {
+		if (value == null) return null;
+		const trimmedValue = String(value).trim();
+		if (!trimmedValue) return null;
+
+		const hasUnit = /[a-z%]/i.test(trimmedValue);
+		if (hasUnit) return trimmedValue;
+
+		return `${trimmedValue}px`;
+	};
+
 	speakerCards.forEach((card) => {
-		const imageX = card.dataset.imageX;
-		const imageY = card.dataset.imageY;
+		const imageX = normalizeCssLength(card.dataset.imageX);
+		const imageY = normalizeCssLength(card.dataset.imageY);
 
 		if (imageX) {
 			card.style.setProperty("--speaker-person-offset-x", imageX);
@@ -60,6 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	const nextPhoto = pastCarousel.querySelector(".past-photo-next");
 	if (!prevPhoto || !centerPhoto || !nextPhoto || photoSources.length < 3) return;
 
+	const prevButton = pastCarousel.querySelector("[data-carousel-prev]");
+	const nextButton = pastCarousel.querySelector("[data-carousel-next]");
+	const dotsContainer = pastCarousel.querySelector("[data-carousel-dots]");
+
 	let centerIndex = 1;
 	let autoplayTimer;
 	const intervalMs = Number(pastCarousel.dataset.interval || 3500);
@@ -78,16 +93,27 @@ document.addEventListener("DOMContentLoaded", () => {
 		centerPhoto.alt = photoSources[centerIndex].alt;
 		nextPhoto.src = photoSources[nextIndex].src;
 		nextPhoto.alt = photoSources[nextIndex].alt;
+
+		if (dotsContainer) {
+			const dots = dotsContainer.querySelectorAll(".past-carousel-dot");
+			dots.forEach((dot, dotIndex) => {
+				dot.classList.toggle("is-active", dotIndex === centerIndex);
+				dot.setAttribute("aria-current", dotIndex === centerIndex ? "true" : "false");
+			});
+		}
+	};
+
+	const goToIndex = (targetIndex) => {
+		centerIndex = wrapIndex(targetIndex);
+		renderPhotos();
 	};
 
 	const moveNext = () => {
-		centerIndex = wrapIndex(centerIndex + 1);
-		renderPhotos();
+		goToIndex(centerIndex + 1);
 	};
 
 	const movePrev = () => {
-		centerIndex = wrapIndex(centerIndex - 1);
-		renderPhotos();
+		goToIndex(centerIndex - 1);
 	};
 
 	const restartAutoplay = () => {
@@ -98,6 +124,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	renderPhotos();
 	restartAutoplay();
+
+	if (dotsContainer) {
+		dotsContainer.innerHTML = "";
+		photoSources.forEach((photo, index) => {
+			const dot = document.createElement("button");
+			dot.type = "button";
+			dot.className = "past-carousel-dot";
+			dot.setAttribute("aria-label", `Show image ${index + 1}`);
+			dot.setAttribute("title", photo.alt || `Image ${index + 1}`);
+			dot.addEventListener("click", () => {
+				goToIndex(index);
+				restartAutoplay();
+			});
+			dotsContainer.appendChild(dot);
+		});
+		renderPhotos();
+	}
+
+	if (prevButton) {
+		prevButton.addEventListener("click", () => {
+			movePrev();
+			restartAutoplay();
+		});
+	}
+
+	if (nextButton) {
+		nextButton.addEventListener("click", () => {
+			moveNext();
+			restartAutoplay();
+		});
+	}
 
 	pastCarousel.addEventListener("touchstart", (event) => {
 		if (!event.changedTouches.length) return;
