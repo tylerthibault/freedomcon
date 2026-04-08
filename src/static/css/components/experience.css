@@ -1,0 +1,125 @@
+.experience {
+	background: var(--color-primary);
+	color: var(--color-secondary);
+	text-align: center;
+	padding: 2.25rem 1rem 1.6rem;
+}
+
+.experience__title {
+	margin: 0;
+	font-family: var(--font-secondary);
+	font-weight: 700;
+	font-size: clamp(1.6rem, 6vw, 5.2rem);
+	line-height: 1;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.experience__subtitle {
+	margin: -0.25rem 0 0;
+	font-family: var(--font-american-scribe);
+	font-size: clamp(2rem, 5vw, 5rem);
+	line-height: 1;
+	color: var(--color-secondary);
+}
+
+.experience__options {
+	margin: 2rem auto 0;
+	width: min(100%, 1200px);
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+	gap: clamp(1rem, 4vw, 3rem);
+	align-items: center;
+}
+
+.experience__option {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	background: transparent;
+	border: 2px solid transparent;
+	padding: 0.35rem;
+	text-decoration: none;
+	transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.experience__option-art {
+	position: relative;
+	display: block;
+	width: 100%;
+	max-width: 520px;
+	margin: 0 auto;
+}
+
+.experience__img {
+	width: 100%;
+	max-width: 520px;
+	height: auto;
+	display: block;
+}
+
+.experience__img--base {
+	position: relative;
+	z-index: 2;
+}
+
+.experience__img--hover {
+	position: absolute;
+	inset: 0;
+	transform: translate(14px, 14px);
+	filter: brightness(0) saturate(100%) invert(22%) sepia(82%) saturate(2606%) hue-rotate(344deg) brightness(88%) contrast(96%);
+	opacity: 0;
+	z-index: 1;
+	transition: opacity 0.2s ease;
+}
+
+.experience__label {
+	position: absolute;
+	inset: 0;
+	z-index: 3;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 0.1em;
+	pointer-events: none;
+	color: var(--color-primary);
+	font-family: var(--font-secondary);
+	font-weight: 700;
+	text-transform: uppercase;
+	line-height: 1;
+	letter-spacing: 0.02em;
+	font-size: clamp(1.2rem, 2.8vw, 3.7rem);
+}
+
+.experience__label span:first-child {
+	font-size: 0.58em;
+	letter-spacing: 0.04em;
+}
+
+.experience__option:hover,
+.experience__option:focus-visible {
+	/* border-color: var(--color-accent); */
+	transform: translateY(-2px);
+}
+
+.experience__option:hover .experience__img--hover,
+.experience__option:focus-visible .experience__img--hover {
+	opacity: 1;
+}
+
+@media (max-width: 768px) {
+	.experience {
+		padding: 1.5rem 0.75rem 1.2rem;
+	}
+
+	.experience__title {
+		letter-spacing: 0.08em;
+	}
+
+	.experience__options {
+		margin-top: 1.25rem;
+		gap: 0.75rem;
+	}
+}

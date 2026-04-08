@@ -1,0 +1,42 @@
+{% set current_endpoint = request.endpoint or '' %}
+
+<nav class="main-nav" aria-label="Main navigation">
+	<div class="main-nav__left">
+		<a class="main-nav__link{% if current_endpoint == 'public.landing' %} main-nav__link--active{% endif %}" href="{{ url_for('public.landing') }}">HOME</a>
+		<a class="main-nav__link{% if current_endpoint == 'public.faqs' %} main-nav__link--active{% endif %}" href="{{ url_for('public.faqs') }}">FAQ'S</a>
+		<a class="main-nav__link{% if current_endpoint == 'public.speakers' %} main-nav__link--active{% endif %}" href="{{ url_for('public.speakers') }}">SPEAKERS</a>
+		<a class="main-nav__link" href="#">ARTISTS</a>
+		<a class="main-nav__link" href="#">ACCOMMODATIONS</a>
+		<a class="main-nav__link" href="#">TICKETS</a>
+	</div>
+	<a class="btn btn-primary btn-xxl main-nav__desktop-cta" href="#">Get Your Tickets Here</a>
+
+	<button
+		type="button"
+		class="main-nav__toggle"
+		data-bs-toggle="offcanvas"
+		data-bs-target="#mobileNavMenu"
+		aria-controls="mobileNavMenu"
+		aria-label="Open navigation menu"
+	>
+		<span></span>
+		<span></span>
+		<span></span>
+	</button>
+</nav>
+
+<div class="offcanvas offcanvas-end mobile-nav-menu" tabindex="-1" id="mobileNavMenu" aria-labelledby="mobileNavMenuLabel">
+	<div class="offcanvas-header mobile-nav-menu__header">
+		<h2 class="offcanvas-title mobile-nav-menu__title" id="mobileNavMenuLabel">Menu</h2>
+		<button type="button" class="btn-close mobile-nav-menu__close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body mobile-nav-menu__body">
+		<a class="mobile-nav-menu__link main-nav__link{% if current_endpoint == 'public.landing' %} main-nav__link--active{% endif %}" href="{{ url_for('public.landing') }}">HOME</a>
+		<a class="mobile-nav-menu__link main-nav__link{% if current_endpoint == 'public.faqs' %} main-nav__link--active{% endif %}" href="{{ url_for('public.faqs') }}">FAQ'S</a>
+		<a class="mobile-nav-menu__link main-nav__link{% if current_endpoint == 'public.speakers' %} main-nav__link--active{% endif %}" href="{{ url_for('public.speakers') }}">SPEAKERS</a>
+		<a class="mobile-nav-menu__link main-nav__link" href="#">ARTISTS</a>
+		<a class="mobile-nav-menu__link main-nav__link" href="#">ACCOMMODATIONS</a>
+		<a class="mobile-nav-menu__link main-nav__link" href="#">TICKETS</a>
+		<a class="btn btn-primary btn-xxl mobile-nav-menu__cta" href="#">Get Your Tickets Here</a>
+	</div>
+</div>

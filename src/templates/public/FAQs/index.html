@@ -1,0 +1,88 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/faq.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="faq-page">
+    <section class="faq-hero">
+        <img class="w-100" src="{{ url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') }}" alt="Freedom Con speakers">
+    </section>
+
+    {{ slim_banner("Frequently Asked Questions") }}
+
+    <section class="faq-body" aria-label="Frequently asked questions">
+        <div class="faq-tabs" role="tablist" aria-label="FAQ categories">
+            <button class="faq-tab faq-tab--active" type="button">Freedom Conference FAQs</button>
+            <button class="faq-tab" type="button">Camping FAQs</button>
+        </div>
+
+        <div class="accordion accordion-flush faq-accordion" id="faqAccordion">
+            <div class="accordion-item faq-item">
+                <h2 class="accordion-header" id="faq-heading-one">
+                    <button class="accordion-button faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-one" aria-expanded="true" aria-controls="faq-collapse-one">
+                        Who is this for?
+                    </button>
+                </h2>
+                <div id="faq-collapse-one" class="accordion-collapse collapse show" aria-labelledby="faq-heading-one" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body faq-answer">
+                        The FREEDOM CON is for all men who carry deep convictions about patriotism, faith, family, and freedom, and want to stand and defend those things with honor.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item faq-item">
+                <h2 class="accordion-header" id="faq-heading-two">
+                    <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-two" aria-expanded="false" aria-controls="faq-collapse-two">
+                        Where is this conference?
+                    </button>
+                </h2>
+                <div id="faq-collapse-two" class="accordion-collapse collapse" aria-labelledby="faq-heading-two" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body faq-answer">
+                        Placeholder answer: venue details and directions will appear here.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item faq-item">
+                <h2 class="accordion-header" id="faq-heading-three">
+                    <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-three" aria-expanded="false" aria-controls="faq-collapse-three">
+                        What should I bring?
+                    </button>
+                </h2>
+                <div id="faq-collapse-three" class="accordion-collapse collapse" aria-labelledby="faq-heading-three" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body faq-answer">
+                        Placeholder answer: recommended gear, documents, and event-day essentials will appear here.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="faq-downloads" aria-label="Download PDF versions">
+            <h2 class="faq-downloads__title">Download PDF Versions</h2>
+            <div class="faq-downloads__actions">
+                <a class="faq-downloads__button" href="{{ url_for('static', filename='pdfs/FREEDOM CON FAQs - FINAL.pdf') }}" download="FREEDOM CON FAQs - FINAL.pdf">Freedom Con FAQs</a>
+                <a class="faq-downloads__button" href="{{ url_for('static', filename='pdfs/FREEDOMCON CAMPING FAQs - FINAL.pdf') }}" download="FREEDOMCON CAMPING FAQs - FINAL.pdf">Freedom Con Camping FAQs</a>
+            </div>
+        </section>
+    </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer class="site-footer"></footer>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
