@@ -1,0 +1,440 @@
+/* ============================================================
+   Landing Variant 10 — Patriotic Americana, Mobile-First
+   ============================================================ */
+
+/* --- Token overrides scoped to v10 --- */
+.landing-page--v10 {
+	--v10-navy:      #0A1628;
+	--v10-red:       #B22234;
+	--v10-white:     #F5F0E8;
+	--v10-gold:      #FFD700;
+	--v10-gold-dim:  #C9A800;
+	--v10-blue-mid:  #1C3A6B;
+	--v10-stripe-w:  4px;
+
+	background: var(--v10-navy);
+	--color-primary:  var(--v10-navy);
+	--color-accent:   var(--v10-red);
+	--color-secondary: var(--v10-white);
+}
+
+/* ============================================================
+   HERO — patriotic polish
+   ============================================================ */
+.landing-page--v10 .hero-seq {
+	background: var(--v10-navy);
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 0;
+}
+
+/* Subtle star-field shimmer strip at top */
+.landing-page--v10 .hero-seq::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: repeating-linear-gradient(
+		90deg,
+		var(--v10-red)   0px,
+		var(--v10-red)   38px,
+		var(--v10-white) 38px,
+		var(--v10-white) 76px
+	);
+}
+
+/* Gold star trail behind title */
+.landing-page--v10 .hero-seq__title {
+	color: var(--v10-red);
+	text-shadow:
+		0 0 40px rgba(178, 34, 52, 0.55),
+		0 2px 0 rgba(0,0,0,0.6);
+}
+
+.landing-page--v10 .hero-seq__star {
+	color: var(--v10-gold);
+	filter: drop-shadow(0 0 8px rgba(255,215,0,0.7));
+}
+
+.landing-page--v10 .hero-seq__subtitle {
+	color: var(--v10-white);
+}
+
+.landing-page--v10 .hero-seq__year {
+	color: var(--v10-gold);
+}
+
+.landing-page--v10 .hero-seq__nation-line {
+	color: var(--v10-white);
+	letter-spacing: 0.22em;
+}
+
+.landing-page--v10 .hero-seq__presents {
+	color: var(--v10-gold-dim);
+}
+
+/* ============================================================
+   STAR-STRIPE DIVIDER  (reusable via .v10-divider pseudo)
+   ============================================================ */
+.landing-page--v10 .when,
+.landing-page--v10 .past-carousel-section,
+.landing-page--v10 .what-section,
+.landing-page--v10 .speakers-section,
+.landing-page--v10 .social-proof-section {
+	position: relative;
+}
+
+/* Red stripe accent at the very top of key sections */
+.landing-page--v10 .when::before,
+.landing-page--v10 .speakers-section::before,
+.landing-page--v10 .social-proof-section::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: var(--v10-stripe-w);
+	background: var(--v10-red);
+	z-index: 2;
+}
+
+/* ============================================================
+   WHEN SECTION
+   ============================================================ */
+.landing-page--v10 .when {
+	background: var(--v10-navy);
+	border-bottom: var(--v10-stripe-w) solid var(--v10-red);
+	padding: clamp(2rem, 6vw, 4rem) 1rem;
+}
+
+.landing-page--v10 .when__kicker {
+	color: var(--v10-gold);
+	font-size: clamp(1rem, 5vw, 2rem);
+	letter-spacing: 0.3em;
+}
+
+.landing-page--v10 .when__headline {
+	color: var(--v10-white);
+	font-size: clamp(2rem, 9vw, 5rem);
+	letter-spacing: 0.12em;
+}
+
+.landing-page--v10 .when__venue,
+.landing-page--v10 .when__location {
+	color: var(--v10-white);
+	opacity: 0.82;
+}
+
+.landing-page--v10 .when__date {
+	color: var(--v10-gold);
+	font-size: clamp(2rem, 8vw, 5rem);
+}
+
+/* Stars flanking date */
+.landing-page--v10 .when__date::before,
+.landing-page--v10 .when__date::after {
+	content: " ★ ";
+	color: var(--v10-red);
+	font-size: 0.6em;
+	vertical-align: middle;
+}
+
+/* ============================================================
+   PAST PHOTOS CAROUSEL
+   ============================================================ */
+.landing-page--v10 .past-carousel-section {
+	background: linear-gradient(180deg, var(--v10-navy) 0%, var(--v10-blue-mid) 100%);
+	padding: clamp(1.5rem, 5vw, 4rem) 0;
+}
+
+.landing-page--v10 .past-carousel-card {
+	border: 2px solid var(--v10-gold-dim);
+	box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+
+/* ============================================================
+   CTA BUTTON — v10 override
+   ============================================================ */
+.landing-page--v10 .btn-primary {
+	background: var(--v10-red) !important;
+	border-color: var(--v10-red) !important;
+	color: var(--v10-white) !important;
+	font-family: var(--font-secondary);
+	letter-spacing: 0.06em;
+	box-shadow: 0 4px 18px rgba(178, 34, 52, 0.45);
+	transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.landing-page--v10 .btn-primary:hover,
+.landing-page--v10 .btn-primary:focus {
+	background: var(--v10-gold) !important;
+	border-color: var(--v10-gold) !important;
+	color: var(--v10-navy) !important;
+	box-shadow: 0 6px 24px rgba(255,215,0,0.4);
+	transform: translateY(-2px);
+}
+
+/* CTA wrapper spacing */
+.landing-page--v10 .d-flex.justify-content-center {
+	padding: clamp(1.5rem, 5vw, 3rem) 1rem;
+}
+
+/* ============================================================
+   WHAT SECTION — patriotic split panels
+   ============================================================ */
+.landing-page--v10 .what-section {
+	background: var(--v10-navy);
+	position: relative;
+}
+
+.landing-page--v10 .what-section__content {
+	background: var(--v10-navy);
+	position: relative;
+}
+
+/* Diagonal red stripe accent inside content panel */
+.landing-page--v10 .what-section__content::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	background: linear-gradient(90deg, transparent 0%, var(--v10-red) 40%, var(--v10-gold) 60%, transparent 100%);
+}
+
+.landing-page--v10 .what-section__title {
+	color: var(--v10-white);
+	text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+	position: relative;
+}
+
+/* Gold star before each section title */
+.landing-page--v10 .what-section__title::before {
+	content: "★ ";
+	color: var(--v10-gold);
+	font-size: 0.55em;
+	vertical-align: middle;
+	margin-right: 0.15em;
+}
+
+/* ============================================================
+   SPEAKERS SECTION
+   ============================================================ */
+.landing-page--v10 .speakers-section {
+	background: var(--v10-white);
+}
+
+.landing-page--v10 .speakers-section__notch {
+	background: var(--v10-navy);
+}
+
+.landing-page--v10 .speakers-section__heading {
+	color: var(--v10-navy);
+	position: relative;
+	padding-bottom: 0.6rem;
+}
+
+/* Underline with flag colors */
+.landing-page--v10 .speakers-section__heading::after {
+	content: "";
+	display: block;
+	margin: 0.4rem auto 0;
+	width: clamp(60px, 30%, 180px);
+	height: 4px;
+	background: linear-gradient(90deg, var(--v10-red) 33%, var(--v10-white) 33%, var(--v10-white) 66%, var(--v10-navy) 66%);
+}
+
+.landing-page--v10 .speaker-card__name {
+	color: var(--v10-navy);
+}
+
+.landing-page--v10 .speaker-card__titles {
+	color: color-mix(in srgb, var(--v10-navy) 75%, transparent);
+}
+
+/* ============================================================
+   SOCIAL PROOF SECTION
+   ============================================================ */
+.landing-page--v10 .social-proof-section {
+	background: var(--v10-navy);
+	border-top: var(--v10-stripe-w) solid var(--v10-red);
+}
+
+.landing-page--v10 .social-proof-card {
+	background: var(--v10-blue-mid);
+	color: var(--v10-white);
+	border: 1px solid rgba(255,215,0,0.18);
+}
+
+.landing-page--v10 .social-proof-card__quote {
+	color: var(--v10-white);
+}
+
+/* ============================================================
+   SCROLL ANIMATIONS — subtle patriotic glow on inview
+   ============================================================ */
+.landing-page--v10 .is-inview .hero-seq__star {
+	animation: v10-star-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes v10-star-pulse {
+	from { filter: drop-shadow(0 0 4px rgba(255,215,0,0.5)); }
+	to   { filter: drop-shadow(0 0 16px rgba(255,215,0,1)); }
+}
+
+/* ============================================================
+   SECTION-LEVEL SUBTLE PARALLAX GLOW (inview)
+   ============================================================ */
+.landing-page--v10 section::after {
+	content: "";
+	position: absolute;
+	top: -1px;
+	left: 0;
+	right: 0;
+	height: clamp(60px, 8vw, 120px);
+	pointer-events: none;
+	background: linear-gradient(
+		180deg,
+		color-mix(in srgb, var(--v10-gold) 8%, transparent) 0%,
+		transparent 80%
+	);
+	opacity: 0.2;
+}
+
+/* ============================================================
+   MOBILE-FIRST LAYOUT ADJUSTMENTS
+   ============================================================ */
+
+/* Base (mobile) — stack what-section panels */
+.landing-page--v10 .what-section {
+	grid-template-columns: 1fr;
+	height: auto;
+	min-height: auto;
+}
+
+.landing-page--v10 .what-section__media,
+.landing-page--v10 .what-section__content {
+	min-height: 44vw;
+}
+
+.landing-page--v10 .what-section--reverse .what-section__content,
+.landing-page--v10 .what-section--reverse .what-section__media {
+	order: initial;
+}
+
+/* Mobile: hero typography tighter */
+.landing-page--v10 .hero-seq {
+	padding: 0.5rem 0.75rem 0;
+}
+
+/* Mobile: past carousel single column */
+.landing-page--v10 .past-carousel-grid {
+	grid-template-columns: 1fr;
+	width: min(540px, 90vw);
+}
+
+.landing-page--v10 .past-carousel-card--side {
+	display: none;
+}
+
+.landing-page--v10 .past-carousel-card--center {
+	aspect-ratio: 4 / 5;
+}
+
+/* Mobile: speakers single column */
+.landing-page--v10 .speakers-section__grid {
+	grid-template-columns: minmax(0, 270px);
+}
+
+/* Mobile: CTA button full width */
+.landing-page--v10 .btn-xxl {
+	width: calc(100% - 2rem) !important;
+	max-width: 440px;
+	font-size: clamp(1.1rem, 5vw, 1.75rem) !important;
+	padding: 0.85rem 1rem !important;
+}
+
+/* ============================================================
+   SMALL TABLET and up  (≥ 480px)
+   ============================================================ */
+@media (min-width: 480px) {
+	.landing-page--v10 .what-section__media,
+	.landing-page--v10 .what-section__content {
+		min-height: 36vw;
+	}
+
+	.landing-page--v10 .btn-xxl {
+		width: auto !important;
+		padding: 1rem 2.5rem !important;
+	}
+}
+
+/* ============================================================
+   TABLET and up  (≥ 768px)
+   ============================================================ */
+@media (min-width: 768px) {
+	.landing-page--v10 .what-section {
+		grid-template-columns: 1fr 1fr;
+		min-height: 50vh;
+		height: 50vh;
+	}
+
+	.landing-page--v10 .what-section__media,
+	.landing-page--v10 .what-section__content {
+		min-height: 0;
+	}
+
+	.landing-page--v10 .what-section--reverse .what-section__content {
+		order: 1;
+	}
+
+	.landing-page--v10 .what-section--reverse .what-section__media {
+		order: 2;
+	}
+
+	.landing-page--v10 .past-carousel-card--side {
+		display: block;
+	}
+
+	.landing-page--v10 .past-carousel-grid {
+		grid-template-columns: 1fr 1.75fr 1fr;
+		width: min(1200px, 92vw);
+	}
+
+	.landing-page--v10 .past-carousel-card--center {
+		aspect-ratio: 4 / 4;
+	}
+}
+
+/* ============================================================
+   DESKTOP  (≥ 992px)
+   ============================================================ */
+@media (min-width: 992px) {
+	.landing-page--v10 .speakers-section__grid {
+		grid-template-columns: repeat(2, minmax(0, 255px));
+	}
+
+	.landing-page--v10 .speakers-section__grid > .speaker-card:last-child:nth-child(odd) {
+		grid-column: 1 / -1;
+	}
+}
+
+/* ============================================================
+   LARGE DESKTOP  (≥ 1200px)
+   ============================================================ */
+@media (min-width: 1200px) {
+	.landing-page--v10 .speakers-section__grid {
+		grid-template-columns: repeat(3, minmax(0, 255px));
+	}
+
+	.landing-page--v10 .speakers-section__grid > .speaker-card:last-child:nth-child(odd) {
+		grid-column: auto;
+	}
+
+	.landing-page--v10 .speakers-section__grid > .speaker-card:last-child:nth-child(3n + 1) {
+		grid-column: 2;
+	}
+}

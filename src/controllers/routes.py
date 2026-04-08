@@ -33,6 +33,11 @@ def landing_5() -> str:
 	return render_template("public/landing/index5.html", social_proof=social_proof)
 
 
+@public_bp.get("/landing-10")
+def landing_10() -> str:
+	return render_template("public/landing/index10.html", social_proof=social_proof)
+
+
 @public_bp.get("/faqs")
 def faqs() -> str:
     return render_template("public/FAQs/index.html")
