@@ -1,0 +1,102 @@
+@import url('components/bootstrap_override.css');
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;700&display=swap");
+
+@font-face {
+	font-family: "Fremont Osf Bold";
+	src: url("../fonts/Fremont-Osf%20Bold.ttf") format("truetype");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Ghost Factory";
+	src: url("../fonts/Ghost%20Factory.ttf") format("truetype");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Nickel Gothic V3";
+	src: url("../fonts/NickelGothicV3Variableslntwdth-BF674fcf11737ff.ttf") format("truetype");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "American Scribe";
+	src: url("../fonts/americanscribe.ttf") format("truetype");
+	font-display: swap;
+}
+
+:root {
+	color-scheme: light;
+	--font-primary: "Oswald", "Fremont Osf Bold", Arial, sans-serif;
+	--font-secondary: "Oswald", "Nickel Gothic V3", Arial, sans-serif;
+	--font-fremont-osf-bold: "Fremont Osf Bold", Arial, sans-serif;
+	--font-ghost-factory: "Ghost Factory", Arial, sans-serif;
+	--font-nickel-gothic-v3: "Nickel Gothic V3", Arial, sans-serif;
+	--font-american-scribe: "American Scribe", cursive;
+	--color-primary: #000000;
+	--color-secondary: #ffffff;
+	--color-accent: #BC2A27;
+	--color-bg: var(--color-secondary);
+	--color-text: var(--color-primary);
+	--color-surface: var(--color-primary);
+	--color-on-surface: var(--color-secondary);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+		--color-primary: #000000;
+		--color-secondary: #ffffff;
+		--color-accent: #BC2A27;
+		--color-bg: var(--color-primary);
+		--color-text: var(--color-secondary);
+		--color-surface: var(--color-secondary);
+		--color-on-surface: var(--color-primary);
+	}
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-primary);
+	font-weight: 300;
+	background: var(--color-bg);
+	color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-secondary {
+	font-family: var(--font-secondary);
+	font-weight: 700;
+}
+
+.font-fremont-osf-bold {
+	font-family: var(--font-fremont-osf-bold);
+}
+
+.font-ghost-factory {
+	font-family: var(--font-ghost-factory);
+}
+
+.font-nickel-gothic-v3 {
+	font-family: var(--font-nickel-gothic-v3);
+}
+
+.font-american-scribe {
+	font-family: var(--font-american-scribe);
+}
+
+.site-footer {
+	background: var(--color-surface);
+	color: var(--color-on-surface);
+	padding: 1rem 1.5rem;
+}
+
+.hero {
+	padding: 2rem 1.5rem 0 1.5rem;
+}
