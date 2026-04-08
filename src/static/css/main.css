@@ -116,3 +116,12 @@ h6,
 	object-fit: cover;
 	object-position: var(--subpage-hero-image-x, 50%) var(--subpage-hero-image-y, 0%);
 }
+
+.subpage-hero-media--contain {
+	background: var(--color-primary);
+}
+
+.subpage-hero-media--contain .subpage-hero-media__image {
+	object-fit: contain;
+	object-position: center;
+}

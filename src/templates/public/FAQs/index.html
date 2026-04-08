@@ -1,5 +1,6 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/subpage_hero.html" import subpage_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -15,9 +16,7 @@
 
 {% block content %}
 <main class="faq-page">
-    <section class="faq-hero subpage-hero-media" style="--subpage-hero-image-x: 50%; --subpage-hero-image-y: 0%;" aria-label="Freedom Con FAQs hero">
-        <img class="subpage-hero-media__image" src="{{ url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') }}" alt="Freedom Con speakers">
-    </section>
+    {{ subpage_hero('img/TheGuys-WithLogoNoFeet.avif', 'Freedom Con speakers', 'Freedom Con FAQs hero', '50%', '50%', 'faq-hero', contain=True) }}
 
     {{ slim_banner("Frequently Asked Questions") }}
 
