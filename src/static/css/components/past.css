@@ -9,10 +9,10 @@
 
 .past-carousel-grid {
     display: grid;
-    grid-template-columns: 1fr 1.75fr 1fr;
+    grid-template-columns: 1fr;
     gap: clamp(1rem, 2.5vw, 2.25rem);
     align-items: center;
-    width: min(1200px, 92vw);
+    width: min(560px, 92vw);
     margin: 0 auto;
 }
 
@@ -30,24 +30,25 @@
 }
 
 .past-carousel-card--side {
+    display: none;
     aspect-ratio: 3 / 4;
 }
 
 .past-carousel-card--center {
-    aspect-ratio: 4 / 4;
+    aspect-ratio: 4 / 5;
 }
 
-@media (max-width: 991.98px) {
+@media (min-width: 992px) {
     .past-carousel-grid {
-        grid-template-columns: 1fr;
-        width: min(560px, 92vw);
+        grid-template-columns: 1fr 1.75fr 1fr;
+        width: min(1200px, 92vw);
     }
 
     .past-carousel-card--side {
-        display: none;
+        display: block;
     }
 
     .past-carousel-card--center {
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 4 / 4;
     }
 }

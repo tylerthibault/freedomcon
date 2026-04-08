@@ -6,7 +6,7 @@
 
 .landing-page section {
     position: relative;
-    scroll-margin-top: 110px;
+    scroll-margin-top: 86px;
 }
 
 .landing-page section::after {
@@ -79,12 +79,17 @@
 }
 
 .landing-page--v2 .what-section {
-    min-height: clamp(360px, 52vh, 620px);
+    min-height: auto;
     height: auto;
 }
 
 .landing-page--v2 .what-section__content {
     padding: clamp(1.5rem, 4vw, 3.25rem);
+}
+
+.landing-page--v2 .what-section__media,
+.landing-page--v2 .what-section__content {
+    min-height: 30svh;
 }
 
 .landing-page--v2 .social-proof-row__track {
@@ -139,7 +144,7 @@
     }
 }
 
-@media (max-width: 991.98px) {
+@media (min-width: 768px) {
     .landing-page--v2 .what-section {
         min-height: auto;
     }
@@ -150,21 +155,25 @@
     }
 }
 
-@media (max-width: 767.98px) {
+@media (min-width: 992px) {
     .landing-page section {
-        scroll-margin-top: 86px;
+        scroll-margin-top: 110px;
     }
 
     .landing-page--v2 .is-inview {
-        transform: none;
+        transform: translateY(-2px);
+    }
+
+    .landing-page--v2 .what-section {
+        min-height: clamp(360px, 52vh, 620px);
     }
 
     .landing-page--v2 .what-section__media,
     .landing-page--v2 .what-section__content {
-        min-height: 30svh;
+        min-height: 0;
     }
 
     .landing-page--v2 .past-carousel-card img {
-        animation-duration: 12s;
+        animation-duration: 10s;
     }
 }

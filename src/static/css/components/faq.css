@@ -21,13 +21,13 @@
 	font-family: var(--font-secondary);
 	font-size: clamp(2rem, 6vw, 4rem);
 	font-weight: 700;
-	letter-spacing: 0.12em;
+	letter-spacing: 0.06em;
 	line-height: 1;
 	text-transform: uppercase;
 }
 
 .faq-body {
-	padding: 1.5rem 1.5rem 3rem;
+	padding: 1rem 0.9rem 2rem;
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -64,7 +64,7 @@
 .faq-button {
 	background: transparent;
 	font-family: var(--font-primary);
-	font-size: 1.75rem;
+	font-size: 1.2rem;
 	font-weight: 300;
 	color: var(--color-primary);
 	padding: 1.1rem 0.35rem;
@@ -96,7 +96,7 @@
 }
 
 .faq-downloads {
-	margin-top: 2.5rem;
+	margin-top: 1.8rem;
 	padding-top: 1.25rem;
 	text-align: center;
 }
@@ -106,11 +106,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 1.25rem;
+	gap: 0.7rem;
 	font-family: var(--font-secondary);
 	font-size: clamp(1.4rem, 3.2vw, 3rem);
 	font-weight: 700;
-	letter-spacing: 0.12em;
+	letter-spacing: 0.07em;
 	text-transform: uppercase;
 	line-height: 1;
 }
@@ -137,9 +137,9 @@
 	background: var(--color-primary);
 	color: var(--color-secondary);
 	text-decoration: none;
-	padding: 0.85rem 1.35rem;
+	padding: 0.75rem 1rem;
 	font-family: var(--font-primary);
-	font-size: 1.75rem;
+	font-size: 1.2rem;
 	line-height: 1;
 }
 
@@ -149,30 +149,30 @@
 	color: var(--color-secondary);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) {
 	.faq-body {
-		padding: 1rem 0.9rem 2rem;
+		padding: 1.5rem 1.5rem 3rem;
 	}
 
 	.faq-title-strip h1 {
-		letter-spacing: 0.06em;
+		letter-spacing: 0.12em;
 	}
 
 	.faq-button {
-		font-size: 1.2rem;
+		font-size: 1.75rem;
 	}
 
 	.faq-downloads {
-		margin-top: 1.8rem;
+		margin-top: 2.5rem;
 	}
 
 	.faq-downloads__title {
-		gap: 0.7rem;
-		letter-spacing: 0.07em;
+		gap: 1.25rem;
+		letter-spacing: 0.12em;
 	}
 
 	.faq-downloads__button {
-		font-size: 1.2rem;
-		padding: 0.75rem 1rem;
+		font-size: 1.75rem;
+		padding: 0.85rem 1.35rem;
 	}
 }

@@ -4,7 +4,7 @@
 
 .landing-page section {
     position: relative;
-    scroll-margin-top: 110px;
+    scroll-margin-top: 86px;
 }
 
 .landing-page section::before {
@@ -63,7 +63,7 @@
     padding-block: clamp(1.6rem, 4vw, 3rem);
 }
 
-@media (max-width: 991.98px) {
+@media (min-width: 768px) {
     .landing-page .what-section {
         min-height: auto;
     }
@@ -74,13 +74,13 @@
     }
 }
 
-@media (max-width: 767.98px) {
+@media (min-width: 992px) {
     .landing-page section {
-        scroll-margin-top: 86px;
+        scroll-margin-top: 110px;
     }
 
     .landing-page--v1 .what-section__media,
     .landing-page--v1 .what-section__content {
-        min-height: 30svh;
+        min-height: 0;
     }
 }

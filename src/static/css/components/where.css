@@ -8,21 +8,21 @@
 	background: var(--color-secondary);
 	margin: 0 auto;
 	/* max-width: 1600px; */
-    width: 100vw;
-	padding: 3.5rem 2rem 4rem;
+	width: 100%;
+	padding: 2rem 1rem 2.5rem;
 	text-align: center;
 }
 
 .where__eyebrow {
 	margin: 0 auto 0.6rem;
 	padding: 0.55rem 1rem;
-	max-width: 85%;
+	max-width: 100%;
 	background: var(--color-primary);
 	color: var(--color-secondary);
 	font-family: var(--font-secondary);
 	font-size: clamp(0.95rem, 2vw, 2.1rem);
 	font-weight: 700;
-	letter-spacing: 0.22em;
+	letter-spacing: 0.12em;
 	text-transform: uppercase;
 }
 
@@ -50,7 +50,7 @@
 .where__date {
 	margin: 2rem auto 0;
 	padding: 1rem 1.75rem;
-	max-width: 46%;
+	max-width: 90%;
 	background: var(--color-primary);
 	color: var(--color-secondary);
 	font-family: var(--font-secondary);
@@ -60,17 +60,17 @@
 	text-transform: uppercase;
 }
 
-@media (max-width: 992px) {
+@media (min-width: 993px) {
 	.where__frame {
-		padding: 2rem 1rem 2.5rem;
+		padding: 3.5rem 2rem 4rem;
 	}
 
 	.where__eyebrow {
-		max-width: 100%;
-		letter-spacing: 0.12em;
+		max-width: 85%;
+		letter-spacing: 0.22em;
 	}
 
 	.where__date {
-		max-width: 90%;
+		max-width: 46%;
 	}
 }

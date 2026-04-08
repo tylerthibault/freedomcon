@@ -6,9 +6,7 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	width: 100vw;
-	margin-left: calc(50% - 50vw);
-	margin-right: calc(50% - 50vw);
+	width: 100%;
 }
 
 .slim-banner__text {
@@ -16,23 +14,9 @@
 	text-align: center;
 	font-family: var(--font-secondary);
 	font-weight: 700;
-    font-size: 4.5rem;
+	font-size: clamp(2.5rem, 4.5vw, 4.5rem);
 	line-height: 1.1;
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
-}
-
-/* tablet */
-@media (max-width: 1024px) {
-	.slim-banner__text {
-		font-size: 3.5rem;
-	}
-}
-
-/* mobile */
-@media (max-width: 768px) {
-	.slim-banner__text {
-		font-size: 2.5rem;
-	}
 }
 

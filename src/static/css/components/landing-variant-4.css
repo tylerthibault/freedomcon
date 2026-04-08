@@ -11,10 +11,10 @@
 
 .landing-page--v4 section {
     position: relative;
-    width: min(1220px, 94vw);
+    width: min(660px, 95vw);
     margin-inline: auto;
-    margin-bottom: clamp(0.85rem, 1.6vw, 1.4rem);
-    border-radius: clamp(18px, 2.5vw, 30px);
+    margin-bottom: 0.8rem;
+    border-radius: 16px;
     overflow: clip;
     border: 1px solid var(--v4-outline);
     background: var(--v4-surface);
@@ -46,7 +46,7 @@
 }
 
 .landing-page--v4 .hero-seq {
-    padding-top: clamp(1.2rem, 3vw, 2.4rem);
+    padding-top: 0.9rem;
     background:
         radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-accent) 22%, transparent), transparent 60%),
         var(--v4-surface-strong);
@@ -85,9 +85,14 @@
 }
 
 .landing-page--v4 .what-section {
-    min-height: clamp(340px, 52vh, 620px);
+    min-height: auto;
     height: auto;
     background: var(--v4-surface);
+}
+
+.landing-page--v4 .what-section__media,
+.landing-page--v4 .what-section__content {
+    min-height: 30svh;
 }
 
 .landing-page--v4 .what-section__media {
@@ -174,13 +179,15 @@
     }
 }
 
-@media (max-width: 991.98px) {
+@media (min-width: 768px) {
     .landing-page--v4 section {
         width: min(960px, 94vw);
+        border-radius: clamp(18px, 2.5vw, 24px);
+        margin-bottom: clamp(0.85rem, 1.6vw, 1.4rem);
     }
 
-    .landing-page--v4 .what-section {
-        min-height: auto;
+    .landing-page--v4 .hero-seq {
+        padding-top: clamp(1.2rem, 2vw, 2rem);
     }
 
     .landing-page--v4 .what-section__media,
@@ -189,23 +196,26 @@
     }
 }
 
-@media (max-width: 767.98px) {
+@media (min-width: 992px) {
     .landing-page--v4 section {
-        width: min(660px, 95vw);
-        border-radius: 16px;
-        margin-bottom: 0.8rem;
+        width: min(1220px, 94vw);
+        border-radius: clamp(18px, 2.5vw, 30px);
     }
 
     .landing-page--v4 .hero-seq {
-        padding-top: 0.9rem;
+        padding-top: clamp(1.2rem, 3vw, 2.4rem);
+    }
+
+    .landing-page--v4 .what-section {
+        min-height: clamp(340px, 52vh, 620px);
     }
 
     .landing-page--v4 .what-section__media,
     .landing-page--v4 .what-section__content {
-        min-height: 30svh;
+        min-height: 0;
     }
 
     .landing-page--v4 .social-proof-row__track {
-        animation-duration: 36s;
+        animation-duration: 30s;
     }
 }

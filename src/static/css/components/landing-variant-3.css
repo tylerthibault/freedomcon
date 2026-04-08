@@ -7,7 +7,7 @@
 
 .landing-page section {
     position: relative;
-    scroll-margin-top: 110px;
+    scroll-margin-top: 86px;
 }
 
 .landing-page section::after {
@@ -66,12 +66,17 @@
 }
 
 .landing-page--v3 .what-section {
-    min-height: clamp(380px, 54vh, 650px);
+    min-height: auto;
     height: auto;
 }
 
 .landing-page--v3 .what-section__title {
     letter-spacing: 0.03em;
+}
+
+.landing-page--v3 .what-section__media,
+.landing-page--v3 .what-section__content {
+    min-height: 31svh;
 }
 
 .landing-page--v3 .past-carousel-card img,
@@ -83,7 +88,7 @@
     animation-duration: 28s;
 }
 
-@media (max-width: 991.98px) {
+@media (min-width: 768px) {
     .landing-page--v3 .what-section {
         min-height: auto;
     }
@@ -94,17 +99,21 @@
     }
 }
 
-@media (max-width: 767.98px) {
+@media (min-width: 992px) {
     .landing-page section {
-        scroll-margin-top: 86px;
+        scroll-margin-top: 110px;
     }
 
     .landing-page--v3 .is-inview {
-        transform: translateY(-2px);
+        transform: translateY(-4px);
+    }
+
+    .landing-page--v3 .what-section {
+        min-height: clamp(380px, 54vh, 650px);
     }
 
     .landing-page--v3 .what-section__media,
     .landing-page--v3 .what-section__content {
-        min-height: 31svh;
+        min-height: 0;
     }
 }
