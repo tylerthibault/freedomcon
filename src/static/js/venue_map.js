@@ -145,13 +145,17 @@
 		},
 	];
 
-	// ── Category colour map ───────────────────────────────────────────────────
+	// ── Category colour map (read from CSS custom properties) ────────────────
+	const rootStyle = getComputedStyle(document.documentElement);
+	function cssVar(name) {
+		return rootStyle.getPropertyValue(name).trim();
+	}
 	const CAT_COLOR = {
-		stage: "#BC2A27",
-		entrance: "#2563eb",
-		parking: "#16a34a",
-		camping: "#854d0e",
-		amenity: "#7c3aed",
+		stage:    cssVar("--venue-color-stage"),
+		entrance: cssVar("--venue-color-entrance"),
+		parking:  cssVar("--venue-color-parking"),
+		camping:  cssVar("--venue-color-camping"),
+		amenity:  cssVar("--venue-color-amenity"),
 	};
 
 	// ── State ─────────────────────────────────────────────────────────────────
