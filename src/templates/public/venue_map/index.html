@@ -1,0 +1,62 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/venue_map.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main>
+	<section class="venue-map-hero" aria-label="Venue map">
+		<div class="venue-map-hero__inner">
+			<p class="venue-map-hero__eyebrow">The Gorge Amphitheatre · George, WA</p>
+			<h1 class="venue-map-hero__title">Venue Map</h1>
+			<p class="venue-map-hero__copy">Explore the venue, find parking, camping, gates, and key amenities at The Gorge Amphitheatre.</p>
+		</div>
+	</section>
+
+	<section class="venue-map-section" aria-label="Interactive venue map">
+		<div class="venue-map-section__inner">
+
+			<!-- Filter legend -->
+			<div class="venue-map-legend" role="group" aria-label="Map filters">
+				<span class="venue-map-legend__label">Filter:</span>
+				<button class="venue-map-filter-btn venue-map-filter-btn--active" data-category="all">All</button>
+				<button class="venue-map-filter-btn" data-category="stage">Stage</button>
+				<button class="venue-map-filter-btn" data-category="entrance">Entrances</button>
+				<button class="venue-map-filter-btn" data-category="parking">Parking</button>
+				<button class="venue-map-filter-btn" data-category="camping">Camping</button>
+				<button class="venue-map-filter-btn" data-category="amenity">Amenities</button>
+			</div>
+
+			<div id="venue-map" aria-label="Interactive map of The Gorge Amphitheatre"></div>
+
+			<!-- Sidebar list -->
+			<div class="venue-map-poi-list" id="poi-list" aria-live="polite">
+				<h2 class="venue-map-poi-list__heading">Points of Interest</h2>
+				<ul class="venue-map-poi-list__items" id="poi-list-items"></ul>
+			</div>
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer class="site-footer"></footer>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLmQ=" crossorigin=""></script>
+<script src="{{ url_for('static', filename='js/venue_map.js') }}"></script>
+{% endblock %}
