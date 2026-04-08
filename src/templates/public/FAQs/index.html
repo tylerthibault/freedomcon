@@ -15,8 +15,8 @@
 
 {% block content %}
 <main class="faq-page">
-    <section class="faq-hero">
-        <img class="w-100" src="{{ url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') }}" alt="Freedom Con speakers">
+    <section class="faq-hero subpage-hero-media" style="--subpage-hero-image-x: 50%; --subpage-hero-image-y: 0%;" aria-label="Freedom Con FAQs hero">
+        <img class="subpage-hero-media__image" src="{{ url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') }}" alt="Freedom Con speakers">
     </section>
 
     {{ slim_banner("Frequently Asked Questions") }}

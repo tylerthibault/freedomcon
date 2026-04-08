@@ -1,6 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
 	console.log("SIteCoded landing page loaded.");
 
+	const landingPage = document.querySelector(".landing-page");
+	if (landingPage && "IntersectionObserver" in window) {
+		const sections = landingPage.querySelectorAll("section");
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				entry.target.classList.toggle("is-inview", entry.isIntersecting);
+			});
+		}, {
+			root: null,
+			rootMargin: "-8% 0px -12% 0px",
+			threshold: 0.18,
+		});
+
+		sections.forEach((section) => observer.observe(section));
+	}
+
 	const whatImageFrames = document.querySelectorAll(".what-section__media-inner");
 	whatImageFrames.forEach((frame) => {
 		const imageX = frame.dataset.imageX;
@@ -17,6 +33,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		if (imageZoom) {
 			frame.style.setProperty("--what-image-zoom", imageZoom);
+		}
+	});
+
+	const speakerCards = document.querySelectorAll("[data-speaker-card]");
+	speakerCards.forEach((card) => {
+		const imageX = card.dataset.imageX;
+		const imageY = card.dataset.imageY;
+
+		if (imageX) {
+			card.style.setProperty("--speaker-person-offset-x", imageX);
+		}
+
+		if (imageY) {
+			card.style.setProperty("--speaker-person-offset-y", imageY);
 		}
 	});
 

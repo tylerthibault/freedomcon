@@ -1,0 +1,35 @@
+<section id="social-proof" class="social-proof-section" aria-label="Social proof testimonials">
+	<div class="social-proof-section__inner">
+		{% set top_row = social_proof[:8] %}
+		{% set bottom_row = social_proof[8:16] %}
+		<div class="social-proof-marquee" aria-live="off">
+			<div class="social-proof-row social-proof-row--right">
+				<div class="social-proof-row__track">
+					{% for _ in range(2) %}
+					<div class="social-proof-row__group">
+						{% for item in top_row %}
+						<article class="social-proof-card">
+							<p class="social-proof-card__quote">“{{ item.quote }}”</p>
+						</article>
+						{% endfor %}
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="social-proof-row social-proof-row--left">
+				<div class="social-proof-row__track">
+					{% for _ in range(2) %}
+					<div class="social-proof-row__group">
+						{% for item in bottom_row %}
+						<article class="social-proof-card">
+							<p class="social-proof-card__quote">“{{ item.quote }}”</p>
+						</article>
+						{% endfor %}
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

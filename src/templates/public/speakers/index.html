@@ -1,10 +1,12 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/speakers.html" import speaker_card %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/speakers.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
 {% endblock %}
 
@@ -14,10 +16,29 @@
 
 {% block content %}
 <main>
-	<section class="hero">
-		<img class="w-100" src="{{ url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') }}" alt="Freedom Con speakers">
+	<section class="subpage-hero-media" style="--subpage-hero-image-x: 50%; --subpage-hero-image-y: 0%;" aria-label="Freedom Con speakers">
+		<img class="subpage-hero-media__image" src="{{ url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') }}" alt="Freedom Con speakers">
 	</section>
 	{{ slim_banner("Speakers") }}
+	<section class="speakers-section" aria-label="Voices of the conference">
+		<div class="speakers-section__notch" aria-hidden="true"></div>
+		<div class="speakers-section__inner">
+			<h2 class="speakers-section__heading">Voices of the Conference</h2>
+			<div class="speakers-section__grid">
+				{% for speaker in speakers %}
+				{{ speaker_card(
+					speaker.name,
+					speaker.image,
+					speaker.titles,
+					'img/speakers/background.png',
+					speaker.alt,
+					speaker.get('image_x'),
+					speaker.get('image_y')
+				) }}
+				{% endfor %}
+			</div>
+		</div>
+	</section>
 </main>
 {% endblock %}
 

@@ -1,0 +1,92 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/accommodations.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main>
+	<section class="accommodations-hero" aria-label="Travel and lodging information">
+		<div class="accommodations-hero__inner">
+			<p class="accommodations-hero__eyebrow">Plan Your Stay</p>
+			<h1 class="accommodations-hero__title">Accommodations</h1>
+			<p class="accommodations-hero__copy">Travel guidance, camping options, and nearby hotels to help you lock in your weekend.</p>
+		</div>
+	</section>
+
+	{{ slim_banner("Travel · Camping · Hotels") }}
+
+	<section class="accommodations-section" aria-label="Travel details">
+		<div class="accommodations-section__inner">
+			<h2 class="accommodations-section__heading">Travel</h2>
+			<div class="accommodations-panel">
+				<p class="accommodations-panel__lead">{{ travel_info.overview }}</p>
+				<div class="accommodations-panel__grid">
+					<article class="accommodations-card">
+						<h3>{{ travel_info.airport.name }}</h3>
+						<p>{{ travel_info.airport.distance }}</p>
+						<p>{{ travel_info.airport.notes }}</p>
+					</article>
+					<article class="accommodations-card">
+						<h3>Driving & Parking</h3>
+						<p>{{ travel_info.driving.notes }}</p>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="accommodations-section accommodations-section--alt" aria-label="Camping options">
+		<div class="accommodations-section__inner">
+			<h2 class="accommodations-section__heading">Camping</h2>
+			<div class="accommodations-list">
+				{% for option in camping_options %}
+				<article class="accommodations-list__item">
+					<div>
+						<h3>{{ option.name }}</h3>
+						<p class="accommodations-list__type">{{ option.type }}</p>
+						<p>{{ option.details }}</p>
+					</div>
+					<p class="accommodations-list__price">{{ option.price }}</p>
+				</article>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	<section class="accommodations-section" aria-label="Hotel options">
+		<div class="accommodations-section__inner">
+			<h2 class="accommodations-section__heading">Hotels</h2>
+			<div class="accommodations-list">
+				{% for option in hotel_options %}
+				<article class="accommodations-list__item">
+					<div>
+						<h3>{{ option.name }}</h3>
+						<p class="accommodations-list__type">{{ option.distance }}</p>
+						<p>{{ option.details }}</p>
+					</div>
+					<p class="accommodations-list__price">{{ option.price }}</p>
+				</article>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer class="site-footer"></footer>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

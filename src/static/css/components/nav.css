@@ -11,6 +11,9 @@
 	gap: 1.5rem;
 	background: var(--color-primary);
 	padding: 1.375rem 2.5rem;
+	position: sticky;
+	top: 0;
+	z-index: 1030;
 }
 
 .main-nav__desktop-cta {
