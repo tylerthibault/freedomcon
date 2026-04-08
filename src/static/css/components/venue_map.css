@@ -149,6 +149,15 @@
 	line-height: 1.35;
 }
 
+/* ─── Category colour tokens ─────────────────────────────────────────────── */
+:root {
+	--venue-color-stage:    #BC2A27;
+	--venue-color-entrance: #2563eb;
+	--venue-color-parking:  #16a34a;
+	--venue-color-camping:  #854d0e;
+	--venue-color-amenity:  #7c3aed;
+}
+
 /* ─── Custom Marker Styles ───────────────────────────────────────────────── */
 .venue-map-marker {
 	display: flex;
@@ -162,11 +171,11 @@
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
-.venue-map-marker--stage    { background: var(--color-accent); }
-.venue-map-marker--entrance { background: #2563eb; }
-.venue-map-marker--parking  { background: #16a34a; }
-.venue-map-marker--camping  { background: #854d0e; }
-.venue-map-marker--amenity  { background: #7c3aed; }
+.venue-map-marker--stage    { background: var(--venue-color-stage); }
+.venue-map-marker--entrance { background: var(--venue-color-entrance); }
+.venue-map-marker--parking  { background: var(--venue-color-parking); }
+.venue-map-marker--camping  { background: var(--venue-color-camping); }
+.venue-map-marker--amenity  { background: var(--venue-color-amenity); }
 
 /* ─── Leaflet popup tweak ────────────────────────────────────────────────── */
 .leaflet-popup-content-wrapper {
