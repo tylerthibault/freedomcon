@@ -61,3 +61,8 @@ def accommodations_page() -> str:
 @public_bp.get("/tickets")
 def tickets_page() -> str:
 	return render_template("public/tickets/index.html", ticket_meta=ticket_meta, ticket_prices=ticket_prices)
+
+
+@public_bp.get("/venue-map")
+def venue_map_page() -> str:
+	return render_template("public/venue_map/index.html")
