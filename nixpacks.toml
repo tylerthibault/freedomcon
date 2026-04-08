@@ -5,7 +5,10 @@ PYTHONUNBUFFERED = "1"
 nixPkgs = ["python311", "python311Packages.pip"]
 
 [phases.install]
-cmds = ["pip install --no-cache-dir -r requirements.txt"]
+cmds = [
+	"python -m venv /opt/venv",
+	"/opt/venv/bin/pip install --no-cache-dir -r requirements.txt"
+]
 
 [start]
-cmd = "gunicorn run:app --bind 0.0.0.0:${PORT:-8000} --workers 2 --threads 4 --timeout 120"
+cmd = "/opt/venv/bin/gunicorn run:app --bind 0.0.0.0:${PORT:-8000} --workers 2 --threads 4 --timeout 120"
