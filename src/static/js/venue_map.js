@@ -145,7 +145,7 @@
 		},
 	];
 
-	// ── Category colour map (read from CSS custom properties) ────────────────
+	// ── Category color map (read from CSS custom properties) ────────────────
 	const rootStyle = getComputedStyle(document.documentElement);
 	function cssVar(name) {
 		return rootStyle.getPropertyValue(name).trim();
