@@ -98,23 +98,15 @@
 }
 
 @media (max-width: 768px) {
-    .social-proof-row {
-        overflow: visible;
-    }
-
+    /* Let the track auto-size to its children so translateX(-50%) still scrolls one full group */
     .social-proof-row__track {
-        width: 100%;
-        animation: none;
-        flex-wrap: wrap;
+        width: auto;
     }
 
+    /* Each card ~46vw wide so exactly 2 are visible at once; 8 cards define each group's scroll width */
     .social-proof-row__group {
-        flex: 0 0 100%;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .social-proof-row__group:last-child {
-        display: none;
+        flex: 0 0 auto;
+        grid-template-columns: repeat(8, calc(46vw - var(--social-proof-gap)));
     }
 
     .social-proof-card__quote {
@@ -122,6 +114,6 @@
     }
 
     .social-proof-card {
-        min-height: 100px; /* reduced from desktop 158px to suit narrower 2-col mobile cards */
+        min-height: 120px; /* reduced from desktop 158px for narrower mobile cards */
     }
 }
