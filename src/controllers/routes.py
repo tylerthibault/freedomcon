@@ -66,3 +66,8 @@ def tickets_page() -> str:
 @public_bp.get("/venue-map")
 def venue_map_page() -> str:
 	return render_template("public/venue_map/index.html")
+
+
+@public_bp.get("/venue-map-svg")
+def venue_map_svg_page() -> str:
+	return render_template("public/venue_map_svg/index.html")
