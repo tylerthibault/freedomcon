@@ -1,0 +1,277 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/venue_map_svg.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main>
+	<section class="vm-hero" aria-label="Venue map hero">
+		<div class="vm-hero__inner">
+			<p class="vm-hero__eyebrow">The Gorge Amphitheatre · George, WA</p>
+			<h1 class="vm-hero__title">Venue Map</h1>
+			<p class="vm-hero__copy">Click any zone on the diagram to explore gates, seating, parking, camping, and amenities.</p>
+		</div>
+	</section>
+
+	<section class="vm-section" aria-label="Interactive SVG venue diagram">
+		<div class="vm-inner">
+
+			<!-- Filter bar -->
+			<div class="vm-filters" role="group" aria-label="Filter map zones">
+				<span class="vm-filters__label">Filter:</span>
+				<button class="vm-filter-btn vm-filter-btn--active" data-cat="all">All</button>
+				<button class="vm-filter-btn" data-cat="stage">Stage &amp; Seating</button>
+				<button class="vm-filter-btn" data-cat="entrance">Entrances</button>
+				<button class="vm-filter-btn" data-cat="parking">Parking</button>
+				<button class="vm-filter-btn" data-cat="camping">Camping</button>
+				<button class="vm-filter-btn" data-cat="amenity">Amenities</button>
+			</div>
+
+			<!-- SVG diagram -->
+			<div class="vm-canvas-wrap">
+				<svg
+					id="venue-svg-map"
+					viewBox="0 0 900 750"
+					preserveAspectRatio="xMidYMid meet"
+					xmlns="http://www.w3.org/2000/svg"
+					role="img"
+					aria-label="Overhead diagram of The Gorge Amphitheatre showing stage, seating, lawn, parking, camping, and amenities"
+				>
+					<title>The Gorge Amphitheatre — Venue Diagram</title>
+					<defs>
+						<!-- Stage glow filter -->
+						<filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+							<feGaussianBlur stdDeviation="4" result="blur"/>
+							<feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+						</filter>
+						<!-- Active zone highlight -->
+						<filter id="active-glow" x="-20%" y="-20%" width="140%" height="140%">
+							<feGaussianBlur stdDeviation="6" result="blur"/>
+							<feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+						</filter>
+					</defs>
+
+					<!-- ── Background ─────────────────────────────────────────── -->
+					<rect width="900" height="750" fill="#0e1117"/>
+
+					<!-- ── Columbia River (top) ──────────────────────────────── -->
+					<path class="vm-bg"
+						d="M0,0 L900,0 L900,58 Q780,38 660,54 Q540,70 420,46 Q300,22 180,50 Q90,64 0,52 Z"
+						fill="#1e3a5f" opacity="0.9"/>
+					<text class="vm-label vm-label--sm" x="60" y="32" fill="#60a5fa" opacity="0.7">COLUMBIA RIVER</text>
+
+					<!-- ── Cliffs ─────────────────────────────────────────────── -->
+					<path class="vm-bg"
+						d="M0,52 Q90,64 180,50 Q300,35 420,46 Q540,57 660,54 Q780,51 900,58 L900,122 Q720,130 600,124 Q480,118 360,125 Q240,132 120,126 Q60,123 0,120 Z"
+						fill="#6b4f3a"/>
+					<text class="vm-label vm-label--sm" x="830" y="90" text-anchor="end" fill="#c4a882" opacity="0.6">CLIFFS</text>
+
+					<!-- ── North Parking ──────────────────────────────────────── -->
+					<g class="vm-zone" data-poi="parking-north" data-cat="parking" aria-label="North Parking">
+						<rect x="18" y="22" width="248" height="90" rx="8" fill="#166534"/>
+						<rect x="634" y="22" width="248" height="90" rx="8" fill="#166534"/>
+						<text class="vm-label" x="142" y="58" text-anchor="middle">🅿</text>
+						<text class="vm-label vm-label--name" x="142" y="77" text-anchor="middle">NORTH</text>
+						<text class="vm-label vm-label--name" x="142" y="93" text-anchor="middle">PARKING</text>
+						<text class="vm-label" x="758" y="58" text-anchor="middle">🅿</text>
+						<text class="vm-label vm-label--name" x="758" y="77" text-anchor="middle">NORTH</text>
+						<text class="vm-label vm-label--name" x="758" y="93" text-anchor="middle">PARKING</text>
+					</g>
+
+					<!-- ── VIP Parking ────────────────────────────────────────── -->
+					<g class="vm-zone" data-poi="parking-vip" data-cat="parking" aria-label="VIP Parking">
+						<rect x="800" y="126" width="84" height="68" rx="8" fill="#15803d"/>
+						<text class="vm-label" x="842" y="148" text-anchor="middle" font-size="14">⭐</text>
+						<text class="vm-label vm-label--name" x="842" y="164" text-anchor="middle" font-size="10">VIP</text>
+						<text class="vm-label vm-label--name" x="842" y="177" text-anchor="middle" font-size="10">PARK</text>
+					</g>
+
+					<!-- ── Stage ─────────────────────────────────────────────── -->
+					<g class="vm-zone" data-poi="main-stage" data-cat="stage" aria-label="Main Stage" filter="url(#glow)">
+						<rect x="302" y="18" width="296" height="127" rx="8" fill="#BC2A27"/>
+						<!-- Stage front lip -->
+						<rect x="330" y="128" width="240" height="17" rx="4" fill="#e0e0e0" opacity="0.9"/>
+						<text class="vm-label vm-label--icon" x="450" y="60" text-anchor="middle" font-size="26">🎵</text>
+						<text class="vm-label vm-label--title" x="450" y="90" text-anchor="middle" font-size="22">STAGE</text>
+						<text class="vm-label vm-label--sm" x="450" y="108" text-anchor="middle" font-size="11" opacity="0.75">THE GORGE AMPHITHEATRE</text>
+					</g>
+
+					<!-- ── Inner Reserved Seating (Rows A–C) ─────────────────── -->
+					<!-- Fan center: (450, 145). Arc 25°→155° through 90°. r=50→115 -->
+					<g class="vm-zone" data-poi="seating-inner" data-cat="stage" aria-label="Reserved Seating Rows A–C">
+						<path d="M 554.2,193.6 A 115,115 0 0,1 345.8,193.6 L 404.7,166.1 A 50,50 0 0,0 495.3,166.1 Z"
+							fill="#1e3a8a"/>
+						<text class="vm-label vm-label--name" x="450" y="226" text-anchor="middle" font-size="12">RESERVED</text>
+						<text class="vm-label vm-label--sm" x="450" y="241" text-anchor="middle" font-size="10" opacity="0.75">ROWS A–C</text>
+					</g>
+
+					<!-- ── Mid Reserved Seating (Rows D–F) ───────────────────── -->
+					<!-- r=115→195 -->
+					<g class="vm-zone" data-poi="seating-mid" data-cat="stage" aria-label="Reserved Seating Rows D–F">
+						<path d="M 626.7,227.4 A 195,195 0 0,1 273.3,227.4 L 345.8,193.6 A 115,115 0 0,0 554.2,193.6 Z"
+							fill="#1d4ed8"/>
+						<text class="vm-label vm-label--name" x="450" y="296" text-anchor="middle" font-size="13">RESERVED</text>
+						<text class="vm-label vm-label--sm" x="450" y="313" text-anchor="middle" font-size="11" opacity="0.75">ROWS D–F</text>
+					</g>
+
+					<!-- ── Outer Reserved Seating (Rows G–H) ─────────────────── -->
+					<!-- r=195→260 -->
+					<g class="vm-zone" data-poi="seating-outer" data-cat="stage" aria-label="Reserved Seating Rows G–H">
+						<path d="M 685.6,254.9 A 260,260 0 0,1 214.4,254.9 L 273.3,227.4 A 195,195 0 0,0 626.7,227.4 Z"
+							fill="#2563eb"/>
+						<text class="vm-label vm-label--name" x="450" y="360" text-anchor="middle" font-size="13">RESERVED</text>
+						<text class="vm-label vm-label--sm" x="450" y="377" text-anchor="middle" font-size="11" opacity="0.75">ROWS G–H</text>
+					</g>
+
+					<!-- ── General Lawn ───────────────────────────────────────── -->
+					<!-- r=260→340 -->
+					<g class="vm-zone" data-poi="lawn" data-cat="stage" aria-label="General Lawn">
+						<path d="M 758.2,288.7 A 340,340 0 0,1 141.8,288.7 L 214.4,254.9 A 260,260 0 0,0 685.6,254.9 Z"
+							fill="#14532d"/>
+						<text class="vm-label vm-label--icon" x="450" y="428" text-anchor="middle" font-size="20">🌿</text>
+						<text class="vm-label vm-label--name" x="450" y="449" text-anchor="middle" font-size="14">GENERAL LAWN</text>
+					</g>
+
+					<!-- ── Concourse background ───────────────────────────────── -->
+					<rect class="vm-bg" x="50" y="492" width="800" height="52" rx="0" fill="#1f2937"/>
+
+					<!-- ── Food &amp; Beverage Court ───────────────────────────── -->
+					<g class="vm-zone" data-poi="food-court" data-cat="amenity" aria-label="Food and Beverage Court">
+						<rect x="60" y="494" width="108" height="48" rx="6" fill="#7c3aed"/>
+						<text class="vm-label" x="114" y="512" text-anchor="middle" font-size="14">🍔</text>
+						<text class="vm-label vm-label--name" x="114" y="529" text-anchor="middle" font-size="10">FOOD &amp; BAR</text>
+					</g>
+
+					<!-- ── Restrooms ──────────────────────────────────────────── -->
+					<g class="vm-zone" data-poi="restrooms" data-cat="amenity" aria-label="Restrooms">
+						<rect x="182" y="494" width="80" height="48" rx="6" fill="#374151"/>
+						<text class="vm-label" x="222" y="512" text-anchor="middle" font-size="14">🚻</text>
+						<text class="vm-label vm-label--name" x="222" y="529" text-anchor="middle" font-size="10">RESTROOMS</text>
+					</g>
+
+					<!-- ── Info Booth ─────────────────────────────────────────── -->
+					<g class="vm-zone" data-poi="info-booth" data-cat="amenity" aria-label="Information Booth">
+						<rect x="395" y="494" width="110" height="48" rx="6" fill="#0369a1"/>
+						<text class="vm-label" x="450" y="512" text-anchor="middle" font-size="14">ℹ</text>
+						<text class="vm-label vm-label--name" x="450" y="529" text-anchor="middle" font-size="10">INFO BOOTH</text>
+					</g>
+
+					<!-- ── Merchandise ────────────────────────────────────────── -->
+					<g class="vm-zone" data-poi="merch" data-cat="amenity" aria-label="Merchandise Booth">
+						<rect x="638" y="494" width="108" height="48" rx="6" fill="#7c3aed"/>
+						<text class="vm-label" x="692" y="512" text-anchor="middle" font-size="14">👕</text>
+						<text class="vm-label vm-label--name" x="692" y="529" text-anchor="middle" font-size="10">MERCH</text>
+					</g>
+
+					<!-- ── First Aid ──────────────────────────────────────────── -->
+					<g class="vm-zone" data-poi="first-aid" data-cat="amenity" aria-label="First Aid and Medical">
+						<rect x="758" y="494" width="84" height="48" rx="6" fill="#dc2626"/>
+						<text class="vm-label" x="800" y="512" text-anchor="middle" font-size="14">🏥</text>
+						<text class="vm-label vm-label--name" x="800" y="529" text-anchor="middle" font-size="10">FIRST AID</text>
+					</g>
+
+					<!-- ── ADA Entrance ───────────────────────────────────────── -->
+					<g class="vm-zone" data-poi="ada-entrance" data-cat="entrance" aria-label="ADA Accessible Entrance">
+						<rect x="185" y="552" width="108" height="50" rx="6" fill="#1d4ed8"/>
+						<text class="vm-label" x="239" y="571" text-anchor="middle" font-size="14">♿</text>
+						<text class="vm-label vm-label--name" x="239" y="589" text-anchor="middle" font-size="10">ADA ENTRY</text>
+					</g>
+
+					<!-- ── Main Entrance / Box Office ────────────────────────── -->
+					<g class="vm-zone" data-poi="main-entrance" data-cat="entrance" aria-label="Main Entrance and Box Office">
+						<rect x="340" y="550" width="220" height="52" rx="8" fill="#2563eb"/>
+						<text class="vm-label" x="450" y="569" text-anchor="middle" font-size="15">🚪</text>
+						<text class="vm-label vm-label--name" x="450" y="588" text-anchor="middle" font-size="12">MAIN ENTRANCE</text>
+					</g>
+
+					<!-- ── Exit / Staff Gate ─────────────────────────────────── -->
+					<g class="vm-zone" data-poi="exit-gate" data-cat="entrance" aria-label="Exit Gate">
+						<rect x="607" y="552" width="108" height="50" rx="6" fill="#1e40af"/>
+						<text class="vm-label" x="661" y="571" text-anchor="middle" font-size="14">🔚</text>
+						<text class="vm-label vm-label--name" x="661" y="589" text-anchor="middle" font-size="10">EXIT GATE</text>
+					</g>
+
+					<!-- ── South Parking ──────────────────────────────────────── -->
+					<g class="vm-zone" data-poi="parking-south" data-cat="parking" aria-label="South Parking Lots">
+						<rect x="30" y="614" width="280" height="70" rx="8" fill="#166534"/>
+						<rect x="590" y="614" width="280" height="70" rx="8" fill="#166534"/>
+						<text class="vm-label" x="170" y="643" text-anchor="middle" font-size="16">🅿</text>
+						<text class="vm-label vm-label--name" x="170" y="661" text-anchor="middle" font-size="12">SOUTH PARKING</text>
+						<text class="vm-label" x="730" y="643" text-anchor="middle" font-size="16">🅿</text>
+						<text class="vm-label vm-label--name" x="730" y="661" text-anchor="middle" font-size="12">SOUTH PARKING</text>
+					</g>
+
+					<!-- ── Gorge Campground ───────────────────────────────────── -->
+					<g class="vm-zone" data-poi="camping-gorge" data-cat="camping" aria-label="Gorge Campground">
+						<rect x="85" y="700" width="730" height="42" rx="8" fill="#854d0e"/>
+						<text class="vm-label" x="450" y="714" text-anchor="middle" font-size="14">⛺</text>
+						<text class="vm-label vm-label--name" x="450" y="732" text-anchor="middle" font-size="12">GORGE CAMPGROUND</text>
+					</g>
+
+					<!-- ── Pathway lines (visual connectors) ─────────────────── -->
+					<!-- Connector from concourse to entrances -->
+					<line class="vm-bg" x1="450" y1="544" x2="450" y2="552" stroke="#4b5563" stroke-width="2"/>
+					<!-- Connector from entrances to south parking -->
+					<line class="vm-bg" x1="450" y1="602" x2="450" y2="614" stroke="#4b5563" stroke-width="2"/>
+					<!-- Connector from south parking to camping -->
+					<line class="vm-bg" x1="450" y1="684" x2="450" y2="700" stroke="#4b5563" stroke-width="2"/>
+
+					<!-- ── Stage walkway line ─────────────────────────────────── -->
+					<line class="vm-bg" x1="450" y1="485" x2="450" y2="492" stroke="#4b5563" stroke-width="3"/>
+
+					<!-- ── Side concourse connectors ─────────────────────────── -->
+					<line class="vm-bg" x1="168" y1="288" x2="100" y2="492" stroke="#374151" stroke-width="1.5" opacity="0.5"/>
+					<line class="vm-bg" x1="732" y1="288" x2="800" y2="492" stroke="#374151" stroke-width="1.5" opacity="0.5"/>
+
+					<!-- ── North indicator ───────────────────────────────────── -->
+					<g transform="translate(858,670)">
+						<circle r="22" fill="none" stroke="#4b5563" stroke-width="1.5"/>
+						<text font-family="Oswald,sans-serif" font-size="13" font-weight="700"
+							fill="#9ca3af" text-anchor="middle" dominant-baseline="middle" y="-6">N</text>
+						<line x1="0" y1="-14" x2="0" y2="-8" stroke="#9ca3af" stroke-width="2"/>
+						<polygon points="0,-18 -4,-10 4,-10" fill="#9ca3af"/>
+					</g>
+
+					<!-- ── Pointer-events off for all labels ─────────────────── -->
+					<!-- Applied via CSS: .vm-label { pointer-events: none; } -->
+
+				</svg>
+
+				<!-- Info panel (shown on zone click) -->
+				<div class="vm-panel" id="vm-panel" hidden aria-live="polite">
+					<div class="vm-panel__inner">
+						<div class="vm-panel__header">
+							<span class="vm-panel__icon" id="vm-panel-icon" aria-hidden="true"></span>
+							<div>
+								<span class="vm-panel__cat" id="vm-panel-cat"></span>
+								<h2 class="vm-panel__name" id="vm-panel-name"></h2>
+							</div>
+							<button class="vm-panel__close" id="vm-panel-close" aria-label="Close info panel">✕</button>
+						</div>
+						<p class="vm-panel__desc" id="vm-panel-desc"></p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer class="site-footer"></footer>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="{{ url_for('static', filename='js/venue_map_svg.js') }}"></script>
+{% endblock %}
