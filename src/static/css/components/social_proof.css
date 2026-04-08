@@ -96,3 +96,32 @@
         transform: translateX(-50%);
     }
 }
+
+@media (max-width: 768px) {
+    .social-proof-row {
+        overflow: visible;
+    }
+
+    .social-proof-row__track {
+        width: 100%;
+        animation: none;
+        flex-wrap: wrap;
+    }
+
+    .social-proof-row__group {
+        flex: 0 0 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .social-proof-row__group:last-child {
+        display: none;
+    }
+
+    .social-proof-card__quote {
+        font-size: 0.85rem;
+    }
+
+    .social-proof-card {
+        min-height: 100px;
+    }
+}
