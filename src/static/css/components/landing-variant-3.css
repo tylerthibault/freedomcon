@@ -1,0 +1,110 @@
+.landing-page {
+    background:
+        radial-gradient(1300px 520px at 50% -10%, color-mix(in srgb, var(--color-accent) 30%, transparent), transparent 72%),
+        radial-gradient(800px 380px at 8% 55%, color-mix(in srgb, var(--color-secondary) 10%, transparent), transparent 68%),
+        var(--color-primary);
+}
+
+.landing-page section {
+    position: relative;
+    scroll-margin-top: 110px;
+}
+
+.landing-page section::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: clamp(110px, 12vw, 180px);
+    pointer-events: none;
+    background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--color-accent) 26%, transparent) 0%,
+        color-mix(in srgb, var(--color-secondary) 10%, transparent) 40%,
+        transparent 100%
+    );
+    opacity: 0.48;
+}
+
+.landing-page .hero-seq,
+.landing-page .when,
+.landing-page .past-carousel-section,
+.landing-page .what-section,
+.landing-page .speakers-section,
+.landing-page .social-proof-section {
+    transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1), filter 520ms ease, box-shadow 520ms ease;
+}
+
+.landing-page .is-inview {
+    transform: translateY(-4px);
+    filter: saturate(1.12) contrast(1.03);
+}
+
+.landing-page--v3 .when,
+.landing-page--v3 .past-carousel-section,
+.landing-page--v3 .what-section,
+.landing-page--v3 .speakers-section,
+.landing-page--v3 .social-proof-section {
+    box-shadow: none;
+}
+
+.landing-page--v3 .when::before,
+.landing-page--v3 .past-carousel-section::before,
+.landing-page--v3 .speakers-section::before,
+.landing-page--v3 .social-proof-section::before,
+.landing-page--v3 .what-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 38%),
+        radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-secondary) 13%, transparent), transparent 58%),
+        radial-gradient(circle at 80% 85%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 62%);
+    opacity: 0.52;
+}
+
+.landing-page--v3 .what-section {
+    min-height: clamp(380px, 54vh, 650px);
+    height: auto;
+}
+
+.landing-page--v3 .what-section__title {
+    letter-spacing: 0.03em;
+}
+
+.landing-page--v3 .past-carousel-card img,
+.landing-page--v3 .speaker-card__person {
+    filter: saturate(1.08) drop-shadow(0 12px 18px rgba(0, 0, 0, 0.32));
+}
+
+.landing-page--v3 .social-proof-row__track {
+    animation-duration: 28s;
+}
+
+@media (max-width: 991.98px) {
+    .landing-page--v3 .what-section {
+        min-height: auto;
+    }
+
+    .landing-page--v3 .what-section__media,
+    .landing-page--v3 .what-section__content {
+        min-height: 36svh;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .landing-page section {
+        scroll-margin-top: 86px;
+    }
+
+    .landing-page--v3 .is-inview {
+        transform: translateY(-2px);
+    }
+
+    .landing-page--v3 .what-section__media,
+    .landing-page--v3 .what-section__content {
+        min-height: 31svh;
+    }
+}

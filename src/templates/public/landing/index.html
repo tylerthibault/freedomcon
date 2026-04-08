@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/where.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/past.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/what.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/speakers.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/social_proof.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/experience.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
 {% endblock %}
@@ -26,6 +28,10 @@
 	{% include "public/landing/components/past.html" %}
 	{% include 'components/cta_button.html' %}
 	{% include 'public/landing/components/what.html' %}
+	{% include 'components/cta_button.html' %}
+	{% include 'public/landing/components/speakers.html'   %}
+	{% include 'public/landing/components/social_proof.html' %}
+
 
 </main>
 {% endblock %}

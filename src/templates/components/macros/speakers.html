@@ -1,0 +1,38 @@
+{% macro speaker_card(name, person_image, titles=[], background_image='img/speakers/background.png', alt='', image_x=None, image_y=None) %}
+{% set person_src = person_image if (person_image[:1] == '/' or '://' in person_image) else url_for('static', filename=person_image) %}
+{% set background_src = background_image if (background_image[:1] == '/' or '://' in background_image) else url_for('static', filename=background_image) %}
+
+<article
+	class="speaker-card"
+	data-speaker-card
+	{% if image_x %}data-image-x="{{ image_x }}"{% endif %}
+	{% if image_y %}data-image-y="{{ image_y }}"{% endif %}
+>
+	<div class="speaker-card__image-shell">
+		<div class="speaker-card__background-shell">
+			<div class="speaker-card__image-mask">
+				<div class="speaker-card__image-bg" style="background-image: url('{{ background_src }}');"></div>
+			</div>
+		</div>
+		<div class="speaker-card__person-shell">
+			<img
+				class="speaker-card__person"
+				src="{{ person_src }}"
+				alt="{{ alt if alt else name }}"
+				loading="lazy"
+			>
+		</div>
+	</div>
+
+	<div class="speaker-card__text">
+		<h3 class="speaker-card__name">{{ name }}</h3>
+		{% if titles and titles|length %}
+		<ul class="speaker-card__titles" aria-label="Speaker titles">
+			{% for title in titles %}
+			<li>{{ title }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</div>
+</article>
+{% endmacro %}

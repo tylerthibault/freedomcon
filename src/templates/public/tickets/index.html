@@ -1,0 +1,65 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/tickets.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="tickets-page">
+	<section class="tickets-hero" aria-label="Ticket options">
+		<div class="tickets-hero__brand">
+			<p class="tickets-hero__presenter">Stronger Man Nation Presents</p>
+			<h1 class="tickets-hero__title">{{ ticket_meta.event_title }}</h1>
+			<p class="tickets-hero__subtitle">{{ ticket_meta.subtitle }}</p>
+		</div>
+		<div class="tickets-hero__kicker-wrap">
+			<p class="tickets-hero__kicker">{{ ticket_meta.kicker }}</p>
+		</div>
+	</section>
+
+	<section class="tickets-section" aria-label="Ticket pricing">
+		<div class="tickets-section__inner">
+			<h2 class="tickets-section__heading">Tickets</h2>
+			<p class="tickets-section__dates">{{ ticket_meta.dates }}</p>
+
+			<div class="tickets-grid" role="list">
+				{% for ticket in ticket_prices %}
+				<article class="ticket-card{% if ticket.highlight %} ticket-card--highlight{% endif %}" role="listitem">
+					<h3 class="ticket-card__name">{{ ticket.name }}</h3>
+					<p class="ticket-card__price">{{ ticket.price|replace('\n', '<br>')|safe }}</p>
+					{% if ticket.notes and ticket.notes|length %}
+					<ul class="ticket-card__notes" aria-label="{{ ticket.name }} benefits">
+						{% for note in ticket.notes %}
+						<li>{{ note }}</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+				</article>
+				{% endfor %}
+			</div>
+
+			<div class="my-3">
+                {% with cta_url='https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets' %}
+                {% include 'components/cta_button.html' %}
+                {% endwith %}
+            </div>
+			<p class="tickets-section__notice">{{ ticket_meta.notice }}</p>
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer class="site-footer"></footer>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
