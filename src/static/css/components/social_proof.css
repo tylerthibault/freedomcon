@@ -122,6 +122,6 @@
     }
 
     .social-proof-card {
-        min-height: 100px;
+        min-height: 100px; /* reduced from desktop 158px to suit narrower 2-col mobile cards */
     }
 }
