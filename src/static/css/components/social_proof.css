@@ -96,3 +96,24 @@
         transform: translateX(-50%);
     }
 }
+
+@media (max-width: 768px) {
+    /* Let the track auto-size to its children so translateX(-50%) still scrolls one full group */
+    .social-proof-row__track {
+        width: auto;
+    }
+
+    /* Each card ~46vw wide so exactly 2 are visible at once; 8 cards define each group's scroll width */
+    .social-proof-row__group {
+        flex: 0 0 auto;
+        grid-template-columns: repeat(8, calc(46vw - var(--social-proof-gap)));
+    }
+
+    .social-proof-card__quote {
+        font-size: 0.85rem;
+    }
+
+    .social-proof-card {
+        min-height: 120px; /* reduced from desktop 158px for narrower mobile cards */
+    }
+}
