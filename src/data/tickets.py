@@ -55,8 +55,8 @@ def build_urgency(today: date | None = None) -> dict[str, str | bool]:
     if current_day <= EARLY_BIRD_END:
         return {
             "phase": "early_bird",
-            "countdown_target": "2026-04-16T00:00:00-07:00",
-            "countdown_label": "Early Price Ends In",
+            "countdown_target": "2026-06-19T17:00:00-07:00",
+            "countdown_label": "Kickoff Starts In",
             "headline": "Early pricing closes April 15",
             "body": "Lock in your rate before pricing updates.",
             "tickets_notice": "General Admission early pricing ends April 15.",

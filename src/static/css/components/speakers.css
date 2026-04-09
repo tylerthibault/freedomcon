@@ -64,6 +64,12 @@
     grid-column: 2;
 }
 
+.speakers-section__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
 .speaker-card {
     text-align: center;
 }
@@ -154,10 +160,14 @@
 
 @media (max-width: 767.98px) {
     .speakers-section__grid {
-        grid-template-columns: minmax(0, 270px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .speakers-section__grid > .speaker-card:last-child:nth-child(odd) {
+        grid-column: auto;
     }
 
     .speaker-card__image-shell {
-        width: min(100%, 270px);
+        width: 100%;
     }
 }

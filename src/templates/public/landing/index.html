@@ -327,15 +327,31 @@
         min-height: clamp(360px, 50vw, 760px);
         background: #000;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0;
+        padding: clamp(0.5rem, 1.2vw, 1rem) clamp(0.4rem, 1vw, 0.8rem) 0;
     }
 
     .landing12-hero-media img {
-        position: absolute;
-        inset: 0;
+        position: relative;
+        inset: auto;
         width: 100%;
-        height: 100%;
+        height: auto;
         object-fit: contain;
         object-position: center bottom;
+        display: block;
+    }
+
+    .landing12-hero-title-image {
+        width: min(980px, 92vw);
+    }
+
+    .landing12-hero-lineup-image {
+        width: min(1540px, 100vw);
+        margin-top: clamp(-7rem, -12vw, -4rem);
     }
 
     .landing12-strip {
@@ -447,6 +463,22 @@
         border: 1px solid var(--fc-line);
         background: #0a0a0a;
         overflow: hidden;
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        transition: border-color 0.2s ease, transform 0.2s ease;
+        cursor: pointer;
+    }
+
+    .landing12-happening-card:hover,
+    .landing12-happening-card:focus-visible {
+        border-color: var(--fc-accent);
+        transform: translateY(-2px);
+    }
+
+    .landing12-happening-card:focus-visible {
+        outline: 2px solid var(--fc-accent);
+        outline-offset: 2px;
     }
 
     .landing12-happening-image {
@@ -1077,7 +1109,7 @@
             </div>
         </div> -->
         <div class="landing12-hero-media">
-            <img src="{{ url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') }}" alt="Freedom Con speakers lineup">
+            <img class="landing12-hero-title-image" src="{{ url_for('static', filename='img/Title.png') }}" alt="Rise of the Statesman title">
         </div>
     </section>
 
@@ -1158,37 +1190,43 @@
             'label': 'Experience',
             'title': 'Speakers',
             'image': url_for('static', filename='img/speakers/Speakers3.avif'),
-            'alt': 'Freedom Con speakers on stage'
+            'alt': 'Freedom Con speakers on stage',
+            'href': url_for('public.speakers')
         },
         {
             'label': 'Experience',
             'title': 'Worship',
             'image': url_for('static', filename='img/worship.jpg'),
-            'alt': 'Worship at Freedom Con'
+            'alt': 'Worship at Freedom Con',
+            'href': url_for('public.artists_page')
         },
         {
             'label': 'Experience',
             'title': 'Camping',
             'image': url_for('static', filename='img/camping.jpg'),
-            'alt': 'Camping at Freedom Con'
+            'alt': 'Camping at Freedom Con',
+            'href': url_for('public.accommodations_page')
         },
         {
             'label': 'Experience',
             'title': 'Vendors',
             'image': url_for('static', filename='img/past_smc/_CDC5052R.jpg'),
-            'alt': 'Vendors and activities at Freedom Con'
+            'alt': 'Vendors and activities at Freedom Con',
+            'href': url_for('public.faqs')
         },
         {
             'label': 'Featured Artist',
             'title': 'David Crowder',
             'image': url_for('static', filename='img/crowder.jpg'),
-            'alt': 'David Crowder performing'
+            'alt': 'David Crowder performing',
+            'href': url_for('public.artists_page')
         },
         {
             'label': 'Location',
             'title': 'Venue at The Gorge',
             'image': url_for('static', filename='img/gorge_ai_1.jpg'),
-            'alt': 'The Gorge venue'
+            'alt': 'The Gorge venue',
+            'href': url_for('public.where_page')
         }
     ] %}
 
@@ -1205,7 +1243,7 @@
             </div>
             <div class="landing12-happening-grid">
                 {% for card in happening_cards %}
-                <article class="landing12-happening-card">
+                <a class="landing12-happening-card" href="{{ card.href }}" aria-label="{{ card.title }}">
                     <div class="landing12-happening-image">
                         <img src="{{ card.image }}" alt="{{ card.alt }}" loading="lazy">
                     </div>
@@ -1213,7 +1251,7 @@
                         <span class="label">{{ card.label }}</span>
                         <h3>{{ card.title }}</h3>
                     </div>
-                </article>
+                </a>
                 {% endfor %}
             </div>
         </div>
@@ -1270,9 +1308,9 @@
 
     <section class="landing12-join" aria-label="Join me and my boys">
         <div class="landing12-wrap landing12-join-inner">
-            <div class="landing12-join-photo">
+            <!-- <div class="landing12-join-photo">
                 <img src="{{ url_for('static', filename='img/nerf.jpg') }}" alt="Join me and my boys at Freedom Con" loading="lazy">
-            </div>
+            </div> -->
             <h2>Join me and my boys</h2>
             <p>Gather your crew for a weekend of faith, strength, and brotherhood at Freedom Con.</p>
             <a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>

@@ -8,12 +8,14 @@
 					{% for _ in range(2) %}
 					<div class="social-proof-row__group">
 						{% for item in top_row %}
+						{% set avatar_filename = item.get('image') or 'img/social_proof/placeholder.svg' %}
+						{% set avatar_alt = item.get('alt') or (item.name ~ ' testimonial photo') %}
 						<article class="social-proof-card">
 							<div class="social-proof-card__head">
 								<img
 									class="social-proof-card__avatar"
-									src="{{ url_for('static', filename=item.image) }}"
-									alt="{{ item.alt }}"
+									src="{{ url_for('static', filename=avatar_filename) }}"
+									alt="{{ avatar_alt }}"
 									loading="lazy"
 								>
 								<div class="social-proof-card__identity">
@@ -34,12 +36,14 @@
 					{% for _ in range(2) %}
 					<div class="social-proof-row__group">
 						{% for item in bottom_row %}
+						{% set avatar_filename = item.get('image') or 'img/social_proof/placeholder.svg' %}
+						{% set avatar_alt = item.get('alt') or (item.name ~ ' testimonial photo') %}
 						<article class="social-proof-card">
 							<div class="social-proof-card__head">
 								<img
 									class="social-proof-card__avatar"
-									src="{{ url_for('static', filename=item.image) }}"
-									alt="{{ item.alt }}"
+									src="{{ url_for('static', filename=avatar_filename) }}"
+									alt="{{ avatar_alt }}"
 									loading="lazy"
 								>
 								<div class="social-proof-card__identity">

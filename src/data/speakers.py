@@ -6,10 +6,10 @@ speakers = [
 		'titles': ['Lead Pastor, Grace City Church', 'Founder, Stronger Man Nation']
 	},
 	{
-		'name': 'Graham Allen',
-		'image': 'img/speakers/GrahamA (3).png',
-		'alt': 'Graham Allen',
-		'titles': ['Army Veteran', 'Author & Host, The Graham Allen Show & Dear America', 'Director of Digital Media, DoD']
+		'name': 'Eric Metaxas',
+		'image': 'img/speakers/EricM (3).png',
+		'alt': 'Eric Metaxas',
+		'titles': ['#1 New York Times best-selling author', 'Founder, Socrates in the City', 'Host, The Eric Metaxas Show'],
 	},
 	{
 		'name': 'John Lovell',
@@ -18,11 +18,10 @@ speakers = [
 		'titles': ['Preaching Pastor, Grace City Rome, GA', 'Founder, Warrior Poet Society']
 	},
 	{
-		'name': 'Chad Robichaux',
-		'image': 'img/speakers/ChadR (3).png',
-		'alt': 'Chad Robichaux',
-		'titles': ['Force Recon Marine, DoD Contractor', 'Founder, Mighty Oaks Foundation', 'Host, The Resilient Show', 'Best Selling Author & Speaker', 'Pro MMA Champion'],
-		'image_y': -40,
+		'name': 'Russell Johnson',
+		'image': 'img/speakers/RussellJ (3).png',
+		'alt': 'Russell Johnson',
+		'titles': ['Lead Pastor, Pursuit Church']
 	},
 	{
 		'name': 'Josh Howerton',
@@ -30,6 +29,20 @@ speakers = [
 		'alt': 'Josh Howerton',
 		'titles': ['Lead Pastor, Lakepointe Church', 'Host, Live Free Podcast']
 	},
+	{
+		'name': 'Graham Allen',
+		'image': 'img/speakers/GrahamA (3).png',
+		'alt': 'Graham Allen',
+		'titles': ['Army Veteran', 'Author & Host, The Graham Allen Show & Dear America', 'Director of Digital Media, DoD']
+	},
+	{
+		'name': 'Chad Robichaux',
+		'image': 'img/speakers/ChadR-Sitting.png',
+		'alt': 'Chad Robichaux',
+		'titles': ['Force Recon Marine, DoD Contractor', 'Founder, Mighty Oaks Foundation', 'Host, The Resilient Show', 'Best Selling Author & Speaker', 'Pro MMA Champion'],
+		'image_y': -40,
+	},
+
 	{
 		'name': 'Nate Schatzline',
 		'image': 'img/speakers/NateS (2).png',
@@ -42,18 +55,8 @@ speakers = [
 		'alt': 'Mark Driscoll',
 		'titles': ['Lead Pastor, Trinity Church', 'Founder, Real Faith']
 	},
-	{
-		'name': 'Eric Metaxas',
-		'image': 'img/speakers/EricM (3).png',
-		'alt': 'Eric Metaxas',
-		'titles': ['#1 New York Times best-selling author', 'Founder, Socrates in the City', 'Host, The Eric Metaxas Show'],
-	},
-	{
-		'name': 'Russell Johnson',
-		'image': 'img/speakers/RussellJ (3).png',
-		'alt': 'Russell Johnson',
-		'titles': ['Lead Pastor, Pursuit Church']
-	},
+
+
 	{
 		'name': 'Tim Barton',
 		'image': 'img/speakers/TimB 2.png',
