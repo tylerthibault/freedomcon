@@ -1,5 +1,6 @@
 .faq-page {
-	background: #dcdcdc;
+	background: var(--fc-bg);
+	color: var(--fc-ink);
 }
 
 .faq-hero {
@@ -44,7 +45,7 @@
 	background: transparent;
 	border: 0;
 	border-bottom: 2px solid transparent;
-	color: var(--color-primary);
+	color: var(--fc-ink);
 	font-size: 0.85rem;
 	font-family: var(--font-primary);
 	text-transform: uppercase;
@@ -58,7 +59,7 @@
 
 .faq-item {
 	background: transparent;
-	border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+	border-bottom: 1px solid var(--fc-line);
 }
 
 .faq-button {
@@ -66,7 +67,7 @@
 	font-family: var(--font-primary);
 	font-size: 1.75rem;
 	font-weight: 300;
-	color: var(--color-primary);
+	color: var(--fc-ink);
 	padding: 1.1rem 0.35rem;
 }
 
@@ -80,7 +81,7 @@
 	font-size: 2rem;
 	line-height: 1;
 	font-weight: 300;
-	color: var(--color-primary);
+	color: var(--fc-ink);
 	transform: none;
 }
 
@@ -92,7 +93,7 @@
 	padding: 0 0.35rem 1.25rem;
 	font-size: 1.1rem;
 	font-family: var(--font-primary);
-	color: var(--color-primary);
+	color: var(--fc-muted);
 }
 
 .faq-downloads {
@@ -119,7 +120,7 @@
 .faq-downloads__title::after {
 	content: "";
 	flex: 1;
-	border-top: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
+	border-top: 1px solid var(--fc-line);
 }
 
 .faq-downloads__actions {
@@ -134,8 +135,8 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	background: var(--color-primary);
-	color: var(--color-secondary);
+	background: var(--fc-accent);
+	color: #fff;
 	text-decoration: none;
 	padding: 0.85rem 1.35rem;
 	font-family: var(--font-primary);
@@ -145,8 +146,8 @@
 
 .faq-downloads__button:hover,
 .faq-downloads__button:focus-visible {
-	background: var(--color-accent);
-	color: var(--color-secondary);
+	background: #9d2321;
+	color: #fff;
 }
 
 @media (max-width: 768px) {

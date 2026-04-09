@@ -9,6 +9,18 @@
 					<div class="social-proof-row__group">
 						{% for item in top_row %}
 						<article class="social-proof-card">
+							<div class="social-proof-card__head">
+								<img
+									class="social-proof-card__avatar"
+									src="{{ url_for('static', filename=item.image) }}"
+									alt="{{ item.alt }}"
+									loading="lazy"
+								>
+								<div class="social-proof-card__identity">
+									<p class="social-proof-card__name">{{ item.name }}</p>
+									<p class="social-proof-card__title">{{ item.title }}</p>
+								</div>
+							</div>
 							<p class="social-proof-card__quote">“{{ item.quote }}”</p>
 						</article>
 						{% endfor %}
@@ -23,6 +35,18 @@
 					<div class="social-proof-row__group">
 						{% for item in bottom_row %}
 						<article class="social-proof-card">
+							<div class="social-proof-card__head">
+								<img
+									class="social-proof-card__avatar"
+									src="{{ url_for('static', filename=item.image) }}"
+									alt="{{ item.alt }}"
+									loading="lazy"
+								>
+								<div class="social-proof-card__identity">
+									<p class="social-proof-card__name">{{ item.name }}</p>
+									<p class="social-proof-card__title">{{ item.title }}</p>
+								</div>
+							</div>
 							<p class="social-proof-card__quote">“{{ item.quote }}”</p>
 						</article>
 						{% endfor %}

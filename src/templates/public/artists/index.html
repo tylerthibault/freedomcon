@@ -1,9 +1,9 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/subpage_hero.html" import subpage_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/artists.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
@@ -16,14 +16,21 @@
 {% block content %}
 <main>
 	{% set featured_artist = artists[0] if artists and artists|length else None %}
-	<section class="artists-hero subpage-hero-media" style="--subpage-hero-image-x: {{ featured_artist.hero_image_x if featured_artist and featured_artist.hero_image_x else '50%' }}; --subpage-hero-image-y: {{ featured_artist.hero_image_y if featured_artist and featured_artist.hero_image_y else '0%' }};" aria-label="Featured artists">
-		<img class="artists-hero__image subpage-hero-media__image" src="{{ url_for('static', filename='img/crowder.jpg') }}" alt="Concert crowd at night">
+	{% call subpage_hero(
+		'img/crowder.jpg',
+		'Concert crowd at night',
+		'Featured artists',
+		featured_artist.hero_image_x if featured_artist and featured_artist.hero_image_x else '50%',
+		featured_artist.hero_image_y if featured_artist and featured_artist.hero_image_y else '0%',
+		'artists-hero',
+		'artists-hero__image'
+	) %}
 		<div class="artists-hero__overlay">
 			<p class="artists-hero__eyebrow">Freedom Con Live</p>
-			<h1 class="artists-hero__title">Artist</h1>
+			<h1 class="artists-hero__title">Artists</h1>
 			<p class="artists-hero__copy">Featuring David Crowder live at Freedom Con.</p>
 		</div>
-	</section>
+	{% endcall %}
 
 	{{ slim_banner("Featured Artist") }}
 
@@ -54,7 +61,7 @@
 {% endblock %}
 
 {% block footer %}
-<footer class="site-footer"></footer>
+{% include "components/footer.html" %}
 {% endblock %}
 
 {% block scripts %}

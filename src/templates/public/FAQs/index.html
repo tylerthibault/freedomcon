@@ -1,9 +1,9 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/subpage_hero.html" import subpage_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/faq.css') }}">
@@ -15,9 +15,8 @@
 
 {% block content %}
 <main class="faq-page">
-    <section class="faq-hero subpage-hero-media" style="--subpage-hero-image-x: 50%; --subpage-hero-image-y: 0%;" aria-label="Freedom Con FAQs hero">
-        <img class="subpage-hero-media__image" src="{{ url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') }}" alt="Freedom Con speakers">
-    </section>
+    <h1 class="visually-hidden">Freedom Con Frequently Asked Questions</h1>
+    {{ subpage_hero('img/TheGuys-WithLogoNoFeet.avif', 'Freedom Con speakers', 'Freedom Con FAQs hero', '50%', '50%', 'faq-hero', contain=True) }}
 
     {{ slim_banner("Frequently Asked Questions") }}
 
@@ -71,8 +70,8 @@
         <section class="faq-downloads" aria-label="Download PDF versions">
             <h2 class="faq-downloads__title">Download PDF Versions</h2>
             <div class="faq-downloads__actions">
-                <a class="faq-downloads__button" href="{{ url_for('static', filename='pdfs/FREEDOM CON FAQs - FINAL.pdf') }}" download="FREEDOM CON FAQs - FINAL.pdf">Freedom Con FAQs</a>
-                <a class="faq-downloads__button" href="{{ url_for('static', filename='pdfs/FREEDOMCON CAMPING FAQs - FINAL.pdf') }}" download="FREEDOMCON CAMPING FAQs - FINAL.pdf">Freedom Con Camping FAQs</a>
+                <a class="faq-downloads__button" href="{{ asset_url('pdfs/FREEDOM CON FAQs - FINAL.pdf') }}" download="FREEDOM CON FAQs - FINAL.pdf">Freedom Con FAQs</a>
+                <a class="faq-downloads__button" href="{{ asset_url('pdfs/FREEDOMCON CAMPING FAQs - FINAL.pdf') }}" download="FREEDOMCON CAMPING FAQs - FINAL.pdf">Freedom Con Camping FAQs</a>
             </div>
         </section>
     </section>
@@ -80,7 +79,7 @@
 {% endblock %}
 
 {% block footer %}
-<footer class="site-footer"></footer>
+{% include "components/footer.html" %}
 {% endblock %}
 
 {% block scripts %}

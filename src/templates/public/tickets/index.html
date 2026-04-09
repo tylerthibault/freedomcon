@@ -2,7 +2,6 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/tickets.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
 {% endblock %}
@@ -28,6 +27,9 @@
 		<div class="tickets-section__inner">
 			<h2 class="tickets-section__heading">Tickets</h2>
 			<p class="tickets-section__dates">{{ ticket_meta.dates }}</p>
+			{% if urgency is defined %}
+			<p class="tickets-section__urgency">{{ urgency.headline }} — {{ urgency.body }}</p>
+			{% endif %}
 
 			<div class="tickets-grid" role="list">
 				{% for ticket in ticket_prices %}
@@ -50,14 +52,14 @@
                 {% include 'components/cta_button.html' %}
                 {% endwith %}
             </div>
-			<p class="tickets-section__notice">{{ ticket_meta.notice }}</p>
+			<p class="tickets-section__notice">{{ urgency.tickets_notice if urgency is defined else ticket_meta.notice }}</p>
 		</div>
 	</section>
 </main>
 {% endblock %}
 
 {% block footer %}
-<footer class="site-footer"></footer>
+{% include "components/footer.html" %}
 {% endblock %}
 
 {% block scripts %}
