@@ -71,6 +71,11 @@
 	padding: 1.1rem 0.35rem;
 }
 
+.faq-button:not(.collapsed) {
+	background: var(--fc-accent);
+	color: #fff;
+}
+
 .faq-button:focus {
 	box-shadow: none;
 }
@@ -87,6 +92,7 @@
 
 .faq-button:not(.collapsed)::after {
 	content: "−";
+	color: #fff;
 }
 
 .faq-answer {
@@ -100,6 +106,32 @@
 	margin-top: 2.5rem;
 	padding-top: 1.25rem;
 	text-align: center;
+}
+
+.faq-category-title {
+	margin: 1.4rem 0 0.5rem;
+	text-align: center;
+	font-family: var(--font-secondary);
+	font-size: clamp(1.45rem, 3.2vw, 2.4rem);
+	line-height: 1;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.faq-answer a {
+	color: #b70000;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+.faq-answer ul {
+	margin: 0;
+	padding-left: 1.2rem;
+}
+
+.faq-answer li + li {
+	margin-top: 0.15rem;
 }
 
 .faq-downloads__title {
@@ -175,5 +207,9 @@
 	.faq-downloads__button {
 		font-size: 1.2rem;
 		padding: 0.75rem 1rem;
+	}
+
+	.faq-category-title {
+		margin-top: 1.2rem;
 	}
 }
