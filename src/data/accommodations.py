@@ -46,7 +46,7 @@ camping_options = [
 
 hotel_options = [
     {
-        "name": "Gorge",
+        "name": "George",
         "distance": "~8 miles",
         "details": "Drive Time: ~12 minutes. Hotels here will go fast due to the short drive from The Gorge.",
         "hotels": [

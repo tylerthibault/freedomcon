@@ -133,11 +133,6 @@
     white-space: normal;
     overflow-wrap: anywhere;
     word-break: break-word;
-    overflow: hidden;
-    line-clamp: 5;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
 }
 
 .social-proof-card__quote::before {
