@@ -1,51 +1,13 @@
 {% from "components/macros/speakers.html" import speaker_card %}
 
-{% set speakers = [
-	{
-		'name': 'Josh McPherson',
-		'image': 'img/speakers/JoshM (2).png',
-		'alt': 'Josh McPherson',
-		'titles': ['Lead Pastor, Grace City', 'Founder, Stronger Man Nation']
-	},
-	{
-		'name': 'Graham Allen',
-		'image': 'img/speakers/GrahamA (3).png',
-		'alt': 'Graham Allen',
-		'titles': ['Army Veteran, Author, and Podcast Host']
-	},
-	{
-		'name': 'John Lovell',
-		'image': 'img/speakers/JohnL (3).png',
-		'alt': 'John Lovell',
-		'titles': ['Preaching Pastor, Grace City Rome', 'Founder, Warrior Poet Society']
-	},
-	{
-		'name': 'Chad Robichaux',
-		'image': 'img/speakers/ChadR (3).png',
-		'alt': 'Chad Robichaux',
-		'titles': ['Force Recon Marine, DoD Contractor', 'Founder, Mighty Oaks Foundation', 'Host, The Resilient Show', 'Best Selling Author & Speaker', 'Pro MMA Champion'],
-        'image_y': 20,
-	},
-	{
-		'name': 'Josh Howerton',
-		'image': 'img/speakers/JoshH (2).png',
-		'alt': 'Josh Howerton',
-		'titles': ['Lead Pastor, Lakepointe Church', 'Host, Live Free Podcast']
-	},
-	{
-		'name': 'Nate Schatzline',
-		'image': 'img/speakers/NateS (2).png',
-		'alt': 'Nate Schatzline',
-		'titles': ['Preaching Pastor, Mercy Culture Church', 'Texas House of Representatives', 'Founder, For Liberty & Justice']
-	}
-] %}
+{% set landing_speakers = speakers[:6] if speakers is defined else [] %}
 
 <section id="speakers" class="speakers-section" aria-label="Voices of the conference">
 	<div class="speakers-section__notch" aria-hidden="true"></div>
 	<div class="speakers-section__inner">
-		<h2 class="speakers-section__heading">Voices of the Conference</h2>
+		<h2 class="speakers-section__heading">Speakers of Freedom Con</h2>
 		<div class="speakers-section__grid">
-			{% for speaker in speakers %}
+			{% for speaker in landing_speakers %}
 			{{ speaker_card(
 				speaker.name,
 				speaker.image,

@@ -4,7 +4,6 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/artists.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
@@ -28,7 +27,7 @@
 	) %}
 		<div class="artists-hero__overlay">
 			<p class="artists-hero__eyebrow">Freedom Con Live</p>
-			<h1 class="artists-hero__title">Artist</h1>
+			<h1 class="artists-hero__title">Artists</h1>
 			<p class="artists-hero__copy">Featuring David Crowder live at Freedom Con.</p>
 		</div>
 	{% endcall %}
@@ -62,7 +61,7 @@
 {% endblock %}
 
 {% block footer %}
-<footer class="site-footer"></footer>
+{% include "components/footer.html" %}
 {% endblock %}
 
 {% block scripts %}
