@@ -1081,8 +1081,17 @@
         </div>
     </section>
 
-    <section class="landing12-strip" aria-label="Impact quotes">
+    <section class="landing12-strip" aria-label="Event ticker sayings">
         <div class="landing12-strip-track">
+            {% for saying in (ticketer1 if ticketer1 is defined else []) %}
+            <span>{{ saying }}</span>
+            <span>★</span>
+            {% endfor %}
+            {% for saying in (ticketer1 if ticketer1 is defined else []) %}
+            <span>{{ saying }}</span>
+            <span>★</span>
+            {% endfor %}
+            {% if ticketer1 is not defined or not ticketer1 %}
             {% for item in social_proof[:6] %}
             <span>“{{ item.quote }}”</span>
             <span>★</span>
@@ -1091,6 +1100,7 @@
             <span>“{{ item.quote }}”</span>
             <span>★</span>
             {% endfor %}
+            {% endif %}
         </div>
     </section>
 

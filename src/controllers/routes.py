@@ -6,6 +6,7 @@ from src.data.accommodations import camping_options, hotel_options, travel_info
 from src.data.artists import artists
 from src.data.social_proof import social_proof
 from src.data.speakers import speakers as speakers_data
+from src.data.tickers import ticketer1, ticketers
 from src.data.tickets import get_ticket_context
 
 public_bp = Blueprint("public", __name__)
@@ -59,6 +60,8 @@ def landing() -> str:
 	return render_template(
 		"public/landing/index.html",
 		social_proof=social_proof,
+		ticketer1=ticketer1,
+		ticketers=ticketers,
 		speakers=speakers_data,
 		urgency=ticket_context["urgency"],
 		seo=build_seo(
