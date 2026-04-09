@@ -1288,9 +1288,11 @@
         {
             'label': 'Experience',
             'title': 'Vendors',
-            'image': url_for('static', filename='img/past_smc/_CDC5052R.jpg'),
+            'image': url_for('static', filename='img/vendors.webp'),
             'alt': 'Vendors and activities at Freedom Con',
-            'href': url_for('public.faqs')
+            'href': url_for('public.faqs'),
+            'x_axis': '50%',
+            'y_axis': '80%'
         },
         {
             'label': 'Featured Artist',
@@ -1302,7 +1304,7 @@
         {
             'label': 'Location',
             'title': 'Venue at The Gorge',
-            'image': url_for('static', filename='img/gorge_ai_1.jpg'),
+            'image': url_for('static', filename='img/gorge.jpg'),
             'alt': 'The Gorge venue',
             'href': url_for('public.where_page')
         }
@@ -1323,7 +1325,13 @@
                 {% for card in happening_cards %}
                 <a class="landing12-happening-card" href="{{ card.href }}" aria-label="{{ card.title }}">
                     <div class="landing12-happening-image">
-                        <img src="{{ card.image }}" alt="{{ card.alt }}" loading="lazy">
+                        <img
+                            src="{{ card.image }}"
+                            alt="{{ card.alt }}"
+                            loading="lazy"
+                            data-image-x="{{ card.get('x_axis', card.get('image_x', '')) }}"
+                            data-image-y="{{ card.get('y_axis', card.get('image_y', '')) }}"
+                        >
                     </div>
                     <div class="landing12-happening-copy">
                         <span class="label">{{ card.label }}</span>
