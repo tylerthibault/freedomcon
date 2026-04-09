@@ -80,6 +80,14 @@
     font-size: clamp(1.05rem, 2vw, 1.55rem);
 }
 
+.tickets-section__urgency {
+    margin: clamp(0.75rem, 1.8vw, 1rem) auto 0;
+    width: min(760px, 96%);
+    font-size: clamp(0.9rem, 1.3vw, 1.12rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
 .tickets-grid {
     margin: clamp(1.2rem, 3vw, 2.1rem) auto 0;
     width: min(900px, 100%);

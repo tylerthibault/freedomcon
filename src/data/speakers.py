@@ -22,7 +22,7 @@ speakers = [
 		'image': 'img/speakers/ChadR (3).png',
 		'alt': 'Chad Robichaux',
 		'titles': ['Force Recon Marine, DoD Contractor', 'Founder, Mighty Oaks Foundation', 'Host, The Resilient Show', 'Best Selling Author & Speaker', 'Pro MMA Champion'],
-		'image_y': -20,
+		'image_y': -40,
 	},
 	{
 		'name': 'Josh Howerton',
@@ -71,7 +71,7 @@ speakers = [
 		'name': 'Adam James',
 		'image': 'img/speakers/AdamJ (3).png',
 		'alt': 'Adam James',
-		'titles': ['Executive Pastor, Grace City Church', 'Washing State Rep. Candidate']
+		'titles': ['Executive Pastor, Grace City Church', 'Washington State Rep. Candidate']
 	},
 	{
 		'name': 'Ryan Visconti',

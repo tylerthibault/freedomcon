@@ -57,34 +57,90 @@
 }
 
 .social-proof-card {
-    background: var(--color-secondary);
-    color: var(--color-primary);
-    border-radius: 12px;
-    min-height: 158px;
-    padding: 0.65rem;
+    position: relative;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+    color: #0b0b0b;
+    border-radius: 14px;
+    border: 1px solid rgba(188, 42, 39, 0.28);
+    min-height: 186px;
+    padding: 0.85rem 0.8rem 0.75rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.55rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
     contain: content;
 }
 
+.social-proof-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border-top: 2px solid rgba(188, 42, 39, 0.35);
+    pointer-events: none;
+}
+
+.social-proof-card__head {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    width: 100%;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
 .social-proof-card__avatar {
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     object-fit: cover;
     border-radius: 999px;
-    margin-bottom: 0.45rem;
+    border: 2px solid rgba(188, 42, 39, 0.4);
+    flex-shrink: 0;
+}
+
+.social-proof-card__identity {
+    min-width: 0;
+}
+
+.social-proof-card__name {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: clamp(0.73rem, 0.78vw, 0.82rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: #141414;
+}
+
+.social-proof-card__title {
+    margin: 0.18rem 0 0;
+    font-size: clamp(0.67rem, 0.72vw, 0.75rem);
+    line-height: 1.2;
+    color: #5f5f5f;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .social-proof-card__quote {
     margin: 0;
-    font-size: clamp(0.9rem, 0.9vw, 1.08rem);
-    line-height: 1.35;
+    font-size: clamp(0.88rem, 0.88vw, 1.02rem);
+    line-height: 1.42;
+    color: #262626;
     overflow: hidden;
     line-clamp: 5;
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+}
+
+.social-proof-card__quote::before {
+    content: "“";
+    color: rgba(188, 42, 39, 0.52);
+    font-size: 1.3em;
+    line-height: 0;
+    margin-right: 0.12rem;
 }
 
 @keyframes social-proof-scroll {
@@ -114,6 +170,16 @@
     }
 
     .social-proof-card {
-        min-height: 120px; /* reduced from desktop 158px for narrower mobile cards */
+        min-height: 164px;
+        padding: 0.75rem 0.7rem;
+    }
+
+    .social-proof-card__avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-proof-card__title {
+        white-space: normal;
     }
 }

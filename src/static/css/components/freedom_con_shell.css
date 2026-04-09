@@ -1,0 +1,380 @@
+@font-face {
+    font-family: "Ghost Factory";
+    src: url("/static/fonts/Ghost Factory.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "American Scribe";
+    src: url("/static/fonts/americanscribe.ttf") format("truetype");
+    font-display: swap;
+}
+
+:root {
+    --fc-bg: #000000;
+    --fc-surface: #0a0a0a;
+    --fc-ink: #ffffff;
+    --fc-accent: #BC2A27;
+    --fc-muted: #c9c9c9;
+    --fc-line: rgba(255, 255, 255, 0.2);
+    --color-primary: #000000;
+    --color-secondary: #ffffff;
+    --font-oswald-bold: "Work Sans", sans-serif;
+    --font-oswald-light: "Work Sans", sans-serif;
+}
+
+body {
+    background: var(--fc-bg);
+    color: var(--fc-ink);
+    font-family: "Work Sans", sans-serif;
+}
+
+body.landing12-no-scroll {
+    overflow: hidden;
+}
+
+.landing12-btn {
+    background: var(--fc-accent);
+    color: #fff;
+    text-decoration: none;
+    border: 0;
+    padding: 0.75rem 1.1rem;
+    text-transform: uppercase;
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    transition: 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing12-btn:hover,
+.landing12-btn:focus-visible {
+    background: var(--fc-accent);
+    color: #fff;
+}
+
+.landing12-btn--ghost {
+    background: transparent;
+    color: var(--fc-ink);
+    border: 1px solid var(--fc-line);
+}
+
+.landing12-btn--ghost:hover,
+.landing12-btn--ghost:focus-visible {
+    border-color: var(--fc-accent);
+    color: var(--fc-accent);
+    background: transparent;
+}
+
+.landing12-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.92);
+    border-bottom: 1px solid var(--fc-line);
+    backdrop-filter: blur(8px);
+}
+
+.landing12-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.landing12-brand {
+    font-family: "Ghost Factory", "Work Sans", sans-serif;
+    color: var(--fc-accent);
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.landing12-links {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.landing12-links a {
+    text-decoration: none;
+    color: var(--fc-ink);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.landing12-links a:hover,
+.landing12-links a:focus-visible,
+.landing12-links a.is-active,
+.landing12-links .landing12-links-ticket {
+    color: var(--fc-accent);
+}
+
+.landing12-links-overflow {
+    display: none;
+    position: relative;
+}
+
+.landing12-links-overflow > summary {
+    list-style: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--fc-ink);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.landing12-links-overflow > summary::-webkit-details-marker {
+    display: none;
+}
+
+.landing12-links-overflow[open] > summary,
+.landing12-links-overflow.is-active > summary {
+    color: var(--fc-accent);
+}
+
+.landing12-links-overflow-menu {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    min-width: 210px;
+    background: #060606;
+    border: 1px solid var(--fc-line);
+    padding: 0.45rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    z-index: 90;
+}
+
+.landing12-links-overflow-menu a {
+    padding: 0.25rem 0;
+    white-space: nowrap;
+}
+
+.landing12-nav-urgency {
+    margin: 0;
+    color: var(--fc-muted);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 0 10px rgba(188, 42, 39, 0.28), 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.landing12-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--fc-line);
+    background: transparent;
+    color: var(--fc-ink);
+    padding: 0.55rem 0.75rem;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+}
+
+.landing12-menu-toggle:hover,
+.landing12-menu-toggle:focus-visible {
+    border-color: var(--fc-accent);
+    color: var(--fc-accent);
+}
+
+.landing12-menu-backdrop {
+    display: none;
+}
+
+@media (max-width: 1300px) and (min-width: 761px) {
+    .landing12-link-optional {
+        display: none;
+    }
+
+    .landing12-links-overflow {
+        display: block;
+    }
+}
+
+.landing12-footer {
+    background: #000;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.landing12-footer-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.25rem;
+}
+
+.landing12-footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1rem, 2vw, 1.8rem);
+}
+
+.landing12-footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.landing12-footer-brand {
+    color: var(--fc-accent);
+    letter-spacing: 0.08em;
+    font-size: 1.25rem;
+}
+
+.landing12-footer-copy {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.landing12-footer-heading {
+    margin: 0 0 0.15rem;
+    color: rgba(255, 255, 255, 0.94);
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.landing12-footer .landing12-footer-link {
+    margin-right: 0;
+    color: rgba(255, 255, 255, 0.74);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+}
+
+.landing12-footer .landing12-footer-link:hover,
+.landing12-footer .landing12-footer-link:focus-visible {
+    color: #fff;
+}
+
+.landing12-footer-note {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.landing12-footer-legal {
+    display: block;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+    .landing12-nav {
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+
+    .landing12-menu-toggle {
+        display: inline-flex;
+        margin-left: auto;
+    }
+
+    .landing12-links {
+        display: flex;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100dvh;
+        width: min(320px, 86vw);
+        z-index: 80;
+        background: #060606;
+        border-left: 1px solid var(--fc-line);
+        box-shadow: -8px 0 28px rgba(0, 0, 0, 0.45);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.45rem;
+        padding: 5.2rem 1rem 1rem;
+        transform: translateX(105%);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 260ms ease, opacity 220ms ease, visibility 220ms ease;
+    }
+
+    .landing12-links.is-open {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .landing12-link-optional {
+        display: block;
+    }
+
+    .landing12-links-overflow {
+        display: none;
+    }
+
+    .landing12-links a {
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .landing12-nav-urgency {
+        width: 100%;
+        order: 4;
+        white-space: normal;
+        text-align: center;
+        margin-top: 0.4rem;
+    }
+
+    .landing12-nav > .landing12-btn {
+        display: none;
+    }
+
+    .landing12-menu-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.52);
+        z-index: 70;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 220ms ease, visibility 220ms ease;
+        border: 0;
+        padding: 0;
+    }
+
+    .landing12-menu-backdrop.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .landing12-footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1100px) and (min-width: 761px) {
+    .landing12-footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

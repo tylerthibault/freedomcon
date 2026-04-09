@@ -4,7 +4,6 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/where.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
@@ -22,7 +21,7 @@
 	<section class="where where--page" aria-label="Event location map">
 		<div class="where__frame">
 			<p class="where__eyebrow">Join Us At</p>
-			<h2 class="where__title">The Gorge Amphitheatre</h2>
+			<h1 class="where__title">The Gorge Amphitheatre</h1>
 			<h3 class="where__headline">George, Washington</h3>
 			<p class="where__date">June 19-20</p>
 		</div>
@@ -40,7 +39,7 @@
 {% endblock %}
 
 {% block footer %}
-<footer class="site-footer"></footer>
+{% include "components/footer.html" %}
 {% endblock %}
 
 {% block scripts %}
