@@ -16,6 +16,12 @@
         font-display: swap;
     }
 
+    @font-face {
+        font-family: "Fremont";
+        src: url("{{ url_for('static', filename='fonts/Fremont-Osf Bold.ttf') }}") format("truetype");
+        font-display: swap;
+    }
+
     :root {
         --fc-bg: #000000;
         --fc-surface: #0a0a0a;
@@ -372,6 +378,51 @@
         font-style: italic;
         font-family: "Newsreader", serif;
         font-size: 1.3rem;
+    }
+
+    .landing12-event-highlight {
+        background: #000;
+        color: #fff;
+        text-align: center;
+        padding: clamp(1.6rem, 4vw, 3.2rem) 1rem clamp(1.9rem, 4.5vw, 3.6rem);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .landing12-event-highlight__eyebrow {
+        margin: 0;
+        text-transform: uppercase;
+        font-family: "Oswald", var(--font-oswald-bold), sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        font-size: clamp(1.9rem, 5.2vw, 3.4rem);
+        line-height: 1;
+    }
+
+    .landing12-event-highlight__title {
+        margin: clamp(0.35rem, 1.2vw, 0.75rem) 0 clamp(0.95rem, 2.1vw, 1.5rem);
+        text-transform: uppercase;
+        font-family: "Fremont", "Newsreader", serif;
+        letter-spacing: 0.2em;
+        font-size: clamp(1.55rem, 4.8vw, 3.2rem);
+        line-height: 1;
+    }
+
+    .landing12-event-highlight__venue,
+    .landing12-event-highlight__city {
+        margin: 0;
+        font-family: var(--font-oswald-light);
+        font-size: clamp(1.15rem, 2.6vw, 2rem);
+        line-height: 1.1;
+    }
+
+    .landing12-event-highlight__date {
+        margin: clamp(0.55rem, 1.3vw, 0.9rem) 0 0;
+        text-transform: uppercase;
+        font-family: "Oswald", var(--font-oswald-light), sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        font-size: clamp(2rem, 5.4vw, 3.9rem);
+        line-height: 1;
     }
 
     @keyframes landing12-scroll {
@@ -1110,6 +1161,7 @@
         </div> -->
         <div class="landing12-hero-media">
             <img class="landing12-hero-title-image" src="{{ url_for('static', filename='img/Title.png') }}" alt="Rise of the Statesman title">
+            <img class="landing12-hero-lineup-image" src="{{ url_for('static', filename='img/TheGuysFadeFeet.avif') }}" alt="Freedom Con speakers lineup">
         </div>
     </section>
 
@@ -1134,6 +1186,14 @@
             {% endfor %}
             {% endif %}
         </div>
+    </section>
+
+    <section class="landing12-event-highlight" aria-label="Event weekend highlight">
+        <p class="landing12-event-highlight__eyebrow">One Hitoric Event</p>
+        <h2 class="landing12-event-highlight__title">Father's Day Weekend</h2>
+        <p class="landing12-event-highlight__venue">The Gorge Amphitheater</p>
+        <p class="landing12-event-highlight__city">George, Washington</p>
+        <p class="landing12-event-highlight__date">June 19 - 20</p>
     </section>
 
     <section class="landing12-wrap" aria-label="Primary calls to action" style="padding-top: 1rem; padding-bottom: 2rem;">
@@ -1234,7 +1294,7 @@
         <div class="landing12-happening-inner">
             <div class="landing12-happening-head">
                 <div class="landing12-happening-head-copy">
-                    <h2>What’s Happening</h2>
+                    <h2>What's Happening</h2>
                     <p>Speakers, worship, camping, vendors, David Crowder, and the venue.</p>
                 </div>
                 <div class="landing12-cta-row">
