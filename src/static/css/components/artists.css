@@ -53,7 +53,7 @@
 }
 
 .artists-section {
-    background: var(--color-secondary);
+    background: var(--fc-surface);
     padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(3rem, 7vw, 5.5rem);
 }
 
@@ -63,10 +63,10 @@
 }
 
 .artist-card {
-    border: 1px solid rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--fc-line);
     border-radius: 14px;
     overflow: hidden;
-    background: var(--color-secondary);
+    background: #0a0a0a;
 }
 
 .artist-card--featured {
@@ -76,7 +76,7 @@
 
 .artist-card__media-shell {
     aspect-ratio: 16 / 10;
-    background: #e8e8e8;
+    background: #111;
 }
 
 .artist-card__media-shell--featured {
@@ -92,7 +92,7 @@
 
 .artist-card__body {
     padding: clamp(1rem, 2.2vw, 1.6rem);
-    color: var(--color-primary);
+    color: var(--fc-ink);
 }
 
 .artist-card__name {
@@ -106,12 +106,14 @@
     margin: 0.35rem 0 0;
     font-family: var(--font-oswald-light);
     font-size: clamp(0.95rem, 1.2vw, 1.02rem);
+    color: var(--fc-accent);
 }
 
 .artist-card__bio {
     margin: 0.7rem 0 0;
     font-size: clamp(1rem, 1.15vw, 1.08rem);
     line-height: 1.42;
+    color: var(--fc-muted);
 }
 
 .artist-card__bio-paragraph {

@@ -3,7 +3,6 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/nav.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/accommodations.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
@@ -31,16 +30,21 @@
 			<div class="accommodations-panel">
 				<p class="accommodations-panel__lead">{{ travel_info.overview }}</p>
 				<div class="accommodations-panel__grid">
+					{% for airport in travel_info.airports %}
 					<article class="accommodations-card">
-						<h3>{{ travel_info.airport.name }}</h3>
-						<p>{{ travel_info.airport.distance }}</p>
-						<p>{{ travel_info.airport.notes }}</p>
+						<h3>{{ airport.name }}</h3>
+						<p><strong>Distance:</strong> {{ airport.distance }}</p>
+						<p><strong>Drive Time:</strong> {{ airport.drive_time }}</p>
+						<ol class="accommodations-route-list">
+							{% for step in airport.route %}
+							<li>{{ step }}</li>
+							{% endfor %}
+						</ol>
+						<p>{{ airport.notes }}</p>
 					</article>
-					<article class="accommodations-card">
-						<h3>Driving & Parking</h3>
-						<p>{{ travel_info.driving.notes }}</p>
-					</article>
+					{% endfor %}
 				</div>
+				<p class="accommodations-panel__note"><strong>Important:</strong> {{ travel_info.important_note }}</p>
 			</div>
 		</div>
 	</section>
@@ -65,16 +69,20 @@
 
 	<section class="accommodations-section" aria-label="Hotel options">
 		<div class="accommodations-section__inner">
-			<h2 class="accommodations-section__heading">Hotels</h2>
-			<div class="accommodations-list">
+			<h2 class="accommodations-section__heading">Lodging</h2>
+			<div class="accommodations-list accommodations-list--lodging">
 				{% for option in hotel_options %}
 				<article class="accommodations-list__item">
 					<div>
 						<h3>{{ option.name }}</h3>
 						<p class="accommodations-list__type">{{ option.distance }}</p>
 						<p>{{ option.details }}</p>
+						<ul class="accommodations-hotel-list">
+							{% for hotel in option.hotels %}
+							<li>{{ hotel }}</li>
+							{% endfor %}
+						</ul>
 					</div>
-					<p class="accommodations-list__price">{{ option.price }}</p>
 				</article>
 				{% endfor %}
 			</div>
@@ -84,7 +92,7 @@
 {% endblock %}
 
 {% block footer %}
-<footer class="site-footer"></footer>
+{% include "components/footer.html" %}
 {% endblock %}
 
 {% block scripts %}

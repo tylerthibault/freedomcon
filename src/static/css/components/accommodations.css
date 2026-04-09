@@ -34,12 +34,12 @@
 
 .accommodations-section {
     padding: clamp(2.4rem, 5vw, 4rem) 0;
-    background: var(--color-secondary);
-    color: var(--color-primary);
+    background: var(--fc-surface);
+    color: var(--fc-ink);
 }
 
 .accommodations-section--alt {
-    background: #f3f3f3;
+    background: #000;
 }
 
 .accommodations-section__heading {
@@ -50,15 +50,20 @@
 }
 
 .accommodations-panel {
-    border: 1px solid rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--fc-line);
     border-radius: 14px;
     padding: clamp(1rem, 2.3vw, 1.4rem);
-    background: var(--color-secondary);
+    background: #0a0a0a;
 }
 
 .accommodations-panel__lead {
     margin: 0 0 1rem;
     font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+}
+
+.accommodations-panel__note {
+    margin: 0.9rem 0 0;
+    color: var(--fc-muted);
 }
 
 .accommodations-panel__grid {
@@ -68,9 +73,10 @@
 }
 
 .accommodations-card {
-    border: 1px solid rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--fc-line);
     border-radius: 12px;
     padding: 0.9rem;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .accommodations-card h3,
@@ -88,15 +94,29 @@
     font-size: clamp(0.92rem, 1vw, 1rem);
 }
 
+.accommodations-route-list {
+    margin: 0.5rem 0 0;
+    padding-left: 1.2rem;
+    color: var(--fc-muted);
+}
+
+.accommodations-route-list li + li {
+    margin-top: 0.25rem;
+}
+
 .accommodations-list {
     display: grid;
     gap: clamp(0.75rem, 1.5vw, 1rem);
 }
 
+.accommodations-list--lodging {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .accommodations-list__item {
-    border: 1px solid rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--fc-line);
     border-radius: 12px;
-    background: var(--color-secondary);
+    background: #0a0a0a;
     padding: clamp(0.9rem, 1.8vw, 1.2rem);
     display: flex;
     justify-content: space-between;
@@ -108,6 +128,7 @@
     font-family: var(--font-oswald-light);
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    color: var(--fc-accent);
 }
 
 .accommodations-list__price {
@@ -118,8 +139,27 @@
     font-size: clamp(0.88rem, 0.98vw, 0.98rem);
 }
 
+.accommodations-hotel-list {
+    margin: 0.65rem 0 0;
+    padding-left: 1.1rem;
+}
+
+.accommodations-hotel-list li + li {
+    margin-top: 0.2rem;
+}
+
+@media (max-width: 991.98px) {
+    .accommodations-list--lodging {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 767.98px) {
     .accommodations-panel__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .accommodations-list--lodging {
         grid-template-columns: 1fr;
     }
 

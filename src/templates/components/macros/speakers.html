@@ -5,8 +5,8 @@
 <article
 	class="speaker-card"
 	data-speaker-card
-	{% if image_x %}data-image-x="{{ image_x }}"{% endif %}
-	{% if image_y %}data-image-y="{{ image_y }}"{% endif %}
+	{% if image_x is not none %}data-image-x="{{ image_x }}"{% endif %}
+	{% if image_y is not none %}data-image-y="{{ image_y }}"{% endif %}
 >
 	<div class="speaker-card__image-shell">
 		<div class="speaker-card__background-shell">

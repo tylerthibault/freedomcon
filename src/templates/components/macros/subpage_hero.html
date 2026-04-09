@@ -1,0 +1,8 @@
+{% macro subpage_hero(image, alt, aria_label, image_x='50%', image_y='0%', section_class='', image_class='', contain=False) %}
+<section class="subpage-hero-media{% if section_class %} {{ section_class }}{% endif %}{% if contain %} subpage-hero-media--contain{% endif %}" style="--subpage-hero-image-x: {{ image_x }}; --subpage-hero-image-y: {{ image_y }};" aria-label="{{ aria_label }}">
+	<img class="subpage-hero-media__image{% if image_class %} {{ image_class }}{% endif %}" src="{{ url_for('static', filename=image) }}" alt="{{ alt }}">
+	{% if caller is defined %}
+	{{ caller() }}
+	{% endif %}
+</section>
+{% endmacro %}
