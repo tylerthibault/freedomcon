@@ -139,6 +139,18 @@ def where_page() -> str:
 	)
 
 
+@public_bp.get("/vendors")
+def vendors_page() -> str:
+	return render_template(
+		"public/vendors/index.html",
+		seo=build_seo(
+			title="Freedom Con Vendors | Information Coming Soon",
+			description="Vendor information for Freedom Con is coming soon. Check back for details on participating partners and on-site offerings.",
+			path="/vendors",
+		),
+	)
+
+
 @public_bp.get("/tickets")
 def tickets_page() -> str:
 	ticket_context = get_ticket_context()
@@ -193,6 +205,7 @@ def sitemap_xml() -> Response:
 		"/faqs",
 		"/speakers",
 		"/artists",
+		"/vendors",
 		"/accommodations",
 		"/where",
 		"/tickets",
