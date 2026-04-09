@@ -103,7 +103,7 @@ FAQ = {
     "Camping FAQ's": [
         {
             "question": "What does my camping purchase get me?",
-            "answer_html": "The camping purchase secures a spot for both Friday and Saturday night at the Premier or Terrace Campground areas. Check those spots out <a href='/accommodations'>HERE</a>.",
+            "answer_html": "The camping purchase secures a spot for both Friday and Saturday night at the Premier or Terrace Campground areas. Buy your camping spot when you purchase a ticket.",
         },
         {
             "question": "Are all the Gorge camping areas available?",
