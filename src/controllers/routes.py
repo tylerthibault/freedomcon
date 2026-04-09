@@ -2,6 +2,7 @@ from datetime import date
 from os import getenv
 
 from flask import Blueprint, Response, redirect, render_template, url_for
+from src.data.FAQ import FAQ
 from src.data.accommodations import camping_options, hotel_options, travel_info
 from src.data.artists import artists
 from src.data.social_proof import social_proof
@@ -120,6 +121,7 @@ def landing_10() -> str:
 def faqs() -> str:
 	return render_template(
 		"public/FAQs/index.html",
+		faq_content=FAQ,
 		seo=build_seo(
 			title="Freedom Con FAQs | Event, Travel, and Camping Questions",
 			description="Get answers to common Freedom Con questions including event details, what to bring, travel guidance, and camping information.",
