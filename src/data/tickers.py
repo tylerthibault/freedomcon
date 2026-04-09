@@ -5,7 +5,7 @@ ticketer1 = [
     "This father's day weekend become a founding father of a new revolution",
     "An American Revelotion founded america. An American reformation will save it.",
     "An American congress of christian men",
-    "250th anniversary of the united states"
+    "250th Anniversary of the United States"
 ]
 
 ticketers = {
