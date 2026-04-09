@@ -73,50 +73,6 @@ def landing() -> str:
 	)
 
 
-@public_bp.get("/landing-12")
-def landing_12() -> str:
-	return redirect(url_for("public.landing"))
-
-
-@public_bp.get("/landing-12a")
-def landing_12a() -> str:
-	return render_template(
-		"public/landing/index12a.html",
-		social_proof=social_proof,
-		seo=build_seo(
-			title="Freedom Con 2026 Backup Landing A",
-			description="Backup version of the Freedom Con 2026 landing page for continuity testing and fallback use.",
-			path="/landing-12a",
-			canonical_path="/",
-			robots="noindex,follow",
-		),
-	)
-
-
-@public_bp.get("/landing-12b")
-def landing_12b() -> str:
-	return render_template(
-		"public/landing/index12b.html",
-		social_proof=social_proof,
-		seo=build_seo(
-			title="Freedom Con 2026 Backup Landing B",
-			description="Backup version of the Freedom Con 2026 landing page for continuity testing and fallback use.",
-			path="/landing-12b",
-			canonical_path="/",
-			robots="noindex,follow",
-		),
-	)
-
-@public_bp.get("/landing-12c")
-def landing_12c() -> str:
-	return redirect(url_for("public.landing"))
-
-
-@public_bp.get("/landing-10")
-def landing_10() -> str:
-	return render_template("public/landing/index10.html", social_proof=social_proof)
-
-
 @public_bp.get("/faqs")
 def faqs() -> str:
 	return render_template(
@@ -199,16 +155,16 @@ def tickets_page() -> str:
 	)
 
 
-@public_bp.get("/venue-map")
-def venue_map_page() -> str:
-	return render_template(
-		"public/venue_map_svg/index.html",
-		seo=build_seo(
-			title="Freedom Con Venue Map | The Gorge Amphitheatre",
-			description="Explore the Freedom Con venue diagram for gates, stage area, parking, camping zones, and key amenities at The Gorge Amphitheatre.",
-			path="/venue-map",
-		),
-	)
+# @public_bp.get("/venue-map")
+# def venue_map_page() -> str:
+# 	return render_template(
+# 		"public/venue_map_svg/index.html",
+# 		seo=build_seo(
+# 			title="Freedom Con Venue Map | The Gorge Amphitheatre",
+# 			description="Explore the Freedom Con venue diagram for gates, stage area, parking, camping zones, and key amenities at The Gorge Amphitheatre.",
+# 			path="/venue-map",
+# 		),
+# 	)
 
 
 @public_bp.get("/venue-map-svg")
@@ -222,8 +178,6 @@ def robots_txt() -> Response:
 		[
 			"User-agent: *",
 			"Allow: /",
-			"Disallow: /landing-12a",
-			"Disallow: /landing-12b",
 			"Disallow: /venue-map-svg",
 			f"Sitemap: {SITE_URL}/sitemap.xml",
 		]

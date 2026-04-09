@@ -62,6 +62,8 @@
     color: #0b0b0b;
     border-radius: 14px;
     border: 1px solid rgba(188, 42, 39, 0.28);
+    width: min(100%, 400px);
+    max-width: 400px;
     min-height: 186px;
     padding: 0.85rem 0.8rem 0.75rem;
     display: flex;
@@ -128,6 +130,9 @@
     font-size: clamp(0.88rem, 0.88vw, 1.02rem);
     line-height: 1.42;
     color: #262626;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
     overflow: hidden;
     line-clamp: 5;
     display: -webkit-box;
