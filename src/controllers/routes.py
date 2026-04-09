@@ -197,10 +197,10 @@ def tickets_page() -> str:
 @public_bp.get("/venue-map")
 def venue_map_page() -> str:
 	return render_template(
-		"public/venue_map/index.html",
+		"public/venue_map_svg/index.html",
 		seo=build_seo(
 			title="Freedom Con Venue Map | The Gorge Amphitheatre",
-			description="Explore the Freedom Con venue map for gates, stage area, parking, camping zones, and key amenities at The Gorge Amphitheatre.",
+			description="Explore the Freedom Con venue diagram for gates, stage area, parking, camping zones, and key amenities at The Gorge Amphitheatre.",
 			path="/venue-map",
 		),
 	)
@@ -208,16 +208,7 @@ def venue_map_page() -> str:
 
 @public_bp.get("/venue-map-svg")
 def venue_map_svg_page() -> str:
-	return render_template(
-		"public/venue_map_svg/index.html",
-		seo=build_seo(
-			title="Freedom Con Venue Diagram Backup",
-			description="Backup venue diagram for Freedom Con at The Gorge Amphitheatre.",
-			path="/venue-map-svg",
-			canonical_path="/venue-map",
-			robots="noindex,follow",
-		),
-	)
+	return redirect(url_for("public.venue_map_page"))
 
 
 @public_bp.get("/robots.txt")
