@@ -208,6 +208,18 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
+	const happeningCardImages = document.querySelectorAll(".landing12-happening-image img");
+	happeningCardImages.forEach((image) => {
+		const imageX = image.dataset.imageX?.trim();
+		const imageY = image.dataset.imageY?.trim();
+
+		if (!imageX && !imageY) return;
+
+		const xAxis = imageX || "center";
+		const yAxis = imageY || "top";
+		image.style.objectPosition = `${xAxis} ${yAxis}`;
+	});
+
 	const speakerCards = document.querySelectorAll("[data-speaker-card]");
 	const normalizeCssLength = (value) => {
 		if (value == null) return null;
