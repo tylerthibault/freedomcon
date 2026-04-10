@@ -169,17 +169,21 @@
 
     <section class="landing12-happening" aria-label="What is happening at Freedom Con">
         <div class="landing12-happening-inner">
-            <div class="landing12-happening-head">
+            <!-- <div class="landing12-happening-head">
                 <div class="landing12-happening-head-copy">
                     <h2>Conference Info</h2>
                 </div>
                 <div class="landing12-cta-row">
                     <a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
                 </div>
-            </div>
+            </div> -->
             <div class="landing12-happening-grid">
                 {% for card in happening_cards %}
                 <a class="landing12-happening-card" href="{{ card.href }}" aria-label="{{ card.title }}">
+                    <div class="landing12-happening-copy">
+                        <span class="label">{{ card.label }}</span>
+                        <h3>{{ card.title }}</h3>
+                    </div>
                     <div class="landing12-happening-image">
                         <img
                             src="{{ card.image }}"
@@ -189,10 +193,7 @@
                             data-image-y="{{ card.get('y_axis', card.get('image_y', '')) }}"
                         >
                     </div>
-                    <div class="landing12-happening-copy">
-                        <span class="label">{{ card.label }}</span>
-                        <h3>{{ card.title }}</h3>
-                    </div>
+                    
                 </a>
                 {% endfor %}
             </div>
