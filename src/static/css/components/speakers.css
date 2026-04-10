@@ -11,6 +11,10 @@
     clip-path: polygon(0 0, 100% 0, 100% 52%, 56% 100%, 44% 100%, 0 52%);
 }
 
+.speakers-section--flat .speakers-section__notch {
+    clip-path: none;
+}
+
 .speakers-section__inner {
     width: min(1120px, 92vw);
     margin: 0 auto;
