@@ -35,12 +35,14 @@ camping_options = [
         "type": "Upgraded Camping Experience",
         "details": "Located closer to the venue with quicker entry and exit, upgraded facilities, and a more spacious setup.",
         "price": "Available at ticket checkout",
+        "checkout_price": "$132",
     },
     {
         "name": "Terrace Camping",
         "type": "Highest-Tier Camping",
         "details": "Premium views, expanded space, private restrooms, dedicated staff, and a more exclusive atmosphere.",
         "price": "Available at ticket checkout",
+        "checkout_price": "$132",
     },
 ]
 
