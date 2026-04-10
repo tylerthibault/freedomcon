@@ -7,12 +7,34 @@ from src.data.accommodations import camping_options, hotel_options, travel_info
 from src.data.artists import artists
 from src.data.social_proof import social_proof
 from src.data.speakers import speakers as speakers_data
+from src.data.videos import videos as videos_data
 from src.data.tickers import ticketer1, ticketers
 from src.data.tickets import get_ticket_context
 
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
 ASSET_BASE_URL = getenv("ASSET_BASE_URL", "").strip().rstrip("/")
+
+
+def extract_youtube_id(url: str) -> str:
+	if "watch?v=" in url:
+		return url.split("watch?v=", 1)[1].split("&", 1)[0]
+	if "youtu.be/" in url:
+		return url.split("youtu.be/", 1)[1].split("?", 1)[0]
+	if "/embed/" in url:
+		return url.split("/embed/", 1)[1].split("?", 1)[0]
+	return ""
+
+
+def normalize_video_thumbnail_path(path: str) -> str:
+	trimmed = str(path).strip().lstrip("/")
+	if not trimmed:
+		return "img/TheGuys-WithLogoNoFeet.avif"
+	if trimmed.startswith(("img/", "videos/")):
+		return trimmed
+	if "/" not in trimmed:
+		return f"videos/{trimmed}"
+	return trimmed
 
 
 @public_bp.app_context_processor
@@ -58,12 +80,44 @@ def build_seo(
 @public_bp.get("/")
 def landing() -> str:
 	ticket_context = get_ticket_context()
+	trailers_data = []
+	for index, video in enumerate(videos_data, start=1):
+		video_url = str(video.get("url", "")).strip()
+		youtube_id = extract_youtube_id(video_url)
+		if not youtube_id:
+			continue
+		thumbnail_mobile = normalize_video_thumbnail_path(
+			video.get("thumbnail_mobile") or video.get("thumbnail") or ""
+		)
+		thumbnail_desktop = f"https://i.ytimg.com/vi/{youtube_id}/hqdefault.jpg"
+		trailers_data.append(
+			{
+				"title": video.get("title") or f"Freedom Con Trailer {index}",
+				"youtube_id": youtube_id,
+				"thumbnail_mobile": thumbnail_mobile,
+				"thumbnail_desktop": thumbnail_desktop,
+				"alt": video.get("alt") or f"Freedom Con trailer thumbnail {index}",
+			}
+		)
+	silent_video = {
+		"src": "videos/landing-loop.mp4",
+		"poster": "img/TheGuysFadeFeet.avif",
+		"title": "See It Before You Arrive",
+		"text": "Drop in your 20-second silent clip and it will autoplay on loop as the section background.",
+	}
+	crowder_audio = {
+		"src": getenv("CROWDER_AUDIO_URL", "").strip() or "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/02_Grave%20Robber.wav",
+		"title": "02_Grave Robber",
+	}
 	return render_template(
 		"public/landing/index.html",
 		social_proof=social_proof,
 		ticketer1=ticketer1,
 		ticketers=ticketers,
 		speakers=speakers_data,
+		trailers=trailers_data,
+		silent_video=silent_video,
+		crowder_audio=crowder_audio,
 		urgency=ticket_context["urgency"],
 		seo=build_seo(
 			title="Freedom Con 2026 | Christian Men's Conference at The Gorge",
@@ -108,6 +162,18 @@ def artists_page() -> str:
 			title="Freedom Con Artist | Live Worship and Concert",
 			description="See the featured Freedom Con artist and live worship experience planned for Father’s Day weekend 2026.",
 			path="/artists",
+		),
+	)
+
+
+@public_bp.get("/about-smn")
+def about_smn_page() -> str:
+	return render_template(
+		"public/about_smn/index.html",
+		seo=build_seo(
+			title="About SMN | The Road to The Gorge",
+			description="Learn more about Stronger Man Nation and the Road to The Gorge journey leading into Freedom Con.",
+			path="/about-smn",
 		),
 	)
 
@@ -214,6 +280,7 @@ def sitemap_xml() -> Response:
 	lastmod = date.today().isoformat()
 	pages = [
 		"/",
+		"/about-smn",
 		"/faqs",
 		"/speakers",
 		"/artists",

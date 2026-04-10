@@ -1,0 +1,58 @@
+{% set trailer_items = trailers or [] %}
+
+<section class="landing12-trailers" aria-label="Freedom Con trailers">
+	<div class="landing12-wrap landing12-trailers-inner">
+		<div class="landing12-trailers-head">
+			<span class="label">Watch</span>
+			<h2>Conference Trailers</h2>
+		</div>
+		{% if trailer_items|length %}
+		<div class="landing12-trailers-grid">
+			{% for item in trailer_items[:4] %}
+			<button
+				type="button"
+				class="landing12-trailer-card"
+				data-trailer-open
+				data-video-id="{{ item.youtube_id }}"
+				data-title="{{ item.title }}"
+				aria-label="Play {{ item.title }}"
+			>
+				<span class="landing12-trailer-thumb">
+					{% set mobile_thumb = item.thumbnail_mobile %}
+					{% set desktop_thumb = item.thumbnail_desktop %}
+					{% set mobile_thumb_src = mobile_thumb if mobile_thumb.startswith('http') else url_for('static', filename=mobile_thumb) %}
+					{% set desktop_thumb_src = desktop_thumb if desktop_thumb.startswith('http') else url_for('static', filename=desktop_thumb) %}
+					{% set trailer_fallback_src = url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') %}
+					<picture>
+						<source media="(max-width: 1024px)" srcset="{{ mobile_thumb_src }}">
+						<img src="{{ desktop_thumb_src }}" alt="{{ item.alt or item.title }}" loading="lazy" onerror="this.onerror=null;this.src='{{ trailer_fallback_src }}';">
+					</picture>
+				</span>
+				<span class="landing12-trailer-copy">
+					<span class="label">Play Video</span>
+					<span class="landing12-trailer-title">{{ item.title }}</span>
+				</span>
+			</button>
+			{% endfor %}
+		</div>
+		{% endif %}
+	</div>
+
+	<div class="landing12-trailer-modal" data-trailer-modal hidden aria-hidden="true">
+		<div class="landing12-trailer-modal__backdrop" data-trailer-close></div>
+		<div class="landing12-trailer-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="landing12TrailerModalTitle">
+			<button class="landing12-trailer-modal__close" type="button" aria-label="Close trailer" data-trailer-close>&times;</button>
+			<p class="landing12-trailer-modal__title" id="landing12TrailerModalTitle" data-trailer-modal-title></p>
+			<div class="landing12-trailer-modal__frame-wrap">
+				<iframe
+					data-trailer-iframe
+					src=""
+					title="Freedom Con trailer video"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen
+					referrerpolicy="strict-origin-when-cross-origin"
+				></iframe>
+			</div>
+		</div>
+	</div>
+</section>

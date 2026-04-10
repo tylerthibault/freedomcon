@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block content %}
+{% set countdown_target = urgency.countdown_target if urgency is defined else '2026-06-19T17:00:00-07:00' %}
 <main class="tickets-page">
 	<section class="tickets-hero" aria-label="Ticket options">
 		<div class="tickets-hero__brand">

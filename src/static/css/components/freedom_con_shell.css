@@ -164,9 +164,9 @@ body.landing12-no-scroll {
     display: none;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--fc-line);
-    background: transparent;
-    color: var(--fc-ink);
+    border: 0;
+    background: var(--fc-accent);
+    color: #fff;
     padding: 0.55rem 0.75rem;
     text-transform: uppercase;
     font-size: 0.68rem;
@@ -176,8 +176,7 @@ body.landing12-no-scroll {
 
 .landing12-menu-toggle:hover,
 .landing12-menu-toggle:focus-visible {
-    border-color: var(--fc-accent);
-    color: var(--fc-accent);
+    color: #fff;
 }
 
 .landing12-menu-backdrop {
@@ -275,11 +274,17 @@ body.landing12-no-scroll {
     .landing12-nav {
         flex-wrap: wrap;
         padding: 1rem;
+        transition: padding 220ms ease, gap 220ms ease;
+    }
+
+    .landing12-brand {
+        transition: font-size 220ms ease;
     }
 
     .landing12-menu-toggle {
         display: inline-flex;
         margin-left: auto;
+        transition: padding 220ms ease, font-size 220ms ease, letter-spacing 220ms ease, color 180ms ease;
     }
 
     .landing12-links {
@@ -330,6 +335,40 @@ body.landing12-no-scroll {
         white-space: normal;
         text-align: center;
         margin-top: 0.4rem;
+        max-height: 2.6rem;
+        opacity: 1;
+        overflow: hidden;
+        transform: translateY(0);
+        transition: opacity 200ms ease, max-height 220ms ease, margin-top 220ms ease, transform 200ms ease;
+    }
+
+    .landing12-nav.is-condensed {
+        padding: 0.65rem 1rem;
+        gap: 0.7rem;
+    }
+
+    .landing12-nav.is-condensed .landing12-brand {
+        font-size: clamp(1.2rem, 5.5vw, 1.55rem);
+    }
+
+    .landing12-nav.is-condensed .landing12-menu-toggle {
+        padding: 0.45rem 0.65rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+    }
+
+    .landing12-nav.is-condensed .landing12-nav-urgency {
+        opacity: 0;
+        max-height: 0;
+        margin-top: 0;
+        transform: translateY(-0.35rem);
+    }
+
+    .landing12-nav.is-at-top .landing12-nav-urgency {
+        opacity: 0;
+        max-height: 0;
+        margin-top: 0;
+        transform: translateY(-0.35rem);
     }
 
     .landing12-nav > .landing12-btn {
