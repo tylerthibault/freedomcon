@@ -33,7 +33,7 @@ speakers = [
 		'name': 'Graham Allen',
 		'image': 'img/speakers/GrahamA (3).png',
 		'alt': 'Graham Allen',
-		'titles': ['Army Veteran', 'Author & Host, The Graham Allen Show & Dear America', 'Director of Digital Media, DoD']
+		'titles': ['U.S. Army Veteran', 'Author & Host, The Graham Allen Show & Dear America', 'Director of Digital Media, DoD']
 	},
 	{
 		'name': 'Chad Robichaux',
@@ -80,6 +80,6 @@ speakers = [
 		'name': 'Ryan Visconti',
 		'image': 'img/speakers/RyanV (2).png',
 		'alt': 'Ryan Visconti',
-		'titles': ['Lead Pastor, Generation Church']
+		'titles': ['U.S. Army Veteran', 'Lead Pastor, Generation Church']
 	}
 ]

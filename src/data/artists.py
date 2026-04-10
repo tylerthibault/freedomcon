@@ -9,9 +9,8 @@ artists = [
 
         As the sun sets over the Columbia River behind the iconic Gorge Amphitheater stage, Crowder's powerhouse sound will close out a perfect weekend with an unforgettable, high-energy summer concert.
 
-        Expect soul-stirring anthems and a night that will echo long after the final note.""",
-        "day": "Friday",
-        "time": "8:30 PM",
+        Expect soul-stirring anthems and a night that will echo long after the final note fades.""",
+        "day": "Saturday",
         "stage": "Main Stage",
     },
 ]
