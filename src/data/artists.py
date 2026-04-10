@@ -1,7 +1,7 @@
 artists = [
     {
         "name": "David Crowder",
-        "image": "img/crowder.jpg",
+        "image": "img/conference_info/crowder.jpg",
         "hero_image_x": "63%",
         "hero_image_y": "0%",
         "genre": "Worship / Folk Rock",

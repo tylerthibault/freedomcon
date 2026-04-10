@@ -1,13 +1,28 @@
-<section id="social-proof" class="social-proof-section" aria-label="Social proof testimonials">
+{% set testimonials = social_proof or [] %}
+{% set marquee_top = testimonials[::2] %}
+{% set marquee_bottom = testimonials[1::2] %}
+{% set placeholder_avatar = url_for('static', filename='img/social_proof/placeholder.svg') %}
+
+{% if marquee_top|length == 0 and testimonials|length > 0 %}
+	{% set marquee_top = testimonials %}
+{% endif %}
+
+{% if marquee_bottom|length == 0 and testimonials|length > 0 %}
+	{% set marquee_bottom = testimonials %}
+{% endif %}
+
+<section id="social-proof" class="social-proof-section landing12-social-proof landing12-social-proof--marquee" aria-label="Social proof marquee testimonials">
 	<div class="social-proof-section__inner">
-		{% set top_row = social_proof[:8] %}
-		{% set bottom_row = social_proof[8:16] %}
+		<div class="landing12-social-proof__intro">
+			<span class="label">Testimonials</span>
+			<h2 class="landing12-social-proof__title">Marquee Social Proof</h2>
+		</div>
 		<div class="social-proof-marquee" aria-live="off">
 			<div class="social-proof-row social-proof-row--right">
 				<div class="social-proof-row__track">
 					{% for _ in range(2) %}
 					<div class="social-proof-row__group">
-						{% for item in top_row %}
+						{% for item in marquee_top %}
 						{% set avatar_filename = item.get('image') or 'img/social_proof/placeholder.svg' %}
 						{% set avatar_alt = item.get('alt') or (item.name ~ ' testimonial photo') %}
 						<article class="social-proof-card">
@@ -16,6 +31,7 @@
 									class="social-proof-card__avatar"
 									src="{{ url_for('static', filename=avatar_filename) }}"
 									alt="{{ avatar_alt }}"
+									onerror="this.onerror=null;this.src='{{ placeholder_avatar }}';"
 									loading="lazy"
 								>
 								<div class="social-proof-card__identity">
@@ -35,7 +51,7 @@
 				<div class="social-proof-row__track">
 					{% for _ in range(2) %}
 					<div class="social-proof-row__group">
-						{% for item in bottom_row %}
+						{% for item in marquee_bottom %}
 						{% set avatar_filename = item.get('image') or 'img/social_proof/placeholder.svg' %}
 						{% set avatar_alt = item.get('alt') or (item.name ~ ' testimonial photo') %}
 						<article class="social-proof-card">
@@ -44,6 +60,7 @@
 									class="social-proof-card__avatar"
 									src="{{ url_for('static', filename=avatar_filename) }}"
 									alt="{{ avatar_alt }}"
+									onerror="this.onerror=null;this.src='{{ placeholder_avatar }}';"
 									loading="lazy"
 								>
 								<div class="social-proof-card__identity">
@@ -51,13 +68,47 @@
 									<p class="social-proof-card__title">{{ item.title }}</p>
 								</div>
 							</div>
-							<p class="social-proof-card__quote">“{{ item.quote }}”</p>
+							<p class="social-proof-card__quote">{{ item.quote }}</p>
 						</article>
 						{% endfor %}
 					</div>
 					{% endfor %}
 				</div>
 			</div>
+		</div>
+	</div>
+</section>
+
+<section class="landing12-social-proof landing12-social-proof--static" aria-label="Social proof static testimonials">
+	<div class="landing12-social-proof__inner">
+		<div class="landing12-social-proof__intro">
+			<span class="label">Testimonials</span>
+			<h2 class="landing12-social-proof__title">Static Social Proof</h2>
+		</div>
+		<div class="landing12-social-proof__grid">
+			{% for item in testimonials %}
+			{% set avatar_filename = item.get('image') or 'img/social_proof/placeholder.svg' %}
+			{% set avatar_alt = item.get('alt') or (item.name ~ ' testimonial photo') %}
+			<article class="landing12-social-proof-card">
+				<div class="landing12-social-proof-card__stars" aria-hidden="true">
+					<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+				</div>
+				<p class="landing12-social-proof-card__quote">“{{ item.quote }}”</p>
+				<div class="landing12-social-proof-card__footer">
+					<img
+						class="landing12-social-proof-card__avatar"
+						src="{{ url_for('static', filename=avatar_filename) }}"
+						alt="{{ avatar_alt }}"
+						onerror="this.onerror=null;this.src='{{ placeholder_avatar }}';"
+						loading="lazy"
+					>
+					<div class="landing12-social-proof-card__identity">
+						<p class="landing12-social-proof-card__name">{{ item.name }}</p>
+						<p class="landing12-social-proof-card__title">{{ item.title }}</p>
+					</div>
+				</div>
+			</article>
+			{% endfor %}
 		</div>
 	</div>
 </section>
