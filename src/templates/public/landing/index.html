@@ -1219,11 +1219,6 @@
             <a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
             <a class="landing12-btn landing12-btn--ghost" href="{{ url_for('public.speakers') }}">See Speakers</a>
         </div>
-        {% if urgency is defined %}
-        <div class="landing12-cta-row landing12-cta-row--center">
-            <p class="landing12-subcopy" style="margin-top: 0.85rem; text-transform: uppercase; letter-spacing: 0.11em;">{{ urgency.headline }} — {{ urgency.body }}</p>
-        </div>
-        {% endif %}
         {% if urgency is not defined or urgency.show_countdown %}
         <div class="landing12-cta-row landing12-cta-row--center">
             <div class="landing12-countdown" data-countdown data-countdown-target="{{ countdown_target }}" aria-live="polite">
@@ -1242,20 +1237,23 @@
     <section class="landing12-wrap" aria-label="Event details">
         <div class="landing12-meta">
             <article>
-                <span class="label">When</span>
-                <h3>June 19 - 20</h3>
-                <p>Father's Day Weekend 2026</p>
+                <span class="label">What</span>
+                <h3>A Catalytic, 2-day Experience</h3>
+                <p>for christian patriots in the heart of Washington state.</p>
             </article>
+
             <article>
                 <span class="label">Where</span>
-                <h3>The Gorge</h3>
-                <p>George, Washington</p>
+                <h3>The Gorge Amphitheatre</h3>
+                <p>in George, Washington</p>
             </article>
+
             <article>
-                <span class="label">What</span>
-                <h3>Speakers, Worship, Camping</h3>
-                <p>Faith, brotherhood, and practical leadership in one weekend.</p>
+                <span class="label">When</span>
+                <h3>June 19th - 20th</h3>
+                <p>Father's Day Weekend, 2026</p>
             </article>
+            
         </div>
         <div class="landing12-cta-row landing12-cta-row--center" style="margin-top: 1rem;">
             <a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Reserve Your Spot</a>
@@ -1314,8 +1312,7 @@
         <div class="landing12-happening-inner">
             <div class="landing12-happening-head">
                 <div class="landing12-happening-head-copy">
-                    <h2>What's Happening</h2>
-                    <p>Speakers, worship, camping, vendors, David Crowder, and the venue.</p>
+                    <h2>Conference Info</h2>
                 </div>
                 <div class="landing12-cta-row">
                     <a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>

@@ -21,7 +21,7 @@ speakers = [
 		'name': 'Russell Johnson',
 		'image': 'img/speakers/RussellJ (3).png',
 		'alt': 'Russell Johnson',
-		'titles': ['Lead Pastor, Pursuit Church']
+		'titles': ['Lead Pastor, The Pursuit Church']
 	},
 	{
 		'name': 'Josh Howerton',
