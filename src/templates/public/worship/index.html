@@ -1,0 +1,36 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/subpage_hero.html" import subpage_hero %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/worship.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main>
+	{{ subpage_hero('img/worship_img.png', 'Worship at Freedom Con', 'Freedom Con worship', '50%', '50%') }}
+	{{ slim_banner("Worship") }}
+
+	<section class="worship-page" aria-label="Worship information">
+		<div class="worship-page__inner">
+			<h1 class="worship-page__title">Worship</h1>
+			<p class="worship-page__copy">At Stronger Man Nation we sing to Jesus like MEN. Worship is warfare. Come ready to lift your hands and belt out battle songs to the King of kings.</p>
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

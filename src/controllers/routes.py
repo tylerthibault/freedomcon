@@ -151,6 +151,18 @@ def vendors_page() -> str:
 	)
 
 
+@public_bp.get("/worship")
+def worship_page() -> str:
+	return render_template(
+		"public/worship/index.html",
+		seo=build_seo(
+			title="Freedom Con Worship | Information Coming Soon",
+			description="More worship information for Freedom Con is coming soon. Check back for updates on worship experiences and schedule details.",
+			path="/worship",
+		),
+	)
+
+
 @public_bp.get("/tickets")
 def tickets_page() -> str:
 	ticket_context = get_ticket_context()
@@ -205,6 +217,7 @@ def sitemap_xml() -> Response:
 		"/faqs",
 		"/speakers",
 		"/artists",
+		"/worship",
 		"/vendors",
 		"/accommodations",
 		"/where",
