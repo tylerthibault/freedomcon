@@ -1,10 +1,7 @@
 {% extends "bases/public.html" %}
 
 {% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/venue_map_svg.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
 {% endblock %}
 
 {% block navigation %}
@@ -271,6 +268,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 <script src="{{ url_for('static', filename='js/venue_map_svg.js') }}"></script>
 {% endblock %}

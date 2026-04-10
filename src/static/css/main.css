@@ -1,9 +1,7 @@
 @import url('components/bootstrap_override.css');
 
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;700&display=swap");
-
 @font-face {
-	font-family: "Fremont Osf Bold";
+	font-family: "Fremont";
 	src: url("../fonts/Fremont-Osf%20Bold.ttf") format("truetype");
 	font-display: swap;
 }
@@ -15,12 +13,6 @@
 }
 
 @font-face {
-	font-family: "Nickel Gothic V3";
-	src: url("../fonts/NickelGothicV3Variableslntwdth-BF674fcf11737ff.ttf") format("truetype");
-	font-display: swap;
-}
-
-@font-face {
 	font-family: "American Scribe";
 	src: url("../fonts/americanscribe.ttf") format("truetype");
 	font-display: swap;
@@ -28,11 +20,14 @@
 
 :root {
 	color-scheme: light;
-	--font-primary: "Oswald", "Fremont Osf Bold", Arial, sans-serif;
-	--font-secondary: "Oswald", "Nickel Gothic V3", Arial, sans-serif;
-	--font-fremont-osf-bold: "Fremont Osf Bold", Arial, sans-serif;
-	--font-ghost-factory: "Ghost Factory", Arial, sans-serif;
-	--font-nickel-gothic-v3: "Nickel Gothic V3", Arial, sans-serif;
+	--font-regular: "Oswald", Arial, sans-serif;
+	--font-action: "Fremont", "Oswald", Arial, sans-serif;
+	--font-primary: var(--font-regular);
+	--font-secondary: var(--font-action);
+	--font-oswald-light: var(--font-regular);
+	--font-oswald-bold: var(--font-regular);
+	--font-fremont-osf-bold: var(--font-action);
+	--font-ghost-factory: "Ghost Factory", "Fremont", "Oswald", Arial, sans-serif;
 	--font-american-scribe: "American Scribe", cursive;
 	--color-primary: #000000;
 	--color-secondary: #ffffff;
@@ -81,10 +76,6 @@ h6,
 
 .font-ghost-factory {
 	font-family: var(--font-ghost-factory);
-}
-
-.font-nickel-gothic-v3 {
-	font-family: var(--font-nickel-gothic-v3);
 }
 
 .font-american-scribe {

@@ -32,12 +32,16 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrapcss/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/freedom_con_shell.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/animations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/dot-grid-bg.css') }}">
 
     {% block head_extra %}{% endblock %}
 
@@ -64,6 +68,7 @@
 
     <!-- bootstrap -->
     <script src="{{ url_for('static', filename='js/bootstrapjs/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block scripts %}
         
     {% endblock %}

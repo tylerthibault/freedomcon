@@ -1,15 +1,3 @@
-@font-face {
-    font-family: "Ghost Factory";
-    src: url("/static/fonts/Ghost Factory.ttf") format("truetype");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "American Scribe";
-    src: url("/static/fonts/americanscribe.ttf") format("truetype");
-    font-display: swap;
-}
-
 :root {
     --fc-bg: #000000;
     --fc-surface: #0a0a0a;
@@ -19,14 +7,14 @@
     --fc-line: rgba(255, 255, 255, 0.2);
     --color-primary: #000000;
     --color-secondary: #ffffff;
-    --font-oswald-bold: "Work Sans", sans-serif;
-    --font-oswald-light: "Work Sans", sans-serif;
+    --font-oswald-bold: var(--font-regular);
+    --font-oswald-light: var(--font-regular);
 }
 
 body {
     background: var(--fc-bg);
     color: var(--fc-ink);
-    font-family: "Work Sans", sans-serif;
+    font-family: var(--font-oswald-light);
 }
 
 body.landing12-no-scroll {
@@ -88,7 +76,7 @@ body.landing12-no-scroll {
 }
 
 .landing12-brand {
-    font-family: "Ghost Factory", "Work Sans", sans-serif;
+    font-family: var(--font-action);
     color: var(--fc-accent);
     font-size: clamp(1.4rem, 2vw, 2rem);
     font-weight: 800;

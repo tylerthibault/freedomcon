@@ -3,10 +3,7 @@
 {% from "components/macros/subpage_hero.html" import subpage_hero %}
 
 {% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/artists.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
 {% endblock %}
 
 {% block navigation %}
@@ -17,7 +14,7 @@
 <main>
 	{% set featured_artist = artists[0] if artists and artists|length else None %}
 	{% call subpage_hero(
-		'img/crowder.jpg',
+		'img/conference_info/crowder.jpg',
 		'Concert crowd at night',
 		'Featured artists',
 		featured_artist.hero_image_x if featured_artist and featured_artist.hero_image_x else '50%',
@@ -65,5 +62,4 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}
