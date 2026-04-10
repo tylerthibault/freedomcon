@@ -15,6 +15,7 @@ body {
     background: var(--fc-bg);
     color: var(--fc-ink);
     font-family: var(--font-oswald-light);
+    overflow-x: hidden;
 }
 
 body.landing12-no-scroll {
@@ -412,6 +413,39 @@ body.landing12-no-scroll {
 .landing12-wrap--cta {
     padding-top: 1rem;
     padding-bottom: 2rem;
+}
+
+.landing12-liberty {
+    position: relative;
+    isolation: isolate;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58)),
+        url("../../img/FLAG 2.png");
+    background-size: cover;
+    background-position: center;
+    border-top: 1px solid var(--fc-line);
+    border-bottom: 1px solid var(--fc-line);
+}
+
+.landing12-liberty-inner {
+    width: min(1200px, 94vw);
+    margin: 0 auto;
+    min-height: clamp(250px, 34vw, 460px);
+    display: grid;
+    place-items: center;
+    padding: clamp(1.4rem, 3.8vw, 2.8rem) 1rem;
+}
+
+.landing12-liberty-text {
+    margin: 0;
+    max-width: 18ch;
+    text-align: center;
+    text-transform: capitalize;
+    color: #fff;
+    font-family: var(--font-oswald-light);
+    font-size: clamp(1.5rem, 4.2vw, 3.4rem);
+    line-height: 1.16;
+    letter-spacing: 0.02em;
 }
 
 .landing12-meta {
@@ -1054,6 +1088,18 @@ body.landing12-no-scroll {
 
     .landing12-wrap {
         padding: 3.2rem 1rem;
+    }
+
+    .landing12-liberty-inner {
+        min-height: clamp(200px, 58vw, 300px);
+        width: 100%;
+        padding-inline: 0.85rem;
+    }
+
+    .landing12-liberty-text {
+        max-width: 16ch;
+        font-size: clamp(1.25rem, 7.2vw, 2rem);
+        line-height: 1.18;
     }
 
     .landing12-meta,
