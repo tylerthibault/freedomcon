@@ -1,0 +1,19 @@
+{% set silent_video_config = silent_video if silent_video is defined else {} %}
+{% set video_src = silent_video_config.get('src', '') %}
+{% set video_poster = silent_video_config.get('poster', '') %}
+{% set section_title = silent_video_config.get('title', 'Freedom Con') %}
+{% set section_text = silent_video_config.get('text', 'Experience a glimpse of what is coming this Father\'s Day weekend at The Gorge.') %}
+
+<section class="landing12-silent-video" aria-label="Silent looping background video">
+	<div class="landing12-silent-video__media" aria-hidden="true">
+		<video class="landing12-silent-video__video" autoplay muted loop playsinline preload="metadata" {% if video_poster %}poster="{{ url_for('static', filename=video_poster) }}"{% endif %}>
+			{% if video_src %}
+			<source src="{{ url_for('static', filename=video_src) }}" type="video/mp4">
+			{% endif %}
+		</video>
+	</div>
+	<div class="landing12-silent-video__overlay"></div>
+	<div class="landing12-wrap landing12-silent-video__content">
+		<a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+	</div>
+</section>

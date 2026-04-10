@@ -1,13 +1,15 @@
 {% from "components/macros/speakers.html" import speaker_card %}
 
-{% set landing_speakers = speakers[:6] if speakers is defined else [] %}
+{% set landing_speakers = speakers if speakers is defined else [] %}
+{% set featured_speakers = landing_speakers[:6] %}
+{% set additional_speakers = landing_speakers[6:] %}
 
 <section id="speakers" class="speakers-section" aria-label="Voices of the conference">
 	<div class="speakers-section__notch" aria-hidden="true"></div>
 	<div class="speakers-section__inner">
 		<h2 class="speakers-section__heading">Speakers of Freedom Con</h2>
 		<div class="speakers-section__grid">
-			{% for speaker in landing_speakers %}
+			{% for speaker in featured_speakers %}
 			{{ speaker_card(
 				speaker.name,
 				speaker.image,
@@ -15,12 +17,31 @@
 				'img/speakers/background.png',
 				speaker.alt,
 				speaker.get('image_x'),
-				speaker.get('image_y')
+				speaker.get('image_y'),
+				speaker.get('shrink')
 			) }}
 			{% endfor %}
 		</div>
+		{% if additional_speakers|length %}
+		<div class="speakers-section__grid speakers-section__grid--extra" data-speakers-extra hidden>
+			{% for speaker in additional_speakers %}
+			{{ speaker_card(
+				speaker.name,
+				speaker.image,
+				speaker.titles,
+				'img/speakers/background.png',
+				speaker.alt,
+				speaker.get('image_x'),
+				speaker.get('image_y'),
+				speaker.get('shrink')
+			) }}
+			{% endfor %}
+		</div>
+		{% endif %}
 		<div class="speakers-section__cta">
-			<a class="landing12-btn" href="{{ url_for('public.speakers') }}">All SPEAKERS</a>
+			{% if additional_speakers|length %}
+			<button class="landing12-btn" type="button" data-speakers-toggle aria-expanded="false">See More</button>
+			{% endif %}
 		</div>
 	</div>
 </section>
