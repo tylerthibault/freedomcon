@@ -361,23 +361,18 @@
     }
 
     .landing12-strip {
-        background: #000;
+        background: var(--fc-accent);
         color: #fff;
-        padding: 0.9rem 0;
-        overflow: hidden;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: clamp(0.9rem, 2vw, 1.35rem) 1rem;
+        text-align: center;
     }
 
-    .landing12-strip-track {
-        display: flex;
-        width: max-content;
-        gap: 2rem;
-        white-space: nowrap;
-        animation: landing12-scroll 55s linear infinite;
-        opacity: 0.85;
-        font-style: italic;
-        font-family: "Newsreader", serif;
-        font-size: 1.3rem;
+    .landing12-strip-text {
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: clamp(1rem, 2.2vw, 1.7rem);
+        font-weight: 500;
     }
 
     .landing12-event-highlight {
@@ -428,11 +423,6 @@
         font-size: 0.42em;
         line-height: 1;
         vertical-align: super;
-    }
-
-    @keyframes landing12-scroll {
-        from { transform: translateX(0); }
-        to { transform: translateX(-50%); }
     }
 
     .landing12-wrap {
@@ -1188,27 +1178,8 @@
         </div>
     </section>
 
-    <section class="landing12-strip" aria-label="Event ticker sayings">
-        <div class="landing12-strip-track">
-            {% for saying in (ticketer1 if ticketer1 is defined else []) %}
-            <span>{{ saying }}</span>
-            <span>★</span>
-            {% endfor %}
-            {% for saying in (ticketer1 if ticketer1 is defined else []) %}
-            <span>{{ saying }}</span>
-            <span>★</span>
-            {% endfor %}
-            {% if ticketer1 is not defined or not ticketer1 %}
-            {% for item in social_proof[:6] %}
-            <span>“{{ item.quote }}”</span>
-            <span>★</span>
-            {% endfor %}
-            {% for item in social_proof[:6] %}
-            <span>“{{ item.quote }}”</span>
-            <span>★</span>
-            {% endfor %}
-            {% endif %}
-        </div>
+    <section class="landing12-strip" aria-label="Conference tagline">
+        <p class="landing12-strip-text fw-bold fs-1">An American Congress of Christian Men</p>
     </section>
 
     <section class="landing12-event-highlight" aria-label="Event weekend highlight">
