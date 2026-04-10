@@ -49,6 +49,7 @@
 	<section class="accommodations-section accommodations-section--alt" aria-label="Camping options">
 		<div class="accommodations-section__inner">
 			<h2 class="accommodations-section__heading">Camping</h2>
+			<p class="accommodations-section__subnote">Camping fee covers staying Friday night and Saturday night into Sunday morning.</p>
 			<div class="accommodations-list">
 				{% for option in camping_options %}
 				<article class="accommodations-list__item">
@@ -57,7 +58,12 @@
 						<p class="accommodations-list__type">{{ option.type }}</p>
 						<p>{{ option.details }}</p>
 					</div>
-					<p class="accommodations-list__price">{{ option.price }}</p>
+					<div>
+						<p class="accommodations-list__price">{{ option.price }}</p>
+						{% if option.checkout_price %}
+						<p class="accommodations-list__checkout-price">{{ option.checkout_price }}</p>
+						{% endif %}
+					</div>
 				</article>
 				{% endfor %}
 			</div>

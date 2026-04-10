@@ -139,6 +139,21 @@
     font-size: clamp(0.88rem, 0.98vw, 0.98rem);
 }
 
+.accommodations-list__checkout-price {
+    margin: 0.28rem 0 0;
+    font-family: var(--font-action);
+    color: var(--fc-accent);
+    letter-spacing: 0.04em;
+    font-size: clamp(1.02rem, 1.2vw, 1.2rem);
+    line-height: 1;
+}
+
+.accommodations-section__subnote {
+    margin: 0 0 0.9rem;
+    color: var(--fc-muted);
+    font-size: clamp(0.92rem, 1vw, 1rem);
+}
+
 .accommodations-hotel-list {
     margin: 0.65rem 0 0;
     padding-left: 1.1rem;
