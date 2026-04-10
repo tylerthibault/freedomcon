@@ -438,7 +438,7 @@ body.landing12-no-scroll {
 
 .landing12-liberty-text {
     margin: 0;
-    max-width: 18ch;
+    max-width: 28ch;
     text-align: center;
     text-transform: capitalize;
     color: #fff;
@@ -1097,7 +1097,7 @@ body.landing12-no-scroll {
     }
 
     .landing12-liberty-text {
-        max-width: 16ch;
+        max-width: 24ch;
         font-size: clamp(1.25rem, 7.2vw, 2rem);
         line-height: 1.18;
     }
