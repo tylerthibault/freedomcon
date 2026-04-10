@@ -385,7 +385,6 @@
         color: #fff;
         text-align: center;
         padding: clamp(1.6rem, 4vw, 3.2rem) 1rem clamp(1.9rem, 4.5vw, 3.6rem);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .landing12-event-highlight__eyebrow {
@@ -423,6 +422,12 @@
         letter-spacing: 0.04em;
         font-size: clamp(2rem, 5.4vw, 3.9rem);
         line-height: 1;
+    }
+
+    .landing12-event-highlight__date-sup {
+        font-size: 0.42em;
+        line-height: 1;
+        vertical-align: super;
     }
 
     @keyframes landing12-scroll {
@@ -1206,13 +1211,15 @@
         </div>
     </section>
 
-    <!-- <section class="landing12-event-highlight" aria-label="Event weekend highlight">
-        <p class="landing12-event-highlight__eyebrow">One Hitoric Event</p>
+    <section class="landing12-event-highlight" aria-label="Event weekend highlight">
+        <!-- font =  -->
+        <p class="landing12-event-highlight__eyebrow">One Historic Event</p>
         <h2 class="landing12-event-highlight__title">Father's Day Weekend</h2>
-        <p class="landing12-event-highlight__venue">The Gorge Amphitheater</p>
-        <p class="landing12-event-highlight__city">George, Washington</p>
-        <p class="landing12-event-highlight__date">June 19 - 20</p>
-    </section> -->
+        <p class="landing12-event-highlight__venue">The Gorge Amphitheatre</p>
+        <p class="landing12-event-highlight__city">in George, Washington</p>
+        <!-- small th -->
+        <p class="landing12-event-highlight__date">June 19<span class="landing12-event-highlight__date-sup">th</span> - 20<span class="landing12-event-highlight__date-sup">th</span></p>
+    </section>
 
     <section class="landing12-wrap" aria-label="Primary calls to action" style="padding-top: 1rem; padding-bottom: 2rem;">
         <div class="landing12-cta-row landing12-cta-row--center">
