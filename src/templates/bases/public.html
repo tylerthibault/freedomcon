@@ -43,6 +43,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/animations.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/dot-grid-bg.css') }}">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NW372T7XVX"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NW372T7XVX');
+    </script>
+
+
     {% block head_extra %}{% endblock %}
 
     {% block styles %}
