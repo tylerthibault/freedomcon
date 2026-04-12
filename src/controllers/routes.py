@@ -1,5 +1,6 @@
 from datetime import date
 from os import getenv
+import re
 
 from flask import Blueprint, Response, redirect, render_template, url_for
 from src.data.FAQ import FAQ
@@ -35,6 +36,50 @@ def normalize_video_thumbnail_path(path: str) -> str:
 	if "/" not in trimmed:
 		return f"videos/{trimmed}"
 	return trimmed
+
+
+def strip_html_tags(value: str) -> str:
+	return re.sub(r"<[^>]+>", "", value).strip()
+
+
+def build_faq_schema(faq_content: dict[str, list[dict[str, object]]]) -> dict[str, object]:
+	main_entities: list[dict[str, object]] = []
+
+	for entries in faq_content.values():
+		for item in entries:
+			question = str(item.get("question", "")).strip()
+			if not question:
+				continue
+
+			answer_text = ""
+			if item.get("answer"):
+				answer_text = str(item.get("answer", "")).strip()
+			elif item.get("answer_html"):
+				answer_text = strip_html_tags(str(item.get("answer_html", "")))
+			elif item.get("answer_list"):
+				answer_list = item.get("answer_list", [])
+				if isinstance(answer_list, list):
+					answer_text = " ".join(str(entry).strip() for entry in answer_list if str(entry).strip())
+
+			if not answer_text:
+				continue
+
+			main_entities.append(
+				{
+					"@type": "Question",
+					"name": question,
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": answer_text,
+					},
+				}
+			)
+
+	return {
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"mainEntity": main_entities,
+	}
 
 
 @public_bp.app_context_processor
@@ -109,6 +154,40 @@ def landing() -> str:
 		"src": getenv("CROWDER_AUDIO_URL", "").strip() or "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/02_Grave%20Robber.wav",
 		"title": "02_Grave Robber",
 	}
+	event_schema = {
+		"@context": "https://schema.org",
+		"@type": "Event",
+		"name": "Freedom Con 2026",
+		"description": "Join Freedom Con 2026 at The Gorge Amphitheatre in George, WA for two days of speakers, worship, brotherhood, and leadership challenge.",
+		"startDate": "2026-06-19T17:00:00-07:00",
+		"endDate": "2026-06-20T22:00:00-07:00",
+		"eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+		"eventStatus": "https://schema.org/EventScheduled",
+		"image": [f"{SITE_URL}/static/img/TheGuys-WithLogoNoFeet.avif"],
+		"location": {
+			"@type": "Place",
+			"name": "The Gorge Amphitheatre",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "754 Silica Rd NW",
+				"addressLocality": "Quincy",
+				"addressRegion": "WA",
+				"postalCode": "98848",
+				"addressCountry": "US",
+			},
+		},
+		"organizer": {
+			"@type": "Organization",
+			"name": "Stronger Man Nation",
+			"url": SITE_URL,
+		},
+		"offers": {
+			"@type": "Offer",
+			"url": f"{SITE_URL}/tickets",
+			"priceCurrency": "USD",
+			"availability": "https://schema.org/InStock",
+		},
+	}
 	return render_template(
 		"public/landing/index.html",
 		social_proof=social_proof,
@@ -118,6 +197,7 @@ def landing() -> str:
 		trailers=trailers_data,
 		silent_video=silent_video,
 		crowder_audio=crowder_audio,
+		structured_data=[event_schema],
 		urgency=ticket_context["urgency"],
 		seo=build_seo(
 			title="Freedom Con 2026 | Christian Men's Conference at The Gorge",
@@ -132,6 +212,7 @@ def faqs() -> str:
 	return render_template(
 		"public/FAQs/index.html",
 		faq_content=FAQ,
+		structured_data=[build_faq_schema(FAQ)],
 		seo=build_seo(
 			title="Freedom Con FAQs | Event, Travel, and Camping Questions",
 			description="Get answers to common Freedom Con questions including event details, what to bring, travel guidance, and camping information.",
@@ -259,7 +340,7 @@ def tickets_page() -> str:
 
 @public_bp.get("/venue-map-svg")
 def venue_map_svg_page() -> str:
-	return redirect(url_for("public.venue_map_page"))
+	return redirect(url_for("public.where_page"), code=301)
 
 
 @public_bp.get("/robots.txt")
@@ -289,7 +370,6 @@ def sitemap_xml() -> Response:
 		"/accommodations",
 		"/where",
 		"/tickets",
-		"/venue-map",
 	]
 	urls = [{"loc": f"{SITE_URL}{path}", "lastmod": lastmod} for path in pages]
 	xml = render_template("sitemap.xml", urls=urls)

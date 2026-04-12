@@ -30,6 +30,12 @@
     <meta name="twitter:description" content="{{ seo_description }}">
     <meta name="twitter:image" content="{{ seo_og_image }}">
 
+    {% if structured_data is defined and structured_data %}
+    {% for schema in structured_data %}
+    <script type="application/ld+json">{{ schema | tojson }}</script>
+    {% endfor %}
+    {% endif %}
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
