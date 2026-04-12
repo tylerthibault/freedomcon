@@ -35,4 +35,10 @@ social_proof = [
         "quote": "The Stronger Man Nation Conferences are the top of all events for the year. Other men can’t wait for events like the Super Bowl, World Series, NHL Cup, Daytona 500. The SMN Conference are all these plus more to me and my son. It has changed our life. Men’s legacies change. The SMN launching pad is ready. Be the rocket for your family, city, county, state, and nation.",
         "alt": "Dom Mutch testimonial photo",
     },
+    {
+        "name": "Steve Schiff",
+        "title": "Conference Attendee",
+        "quote": "Stronger man conference is more than just a gathering of men, it’s the bonding and forging of a brotherhood for Christ.  I came for the conference in 2024 from Arizona.  It was such an impactful weekend that it changed the trajectory of my life.  3 months after the conference, I moved my family across 3 states so that my boys and I can stand alongside these men we now call brothers!",
+        "alt": "Steve Schiff testimonial photo",
+    }
 ]
