@@ -11,6 +11,7 @@ from src.data.speakers import speakers as speakers_data
 from src.data.videos import videos as videos_data
 from src.data.tickers import ticketer1, ticketers
 from src.data.tickets import get_ticket_context
+from src.data.background_text import background_1
 
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
@@ -193,6 +194,7 @@ def landing() -> str:
 		social_proof=social_proof,
 		ticketer1=ticketer1,
 		ticketers=ticketers,
+		background_text=background_1,
 		speakers=speakers_data,
 		trailers=trailers_data,
 		silent_video=silent_video,
