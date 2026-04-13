@@ -14,36 +14,36 @@
 
 {% block content %}
 {% set landing12_speakers = [
-    {
-        'name': 'Josh McPherson',
-        'image': 'img/speakers/JoshM (2).png',
-        'title': 'Lead Pastor, Grace City • Founder, Stronger Man Nation'
-    },
-    {
-        'name': 'Graham Allen',
-        'image': 'img/speakers/GrahamA (3).png',
-        'title': 'Army Veteran, Author, and Podcast Host'
-    },
-    {
-        'name': 'John Lovell',
-        'image': 'img/speakers/JohnL (3).png',
-        'title': 'Founder, Warrior Poet Society'
-    },
-    {
-        'name': 'Chad Robichaux',
-        'image': 'img/speakers/ChadR (3).png',
-        'title': 'Founder, Mighty Oaks Foundation'
-    },
-    {
-        'name': 'Josh Howerton',
-        'image': 'img/speakers/JoshH (2).png',
-        'title': 'Lead Pastor, Lakepointe Church'
-    },
-    {
-        'name': 'Nate Schatzline',
-        'image': 'img/speakers/NateS (2).png',
-        'title': 'Texas House of Representatives'
-    }
+{
+'name': 'Josh McPherson',
+'image': 'img/speakers/JoshM (2).png',
+'title': 'Lead Pastor, Grace City • Founder, Stronger Man Nation'
+},
+{
+'name': 'Graham Allen',
+'image': 'img/speakers/GrahamA (3).png',
+'title': 'Army Veteran, Author, and Podcast Host'
+},
+{
+'name': 'John Lovell',
+'image': 'img/speakers/JohnL (3).png',
+'title': 'Founder, Warrior Poet Society'
+},
+{
+'name': 'Chad Robichaux',
+'image': 'img/speakers/ChadR (3).png',
+'title': 'Founder, Mighty Oaks Foundation'
+},
+{
+'name': 'Josh Howerton',
+'image': 'img/speakers/JoshH (2).png',
+'title': 'Lead Pastor, Lakepointe Church'
+},
+{
+'name': 'Nate Schatzline',
+'image': 'img/speakers/NateS (2).png',
+'title': 'Texas House of Representatives'
+}
 ] %}
 
 {% set countdown_target = urgency.countdown_target if urgency is defined else '2026-06-19T17:00:00-07:00' %}
@@ -54,9 +54,9 @@
     <div class="landing12-declaration-bg" aria-hidden="true" data-declaration-bg>
         <p class="landing12-declaration-bg__text" data-declaration-text>
             {% for _ in range(5) %}
-                {% for word in declaration_text.split() %}
-                    <span class="landing12-declaration-bg__word">{{ word }}</span>
-                {% endfor %}
+            {% for word in declaration_text.split() %}
+            <span class="landing12-declaration-bg__word">{{ word }}</span>
+            {% endfor %}
             {% endfor %}
         </p>
     </div>
@@ -79,12 +79,14 @@
             </div>
         </div> -->
         <div class="landing12-hero-media">
-            <img class="landing12-hero-title-image" src="{{ url_for('static', filename='img/title.png') }}" alt="Rise of the Statesman title">
-            <img class="landing12-hero-lineup-image" src="{{ url_for('static', filename='img/TheGuysFadeFeet.avif') }}" alt="Freedom Con speakers lineup">
+            <img class="landing12-hero-title-image" src="{{ url_for('static', filename='img/title.png') }}"
+                alt="Rise of the Statesman title">
+            <img class="landing12-hero-lineup-image" src="{{ url_for('static', filename='img/TheGuysFadeFeet.avif') }}"
+                alt="Freedom Con speakers lineup">
         </div>
     </section>
 
-    {# 
+    {#
     <!-- {% if ticketer1 %}
     <section class="landing12-ticker" aria-label="Freedom Con ticker announcements">
         <div class="landing12-ticker-track" aria-live="off">
@@ -100,7 +102,7 @@
         </div>
     </section>
     {% endif %} -->
-     #}
+    #}
 
     <section class="landing12-event-highlight" aria-label="Event weekend highlight">
         <!-- font =  -->
@@ -109,27 +111,26 @@
         <p class="landing12-event-highlight__venue">The Gorge Amphitheatre</p>
         <p class="landing12-event-highlight__city">in George, Washington</p>
         <!-- small th -->
-        <p class="landing12-event-highlight__date">June 19<span class="landing12-event-highlight__date-sup">th</span> - 20<span class="landing12-event-highlight__date-sup">th</span></p>
+        <p class="landing12-event-highlight__date">June 19<span class="landing12-event-highlight__date-sup">th</span> -
+            20<span class="landing12-event-highlight__date-sup">th</span></p>
+        <a class="landing12-btn btn btn-xxl mt-3" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
     </section>
+
+
 
     <section class="landing12-liberty" aria-label="Call to join the cause of liberty">
         <video class="landing12-liberty-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
             <source src="https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/PHOTO%20REEL%202.mp4" type="video/mp4">
         </video>
         <div class="landing12-liberty-inner">
-            <p class="landing12-liberty-text">Join Thousands Of American Christian Men and Patriots, In The Cause Of Liberty.</p>
-        </div>
-    </section>
-
-    <section class="landing12-wrap landing12-wrap--cta" aria-label="Primary calls to action">
-        <div class="landing12-cta-row landing12-cta-row--center">
-            <a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+            <p class="landing12-liberty-text">Join Thousands Of American Christian Men and Patriots, In The Cause Of
+                Liberty.</p>
         </div>
     </section>
 
     {% include 'public/landing/components/speakers.html' %}
 
-    {% include 'public/landing/components/silent_video.html' %}
+    {% include 'public/landing/components/cta_2.html' %}
 
     {% include 'public/landing/components/trailers.html' %}
 
