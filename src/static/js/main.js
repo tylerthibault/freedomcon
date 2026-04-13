@@ -144,6 +144,79 @@ document.addEventListener("DOMContentLoaded", () => {
 		window.setInterval(updateCountdowns, 1000);
 	}
 
+	const initDeclarationWordHover = () => {
+		const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+		if (!supportsFinePointer) return;
+
+		const container = document.querySelector("[data-declaration-bg]");
+		if (!(container instanceof HTMLElement)) return;
+
+		const words = Array.from(container.querySelectorAll(".landing12-declaration-bg__word"));
+		if (!words.length) return;
+
+		let activeWord = null;
+		let wordRects = [];
+		let frameId = 0;
+		let pointerX = 0;
+		let pointerY = 0;
+		let measureFrameId = 0;
+
+		const measureWordRects = () => {
+			measureFrameId = 0;
+			wordRects = words
+				.map((word) => ({ word, rect: word.getBoundingClientRect() }))
+				.filter(({ rect }) => rect.width > 0 && rect.height > 0);
+		};
+
+		const requestMeasure = () => {
+			if (measureFrameId) return;
+			measureFrameId = window.requestAnimationFrame(measureWordRects);
+		};
+
+		const setActiveWord = (word) => {
+			if (activeWord === word) return;
+			if (activeWord) activeWord.classList.remove("is-active");
+			activeWord = word;
+			if (activeWord) activeWord.classList.add("is-active");
+		};
+
+		const updateFromPointer = () => {
+			frameId = 0;
+
+			let hoveredWord = null;
+			for (let index = 0; index < wordRects.length; index += 1) {
+				const entry = wordRects[index];
+				const rect = entry.rect;
+				if (
+					pointerX >= rect.left &&
+					pointerX <= rect.right &&
+					pointerY >= rect.top &&
+					pointerY <= rect.bottom
+				) {
+					hoveredWord = entry.word;
+					break;
+				}
+			}
+
+			setActiveWord(hoveredWord);
+		};
+
+		const queueUpdate = (event) => {
+			pointerX = event.clientX;
+			pointerY = event.clientY;
+			if (frameId) return;
+			frameId = window.requestAnimationFrame(updateFromPointer);
+		};
+
+		measureWordRects();
+		window.addEventListener("pointermove", queueUpdate, { passive: true });
+		window.addEventListener("scroll", requestMeasure, { passive: true });
+		window.addEventListener("resize", requestMeasure);
+		window.addEventListener("blur", () => setActiveWord(null));
+	};
+
+	initDeclarationWordHover();
+
 	const initCrowderParallax = () => {
 		const section = document.querySelector("[data-crowder-parallax]");
 		if (!(section instanceof HTMLElement)) return;

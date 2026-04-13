@@ -47,8 +47,21 @@
 ] %}
 
 {% set countdown_target = urgency.countdown_target if urgency is defined else '2026-06-19T17:00:00-07:00' %}
+{% set declaration_text = (background_text | join(' ')) if background_text is defined else '' %}
 
 <main class="landing12 overflow-hidden">
+    {% if declaration_text %}
+    <div class="landing12-declaration-bg" aria-hidden="true" data-declaration-bg>
+        <p class="landing12-declaration-bg__text" data-declaration-text>
+            {% for _ in range(5) %}
+                {% for word in declaration_text.split() %}
+                    <span class="landing12-declaration-bg__word">{{ word }}</span>
+                {% endfor %}
+            {% endfor %}
+        </p>
+    </div>
+    {% endif %}
+
     <h1 class="visually-hidden">Freedom Con 2026 at The Gorge Amphitheatre</h1>
     <section class="landing12-hero" aria-label="Freedom Con hero">
         <!-- <div class="landing12-hero-copy">
@@ -70,6 +83,24 @@
             <img class="landing12-hero-lineup-image" src="{{ url_for('static', filename='img/TheGuysFadeFeet.avif') }}" alt="Freedom Con speakers lineup">
         </div>
     </section>
+
+    {# 
+    <!-- {% if ticketer1 %}
+    <section class="landing12-ticker" aria-label="Freedom Con ticker announcements">
+        <div class="landing12-ticker-track" aria-live="off">
+            {% for _ in range(2) %}
+                {% for message in ticketer1 %}
+                    <span class="landing12-ticker-item">{{ message }}</span>
+                    {% if not loop.last %}
+                        <span class="landing12-ticker-sep" aria-hidden="true">•</span>
+                    {% endif %}
+                {% endfor %}
+                <span class="landing12-ticker-sep" aria-hidden="true">•</span>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %} -->
+     #}
 
     <section class="landing12-event-highlight" aria-label="Event weekend highlight">
         <!-- font =  -->

@@ -24,6 +24,44 @@ body.landing12-no-scroll {
 
 .landing12 {
     background: var(--fc-bg);
+    position: relative;
+}
+
+.landing12 > *:not(.landing12-declaration-bg) {
+    position: relative;
+    z-index: 1;
+}
+
+.landing12-declaration-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+.landing12-declaration-bg__text {
+    margin: 0;
+    padding: clamp(1.25rem, 2vw, 2rem);
+    color: var(--fc-ink);
+    /* font-family: "American Scribe", cursive; */
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(.6rem, 1.1vw, 0.96rem);
+    line-height: 1.75;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.landing12-declaration-bg__word {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.12);
+    transition: color 120ms ease;
+    margin-right: 0.36em;
+}
+
+.landing12-declaration-bg__word.is-active {
+    color: rgba(255, 255, 255, 0.24);
 }
 
 .landing12 h1,
@@ -406,6 +444,11 @@ body.landing12-no-scroll {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .landing12-ticker-track {
+        animation: none;
+        padding-left: 0;
+    }
+
     .landing12-hero-title-image,
     .landing12-hero-lineup-image,
     .landing12-event-highlight,
@@ -436,6 +479,48 @@ body.landing12-no-scroll {
     letter-spacing: 0.18em;
     font-size: clamp(1rem, 2.2vw, 1.7rem);
     font-weight: 500;
+}
+
+.landing12-ticker {
+    background: var(--fc-surface);
+    color: var(--fc-ink);
+    border-top: 1px solid var(--fc-line);
+    border-bottom: 1px solid var(--fc-line);
+    overflow: hidden;
+    padding: 0.7rem 0;
+}
+
+.landing12-ticker-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: max-content;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: landing12-ticker-scroll 34s linear infinite;
+}
+
+.landing12-ticker-item {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: clamp(0.72rem, 1.2vw, 0.9rem);
+    font-weight: 600;
+}
+
+.landing12-ticker-sep {
+    color: var(--fc-accent);
+    font-size: 0.9em;
+    line-height: 1;
+}
+
+@keyframes landing12-ticker-scroll {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
 }
 
 .landing12-event-highlight {
@@ -970,7 +1055,9 @@ body.landing12-no-scroll {
     position: relative;
     width: min(920px, 94vw);
     min-height: clamp(360px, 88vw, 900px);
-    margin: 0 auto;
+    margin: clamp(1rem, 2.5vw, 2rem) auto;
+    padding-inline: clamp(0.75rem, 1.8vw, 1.25rem);
+    box-sizing: border-box;
     overflow: hidden;
     background: #000;
 }
@@ -999,7 +1086,7 @@ body.landing12-no-scroll {
     z-index: 2;
     width: min(1120px, 92vw);
     margin: 0 auto;
-    padding: clamp(3.5rem, 8vw, 7rem) 0 clamp(2rem, 4vw, 3rem);
+    padding: clamp(3.5rem, 8vw, 7rem) clamp(1rem, 2.2vw, 1.8rem) clamp(2rem, 4vw, 3rem);
     color: var(--color-secondary);
 }
 

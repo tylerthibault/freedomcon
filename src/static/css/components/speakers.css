@@ -5,10 +5,13 @@
 }
 
 .speakers-section__notch {
+    position: relative;
+    left: 0;
     width: 100%;
     height: clamp(36px, 7vw, 72px);
-    background: var(--color-primary);
-    clip-path: polygon(0 0, 100% 0, 100% 52%, 56% 100%, 44% 100%, 0 52%);
+    background: var(--color-secondary);
+    clip-path: polygon(0 0, 100% 0, 100% 52%, 50% 100%, 0 52%);
+    margin-top: -1px;
 }
 
 .speakers-section--flat .speakers-section__notch {
@@ -178,5 +181,11 @@
 
     .speaker-card__image-shell {
         width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .speakers-section__inner {
+        padding-top: clamp(3rem, 5vw, 4.75rem);
     }
 }
