@@ -145,11 +145,8 @@ def landing() -> str:
 				"alt": video.get("alt") or f"Freedom Con trailer thumbnail {index}",
 			}
 		)
-	silent_video = {
-		"src": "videos/landing-loop.mp4",
-		"poster": "img/TheGuysFadeFeet.avif",
-		"title": "See It Before You Arrive",
-		"text": "Drop in your 20-second silent clip and it will autoplay on loop as the section background.",
+	cta_2 = {
+		"image": "img/TheGuysFadeFeet.avif",
 	}
 	crowder_audio = {
 		"src": getenv("CROWDER_AUDIO_URL", "").strip() or "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/02_Grave%20Robber.wav",
@@ -197,7 +194,7 @@ def landing() -> str:
 		background_text=background_1,
 		speakers=speakers_data,
 		trailers=trailers_data,
-		silent_video=silent_video,
+		cta_2=cta_2,
 		crowder_audio=crowder_audio,
 		structured_data=[event_schema],
 		urgency=ticket_context["urgency"],
@@ -300,6 +297,33 @@ def vendors_page() -> str:
 	)
 
 
+@public_bp.get("/press")
+def press_page() -> str:
+	media_kit_download_url = getenv("MEDIA_KIT_DOWNLOAD_URL", "").strip()
+	media_kit_image_url = getenv("MEDIA_KIT_IMAGE_URL", "").strip() or url_for(
+		"static", filename="img/freedom_con_media_kit_flyer.jpg"
+	)
+	men_picture_url = getenv("PRESS_MEN_PICTURE_URL", "").strip() or url_for(
+		"static", filename="img/TheGuys-WithLogoNoFeet.avif"
+	)
+	formsubmit_action = getenv("PRESS_FORMSUBMIT_ACTION", "").strip()
+	formsubmit_next = getenv("PRESS_FORMSUBMIT_NEXT", "").strip() or f"{SITE_URL}/press?submitted=1"
+
+	return render_template(
+		"public/press/index.html",
+		media_kit_download_url=media_kit_download_url,
+		media_kit_image_url=media_kit_image_url,
+		men_picture_url=men_picture_url,
+		formsubmit_action=formsubmit_action,
+		formsubmit_next=formsubmit_next,
+		seo=build_seo(
+			title="Freedom Con Press & Media Kit",
+			description="Download the Freedom Con media kit and connect with us for sponsor interviews, press requests, and partnership details.",
+			path="/press",
+		),
+	)
+
+
 @public_bp.get("/worship")
 def worship_page() -> str:
 	return render_template(
@@ -367,6 +391,7 @@ def sitemap_xml() -> Response:
 		"/faqs",
 		"/speakers",
 		"/artists",
+		"/press",
 		"/worship",
 		"/vendors",
 		"/accommodations",
