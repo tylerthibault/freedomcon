@@ -16,5 +16,11 @@ videos = [
         "title": "Our Home",
         "thumbnail_mobile": "img/videos/our_home-mobile.jpg",
         "thumbnail_desktop": "videos/our_home.jpg",
-    }
+    },
+    {
+        "url": "https://www.youtube.com/watch?v=mEvcHqjyeJU",
+        "title": "We'll see you at Freedom Con",
+        "thumbnail_mobile": "img/videos/Well_See_You_at_Freedom_Con-mobile.png",
+        "thumbnail_desktop": "videos/Well_See_You_at_Freedom_Con.jpg",
+    },
 ]

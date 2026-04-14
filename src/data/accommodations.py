@@ -1,3 +1,16 @@
+camping_options = [
+    {
+        "name": "Premier Camping",
+        "description": "Closest camping to the stage with premium placement.",
+        "details": "Included with camping ticket add-on at checkout.",
+    },
+    {
+        "name": "Terrace Camping",
+        "description": "Scenic hillside camping with views of the gorge.",
+        "details": "Included with camping ticket add-on at checkout.",
+    },
+]
+
 travel_info = {
     "overview": "Getting to The Gorge Amphitheatre is straightforward from either side of Washington. Plan extra buffer time during major event traffic windows.",
     "airports": [
