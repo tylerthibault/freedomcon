@@ -1082,7 +1082,7 @@ body.landing12-no-scroll {
     padding-inline: clamp(0.75rem, 1.8vw, 1.25rem);
     box-sizing: border-box;
     overflow: hidden;
-    /* background: #000; */
+    background: #000;
 }
 
 .landing12-crowder__bg {
