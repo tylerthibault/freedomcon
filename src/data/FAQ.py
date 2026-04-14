@@ -1,11 +1,15 @@
 FAQ = {
-    "Freedom Con FAQ's": [
+    "Stronger Man Con FAQ's": [
         {
-            "question": "Who is this for?",
-            "answer": "The FREEDOM CON is for all men who carry deep convictions about patriotism, faith, family, and freedom, and want to stand and defend those things with honor.",
+            "question": "What is Stronger Man Con?",
+            "answer": "Stronger Man Con is a Christian men's conference hosted by Stronger Man Nation, taking place June 19\u201320, 2026 (Father's Day weekend) at The Gorge Amphitheatre in George, Washington. It's built for men who carry deep convictions about patriotism, faith, family, and freedom. Stronger Man Nation is a men's ministry founded by Pastor Josh McPherson in Washington State. Through conferences, sermons, and written resources, it equips men to lead with courage in their families, churches, and communities. Learn more at www.strongermannation.com.",
         },
         {
-            "question": "Where is this conference?",
+            "question": "When is Stronger Man Con 2026?",
+            "answer": "Stronger Man Con 2026 is June 19\u201320 \u2014 Father's Day weekend. Gates open at 4:00 PM on Friday and 8:00 AM on Saturday.",
+        },
+        {
+            "question": "Can I bring my son(s)?",
             "answer_html": "<a href='/where'>The Gorge Amphitheatre</a> is the premier outdoor venue of the West Coast. You’ll find it at 754 Silica Rd NW, Quincy, WA 98848",
         },
         {
@@ -131,3 +135,96 @@ FAQ = {
         },
     ],
 }
+
+
+"""
+ABOUT THE EVENT
+What is Stronger Man Con?
+Stronger Man Con is a Christian men’s conference hosted by Stronger Man Nation, taking place June 19–20, 2026 (Father’s Day weekend) at The Gorge Amphitheatre in George, Washington. It’s built for men who carry deep convictions about patriotism, faith, family, and freedom. Stronger Man Nation is a men’s ministry founded by Pastor Josh McPherson in Washington State. Through conferences, sermons, and written resources, it equips men to lead with courage in their families, churches, and communities. Learn more at www.strongermannation.com.
+When is Stronger Man Con 2026?
+Stronger Man Con 2026 is June 19–20 — Father’s Day weekend. Gates open at 4:00 PM on Friday and 8:00 AM on Saturday.
+Can I bring my son(s)?
+Yes — bring your sons! We recommend ages 10 and up. The Gorge is entirely outdoors, and long summer days can be a lot for younger kids. You know your boy best, so we’ll leave the call to you, Dad.
+Can I bring my wife or daughters?
+This is a men’s conference — built for the guys. For the women in your life, Pastor Josh’s wife has resources coming their way, and a livestream of the main sessions will be available. Livestream details will be announced at strongermannation.com.
+Is there a livestream option?
+Yes. The main sessions of this men’s conference will be available via livestream. Links will be shared closer to the event through Stronger Man Nation channels.
+
+LOCATION & GETTING THERE
+Where is Stronger Man Con 2026 located?
+The Gorge Amphitheatre — one of the most iconic outdoor venues in the Pacific Northwest and the perfect setting for a men’s conference in Washington State.
+754 Silica Rd NW, Quincy, WA 98848
+What is the closest airport to The Gorge Amphitheatre?
+Wenatchee (EAT) is your closest option — about a 45-minute drive. Seattle (SEA) and Spokane (GEG) are both roughly 2 hours away.
+Is parking free at Stronger Man Con?
+Yes — parking is free and included with your ticket. It’s first-come, first-served, with plenty of room and a top-notch parking team on site.
+
+ACCOMMODATIONS
+Where should I stay for Stronger Man Con?
+Two options: camp at The Gorge (highly recommended) or stay at nearby hotels. More information about camping and other accommodations will be sent once you’ve registered. 
+
+DAY-OF LOGISTICS
+What time should I arrive?
+Gates open 2 hours before the event — 4:00 PM on Friday and 8:00 AM on Saturday. Plan to arrive early to get settled.
+What should I expect for check-in and security?
+Standard venue security — metal detectors, possible pat-down, and bag check. Come prepared: review the bag policy and prohibited items list below so you can move through the line quickly.
+Is there ADA seating available?
+Yes. The Gorge provides ADA seating in each section and service vehicles are available on site.
+Are there ATMs on site?
+The venue and campgrounds are cashless. If you’ve got cash, head to a Guest Services kiosk and they’ll swap it for a card at no charge.
+
+FOOD & DRINK
+What food options are available at Stronger Man Con?
+Food vendors are available inside the venue for lunch and dinner. Breakfast is on your own. Check out the food options on the website.
+Can I bring my own food into the venue?
+Campers can bring any food they want to designated campsites. Inside the venue, food and snacks must fit in one clear 1-gallon Ziploc bag per person.
+Can I bring water or drinks into the venue?
+Yes — one unopened gallon of water per person is allowed. Refillable water bottles are encouraged, and filling stations are available on site. In high-heat conditions, up to 2 gallons per person are permitted.
+Is alcohol allowed at Stronger Man Con?
+No. Stronger Man Con is a dry event. Alcohol will not be allowed or sold.
+
+BAGS & PROHIBITED ITEMS
+What is the bag policy for Stronger Man Con?
+Two options are allowed inside the venue:
+Small drawstring packs or fanny packs no bigger than 6” x 9”
+Clear bags, clear backpacks, or clear totes no larger than 12” x 6” x 12”
+Do I need to bring my own chair?
+Lawn chairs are available for rent inside the venue. You’re also welcome to bring a blanket (no larger than 50” x 60”) to sit on.
+What items are not allowed at Stronger Man Con?
+Leave these at home or in your car:
+Firearms and weapons of any kind
+Alcohol and illegal substances
+Drones
+Glass containers
+Hard or soft-sided coolers
+Large bags, duffel bags, or camping backpacks (see bag policy above)
+Cameras with detachable lenses or GoPro-style cameras
+Aerosol spray, laser pointers, fireworks
+Inflatables (balls, furniture, etc.)
+Outside lawn chairs or stadium seats
+Umbrellas larger than 36” (small compact umbrella with no sharp point is fine)
+Wagons
+Animals (except working service animals)
+Are firearms allowed at The Gorge?
+No. The Gorge does not permit firearms in the venue or the campgrounds.
+What is the camera policy?
+Non-professional cameras are welcome. Cameras with detachable lenses are not allowed.
+
+CAMPING FAQ
+What does the camping purchase include?
+Your camping purchase secures a site in the Premier or Terrace Campground areas for Friday night and Saturday night into Sunday morning. Purchase your camping spot when you buy your event ticket.
+Which campground areas are available for Stronger Man Con?
+For this event, only the Premier and Terrace Campground areas are open. You must have an event ticket to camp.
+How many people can share one campsite?
+Up to 6 people per campsite. Sites are approximately 20’ x 35’ — big enough for tents, cars, vans, and RVs.
+Can I bring an RV?
+Yes — RVs are welcome. There are no hookups on site, but generators are allowed.
+Are there bathrooms and showers at the campground?
+Yes — flushable restrooms, complimentary showers, portable restrooms, and hand-wash stations are all available at the campground.
+What other amenities are available at the campground?
+There’s a market near the campground with easy access to food, drinks, ice, camping supplies, and more.
+
+STILL HAVE QUESTIONS?
+Who can I contact with additional questions?
+Reach the Stronger Man Nation team directly at info@strongermannation.com.
+"""

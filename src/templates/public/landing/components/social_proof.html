@@ -1,23 +1,18 @@
 {% set testimonials = social_proof or [] %}
 {% set marquee_target_count = 20 %}
 {% set top_offset = 0 %}
-{% set bottom_offset = 2 %}
 {% set marquee_top_ns = namespace(items=[]) %}
-{% set marquee_bottom_ns = namespace(items=[]) %}
 {% set mobile_preview_count = 4 %}
 {% set placeholder_avatar = url_for('static', filename='img/social_proof/placeholder.svg') %}
 
 {% if testimonials|length > 0 %}
 	{% for idx in range(marquee_target_count) %}
 		{% set top_index = (idx + top_offset) % testimonials|length %}
-		{% set bottom_index = (idx + bottom_offset) % testimonials|length %}
 		{% set marquee_top_ns.items = marquee_top_ns.items + [testimonials[top_index]] %}
-		{% set marquee_bottom_ns.items = marquee_bottom_ns.items + [testimonials[bottom_index]] %}
 	{% endfor %}
 {% endif %}
 
 {% set marquee_top = marquee_top_ns.items %}
-{% set marquee_bottom = marquee_bottom_ns.items %}
 
 <section id="social-proof" class="social-proof-section landing12-social-proof landing12-social-proof--marquee" aria-label="Social proof marquee testimonials">
 	<div class="social-proof-section__inner">
@@ -31,35 +26,6 @@
 					{% for _ in range(2) %}
 					<div class="social-proof-row__group">
 						{% for item in marquee_top %}
-						{% set avatar_filename = item.get('image') or 'img/social_proof/placeholder.svg' %}
-						{% set avatar_alt = item.get('alt') or (item.name ~ ' testimonial photo') %}
-						<article class="social-proof-card">
-							<div class="social-proof-card__head">
-								<img
-									class="social-proof-card__avatar"
-									src="{{ url_for('static', filename=avatar_filename) }}"
-									alt="{{ avatar_alt }}"
-									onerror="this.onerror=null;this.src='{{ placeholder_avatar }}';"
-									loading="lazy"
-								>
-								<div class="social-proof-card__identity">
-									<p class="social-proof-card__name">{{ item.name }}</p>
-									<p class="social-proof-card__title">{{ item.title }}</p>
-								</div>
-							</div>
-							<p class="social-proof-card__quote">{{ item.quote }}</p>
-						</article>
-						{% endfor %}
-					</div>
-					{% endfor %}
-				</div>
-			</div>
-
-			<div class="social-proof-row social-proof-row--left">
-				<div class="social-proof-row__track">
-					{% for _ in range(2) %}
-					<div class="social-proof-row__group">
-						{% for item in marquee_bottom %}
 						{% set avatar_filename = item.get('image') or 'img/social_proof/placeholder.svg' %}
 						{% set avatar_alt = item.get('alt') or (item.name ~ ' testimonial photo') %}
 						<article class="social-proof-card">

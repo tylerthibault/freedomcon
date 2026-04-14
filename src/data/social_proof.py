@@ -7,7 +7,7 @@ social_proof = [
     },
     {
         "name": "Clyde Foreman",
-        "title": "Conference Attendee",
+        "title": "Retired FBI Special Agent",
         "quote": "The opportunity to stand shoulder to shoulder with my sons and grandsons worshiping the Lord is special. Knowing that they have captured the same vision of generational legacy in Jesus and that we are finishing the race strong together is priceless!",
         "alt": "Clyde Foreman testimonial photo",
     },
@@ -31,7 +31,7 @@ social_proof = [
     },
     {
         "name": "Dom Mutch",
-        "title": "Chelan County Deputy Sheriff",
+        "title": "Law Enforcement Officer",
         "quote": "The Stronger Man Nation Conferences are the top of all events for the year. Other men can’t wait for events like the Super Bowl, World Series, NHL Cup, Daytona 500. The SMN Conference are all these plus more to me and my son. It has changed our life. Men’s legacies change. The SMN launching pad is ready. Be the rocket for your family, city, county, state, and nation.",
         "alt": "Dom Mutch testimonial photo",
     },
