@@ -154,6 +154,103 @@
     font-size: clamp(0.92rem, 1vw, 1rem);
 }
 
+/* ── Camping ticket callout ── */
+.accommodations-camping-ticket {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    border: 1px solid var(--fc-accent);
+    border-radius: 12px;
+    background: #0d0d0d;
+    padding: clamp(1.1rem, 2vw, 1.6rem);
+    margin-bottom: 1.75rem;
+}
+
+.accommodations-camping-ticket__left {
+    flex: 1;
+}
+
+.accommodations-camping-ticket__label {
+    margin: 0;
+    font-family: var(--font-action);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    color: #ffffff;
+}
+
+.accommodations-camping-ticket__desc {
+    margin: 0.4rem 0 0.75rem;
+    color: var(--fc-muted);
+    font-size: clamp(0.9rem, 1vw, 0.98rem);
+    line-height: 1.45;
+}
+
+.accommodations-camping-ticket__details {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--fc-muted);
+    font-size: clamp(0.88rem, 0.96vw, 0.96rem);
+    line-height: 1.5;
+}
+
+.accommodations-camping-ticket__details li + li {
+    margin-top: 0.3rem;
+}
+
+.accommodations-camping-ticket__details strong {
+    color: #ffffff;
+}
+
+.accommodations-camping-ticket__right {
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.accommodations-camping-ticket__price {
+    margin: 0;
+    font-family: var(--font-action);
+    color: var(--fc-accent);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.accommodations-camping-ticket__price-note {
+    margin: 0.2rem 0 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fc-muted);
+}
+
+.accommodations-section__subnote--heading {
+    font-family: var(--font-oswald-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.78rem;
+    color: var(--fc-muted);
+    margin-bottom: 0.6rem;
+}
+
+.accommodations-list--camping {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 640px) {
+    .accommodations-camping-ticket {
+        flex-direction: column;
+    }
+    .accommodations-camping-ticket__right {
+        text-align: left;
+    }
+    .accommodations-list--camping {
+        grid-template-columns: 1fr;
+    }
+}
+
 .accommodations-hotel-list {
     margin: 0.65rem 0 0;
     padding-left: 1.1rem;
@@ -161,6 +258,19 @@
 
 .accommodations-hotel-list li + li {
     margin-top: 0.2rem;
+}
+
+.accommodations-hotel-list a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(255,255,255,0.25);
+    transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.accommodations-hotel-list a:hover {
+    color: #ffffff;
+    text-decoration-color: var(--fc-accent);
 }
 
 @media (max-width: 991.98px) {

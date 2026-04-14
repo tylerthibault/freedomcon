@@ -49,23 +49,40 @@
 	<section class="accommodations-section accommodations-section--alt" aria-label="Camping options">
 		<div class="accommodations-section__inner">
 			<h2 class="accommodations-section__heading">Camping</h2>
-			<p class="accommodations-section__subnote">Camping fee covers staying Friday night and Saturday night into Sunday morning.</p>
-			<div class="accommodations-list">
-				{% for option in camping_options %}
+
+			<!-- Single ticket callout -->
+			<div class="accommodations-camping-ticket">
+				<div class="accommodations-camping-ticket__left">
+					<p class="accommodations-camping-ticket__label">One Camping Ticket</p>
+					<p class="accommodations-camping-ticket__desc">Covers Friday night and Saturday night into Sunday morning. Add it during ticket checkout.</p>
+					<ul class="accommodations-camping-ticket__details">
+						<li><strong>Check-in:</strong> 12:00 PM on Friday</li>
+						<li><strong>Check-out:</strong> 11:00 AM on Sunday</li>
+						<li>Up to 6 people per site (~20&rsquo; &times; 35&rsquo;)</li>
+						<li>RVs welcome &mdash; no hookups, generators allowed. RVs longer than 35&rsquo; will need two camping spots.</li>
+					</ul>
+				</div>
+				<div class="accommodations-camping-ticket__right">
+					<p class="accommodations-camping-ticket__price">$132</p>
+					<p class="accommodations-camping-ticket__price-note">at checkout</p>
+				</div>
+			</div>
+
+			<!-- Camping area descriptions -->
+			<p class="accommodations-section__subnote accommodations-section__subnote--heading">Camping Areas</p>
+			<div class="accommodations-list accommodations-list--camping">
 				<article class="accommodations-list__item">
 					<div>
-						<h3>{{ option.name }}</h3>
-						<p class="accommodations-list__type">{{ option.type }}</p>
-						<p>{{ option.details }}</p>
-					</div>
-					<div>
-						<p class="accommodations-list__price">{{ option.price }}</p>
-						{% if option.checkout_price %}
-						<p class="accommodations-list__checkout-price">{{ option.checkout_price }}</p>
-						{% endif %}
+						<h3>Premier Camping</h3>
+						<p>Closer to the venue with quicker entry and exit, upgraded facilities, and a more spacious setup.</p>
 					</div>
 				</article>
-				{% endfor %}
+				<article class="accommodations-list__item">
+					<div>
+						<h3>Terrace Camping</h3>
+						<p>Premium views, expanded space, private restrooms, and dedicated staff on site.</p>
+					</div>
+				</article>
 			</div>
 		</div>
 	</section>
@@ -82,7 +99,7 @@
 						<p>{{ option.details }}</p>
 						<ul class="accommodations-hotel-list">
 							{% for hotel in option.hotels %}
-							<li>{{ hotel }}</li>
+							<li>{% if hotel.link and (hotel.valid_link is undefined or hotel.valid_link) %}<a href="{{ hotel.link }}" target="_blank" rel="noopener noreferrer">{{ hotel.name }}</a>{% else %}{{ hotel.name }}{% endif %}</li>
 							{% endfor %}
 						</ul>
 					</div>
