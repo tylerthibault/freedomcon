@@ -652,15 +652,9 @@ body.landing12-no-scroll {
 }
 
 .fc-page__pillar {
-    border: 1px solid var(--fc-line);
-    border-top: 3px solid var(--fc-accent);
-    background: rgba(255, 255, 255, 0.02);
-    padding: 1.1rem 1rem;
-    transition: background 0.2s;
-}
-
-.fc-page__pillar:hover {
-    background: rgba(255, 255, 255, 0.04);
+    padding: 0.5rem 0;
+    border-left: 2px solid var(--fc-accent);
+    padding-left: 1rem;
 }
 
 .fc-page__pillar h3 {
@@ -714,15 +708,9 @@ body.landing12-no-scroll {
 }
 
 .fc-page__commitment {
-    border: 1px solid var(--fc-line);
-    border-top: 3px solid var(--fc-accent);
-    background: rgba(255, 255, 255, 0.02);
-    padding: 1.1rem 1rem;
-    transition: background 0.2s;
-}
-
-.fc-page__commitment:hover {
-    background: rgba(255, 255, 255, 0.04);
+    padding: 0.5rem 0;
+    border-left: 2px solid var(--fc-accent);
+    padding-left: 1rem;
 }
 
 .fc-page__commitment span {
