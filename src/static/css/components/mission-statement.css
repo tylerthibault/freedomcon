@@ -4,14 +4,14 @@
 
 .landing12-mission {
     padding-top: clamp(2.25rem, 4vw, 3.75rem);
-    padding-bottom: clamp(2.25rem, 4vw, 3.75rem);
+    padding-bottom: clamp(1rem, 2vw, 1.75rem);
 }
 
 .landing12-mission__grid {
     display: grid;
     grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
     gap: clamp(1rem, 2.6vw, 2.5rem);
-    align-items: start;
+    align-items: stretch;
 }
 
 .landing12-mission__panel {
@@ -88,6 +88,7 @@
 
 .landing12-mission__rail {
     display: grid;
+    grid-template-rows: auto 1fr;
     gap: clamp(0.9rem, 1.8vw, 1.25rem);
 }
 
@@ -126,7 +127,8 @@
     position: relative;
     border: 0;
     overflow: hidden;
-    min-height: clamp(220px, 25vw, 320px);
+    min-height: clamp(180px, 18vw, 260px);
+    height: 100%;
 }
 
 .landing12-mission__cta .landing12-btn--ghost {

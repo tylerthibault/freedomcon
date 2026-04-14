@@ -14,9 +14,9 @@
 			<p class="fc-page__lead">FREEDOM CON: Rise of the Statesman is not just a conference—it is a summons. On our nation&apos;s 250th anniversary, men are being called to recover biblical courage, shoulder civic responsibility, and fight for the future of home, church, business, and state.</p>
 
 			<div class="fc-page__mantra" aria-label="Vision rallying statements">
-				<p>Out of despair, hope.</p>
-				<p>Out of darkness, light.</p>
-				<p>Reformation starts now.</p>
+				<p class="fc-page__mantra-line">Out of despair, hope.</p>
+				<p class="fc-page__mantra-line">Out of darkness, light.</p>
+				<p class="fc-page__mantra-line fc-page__mantra-line--accent">Reformation starts now.</p>
 			</div>
 
 			<section class="fc-page__section" id="reason-behind" aria-label="The reason behind Freedom Con">
@@ -31,11 +31,13 @@
 				<p>Men will worship, repent, and leave with practical direction for home, church, county, and state. The goal is not noise, but ordered strength—men who know what they believe, where they belong, and how to move.</p>
 			</section>
 
-			<section class="fc-page__section" aria-label="Valley Forge framing">
+			<section class="fc-page__section fc-page__section--valley" aria-label="Valley Forge framing">
 				<h2>Washington State Is Our Valley Forge</h2>
 				<p>Valley Forge was not where men quit—it was where men were forged. In a hard winter, endurance and unity transformed a scattered force into a disciplined one. We believe this is Washington&apos;s moment to be forged the same way.</p>
 				<p>The call is clear: refuse passivity, reject cynicism, and embrace disciplined action. Men who fear God, love their families, and serve their communities must become impossible to ignore.</p>
 			</section>
+
+			<div class="fc-page__img-break" role="img" aria-label="Men gathered at a Stronger Man conference"></div>
 
 			<section class="fc-page__section" aria-label="Vision pillars">
 				<h2>Four Pillars of the Vision</h2>
@@ -61,7 +63,7 @@
 
 			<section class="fc-page__section" aria-label="Vision themes">
 				<h2>What This Vision Calls Men To</h2>
-				<ul class="fc-page__list">
+				<ul class="fc-page__list fc-page__list--accented">
 					<li>Lead faithfully as fathers, husbands, and sons.</li>
 					<li>Strengthen churches and local communities with courage.</li>
 					<li>Engage civic life with biblical conviction and practical action.</li>
@@ -90,11 +92,13 @@
 				</div>
 			</section>
 
-			<blockquote class="fc-page__quote">&ldquo;Washington State is our Valley Forge. We will not run. We will rebuild.&rdquo;</blockquote>
-
-			<div class="fc-page__actions">
-				<a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
-				<a class="landing12-btn landing12-btn--ghost" href="{{ url_for('public.experience_page') }}">See The Experience</a>
+			<div class="fc-page__finale">
+				<blockquote class="fc-page__quote">&ldquo;Washington State is our Valley Forge. We will not run. We will rebuild.&rdquo;</blockquote>
+				<p class="fc-page__finale-cta-label">This Father&apos;s Day weekend, be one of the men who was there the day it turned.</p>
+				<div class="fc-page__actions">
+					<a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+					<a class="landing12-btn landing12-btn--ghost" href="{{ url_for('public.experience_page') }}">See The Experience</a>
+				</div>
 			</div>
 		</div>
 	</section>
