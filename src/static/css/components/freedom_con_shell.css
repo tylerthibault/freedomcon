@@ -564,6 +564,24 @@ body.landing12-no-scroll {
     max-width: 840px;
 }
 
+.fc-page__mantra {
+    margin-top: 1.2rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--fc-line);
+    background: linear-gradient(120deg, rgba(188, 42, 39, 0.12), rgba(188, 42, 39, 0.03));
+    display: grid;
+    gap: 0.4rem;
+}
+
+.fc-page__mantra p {
+    margin: 0;
+    font-family: var(--font-secondary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+    color: rgba(255, 255, 255, 0.95);
+}
+
 .fc-page__section {
     margin-top: 2rem;
     padding-top: 1.6rem;
@@ -585,6 +603,32 @@ body.landing12-no-scroll {
     letter-spacing: 0.01em;
 }
 
+.fc-page__pillars {
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fc-page__pillar {
+    border: 1px solid var(--fc-line);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.95rem 1rem;
+}
+
+.fc-page__pillar h3 {
+    margin: 0;
+    font-family: var(--font-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+}
+
+.fc-page__pillar p {
+    margin: 0.55rem 0 0;
+    font-size: 0.98rem;
+}
+
 .fc-page__list {
     margin: 0.9rem 0 0;
     padding-left: 1.2rem;
@@ -595,6 +639,42 @@ body.landing12-no-scroll {
 
 .fc-page__list li {
     line-height: 1.5;
+}
+
+.fc-page__commitments {
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fc-page__commitment {
+    border: 1px solid var(--fc-line);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.95rem 1rem;
+}
+
+.fc-page__commitment span {
+    display: inline-block;
+    font-family: var(--font-secondary);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.fc-page__commitment h3 {
+    margin: 0.35rem 0 0;
+    font-family: var(--font-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+}
+
+.fc-page__commitment p {
+    margin: 0.55rem 0 0;
+    font-size: 0.98rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.55;
 }
 
 .fc-page__quote {
@@ -612,4 +692,14 @@ body.landing12-no-scroll {
     display: flex;
     gap: 0.7rem;
     flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+    .fc-page__pillars {
+        grid-template-columns: 1fr;
+    }
+
+    .fc-page__commitments {
+        grid-template-columns: 1fr;
+    }
 }
