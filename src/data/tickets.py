@@ -10,12 +10,14 @@ ticket_prices = [
     {
         "name": "General Admission",
         "price": "$149",
+        "tax_total": "$157.11 with all taxes & fees",
         "notes": [],
         "highlight": False,
     },
     {
         "name": "VIP Admission",
         "price": "$349",
+        "tax_total": "$364.91 with all taxes & fees",
         "notes": [
             "VIP badge",
             "Reserved box seating",
@@ -27,12 +29,14 @@ ticket_prices = [
     {
         "name": "Under 12 Years Old",
         "price": "$99",
+        "tax_total": "$105.16 with all taxes & fees",
         "notes": [],
         "highlight": False,
     },
     {
         "name": "Group Rate",
         "price": "+10 or more\n15% off",
+        "tax_total": None,
         "notes": [],
         "highlight": False,
     },
