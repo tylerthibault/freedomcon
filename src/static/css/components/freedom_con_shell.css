@@ -405,3 +405,211 @@ body.landing12-no-scroll {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+
+/* ── Always-visible nav dropdown ──────────────────────────────────────── */
+.landing12-nav-dropdown {
+    position: relative;
+}
+
+.landing12-nav-dropdown > summary {
+    list-style: none;
+    cursor: pointer;
+    color: var(--fc-ink);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.landing12-nav-dropdown > summary::-webkit-details-marker {
+    display: none;
+}
+
+.landing12-nav-dropdown > summary::after {
+    content: ' ▾';
+    font-size: 0.6rem;
+    vertical-align: middle;
+    opacity: 0.7;
+}
+
+.landing12-nav-dropdown[open] > summary,
+.landing12-nav-dropdown.is-active > summary {
+    color: var(--fc-accent);
+}
+
+.landing12-nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    left: 0;
+    min-width: 200px;
+    background: rgba(6, 6, 6, 0.78);
+    backdrop-filter: blur(3px);
+    border: 1px solid var(--fc-line);
+    padding: 0.45rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    z-index: 90;
+}
+
+.landing12-nav-dropdown-menu a {
+    padding: 0.3rem 0;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--fc-ink);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+}
+
+.landing12-nav-dropdown-menu a:hover,
+.landing12-nav-dropdown-menu a:focus-visible,
+.landing12-nav-dropdown-menu a.is-active {
+    color: var(--fc-accent);
+}
+
+@media (max-width: 760px) {
+    .landing12-nav-dropdown {
+        width: 100%;
+    }
+
+    .landing12-nav-dropdown > summary {
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .landing12-nav-dropdown-menu {
+        position: static;
+        border: 0;
+        border-left: 2px solid var(--fc-line);
+        background: transparent;
+        padding: 0.3rem 0.75rem;
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* ── Coming-soon stub pages ───────────────────────────────────────────── */
+.fc-coming-soon {
+    background: var(--fc-bg);
+    color: var(--fc-ink);
+    padding: clamp(3rem, 8vw, 6rem) 1.5rem;
+    text-align: center;
+}
+
+.fc-coming-soon__inner {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.fc-coming-soon__title {
+    font-family: var(--font-secondary);
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.05;
+}
+
+.fc-coming-soon__copy {
+    color: var(--fc-muted);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    margin: 0;
+    max-width: 480px;
+}
+
+.fc-coming-soon__actions {
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.fc-page {
+    background: var(--fc-bg);
+    color: var(--fc-ink);
+    padding: clamp(2.2rem, 5vw, 4.2rem) 1.5rem clamp(3rem, 6vw, 5rem);
+}
+
+.fc-page__inner {
+    width: min(960px, 100%);
+    margin: 0 auto;
+}
+
+.fc-page__title {
+    margin: 0;
+    font-family: var(--font-secondary);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.fc-page__lead {
+    margin: 1rem 0 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    max-width: 840px;
+}
+
+.fc-page__section {
+    margin-top: 2rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--fc-line);
+}
+
+.fc-page__section h2 {
+    margin: 0 0 0.7rem;
+    font-family: var(--font-secondary);
+    font-size: clamp(1.25rem, 2.7vw, 2rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.fc-page__section p {
+    margin: 0.75rem 0 0;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+}
+
+.fc-page__list {
+    margin: 0.9rem 0 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.fc-page__list li {
+    line-height: 1.5;
+}
+
+.fc-page__quote {
+    margin: 2rem 0 0;
+    padding: 1rem 1.1rem;
+    border-left: 3px solid var(--fc-accent);
+    background: rgba(188, 42, 39, 0.08);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: clamp(1.02rem, 1.7vw, 1.2rem);
+    letter-spacing: 0.01em;
+}
+
+.fc-page__actions {
+    margin-top: 1.8rem;
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}

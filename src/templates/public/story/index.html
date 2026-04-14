@@ -1,0 +1,87 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main>
+	{{ slim_banner("FREEDOM CON STORY") }}
+	<section class="fc-page" aria-label="Freedom Con Story">
+		<div class="fc-page__inner">
+			<h1 class="fc-page__title">Freedom Con Story</h1>
+			<p class="fc-page__lead">FREEDOM CON: Rise of the Statesman is a historic gathering calling fathers and sons to worship Christ, recover biblical statesmanship, and rebuild what matters most.</p>
+
+			<section class="fc-page__section" aria-label="Story framing">
+				<h2>The Story We Are Telling</h2>
+				<p>The story is clear: great men built this nation, and faithful men must now defend what was entrusted to them. This page houses the long-form narrative, shareable media, and public messaging built to help churches, families, and partners carry that story forward.</p>
+			</section>
+
+			<section class="fc-page__section" id="long-form-videos" aria-label="Long form videos">
+				<h2>All Long Form Videos</h2>
+				<p>Long-form sessions and feature stories will capture the full Freedom Con narrative from main-stage messages, testimonies, and strategic calls to action.</p>
+				<ul class="fc-page__list">
+					<li>Main-stage sessions and keynote messages.</li>
+					<li>Historic storytelling and commissioning moments.</li>
+					<li>Feature interviews with pastors, leaders, and organizers.</li>
+				</ul>
+			</section>
+
+			<section class="fc-page__section" id="podcasts" aria-label="Podcasts">
+				<h2>Podcasts</h2>
+				<p>Podcast content will include live recordings from the event weekend plus follow-up conversations for pastors, businessmen, and fathers.</p>
+				<ul class="fc-page__list">
+					<li>Live event podcast recordings.</li>
+					<li>Interviews focused on faith, freedom, and civic responsibility.</li>
+					<li>Ongoing conversations to help men apply the playbook locally.</li>
+					<li>Road-to-the-Gorge episodes for pre-event preparation.</li>
+				</ul>
+			</section>
+
+			<section class="fc-page__section" id="media-kit" aria-label="Media kit">
+				<h2>Media Kit</h2>
+				<p>The media kit provides event descriptors, press-ready messaging, visual assets, and story angles for churches, partners, and press coverage.</p>
+				<ul class="fc-page__list">
+					<li>Event overview, key themes, and sample headlines.</li>
+					<li>Speaker bios, pull quotes, and campaign-ready messaging.</li>
+					<li>Logo files, social graphics, trailers, and b-roll guidance.</li>
+					<li>Journalist Q&amp;A for media teams and interview prep.</li>
+				</ul>
+			</section>
+
+			<section class="fc-page__section" aria-label="Outreach messaging kits">
+				<h2>Outreach Kits</h2>
+				<p>Messaging kits are being assembled for pastors, businessmen, and fathers to help each audience invite men into the weekend with clarity and urgency.</p>
+				<ul class="fc-page__list">
+					<li><strong>Pastor kit:</strong> invitation assets, church-ready media, and shepherding prompts.</li>
+					<li><strong>Businessman kit:</strong> marketplace-focused language and sponsorship lanes.</li>
+					<li><strong>Father-and-son kit:</strong> road-trip framing and intergenerational call-to-action assets.</li>
+				</ul>
+			</section>
+
+			<section class="fc-page__section" aria-label="Journalist questions">
+				<h2>Journalist Questions</h2>
+				<ul class="fc-page__list">
+					<li>Who is organizing this gathering?</li>
+					<li>What is the event&apos;s audience and expected attendance?</li>
+					<li>How is this event positioned in relation to public policy and civic action?</li>
+					<li>What practical outcomes are expected after the weekend?</li>
+				</ul>
+			</section>
+
+			<div class="fc-page__actions">
+				<a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+				<a class="landing12-btn landing12-btn--ghost" href="{{ url_for('public.vision_page') }}">Read The Vision</a>
+			</div>
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

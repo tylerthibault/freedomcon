@@ -1,0 +1,221 @@
+/* ============================================ */
+/* Mission Statement Section                    */
+/* ============================================ */
+
+.landing12-mission {
+    padding-top: clamp(2.25rem, 4vw, 3.75rem);
+    padding-bottom: clamp(2.25rem, 4vw, 3.75rem);
+}
+
+.landing12-mission__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: clamp(1rem, 2.6vw, 2.5rem);
+    align-items: start;
+}
+
+.landing12-mission__panel {
+    border: 0;
+    background: linear-gradient(180deg, rgba(188, 42, 39, 0.08), rgba(10, 10, 10, 0.95));
+    padding: clamp(1.15rem, 2.2vw, 2rem);
+}
+
+.landing12-mission__panel--story {
+    position: relative;
+    overflow: hidden;
+}
+
+.landing12-mission__bg-copy {
+    position: absolute;
+    top: clamp(0.55rem, 1.2vw, 1rem);
+    right: clamp(0.55rem, 1.2vw, 1rem);
+    margin: 0;
+    font-family: var(--font-action);
+    font-size: clamp(1.6rem, 4.5vw, 3.6rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(188, 42, 39, 0.1);
+    text-align: right;
+    max-width: 11ch;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.landing12-mission__panel--story>*:not(.landing12-mission__bg-copy) {
+    position: relative;
+    z-index: 1;
+}
+
+.landing12-mission__eyebrow {
+    margin: 0 0 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--fc-accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.landing12-mission__title {
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    color: var(--fc-ink);
+    font-family: var(--font-action);
+    letter-spacing: 0.03em;
+    line-height: 1.03;
+    font-size: clamp(1.65rem, 3.5vw, 3rem);
+}
+
+.landing12-mission__body {
+    margin: 0;
+    color: var(--fc-muted);
+    line-height: 1.5;
+    font-size: clamp(0.96rem, 1.2vw, 1.12rem);
+}
+
+.landing12-mission__body+.landing12-mission__body {
+    margin-top: 1rem;
+}
+
+.landing12-mission__body strong {
+    color: var(--fc-ink);
+    font-weight: 700;
+}
+
+.landing12-mission__cta {
+    margin-top: 1.35rem;
+}
+
+.landing12-mission__rail {
+    display: grid;
+    gap: clamp(0.9rem, 1.8vw, 1.25rem);
+}
+
+.landing12-mission__panel--impact {
+    background: #0a0a0a;
+}
+
+.landing12-mission__impact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.95rem;
+}
+
+.landing12-mission__impact-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.72rem;
+    align-items: start;
+    color: var(--fc-muted);
+    font-size: 0.95rem;
+    line-height: 1.42;
+}
+
+.landing12-mission__impact-icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    color: var(--fc-accent);
+    margin-top: 0.1rem;
+    flex: 0 0 auto;
+}
+
+.landing12-mission__media {
+    margin: 0;
+    position: relative;
+    border: 0;
+    overflow: hidden;
+    min-height: clamp(220px, 25vw, 320px);
+}
+
+.landing12-mission__cta .landing12-btn--ghost {
+    border-color: transparent;
+}
+
+.landing12-mission__cta .landing12-btn--ghost:hover,
+.landing12-mission__cta .landing12-btn--ghost:focus-visible {
+    border-color: transparent;
+}
+
+.landing12-mission__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.landing12-mission__overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    align-content: end;
+    gap: 0.2rem;
+    padding: clamp(0.9rem, 2vw, 1.4rem);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.84));
+}
+
+.landing12-mission__stand {
+    margin: 0;
+    font-family: var(--font-action);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    line-height: 0.95;
+    color: var(--fc-ink);
+}
+
+.landing12-mission__yield {
+    margin: 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fc-accent);
+    font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+    .landing12-mission__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .landing12-mission__rail {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .landing12-mission .landing12-btn {
+        padding-inline: 0.95rem;
+    }
+}
+
+@media (max-width: 760px) {
+    .landing12-mission {
+        padding-top: 2.2rem;
+        padding-bottom: 2.2rem;
+    }
+
+    .landing12-mission__panel {
+        padding: 1rem;
+    }
+
+    .landing12-mission__bg-copy {
+        font-size: clamp(1.25rem, 8vw, 2.2rem);
+        opacity: 0.7;
+    }
+
+    .landing12-mission__rail {
+        grid-template-columns: 1fr;
+    }
+
+    .landing12-mission__cta {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .landing12-mission__cta .landing12-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
