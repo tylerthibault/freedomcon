@@ -29,82 +29,137 @@ travel_info = {
     "important_note": "Travelers using I-90 East from Seattle may experience delays near the Vantage Bridge due to ongoing construction.",
 }
 
-camping_options = [
-    {
-        "name": "Premier Camping",
-        "type": "Upgraded Camping Experience",
-        "details": "Located closer to the venue with quicker entry and exit, upgraded facilities, and a more spacious setup.",
-        "price": "Available at ticket checkout",
-        "checkout_price": "$132",
-    },
-    {
-        "name": "Terrace Camping",
-        "type": "Highest-Tier Camping",
-        "details": "Premium views, expanded space, private restrooms, dedicated staff, and a more exclusive atmosphere.",
-        "price": "Available at ticket checkout",
-        "checkout_price": "$132",
-    },
-]
-
 hotel_options = [
     {
         "name": "George",
         "distance": "~8 miles",
         "details": "Drive Time: ~12 minutes. Hotels here will go fast due to the short drive from The Gorge.",
         "hotels": [
-            "Holiday Inn Express & Suites George - Quincy South by IHG",
-            "Wingate by Wyndham Moses Lake",
-            "Fairfield Inn & Suites Moses Lake",
+            {
+                "name": "Holiday Inn Express & Suites George - Quincy South by IHG",
+                "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/george/eatgw/hoteldetail?cm_mmc=YextLocal-_-EX-_-US-_-EATGW",
+                "valid_link": False,
+            },
+            {
+                "name": "Wingate by Wyndham Moses Lake",
+                "link": "https://www.wyndhamhotels.com/wingate/moses-lake-washington/wingate-by-wyndham-moses-lake/overview",
+                "valid_link": False,
+            },
+            {
+                "name": "Fairfield Inn & Suites Moses Lake",
+                "link": "https://www.marriott.com/en-us/hotels/seaom-fairfield-inn-and-suites-moses-lake/overview/",
+                "valid_link": False,
+            },
         ],
     },
     {
         "name": "Quincy",
         "distance": "~10 miles",
-        "details": "Drive Time: 15–20 minutes. Quincy is the closest town to The Gorge, but availability is limited.",
+        "details": "Drive Time: 15\u201320 minutes",
         "hotels": [
-            "Quincy Inn & Suites",
-            "Knights Inn Quincy",
-            "Sagecliffe Resort & Spa",
+            {
+                "name": "Quincy Inn & Suites",
+                "link": "https://www.choicehotels.com/washington/quincy/quality-inn-hotels",
+                "valid_link": False,
+            },
+            {
+                "name": "Knights Inn Quincy",
+                "link": "https://www.wyndhamhotels.com/knights-inn/quincy-washington/knights-inn-quincy/overview",
+                "valid_link": False,
+            },
+            {
+                "name": "Sagecliffe Resort & Spa",
+                "link": "https://www.sagecliffe.com",
+                "valid_link": False,
+            },
         ],
     },
     {
         "name": "Ephrata",
         "distance": "~25 miles",
-        "details": "Drive Time: 30–35 minutes. A small, quiet town with limited lodging options.",
+        "details": "Drive Time: 30\u201335 minutes.",
         "hotels": [
-            "Best Western Rama Inn",
-            "Ephrata Inn Motel",
-            "Sunland Inn Motel",
+            {
+                "name": "Best Western Rama Inn",
+                "link": "https://www.bestwestern.com/en_US/book/hotels-in-ephrata/best-western-rama-inn/propertyCode.38090.html",
+                "valid_link": False,
+            },
+            {
+                "name": "Ephrata Inn Motel",
+                "link": "https://www.ephratainns.com",
+                "valid_link": False,
+            },
+            {
+                "name": "Sunland Inn Motel",
+                "link": "",
+                "valid_link": False,
+            },
         ],
     },
     {
         "name": "Moses Lake",
         "distance": "~35 miles",
-        "details": "Drive Time: 35–45 minutes. One of the most popular places to stay with the largest selection of hotels and services.",
+        "details": "Drive Time: 35\u201345 minutes.",
         "hotels": [
-            "Inn at Moses Lake",
-            "Wingate by Wyndham Moses Lake",
-            "Fairfield Inn & Suites Moses Lake",
+            {
+                "name": "Inn at Moses Lake",
+                "link": "https://www.innatmoseslake.com",
+                "valid_link": False,
+            },
+            {
+                "name": "Wingate by Wyndham Moses Lake",
+                "link": "https://www.wyndhamhotels.com/wingate/moses-lake-washington/wingate-by-wyndham-moses-lake/overview",
+                "valid_link": False,
+            },
+            {
+                "name": "Fairfield Inn & Suites Moses Lake",
+                "link": "https://www.marriott.com/en-us/hotels/seaom-fairfield-inn-and-suites-moses-lake/overview/",
+                "valid_link": False,
+            },
         ],
     },
     {
         "name": "Ellensburg",
         "distance": "~40 miles",
-        "details": "Drive Time: 40–50 minutes. A strong west-side option along I-90 with good hotel and dining access.",
+        "details": "Drive Time: 40\u201350 minutes.",
         "hotels": [
-            "Holiday Inn Express Ellensburg",
-            "Best Western Plus Ellensburg Hotel",
-            "Hampton Inn Ellensburg",
+            {
+                "name": "Holiday Inn Express Ellensburg",
+                "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/ellensburg/ekawu/hoteldetail",
+                "valid_link": False,
+            },
+            {
+                "name": "Best Western Plus Ellensburg Hotel",
+                "link": "https://www.bestwestern.com/en_US/book/hotels-in-ellensburg/best-western-plus-ellensburg-hotel/propertyCode.09123.html",
+                "valid_link": False,
+            },
+            {
+                "name": "Hampton Inn Ellensburg",
+                "link": "https://www.hilton.com/en/hotels/elawahx-hampton-ellensburg/",
+                "valid_link": False,
+            },
         ],
     },
     {
         "name": "Wenatchee & East Wenatchee",
         "distance": "~45 miles",
-        "details": "Drive Time: 45–60 minutes. More upscale lodging, restaurants, and riverfront options.",
+        "details": "Drive Time: 45\u201360 minutes.",
         "hotels": [
-            "Coast Wenatchee Center Hotel",
-            "Hilton Garden Inn Wenatchee",
-            "Best Western Plus East Wenatchee Inn",
+            {
+                "name": "Coast Wenatchee Center Hotel",
+                "link": "https://www.coasthotels.com/hotels/washington/wenatchee/coast-wenatchee-center-hotel/",
+                "valid_link": False,
+            },
+            {
+                "name": "Hilton Garden Inn Wenatchee",
+                "link": "https://www.hilton.com/en/hotels/wenwhgi-hilton-garden-inn-wenatchee/",
+                "valid_link": False,
+            },
+            {
+                "name": "Best Western Plus East Wenatchee Inn",
+                "link": "https://www.bestwestern.com/en_US/book/hotels-in-east-wenatchee/best-western-plus-east-wenatchee-inn/propertyCode.09166.html",
+                "valid_link": False,
+            },
         ],
     },
 ]
