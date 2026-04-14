@@ -1087,7 +1087,7 @@ body.landing12-no-scroll {
 
 .landing12-crowder__bg {
     position: absolute;
-    inset: -6% 0;
+    inset: -10% 0;
     background-image: url("../../img/conference_info/crowder.jpg");
     background-size: cover;
     background-position: center 12%;
@@ -1109,7 +1109,7 @@ body.landing12-no-scroll {
     z-index: 2;
     width: min(1120px, 92vw);
     margin: 0 auto;
-    padding: clamp(3.5rem, 8vw, 7rem) clamp(1rem, 2.2vw, 1.8rem) clamp(2rem, 4vw, 3rem);
+    padding: clamp(3.5rem, 8vw, 7rem) clamp(1rem, 3vw, 2rem) clamp(2rem, 4vw, 3rem);
     color: var(--color-secondary);
 }
 
