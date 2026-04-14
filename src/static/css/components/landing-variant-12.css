@@ -1721,10 +1721,25 @@ body.landing12-no-scroll {
 }
 
 .landing12-why-now {
-    background: #0a0a0a;
+    background-color: #0a0a0a;
+    background-image: url('/static/img/FLAG%202.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.landing12-why-now::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.82);
+    pointer-events: none;
 }
 
 .landing12-why-now__inner {
+    position: relative;
+    z-index: 1;
     padding-top: clamp(1.2rem, 2.3vw, 2rem);
     padding-bottom: clamp(1.2rem, 2.3vw, 2rem);
 }
@@ -1748,6 +1763,7 @@ body.landing12-no-scroll {
     font-family: var(--font-action);
     line-height: 1.08;
     font-size: clamp(1.3rem, 2.8vw, 2.15rem);
+    color: #ffffff;
 }
 
 .landing12-why-now__copy,
@@ -1759,30 +1775,151 @@ body.landing12-no-scroll {
     max-width: 72ch;
 }
 
+.landing12-why-now__cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+}
+
+.landing12-why-now__cols .landing12-why-now__copy {
+    margin-top: 0;
+    max-width: none;
+    color: #ffffff;
+}
+
+.landing12-why-now__pull {
+    margin: 1.6rem 0 0;
+    padding: 1.1rem 1.4rem;
+    border-left: 3px solid var(--fc-accent);
+    background: rgba(188, 42, 39, 0.07);
+    color: #ffffff;
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.6;
+    font-style: italic;
+    max-width: 72ch;
+}
+
+@media (max-width: 640px) {
+    /* Stack to single column */
+    .landing12-why-now__cols {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    /* Tighter font size for dense copy on small screens */
+    .landing12-why-now__cols .landing12-why-now__copy {
+        font-size: 0.93rem;
+        line-height: 1.65;
+    }
+    /* Red hairline divider between the two paragraphs */
+    .landing12-why-now__cols .landing12-why-now__copy:first-child {
+        padding-bottom: 1.1rem;
+        border-bottom: 1px solid rgba(188, 42, 39, 0.45);
+    }
+    .landing12-why-now__cols .landing12-why-now__copy:last-child {
+        padding-top: 1.1rem;
+    }
+    /* Red accent rule beneath the h2 */
+    .landing12-why-now__title::after {
+        content: '';
+        display: block;
+        width: 3rem;
+        height: 2px;
+        background: var(--fc-accent);
+        margin: 0.6rem auto 0;
+    }
+    /* Pull quote: swap left border for top border, full width */
+    .landing12-why-now__pull {
+        border-left: none;
+        border-top: 3px solid var(--fc-accent);
+        padding: 1rem 0.25rem 0;
+        max-width: 100%;
+        font-size: 0.95rem;
+    }
+}
+
 .landing12-what-expect {
     background: #000;
 }
 
 .landing12-what-expect__inner {
     padding-top: clamp(1.5rem, 2.8vw, 2.4rem);
-    padding-bottom: clamp(1.1rem, 2.2vw, 1.9rem);
+    padding-bottom: clamp(1.5rem, 2.8vw, 2.4rem);
 }
 
-.landing12-what-expect__list {
-    margin: 0.9rem 0 0;
-    padding-left: 1.15rem;
+.landing12-what-expect__grid {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
     display: grid;
-    gap: 0.55rem;
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 76ch;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
 }
 
-.landing12-what-expect__list li {
-    line-height: 1.45;
+.landing12-what-expect__item {
+    display: flex;
+    flex-direction: row;
+    gap: 0.85rem;
+    align-items: flex-start;
+    padding: 0 clamp(0.75rem, 1.5vw, 1.25rem);
+    border-left: 1px solid var(--fc-line);
+}
+
+.landing12-what-expect__item:first-child {
+    padding-left: 0;
+    border-left: none;
+}
+
+.landing12-what-expect__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--fc-accent);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.landing12-what-expect__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.landing12-what-expect__item-title {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-action);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+    line-height: 1.1;
+    color: #ffffff;
+}
+
+.landing12-what-expect__item-body {
+    margin: 0;
+    color: var(--fc-muted);
+    font-size: clamp(0.85rem, 0.95vw, 0.93rem);
+    line-height: 1.5;
 }
 
 .landing12-what-expect .landing12-cta-row {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 860px) {
+    .landing12-what-expect__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+    .landing12-what-expect__item {
+        border-left: none;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing12-what-expect__grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }
 
 .landing12-father-son {

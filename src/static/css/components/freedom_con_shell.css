@@ -565,21 +565,27 @@ body.landing12-no-scroll {
 }
 
 .fc-page__mantra {
-    margin-top: 1.2rem;
-    padding: 0.9rem 1rem;
-    border: 1px solid var(--fc-line);
-    background: linear-gradient(120deg, rgba(188, 42, 39, 0.12), rgba(188, 42, 39, 0.03));
+    margin-top: 2rem;
+    padding: clamp(2rem, 5vw, 3rem) 1rem;
+    border: 1px solid rgba(188, 42, 39, 0.45);
+    background: linear-gradient(135deg, rgba(188, 42, 39, 0.18) 0%, rgba(188, 42, 39, 0.06) 50%, transparent 100%);
+    text-align: center;
     display: grid;
-    gap: 0.4rem;
+    gap: 0.6rem;
 }
 
-.fc-page__mantra p {
+.fc-page__mantra-line {
     margin: 0;
     font-family: var(--font-secondary);
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    font-size: clamp(0.9rem, 1.8vw, 1.05rem);
-    color: rgba(255, 255, 255, 0.95);
+    font-size: clamp(1.4rem, 3.2vw, 2.2rem);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.1;
+}
+
+.fc-page__mantra-line--accent {
+    color: var(--fc-accent);
 }
 
 .fc-page__section {
@@ -603,6 +609,41 @@ body.landing12-no-scroll {
     letter-spacing: 0.01em;
 }
 
+.fc-page__section--valley {
+    border-top: 3px solid var(--fc-accent);
+    background: linear-gradient(135deg, rgba(188, 42, 39, 0.14) 0%, rgba(188, 42, 39, 0.04) 60%, transparent 100%);
+    padding: 1.8rem 1.4rem;
+    margin-left: -1.4rem;
+    margin-right: -1.4rem;
+}
+
+.fc-page__section--valley h2 {
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.fc-page__img-break {
+    margin-top: 2.2rem;
+    width: 100%;
+    height: clamp(180px, 25vw, 300px);
+    background-image: url('/static/img/past_smc/CDC4907R.jpg');
+    background-size: cover;
+    background-position: center 35%;
+    position: relative;
+    overflow: hidden;
+}
+
+.fc-page__img-break::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.6) 0%,
+        rgba(188, 42, 39, 0.12) 50%,
+        rgba(0, 0, 0, 0.6) 100%
+    );
+}
+
 .fc-page__pillars {
     margin-top: 1rem;
     display: grid;
@@ -612,8 +653,14 @@ body.landing12-no-scroll {
 
 .fc-page__pillar {
     border: 1px solid var(--fc-line);
+    border-top: 3px solid var(--fc-accent);
     background: rgba(255, 255, 255, 0.02);
-    padding: 0.95rem 1rem;
+    padding: 1.1rem 1rem;
+    transition: background 0.2s;
+}
+
+.fc-page__pillar:hover {
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .fc-page__pillar h3 {
@@ -641,6 +688,24 @@ body.landing12-no-scroll {
     line-height: 1.5;
 }
 
+.fc-page__list--accented {
+    list-style: none;
+    padding-left: 0;
+}
+
+.fc-page__list--accented li {
+    padding-left: 1.3rem;
+    position: relative;
+}
+
+.fc-page__list--accented li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--fc-accent);
+    font-weight: 700;
+}
+
 .fc-page__commitments {
     margin-top: 1rem;
     display: grid;
@@ -650,16 +715,24 @@ body.landing12-no-scroll {
 
 .fc-page__commitment {
     border: 1px solid var(--fc-line);
+    border-top: 3px solid var(--fc-accent);
     background: rgba(255, 255, 255, 0.02);
-    padding: 0.95rem 1rem;
+    padding: 1.1rem 1rem;
+    transition: background 0.2s;
+}
+
+.fc-page__commitment:hover {
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .fc-page__commitment span {
-    display: inline-block;
+    display: block;
     font-family: var(--font-secondary);
-    font-size: 0.82rem;
-    letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: rgba(188, 42, 39, 0.45);
+    margin-bottom: 0.4rem;
 }
 
 .fc-page__commitment h3 {
@@ -678,13 +751,16 @@ body.landing12-no-scroll {
 }
 
 .fc-page__quote {
-    margin: 2rem 0 0;
-    padding: 1rem 1.1rem;
-    border-left: 3px solid var(--fc-accent);
-    background: rgba(188, 42, 39, 0.08);
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
     color: rgba(255, 255, 255, 0.95);
-    font-size: clamp(1.02rem, 1.7vw, 1.2rem);
-    letter-spacing: 0.01em;
+    font-family: var(--font-secondary);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 1.3;
 }
 
 .fc-page__actions {
@@ -694,12 +770,273 @@ body.landing12-no-scroll {
     flex-wrap: wrap;
 }
 
+.fc-page__finale {
+    margin-top: 2.8rem;
+    padding: clamp(1.8rem, 4vw, 2.8rem) 1.5rem;
+    border: 1px solid rgba(188, 42, 39, 0.4);
+    background: linear-gradient(135deg, rgba(188, 42, 39, 0.12) 0%, rgba(0, 0, 0, 0.25) 100%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fc-page__finale-cta-label {
+    margin: 1rem 0 0;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    max-width: 480px;
+    line-height: 1.55;
+}
+
+.fc-page__finale .fc-page__actions {
+    justify-content: center;
+}
+
 @media (max-width: 860px) {
     .fc-page__pillars {
         grid-template-columns: 1fr;
     }
 
     .fc-page__commitments {
+        grid-template-columns: 1fr;
+    }
+
+    .fc-page__section--valley {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .fc-page__mantra-line {
+        font-size: clamp(1.1rem, 5vw, 1.6rem);
+    }
+}
+
+/* ─── Experience Page ─── */
+
+.fc-exp-schedule {
+    margin-top: 1.2rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fc-exp-day {
+    border: 1px solid var(--fc-line);
+    border-top: 3px solid var(--fc-accent);
+    background: rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+}
+
+.fc-exp-day__header {
+    padding: 1rem 1.1rem 0.8rem;
+    border-bottom: 1px solid var(--fc-line);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.fc-exp-day__label {
+    display: block;
+    font-family: var(--font-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fc-accent);
+    margin-bottom: 0.25rem;
+}
+
+.fc-exp-day__title {
+    margin: 0;
+    font-family: var(--font-secondary);
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+}
+
+.fc-exp-day__items {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    list-style: none;
+    display: grid;
+    gap: 0.55rem;
+}
+
+.fc-exp-day__items li {
+    padding-left: 1.1rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.fc-exp-day__items li::before {
+    content: '\2014';
+    position: absolute;
+    left: 0;
+    color: var(--fc-accent);
+    font-weight: 700;
+}
+
+.fc-exp-layers {
+    margin-top: 1.2rem;
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.fc-exp-layer {
+    border: 1px solid var(--fc-line);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1.2rem 1rem;
+    transition: background 0.2s;
+}
+
+.fc-exp-layer:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.fc-exp-layer__num {
+    display: block;
+    font-family: var(--font-secondary);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1;
+    color: rgba(188, 42, 39, 0.35);
+    margin-bottom: 0.5rem;
+}
+
+.fc-exp-layer h3 {
+    margin: 0 0 0.4rem;
+    font-family: var(--font-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+}
+
+.fc-exp-layer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.55;
+}
+
+.fc-exp-encounter {
+    margin-top: 1.2rem;
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fc-exp-encounter__item {
+    border: 1px solid var(--fc-line);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1.1rem 1rem;
+    transition: background 0.2s;
+}
+
+.fc-exp-encounter__item:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.fc-exp-encounter__item > span {
+    display: block;
+    font-size: 1.3rem;
+    color: var(--fc-accent);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.fc-exp-encounter__item h3 {
+    margin: 0 0 0.4rem;
+    font-family: var(--font-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+}
+
+.fc-exp-encounter__item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.55;
+}
+
+.fc-exp-fatherson {
+    margin-top: 2.4rem;
+    background-image: url('/static/img/past_smc/CDC4835.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.fc-exp-fatherson::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.65) 55%, rgba(188, 42, 39, 0.2) 100%);
+}
+
+.fc-exp-fatherson__inner {
+    position: relative;
+    z-index: 1;
+    padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+    max-width: 680px;
+}
+
+.fc-exp-fatherson__eyebrow {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fc-accent);
+}
+
+.fc-exp-fatherson__title {
+    margin: 0 0 1rem;
+    font-family: var(--font-secondary);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+}
+
+.fc-exp-fatherson__body {
+    margin: 0 0 1.8rem;
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.65;
+    max-width: 560px;
+}
+
+.fc-exp-fatherson__body em {
+    font-style: italic;
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .fc-exp-layers {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .fc-exp-schedule {
+        grid-template-columns: 1fr;
+    }
+
+    .fc-exp-encounter {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .fc-exp-layers {
+        grid-template-columns: 1fr;
+    }
+
+    .fc-exp-encounter {
         grid-template-columns: 1fr;
     }
 }
