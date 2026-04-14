@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/speakers.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-variant-12.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-social-proof-v12.css') }}">
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/mission-statement.css') }}">
 {% endblock %}
 
 {% block navigation %}
@@ -81,6 +81,8 @@
         <p class="landing12-event-highlight__date">June 19<span class="landing12-event-highlight__date-sup">th</span> - 20<span class="landing12-event-highlight__date-sup">th</span></p>
     </section>
 
+    {% include 'public/landing/components/why_now.html' %}
+
     <section class="landing12-liberty" aria-label="Call to join the cause of liberty">
         <video class="landing12-liberty-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
             <source src="https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/PHOTO%20REEL%202.mp4" type="video/mp4">
@@ -91,14 +93,11 @@
     </section>
 
 
-    <!-- <section>
-        <p>FREEDOM CON is more than a conference, it is a strategic assembly of men from
-Washington and across the nation to confront tax tyranny, radical legislation, and
-bureaucratic overreach that threaten to suﬀocate families, small businesses, and
-churches. Through worship, preaching, historic storytelling, side-stage equipping, and
-a clear playbook for civic engagement and reform, men will be given language for their
-frustration and specific steps to channel it into courageous, coordinated action.</p>
-    </section> -->
+    {% include 'public/landing/components/info_block_1.html' %}
+
+    {% include 'public/landing/components/what_to_expect.html' %}
+
+    {% include 'public/landing/components/father_son_callout.html' %}
 
     <section class="landing12-wrap landing12-wrap--cta" aria-label="Primary calls to action">
         <div class="landing12-cta-row landing12-cta-row--center">

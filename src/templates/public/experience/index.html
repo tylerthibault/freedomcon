@@ -1,0 +1,91 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main>
+	{{ slim_banner("THE EXPERIENCE") }}
+	<section class="fc-page" aria-label="The Experience">
+		<div class="fc-page__inner">
+			<h1 class="fc-page__title">The Experience</h1>
+			<p class="fc-page__lead">A one-time, two-day Father&apos;s Day weekend gathering at The Gorge Amphitheater featuring worship, preaching, equipping, and practical activation for men.</p>
+
+			<section class="fc-page__section" aria-label="Experience overview">
+				<h2>Built As an Experience, Not Just an Event</h2>
+				<p>The weekend is designed to move the heart, sharpen conviction, and produce action. Every element is built for pacing and momentum—so men are not just inspired in the moment, but commissioned for what comes next.</p>
+			</section>
+
+			<section class="fc-page__section" id="competitions" aria-label="Competitions">
+				<h2>Competitions</h2>
+				<p>Men will be challenged to step into courageous action and disciplined brotherhood through high-engagement moments designed to call men up, not keep them passive.</p>
+				<ul class="fc-page__list">
+					<li>Challenge-driven experiences that reward grit, leadership, and teamwork.</li>
+					<li>Father-and-son participation opportunities.</li>
+					<li>High-energy environments that celebrate biblical manhood.</li>
+				</ul>
+			</section>
+
+			<section class="fc-page__section" id="side-stage" aria-label="Side Stage">
+				<h2>Side Stage</h2>
+				<p>Beyond the main stage, side-stage sessions will provide tactical equipping for pastors, businessmen, fathers, and civic leaders looking for practical next steps.</p>
+				<ul class="fc-page__list">
+					<li>Focused teaching and breakout-style equipping.</li>
+					<li>Live podcast recordings and strategic conversations.</li>
+					<li>Tools and language for local action back home.</li>
+					<li>Movement tracks featuring For Liberty &amp; Justice, Black Robed Regiment, and next-step pathways.</li>
+				</ul>
+			</section>
+
+			<section class="fc-page__section" id="schedule" aria-label="Schedule">
+				<h2>Schedule</h2>
+				<p>The weekend is structured around worship, main-stage messages, side-stage equipping, and commissioning moments for fathers and sons.</p>
+				<ul class="fc-page__list">
+					<li><strong>Friday, June 19:</strong> Opening sessions, worship, and rally moments.</li>
+					<li><strong>Saturday, June 20:</strong> Full-day equipping, activation, and commissioning.</li>
+					<li><strong>All weekend:</strong> ManTown vendors, connection points, and ministry opportunities.</li>
+				</ul>
+			</section>
+
+			<section class="fc-page__section" aria-label="Four layers of the weekend">
+				<h2>Four Layers of the Weekend</h2>
+				<ul class="fc-page__list">
+					<li><strong>Self-guided:</strong> personal prayer and devotional preparation.</li>
+					<li><strong>Wander-through:</strong> ManTown, resource tents, and connection spaces.</li>
+					<li><strong>Side-stage:</strong> tactical equipping and focused tracks.</li>
+					<li><strong>Main-stage:</strong> worship, preaching, stories, and commissioning.</li>
+				</ul>
+			</section>
+
+			<section class="fc-page__section" aria-label="What men can expect">
+				<h2>What Men Can Expect</h2>
+				<ul class="fc-page__list">
+					<li>Worship Christ with thousands of men.</li>
+					<li>Hear stories of courage from pastors, leaders, and patriots.</li>
+					<li>Receive practical steps for home, church, business, and civic life.</li>
+					<li>Stand shoulder-to-shoulder with men committed to rebuilding.</li>
+				</ul>
+			</section>
+
+			<section class="fc-page__section" aria-label="Father and son emphasis">
+				<h2>Fathers and Sons</h2>
+				<p>This weekend is intentionally intergenerational. Fathers and sons will worship together, hear a shared call to courage, and stand together in moments designed to mark families for years to come.</p>
+			</section>
+
+			<div class="fc-page__actions">
+				<a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+				<a class="landing12-btn landing12-btn--ghost" href="{{ url_for('public.story_page') }}">Read The Story</a>
+			</div>
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

@@ -338,6 +338,42 @@ def tickets_page() -> str:
 # 	)
 
 
+@public_bp.get("/vision")
+def vision_page() -> str:
+	return render_template(
+		"public/vision/index.html",
+		seo=build_seo(
+			title="The Vision | Freedom Con 2026",
+			description="Discover the vision and mission behind Freedom Con 2026 — a movement calling men to faith, statesmanship, and brotherhood.",
+			path="/vision",
+		),
+	)
+
+
+@public_bp.get("/experience")
+def experience_page() -> str:
+	return render_template(
+		"public/experience/index.html",
+		seo=build_seo(
+			title="The Experience | Freedom Con 2026",
+			description="Explore the full Freedom Con experience — competitions, side stage, schedule, and everything happening at The Gorge.",
+			path="/experience",
+		),
+	)
+
+
+@public_bp.get("/story")
+def story_page() -> str:
+	return render_template(
+		"public/story/index.html",
+		seo=build_seo(
+			title="The Freedom Con Story | Long Form Videos, Podcasts & Media",
+			description="Explore the Freedom Con story through long form videos, podcast episodes, and the official media kit.",
+			path="/story",
+		),
+	)
+
+
 @public_bp.get("/venue-map-svg")
 def venue_map_svg_page() -> str:
 	return redirect(url_for("public.where_page"), code=301)
@@ -361,7 +397,10 @@ def sitemap_xml() -> Response:
 	lastmod = date.today().isoformat()
 	pages = [
 		"/",
+		"/vision",
+		"/experience",
 		"/about-smn",
+		"/story",
 		"/faqs",
 		"/speakers",
 		"/artists",
