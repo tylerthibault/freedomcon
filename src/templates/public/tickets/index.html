@@ -35,6 +35,9 @@
 				<article class="ticket-card{% if ticket.highlight %} ticket-card--highlight{% endif %}" role="listitem">
 					<h3 class="ticket-card__name">{{ ticket.name }}</h3>
 					<p class="ticket-card__price">{{ ticket.price|replace('\n', '<br>')|safe }}</p>
+					{% if ticket.tax_total %}
+					<p class="ticket-card__tax-total">{{ ticket.tax_total }}</p>
+					{% endif %}
 					{% if ticket.notes and ticket.notes|length %}
 					<ul class="ticket-card__notes" aria-label="{{ ticket.name }} benefits">
 						{% for note in ticket.notes %}
