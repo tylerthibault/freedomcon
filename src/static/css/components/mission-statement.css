@@ -35,7 +35,7 @@
     line-height: 0.9;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: rgba(188, 42, 39, 0.1);
+    color: rgba(188, 42, 39, 0.055);
     text-align: right;
     max-width: 11ch;
     pointer-events: none;
@@ -202,7 +202,7 @@
 
     .landing12-mission__bg-copy {
         font-size: clamp(1.25rem, 8vw, 2.2rem);
-        opacity: 0.7;
+        opacity: 0.55;
     }
 
     .landing12-mission__rail {
