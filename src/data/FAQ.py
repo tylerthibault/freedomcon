@@ -105,6 +105,10 @@ FAQ = {
     ],
     "Camping FAQ's": [
         {
+            "question": "What time is check in/check out at the campground?",
+            "answer": "You can check into the campground as early as 12pm on Friday. Check out will be 11am on Sunday.",
+        },
+        {
             "question": "What does the camping purchase include?",
             "answer": "Your camping purchase secures a site in the Premier or Terrace Campground areas for Friday night and Saturday night into Sunday morning. Purchase your camping spot when you buy your event ticket.",
         },

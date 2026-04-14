@@ -4,7 +4,7 @@ import re
 
 from flask import Blueprint, Response, redirect, render_template, url_for
 from src.data.FAQ import FAQ
-from src.data.accommodations import camping_options, hotel_options, travel_info
+from src.data.accommodations import hotel_options, travel_info
 from src.data.artists import artists
 from src.data.social_proof import social_proof
 from src.data.speakers import speakers as speakers_data
@@ -263,7 +263,6 @@ def accommodations_page() -> str:
 	return render_template(
 		"public/accomodations/index.html",
 		travel_info=travel_info,
-		camping_options=camping_options,
 		hotel_options=hotel_options,
 		seo=build_seo(
 			title="Freedom Con Accommodations | Travel, Camping, and Lodging",
