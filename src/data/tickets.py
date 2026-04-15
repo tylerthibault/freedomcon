@@ -1,7 +1,7 @@
 from datetime import date
 
 
-EARLY_BIRD_END = date(2026, 4, 15)
+EARLY_BIRD_END = date(2026, 5, 1)
 EVENT_START = date(2026, 6, 19)
 EVENT_END = date(2026, 6, 20)
 
@@ -43,7 +43,7 @@ ticket_meta = {
     "subtitle": "Rise Of The Statesman",
     "kicker": "An American Congress of Christian Men",
     "dates": "June 19-20",
-    "notice": "General Admission early pricing ends April 15",
+    "notice": "General Admission early pricing ends May 1",
     "cta_label": "Get Your Ticket",
     "cta_href": "#",
 }
@@ -57,10 +57,10 @@ def build_urgency(today: date | None = None) -> dict[str, str | bool]:
             "phase": "early_bird",
             "countdown_target": "2026-06-19T17:00:00-07:00",
             "countdown_label": "Kickoff Starts In",
-            "headline": "Early pricing closes April 15",
+            "headline": "Early pricing closes May 1",
             "body": "Lock in your rate before pricing updates.",
-            "tickets_notice": "General Admission early pricing ends April 15.",
-            "nav_line": "Early bird pricing through April 15.",
+            "tickets_notice": "General Admission early pricing ends May 1.",
+            "nav_line": "Early bird pricing through May 1.",
             "show_countdown": True,
         }
 

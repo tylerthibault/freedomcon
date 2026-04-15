@@ -643,7 +643,6 @@ body.landing12-no-scroll {
 .landing12-cta-2__content p {
     margin: 0 auto 1.3rem;
     max-width: 40ch;
-    font-size: clamp(1rem, 2vw, 1.35rem);
     line-height: 1.35;
 }
 
@@ -765,7 +764,6 @@ body.landing12-no-scroll {
 .landing12-happening-head p {
     margin: 0;
     color: var(--fc-muted);
-    font-size: 1rem;
 }
 
 .landing12-happening-head-copy {
@@ -894,7 +892,6 @@ body.landing12-no-scroll {
     text-transform: uppercase;
     letter-spacing: 0.09em;
     color: var(--fc-accent);
-    font-size: 0.67rem;
     font-weight: 700;
 }
 
@@ -1216,7 +1213,6 @@ body.landing12-no-scroll {
     margin: 0;
     font-style: italic;
     font-family: var(--font-action);
-    font-size: 1.45rem;
     line-height: 1.25;
 }
 
@@ -1446,7 +1442,6 @@ body.landing12-no-scroll {
 .landing12-join p {
     margin: 0 0 1.5rem;
     color: var(--fc-muted);
-    font-size: clamp(1rem, 1.8vw, 1.15rem);
 }
 
 .footer-countdown-wrap,
@@ -1808,7 +1803,7 @@ body.landing12-no-scroll {
     }
     /* Tighter font size for dense copy on small screens */
     .landing12-why-now__cols .landing12-why-now__copy {
-        font-size: 0.93rem;
+        font-size: 1.4em;
         line-height: 1.65;
     }
     /* Red hairline divider between the two paragraphs */
@@ -1819,15 +1814,22 @@ body.landing12-no-scroll {
     .landing12-why-now__cols .landing12-why-now__copy:last-child {
         padding-top: 1.1rem;
     }
+    /* Center the title on mobile */
+    .landing12-why-now__title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
     /* Red accent rule beneath the h2 */
-    .landing12-why-now__title::after {
+    /* .landing12-why-now__title::after {
         content: '';
         display: block;
         width: 3rem;
         height: 2px;
         background: var(--fc-accent);
         margin: 0.6rem auto 0;
-    }
+    } */
     /* Pull quote: swap left border for top border, full width */
     .landing12-why-now__pull {
         border-left: none;
