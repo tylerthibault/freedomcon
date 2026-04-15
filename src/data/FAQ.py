@@ -74,7 +74,7 @@ FAQ = {
         },
         {
             "question": "Do I need to bring my own chair?",
-            "answer": "Lawn chairs are available for rent inside the venue. You're also welcome to bring a blanket (no larger than 50\" x 60\") to sit on.",
+            "answer": "There are 4500 general admission, first come first serve chairs on the floor. There are also lawn chairs for rent to be used on the lawn. You're also welcome to bring a blanket (no larger than 50\" x 60\") to sit on.",
         },
         {
             "question": "What items are not allowed at Stronger Man Con?",
