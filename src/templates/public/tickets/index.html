@@ -1,5 +1,6 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/page_hero.html" import page_hero %}
+{% from "components/macros/banner.html" import slim_banner %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/tickets.css') }}">
@@ -13,6 +14,7 @@
 {% set countdown_target = '2026-06-19T17:00:00-07:00' %}
 <main class="tickets-page">
 	{{ page_hero("Stronger Man Nation Presents", ticket_meta.event_title, ticket_meta.subtitle ~ " · " ~ ticket_meta.kicker) }}
+	{{ slim_banner("GET YOUR TICKET") }}
 
 	<section class="tickets-section" aria-label="Ticket pricing">
 		<div class="tickets-section__inner container-xl">
@@ -42,10 +44,35 @@
                 {% endwith %}
             </div>
 			<p class="tickets-section__notice">{{ ticket_meta.notice }}</p>
+			<div class="tickets-scroll-hint" aria-label="More on this page">
+				<a class="tickets-scroll-hint__link" href="#whats-included">What&apos;s Included ↓</a>
+				<a class="tickets-scroll-hint__link" href="#current-deals">Current Deals ↓</a>
+			</div>
 		</div>
 	</section>
 
-	<section class="tickets-promos" aria-label="Ticket promotions and deals">
+	<section id="whats-included" class="tickets-section tickets-includes" aria-label="What's included with your ticket">
+		<div class="tickets-section__inner container-xl">
+			<h2 class="tickets-section__heading">What&apos;s Included</h2>
+			<p class="tickets-includes__lead">Registration covers all events Friday &amp; Saturday, including:</p>
+			<ul class="fc-exp-includes__list">
+				<li>Parking</li>
+				<li>Swag bag</li>
+				<li>3 main sessions</li>
+				<li>6 breakout sessions</li>
+				<li>Stronger Man Competitions</li>
+				<li>Stronger Boy Challenge Course</li>
+				<li>Live-Pod Studio</li>
+				<li>Danny Gokey worship</li>
+				<li>Stephen McKruiter</li>
+				<li>Dragon Killer House Band</li>
+				<li>World Premiere &mdash; Project ManCard Documentary</li>
+				<li>David Crowder Concert</li>
+			</ul>
+		</div>
+	</section>
+
+	<section id="current-deals" class="tickets-promos" aria-label="Ticket promotions and deals">
 		<div class="tickets-promos__inner container-xl">
 			<h2 class="tickets-promos__heading">Current Deals</h2>
 
