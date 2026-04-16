@@ -8,12 +8,10 @@
 }
 
 .past-carousel-grid {
-    display: grid;
+    /* layout: container-xl mx-auto d-grid on element */
     grid-template-columns: 1fr 1.75fr 1fr;
     gap: clamp(1rem, 2.5vw, 2.25rem);
     align-items: center;
-    width: min(1200px, 92vw);
-    margin: 0 auto;
 }
 
 .past-carousel-card {

@@ -1,6 +1,6 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
-{% from "components/macros/subpage_hero.html" import subpage_hero %}
+{% from "components/macros/page_hero.html" import page_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/faq.css') }}">
@@ -12,16 +12,15 @@
 
 {% block content %}
 <main class="faq-page">
-    <h1 class="visually-hidden">Freedom Con Frequently Asked Questions</h1>
-    {{ subpage_hero('img/TheGuys-WithLogoNoFeet.avif', 'Freedom Con speakers', 'Freedom Con FAQs hero', '50%', '50%', 'faq-hero', contain=True) }}
+    {{ page_hero("Get Answers", "FAQs", "Everything you need to know about attending Freedom Con.") }}
 
     {{ slim_banner("Frequently Asked Questions") }}
 
-    <section class="faq-body" aria-label="Frequently asked questions">
+    <section class="faq-body container-xl" aria-label="Frequently asked questions">
         {% for category, entries in faq_content.items() %}
         {% set accordion_id = 'faq-accordion-' ~ loop.index %}
         <section aria-label="{{ category }}">
-            <h2 class="faq-category-title">{{ category }}</h2>
+            <h2 class="faq-category-title text-center text-uppercase">{{ category }}</h2>
             <div class="accordion accordion-flush faq-accordion" id="{{ accordion_id }}">
                 {% for item in entries %}
                 {% set heading_id = accordion_id ~ '-heading-' ~ loop.index %}
@@ -51,9 +50,9 @@
         </section>
         {% endfor %}
 
-        <section class="faq-downloads" aria-label="Download PDF versions">
+        <section class="faq-downloads text-center" aria-label="Download PDF versions">
             <h2 class="faq-downloads__title">Download PDF Versions</h2>
-            <div class="faq-downloads__actions">
+            <div class="faq-downloads__actions d-flex justify-content-center flex-wrap gap-3">
                 <a class="faq-downloads__button" href="{{ asset_url('pdfs/FREEDOM CON FAQs - FINAL.pdf') }}" download="FREEDOM CON FAQs - FINAL.pdf">Freedom Con FAQs</a>
                 <a class="faq-downloads__button" href="{{ asset_url('pdfs/FREEDOMCON CAMPING FAQs - FINAL.pdf') }}" download="FREEDOMCON CAMPING FAQs - FINAL.pdf">Freedom Con Camping FAQs</a>
             </div>

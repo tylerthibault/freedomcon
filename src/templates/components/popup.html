@@ -1,0 +1,44 @@
+<!-- Promo Modal -->
+<div class="promo-modal" data-promo-modal hidden aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="promo-modal-title">
+    <div class="promo-modal__backdrop" data-promo-close></div>
+
+    <div class="promo-modal__card">
+
+        <button class="promo-modal__close" data-promo-close aria-label="Close promo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+
+        <p class="promo-modal__eyebrow">Limited-Time Offers</p>
+        <h2 class="promo-modal__title" id="promo-modal-title">Don't Miss Out on These Deals</h2>
+
+        <div class="promo-modal__deals">
+
+            <!-- Deal 1: Early Bird -->
+            <div class="promo-modal__deal promo-modal__deal--early-bird">
+                <div class="promo-modal__deal-badge">Early Bird</div>
+                <h3 class="promo-modal__deal-headline">May 1st Early Bird Pricing</h3>
+                <p class="promo-modal__deal-desc">Lock in the lowest rate before prices go up. Early bird pricing ends <strong>May 1st</strong> — don't wait.</p>
+            </div>
+
+            <div class="promo-modal__divider" aria-hidden="true"></div>
+
+            <!-- Deal 2: 50/50/50 -->
+            <div class="promo-modal__deal promo-modal__deal--fifty">
+                <div class="promo-modal__deal-badge promo-modal__deal-badge--gold">50/50/50</div>
+                <h3 class="promo-modal__deal-headline">First 50 Guys in Each State Save $50</h3>
+                <p class="promo-modal__deal-desc">The first 50 men from each of the 50 states to register get <strong>$50 off</strong> their ticket. Spots are going fast.</p>
+            </div>
+
+        </div>
+
+        <a class="promo-modal__cta" href="{{ url_for('public.tickets_page') }}">Grab Your Ticket Now</a>
+
+        <div class="promo-modal__suppress">
+            <label class="promo-modal__suppress-label">
+                <input class="promo-modal__suppress-check" type="checkbox" id="promo-suppress">
+                <span>Don't show this again</span>
+            </label>
+        </div>
+
+    </div>
+</div>

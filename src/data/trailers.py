@@ -1,15 +1,15 @@
 trailers = [
+    	{
+		"title": "Freedom Con Trailer Two",
+		"youtube_id": "M7lc1UVf-VE",
+		"thumbnail": "img/TheGuysFadeFeet.avif",
+		"alt": "Freedom Con trailer thumbnail two",
+	},
 	{
 		"title": "Freedom Con Trailer One",
 		"youtube_id": "ysz5S6PUM-U",
 		"thumbnail": "img/TheGuys-WithLogoNoFeet.avif",
 		"alt": "Freedom Con trailer thumbnail one",
-	},
-	{
-		"title": "Freedom Con Trailer Two",
-		"youtube_id": "M7lc1UVf-VE",
-		"thumbnail": "img/TheGuysFadeFeet.avif",
-		"alt": "Freedom Con trailer thumbnail two",
 	},
 	{
 		"title": "Freedom Con Trailer Three",

@@ -7,7 +7,9 @@
 <section id="speakers" class="speakers-section" aria-label="Voices of the conference">
 	<div class="speakers-section__notch" aria-hidden="true"></div>
 	<div class="speakers-section__inner">
-		<h2 class="speakers-section__heading">Speakers of Freedom Con</h2>
+		<div class="d-flex justify-content-center align-items-center">
+			<h2 class="speakers-section__heading">Speakers of Freedom Con</h2>
+		</div>
 		<div class="speakers-section__grid">
 			{% for speaker in featured_speakers %}
 			{{ speaker_card(

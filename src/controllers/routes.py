@@ -11,6 +11,7 @@ from src.data.speakers import speakers as speakers_data
 from src.data.videos import videos as videos_data
 from src.data.tickers import ticketer1, ticketers
 from src.data.tickets import get_ticket_context
+from src.data.background_text import background_1
 
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
@@ -91,7 +92,6 @@ def inject_global_urgency() -> dict[str, object]:
 		return url_for("static", filename=normalized)
 
 	return {
-		"urgency": get_ticket_context()["urgency"],
 		"asset_url": asset_url,
 		"asset_base_url": ASSET_BASE_URL,
 	}
@@ -124,7 +124,6 @@ def build_seo(
 
 @public_bp.get("/")
 def landing() -> str:
-	ticket_context = get_ticket_context()
 	trailers_data = []
 	for index, video in enumerate(videos_data, start=1):
 		video_url = str(video.get("url", "")).strip()
@@ -144,11 +143,8 @@ def landing() -> str:
 				"alt": video.get("alt") or f"Freedom Con trailer thumbnail {index}",
 			}
 		)
-	silent_video = {
-		"src": "videos/landing-loop.mp4",
-		"poster": "img/TheGuysFadeFeet.avif",
-		"title": "See It Before You Arrive",
-		"text": "Drop in your 20-second silent clip and it will autoplay on loop as the section background.",
+	cta_2 = {
+		"image": "img/TheGuysFadeFeet.avif",
 	}
 	crowder_audio = {
 		"src": getenv("CROWDER_AUDIO_URL", "").strip() or "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/02_Grave%20Robber.wav",
@@ -193,12 +189,12 @@ def landing() -> str:
 		social_proof=social_proof,
 		ticketer1=ticketer1,
 		ticketers=ticketers,
+		background_text=background_1,
 		speakers=speakers_data,
 		trailers=trailers_data,
-		silent_video=silent_video,
+		cta_2=cta_2,
 		crowder_audio=crowder_audio,
 		structured_data=[event_schema],
-		urgency=ticket_context["urgency"],
 		seo=build_seo(
 			title="Freedom Con 2026 | Christian Men's Conference at The Gorge",
 			description="Join Freedom Con 2026 at The Gorge Amphitheatre in George, WA for two days of speakers, worship, brotherhood, and leadership challenge.",
@@ -273,14 +269,14 @@ def accommodations_page() -> str:
 	)
 
 
-@public_bp.get("/where")
-def where_page() -> str:
+@public_bp.get("/the-venue")
+def the_venue_page() -> str:
 	return render_template(
-		"public/where/index.html",
+		"public/the_venue/index.html",
 		seo=build_seo(
-			title="Where is Freedom Con? | The Gorge Amphitheatre, Washington",
+			title="The Venue | The Gorge Amphitheatre, Washington",
 			description="Find Freedom Con at The Gorge Amphitheatre in George, Washington, with map details and location information.",
-			path="/where",
+			path="/the-venue",
 		),
 	)
 
@@ -293,6 +289,34 @@ def vendors_page() -> str:
 			title="Freedom Con Vendors | Information Coming Soon",
 			description="Vendor information for Freedom Con is coming soon. Check back for details on participating partners and on-site offerings.",
 			path="/vendors",
+		),
+	)
+
+
+@public_bp.get("/press")
+def press_page() -> str:
+	return redirect(url_for("public.landing"))
+	media_kit_download_url = getenv("MEDIA_KIT_DOWNLOAD_URL", "").strip()
+	media_kit_image_url = getenv("MEDIA_KIT_IMAGE_URL", "").strip() or url_for(
+		"static", filename="img/freedom_con_media_kit_flyer.jpg"
+	)
+	men_picture_url = getenv("PRESS_MEN_PICTURE_URL", "").strip() or url_for(
+		"static", filename="img/TheGuys-WithLogoNoFeet.avif"
+	)
+	formsubmit_action = getenv("PRESS_FORMSUBMIT_ACTION", "").strip()
+	formsubmit_next = getenv("PRESS_FORMSUBMIT_NEXT", "").strip() or f"{SITE_URL}/press?submitted=1"
+
+	return render_template(
+		"public/press/index.html",
+		media_kit_download_url=media_kit_download_url,
+		media_kit_image_url=media_kit_image_url,
+		men_picture_url=men_picture_url,
+		formsubmit_action=formsubmit_action,
+		formsubmit_next=formsubmit_next,
+		seo=build_seo(
+			title="Freedom Con Press & Media Kit",
+			description="Download the Freedom Con media kit and connect with us for sponsor interviews, press requests, and partnership details.",
+			path="/press",
 		),
 	)
 
@@ -316,7 +340,6 @@ def tickets_page() -> str:
 		"public/tickets/index.html",
 		ticket_meta=ticket_context["ticket_meta"],
 		ticket_prices=ticket_context["ticket_prices"],
-		urgency=ticket_context["urgency"],
 		seo=build_seo(
 			title="Freedom Con Tickets | 2026 Pricing and Registration",
 			description="View Freedom Con 2026 ticket options, pricing tiers, and secure your spot for Father’s Day weekend at The Gorge.",
@@ -337,9 +360,45 @@ def tickets_page() -> str:
 # 	)
 
 
+@public_bp.get("/vision")
+def vision_page() -> str:
+	return render_template(
+		"public/vision/index.html",
+		seo=build_seo(
+			title="The Vision | Freedom Con 2026",
+			description="Discover the vision and mission behind Freedom Con 2026 — a movement calling men to faith, statesmanship, and brotherhood.",
+			path="/vision",
+		),
+	)
+
+
+@public_bp.get("/experience")
+def experience_page() -> str:
+	return render_template(
+		"public/experience/index.html",
+		seo=build_seo(
+			title="The Experience | Freedom Con 2026",
+			description="Explore the full Freedom Con experience — competitions, side stage, schedule, and everything happening at The Gorge.",
+			path="/experience",
+		),
+	)
+
+
+@public_bp.get("/story")
+def story_page() -> str:
+	return render_template(
+		"public/story/index.html",
+		seo=build_seo(
+			title="The Freedom Con Story | Long Form Videos, Podcasts & Media",
+			description="Explore the Freedom Con story through long form videos, podcast episodes, and the official media kit.",
+			path="/story",
+		),
+	)
+
+
 @public_bp.get("/venue-map-svg")
 def venue_map_svg_page() -> str:
-	return redirect(url_for("public.where_page"), code=301)
+	return redirect(url_for("public.the_venue_page"), code=301)
 
 
 @public_bp.get("/robots.txt")
@@ -360,14 +419,18 @@ def sitemap_xml() -> Response:
 	lastmod = date.today().isoformat()
 	pages = [
 		"/",
+		"/vision",
+		"/experience",
 		"/about-smn",
+		"/story",
 		"/faqs",
 		"/speakers",
 		"/artists",
+		"/press",
 		"/worship",
 		"/vendors",
 		"/accommodations",
-		"/where",
+		"/the-venue",
 		"/tickets",
 	]
 	urls = [{"loc": f"{SITE_URL}{path}", "lastmod": lastmod} for path in pages]

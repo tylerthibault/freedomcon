@@ -6,15 +6,13 @@
 
 .accommodations-hero__inner,
 .accommodations-section__inner {
-    width: min(1120px, 92vw);
-    margin: 0 auto;
+    /* layout: container-xl on element */
 }
 
 .accommodations-hero__eyebrow {
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: clamp(0.92rem, 1.1vw, 1.05rem);
 }
 
 .accommodations-hero__title {
@@ -28,7 +26,6 @@
 .accommodations-hero__copy {
     margin: 1rem 0 0;
     width: min(64ch, 100%);
-    font-size: clamp(1rem, 1.3vw, 1.15rem);
     line-height: 1.35;
 }
 
@@ -58,7 +55,6 @@
 
 .accommodations-panel__lead {
     margin: 0 0 1rem;
-    font-size: clamp(0.98rem, 1.1vw, 1.08rem);
 }
 
 .accommodations-panel__note {
@@ -82,7 +78,6 @@
 .accommodations-card h3,
 .accommodations-list__item h3 {
     margin: 0;
-    font-size: clamp(1.1rem, 1.7vw, 1.35rem);
     text-transform: uppercase;
     line-height: 1.05;
 }
@@ -91,7 +86,6 @@
 .accommodations-list__item p {
     margin: 0.45rem 0 0;
     line-height: 1.3;
-    font-size: clamp(0.92rem, 1vw, 1rem);
 }
 
 .accommodations-route-list {
@@ -114,13 +108,11 @@
 }
 
 .accommodations-list__item {
+    /* layout: d-flex justify-content-between align-items-start on element */
     border: 1px solid var(--fc-line);
     border-radius: 12px;
     background: #0a0a0a;
     padding: clamp(0.9rem, 1.8vw, 1.2rem);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     gap: 0.75rem;
 }
 
@@ -151,20 +143,23 @@
 .accommodations-section__subnote {
     margin: 0 0 0.9rem;
     color: var(--fc-muted);
-    font-size: clamp(0.92rem, 1vw, 1rem);
 }
 
 /* ── Camping ticket callout ── */
 .accommodations-camping-ticket {
+    border: 1px solid var(--fc-accent);
+    border-radius: 12px;
+    background: #0d0d0d;
+    overflow: hidden;
+    margin-bottom: 1.75rem;
+}
+
+.accommodations-camping-ticket__top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 1.5rem;
-    border: 1px solid var(--fc-accent);
-    border-radius: 12px;
-    background: #0d0d0d;
     padding: clamp(1.1rem, 2vw, 1.6rem);
-    margin-bottom: 1.75rem;
 }
 
 .accommodations-camping-ticket__left {
@@ -176,14 +171,12 @@
     font-family: var(--font-action);
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
     color: #ffffff;
 }
 
 .accommodations-camping-ticket__desc {
     margin: 0.4rem 0 0.75rem;
     color: var(--fc-muted);
-    font-size: clamp(0.9rem, 1vw, 0.98rem);
     line-height: 1.45;
 }
 
@@ -204,33 +197,67 @@
 }
 
 .accommodations-camping-ticket__right {
-    text-align: right;
-    white-space: nowrap;
     flex-shrink: 0;
+    text-align: right;
 }
 
 .accommodations-camping-ticket__price {
     margin: 0;
     font-family: var(--font-action);
     color: var(--fc-accent);
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
     letter-spacing: 0.04em;
     line-height: 1;
 }
 
 .accommodations-camping-ticket__price-note {
     margin: 0.2rem 0 0;
-    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--fc-muted);
+}
+
+/* ── RV strip ── */
+.accommodations-camping-ticket__rv {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    border-top: 1px solid var(--fc-accent);
+    background: rgba(255, 255, 255, 0.03);
+    padding: clamp(0.75rem, 1.5vw, 1.1rem) clamp(1.1rem, 2vw, 1.6rem);
+}
+
+.accommodations-camping-ticket__rv-img {
+    width: clamp(100px, 13vw, 160px);
+    height: auto;
+    flex-shrink: 0;
+    display: block;
+    border-radius: 8px;
+}
+
+.accommodations-camping-ticket__rv-info {
+    flex: 1;
+}
+
+.accommodations-camping-ticket__rv-heading {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-action);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    color: #ffffff;
+}
+
+.accommodations-camping-ticket__rv-detail {
+    margin: 0;
+    color: var(--fc-muted);
+    font-size: clamp(0.82rem, 0.92vw, 0.92rem);
+    line-height: 1.45;
 }
 
 .accommodations-section__subnote--heading {
     font-family: var(--font-oswald-light);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: 0.78rem;
     color: var(--fc-muted);
     margin-bottom: 0.6rem;
 }
@@ -240,7 +267,7 @@
 }
 
 @media (max-width: 640px) {
-    .accommodations-camping-ticket {
+    .accommodations-camping-ticket__top {
         flex-direction: column;
     }
     .accommodations-camping-ticket__right {

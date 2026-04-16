@@ -1,6 +1,6 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
-{% from "components/macros/subpage_hero.html" import subpage_hero %}
+{% from "components/macros/page_hero.html" import page_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/vendors.css') }}">
@@ -12,7 +12,7 @@
 
 {% block content %}
 <main>
-	{{ subpage_hero('img/vendors.webp', 'Vendor area at Freedom Con', 'Freedom Con vendors', '50%', '52%') }}
+	{{ page_hero("ManTown & Marketplace", "Vendors", "Booth details, partner highlights, and on-site offerings at Freedom Con.") }}
 	{{ slim_banner("Vendors") }}
 
 	<section class="vendors-page" aria-label="Vendor information">

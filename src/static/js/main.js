@@ -19,9 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			const currentScrollY = Math.max(window.scrollY, 0);
 			const isAtTop = currentScrollY <= 24;
+			const nearBottom = (currentScrollY + window.innerHeight) >= (document.documentElement.scrollHeight - 80);
 			landing12Nav.classList.toggle("is-at-top", isAtTop);
 
 			if (isAtTop) {
+				landing12Nav.classList.add("is-condensed");
+				landing12LastScrollY = currentScrollY;
+				return;
+			}
+
+			// Near the bottom: keep nav condensed to prevent promo strip from animating in
+			if (nearBottom) {
 				landing12Nav.classList.add("is-condensed");
 				landing12LastScrollY = currentScrollY;
 				return;
@@ -143,6 +151,79 @@ document.addEventListener("DOMContentLoaded", () => {
 		updateCountdowns();
 		window.setInterval(updateCountdowns, 1000);
 	}
+
+	const initDeclarationWordHover = () => {
+		const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+		if (!supportsFinePointer) return;
+
+		const container = document.querySelector("[data-declaration-bg]");
+		if (!(container instanceof HTMLElement)) return;
+
+		const words = Array.from(container.querySelectorAll(".landing12-declaration-bg__word"));
+		if (!words.length) return;
+
+		let activeWord = null;
+		let wordRects = [];
+		let frameId = 0;
+		let pointerX = 0;
+		let pointerY = 0;
+		let measureFrameId = 0;
+
+		const measureWordRects = () => {
+			measureFrameId = 0;
+			wordRects = words
+				.map((word) => ({ word, rect: word.getBoundingClientRect() }))
+				.filter(({ rect }) => rect.width > 0 && rect.height > 0);
+		};
+
+		const requestMeasure = () => {
+			if (measureFrameId) return;
+			measureFrameId = window.requestAnimationFrame(measureWordRects);
+		};
+
+		const setActiveWord = (word) => {
+			if (activeWord === word) return;
+			if (activeWord) activeWord.classList.remove("is-active");
+			activeWord = word;
+			if (activeWord) activeWord.classList.add("is-active");
+		};
+
+		const updateFromPointer = () => {
+			frameId = 0;
+
+			let hoveredWord = null;
+			for (let index = 0; index < wordRects.length; index += 1) {
+				const entry = wordRects[index];
+				const rect = entry.rect;
+				if (
+					pointerX >= rect.left &&
+					pointerX <= rect.right &&
+					pointerY >= rect.top &&
+					pointerY <= rect.bottom
+				) {
+					hoveredWord = entry.word;
+					break;
+				}
+			}
+
+			setActiveWord(hoveredWord);
+		};
+
+		const queueUpdate = (event) => {
+			pointerX = event.clientX;
+			pointerY = event.clientY;
+			if (frameId) return;
+			frameId = window.requestAnimationFrame(updateFromPointer);
+		};
+
+		measureWordRects();
+		window.addEventListener("pointermove", queueUpdate, { passive: true });
+		window.addEventListener("scroll", requestMeasure, { passive: true });
+		window.addEventListener("resize", requestMeasure);
+		window.addEventListener("blur", () => setActiveWord(null));
+	};
+
+	initDeclarationWordHover();
 
 	const initCrowderParallax = () => {
 		const section = document.querySelector("[data-crowder-parallax]");
@@ -316,6 +397,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			return;
 		}
 
+		const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
 		const observer = new IntersectionObserver((entries, instance) => {
 			entries.forEach((entry) => {
 				if (!entry.isIntersecting) return;
@@ -324,8 +407,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		}, {
 			root: null,
-			rootMargin: "0px 0px -10% 0px",
-			threshold: 0.16,
+			rootMargin: isMobile ? "0px 0px -22% 0px" : "0px 0px -10% 0px",
+			threshold: 0,
 		});
 
 		revealTargets.forEach((element) => observer.observe(element));
@@ -375,6 +458,36 @@ document.addEventListener("DOMContentLoaded", () => {
 		return String(numericValue);
 	};
 
+	const applyClipPathToCard = (card) => {
+		const personShell = card.querySelector(".speaker-card__person-shell");
+		const imageShell = card.querySelector(".speaker-card__image-shell");
+		if (!personShell || !imageShell) return;
+
+		const W = imageShell.offsetWidth;
+		const H = imageShell.offsetHeight;
+		if (!W || !H) return; // card is hidden, skip
+
+		const big = 9999;
+		const L = 0.03 * W;
+		const R = 0.97 * W;
+		const B = H;
+		const r = 0.14 * 0.94 * W;
+
+		const d = [
+			`M -${big},-${big}`,
+			`L ${W + big},-${big}`,
+			`L ${W + big},${B - r}`,
+			`L ${R},${B - r}`,
+			`A ${r},${r},0,0,1,${R - r},${B}`,
+			`L ${L + r},${B}`,
+			`A ${r},${r},0,0,1,${L},${B - r}`,
+			`L -${big},${B - r}`,
+			`Z`,
+		].join(" ");
+
+		personShell.style.clipPath = `path('${d}')`;
+	};
+
 	speakerCards.forEach((card) => {
 		const imageX = normalizeCssLength(card.dataset.imageX);
 		const imageY = normalizeCssLength(card.dataset.imageY);
@@ -391,6 +504,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (shrink) {
 			card.style.setProperty("--speaker-person-scale", shrink);
 		}
+
+		applyClipPathToCard(card);
 	});
 
 	const speakersToggle = document.querySelector("[data-speakers-toggle]");
@@ -402,6 +517,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				extraSpeakersGrid.removeAttribute("hidden");
 				speakersToggle.setAttribute("aria-expanded", "true");
 				speakersToggle.textContent = "Show Less";
+				// Re-apply clip paths now that cards have real dimensions
+				extraSpeakersGrid.querySelectorAll("[data-speaker-card]").forEach(applyClipPathToCard);
 				return;
 			}
 

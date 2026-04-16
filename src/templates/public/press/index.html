@@ -1,0 +1,111 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/page_hero.html" import page_hero %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/press.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main>
+	{{ page_hero("Media Resources", "Press", "Grab the latest Freedom Con media kit and reach our team for interviews, sponsor opportunities, and press details.") }}
+	{{ slim_banner("Press & Media Kit") }}
+
+	<section class="press-page" aria-label="Press and media kit downloads">
+		<div class="press-page__shell">
+			<header class="press-page__header">
+				<h1 class="press-page__title">Press / Media Kit</h1>
+				<p class="press-page__copy">Grab the latest Freedom Con media kit and reach our team for interviews, sponsor opportunities, and additional press details.</p>
+			</header>
+
+			{% set submitted = request.args.get('submitted') %}
+
+			{% if submitted %}
+			<div class="press-page__thank-you" role="alert" aria-live="polite">
+				<div class="press-page-thank-you">
+					<h2 class="press-page-thank-you__title">Thank You!</h2>
+					<p class="press-page-thank-you__message">We've received your inquiry and our team will be in touch shortly.</p>
+					<a class="landing12-btn" href="{{ url_for('public.press_page') }}">Back to Press Page</a>
+				</div>
+			</div>
+			{% else %}
+			<div class="press-page__content-grid" aria-label="Media kit and contact form">
+				<div class="press-page__media-column" aria-label="Media kit download">
+					{% if media_kit_image_url %}
+					<a class="press-page__kit-image-link" href="{{ media_kit_download_url }}" download="FreedomCon-Media-Kit.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download Freedom Con media kit">
+						<img class="press-page__kit-image" src="{{ media_kit_image_url }}" alt="Freedom Con media kit cover">
+					</a>
+					<a class="btn btn-primary btn-xxl press-page__kit-download-btn" href="{{ media_kit_download_url }}" download="FreedomCon-Media-Kit.pdf" target="_blank" rel="noopener noreferrer">Download Media Kit</a>
+					{% else %}
+					<div class="press-page__kit-image-link press-page__kit-image-link--empty" aria-hidden="true">
+						<div class="press-page__kit-image press-page__kit-image--placeholder"></div>
+					</div>
+					<span class="btn btn-primary btn-xxl disabled press-page__kit-download-btn" aria-disabled="true">Media Kit Coming Soon</span>
+					<p class="press-page__hint">Set <strong>MEDIA_KIT_IMAGE_URL</strong> to show the media kit image.</p>
+					{% endif %}
+				</div>
+
+				<div class="press-page__form-column">
+					<section class="press-page-card" aria-label="Press and sponsor inquiry form">
+					<h2 class="press-page-card__title">Contact Us</h2>
+					<form class="press-page-form" method="post" action="{{ formsubmit_action or '#' }}" novalidate>
+						<input type="hidden" name="_subject" value="Freedom Con Press/Sponsor Inquiry">
+						<input type="hidden" name="_next" value="{{ formsubmit_next }}">
+						<input type="hidden" name="_captcha" value="false">
+						<!-- Honeypot field -->
+						<input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
+
+						<div class="press-page-form__field">
+							<label for="press-role">I am a:</label>
+							<select id="press-role" name="role" required>
+								<option value="" disabled selected>Select your role</option>
+								<option value="Journalist - Media Questions">Journalist - Media Questions</option>
+								<option value="Sponsor">Sponsor</option>
+								<option value="Other">Other</option>
+							</select>
+						</div>
+
+						<div class="press-page-form__field">
+							<label for="press-name">Name <span class="press-page-form__required">*</span></label>
+							<input id="press-name" name="name" type="text" required>
+						</div>
+
+						<div class="press-page-form__field">
+							<label for="press-email">Email <span class="press-page-form__required">*</span></label>
+							<input id="press-email" name="email" type="email" required>
+						</div>
+
+						<div class="press-page-form__field">
+							<label for="press-phone">Phone Number</label>
+							<input id="press-phone" name="phone" type="tel">
+						</div>
+
+						<div class="press-page-form__field">
+							<label for="press-message">Message <span class="press-page-form__required">*</span></label>
+							<textarea id="press-message" name="message" rows="5" required></textarea>
+						</div>
+
+						{% if not formsubmit_action %}
+						<p class="press-page-card__empty">Set <strong>PRESS_FORMSUBMIT_ACTION</strong> to enable submissions.</p>
+						{% endif %}
+						<button class="landing12-btn" type="submit" {% if not formsubmit_action %}disabled{% endif %}>Send Inquiry</button>
+					</form>
+				</section>
+			</div>
+			</div>
+			{% endif %}
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

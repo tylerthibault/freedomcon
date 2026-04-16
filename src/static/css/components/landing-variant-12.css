@@ -24,6 +24,58 @@ body.landing12-no-scroll {
 
 .landing12 {
     background: var(--fc-bg);
+    position: relative;
+}
+
+.landing12>*:not(.landing12-declaration-bg) {
+    position: relative;
+    z-index: 1;
+}
+
+.landing12-declaration-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+.landing12-declaration-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.52) 16%,
+            rgba(0, 0, 0, 0.68) 48%,
+            rgba(0, 0, 0, 0.56) 78%,
+            rgba(0, 0, 0, 0.22) 100%);
+}
+
+.landing12-declaration-bg__text {
+    position: relative;
+    z-index: 0;
+    margin: 0;
+    padding: clamp(1.25rem, 2vw, 2rem);
+    color: var(--fc-ink);
+    /* font-family: "American Scribe", cursive; */
+    font-family: "Oswald", sans-serif;
+    line-height: 1.92;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.landing12-declaration-bg__word {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.038);
+    transition: color 120ms ease;
+    margin-right: 0.36em;
+}
+
+.landing12-declaration-bg__word.is-active {
+    color: rgba(255, 255, 255, 0.075);
 }
 
 .landing12 h1,
@@ -34,125 +86,38 @@ body.landing12-no-scroll {
     letter-spacing: -0.01em;
 }
 
-.landing12-header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(8px);
-}
+/* ── landing12-header, nav, btn, brand, links ─────────────────────────────
+   These selectors are defined in freedom_con_shell.css (the global shell).
+   Do not redefine here to avoid duplication. Bootstrap utilities on HTML
+   elements handle display/alignment properties.
+   ─────────────────────────────────────────────────────────────────────── */
 
 .landing12-hero-subtitle {
     font-family: "American Scribe", cursive;
-    font-size: clamp(3.1rem, 9vw, 7.2rem);
     line-height: 0.88;
     color: var(--fc-accent);
     margin-bottom: 1.25rem;
 }
 
-.landing12-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    max-width: 1440px;
-    margin: 0 auto;
-}
+/* .landing12-nav — see freedom_con_shell.css */
 
-.landing12-menu-toggle {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    background: var(--fc-accent);
-    color: #fff;
-    padding: 0.55rem 0.75rem;
-    text-transform: uppercase;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    font-weight: 700;
-}
+/* .landing12-menu-toggle — see freedom_con_shell.css */
 
-.landing12-menu-toggle:hover,
-.landing12-menu-toggle:focus-visible {
-    color: #fff;
-}
+/* .landing12-menu-backdrop — see freedom_con_shell.css */
 
-.landing12-menu-backdrop {
-    display: none;
-}
+/* .landing12-brand — see freedom_con_shell.css */
 
-.landing12-brand {
-    font-family: var(--font-action);
-    color: var(--fc-accent);
-    font-size: clamp(1.4rem, 2vw, 2rem);
-    font-weight: 800;
-    text-decoration: none;
-}
+/* .landing12-links — see freedom_con_shell.css */
 
-.landing12-links {
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.landing12-links a {
-    text-decoration: none;
-    color: var(--fc-ink);
-    font-size: 0.8rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.landing12-links a:hover,
-.landing12-links a:focus-visible {
-    color: var(--fc-accent);
-}
-
-.landing12-btn {
-    background: var(--fc-accent);
-    color: #fff;
-    text-decoration: none;
-    border: 0;
-    padding: 0.75rem 1.1rem;
-    text-transform: uppercase;
-    font-size: 0.76rem;
-    letter-spacing: 0.12em;
-    font-weight: 700;
-    transition: 0.2s ease;
-}
-
-.landing12-btn:hover,
-.landing12-btn:focus-visible {
-    background: var(--fc-accent);
-    color: #fff;
-}
-
-.landing12-btn--ghost {
-    background: transparent;
-    color: var(--fc-ink);
-    border: 1px solid var(--fc-line);
-}
-
-.landing12-btn--ghost:hover,
-.landing12-btn--ghost:focus-visible {
-    border-color: var(--fc-accent);
-    color: var(--fc-accent);
-    background: transparent;
-}
+/* .landing12-btn / .landing12-btn--ghost — see freedom_con_shell.css */
 
 .landing12-cta-row {
-    display: flex;
+    /* layout: d-flex flex-wrap align-items-center on element */
     gap: 0.7rem;
-    flex-wrap: wrap;
-    align-items: center;
 }
 
 .landing12-cta-row--center {
-    justify-content: center;
+    /* justify-content-center on element */
 }
 
 .landing12-cta-row--top-gap {
@@ -189,10 +154,7 @@ body.landing12-no-scroll {
 }
 
 .landing12-countdown-inline {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    /* layout: d-flex flex-column align-items-center justify-content-center on element */
     gap: 0.2rem;
     background: rgba(0, 0, 0, 0.65);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -202,7 +164,7 @@ body.landing12-no-scroll {
 
 .landing12-countdown-inline strong {
     min-width: 2ch;
-    text-align: center;
+    /* text-center on element */
     font-size: clamp(1.4rem, 2.7vw, 2rem);
     color: #fff;
 }
@@ -221,17 +183,14 @@ body.landing12-no-scroll {
 
 .landing12-hero {
     display: block;
-    padding: clamp(1rem, 3vw, 2.5rem) 0 0;
+    padding: 0;
+    /* padding: clamp(1rem, 3vw, 2.5rem) 0 0; */
 }
 
 .landing12-hero-copy {
     max-width: 1240px;
-    margin: 0 auto;
+    /* layout: mx-auto d-flex flex-column align-items-center text-center on element */
     padding: 0 clamp(1rem, 3vw, 2rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
 }
 
 .landing12-kicker {
@@ -247,7 +206,6 @@ body.landing12-no-scroll {
 
 .landing12-hero-presents {
     margin: 0 0 clamp(1rem, 2.2vw, 1.7rem);
-    font-size: clamp(1rem, 2.1vw, 2rem);
     letter-spacing: 0.18em;
     text-transform: lowercase;
     color: var(--fc-ink);
@@ -255,9 +213,7 @@ body.landing12-no-scroll {
 }
 
 .landing12-hero-lockup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* layout: d-flex align-items-center justify-content-center on element */
     gap: clamp(0.6rem, 2vw, 1.4rem);
     margin-bottom: clamp(0.9rem, 2vw, 1.6rem);
 }
@@ -280,16 +236,13 @@ body.landing12-no-scroll {
 }
 
 .landing12-hero-subline {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* layout: d-flex align-items-center justify-content-center on element */
     gap: clamp(0.8rem, 2vw, 1.6rem);
     margin: 0 0 clamp(1.2rem, 2.4vw, 2rem);
 }
 
 .landing12-hero-year {
     font-family: "American Scribe", cursive;
-    font-size: clamp(2rem, 4.2vw, 3.6rem);
     color: var(--fc-accent);
     line-height: 1;
     margin: 0;
@@ -297,7 +250,6 @@ body.landing12-no-scroll {
 
 .landing12-hero-subtitle {
     font-family: "American Scribe", cursive;
-    font-size: clamp(2.8rem, 7.5vw, 6.8rem);
     line-height: 0.95;
     color: var(--fc-ink);
     margin: 0;
@@ -321,15 +273,24 @@ body.landing12-no-scroll {
 .landing12-hero-media img {
     position: relative;
     inset: auto;
-    width: 100%;
+    width: 80%;
     height: auto;
     object-fit: contain;
     object-position: center bottom;
     display: block;
 }
 
+/* on mobile */
+@media (max-width: 600px) {
+.landing12-hero-media img {
+    width: 100%;
+    }
+    
+}
+
 .landing12-hero-title-image {
-    width: min(980px, 92vw);
+    width: 20vw;
+    height: auto;
     opacity: 0;
     transform: translate3d(0, 18px, 0);
     animation: landing12-fade-up 900ms ease-out 180ms forwards;
@@ -337,7 +298,7 @@ body.landing12-no-scroll {
 
 .landing12-hero-lineup-image {
     width: min(1540px, 100vw);
-    margin-top: clamp(-7rem, -12vw, -4rem);
+    margin-top: clamp(-6.5rem, -7vw, -2.5rem);
     opacity: 0;
     transform: translate3d(0, 24px, 0);
     animation: landing12-fade-up 1050ms ease-out 960ms forwards;
@@ -347,7 +308,7 @@ body.landing12-no-scroll {
 .landing12-liberty,
 .landing12-wrap--cta,
 .speakers-section,
-.landing12-silent-video,
+.landing12-cta-2,
 .landing12-trailers,
 .landing12-crowder,
 .landing12-social-proof,
@@ -355,6 +316,13 @@ body.landing12-no-scroll {
     opacity: 0;
     transform: translate3d(0, 22px, 0);
     animation: landing12-fade-up 850ms ease-out forwards;
+    min-height: 10em;
+}
+
+.landing12-wrap--cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .landing12-event-highlight {
@@ -373,7 +341,7 @@ body.landing12-no-scroll {
     animation-delay: 1700ms;
 }
 
-.landing12-silent-video {
+.landing12-cta-2 {
     animation-delay: 1840ms;
 }
 
@@ -406,13 +374,18 @@ body.landing12-no-scroll {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .landing12-ticker-track {
+        animation: none;
+        padding-left: 0;
+    }
+
     .landing12-hero-title-image,
     .landing12-hero-lineup-image,
     .landing12-event-highlight,
     .landing12-liberty,
     .landing12-wrap--cta,
     .speakers-section,
-    .landing12-silent-video,
+    .landing12-cta-2,
     .landing12-trailers,
     .landing12-crowder,
     .landing12-social-proof,
@@ -438,8 +411,50 @@ body.landing12-no-scroll {
     font-weight: 500;
 }
 
+.landing12-ticker {
+    background: var(--fc-surface);
+    color: var(--fc-ink);
+    border-top: 1px solid var(--fc-line);
+    border-bottom: 1px solid var(--fc-line);
+    overflow: hidden;
+    padding: 0.7rem 0;
+}
+
+.landing12-ticker-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: max-content;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: landing12-ticker-scroll 34s linear infinite;
+}
+
+.landing12-ticker-item {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: clamp(0.72rem, 1.2vw, 0.9rem);
+    font-weight: 600;
+}
+
+.landing12-ticker-sep {
+    color: var(--fc-accent);
+    font-size: 0.9em;
+    line-height: 1;
+}
+
+@keyframes landing12-ticker-scroll {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
 .landing12-event-highlight {
-    background: #000;
+    /* background: #00000049; */
     color: #fff;
     text-align: center;
     padding: clamp(1.6rem, 4vw, 3.2rem) 1rem clamp(1.9rem, 4.5vw, 3.6rem);
@@ -450,7 +465,6 @@ body.landing12-no-scroll {
     font-family: var(--font-action);
     font-weight: 700;
     letter-spacing: 0.06em;
-    font-size: clamp(1.9rem, 5.2vw, 3.4rem);
     line-height: 1;
 }
 
@@ -467,7 +481,6 @@ body.landing12-no-scroll {
 .landing12-event-highlight__city {
     margin: 0;
     font-family: var(--font-oswald-light);
-    font-size: clamp(1.15rem, 2.6vw, 2rem);
     line-height: 1.1;
 }
 
@@ -477,7 +490,6 @@ body.landing12-no-scroll {
     font-family: var(--font-oswald-light);
     font-weight: 400;
     letter-spacing: 0.04em;
-    font-size: clamp(2rem, 5.4vw, 3.9rem);
     line-height: 1;
 }
 
@@ -487,23 +499,23 @@ body.landing12-no-scroll {
     vertical-align: super;
 }
 
-.landing12-silent-video {
+.landing12-cta-2 {
     position: relative;
     isolation: isolate;
-    background: #000;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%,  rgba(0, 0, 0, 0) 50%,  rgba(0, 0, 0, 1) 80%);
     min-height: clamp(320px, 52vw, 620px);
     display: grid;
     place-items: center;
     overflow: hidden;
 }
 
-.landing12-silent-video__media,
-.landing12-silent-video__overlay {
+.landing12-cta-2__media,
+.landing12-cta-2__overlay {
     position: absolute;
     inset: 0;
 }
 
-.landing12-silent-video__video {
+.landing12-cta-2__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -511,12 +523,12 @@ body.landing12-no-scroll {
     display: block;
 }
 
-.landing12-silent-video__overlay {
+.landing12-cta-2__overlay {
     z-index: 1;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.56));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.62) 80%);
 }
 
-.landing12-silent-video__content {
+.landing12-cta-2__content {
     position: relative;
     z-index: 2;
     text-align: center;
@@ -524,24 +536,22 @@ body.landing12-no-scroll {
     padding-bottom: clamp(3.2rem, 7vw, 6rem);
 }
 
-.landing12 .landing12-silent-video__content h2 {
+.landing12 .landing12-cta-2__content h2 {
     margin: 0 0 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-family: var(--font-action);
-    font-size: clamp(1.8rem, 5vw, 4rem);
 }
 
-.landing12-silent-video__content p {
+.landing12-cta-2__content p {
     margin: 0 auto 1.3rem;
     max-width: 40ch;
-    font-size: clamp(1rem, 2vw, 1.35rem);
     line-height: 1.35;
 }
 
 .landing12-wrap {
+    /* centering: mx-auto on element */
     max-width: 1240px;
-    margin: 0 auto;
     padding: 5rem 2rem;
 }
 
@@ -592,7 +602,6 @@ body.landing12-no-scroll {
     text-transform: capitalize;
     color: #fff;
     font-family: var(--font-oswald-light);
-    font-size: clamp(1.5rem, 4.2vw, 3.4rem);
     line-height: 1.16;
     letter-spacing: 0.02em;
 }
@@ -623,7 +632,6 @@ body.landing12-no-scroll {
 
 .landing12-meta h3 {
     margin: 0 0 0.7rem;
-    font-size: 2rem;
 }
 
 .landing12-meta p {
@@ -651,13 +659,11 @@ body.landing12-no-scroll {
 
 .landing12-happening-head h2 {
     margin: 0;
-    font-size: clamp(1.8rem, 3.6vw, 3rem);
 }
 
 .landing12-happening-head p {
     margin: 0;
     color: var(--fc-muted);
-    font-size: 1rem;
 }
 
 .landing12-happening-head-copy {
@@ -725,7 +731,6 @@ body.landing12-no-scroll {
 
 .landing12-happening-copy h3 {
     margin: 0;
-    font-size: clamp(1.15rem, 1.9vw, 1.55rem);
     line-height: 1.15;
 }
 
@@ -739,7 +744,6 @@ body.landing12-no-scroll {
 
 .landing12-speakers-head h2 {
     margin: 0;
-    font-size: clamp(2rem, 4.2vw, 4rem);
     font-style: italic;
 }
 
@@ -778,7 +782,6 @@ body.landing12-no-scroll {
 
 .landing12-speaker-copy h4 {
     margin: 0 0 0.5rem;
-    font-size: 1.35rem;
 }
 
 .landing12-speaker-copy p {
@@ -786,7 +789,6 @@ body.landing12-no-scroll {
     text-transform: uppercase;
     letter-spacing: 0.09em;
     color: var(--fc-accent);
-    font-size: 0.67rem;
     font-weight: 700;
 }
 
@@ -816,7 +818,6 @@ body.landing12-no-scroll {
     margin: 0;
     font-family: var(--font-action);
     letter-spacing: 0.06em;
-    font-size: clamp(1.35rem, 3.4vw, 2.6rem);
 }
 
 .landing12-trailers-grid {
@@ -949,7 +950,6 @@ body.landing12-no-scroll {
 .landing12-trailer-modal__title {
     margin: 0 1.8rem 0.6rem 0;
     color: #fff;
-    font-size: 0.95rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
@@ -969,8 +969,10 @@ body.landing12-no-scroll {
 .landing12-crowder {
     position: relative;
     width: min(920px, 94vw);
-    min-height: clamp(360px, 88vw, 900px);
-    margin: 0 auto;
+    min-height: clamp(360px, 88vw, 800px);
+    margin: clamp(1rem, 2.5vw, 2rem) auto;
+    padding-inline: clamp(0.75rem, 1.8vw, 1.25rem);
+    box-sizing: border-box;
     overflow: hidden;
     background: #000;
 }
@@ -980,7 +982,7 @@ body.landing12-no-scroll {
     inset: -10% 0;
     background-image: url("../../img/conference_info/crowder.jpg");
     background-size: cover;
-    background-position: center top;
+    background-position: center 12%;
     transform: translate3d(0, 0, 0) scale(1.18);
     transform-origin: top center;
     will-change: transform;
@@ -1007,7 +1009,6 @@ body.landing12-no-scroll {
     margin: 0 0 0.4rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: clamp(0.95rem, 1.4vw, 1.2rem);
 }
 
 .landing12 .landing12-crowder__title {
@@ -1055,7 +1056,6 @@ body.landing12-no-scroll {
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    font-size: 0.72rem;
     color: var(--fc-muted);
 }
 
@@ -1085,7 +1085,6 @@ body.landing12-no-scroll {
 
 .landing12-impact h2 {
     margin: 0 0 2.2rem;
-    font-size: clamp(2rem, 4.2vw, 3.7rem);
     font-style: italic;
 }
 
@@ -1106,7 +1105,6 @@ body.landing12-no-scroll {
     margin: 0;
     font-style: italic;
     font-family: var(--font-action);
-    font-size: 1.45rem;
     line-height: 1.25;
 }
 
@@ -1137,7 +1135,6 @@ body.landing12-no-scroll {
 
 .past-carousel-intro h2 {
     margin: 0 0 0.6rem;
-    font-size: clamp(1.9rem, 4vw, 3.1rem);
 }
 
 .past-carousel-intro p {
@@ -1238,7 +1235,6 @@ body.landing12-no-scroll {
 .landing12-pricing h2 {
     text-align: center;
     margin: 0 0 2rem;
-    font-size: clamp(2.2rem, 5vw, 5rem);
     font-style: italic;
 }
 
@@ -1258,7 +1254,6 @@ body.landing12-no-scroll {
 
 .landing12-price-card h3 {
     margin: 0 0 0.7rem;
-    font-size: 2rem;
     font-style: italic;
 }
 
@@ -1270,7 +1265,6 @@ body.landing12-no-scroll {
 .landing12-price {
     margin: 0 0 1.3rem;
     font-family: var(--font-action);
-    font-size: 3rem;
     line-height: 1;
 }
 
@@ -1329,14 +1323,18 @@ body.landing12-no-scroll {
 
 .landing12-join h2 {
     margin: 0 0 0.9rem;
-    font-size: clamp(2rem, 4.8vw, 4rem);
     font-style: italic;
 }
 
 .landing12-join p {
     margin: 0 0 1.5rem;
     color: var(--fc-muted);
-    font-size: clamp(1rem, 1.8vw, 1.15rem);
+}
+
+.footer-countdown-wrap,
+.landing12-footer {
+    position: relative;
+    z-index: 1;
 }
 
 .landing12-footer {
@@ -1388,7 +1386,6 @@ body.landing12-no-scroll {
 }
 
 .social-proof-card__quote {
-    font-size: clamp(1rem, 1vw, 1.14rem);
     line-height: 1.4;
     line-clamp: 6;
     -webkit-line-clamp: 6;
@@ -1431,28 +1428,29 @@ body.landing12-no-scroll {
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 767.98px) {
     .landing12-nav {
         flex-wrap: wrap;
         padding: 1rem;
     }
 
     .landing12-hero {
-        padding-top: 0.6rem;
+        padding-top: 0;
     }
 
     .landing12-hero-media {
         min-height: 0;
-        padding: 0.35rem 0.4rem 0;
+        padding: 0;
     }
 
     .landing12-hero-title-image {
-        width: min(860px, 97vw);
+        padding-top: 2em;
+        width: min(450px, 80vw);
     }
 
     .landing12-hero-lineup-image {
         width: min(1540px, 104vw);
-        margin-top: clamp(-2.2rem, -6vw, -1rem);
+        margin-top: clamp(-3rem, -5vw, -1.5rem);
     }
 
     .landing12-menu-toggle {
@@ -1494,7 +1492,7 @@ body.landing12-no-scroll {
         padding: 0.5rem 0;
     }
 
-    .landing12-nav > .landing12-btn {
+    .landing12-nav>.landing12-btn {
         display: none;
     }
 
@@ -1601,4 +1599,278 @@ body.landing12-no-scroll {
     .landing12-crowder__copy {
         width: 100%;
     }
+}
+
+.landing12-why-now {
+    background-color: #0a0a0a;
+    background-image: url('/static/img/FLAG%202.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.landing12-why-now::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.82);
+    pointer-events: none;
+}
+
+.landing12-why-now__inner {
+    position: relative;
+    z-index: 1;
+    padding-top: clamp(1.2rem, 2.3vw, 2rem);
+    padding-bottom: clamp(1.2rem, 2.3vw, 2rem);
+}
+
+.landing12-why-now__eyebrow,
+.landing12-what-expect__eyebrow,
+.landing12-father-son__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--fc-accent);
+    font-weight: 700;
+}
+
+.landing12 .landing12-why-now__title,
+.landing12 .landing12-father-son__title {
+    margin: 0.55rem 0 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-family: var(--font-action);
+    line-height: 1.08;
+    font-size: clamp(1.3rem, 2.8vw, 2.15rem);
+    color: #ffffff;
+}
+
+.landing12-why-now__copy,
+.landing12-father-son__copy {
+    margin: 0.75rem 0 0;
+    color: var(--fc-muted);
+    line-height: 1.55;
+    max-width: 72ch;
+}
+
+.landing12-why-now__cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+}
+
+.landing12-why-now__cols .landing12-why-now__copy {
+    margin-top: 0;
+    max-width: none;
+    color: #ffffff;
+}
+
+.landing12-why-now__pull {
+    margin: 1.6rem 0 0;
+    padding: 1.1rem 1.4rem;
+    border-left: 3px solid var(--fc-accent);
+    background: rgba(188, 42, 39, 0.07);
+    color: #ffffff;
+    line-height: 1.6;
+    font-style: italic;
+    max-width: 72ch;
+}
+
+@media (max-width: 640px) {
+    /* Stack to single column */
+    .landing12-why-now__cols {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    /* Tighter font size for dense copy on small screens */
+    .landing12-why-now__cols .landing12-why-now__copy {
+        font-size: 1.4em;
+        line-height: 1.65;
+    }
+    /* Red hairline divider between the two paragraphs */
+    .landing12-why-now__cols .landing12-why-now__copy:first-child {
+        padding-bottom: 1.1rem;
+        border-bottom: 1px solid rgba(188, 42, 39, 0.45);
+    }
+    .landing12-why-now__cols .landing12-why-now__copy:last-child {
+        padding-top: 1.1rem;
+    }
+    /* Center the title on mobile */
+    .landing12-why-now__title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    /* Red accent rule beneath the h2 */
+    /* .landing12-why-now__title::after {
+        content: '';
+        display: block;
+        width: 3rem;
+        height: 2px;
+        background: var(--fc-accent);
+        margin: 0.6rem auto 0;
+    } */
+    /* Pull quote: swap left border for top border, full width */
+    .landing12-why-now__pull {
+        border-left: none;
+        border-top: 3px solid var(--fc-accent);
+        padding: 1rem 0.25rem 0;
+        max-width: 100%;
+    }
+}
+
+.landing12-what-expect {
+    background: #000;
+}
+
+.landing12-what-expect__inner {
+    padding-top: clamp(1.5rem, 2.8vw, 2.4rem);
+    padding-bottom: clamp(1.5rem, 2.8vw, 2.4rem);
+}
+
+.landing12-what-expect__grid {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+}
+
+.landing12-what-expect__item {
+    display: flex;
+    flex-direction: row;
+    gap: 0.85rem;
+    align-items: flex-start;
+    padding: 0 clamp(0.75rem, 1.5vw, 1.25rem);
+    border-left: 1px solid var(--fc-line);
+}
+
+.landing12-what-expect__item:first-child {
+    padding-left: 0;
+    border-left: none;
+}
+
+.landing12-what-expect__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--fc-accent);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.landing12-what-expect__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.landing12-what-expect__item-title {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-action);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    color: #ffffff;
+}
+
+.landing12-what-expect__item-body {
+    margin: 0;
+    color: var(--fc-muted);
+    line-height: 1.5;
+}
+
+.landing12-what-expect .landing12-cta-row {
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 860px) {
+    .landing12-what-expect__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+    .landing12-what-expect__item {
+        border-left: none;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing12-what-expect__grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+.landing12-father-son {
+    background: linear-gradient(180deg, rgba(188, 42, 39, 0.12), rgba(0, 0, 0, 0.95));
+}
+
+.landing12-father-son__inner {
+    text-align: center;
+    padding-top: clamp(1.7rem, 3.2vw, 2.8rem);
+    padding-bottom: clamp(1.6rem, 3.1vw, 2.5rem);
+}
+
+.landing12-father-son__copy {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landing12-father-son .landing12-cta-row {
+    margin-top: 1.1rem;
+}
+
+/* ── Includes Teaser ───────────────────────────────────────── */
+.landing12-includes-teaser {
+    padding: clamp(2.5rem, 5vw, 4rem) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.landing12-includes-teaser__inner {
+    text-align: center;
+    max-width: 680px;
+}
+
+.landing12-includes-teaser__eyebrow {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-secondary);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+    color: var(--fc-accent);
+}
+
+.landing12-includes-teaser__title {
+    margin: 0 0 1rem;
+    font-family: var(--font-secondary);
+    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    color: var(--fc-ink);
+}
+
+.landing12-includes-teaser__body {
+    margin: 0 0 1.8rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.65;
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+}
+}
+.landing12-father-son__inner {
+    text-align: center;
+    padding-top: clamp(1.7rem, 3.2vw, 2.8rem);
+    padding-bottom: clamp(1.6rem, 3.1vw, 2.5rem);
+}
+
+.landing12-father-son__copy {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landing12-father-son .landing12-cta-row {
+    margin-top: 1.1rem;
 }

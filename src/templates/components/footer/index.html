@@ -1,9 +1,6 @@
-{% set footer_countdown_target = urgency.countdown_target if urgency is defined else '2026-06-19T17:00:00-07:00' %}
-
-{% if urgency is not defined or urgency.show_countdown %}
 <div class="footer-countdown-wrap" aria-label="Countdown to event">
-    <div class="footer-countdown" data-countdown data-countdown-target="{{ footer_countdown_target }}" aria-live="polite">
-        <span class="footer-countdown-label">{{ urgency.countdown_label if urgency is defined else 'Event Starts In' }}</span>
+    <div class="footer-countdown" data-countdown data-countdown-target="2026-06-19T17:00:00-07:00" aria-live="polite">
+        <span class="footer-countdown-label">Kickoff Starts In</span>
         <span class="footer-countdown-value">
             <span class="footer-countdown-inline"><strong data-unit="days">00</strong><span>Days</span></span>
             <span class="footer-countdown-inline"><strong data-unit="hours">00</strong><span>Hours</span></span>
@@ -12,32 +9,32 @@
         </span>
     </div>
 </div>
-{% endif %}
 
 <footer class="landing12-footer">
-    <div class="landing12-footer-inner">
+    <div class="landing12-footer-inner mx-auto d-grid">
         <div class="landing12-footer-grid">
-            <section class="landing12-footer-col" aria-label="Brand">
+            <section class="landing12-footer-col d-flex flex-column" aria-label="Brand">
                 <strong class="landing12-footer-brand">FREEDOM CON</strong>
                 <p class="landing12-footer-copy">June 19–20, 2026 · The Gorge Amphitheatre</p>
-                <a class="landing12-footer-link btn btn-xxl" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+                <a class="btn btn-primary btn-xxl" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
             </section>
 
-            <section class="landing12-footer-col" aria-label="Explore">
+            <section class="landing12-footer-col d-flex flex-column" aria-label="Explore">
                 <h3 class="landing12-footer-heading">Explore</h3>
                 <a class="landing12-footer-link" href="{{ url_for('public.speakers') }}">Speakers</a>
                 <a class="landing12-footer-link" href="{{ url_for('public.artists_page') }}">Artists</a>
-                <a class="landing12-footer-link" href="{{ url_for('public.where_page') }}">Where</a>
+                <a class="landing12-footer-link" href="{{ url_for('public.the_venue_page') }}">The Venue</a>
                 <a class="landing12-footer-link" href="{{ url_for('public.accommodations_page') }}">Accommodations</a>
             </section>
 
-            <section class="landing12-footer-col" aria-label="Resources">
+            <section class="landing12-footer-col d-flex flex-column" aria-label="Resources">
                 <h3 class="landing12-footer-heading">Resources</h3>
                 <a class="landing12-footer-link" href="{{ asset_url('pdfs/FREEDOM CON FAQs - FINAL.pdf') }}" download="FREEDOM CON FAQs - FINAL.pdf">Freedom Con FAQ PDF</a>
                 <a class="landing12-footer-link" href="{{ asset_url('pdfs/FREEDOMCON CAMPING FAQs - FINAL.pdf') }}" download="FREEDOMCON CAMPING FAQs - FINAL.pdf">Camping FAQ PDF</a>
+                 <!-- <a class="landing12-footer-link" href="{{ url_for('public.press_page') }}">Press / Media Kit</a> -->
             </section>
 
-            <section class="landing12-footer-col" aria-label="Help">
+            <section class="landing12-footer-col d-flex flex-column" aria-label="Help">
                 <h3 class="landing12-footer-heading">Help</h3>
                 <a class="landing12-footer-link" href="{{ url_for('public.faqs') }}">Frequently Asked Questions</a>
             </section>

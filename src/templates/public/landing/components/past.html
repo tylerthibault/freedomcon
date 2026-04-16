@@ -16,7 +16,7 @@
 
 <section class="past-carousel-section" aria-label="Past event photos">
 	<div id="pastPhotosCarousel" class="past-carousel" data-interval="3500" data-autoplay="true" data-photos='{{ photos | tojson }}'>
-		<div class="past-carousel-grid">
+		<div class="past-carousel-grid container-xl mx-auto d-grid">
 			<div class="past-carousel-card past-carousel-card--side">
 				<img class="past-photo past-photo-prev" src="{{ photos[0].src }}" alt="{{ photos[0].alt }}" loading="lazy">
 			</div>
