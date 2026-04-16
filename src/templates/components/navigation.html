@@ -17,7 +17,7 @@
             <a class="{% if is_landing %}is-active{% endif %}" href="{{ url_for('public.landing') }}">Home</a>
             <a class="{% if current_endpoint == 'public.artists_page' %}is-active{% endif %}" href="{{ url_for('public.artists_page') }}">Artists</a>
             <a class="{% if current_endpoint == 'public.speakers' %}is-active{% endif %}" href="{{ url_for('public.speakers') }}">Speakers</a>
-            <a class="{% if current_endpoint == 'public.where_page' %}is-active{% endif %}" href="{{ url_for('public.where_page') }}">Where</a>
+            <a class="{% if current_endpoint == 'public.the_venue_page' %}is-active{% endif %}" href="{{ url_for('public.the_venue_page') }}">The Venue</a>
             <a class="{% if current_endpoint == 'public.faqs' %}is-active{% endif %}" href="{{ url_for('public.faqs') }}">FAQ</a>
             <a class="landing12-link-optional {% if current_endpoint == 'public.accommodations_page' %}is-active{% endif %}" href="{{ url_for('public.accommodations_page') }}">Accommodations</a>
             <details class="landing12-nav-dropdown{% if current_endpoint in ('public.vision_page', 'public.experience_page', 'public.about_smn_page', 'public.story_page') %} is-active{% endif %}">

@@ -269,14 +269,14 @@ def accommodations_page() -> str:
 	)
 
 
-@public_bp.get("/where")
-def where_page() -> str:
+@public_bp.get("/the-venue")
+def the_venue_page() -> str:
 	return render_template(
-		"public/where/index.html",
+		"public/the_venue/index.html",
 		seo=build_seo(
-			title="Where is Freedom Con? | The Gorge Amphitheatre, Washington",
+			title="The Venue | The Gorge Amphitheatre, Washington",
 			description="Find Freedom Con at The Gorge Amphitheatre in George, Washington, with map details and location information.",
-			path="/where",
+			path="/the-venue",
 		),
 	)
 
@@ -398,7 +398,7 @@ def story_page() -> str:
 
 @public_bp.get("/venue-map-svg")
 def venue_map_svg_page() -> str:
-	return redirect(url_for("public.where_page"), code=301)
+	return redirect(url_for("public.the_venue_page"), code=301)
 
 
 @public_bp.get("/robots.txt")
@@ -430,7 +430,7 @@ def sitemap_xml() -> Response:
 		"/worship",
 		"/vendors",
 		"/accommodations",
-		"/where",
+		"/the-venue",
 		"/tickets",
 	]
 	urls = [{"loc": f"{SITE_URL}{path}", "lastmod": lastmod} for path in pages]
