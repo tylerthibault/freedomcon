@@ -92,7 +92,6 @@ def inject_global_urgency() -> dict[str, object]:
 		return url_for("static", filename=normalized)
 
 	return {
-		"urgency": get_ticket_context()["urgency"],
 		"asset_url": asset_url,
 		"asset_base_url": ASSET_BASE_URL,
 	}
@@ -125,7 +124,6 @@ def build_seo(
 
 @public_bp.get("/")
 def landing() -> str:
-	ticket_context = get_ticket_context()
 	trailers_data = []
 	for index, video in enumerate(videos_data, start=1):
 		video_url = str(video.get("url", "")).strip()
@@ -197,7 +195,6 @@ def landing() -> str:
 		cta_2=cta_2,
 		crowder_audio=crowder_audio,
 		structured_data=[event_schema],
-		urgency=ticket_context["urgency"],
 		seo=build_seo(
 			title="Freedom Con 2026 | Christian Men's Conference at The Gorge",
 			description="Join Freedom Con 2026 at The Gorge Amphitheatre in George, WA for two days of speakers, worship, brotherhood, and leadership challenge.",
@@ -342,7 +339,6 @@ def tickets_page() -> str:
 		"public/tickets/index.html",
 		ticket_meta=ticket_context["ticket_meta"],
 		ticket_prices=ticket_context["ticket_prices"],
-		urgency=ticket_context["urgency"],
 		seo=build_seo(
 			title="Freedom Con Tickets | 2026 Pricing and Registration",
 			description="View Freedom Con 2026 ticket options, pricing tiers, and secure your spot for Father’s Day weekend at The Gorge.",

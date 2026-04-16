@@ -1,7 +1,7 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
 {% from "components/macros/speakers.html" import speaker_card %}
-{% from "components/macros/subpage_hero.html" import subpage_hero %}
+{% from "components/macros/page_hero.html" import page_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/speakers.css') }}">
@@ -14,17 +14,17 @@
 {% block content %}
 <main>
 	<h1 class="visually-hidden">Freedom Con 2026 Speakers</h1>
-	{{ subpage_hero('img/TheGuys-WithLogoNoFeet.avif', 'Freedom Con speakers', 'Freedom Con speakers', '50%', '50%', contain=True) }}
+	{{ page_hero("Voices of the Conference", "Speakers", "Statesmen, pastors, and leaders called to exhort men toward the high calling of statesmanship.") }}
 	{{ slim_banner("FREEDOM CON SPEAKERS") }}
 	<section class="speakers-section speakers-section--flat" aria-label="Voices of the conference">
 		<div class="speakers-section__notch" aria-hidden="true"></div>
-		<div class="speakers-section__inner">
+				<div class="speakers-section__inner container-xl">
 			<article class="speakers-message" aria-label="Message from Pastor Josh McPherson">
 				<h2 class="speakers-message__title">A Message From Pastor Josh McPherson</h2>
 				<p>Each man I've invited to speak at our historic Stronger Man Nation FREEDOM CON is not just here because they are faithful followers of Jesus, exceptional warriors, true patriots, and faithful Stronger Men—they are also personal friends.</p>
 				<p>I've asked each of them to exhort us as men to the high calling of statesmanship. It is the lost art and gaping hole in our society today. These men are statesmen, each living into that critical role in their own way. My sons and I can hardly wait to learn from them alongside you.</p>
 			</article>
-			<h2 class="speakers-section__heading">Speakers of Freedom Con</h2>
+					<h2 class="speakers-section__heading text-center text-uppercase">Speakers of Freedom Con</h2>
 			<div class="speakers-section__grid">
 				{% for speaker in speakers %}
 				{{ speaker_card(

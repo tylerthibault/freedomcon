@@ -1,6 +1,6 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
-{% from "components/macros/subpage_hero.html" import subpage_hero %}
+{% from "components/macros/page_hero.html" import page_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/where.css') }}">
@@ -12,56 +12,70 @@
 
 {% block content %}
 <main>
-	{{ subpage_hero('img/conference_info/gorge.jpg', 'The Gorge Amphitheatre in Washington', 'The Gorge Amphitheatre', '50%', '30%') }}
+	{{ page_hero("Find Your Way", "Where", "The Gorge Amphitheatre, George, Washington — one of the most iconic outdoor venues in the country.") }}
 	{{ slim_banner("Where") }}
 
-	<section class="where where--page" aria-label="Event location map" data-dot-grid>
-		<div class="where__shell">
+	<section class="where where--page" aria-label="Event location">
+		<div class="where__shell container-xl">
+
 			<div class="where__top-row">
-				<header class="where__intro" aria-label="Venue overview">
+				<div class="where__intro-col">
 					<p class="where__eyebrow">Join Us At</p>
-					<h1 class="where__title">The Gorge Amphitheatre</h1>
-					<p class="where__headline">George, Washington</p>
-					<p class="where__copy">Freedom Con is hosted at one of the most iconic outdoor venues in the country. Plan your route early and arrive ready for an unforgettable Father’s Day weekend.</p>
-					<ul class="where__meta" aria-label="Venue details">
-						<li><span>Date</span><strong>June 19–20</strong></li>
-						<li><span>Region</span><strong>Central Washington</strong></li>
-						<li><span>Venue Type</span><strong>Outdoor Amphitheatre</strong></li>
-					</ul>
-					<div class="where__actions">
-						<a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
-						<a class="landing12-btn landing12-btn--ghost" href="{{ url_for('public.accommodations_page') }}">Plan Lodging</a>
-					</div>
-				</header>
+					<h1 class="where__title">The Gorge<br>Amphitheatre</h1>
+					<div class="where__divider" aria-hidden="true"></div>
+					<p class="where__location">George, Washington</p>
+					<p class="where__copy">Freedom Con is hosted at one of the most iconic outdoor venues in the country. Plan your route early and arrive ready for an unforgettable Father's Day weekend.</p>
 
-				<div class="where__map-wrap">
-					<iframe
-						class="where__map"
-						title="Map to The Gorge Amphitheatre"
-						src="https://www.openstreetmap.org/export/embed.html?bbox=-120.009018%2C47.089433%2C-119.979418%2C47.110433&layer=mapnik&marker=47.099933%2C-119.994218"
-						loading="lazy"
-						referrerpolicy="no-referrer-when-downgrade"
-					></iframe>
-				</div>
-			</div>
+<ul class="where__meta" aria-label="Venue details">
+<li>
+<span class="where__meta-label">Date</span>
+<strong class="where__meta-value">June 19–20, 2026</strong>
+</li>
+<li>
+<span class="where__meta-label">Region</span>
+<strong class="where__meta-value">Central Washington</strong>
+</li>
+<li>
+<span class="where__meta-label">Venue</span>
+<strong class="where__meta-value">Outdoor Amphitheatre</strong>
+</li>
+</ul>
 
-			<div class="where__details" aria-label="Travel notes">
-				<article class="where__detail-card">
-					<h2>Address</h2>
-					<p>The Gorge Amphitheatre<br>754 Silica Road NW<br>Quincy, WA 98848</p>
-				</article>
-				<article class="where__detail-card">
-					<h2>Arrival Window</h2>
-					<p>Arrive early to allow for parking, entry lines, and venue navigation before sessions begin.</p>
-				</article>
-				<article class="where__detail-card">
-					<h2>Need Help?</h2>
-					<p>Check the FAQs for parking, camping, and venue policies before you travel.</p>
-					<a href="{{ url_for('public.faqs') }}">View FAQs</a>
-				</article>
-			</div>
-		</div>
-	</section>
+<div class="where__actions">
+<a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+<a class="landing12-btn landing12-btn--ghost" href="{{ url_for('public.accommodations_page') }}">Plan Lodging</a>
+</div>
+</div>
+
+<div class="where__map-col">
+<iframe
+class="where__map"
+title="Map to The Gorge Amphitheatre"
+src="https://www.openstreetmap.org/export/embed.html?bbox=-120.009018%2C47.089433%2C-119.979418%2C47.110433&layer=mapnik&marker=47.099933%2C-119.994218"
+loading="lazy"
+referrerpolicy="no-referrer-when-downgrade"
+></iframe>
+</div>
+</div>
+
+<div class="where__details" aria-label="Travel notes">
+<article class="where__detail-card">
+<h2>Address</h2>
+<p>The Gorge Amphitheatre<br>754 Silica Road NW<br>Quincy, WA 98848</p>
+</article>
+<article class="where__detail-card">
+<h2>Arrival Window</h2>
+<p>Arrive early to allow for parking, entry lines, and venue navigation before sessions begin.</p>
+</article>
+<article class="where__detail-card">
+<h2>Need Help?</h2>
+<p>Check the FAQs for parking, camping, and venue policies before you travel.</p>
+<a href="{{ url_for('public.faqs') }}">View FAQs →</a>
+</article>
+</div>
+
+</div>
+</section>
 </main>
 {% endblock %}
 

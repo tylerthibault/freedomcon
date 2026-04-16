@@ -1,4 +1,5 @@
 {% extends "bases/public.html" %}
+{% from "components/macros/page_hero.html" import page_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/venue_map.css') }}">
@@ -12,13 +13,7 @@
 
 {% block content %}
 <main>
-	<section class="venue-map-hero" aria-label="Venue map">
-		<div class="venue-map-hero__inner">
-			<p class="venue-map-hero__eyebrow">The Gorge Amphitheatre · George, WA</p>
-			<h1 class="venue-map-hero__title">Venue Map</h1>
-			<p class="venue-map-hero__copy">Explore the venue, find parking, camping, gates, and key amenities at The Gorge Amphitheatre.</p>
-		</div>
-	</section>
+	{{ page_hero("The Gorge Amphitheatre · George, WA", "Venue Map", "Explore the venue, find parking, camping, gates, and key amenities at The Gorge Amphitheatre.") }}
 
 	<section class="venue-map-section" aria-label="Interactive venue map">
 		<div class="venue-map-section__inner">

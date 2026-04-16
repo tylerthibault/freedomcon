@@ -1,9 +1,10 @@
 speakers = [
 	{
 		'name': 'Josh McPherson',
-		'image': 'img/speakers/JoshM_2.png',
+		'image': 'img/speakers/JoshM_5.1.png',
 		'alt': 'Josh McPherson',
-		'titles': ['Lead Pastor, Grace City Church', 'Founder, Stronger Man Nation']
+		'titles': ['Lead Pastor, Grace City Church', 'Founder, Stronger Man Nation'],
+		'shrink': 0.85,
 	},
 	{
 		'name': 'Eric Metaxas',
@@ -47,9 +48,11 @@ speakers = [
 	},
 	{
 		'name': 'Nate Schatzline',
-		'image': 'img/speakers/NateS_2.png',
+		'image': 'img/speakers/NateS_5.1.png',
 		'alt': 'Nate Schatzline',
-		'titles': ['Preaching Pastor, Mercy Culture', 'Texas House of Representatives', 'Founder, For Liberty & Justice']
+		'titles': ['Preaching Pastor, Mercy Culture', 'Texas House of Representatives', 'Founder, For Liberty & Justice'],
+        'shrink': 0.85,
+        'image_x': -20,
 	},
 	{
 		'name': 'Mark Driscoll',

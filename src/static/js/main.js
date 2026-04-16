@@ -448,6 +448,36 @@ document.addEventListener("DOMContentLoaded", () => {
 		return String(numericValue);
 	};
 
+	const applyClipPathToCard = (card) => {
+		const personShell = card.querySelector(".speaker-card__person-shell");
+		const imageShell = card.querySelector(".speaker-card__image-shell");
+		if (!personShell || !imageShell) return;
+
+		const W = imageShell.offsetWidth;
+		const H = imageShell.offsetHeight;
+		if (!W || !H) return; // card is hidden, skip
+
+		const big = 9999;
+		const L = 0.03 * W;
+		const R = 0.97 * W;
+		const B = H;
+		const r = 0.14 * 0.94 * W;
+
+		const d = [
+			`M -${big},-${big}`,
+			`L ${W + big},-${big}`,
+			`L ${W + big},${B - r}`,
+			`L ${R},${B - r}`,
+			`A ${r},${r},0,0,1,${R - r},${B}`,
+			`L ${L + r},${B}`,
+			`A ${r},${r},0,0,1,${L},${B - r}`,
+			`L -${big},${B - r}`,
+			`Z`,
+		].join(" ");
+
+		personShell.style.clipPath = `path('${d}')`;
+	};
+
 	speakerCards.forEach((card) => {
 		const imageX = normalizeCssLength(card.dataset.imageX);
 		const imageY = normalizeCssLength(card.dataset.imageY);
@@ -464,6 +494,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (shrink) {
 			card.style.setProperty("--speaker-person-scale", shrink);
 		}
+
+		applyClipPathToCard(card);
 	});
 
 	const speakersToggle = document.querySelector("[data-speakers-toggle]");
@@ -475,6 +507,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				extraSpeakersGrid.removeAttribute("hidden");
 				speakersToggle.setAttribute("aria-expanded", "true");
 				speakersToggle.textContent = "Show Less";
+				// Re-apply clip paths now that cards have real dimensions
+				extraSpeakersGrid.querySelectorAll("[data-speaker-card]").forEach(applyClipPathToCard);
 				return;
 			}
 

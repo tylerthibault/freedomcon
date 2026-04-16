@@ -36,6 +36,14 @@
 	--color-text: var(--color-primary);
 	--color-surface: var(--color-primary);
 	--color-on-surface: var(--color-secondary);
+	/* Typography scale — change these to restyle p and headings site-wide */
+	--font-size-p: 1.2em;
+	--font-size-h1: 2.5rem;
+	--font-size-h2: 2rem;
+	--font-size-h3: 1.75rem;
+	--font-size-h4: 1.5rem;
+	--font-size-h5: 1.25rem;
+	--font-size-h6: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -70,8 +78,15 @@ h6,
 	font-weight: 700;
 }
 
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+h5 { font-size: var(--font-size-h5); }
+h6 { font-size: var(--font-size-h6); }
+
 p {
-	font-size: 1.5em;
+	font-size: var(--font-size-p);
 }
 
 .font-fremont-osf-bold {
@@ -188,4 +203,36 @@ p {
 .subpage-hero-media--contain .subpage-hero-media__image {
 	object-fit: contain;
 	object-position: center;
+}
+/* ─── Shared Page Hero (text banner, used across back pages) ─────────────── */
+.page-hero {
+        background: var(--color-primary);
+        color: var(--color-secondary);
+        padding: clamp(3.2rem, 7vw, 6rem) 0 clamp(2.4rem, 5vw, 4.2rem);
+}
+
+.page-hero__inner {
+        width: min(1120px, 92vw);
+        margin: 0 auto;
+}
+
+.page-hero__eyebrow {
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.85rem;
+}
+
+.page-hero__title {
+        margin: 0.3rem 0 0;
+        text-transform: uppercase;
+        line-height: 0.95;
+        letter-spacing: 0.06em;
+        font-size: clamp(2.4rem, 6.5vw, 5.2rem);
+}
+
+.page-hero__copy {
+        margin: 1rem 0 0;
+        width: min(64ch, 100%);
+        line-height: 1.35;
 }

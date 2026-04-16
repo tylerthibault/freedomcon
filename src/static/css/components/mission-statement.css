@@ -31,7 +31,6 @@
     right: clamp(0.55rem, 1.2vw, 1rem);
     margin: 0;
     font-family: var(--font-action);
-    font-size: clamp(1.6rem, 4.5vw, 3.6rem);
     line-height: 0.9;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -52,7 +51,6 @@
     text-transform: uppercase;
     letter-spacing: 0.14em;
     color: var(--fc-accent);
-    font-size: 0.72rem;
     font-weight: 700;
 }
 
@@ -70,7 +68,6 @@
     margin: 0;
     color: var(--fc-muted);
     line-height: 1.5;
-    font-size: clamp(0.96rem, 1.2vw, 1.12rem);
 }
 
 .landing12-mission__body+.landing12-mission__body {
@@ -162,14 +159,12 @@
     font-family: var(--font-action);
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    font-size: clamp(1.35rem, 3vw, 2rem);
     line-height: 0.95;
     color: var(--fc-ink);
 }
 
 .landing12-mission__yield {
     margin: 0;
-    font-size: 0.72rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--fc-accent);
@@ -192,7 +187,7 @@
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 767.98px) {
     .landing12-mission {
         padding-top: 2.2rem;
         padding-bottom: 2.2rem;

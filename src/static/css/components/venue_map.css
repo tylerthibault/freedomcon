@@ -14,7 +14,6 @@
 	margin: 0;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
-	font-size: clamp(0.92rem, 1.1vw, 1.05rem);
 }
 
 .venue-map-hero__title {
@@ -28,7 +27,6 @@
 .venue-map-hero__copy {
 	margin: 1rem 0 0;
 	width: min(64ch, 100%);
-	font-size: clamp(1rem, 1.3vw, 1.15rem);
 	line-height: 1.35;
 }
 
@@ -144,7 +142,6 @@
 }
 
 .venue-map-poi-list__item-desc {
-	font-size: 0.9rem;
 	margin: 0.4rem 0 0;
 	line-height: 1.35;
 }

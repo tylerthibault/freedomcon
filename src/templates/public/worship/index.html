@@ -1,6 +1,6 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
-{% from "components/macros/subpage_hero.html" import subpage_hero %}
+{% from "components/macros/page_hero.html" import page_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/worship.css') }}">
@@ -12,7 +12,7 @@
 
 {% block content %}
 <main>
-	{{ subpage_hero('img/worship_img.png', 'Worship at Freedom Con', 'Freedom Con worship', '50%', '50%') }}
+	{{ page_hero("Come Ready", "Worship", "At Stronger Man Nation we sing to Jesus like men. Worship is warfare.") }}
 	{{ slim_banner("Worship") }}
 
 	<section class="worship-page" aria-label="Worship information">

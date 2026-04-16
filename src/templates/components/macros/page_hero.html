@@ -1,0 +1,9 @@
+{% macro page_hero(eyebrow, title, copy, aria_label=None) %}
+<section class="page-hero" aria-label="{{ aria_label if aria_label else title }}">
+	<div class="page-hero__inner container-xl">
+		{% if eyebrow %}<p class="page-hero__eyebrow">{{ eyebrow }}</p>{% endif %}
+		<h1 class="page-hero__title">{{ title }}</h1>
+		{% if copy %}<p class="page-hero__copy">{{ copy }}</p>{% endif %}
+	</div>
+</section>
+{% endmacro %}
