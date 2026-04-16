@@ -977,6 +977,48 @@ body.landing12-no-scroll {
     color: #fff;
 }
 
+/* ── What's Included ───────────────────────────────────────── */
+.fc-exp-includes {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: clamp(1.8rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.fc-exp-includes__lead {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 1.5rem;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+}
+
+.fc-exp-includes__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.6rem 2rem;
+}
+
+.fc-exp-includes__list li {
+    padding-left: 1.4em;
+    position: relative;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.5;
+}
+
+.fc-exp-includes__list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--fc-accent);
+    font-weight: 700;
+}
+
+.fc-exp-includes__cta {
+    margin-top: 0.5rem;
+}
+
 @media (max-width: 900px) {
     .fc-exp-layers {
         grid-template-columns: repeat(2, minmax(0, 1fr));

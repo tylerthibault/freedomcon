@@ -1822,3 +1822,55 @@ body.landing12-no-scroll {
 .landing12-father-son .landing12-cta-row {
     margin-top: 1.1rem;
 }
+
+/* ── Includes Teaser ───────────────────────────────────────── */
+.landing12-includes-teaser {
+    padding: clamp(2.5rem, 5vw, 4rem) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.landing12-includes-teaser__inner {
+    text-align: center;
+    max-width: 680px;
+}
+
+.landing12-includes-teaser__eyebrow {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-secondary);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+    color: var(--fc-accent);
+}
+
+.landing12-includes-teaser__title {
+    margin: 0 0 1rem;
+    font-family: var(--font-secondary);
+    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    color: var(--fc-ink);
+}
+
+.landing12-includes-teaser__body {
+    margin: 0 0 1.8rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.65;
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+}
+}
+.landing12-father-son__inner {
+    text-align: center;
+    padding-top: clamp(1.7rem, 3.2vw, 2.8rem);
+    padding-bottom: clamp(1.6rem, 3.1vw, 2.5rem);
+}
+
+.landing12-father-son__copy {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landing12-father-son .landing12-cta-row {
+    margin-top: 1.1rem;
+}
