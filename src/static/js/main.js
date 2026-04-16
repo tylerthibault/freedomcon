@@ -19,9 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			const currentScrollY = Math.max(window.scrollY, 0);
 			const isAtTop = currentScrollY <= 24;
+			const nearBottom = (currentScrollY + window.innerHeight) >= (document.documentElement.scrollHeight - 80);
 			landing12Nav.classList.toggle("is-at-top", isAtTop);
 
 			if (isAtTop) {
+				landing12Nav.classList.add("is-condensed");
+				landing12LastScrollY = currentScrollY;
+				return;
+			}
+
+			// Near the bottom: keep nav condensed to prevent promo strip from animating in
+			if (nearBottom) {
 				landing12Nav.classList.add("is-condensed");
 				landing12LastScrollY = currentScrollY;
 				return;
@@ -400,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}, {
 			root: null,
 			rootMargin: isMobile ? "0px 0px -22% 0px" : "0px 0px -10% 0px",
-			threshold: isMobile ? 0.22 : 0.16,
+			threshold: 0,
 		});
 
 		revealTargets.forEach((element) => observer.observe(element));
