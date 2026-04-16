@@ -20,6 +20,10 @@
     <meta name="robots" content="{{ seo_robots }}">
     <link rel="canonical" href="{{ seo_canonical }}">
 
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="{{ url_for('static', filename='img/favicon/16x16.svg') }}">
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="{{ url_for('static', filename='img/favicon/32x32.svg') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/favicon/180x180.svg') }}">
+
     <meta property="og:type" content="{{ seo_og_type }}">
     <meta property="og:site_name" content="{{ seo_site_name }}">
     <meta property="og:title" content="{{ seo_title }}">

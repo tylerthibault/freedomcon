@@ -77,9 +77,6 @@
                 }
             }
             window.addEventListener('scroll', onScroll, { passive: true });
-        } else if (isTickets) {
-            // Trigger after 1 second on the tickets page
-            setTimeout(openModal, 1000);
         }
     });
 
