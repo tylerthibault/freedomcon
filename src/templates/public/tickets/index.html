@@ -24,7 +24,7 @@
 
 			<div class="tickets-grid" role="list">
 				{% for ticket in ticket_prices %}
-				<article class="ticket-card{% if ticket.highlight %} ticket-card--highlight{% endif %}" role="listitem">
+				<article class="ticket-card{% if ticket.highlight %} ticket-card--highlight{% endif %}{% if loop.first %} ticket-card--has-includes{% endif %}" role="listitem">
 					<h3 class="ticket-card__name">{{ ticket.name }}</h3>
 					<p class="ticket-card__price">{{ ticket.price|replace('\n', '<br>')|safe }}</p>
 					{% if ticket.notes and ticket.notes|length %}
@@ -34,20 +34,25 @@
 						{% endfor %}
 					</ul>
 					{% endif %}
+					{% if loop.first %}
+					<ul class="ticket-card__includes">
+						<li>Parking</li>
+						<li>Swag bag</li>
+						<li>3 main sessions</li>
+						<li>6 breakout sessions</li>
+						<li class="ticket-card__includes-more">&amp; 8 more&hellip;</li>
+					</ul>
+					<a class="ticket-card__includes-toggle" href="#whats-included">See everything included &darr;</a>
+					{% endif %}
 				</article>
 				{% endfor %}
 			</div>
-
 			<div class="my-3">
-                {% with cta_url='https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets' %}
-                {% include 'components/cta_button.html' %}
-                {% endwith %}
-            </div>
-			<p class="tickets-section__notice">{{ ticket_meta.notice }}</p>
-			<div class="tickets-scroll-hint" aria-label="More on this page">
-				<a class="tickets-scroll-hint__link" href="#whats-included">What&apos;s Included ↓</a>
-				<a class="tickets-scroll-hint__link" href="#current-deals">Current Deals ↓</a>
+				{% with cta_url='https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets' %}
+				{% include 'components/cta_button.html' %}
+				{% endwith %}
 			</div>
+			<p class="tickets-section__notice">{{ ticket_meta.notice }}</p>
 		</div>
 	</section>
 
