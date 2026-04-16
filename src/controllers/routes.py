@@ -295,6 +295,7 @@ def vendors_page() -> str:
 
 @public_bp.get("/press")
 def press_page() -> str:
+	return redirect(url_for("public.landing"))
 	media_kit_download_url = getenv("MEDIA_KIT_DOWNLOAD_URL", "").strip()
 	media_kit_image_url = getenv("MEDIA_KIT_IMAGE_URL", "").strip() or url_for(
 		"static", filename="img/freedom_con_media_kit_flyer.jpg"
