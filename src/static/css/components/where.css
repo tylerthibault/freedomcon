@@ -108,14 +108,12 @@
 .where--page .where__title {
 	margin: 0;
 	font-family: var(--font-secondary);
-	font-size: clamp(2rem, 3.8vw, 3.4rem);
+	font-size: clamp(1.5rem, 2.8vw, 3rem);
 	font-weight: 700;
 	letter-spacing: 0.03em;
 	text-transform: uppercase;
-	line-height: 1;
+	line-height: 1.05;
 	color: var(--color-secondary);
-	word-break: break-word;
-	overflow-wrap: break-word;
 }
 
 .where__divider {
