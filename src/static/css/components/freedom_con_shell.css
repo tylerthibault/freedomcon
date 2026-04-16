@@ -22,6 +22,7 @@ body.landing12-no-scroll {
 }
 
 .landing12-btn {
+    /* display/alignment: Bootstrap .btn handles inline-block + text-align:center */
     background: var(--fc-accent);
     color: #fff;
     text-decoration: none;
@@ -32,9 +33,6 @@ body.landing12-no-scroll {
     letter-spacing: 0.12em;
     font-weight: 700;
     transition: 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .landing12-btn:hover,
@@ -66,13 +64,9 @@ body.landing12-no-scroll {
 }
 
 .landing12-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    /* layout: d-flex align-items-center justify-content-between gap-3 mx-auto on element */
     padding: 1rem 2rem;
     max-width: 1440px;
-    margin: 0 auto;
 }
 
 .landing12-brand {
@@ -84,10 +78,8 @@ body.landing12-no-scroll {
 }
 
 .landing12-links {
-    display: flex;
+    /* layout: d-flex align-items-center flex-nowrap on element */
     gap: 1.2rem;
-    align-items: center;
-    flex-wrap: nowrap;
 }
 
 .landing12-links a {
@@ -152,24 +144,16 @@ body.landing12-no-scroll {
 
 .landing12-nav-urgency {
     margin: 0;
-    display: inline-block;
     color: #fff;
-    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     white-space: nowrap;
-    background: var(--fc-accent);
-    padding: 0.3rem 0.8rem;
-    border: 2px solid rgba(255, 255, 255, 0.85);
-    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.22), 2px 4px 14px rgba(0, 0, 0, 0.55);
-    text-shadow: none;
+    text-shadow: 0 0 18px rgba(188, 42, 39, 0.75), 0 0 6px rgba(188, 42, 39, 0.45), 0 0 2px rgba(255, 255, 255, 0.5);
 }
 
 .landing12-menu-toggle {
-    display: none;
-    align-items: center;
-    justify-content: center;
+    /* show/hide: d-flex d-md-none on element */
     border: 0;
     background: var(--fc-accent);
     color: #fff;
@@ -189,7 +173,7 @@ body.landing12-no-scroll {
     display: none;
 }
 
-@media (max-width: 1300px) and (min-width: 761px) {
+@media (max-width: 1299.98px) and (min-width: 768px) {
     .landing12-link-optional {
         display: none;
     }
@@ -207,9 +191,8 @@ body.landing12-no-scroll {
 }
 
 .landing12-footer-inner {
+    /* layout: d-grid mx-auto on element */
     max-width: 1240px;
-    margin: 0 auto;
-    display: grid;
     gap: 1.25rem;
 }
 
@@ -220,8 +203,7 @@ body.landing12-no-scroll {
 }
 
 .landing12-footer-col {
-    display: flex;
-    flex-direction: column;
+    /* layout: d-flex flex-column on element */
     gap: 0.45rem;
 }
 
@@ -234,7 +216,6 @@ body.landing12-no-scroll {
 .landing12-footer-copy {
     margin: 0;
     color: rgba(255, 255, 255, 0.78);
-    font-size: 0.8rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -276,7 +257,7 @@ body.landing12-no-scroll {
     text-transform: uppercase;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 767.98px) {
     .landing12-nav {
         flex-wrap: wrap;
         padding: 1rem;
@@ -288,13 +269,13 @@ body.landing12-no-scroll {
     }
 
     .landing12-menu-toggle {
-        display: inline-flex;
+        /* d-flex d-md-none handles show/hide; responsive sizing below */
         margin-left: auto;
         transition: padding 220ms ease, font-size 220ms ease, letter-spacing 220ms ease, color 180ms ease;
     }
 
     .landing12-links {
-        display: flex;
+        /* d-flex on element already set; override to fixed drawer at mobile */
         position: fixed;
         top: 0;
         right: 0;
@@ -336,17 +317,14 @@ body.landing12-no-scroll {
     }
 
     .landing12-nav-urgency {
-        width: fit-content;
-        align-self: center;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%;
         order: 4;
-        white-space: nowrap;
+        white-space: normal;
         text-align: center;
-        margin-top: 0.6rem;
+        margin-top: 0.4rem;
         max-height: 2.6rem;
         opacity: 1;
-        overflow: visible;
+        overflow: hidden;
         transform: translateY(0);
         transition: opacity 200ms ease, max-height 220ms ease, margin-top 220ms ease, transform 200ms ease;
     }
@@ -409,7 +387,7 @@ body.landing12-no-scroll {
     }
 }
 
-@media (max-width: 1100px) and (min-width: 761px) {
+@media (max-width: 1100px) and (min-width: 768px) {
     .landing12-footer-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -481,7 +459,7 @@ body.landing12-no-scroll {
     color: var(--fc-accent);
 }
 
-@media (max-width: 760px) {
+@media (max-width: 767.98px) {
     .landing12-nav-dropdown {
         width: 100%;
     }
@@ -510,11 +488,9 @@ body.landing12-no-scroll {
 }
 
 .fc-coming-soon__inner {
+    /* layout: add d-flex flex-column align-items-center to element if used */
     max-width: 640px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 1.25rem;
 }
 
@@ -537,10 +513,8 @@ body.landing12-no-scroll {
 }
 
 .fc-coming-soon__actions {
-    display: flex;
+    /* layout: d-flex flex-wrap justify-content-center on element */
     gap: 0.7rem;
-    flex-wrap: wrap;
-    justify-content: center;
     margin-top: 0.5rem;
 }
 
@@ -567,7 +541,6 @@ body.landing12-no-scroll {
 .fc-page__lead {
     margin: 1rem 0 0;
     color: rgba(255, 255, 255, 0.88);
-    font-size: clamp(1rem, 1.4vw, 1.15rem);
     line-height: 1.6;
     letter-spacing: 0.01em;
     max-width: 840px;
@@ -588,7 +561,6 @@ body.landing12-no-scroll {
     font-family: var(--font-secondary);
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    font-size: clamp(1.4rem, 3.2vw, 2.2rem);
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.1;
 }
@@ -606,7 +578,6 @@ body.landing12-no-scroll {
 .fc-page__section h2 {
     margin: 0 0 0.7rem;
     font-family: var(--font-secondary);
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
@@ -624,10 +595,6 @@ body.landing12-no-scroll {
     padding: 1.8rem 1.4rem;
     margin-left: -1.4rem;
     margin-right: -1.4rem;
-}
-
-.fc-page__section--valley h2 {
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
 }
 
 .fc-page__img-break {
@@ -671,12 +638,10 @@ body.landing12-no-scroll {
     font-family: var(--font-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: 1rem;
 }
 
 .fc-page__pillar p {
     margin: 0.55rem 0 0;
-    font-size: 0.98rem;
 }
 
 .fc-page__list {
@@ -737,12 +702,10 @@ body.landing12-no-scroll {
     font-family: var(--font-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: 1rem;
 }
 
 .fc-page__commitment p {
     margin: 0.55rem 0 0;
-    font-size: 0.98rem;
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.55;
 }
@@ -761,34 +724,29 @@ body.landing12-no-scroll {
 }
 
 .fc-page__actions {
+    /* layout: d-flex flex-wrap on element */
     margin-top: 1.8rem;
-    display: flex;
     gap: 0.7rem;
-    flex-wrap: wrap;
 }
 
 .fc-page__finale {
+    /* layout: d-flex flex-column align-items-center text-center on element */
     margin-top: 2.8rem;
     padding: clamp(1.8rem, 4vw, 2.8rem) 1.5rem;
     border: 1px solid rgba(188, 42, 39, 0.4);
     background: linear-gradient(135deg, rgba(188, 42, 39, 0.12) 0%, rgba(0, 0, 0, 0.25) 100%);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .fc-page__finale-cta-label {
     margin: 1rem 0 0;
     color: rgba(255, 255, 255, 0.65);
-    font-size: 0.95rem;
     letter-spacing: 0.03em;
     max-width: 480px;
     line-height: 1.55;
 }
 
 .fc-page__finale .fc-page__actions {
-    justify-content: center;
+    /* justify-content-center added directly to those elements in HTML */
 }
 
 @media (max-width: 860px) {
@@ -820,16 +778,12 @@ body.landing12-no-scroll {
 }
 
 .fc-exp-day {
-    border: 1px solid var(--fc-line);
-    border-top: 3px solid var(--fc-accent);
-    background: rgba(255, 255, 255, 0.02);
-    overflow: hidden;
+    border-left: 2px solid var(--fc-accent);
+    padding-left: 1.1rem;
 }
 
 .fc-exp-day__header {
-    padding: 1rem 1.1rem 0.8rem;
-    border-bottom: 1px solid var(--fc-line);
-    background: rgba(255, 255, 255, 0.03);
+    padding: 0 0 0.6rem;
 }
 
 .fc-exp-day__label {
@@ -853,7 +807,7 @@ body.landing12-no-scroll {
 
 .fc-exp-day__items {
     margin: 0;
-    padding: 1rem 1.1rem;
+    padding: 0.6rem 0 0;
     list-style: none;
     display: grid;
     gap: 0.55rem;
@@ -883,14 +837,8 @@ body.landing12-no-scroll {
 }
 
 .fc-exp-layer {
-    border: 1px solid var(--fc-line);
-    background: rgba(255, 255, 255, 0.02);
-    padding: 1.2rem 1rem;
-    transition: background 0.2s;
-}
-
-.fc-exp-layer:hover {
-    background: rgba(255, 255, 255, 0.04);
+    border-left: 2px solid var(--fc-accent);
+    padding: 0.3rem 0 0.3rem 1rem;
 }
 
 .fc-exp-layer__num {
@@ -907,12 +855,10 @@ body.landing12-no-scroll {
     font-family: var(--font-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: 0.95rem;
 }
 
 .fc-exp-layer p {
     margin: 0;
-    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.75);
     line-height: 1.55;
 }
@@ -925,14 +871,8 @@ body.landing12-no-scroll {
 }
 
 .fc-exp-encounter__item {
-    border: 1px solid var(--fc-line);
-    background: rgba(255, 255, 255, 0.02);
-    padding: 1.1rem 1rem;
-    transition: background 0.2s;
-}
-
-.fc-exp-encounter__item:hover {
-    background: rgba(255, 255, 255, 0.04);
+    border-left: 2px solid var(--fc-accent);
+    padding: 0.3rem 0 0.3rem 1rem;
 }
 
 .fc-exp-encounter__item > span {
@@ -948,12 +888,10 @@ body.landing12-no-scroll {
     font-family: var(--font-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: 0.95rem;
 }
 
 .fc-exp-encounter__item p {
     margin: 0;
-    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.75);
     line-height: 1.55;
 }
@@ -984,7 +922,6 @@ body.landing12-no-scroll {
 .fc-exp-fatherson__eyebrow {
     margin: 0 0 0.5rem;
     font-family: var(--font-secondary);
-    font-size: 0.8rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--fc-accent);
@@ -1001,7 +938,6 @@ body.landing12-no-scroll {
 
 .fc-exp-fatherson__body {
     margin: 0 0 1.8rem;
-    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
     color: rgba(255, 255, 255, 0.88);
     line-height: 1.65;
     max-width: 560px;

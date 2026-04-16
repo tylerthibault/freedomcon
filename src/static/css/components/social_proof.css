@@ -125,7 +125,6 @@
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    font-size: clamp(0.73rem, 0.78vw, 0.82rem);
     font-weight: 800;
     line-height: 1.15;
     color: #141414;
@@ -133,7 +132,6 @@
 
 .social-proof-card__title {
     margin: 0.18rem 0 0;
-    font-size: clamp(0.67rem, 0.72vw, 0.75rem);
     line-height: 1.2;
     color: #5f5f5f;
     overflow: hidden;
@@ -143,7 +141,6 @@
 
 .social-proof-card__quote {
     margin: 0;
-    font-size: clamp(0.88rem, 0.88vw, 1.02rem);
     line-height: 1.42;
     color: #262626;
     white-space: normal;
@@ -211,7 +208,6 @@
 
 .social-proof-modal__name {
     margin: 0;
-    font-size: 1.03rem;
     font-weight: 800;
     color: #151515;
 }
@@ -219,7 +215,6 @@
 .social-proof-modal__title {
     margin: 0.15rem 0 0.75rem;
     color: #606060;
-    font-size: 0.84rem;
 }
 
 .social-proof-modal__quote {
@@ -339,7 +334,6 @@
 
     .social-proof-mobile-card__quote {
         margin: 0;
-        font-size: 0.76rem;
         line-height: 1.36;
         color: #242424;
         position: relative;
@@ -409,7 +403,6 @@
     }
 
     .social-proof-card__quote {
-        font-size: 0.85rem;
     }
 
     .social-proof-card {

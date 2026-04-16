@@ -28,7 +28,6 @@
 .press-page__copy {
 	margin: 0 auto;
 	width: min(760px, 100%);
-	font-size: clamp(1rem, 1.5vw, 1.2rem);
 	line-height: 1.5;
 	opacity: 0.95;
 }
@@ -80,7 +79,6 @@
 
 .press-page__hint {
 	margin: 0;
-	font-size: 0.95rem;
 	opacity: 0.86;
 	text-align: center;
 }
@@ -119,7 +117,6 @@
 
 .press-page-thank-you__message {
 	margin: 0;
-	font-size: 1.05rem;
 	line-height: 1.5;
 }
 
@@ -140,7 +137,6 @@
 
 .press-page-card__empty {
 	margin: 0;
-	font-size: 0.95rem;
 	opacity: 0.9;
 }
 

@@ -23,7 +23,6 @@
 .worship-page__copy {
     margin: 1rem auto 0;
     max-width: 60ch;
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
     line-height: 1.5;
     color: #2f2f2f;
 }

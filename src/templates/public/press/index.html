@@ -1,6 +1,6 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
-{% from "components/macros/subpage_hero.html" import subpage_hero %}
+{% from "components/macros/page_hero.html" import page_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/press.css') }}">
@@ -12,7 +12,7 @@
 
 {% block content %}
 <main>
-	{{ subpage_hero('img/TheGuysFadeFeet.avif', 'Freedom Con media and press kit', 'Freedom Con media kit', contain=True) }}
+	{{ page_hero("Media Resources", "Press", "Grab the latest Freedom Con media kit and reach our team for interviews, sponsor opportunities, and press details.") }}
 	{{ slim_banner("Press & Media Kit") }}
 
 	<section class="press-page" aria-label="Press and media kit downloads">

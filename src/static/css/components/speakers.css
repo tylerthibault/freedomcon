@@ -19,19 +19,17 @@
 }
 
 .speakers-section__inner {
-    width: min(1120px, 92vw);
-    margin: 0 auto;
+    /* layout: container-xl on element */
     padding-top: clamp(2rem, 4vw, 3.5rem);
 }
 
 .speakers-section__heading {
     margin: 0 0 clamp(1.75rem, 3.5vw, 3rem);
+    /* text-center text-uppercase on element */
     font-family: var(--font-oswald-bold);
     font-size: clamp(2rem, 5vw, 3.6rem);
     line-height: 1;
     letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-align: center;
     color: var(--color-primary);
 }
 
@@ -104,7 +102,7 @@
 
 .speaker-card__image-mask {
     position: relative;
-    width: 88%;
+    width: 94%;
     height: 90%;
     margin: 0 auto;
     border-radius: 14%;
@@ -123,7 +121,7 @@
 .speaker-card__person-shell {
     position: absolute;
     inset: 0;
-    clip-path: inset(-100% -100% 0 -100%);
+    /* clip-path set dynamically via JS path() with computed px coordinates */
     z-index: 2;
 }
 

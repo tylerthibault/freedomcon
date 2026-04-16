@@ -13,8 +13,7 @@
 }
 
 .landing12-social-proof__inner {
-    width: min(1320px, 96vw);
-    margin: 0 auto;
+    /* layout: container-xxl mx-auto on element */
 }
 
 .landing12-social-proof__intro {
@@ -125,7 +124,7 @@
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 767.98px) {
     .landing12-social-proof__grid {
         grid-template-columns: 1fr;
     }

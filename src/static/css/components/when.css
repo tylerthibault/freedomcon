@@ -23,7 +23,6 @@
 	margin: 0;
 	font-family: var(--font-secondary);
 	font-weight: 700;
-	font-size: clamp(1.6rem, 4.4vw, 5rem);
 	line-height: 1;
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
@@ -44,7 +43,6 @@
 	margin: 0;
 	font-family: var(--font-secondary);
 	font-weight: 300;
-	font-size: clamp(1.2rem, 2.2vw, 3rem);
 	line-height: 1.1;
 }
 
@@ -60,7 +58,6 @@
 	margin: 0.6rem 0 0;
 	font-family: var(--font-secondary);
 	font-weight: 300;
-	font-size: clamp(2.4rem, 5.6vw, 6.2rem);
 	line-height: 1;
 	text-transform: uppercase;
 }

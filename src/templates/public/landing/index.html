@@ -46,7 +46,7 @@
 }
 ] %}
 
-{% set countdown_target = urgency.countdown_target if urgency is defined else '2026-06-19T17:00:00-07:00' %}
+{% set countdown_target = '2026-06-19T17:00:00-07:00' %}
 {% set declaration_text = (background_text | join(' ')) if background_text is defined else '' %}
 
 <main class="landing12 overflow-hidden">
@@ -132,8 +132,8 @@
 
     {% include 'public/landing/components/mission_statement.html' %}
 
-    <section class="landing12-wrap landing12-wrap--cta" aria-label="Primary calls to action">
-        <div class="landing12-cta-row landing12-cta-row--center">
+    <section class="landing12-wrap landing12-wrap--cta container-xl mx-auto" aria-label="Primary calls to action">
+        <div class="landing12-cta-row landing12-cta-row--center d-flex flex-wrap align-items-center justify-content-center">
             <a class="landing12-btn btn btn-xxl" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
         </div>
     </section>

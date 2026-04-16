@@ -1,4 +1,5 @@
 {% extends "bases/public.html" %}
+{% from "components/macros/page_hero.html" import page_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/tickets.css') }}">
@@ -9,26 +10,15 @@
 {% endblock %}
 
 {% block content %}
-{% set countdown_target = urgency.countdown_target if urgency is defined else '2026-06-19T17:00:00-07:00' %}
+{% set countdown_target = '2026-06-19T17:00:00-07:00' %}
 <main class="tickets-page">
-	<section class="tickets-hero" aria-label="Ticket options">
-		<div class="tickets-hero__brand">
-			<p class="tickets-hero__presenter">Stronger Man Nation Presents</p>
-			<h1 class="tickets-hero__title">{{ ticket_meta.event_title }}</h1>
-			<p class="tickets-hero__subtitle">{{ ticket_meta.subtitle }}</p>
-		</div>
-		<div class="tickets-hero__kicker-wrap">
-			<p class="tickets-hero__kicker">{{ ticket_meta.kicker }}</p>
-		</div>
-	</section>
+	{{ page_hero("Stronger Man Nation Presents", ticket_meta.event_title, ticket_meta.subtitle ~ " · " ~ ticket_meta.kicker) }}
 
 	<section class="tickets-section" aria-label="Ticket pricing">
-		<div class="tickets-section__inner">
+		<div class="tickets-section__inner container-xl">
 			<h2 class="tickets-section__heading">Tickets</h2>
 			<p class="tickets-section__dates">{{ ticket_meta.dates }}</p>
-			{% if urgency is defined %}
-			<p class="tickets-section__urgency">{{ urgency.headline }} — {{ urgency.body }}</p>
-			{% endif %}
+			<p class="tickets-section__urgency">Early pricing closes May 1 — Lock in your rate before pricing updates.</p>
 
 			<div class="tickets-grid" role="list">
 				{% for ticket in ticket_prices %}
@@ -51,7 +41,7 @@
                 {% include 'components/cta_button.html' %}
                 {% endwith %}
             </div>
-			<p class="tickets-section__notice">{{ urgency.tickets_notice if urgency is defined else ticket_meta.notice }}</p>
+			<p class="tickets-section__notice">{{ ticket_meta.notice }}</p>
 		</div>
 	</section>
 </main>

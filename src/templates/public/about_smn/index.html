@@ -1,4 +1,5 @@
 {% extends "bases/public.html" %}
+{% from "components/macros/page_hero.html" import page_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-variant-12.css') }}">
@@ -9,6 +10,7 @@
 {% endblock %}
 
 {% block content %}
+{{ page_hero("Our Story", "About SMN", "For six years we\u2019ve held Stronger Man Nation conferences at home. Now we\u2019re taking it to The Gorge.") }}
 {% set photos = [
     {'src': url_for('static', filename='img/past_smc/1018_GCC_LifeinMotionPhotography.jpg'), 'alt': 'Past event photo 1'},
     {'src': url_for('static', filename='img/past_smc/1020_GCC_LifeinMotionPhotography.jpg'), 'alt': 'Past event photo 2'},
@@ -28,7 +30,7 @@
 <section class="past-carousel-section" aria-label="Past event photos">
     <div class="past-carousel-intro">
         <span class="label">About SMN</span>
-        <h1>The Road to The Gorge</h1>
+        <h2>The Road to The Gorge</h2>
         <p>For the last 6 years we have held Stronger Man Nation conferences at home. This year we are taking it on the road.</p>
         <div class="landing12-cta-row landing12-cta-row--center">
             <a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Join Us This Year</a>

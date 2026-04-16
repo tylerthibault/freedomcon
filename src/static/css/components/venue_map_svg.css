@@ -14,7 +14,6 @@
 	margin: 0;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
-	font-size: clamp(0.92rem, 1.1vw, 1.05rem);
 }
 
 .vm-hero__title {
@@ -28,7 +27,6 @@
 .vm-hero__copy {
 	margin: 1rem 0 0;
 	width: min(64ch, 100%);
-	font-size: clamp(1rem, 1.3vw, 1.15rem);
 	line-height: 1.35;
 }
 
@@ -230,7 +228,6 @@
 
 .vm-panel__desc {
 	margin: 0.6rem 0 0;
-	font-size: clamp(0.88rem, 1.1vw, 0.98rem);
 	line-height: 1.45;
 	color: rgba(255, 255, 255, 0.82);
 	padding-left: 2.35rem; /* align with name text */

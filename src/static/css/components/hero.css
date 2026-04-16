@@ -1,9 +1,7 @@
 .hero-seq {
-    
-	background: var(--color-primary);
-	color: var(--color-secondary);
-	text-align: center;
-	padding: 1rem 1rem 0;
+    /* text-center on element */
+        background: var(--color-primary);
+        color: var(--color-secondary);
 	overflow: hidden;
 }
 
@@ -29,7 +27,6 @@
 	margin: 0;
 	font-family: var(--font-fremont-osf-bold);
 	font-weight: 700;
-	font-size: clamp(1rem, 3.4vw, 3rem);
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
 	line-height: 1;
@@ -39,7 +36,6 @@
 	margin: 0.05rem 0 0;
 	font-family: var(--font-secondary);
 	font-weight: 700;
-	font-size: clamp(1rem, 1.7vw, 1.9rem);
 	letter-spacing: 0.18em;
 	text-transform: lowercase;
 	line-height: 1;
@@ -50,10 +46,7 @@
 }
 
 .hero-seq__title-row {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: clamp(0.45rem, 1.4vw, 1.3rem);
+    /* layout: d-flex align-items-center justify-content-center on element */
 }
 
 .hero-seq__star {
@@ -75,16 +68,12 @@
 }
 
 .hero-seq__subtitle-row {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: clamp(0.5rem, 2vw, 2rem);
+    /* layout: d-flex align-items-center justify-content-center on element */
 }
 
 .hero-seq__subtitle {
 	margin: 0 0 0;
 	font-family: var(--font-american-scribe);
-	font-size: clamp(2rem, 6.5vw, 6rem);
 	line-height: 1;
 	color: var(--color-secondary);
 }

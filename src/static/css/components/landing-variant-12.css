@@ -61,7 +61,6 @@ body.landing12-no-scroll {
     color: var(--fc-ink);
     /* font-family: "American Scribe", cursive; */
     font-family: "Oswald", sans-serif;
-    font-size: clamp(0.54rem, 0.92vw, 0.82rem);
     line-height: 1.92;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -87,125 +86,38 @@ body.landing12-no-scroll {
     letter-spacing: -0.01em;
 }
 
-.landing12-header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(8px);
-}
+/* ── landing12-header, nav, btn, brand, links ─────────────────────────────
+   These selectors are defined in freedom_con_shell.css (the global shell).
+   Do not redefine here to avoid duplication. Bootstrap utilities on HTML
+   elements handle display/alignment properties.
+   ─────────────────────────────────────────────────────────────────────── */
 
 .landing12-hero-subtitle {
     font-family: "American Scribe", cursive;
-    font-size: clamp(3.1rem, 9vw, 7.2rem);
     line-height: 0.88;
     color: var(--fc-accent);
     margin-bottom: 1.25rem;
 }
 
-.landing12-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    max-width: 1440px;
-    margin: 0 auto;
-}
+/* .landing12-nav — see freedom_con_shell.css */
 
-.landing12-menu-toggle {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    background: var(--fc-accent);
-    color: #fff;
-    padding: 0.55rem 0.75rem;
-    text-transform: uppercase;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    font-weight: 700;
-}
+/* .landing12-menu-toggle — see freedom_con_shell.css */
 
-.landing12-menu-toggle:hover,
-.landing12-menu-toggle:focus-visible {
-    color: #fff;
-}
+/* .landing12-menu-backdrop — see freedom_con_shell.css */
 
-.landing12-menu-backdrop {
-    display: none;
-}
+/* .landing12-brand — see freedom_con_shell.css */
 
-.landing12-brand {
-    font-family: var(--font-action);
-    color: var(--fc-accent);
-    font-size: clamp(1.4rem, 2vw, 2rem);
-    font-weight: 800;
-    text-decoration: none;
-}
+/* .landing12-links — see freedom_con_shell.css */
 
-.landing12-links {
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.landing12-links a {
-    text-decoration: none;
-    color: var(--fc-ink);
-    font-size: 0.8rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.landing12-links a:hover,
-.landing12-links a:focus-visible {
-    color: var(--fc-accent);
-}
-
-.landing12-btn {
-    background: var(--fc-accent);
-    color: #fff;
-    text-decoration: none;
-    border: 0;
-    padding: 0.75rem 1.1rem;
-    text-transform: uppercase;
-    font-size: 0.76rem;
-    letter-spacing: 0.12em;
-    font-weight: 700;
-    transition: 0.2s ease;
-}
-
-.landing12-btn:hover,
-.landing12-btn:focus-visible {
-    background: var(--fc-accent);
-    color: #fff;
-}
-
-.landing12-btn--ghost {
-    background: transparent;
-    color: var(--fc-ink);
-    border: 1px solid var(--fc-line);
-}
-
-.landing12-btn--ghost:hover,
-.landing12-btn--ghost:focus-visible {
-    border-color: var(--fc-accent);
-    color: var(--fc-accent);
-    background: transparent;
-}
+/* .landing12-btn / .landing12-btn--ghost — see freedom_con_shell.css */
 
 .landing12-cta-row {
-    display: flex;
+    /* layout: d-flex flex-wrap align-items-center on element */
     gap: 0.7rem;
-    flex-wrap: wrap;
-    align-items: center;
 }
 
 .landing12-cta-row--center {
-    justify-content: center;
+    /* justify-content-center on element */
 }
 
 .landing12-cta-row--top-gap {
@@ -242,10 +154,7 @@ body.landing12-no-scroll {
 }
 
 .landing12-countdown-inline {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    /* layout: d-flex flex-column align-items-center justify-content-center on element */
     gap: 0.2rem;
     background: rgba(0, 0, 0, 0.65);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -255,7 +164,7 @@ body.landing12-no-scroll {
 
 .landing12-countdown-inline strong {
     min-width: 2ch;
-    text-align: center;
+    /* text-center on element */
     font-size: clamp(1.4rem, 2.7vw, 2rem);
     color: #fff;
 }
@@ -280,12 +189,8 @@ body.landing12-no-scroll {
 
 .landing12-hero-copy {
     max-width: 1240px;
-    margin: 0 auto;
+    /* layout: mx-auto d-flex flex-column align-items-center text-center on element */
     padding: 0 clamp(1rem, 3vw, 2rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
 }
 
 .landing12-kicker {
@@ -301,7 +206,6 @@ body.landing12-no-scroll {
 
 .landing12-hero-presents {
     margin: 0 0 clamp(1rem, 2.2vw, 1.7rem);
-    font-size: clamp(1rem, 2.1vw, 2rem);
     letter-spacing: 0.18em;
     text-transform: lowercase;
     color: var(--fc-ink);
@@ -309,9 +213,7 @@ body.landing12-no-scroll {
 }
 
 .landing12-hero-lockup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* layout: d-flex align-items-center justify-content-center on element */
     gap: clamp(0.6rem, 2vw, 1.4rem);
     margin-bottom: clamp(0.9rem, 2vw, 1.6rem);
 }
@@ -334,16 +236,13 @@ body.landing12-no-scroll {
 }
 
 .landing12-hero-subline {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* layout: d-flex align-items-center justify-content-center on element */
     gap: clamp(0.8rem, 2vw, 1.6rem);
     margin: 0 0 clamp(1.2rem, 2.4vw, 2rem);
 }
 
 .landing12-hero-year {
     font-family: "American Scribe", cursive;
-    font-size: clamp(2rem, 4.2vw, 3.6rem);
     color: var(--fc-accent);
     line-height: 1;
     margin: 0;
@@ -351,7 +250,6 @@ body.landing12-no-scroll {
 
 .landing12-hero-subtitle {
     font-family: "American Scribe", cursive;
-    font-size: clamp(2.8rem, 7.5vw, 6.8rem);
     line-height: 0.95;
     color: var(--fc-ink);
     margin: 0;
@@ -558,7 +456,6 @@ body.landing12-no-scroll {
     font-family: var(--font-action);
     font-weight: 700;
     letter-spacing: 0.06em;
-    font-size: clamp(1.9rem, 5.2vw, 3.4rem);
     line-height: 1;
 }
 
@@ -575,7 +472,6 @@ body.landing12-no-scroll {
 .landing12-event-highlight__city {
     margin: 0;
     font-family: var(--font-oswald-light);
-    font-size: clamp(1.15rem, 2.6vw, 2rem);
     line-height: 1.1;
 }
 
@@ -585,7 +481,6 @@ body.landing12-no-scroll {
     font-family: var(--font-oswald-light);
     font-weight: 400;
     letter-spacing: 0.04em;
-    font-size: clamp(2rem, 5.4vw, 3.9rem);
     line-height: 1;
 }
 
@@ -637,7 +532,6 @@ body.landing12-no-scroll {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-family: var(--font-action);
-    font-size: clamp(1.8rem, 5vw, 4rem);
 }
 
 .landing12-cta-2__content p {
@@ -647,8 +541,8 @@ body.landing12-no-scroll {
 }
 
 .landing12-wrap {
+    /* centering: mx-auto on element */
     max-width: 1240px;
-    margin: 0 auto;
     padding: 5rem 2rem;
 }
 
@@ -699,7 +593,6 @@ body.landing12-no-scroll {
     text-transform: capitalize;
     color: #fff;
     font-family: var(--font-oswald-light);
-    font-size: clamp(1.5rem, 4.2vw, 3.4rem);
     line-height: 1.16;
     letter-spacing: 0.02em;
 }
@@ -730,7 +623,6 @@ body.landing12-no-scroll {
 
 .landing12-meta h3 {
     margin: 0 0 0.7rem;
-    font-size: 2rem;
 }
 
 .landing12-meta p {
@@ -758,7 +650,6 @@ body.landing12-no-scroll {
 
 .landing12-happening-head h2 {
     margin: 0;
-    font-size: clamp(1.8rem, 3.6vw, 3rem);
 }
 
 .landing12-happening-head p {
@@ -831,7 +722,6 @@ body.landing12-no-scroll {
 
 .landing12-happening-copy h3 {
     margin: 0;
-    font-size: clamp(1.15rem, 1.9vw, 1.55rem);
     line-height: 1.15;
 }
 
@@ -845,7 +735,6 @@ body.landing12-no-scroll {
 
 .landing12-speakers-head h2 {
     margin: 0;
-    font-size: clamp(2rem, 4.2vw, 4rem);
     font-style: italic;
 }
 
@@ -884,7 +773,6 @@ body.landing12-no-scroll {
 
 .landing12-speaker-copy h4 {
     margin: 0 0 0.5rem;
-    font-size: 1.35rem;
 }
 
 .landing12-speaker-copy p {
@@ -921,7 +809,6 @@ body.landing12-no-scroll {
     margin: 0;
     font-family: var(--font-action);
     letter-spacing: 0.06em;
-    font-size: clamp(1.35rem, 3.4vw, 2.6rem);
 }
 
 .landing12-trailers-grid {
@@ -1054,7 +941,6 @@ body.landing12-no-scroll {
 .landing12-trailer-modal__title {
     margin: 0 1.8rem 0.6rem 0;
     color: #fff;
-    font-size: 0.95rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
@@ -1114,7 +1000,6 @@ body.landing12-no-scroll {
     margin: 0 0 0.4rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: clamp(0.95rem, 1.4vw, 1.2rem);
 }
 
 .landing12 .landing12-crowder__title {
@@ -1162,7 +1047,6 @@ body.landing12-no-scroll {
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    font-size: 0.72rem;
     color: var(--fc-muted);
 }
 
@@ -1192,7 +1076,6 @@ body.landing12-no-scroll {
 
 .landing12-impact h2 {
     margin: 0 0 2.2rem;
-    font-size: clamp(2rem, 4.2vw, 3.7rem);
     font-style: italic;
 }
 
@@ -1243,7 +1126,6 @@ body.landing12-no-scroll {
 
 .past-carousel-intro h2 {
     margin: 0 0 0.6rem;
-    font-size: clamp(1.9rem, 4vw, 3.1rem);
 }
 
 .past-carousel-intro p {
@@ -1344,7 +1226,6 @@ body.landing12-no-scroll {
 .landing12-pricing h2 {
     text-align: center;
     margin: 0 0 2rem;
-    font-size: clamp(2.2rem, 5vw, 5rem);
     font-style: italic;
 }
 
@@ -1364,7 +1245,6 @@ body.landing12-no-scroll {
 
 .landing12-price-card h3 {
     margin: 0 0 0.7rem;
-    font-size: 2rem;
     font-style: italic;
 }
 
@@ -1376,7 +1256,6 @@ body.landing12-no-scroll {
 .landing12-price {
     margin: 0 0 1.3rem;
     font-family: var(--font-action);
-    font-size: 3rem;
     line-height: 1;
 }
 
@@ -1435,7 +1314,6 @@ body.landing12-no-scroll {
 
 .landing12-join h2 {
     margin: 0 0 0.9rem;
-    font-size: clamp(2rem, 4.8vw, 4rem);
     font-style: italic;
 }
 
@@ -1499,7 +1377,6 @@ body.landing12-no-scroll {
 }
 
 .social-proof-card__quote {
-    font-size: clamp(1rem, 1vw, 1.14rem);
     line-height: 1.4;
     line-clamp: 6;
     -webkit-line-clamp: 6;
@@ -1542,7 +1419,7 @@ body.landing12-no-scroll {
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 767.98px) {
     .landing12-nav {
         flex-wrap: wrap;
         padding: 1rem;
@@ -1746,7 +1623,6 @@ body.landing12-no-scroll {
     text-transform: uppercase;
     letter-spacing: 0.14em;
     color: var(--fc-accent);
-    font-size: 0.72rem;
     font-weight: 700;
 }
 
@@ -1766,7 +1642,6 @@ body.landing12-no-scroll {
     margin: 0.75rem 0 0;
     color: var(--fc-muted);
     line-height: 1.55;
-    font-size: clamp(0.96rem, 1.15vw, 1.06rem);
     max-width: 72ch;
 }
 
@@ -1789,7 +1664,6 @@ body.landing12-no-scroll {
     border-left: 3px solid var(--fc-accent);
     background: rgba(188, 42, 39, 0.07);
     color: #ffffff;
-    font-size: clamp(1rem, 1.3vw, 1.15rem);
     line-height: 1.6;
     font-style: italic;
     max-width: 72ch;
@@ -1836,7 +1710,6 @@ body.landing12-no-scroll {
         border-top: 3px solid var(--fc-accent);
         padding: 1rem 0.25rem 0;
         max-width: 100%;
-        font-size: 0.95rem;
     }
 }
 
@@ -1890,7 +1763,6 @@ body.landing12-no-scroll {
     font-family: var(--font-action);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
     line-height: 1.1;
     color: #ffffff;
 }
@@ -1898,7 +1770,6 @@ body.landing12-no-scroll {
 .landing12-what-expect__item-body {
     margin: 0;
     color: var(--fc-muted);
-    font-size: clamp(0.85rem, 0.95vw, 0.93rem);
     line-height: 1.5;
 }
 

@@ -1,13 +1,17 @@
+/* =============================================================================
+   WHERE PAGE  —  bold dark layout, no dot-grid
+   ============================================================================= */
+
+/* ── Landing-page "where" widget (used on other pages) ──────────────────────── */
 .where {
 	padding: 0 0 2rem;
 	background: var(--color-secondary);
 }
 
-
 .where__frame {
 	background: var(--color-secondary);
 	margin: 0 auto;
-    width: 100vw;
+	width: 100vw;
 	padding: 3.5rem 2rem 4rem;
 	text-align: center;
 }
@@ -19,7 +23,6 @@
 	background: var(--color-primary);
 	color: var(--color-secondary);
 	font-family: var(--font-secondary);
-	font-size: clamp(0.95rem, 2vw, 2.1rem);
 	font-weight: 700;
 	letter-spacing: 0.22em;
 	text-transform: uppercase;
@@ -33,17 +36,16 @@
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	line-height: 1.05;
-    color: var(--color-primary);
+	color: var(--color-primary);
 }
 
 .where__headline {
 	margin: 0;
 	font-family: var(--font-fremont-osf-bold);
-	font-size: clamp(2.4rem, 7.3vw, 8.2rem);
 	font-weight: 700;
 	line-height: 0.95;
 	text-transform: uppercase;
-    color: var(--color-primary);
+	color: var(--color-primary);
 }
 
 .where__date {
@@ -53,46 +55,40 @@
 	background: var(--color-primary);
 	color: var(--color-secondary);
 	font-family: var(--font-secondary);
-	font-size: clamp(2.1rem, 6vw, 7rem);
 	font-weight: 700;
 	line-height: 1;
 	text-transform: uppercase;
 }
 
-.where--page {
-	padding: clamp(2rem, 4vw, 3.2rem) 0 clamp(3rem, 7vw, 5rem);
-	background: var(--color-primary);
-}
 
-.where--page[data-dot-grid] {
-	--dot-grid-bg: #000000;
-	--dot-grid-dot: rgba(255, 255, 255, 0.16);
-	--dot-grid-dot-size: 0.9px;
-	--dot-grid-glow: rgba(255, 255, 255, 0.2);
-	--dot-grid-glow-soft: rgba(255, 255, 255, 0.14);
+/* ── Where page — full layout ────────────────────────────────────────────────── */
+.where--page {
+	background: var(--color-primary);
+	padding: clamp(3rem, 6vw, 5rem) 0;
 }
 
 .where--page .where__shell {
-	width: min(1120px, 92vw);
-	margin: 0 auto;
 	display: grid;
-	gap: clamp(1rem, 2vw, 1.5rem);
+	gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
+/* ── Top two-column row ──────────────────────────────────────────────────────── */
 .where__top-row {
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-	gap: 0.8rem;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	gap: 0;
 	align-items: stretch;
+	border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.where--page .where__intro {
-	background: var(--color-secondary);
-	color: var(--color-primary);
-	padding: clamp(1.4rem, 2.8vw, 2rem);
-	display: grid;
-	gap: 0.85rem;
-	border: 1px solid rgba(0, 0, 0, 0.2);
+/* ── Intro column ────────────────────────────────────────────────────────────── */
+.where__intro-col {
+	display: flex;
+	flex-direction: column;
+	gap: 1.4rem;
+	padding: clamp(1.8rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+	background: var(--color-primary);
+	border-right: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .where--page .where__eyebrow {
@@ -101,134 +97,155 @@
 	max-width: none;
 	background: transparent;
 	color: var(--color-accent);
-	font-size: 0.82rem;
-	letter-spacing: 0.14em;
 	font-family: var(--font-primary);
+	font-size: 0.78rem;
+	font-weight: 400;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
 }
 
 .where--page .where__title {
 	margin: 0;
-	color: var(--color-primary);
-	letter-spacing: 0.02em;
+	font-family: var(--font-secondary);
+	font-size: clamp(2.4rem, 5vw, 4rem);
+	font-weight: 700;
+	letter-spacing: 0.03em;
 	text-transform: uppercase;
-	font-size: clamp(1.9rem, 4vw, 3rem);
 	line-height: 1;
+	color: var(--color-secondary);
 }
 
-.where--page .where__headline {
+.where__divider {
+	width: 3rem;
+	height: 3px;
+	background: var(--color-accent);
+	flex-shrink: 0;
+}
+
+.where__location {
 	margin: 0;
 	font-family: var(--font-primary);
-	color: rgba(0, 0, 0, 0.72);
-	font-size: clamp(1rem, 1.6vw, 1.3rem);
-	line-height: 1.2;
-	text-transform: none;
+	font-size: clamp(1rem, 1.8vw, 1.15rem);
+	font-weight: 300;
+	color: rgba(255, 255, 255, 0.5);
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
 }
 
-.where--page .where__copy {
+.where__copy {
 	margin: 0;
-	max-width: 68ch;
-	color: rgba(0, 0, 0, 0.74);
-	font-size: clamp(0.95rem, 1.3vw, 1.06rem);
-	line-height: 1.5;
+	font-size: clamp(0.88rem, 1.3vw, 0.98rem);
+	line-height: 1.7;
+	color: rgba(255, 255, 255, 0.65);
+	max-width: 52ch;
 }
 
+/* ── Meta list ───────────────────────────────────────────────────────────────── */
 .where__meta {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 0.65rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	margin-top: auto;
 }
 
 .where__meta li {
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	padding: 0.65rem 0.7rem;
-	background: rgba(0, 0, 0, 0.03);
-	display: grid;
-	gap: 0.3rem;
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.75rem;
+	padding: 0.7rem 1rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.where__meta span {
+.where__meta li:last-child {
+	border-bottom: none;
+}
+
+.where__meta-label {
 	font-size: 0.68rem;
 	text-transform: uppercase;
-	letter-spacing: 0.12em;
-	color: rgba(0, 0, 0, 0.56);
+	letter-spacing: 0.16em;
+	color: rgba(255, 255, 255, 0.38);
+	font-weight: 400;
+	white-space: nowrap;
 }
 
-.where__meta strong {
-	font-size: 0.96rem;
-	line-height: 1.2;
+.where__meta-value {
+	font-size: 0.9rem;
 	font-weight: 600;
-	color: rgba(0, 0, 0, 0.9);
+	color: var(--color-secondary);
+	text-align: right;
 }
 
+/* ── CTA row ─────────────────────────────────────────────────────────────────── */
 .where__actions {
 	display: flex;
-	gap: 0.7rem;
 	flex-wrap: wrap;
+	gap: 0.65rem;
 }
 
-.where__actions .landing12-btn--ghost {
-	color: var(--color-primary);
-	border-color: rgba(0, 0, 0, 0.28);
-}
-
-.where--page .where__map-wrap {
-	width: 100%;
-	margin: 0;
-	background: var(--color-primary);
-	padding: clamp(0.45rem, 1vw, 0.65rem);
-	border-radius: 0;
-	border: 1px solid rgba(255, 255, 255, 0.16);
+/* ── Map column ──────────────────────────────────────────────────────────────── */
+.where__map-col {
 	display: grid;
+	background: #0d0d0d;
 }
 
 .where__map {
 	display: block;
 	width: 100%;
-	height: min(64vh, 560px);
-	min-height: 340px;
+	height: 100%;
+	min-height: 440px;
 	border: 0;
-	border-radius: 0;
+	filter: grayscale(18%) contrast(1.06);
 }
 
+/* ── Bottom detail cards ─────────────────────────────────────────────────────── */
 .where__details {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 0.7rem;
+	border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .where__detail-card {
-	background: var(--color-primary);
-	color: var(--color-secondary);
-	border: 1px solid rgba(255, 255, 255, 0.16);
-	padding: 1rem;
 	display: grid;
-	gap: 0.55rem;
+	gap: 0.6rem;
+	padding: clamp(1.2rem, 2.5vw, 1.8rem);
+	border-right: 1px solid rgba(255, 255, 255, 0.1);
+	align-content: start;
+}
+
+.where__detail-card:last-child {
+	border-right: none;
 }
 
 .where__detail-card h2 {
 	margin: 0;
-	font-size: clamp(1.15rem, 2vw, 1.35rem);
-	letter-spacing: 0.02em;
+	font-family: var(--font-secondary);
+	font-size: 0.92rem;
+	letter-spacing: 0.1em;
 	text-transform: uppercase;
+	color: var(--color-secondary);
 }
 
 .where__detail-card p {
 	margin: 0;
-	font-size: 0.96rem;
-	line-height: 1.45;
-	color: rgba(255, 255, 255, 0.82);
+	font-size: 0.9rem;
+	line-height: 1.62;
+	color: rgba(255, 255, 255, 0.6);
 }
 
 .where__detail-card a {
 	justify-self: start;
 	color: var(--color-accent);
-	font-size: 0.8rem;
-	letter-spacing: 0.1em;
+	font-size: 0.76rem;
+	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	text-decoration: none;
+	font-weight: 600;
 }
 
 .where__detail-card a:hover,
@@ -236,58 +253,47 @@
 	text-decoration: underline;
 }
 
-@media (max-width: 992px) {
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+	.where__top-row {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 768px) {
 	.where__top-row {
 		grid-template-columns: 1fr;
 	}
 
-	.where__meta {
-		grid-template-columns: 1fr;
+	.where__intro-col {
+		border-right: none;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.where__map {
+		min-height: 320px;
 	}
 
 	.where__details {
 		grid-template-columns: 1fr;
 	}
 
-	.where__actions {
-		width: 100%;
+	.where__detail-card {
+		border-right: none;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.where__detail-card:last-child {
+		border-bottom: none;
+	}
+
+	.where__meta {
+		margin-top: 0;
 	}
 
 	.where__actions .landing12-btn {
 		flex: 1 1 180px;
-	}
-
-	.where__map {
-		height: min(62vh, 520px);
-		min-height: 300px;
-	}
-
-	.where--page .where__intro {
-		padding: 1.2rem;
-	}
-
-	.where--page .where__title {
-		font-size: clamp(1.65rem, 7vw, 2.3rem);
-	}
-
-	.where--page .where__headline {
-		font-size: 1rem;
-	}
-
-	.where--page .where__copy {
-		font-size: 0.95rem;
-	}
-
-	.where__detail-card h2 {
-		font-size: 1.08rem;
-	}
-
-	.where__detail-card p {
-		font-size: 0.92rem;
-	}
-
-	.where__detail-card a {
-		font-size: 0.74rem;
 	}
 
 	.where__date {
@@ -302,9 +308,4 @@
 		max-width: 100%;
 		letter-spacing: 0.12em;
 	}
-
-	.where__date {
-		max-width: 90%;
-	}
-
 }
