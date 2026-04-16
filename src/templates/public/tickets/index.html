@@ -1,4 +1,6 @@
 {% extends "bases/public.html" %}
+{% from "components/macros/page_hero.html" import page_hero %}
+{% from "components/macros/banner.html" import slim_banner %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/tickets.css') }}">
@@ -9,30 +11,20 @@
 {% endblock %}
 
 {% block content %}
-{% set countdown_target = urgency.countdown_target if urgency is defined else '2026-06-19T17:00:00-07:00' %}
+{% set countdown_target = '2026-06-19T17:00:00-07:00' %}
 <main class="tickets-page">
-	<section class="tickets-hero" aria-label="Ticket options">
-		<div class="tickets-hero__brand">
-			<p class="tickets-hero__presenter">Stronger Man Nation Presents</p>
-			<h1 class="tickets-hero__title">{{ ticket_meta.event_title }}</h1>
-			<p class="tickets-hero__subtitle">{{ ticket_meta.subtitle }}</p>
-		</div>
-		<div class="tickets-hero__kicker-wrap">
-			<p class="tickets-hero__kicker">{{ ticket_meta.kicker }}</p>
-		</div>
-	</section>
+	{{ page_hero("Stronger Man Nation Presents", ticket_meta.event_title, ticket_meta.subtitle ~ " · " ~ ticket_meta.kicker) }}
+	{{ slim_banner("GET YOUR TICKET") }}
 
 	<section class="tickets-section" aria-label="Ticket pricing">
-		<div class="tickets-section__inner">
+		<div class="tickets-section__inner container-xl">
 			<h2 class="tickets-section__heading">Tickets</h2>
 			<p class="tickets-section__dates">{{ ticket_meta.dates }}</p>
-			{% if urgency is defined %}
-			<p class="tickets-section__urgency">{{ urgency.headline }} — {{ urgency.body }}</p>
-			{% endif %}
+			<p class="tickets-section__urgency">Early pricing closes May 1 — Lock in your rate before pricing updates.</p>
 
 			<div class="tickets-grid" role="list">
 				{% for ticket in ticket_prices %}
-				<article class="ticket-card{% if ticket.highlight %} ticket-card--highlight{% endif %}" role="listitem">
+				<article class="ticket-card{% if ticket.highlight %} ticket-card--highlight{% endif %}{% if loop.first %} ticket-card--has-includes{% endif %}" role="listitem">
 					<h3 class="ticket-card__name">{{ ticket.name }}</h3>
 					<p class="ticket-card__price">{{ ticket.price|replace('\n', '<br>')|safe }}</p>
 					{% if ticket.tax_total %}
@@ -45,16 +37,80 @@
 						{% endfor %}
 					</ul>
 					{% endif %}
+					{% if loop.first %}
+					<ul class="ticket-card__includes">
+						<li>Parking</li>
+						<li>Swag bag</li>
+						<li>3 main sessions</li>
+						<li>6 breakout sessions</li>
+						<li class="ticket-card__includes-more">&amp; 8 more&hellip;</li>
+					</ul>
+					<a class="ticket-card__includes-toggle" href="#whats-included">See everything included &darr;</a>
+					{% endif %}
 				</article>
 				{% endfor %}
 			</div>
-
 			<div class="my-3">
-                {% with cta_url='https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets' %}
-                {% include 'components/cta_button.html' %}
-                {% endwith %}
-            </div>
-			<p class="tickets-section__notice">{{ urgency.tickets_notice if urgency is defined else ticket_meta.notice }}</p>
+				{% with cta_url='https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets' %}
+				{% include 'components/cta_button.html' %}
+				{% endwith %}
+			</div>
+			<p class="tickets-section__notice">{{ ticket_meta.notice }}</p>
+		</div>
+	</section>
+
+	<section id="whats-included" class="tickets-section tickets-includes" aria-label="What's included with your ticket">
+		<div class="tickets-section__inner container-xl">
+			<h2 class="tickets-section__heading">What&apos;s Included</h2>
+			<p class="tickets-includes__lead">Registration covers all events Friday &amp; Saturday, including:</p>
+			<ul class="fc-exp-includes__list">
+				<li>Parking</li>
+				<li>Swag bag</li>
+				<li>3 main sessions</li>
+				<li>6 breakout sessions</li>
+				<li>Stronger Man Competitions</li>
+				<li>Stronger Boy Challenge Course</li>
+				<li>Live-Pod Studio</li>
+				<li>Danny Gokey worship</li>
+				<li>Stephen McKruiter</li>
+				<li>Dragon Killer House Band</li>
+				<li>World Premiere &mdash; Project ManCard Documentary</li>
+				<li>David Crowder Concert</li>
+			</ul>
+			<div class="mt-4">
+				{% with cta_url='https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets' %}
+				{% include 'components/cta_button.html' %}
+				{% endwith %}
+			</div>
+		</div>
+	</section>
+
+	<section id="current-deals" class="tickets-promos" aria-label="Ticket promotions and deals">
+		<div class="tickets-promos__inner container-xl">
+			<h2 class="tickets-promos__heading">Current Deals</h2>
+
+			<div class="tickets-promos__grid">
+
+				<div class="tickets-promo-card">
+					<div class="tickets-promo-card__badge">Early Bird</div>
+					<h3 class="tickets-promo-card__title">May 1st Early Bird Pricing</h3>
+					<p class="tickets-promo-card__desc">Prices increase after May 1st. Whether you're bringing yourself, your son, or a whole crew — locking in now is the smart move. Don't leave savings on the table.</p>
+					<p class="tickets-promo-card__cta-hint">Ends <strong>May 1st</strong> — grab your ticket above before pricing updates.</p>
+				</div>
+
+				<div class="tickets-promo-card">
+					<div class="tickets-promo-card__badge tickets-promo-card__badge--gold">50 / 50 / 50</div>
+					<h3 class="tickets-promo-card__title">First 50 Guys in Each State Save $50</h3>
+					<p class="tickets-promo-card__desc">The first 50 men to register from each of the 50 states receive <strong>$50 off</strong> their ticket. This is a first-come, first-served deal — once those spots are gone, they're gone. Claim your state's discount now.</p>
+					<p class="tickets-promo-card__desc">To redeem, enter your state's promo code at checkout — <strong>your state must match the billing address on your card:</strong></p>
+					<div class="tickets-promo-card__code-block">
+						<span class="tickets-promo-card__code"><em>[STATE]</em>50</span>
+						<span class="tickets-promo-card__code-examples">e.g. <strong>WA50</strong> · <strong>TX50</strong> · <strong>FL50</strong></span>
+					</div>
+					<p class="tickets-promo-card__cta-hint">Use the 2-letter abbreviation for the state on your billing address. Spots are filling fast — register above and enter your code at checkout.</p>
+				</div>
+
+			</div>
 		</div>
 	</section>
 </main>

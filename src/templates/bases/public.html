@@ -4,13 +4,13 @@
 <head>
     {% set seo_data = seo|default({}) %}
     {% set seo_title = seo_data.get('title', 'Freedom Con 2026 | Christian Men\'s Conference') %}
-    {% set seo_description = seo_data.get('description', 'Freedom Con 2026 at The Gorge Amphitheatre in George, Washington.') %}
+    {% set seo_description = seo_data.get('description', 'A Congress of Christian Men at The Gorge Amphitheater') %}
     {% set seo_canonical = seo_data.get('canonical_url', request.url) %}
     {% set seo_robots = seo_data.get('robots', 'index,follow') %}
     {% set seo_og_type = seo_data.get('og_type', 'website') %}
     {% set seo_site_name = seo_data.get('site_name', 'Freedom Con') %}
     {% set seo_twitter_card = seo_data.get('twitter_card', 'summary_large_image') %}
-    {% set default_og_image = url_for('static', filename='img/sharing_pic.png', _external=True) ~ '?v=20260413' %}
+    {% set default_og_image = url_for('static', filename='img/title_with_shield_2.png', _external=True) ~ '?v=20260416' %}
     {% set seo_og_image = seo_data.get('og_image_url', default_og_image) %}
 
     <meta charset="UTF-8">
@@ -19,6 +19,10 @@
     <meta name="description" content="{{ seo_description }}">
     <meta name="robots" content="{{ seo_robots }}">
     <link rel="canonical" href="{{ seo_canonical }}">
+
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="{{ url_for('static', filename='img/favicon/16x16.svg') }}">
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="{{ url_for('static', filename='img/favicon/32x32.svg') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/favicon/180x180.svg') }}">
 
     <meta property="og:type" content="{{ seo_og_type }}">
     <meta property="og:site_name" content="{{ seo_site_name }}">
@@ -49,9 +53,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/freedom_con_shell.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/bootstrap_override.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/animations.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/dot-grid-bg.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/popup.css') }}">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NW372T7XVX"></script>
@@ -95,9 +99,12 @@
 
     {% endblock %}
 
+    {% include 'components/popup.html' %}
+
     <!-- bootstrap -->
     <script src="{{ url_for('static', filename='js/bootstrapjs/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popup.js') }}"></script>
     {% block scripts %}
 
     {% endblock %}

@@ -1,6 +1,6 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
-{% from "components/macros/subpage_hero.html" import subpage_hero %}
+{% from "components/macros/page_hero.html" import page_hero %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/artists.css') }}">
@@ -13,26 +13,12 @@
 {% block content %}
 <main>
 	{% set featured_artist = artists[0] if artists and artists|length else None %}
-	{% call subpage_hero(
-		'img/conference_info/crowder.jpg',
-		'Concert crowd at night',
-		'Featured artists',
-		featured_artist.hero_image_x if featured_artist and featured_artist.hero_image_x else '50%',
-		featured_artist.hero_image_y if featured_artist and featured_artist.hero_image_y else '0%',
-		'artists-hero',
-		'artists-hero__image'
-	) %}
-		<div class="artists-hero__overlay">
-			<p class="artists-hero__eyebrow">Freedom Con Live</p>
-			<h1 class="artists-hero__title">Artists</h1>
-			<p class="artists-hero__copy">Featuring David Crowder live at Freedom Con.</p>
-		</div>
-	{% endcall %}
+	{{ page_hero("Freedom Con Live", "Artists", "Featuring David Crowder live at Freedom Con.") }}
 
 	{{ slim_banner("Featured Artist") }}
 
 	<section class="artists-section" aria-label="Featured artist">
-		<div class="artists-section__inner">
+		<div class="artists-section__inner container-xl">
 			{% if featured_artist %}
 			<article class="artist-card artist-card--featured">
 				<div class="artist-card__media-shell artist-card__media-shell--featured">

@@ -1,0 +1,167 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/page_hero.html" import page_hero %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main>
+	{{ page_hero("What to Expect", "The Experience", "Father’s Day Weekend at The Gorge Amphitheater. Two days built to move the heart, sharpen conviction, and commission men.") }}
+	{{ slim_banner("FATHER'S DAY WEEKEND · JUNE 19–20 · THE GORGE") }}
+	<section class="fc-page" aria-label="The Experience">
+		<div class="fc-page__inner">
+			<p class="fc-page__lead">Father&apos;s Day Weekend at The Gorge Amphitheater. Two days built to move the heart, sharpen conviction, and commission men for what comes next. This is not a passive event—it is a summons to show up, be undone, and be rebuilt.</p>
+
+			<div class="fc-page__mantra" aria-label="Experience pillars">
+				<p class="fc-page__mantra-line">Worship. Repent. Receive.</p>
+				<p class="fc-page__mantra-line fc-page__mantra-line--accent">Then go change your world.</p>
+			</div>
+
+			<section class="fc-page__section" aria-label="Weekend schedule">
+				<h2>The Weekend</h2>
+				<p>Every moment is built with pacing and purpose—precept upon precept, session by session—so the weekend builds rather than scatters.</p>
+				<div class="fc-exp-schedule">
+					<div class="fc-exp-day">
+						<div class="fc-exp-day__header">
+							<span class="fc-exp-day__label">Day One</span>
+							<h3 class="fc-exp-day__title">Friday, June 19</h3>
+						</div>
+						<ul class="fc-exp-day__items">
+							<li>Gates open — ManTown, vendors, and connection</li>
+							<li>Opening worship session</li>
+							<li>Statesman Stories — men of courage live from the stage</li>
+							<li>Main stage keynote</li>
+							<li>Evening rally &amp; commissioning prayer</li>
+						</ul>
+					</div>
+					<div class="fc-exp-day">
+						<div class="fc-exp-day__header">
+							<span class="fc-exp-day__label">Day Two</span>
+							<h3 class="fc-exp-day__title">Saturday, June 20</h3>
+						</div>
+						<ul class="fc-exp-day__items">
+							<li>Morning worship &amp; intercession</li>
+							<li>Main stage teaching</li>
+							<li>Side-stage breakouts — pastors, businessmen, fathers</li>
+							<li>ManTown breaks &amp; connection</li>
+							<li>Final session — activation, commissioning, send-off</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section class="fc-page__section" aria-label="Four layers of the weekend">
+				<h2>Four Layers of the Weekend</h2>
+				<p>Four distinct experiences run simultaneously so no man leaves without exactly what he came for.</p>
+				<div class="fc-exp-layers">
+					<article class="fc-exp-layer">
+						<span class="fc-exp-layer__num">I</span>
+						<h3>Personal</h3>
+						<p>Prayer guides and consecration moments for men seeking individual encounter with God.</p>
+					</article>
+					<article class="fc-exp-layer">
+						<span class="fc-exp-layer__num">II</span>
+						<h3>ManTown</h3>
+						<p>Vendors, resources, and ministries in an outdoor village of men and families doing life together.</p>
+					</article>
+					<article class="fc-exp-layer">
+						<span class="fc-exp-layer__num">III</span>
+						<h3>Side Stage</h3>
+						<p>Breakout sessions for pastors, businessmen, and civic leaders — tactical equipping for the work back home.</p>
+					</article>
+					<article class="fc-exp-layer">
+						<span class="fc-exp-layer__num">IV</span>
+						<h3>Main Stage</h3>
+						<p>Keynote preaching, worship, statesman stories, and historic commissioning moments for the full congress of men.</p>
+					</article>
+				</div>
+			</section>
+
+			<section class="fc-page__section" aria-label="What men will encounter">
+				<h2>What You&apos;ll Encounter</h2>
+				<div class="fc-exp-encounter">
+					<div class="fc-exp-encounter__item">
+						<span aria-hidden="true">&#10013;</span>
+						<h3>Worship</h3>
+						<p>Thousands of men lifting their voices in the open air at The Gorge.</p>
+					</div>
+					<div class="fc-exp-encounter__item">
+						<span aria-hidden="true">&#9876;</span>
+						<h3>Preaching</h3>
+						<p>America&apos;s sharpest voices delivering their best message to men who need to hear it most.</p>
+					</div>
+					<div class="fc-exp-encounter__item">
+						<span aria-hidden="true">&#9733;</span>
+						<h3>Statesmanship</h3>
+						<p>Real stories from soldiers, pastors, politicians, and builders who stayed and fought.</p>
+					</div>
+					<div class="fc-exp-encounter__item">
+						<span aria-hidden="true">&#9650;</span>
+						<h3>Activation</h3>
+						<p>A practical playbook for home, church, county, and state — not just inspiration but direction.</p>
+					</div>
+					<div class="fc-exp-encounter__item">
+						<span aria-hidden="true">&#9651;</span>
+						<h3>Brotherhood</h3>
+						<p>Side-by-side with thousands of men who refuse passivity and are ready to rebuild Washington.</p>
+					</div>
+					<div class="fc-exp-encounter__item">
+						<span aria-hidden="true">&#9670;</span>
+						<h3>The Gorge</h3>
+						<p>One of the greatest outdoor venues in the world, in the heart of Washington State.</p>
+					</div>
+				</div>
+			</section>
+
+			<section id="whats-included" class="fc-page__section fc-exp-includes" aria-label="What registration covers">
+				<h2>What&apos;s Included</h2>
+				<p class="fc-exp-includes__lead">Registration covers all events Friday &amp; Saturday, including:</p>
+				<ul class="fc-exp-includes__list">
+					<li>Parking</li>
+					<li>Swag bag</li>
+					<li>3 main sessions</li>
+					<li>6 breakout sessions</li>
+					<li>Stronger Man Competitions</li>
+					<li>Stronger Boy Challenge Course</li>
+					<li>Live-Pod Studio</li>
+					<li>Danny Gokey worship</li>
+					<li>Stephen McKruiter</li>
+					<li>Dragon Killer House Band</li>
+					<li>World Premiere &mdash; Project ManCard Documentary</li>
+					<li>David Crowder Concert</li>
+				</ul>
+				<div class="fc-exp-includes__cta">
+					<a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Your Ticket</a>
+				</div>
+			</section>
+
+			<div class="fc-exp-fatherson">
+				<div class="fc-exp-fatherson__inner">
+					<p class="fc-exp-fatherson__eyebrow">Father&apos;s Day Weekend</p>
+					<h2 class="fc-exp-fatherson__title">Bring Your Son</h2>
+					<p class="fc-exp-fatherson__body">This weekend is designed to mark families. Fathers and sons will worship side by side, hear the same call to courage, and share a moment they will tell their grandchildren about. There is no better Father&apos;s Day than standing together at The Gorge and saying: <em>we were there the day it turned.</em></p>
+					<a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Your Tickets</a>
+				</div>
+			</div>
+
+			<div class="fc-page__finale d-flex flex-column align-items-center text-center">
+				<blockquote class="fc-page__quote">&ldquo;This isn&apos;t a conference. It&apos;s a congress of men. A summons. Answer it.&rdquo;</blockquote>
+				<p class="fc-page__finale-cta-label">Father&apos;s Day Weekend &bull; June 19&ndash;20, 2026 &bull; The Gorge Amphitheater, George WA</p>
+				<div class="fc-page__actions d-flex flex-wrap justify-content-center">
+					<a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+					<a class="landing12-btn landing12-btn--ghost" href="{{ url_for('public.vision_page') }}">Read The Vision</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

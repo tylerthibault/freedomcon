@@ -20,7 +20,6 @@
 	margin: 0;
 	color: var(--color-secondary);
 	font-family: var(--font-secondary);
-	font-size: clamp(2rem, 6vw, 4rem);
 	font-weight: 700;
 	letter-spacing: 0.12em;
 	line-height: 1;
@@ -28,10 +27,8 @@
 }
 
 .faq-body {
-	padding: 1.5rem 1.5rem 3rem;
-	max-width: 1200px;
-	margin: 0 auto;
-}
+        /* layout: container-xl on element */
+        padding: 1.5rem 1.5rem 3rem;
 
 .faq-tabs {
 	display: flex;
@@ -97,7 +94,6 @@
 
 .faq-answer {
 	padding: 0 0.35rem 1.25rem;
-	font-size: 1.1rem;
 	font-family: var(--font-primary);
 	color: var(--fc-muted);
 }
@@ -105,19 +101,13 @@
 .faq-downloads {
 	margin-top: 2.5rem;
 	padding-top: 1.25rem;
-	text-align: center;
-}
-
-.faq-category-title {
+        /* text-center on element */
 	margin: 1.4rem 0 0.5rem;
-	text-align: center;
-	font-family: var(--font-secondary);
-	font-size: clamp(1.45rem, 3.2vw, 2.4rem);
-	line-height: 1;
-	color: #fff;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-}
+        /* text-center text-uppercase on element */
+        font-family: var(--font-secondary);
+        font-size: clamp(1.45rem, 3.2vw, 2.4rem);
+        line-height: 1;
+        color: #fff;
 
 .faq-answer a {
 	color: #b70000;
@@ -156,12 +146,8 @@
 }
 
 .faq-downloads__actions {
-	margin-top: 0.95rem;
-	display: flex;
-	justify-content: center;
-	gap: 1rem;
-	flex-wrap: wrap;
-}
+        /* layout: d-flex justify-content-center flex-wrap gap-3 on element */
+        margin-top: 0.95rem;
 
 .faq-downloads__button {
 	display: inline-flex;

@@ -17,8 +17,7 @@
 .artists-hero__overlay {
     position: relative;
     z-index: 1;
-    width: min(1120px, 92vw);
-    margin: 0 auto;
+    /* layout: container-xl on element */
     padding: clamp(3.5rem, 8vw, 7rem) 0 clamp(2rem, 4vw, 3rem);
     color: var(--color-secondary);
 }
@@ -32,14 +31,13 @@
 
 .artists-hero__eyebrow {
     margin: 0 0 0.4rem;
-    text-transform: uppercase;
+    /* text-uppercase on element */
     letter-spacing: 0.1em;
-    font-size: clamp(0.95rem, 1.4vw, 1.2rem);
 }
 
 .artists-hero__title {
     margin: 0;
-    text-transform: uppercase;
+    /* text-uppercase on element */
     letter-spacing: 0.06em;
     line-height: 0.95;
     font-size: clamp(2.4rem, 7vw, 5.8rem);
@@ -48,7 +46,6 @@
 .artists-hero__copy {
     margin: clamp(0.9rem, 1.8vw, 1.4rem) 0 0;
     width: min(58ch, 90%);
-    font-size: clamp(1rem, 1.4vw, 1.2rem);
     line-height: 1.35;
 }
 
@@ -58,8 +55,7 @@
 }
 
 .artists-section__inner {
-    width: min(1120px, 92vw);
-    margin: 0 auto;
+    /* layout: container-xl on element */
 }
 
 .artist-card {
@@ -105,13 +101,11 @@
 .artist-card__genre {
     margin: 0.35rem 0 0;
     font-family: var(--font-oswald-light);
-    font-size: clamp(0.95rem, 1.2vw, 1.02rem);
     color: var(--fc-accent);
 }
 
 .artist-card__bio {
     margin: 0.7rem 0 0;
-    font-size: clamp(1rem, 1.15vw, 1.08rem);
     line-height: 1.42;
     color: var(--fc-muted);
 }
@@ -126,7 +120,6 @@
 
 .artist-card__meta {
     margin: 0.9rem 0 0;
-    font-size: clamp(0.84rem, 0.95vw, 0.92rem);
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }

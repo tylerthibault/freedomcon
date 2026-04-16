@@ -38,17 +38,17 @@ hotel_options = [
             {
                 "name": "Holiday Inn Express & Suites George - Quincy South by IHG",
                 "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/george/eatgw/hoteldetail?cm_mmc=YextLocal-_-EX-_-US-_-EATGW",
-                "valid_link": False,
+                "valid_link": True,
             },
             {
                 "name": "Wingate by Wyndham Moses Lake",
-                "link": "https://www.wyndhamhotels.com/wingate/moses-lake-washington/wingate-by-wyndham-moses-lake/overview",
-                "valid_link": False,
+                "link": "https://www.wyndhamhotels.com/wingate/moses-lake-washington/wingate-by-wyndham-moses-lake/overview?CID=LC:7hcm1fujuihd89e:52322&iata=00093796",
+                "valid_link": True,
             },
             {
                 "name": "Fairfield Inn & Suites Moses Lake",
-                "link": "https://www.marriott.com/en-us/hotels/seaom-fairfield-inn-and-suites-moses-lake/overview/",
-                "valid_link": False,
+                "link": "https://www.marriott.com/en-us/hotels/eatml-fairfield-inn-and-suites-moses-lake/overview/?cid=NAT_google_hotel_url",
+                "valid_link": True,
             },
         ],
     },
@@ -59,18 +59,18 @@ hotel_options = [
         "hotels": [
             {
                 "name": "Quincy Inn & Suites",
-                "link": "https://www.choicehotels.com/washington/quincy/quality-inn-hotels",
-                "valid_link": False,
+                "link": "https://www.quincyinnsuites.com/?utm_source=gmb&utm_medium=referral",
+                "valid_link": True,
             },
             {
                 "name": "Knights Inn Quincy",
-                "link": "https://www.wyndhamhotels.com/knights-inn/quincy-washington/knights-inn-quincy/overview",
-                "valid_link": False,
+                "link": "https://www.knightsinn.com/us/wa/quincy/knights-inn-quincy?utm_source=google&utm_medium=organic&utm_campaign=gmb",
+                "valid_link": True,
             },
             {
                 "name": "Sagecliffe Resort & Spa",
-                "link": "https://www.sagecliffe.com",
-                "valid_link": False,
+                "link": "https://sageclifferesortandspa.com/",
+                "valid_link": True,
             },
         ],
     },
@@ -81,18 +81,18 @@ hotel_options = [
         "hotels": [
             {
                 "name": "Best Western Rama Inn",
-                "link": "https://www.bestwestern.com/en_US/book/hotels-in-ephrata/best-western-rama-inn/propertyCode.38090.html",
-                "valid_link": False,
+                "link": "https://www.bestwestern.com/en_US/book/hotel-rooms.48147.html?iata=00171880&ssob=BLBWI0004G&cid=BLBWI0004G:google:gmb:48147",
+                "valid_link": True,
             },
             {
                 "name": "Ephrata Inn Motel",
-                "link": "https://www.ephratainns.com",
-                "valid_link": False,
+                "link": "https://www.ephratainnmotel.top/",
+                "valid_link": True,
             },
             {
                 "name": "Sunland Inn Motel",
-                "link": "",
-                "valid_link": False,
+                "link": "https://sunlandmotelephrata.com/",
+                "valid_link": True,
             },
         ],
     },
@@ -103,18 +103,18 @@ hotel_options = [
         "hotels": [
             {
                 "name": "Inn at Moses Lake",
-                "link": "https://www.innatmoseslake.com",
-                "valid_link": False,
+                "link": "https://innatmoseslake.com/",
+                "valid_link": True,
             },
             {
                 "name": "Wingate by Wyndham Moses Lake",
-                "link": "https://www.wyndhamhotels.com/wingate/moses-lake-washington/wingate-by-wyndham-moses-lake/overview",
-                "valid_link": False,
+                "link": "https://www.wyndhamhotels.com/wingate/moses-lake-washington/wingate-by-wyndham-moses-lake/overview?CID=LC:7hcm1fujuihd89e:52322&iata=00093796",
+                "valid_link": True,
             },
             {
                 "name": "Fairfield Inn & Suites Moses Lake",
-                "link": "https://www.marriott.com/en-us/hotels/seaom-fairfield-inn-and-suites-moses-lake/overview/",
-                "valid_link": False,
+                "link": "https://www.marriott.com/en-us/hotels/eatml-fairfield-inn-and-suites-moses-lake/overview/?cid=NAT_google_hotel_url",
+                "valid_link": True,
             },
         ],
     },
@@ -125,18 +125,18 @@ hotel_options = [
         "hotels": [
             {
                 "name": "Holiday Inn Express Ellensburg",
-                "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/ellensburg/ekawu/hoteldetail",
-                "valid_link": False,
+                "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/ellensburg/elnwa/hoteldetail?cm_mmc=GoogleMaps-_-EX-_-US-_-ELNWA",
+                "valid_link": True,
             },
             {
                 "name": "Best Western Plus Ellensburg Hotel",
-                "link": "https://www.bestwestern.com/en_US/book/hotels-in-ellensburg/best-western-plus-ellensburg-hotel/propertyCode.09123.html",
-                "valid_link": False,
+                "link": "https://www.bestwestern.com/en_US/book/hotel-rooms.48154.html",
+                "valid_link": True,
             },
             {
                 "name": "Hampton Inn Ellensburg",
-                "link": "https://www.hilton.com/en/hotels/elawahx-hampton-ellensburg/",
-                "valid_link": False,
+                "link": "https://www.hilton.com/en/hotels/ykmelhx-hampton-ellensburg/?SEO_id=GMB-AMER-HX-YKMELHX&y_source=1_MjA4MzQwMy03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D",
+                "valid_link": True,
             },
         ],
     },
@@ -147,18 +147,18 @@ hotel_options = [
         "hotels": [
             {
                 "name": "Coast Wenatchee Center Hotel",
-                "link": "https://www.coasthotels.com/hotels/washington/wenatchee/coast-wenatchee-center-hotel/",
-                "valid_link": False,
+                "link": "https://www.coasthotels.com/coast-wenatchee-center-hotel",
+                "valid_link": True,
             },
             {
                 "name": "Hilton Garden Inn Wenatchee",
-                "link": "https://www.hilton.com/en/hotels/wenwhgi-hilton-garden-inn-wenatchee/",
-                "valid_link": False,
+                "link": "https://www.hilton.com/en/hotels/eatyogi-hilton-garden-inn-wenatchee/?SEO_id=GMB-AMER-GI-EATYOGI&y_source=1_MTI0Mzc0MTAtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+                "valid_link": True,
             },
             {
-                "name": "Best Western Plus East Wenatchee Inn",
-                "link": "https://www.bestwestern.com/en_US/book/hotels-in-east-wenatchee/best-western-plus-east-wenatchee-inn/propertyCode.09166.html",
-                "valid_link": False,
+                "name": "Best Western Plus Wenatchee Downtown Hotel",
+                "link": "https://www.bestwestern.com/en_US/book/hotel-rooms.48184.html?iata=00171880&ssob=BLBWI0004G&cid=BLBWI0004G:google:gmb:48184",
+                "valid_link": True,
             },
         ],
     },
