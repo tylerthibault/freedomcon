@@ -51,6 +51,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/animations.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/dot-grid-bg.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/popup.css') }}">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NW372T7XVX"></script>
@@ -94,9 +95,12 @@
 
     {% endblock %}
 
+    {% include 'components/popup.html' %}
+
     <!-- bootstrap -->
     <script src="{{ url_for('static', filename='js/bootstrapjs/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popup.js') }}"></script>
     {% block scripts %}
 
     {% endblock %}
