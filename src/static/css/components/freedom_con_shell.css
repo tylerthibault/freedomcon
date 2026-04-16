@@ -348,6 +348,8 @@ body.landing12-no-scroll {
         opacity: 0;
         max-height: 0;
         margin-top: 0;
+        padding: 0;
+        border-width: 0;
         transform: translateY(-0.35rem);
     }
 
@@ -355,6 +357,8 @@ body.landing12-no-scroll {
         opacity: 0;
         max-height: 0;
         margin-top: 0;
+        padding: 0;
+        border-width: 0;
         transform: translateY(-0.35rem);
     }
 
