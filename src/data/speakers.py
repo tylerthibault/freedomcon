@@ -24,6 +24,7 @@ speakers = [
 		'alt': 'Russell Johnson',
 		'titles': ['Lead Pastor, The Pursuit Church'],
 		'shrink': 0.92,
+        'image_x': -10,
 	},
 	{
 		'name': 'Josh Howerton',

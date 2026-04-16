@@ -33,6 +33,7 @@ body.landing12-no-scroll {
     letter-spacing: 0.12em;
     font-weight: 700;
     transition: 0.2s ease;
+    flex-shrink: 0;
 }
 
 .landing12-btn:hover,
@@ -75,6 +76,7 @@ body.landing12-no-scroll {
     font-size: clamp(1.4rem, 2vw, 2rem);
     font-weight: 800;
     text-decoration: none;
+    flex-shrink: 0;
 }
 
 .landing12-links {
@@ -149,7 +151,30 @@ body.landing12-no-scroll {
     letter-spacing: 0.14em;
     text-transform: uppercase;
     white-space: nowrap;
-    text-shadow: 0 0 18px rgba(188, 42, 39, 0.75), 0 0 6px rgba(188, 42, 39, 0.45), 0 0 2px rgba(255, 255, 255, 0.5);
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.landing12-nav-urgency__strike {
+    color: #fff;
+    text-decoration-color: #fff;
+    text-decoration-thickness: 2px;
+    opacity: 0.85;
+}
+.landing12-nav-urgency__strike--sm {
+    font-size: 0.72em;
+    vertical-align: middle;
+    opacity: 0.7;
+}
+.landing12-nav-urgency__new-date {
+    color: var(--fc-accent);
+}
+
+/* Hide urgency strip at sizes too tight to fit everything on one row */
+@media (min-width: 768px) and (max-width: 1059.98px) {
+    .landing12-nav-urgency {
+        display: none;
+    }
 }
 
 .landing12-menu-toggle {
