@@ -144,6 +144,83 @@
     letter-spacing: 0.03em;
 }
 
+/* ── In-card includes list ────────────────────────────────── */
+.ticket-card--has-includes {
+    min-height: unset;
+}
+
+.ticket-card__includes {
+    list-style: none;
+    padding: 0;
+    margin: 0.9rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ticket-card__includes li {
+    padding: 0.35rem 0;
+    font-family: var(--font-secondary);
+    font-size: clamp(0.72rem, 0.95vw, 0.88rem);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ticket-card__includes li:last-child {
+    border-bottom: 0;
+}
+
+.ticket-card__includes-more {
+    color: rgba(255, 255, 255, 0.45) !important;
+    font-style: italic;
+}
+
+.ticket-card__includes-toggle {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0;
+    border: none;
+    background: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-secondary);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.ticket-card__includes-toggle:hover,
+.ticket-card__includes-toggle:focus-visible {
+    color: #fff;
+}
+
+/* ── What’s Included section ────────────────────────────── */
+.tickets-includes {
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tickets-includes__lead {
+    margin: 0 auto 1.8rem;
+    max-width: 680px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    line-height: 1.6;
+}
+
+.tickets-includes .fc-exp-includes__list {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 860px;
+    text-align: left;
+}
+
 @media (max-width: 767.98px) {
     .tickets-grid {
         grid-template-columns: 1fr;
@@ -260,53 +337,4 @@
     .tickets-promos__grid {
         grid-template-columns: 1fr;
     }
-}
-
-/* ── Scroll hint ───────────────────────────────────────────── */
-.tickets-scroll-hint {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-.tickets-scroll-hint__link {
-    display: inline-block;
-    padding: 0.45em 1.2em;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 2px;
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    font-family: var(--font-secondary);
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.tickets-scroll-hint__link:hover,
-.tickets-scroll-hint__link:focus-visible {
-    border-color: var(--fc-accent);
-    color: #fff;
-}
-
-/* ── What's Included ───────────────────────────────────────── */.tickets-includes {
-    background: rgba(255, 255, 255, 0.03);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.tickets-includes__lead {
-    margin: 0 auto 1.8rem;
-    max-width: 680px;
-    color: rgba(255, 255, 255, 0.75);
-    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
-    line-height: 1.6;
-}
-
-.tickets-includes .fc-exp-includes__list {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 860px;
-    text-align: left;
 }
