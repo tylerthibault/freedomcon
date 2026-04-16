@@ -25,6 +25,7 @@
 
 .speakers-section__heading {
     margin: 0 0 clamp(1.75rem, 3.5vw, 3rem);
+    text-align: center;
     /* text-center text-uppercase on element */
     font-family: var(--font-oswald-bold);
     font-size: clamp(2rem, 5vw, 3.6rem);
