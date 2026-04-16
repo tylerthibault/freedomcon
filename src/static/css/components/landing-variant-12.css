@@ -273,15 +273,24 @@ body.landing12-no-scroll {
 .landing12-hero-media img {
     position: relative;
     inset: auto;
-    width: 100%;
+    width: 80%;
     height: auto;
     object-fit: contain;
     object-position: center bottom;
     display: block;
 }
 
+/* on mobile */
+@media (max-width: 600px) {
+.landing12-hero-media img {
+    width: 100%;
+    }
+    
+}
+
 .landing12-hero-title-image {
-    width: min(980px, 92vw);
+    width: 20vw;
+    height: auto;
     opacity: 0;
     transform: translate3d(0, 18px, 0);
     animation: landing12-fade-up 900ms ease-out 180ms forwards;
@@ -289,7 +298,7 @@ body.landing12-no-scroll {
 
 .landing12-hero-lineup-image {
     width: min(1540px, 100vw);
-    margin-top: clamp(-7rem, -12vw, -4rem);
+    margin-top: clamp(-6.5rem, -7vw, -2.5rem);
     opacity: 0;
     transform: translate3d(0, 24px, 0);
     animation: landing12-fade-up 1050ms ease-out 960ms forwards;
@@ -1436,12 +1445,12 @@ body.landing12-no-scroll {
 
     .landing12-hero-title-image {
         padding-top: 2em;
-        width: min(860px, 97vw);
+        width: min(450px, 80vw);
     }
 
     .landing12-hero-lineup-image {
         width: min(1540px, 104vw);
-        margin-top: clamp(-2.2rem, -6vw, -1rem);
+        margin-top: clamp(-3rem, -5vw, -1.5rem);
     }
 
     .landing12-menu-toggle {
