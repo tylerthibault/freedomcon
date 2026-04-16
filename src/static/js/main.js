@@ -389,6 +389,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			return;
 		}
 
+		const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
 		const observer = new IntersectionObserver((entries, instance) => {
 			entries.forEach((entry) => {
 				if (!entry.isIntersecting) return;
@@ -397,8 +399,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		}, {
 			root: null,
-			rootMargin: "0px 0px -10% 0px",
-			threshold: 0.16,
+			rootMargin: isMobile ? "0px 0px -22% 0px" : "0px 0px -10% 0px",
+			threshold: isMobile ? 0.22 : 0.16,
 		});
 
 		revealTargets.forEach((element) => observer.observe(element));
