@@ -1,11 +1,9 @@
-{% set cta_2_config = cta_2 if cta_2 is defined else {} %}
-{% set image_src = cta_2_config.get('image', cta_2_config.get('poster', '')) %}
+<div class="vh-10 bg-black">
 
-<section class="landing12-cta-2" aria-label="CTA 2 section">
+</div>
+<section class="landing12-cta-2 pt-6" aria-label="CTA 2 section">
 	<div class="landing12-cta-2__media" aria-hidden="true">
-		{% if image_src %}
-		<img class="landing12-cta-2__image" src="{{ url_for('static', filename=image_src) }}" alt="" loading="lazy" decoding="async">
-		{% endif %}
+		<img class="landing12-cta-2__image" src="{{ url_for('static', filename='img/TheGuys_Feet_fade.png') }}" alt="" loading="lazy" decoding="async">
 	</div>
 	<div class="landing12-cta-2__overlay"></div>
 	<div class="landing12-wrap landing12-cta-2__content">
