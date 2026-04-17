@@ -37,7 +37,7 @@ social_proof = [
     },
     {
         "name": "Steve Schiff",
-        "title": "Conference Attendee",
+        "title": "Electrician",
         "quote": "Stronger man conference is more than just a gathering of men, it’s the bonding and forging of a brotherhood for Christ.  I came for the conference in 2024 from Arizona.  It was such an impactful weekend that it changed the trajectory of my life.  3 months after the conference, I moved my family across 3 states so that my boys and I can stand alongside these men we now call brothers!",
         "alt": "Steve Schiff testimonial photo",
     }

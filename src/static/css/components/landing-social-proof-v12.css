@@ -88,11 +88,10 @@
 .landing12-social-proof-card__avatar {
     width: 60px;
     height: 60px;
-    border-radius: 999px;
-    object-fit: cover;
-    border: 2px solid rgba(15, 15, 15, 0.12);
-    flex-shrink: 0;
-    background: #f9f9f9;
+    /* object-fit: cover;
+    border: 2px solid rgba(15, 15, 15, 0.12); */
+    /* flex-shrink: 0;
+    background: #f9f9f9; */
 }
 
 .landing12-social-proof-card__identity {
