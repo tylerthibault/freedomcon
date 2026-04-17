@@ -15,7 +15,6 @@ body {
     background: var(--fc-bg);
     color: var(--fc-ink);
     font-family: var(--font-oswald-light);
-    overflow-x: hidden;
 }
 
 body.landing12-no-scroll {
