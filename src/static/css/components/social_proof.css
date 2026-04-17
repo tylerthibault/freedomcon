@@ -305,7 +305,6 @@
         width: 34px;
         height: 34px;
         object-fit: cover;
-        border: 2px solid rgba(188, 42, 39, 0.38);
         flex-shrink: 0;
     }
 
