@@ -293,7 +293,6 @@ body.landing12-no-scroll {
     display: block;
     margin-top: clamp(-6.5rem, -7vw, -2.5rem);
     opacity: 0;
-    transform: translate3d(0, 24px, 0);
     animation: landing12-fade-up 1050ms ease-out 960ms forwards;
 }
 
