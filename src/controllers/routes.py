@@ -362,7 +362,7 @@ def tickets_page() -> str:
 
 @public_bp.get("/vision")
 def vision_page() -> str:
-	return redirect(url_for("public.landing"))
+	# return redirect(url_for("public.landing"))
 	return render_template(
 		"public/vision/index.html",
 		seo=build_seo(
@@ -375,7 +375,7 @@ def vision_page() -> str:
 
 @public_bp.get("/experience")
 def experience_page() -> str:
-	return redirect(url_for("public.landing"))
+	# return redirect(url_for("public.landing"))
 	return render_template(
 		"public/experience/index.html",
 		seo=build_seo(

@@ -1,11 +1,11 @@
 artists = [
     {
-        "name": "David Crowder",
+        "name": "Crowder",
         "image": "img/conference_info/crowder.jpg",
         "hero_image_x": "63%",
         "hero_image_y": "0%",
         "genre": "Worship / Folk Rock",
-        "bio": """David Crowder, GRAMMY-nominated artist with over 3 million records sold and 1.8 billion global streams, is bringing his signature vintage Southern rock to the men of FREEDOM CON on Saturday night.
+        "bio": """Crowder, GRAMMY-nominated artist with over 3 million records sold and 1.8 billion global streams, is bringing his signature vintage Southern rock to the men of FREEDOM CON on Saturday night.
 
         As the sun sets over the Columbia River behind the iconic Gorge Amphitheater stage, Crowder's powerhouse sound will close out a perfect weekend with an unforgettable, high-energy summer concert.
 

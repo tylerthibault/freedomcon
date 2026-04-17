@@ -59,13 +59,16 @@
 	}
 }
 
-html {
+html,
+body {
+	margin: 0;
+}
+
+.page-clip {
 	overflow-x: hidden;
 }
 
 body {
-	margin: 0;
-	overflow-x: hidden;
 	font-family: var(--font-primary);
 	font-weight: 300;
 	background: var(--color-bg);
