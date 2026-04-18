@@ -527,8 +527,14 @@ body.landing12-no-scroll {
     bottom: 0;
     left: 0;
     right: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
     z-index: 2;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-top: clamp(3.2rem, 7vw, 6rem);
     padding-bottom: clamp(3.2rem, 7vw, 6rem);
 }
