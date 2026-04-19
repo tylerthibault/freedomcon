@@ -359,30 +359,46 @@
    5. CROWDER FEATURE (high on page)
    ══════════════════════════════════════════════════════════════ */
 .alt-crowder {
-    position: relative;
-    min-height: 480px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
     background: #010101;
+    overflow: hidden;
+    border-top: 1px solid var(--alt-line);
+    border-bottom: 1px solid var(--alt-line);
 }
-.alt-crowder__bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('/static/img/speakers/crowder_bg.jpg');
-    background-size: cover;
-    background-position: center top;
-    filter: brightness(0.38) saturate(0.6);
-    z-index: 0;
-}
-.alt-crowder__overlay {
-    position: relative;
-    z-index: 1;
-    padding: clamp(3rem, 7vw, 6rem) 0;
-    width: 100%;
+.alt-crowder__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: stretch;
+    min-height: 520px;
 }
 .alt-crowder__inner {
-    max-width: 720px;
+    padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 4vw, 3.5rem) clamp(3rem, 7vw, 5.5rem) 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.alt-crowder__img-side {
+    position: relative;
+    overflow: hidden;
+}
+.alt-crowder__img-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: brightness(0.85) saturate(0.75);
+}
+@media (max-width: 720px) {
+    .alt-crowder__layout {
+        grid-template-columns: 1fr;
+    }
+    .alt-crowder__img-side {
+        height: 320px;
+    }
+    .alt-crowder__inner {
+        padding: 2.5rem 0 0;
+    }
 }
 .alt-crowder__kicker {
     font-size: 0.72rem;
