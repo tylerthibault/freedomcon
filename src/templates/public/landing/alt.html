@@ -1,0 +1,576 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-alt.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include 'components/navigation.html' %}
+{% endblock %}
+
+{% block content %}
+{# ── local context ──────────────────────────────────────────── #}
+{% set store_url = ticket_meta.cta_href if ticket_meta is defined and ticket_meta.cta_href and ticket_meta.cta_href != '#' else url_for('public.tickets_page') %}
+{% set countdown_iso = '2026-06-19T17:00:00-07:00' %}
+
+{# Speaker cards for this page (first 6) #}
+{% set alt_speakers = [
+    {'name': 'Josh McPherson',   'image': 'img/speakers/JoshM (2).png',  'title': 'Lead Pastor, Grace City · Founder, Stronger Man Nation'},
+    {'name': 'Graham Allen',     'image': 'img/speakers/GrahamA (3).png','title': 'Army Veteran, Author & Podcast Host'},
+    {'name': 'John Lovell',      'image': 'img/speakers/JohnL (3).png',  'title': 'Founder, Warrior Poet Society'},
+    {'name': 'Chad Robichaux',   'image': 'img/speakers/ChadR (3).png',  'title': 'Founder, Mighty Oaks Foundation'},
+    {'name': 'Josh Howerton',    'image': 'img/speakers/JoshH (2).png',  'title': 'Lead Pastor, Lakepointe Church'},
+    {'name': 'Nate Schatzline',  'image': 'img/speakers/NateS (2).png',  'title': 'Texas House of Representatives'}
+] %}
+
+<main class="alt-page">
+
+    {# ══════════════════════════════════════════════════════════
+       1. COUNTDOWN BAR
+       ══════════════════════════════════════════════════════════ #}
+    <div class="alt-countdown-bar" role="timer" aria-live="polite" aria-label="Event countdown">
+        <span class="alt-countdown-bar__label">Freedom Con in</span>
+        <span class="alt-countdown-bar__units" data-alt-countdown="{{ countdown_iso }}">
+            <span class="alt-countdown-bar__unit">
+                <span class="alt-countdown-bar__num" data-cd-days>--</span>
+                <span class="alt-countdown-bar__lbl">days</span>
+            </span>
+            <span class="alt-countdown-bar__sep">:</span>
+            <span class="alt-countdown-bar__unit">
+                <span class="alt-countdown-bar__num" data-cd-hours>--</span>
+                <span class="alt-countdown-bar__lbl">hrs</span>
+            </span>
+            <span class="alt-countdown-bar__sep">:</span>
+            <span class="alt-countdown-bar__unit">
+                <span class="alt-countdown-bar__num" data-cd-mins>--</span>
+                <span class="alt-countdown-bar__lbl">min</span>
+            </span>
+            <span class="alt-countdown-bar__sep">:</span>
+            <span class="alt-countdown-bar__unit">
+                <span class="alt-countdown-bar__num" data-cd-secs>--</span>
+                <span class="alt-countdown-bar__lbl">sec</span>
+            </span>
+        </span>
+        <span class="alt-countdown-bar__urgency">· Early bird ends May 1</span>
+    </div>
+
+    {# ══════════════════════════════════════════════════════════
+       2. HERO — looping sizzle reel + Columbia River backdrop
+       ══════════════════════════════════════════════════════════ #}
+    <h1 class="visually-hidden">Freedom Con 2026 — Father's Day Weekend at The Gorge Amphitheatre</h1>
+    <section class="alt-hero" aria-label="Freedom Con hero">
+        {# Looping sizzle reel — men with sons, competitions, worship, power preaching,
+           Columbia River landscape. Swap src for the Columbia River cut when available. #}
+        <video
+            class="alt-hero__video-bg"
+            autoplay muted loop playsinline
+            preload="metadata"
+            aria-hidden="true"
+            poster="{{ url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') }}">
+            <source src="https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/PHOTO%20REEL%202.mp4" type="video/mp4">
+        </video>
+        <div class="alt-hero__overlay" aria-hidden="true"></div>
+
+        <div class="alt-hero__content">
+            {# Freedom Con logo — top of content stack, matches main logo #}
+            <img
+                class="alt-hero__logo"
+                src="{{ url_for('static', filename='img/title_with_shield.svg') }}"
+                alt="Freedom Con 2026 — Rise of the Statesman">
+
+            <p class="alt-hero__tagline">Father's Day Weekend &middot; June 19&ndash;20, 2026</p>
+            <p class="alt-hero__sub">The Gorge Amphitheatre &middot; George, Washington</p>
+
+            {# Primary CTAs — large, above the fold, linking directly to store #}
+            <div class="alt-btn-row alt-hero__cta-row">
+                <a class="alt-btn alt-btn--primary" href="{{ store_url }}" aria-label="Buy tickets for Freedom Con 2026">
+                    Buy Tickets
+                </a>
+                <a class="alt-btn alt-btn--ghost" href="#what-is-this" aria-label="Learn more about Freedom Con">
+                    Learn More
+                </a>
+            </div>
+        </div>
+
+        {# Quick-fact strip — Who/What/When/Where still visible above fold on desktop #}
+        <div class="alt-hero__facts" aria-label="Event at a glance">
+            <span class="alt-hero__fact">
+                <span class="alt-hero__fact-icon" aria-hidden="true">📅</span>
+                June 19–20, 2026
+            </span>
+            <span class="alt-hero__fact">
+                <span class="alt-hero__fact-icon" aria-hidden="true">📍</span>
+                The Gorge Amphitheatre, WA
+            </span>
+            <span class="alt-hero__fact">
+                <span class="alt-hero__fact-icon" aria-hidden="true">⛺</span>
+                2-Day Outdoor Conference + Camping
+            </span>
+            <span class="alt-hero__fact">
+                <span class="alt-hero__fact-icon" aria-hidden="true">✝️</span>
+                Worship · Speakers · Brotherhood
+            </span>
+        </div>
+    </section>
+
+    {# ══════════════════════════════════════════════════════════
+       3. CUSTOMER-AS-HERO HEADLINE
+       ══════════════════════════════════════════════════════════ #}
+    <section class="alt-hero-call" aria-label="Call to action — you are the hero">
+        <div class="alt-inner">
+            <p class="alt-eyebrow alt-eyebrow--gold">An American Congress of Christian Men</p>
+            <h2 class="alt-hero-call__title">
+                We are the men<br>
+                <em>we've been waiting for.</em><br>
+                Are you ready to answer the call?
+            </h2>
+            <p class="alt-hero-call__sub">Create an Epic Father&rsquo;s Day Adventure for the Memory Books</p>
+            <p class="alt-hero-call__body">
+                Freedom Con isn&rsquo;t happening to you &mdash; it&rsquo;s calling you. Bring your son, your brother, your crew.
+                Two days of bold preaching, live worship, competitions, and the Columbia River horizon as your backdrop.
+                This Father&rsquo;s Day, you don&rsquo;t watch from the sidelines. You answer.
+            </p>
+            <div class="alt-btn-row alt-btn-row--center">
+                <a class="alt-btn alt-btn--primary" href="{{ store_url }}">Secure Your Spot Now</a>
+                <a class="alt-btn alt-btn--ghost" href="{{ url_for('public.tickets_page') }}">View Ticket Options</a>
+            </div>
+        </div>
+    </section>
+
+    {# ══════════════════════════════════════════════════════════
+       4. WHO / WHAT / WHEN / WHERE / WHY  (above the fold answers)
+       ══════════════════════════════════════════════════════════ #}
+    <section id="what-is-this" class="alt-w5" aria-label="Event quick facts">
+        <div class="alt-inner">
+            <div class="alt-section-head">
+                <p class="alt-eyebrow">Everything You Need to Know</p>
+                <h2 class="alt-section-title">The Five Big Questions — Answered</h2>
+            </div>
+            <div class="alt-w5__grid">
+                <div class="alt-w5__card">
+                    <p class="alt-w5__card-q">Who</p>
+                    <p class="alt-w5__card-a">Christian men, fathers &amp; sons</p>
+                    <p class="alt-w5__card-detail">
+                        Thousands of American Christian men and patriots gathering together. Every man is welcome — fathers, sons, veterans, pastors, business leaders, and citizens ready to rebuild.
+                    </p>
+                </div>
+                <div class="alt-w5__card">
+                    <p class="alt-w5__card-q">What</p>
+                    <p class="alt-w5__card-a">2-Day Outdoor Conference</p>
+                    <p class="alt-w5__card-detail">
+                        Main-stage preaching, live worship with Crowder, side-stage equipping sessions, athletic competitions, and the brotherhood of thousands of men — all under the open sky at one of the world&rsquo;s most iconic venues.
+                    </p>
+                </div>
+                <div class="alt-w5__card">
+                    <p class="alt-w5__card-q">When</p>
+                    <p class="alt-w5__card-a">June 19–20, 2026</p>
+                    <p class="alt-w5__card-detail">
+                        Father&rsquo;s Day Weekend. Arrive Friday evening, leave Sunday with a mission. Early bird pricing ends <strong>May 1</strong> — save your seat before it&rsquo;s gone.
+                    </p>
+                </div>
+                <div class="alt-w5__card">
+                    <p class="alt-w5__card-q">Where</p>
+                    <p class="alt-w5__card-a">The Gorge Amphitheatre</p>
+                    <p class="alt-w5__card-detail">
+                        George, Washington &mdash; perched above the Columbia River with one of the most breathtaking views on earth.
+                        <a href="https://www.livenation.com/venue/KovZpZAE6eeA/the-gorge-amphitheatre-events" target="_blank" rel="noopener noreferrer">
+                            Explore The Gorge &rarr;
+                        </a>
+                    </p>
+                </div>
+                <div class="alt-w5__card" style="grid-column: span 1;">
+                    <p class="alt-w5__card-q">Why</p>
+                    <p class="alt-w5__card-a">America&rsquo;s 250th Anniversary</p>
+                    <p class="alt-w5__card-detail">
+                        1776 to 2026. The nation that was founded by men of faith and courage is calling men of faith and courage to stand again — to worship, repent, and rebuild Washington State and America.
+                    </p>
+                </div>
+                <div class="alt-w5__card">
+                    <p class="alt-w5__card-q">Accommodation</p>
+                    <p class="alt-w5__card-a">Camping is the Main Experience</p>
+                    <p class="alt-w5__card-detail">
+                        The Gorge has full campgrounds on-site, making this a true adventure weekend under the stars.
+                        <a href="https://www.gorgecamping.com" target="_blank" rel="noopener noreferrer">
+                            The Gorge Camping &rarr;
+                        </a>
+                        &nbsp;or see <a href="{{ url_for('public.accommodations_page') }}">all options</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ══════════════════════════════════════════════════════════
+       5. CROWDER — high up, name recognition above the fold
+       ══════════════════════════════════════════════════════════ #}
+    <section class="alt-crowder" aria-label="Featured artist: Crowder">
+        <div class="alt-crowder__bg" aria-hidden="true"></div>
+        <div class="alt-crowder__overlay">
+            <div class="alt-inner">
+                <div class="alt-crowder__inner">
+                    <p class="alt-crowder__kicker">Live at Freedom Con &middot; Saturday Night &middot; Main Stage</p>
+                    <h2 class="alt-crowder__name">Crowder</h2>
+                    <p class="alt-crowder__desc">
+                        GRAMMY-nominated. 3 million records sold. 1.8 billion global streams.
+                        As the sun sets over the Columbia River behind The Gorge&rsquo;s iconic stage,
+                        Crowder&rsquo;s signature Southern rock will close out a perfect weekend with
+                        an unforgettable, high-energy concert.
+                    </p>
+                    <p class="alt-crowder__meta">Saturday &middot; June 20, 2026 &middot; Main Stage</p>
+                    <a class="alt-btn alt-btn--gold" href="{{ store_url }}">Get Tickets to See Crowder</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ══════════════════════════════════════════════════════════
+       6. FATHER'S DAY ADVENTURE CTA
+       ══════════════════════════════════════════════════════════ #}
+    <section class="alt-fatherson" aria-label="Father and son callout">
+        <div class="alt-inner">
+            <p class="alt-eyebrow">Fathers &amp; Sons</p>
+            <h2 class="alt-fatherson__title">
+                Create an Epic Father&rsquo;s Day Adventure<br>for the Memory Books
+            </h2>
+            <p class="alt-fatherson__sub">
+                Two days of competition, worship, bold preaching, camping under the stars,
+                and the Columbia River at your doorstep. This is the Father&rsquo;s Day trip
+                your son will be talking about for the rest of his life.
+                <br><br>
+                Bring your son. Bring your dad. Make this weekend a marker moment where your
+                family stands together and says: <em>we will not run — we will rebuild.</em>
+            </p>
+            <div class="alt-btn-row alt-btn-row--center">
+                <a class="alt-btn alt-btn--primary" href="{{ store_url }}">Book the Father&rsquo;s Day Trip</a>
+                <a class="alt-btn alt-btn--ghost" href="{{ url_for('public.accommodations_page') }}">Plan Your Stay</a>
+            </div>
+        </div>
+    </section>
+
+    {# ══════════════════════════════════════════════════════════
+       7. SIZZLE REEL — embedded YouTube (promo video)
+       ══════════════════════════════════════════════════════════ #}
+    {% if trailers and trailers | length %}
+    <section class="alt-sizzle" aria-label="Freedom Con promotional video">
+        <div class="alt-inner">
+            <div class="alt-sizzle__title-row">
+                <p class="alt-eyebrow">See It for Yourself</p>
+                <h2 class="alt-sizzle__title">{{ trailers[0].title }}</h2>
+                <p class="alt-sizzle__sub">Men, sons, worship &amp; the Columbia River</p>
+            </div>
+            <div class="alt-sizzle__player-wrap">
+                <iframe
+                    src="https://www.youtube-nocookie.com/embed/{{ trailers[0].youtube_id }}?rel=0&modestbranding=1"
+                    title="{{ trailers[0].title }}"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+            <div class="alt-btn-row alt-btn-row--center" style="margin-top:2rem;">
+                <a class="alt-btn alt-btn--primary" href="{{ store_url }}">Buy Tickets</a>
+                <a class="alt-btn alt-btn--ghost"
+                   href="https://www.gorgecamping.com"
+                   target="_blank" rel="noopener noreferrer">
+                    The Gorge Camping &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {# ══════════════════════════════════════════════════════════
+       8. WHAT IS THIS EVENT — two-day outdoor + camping detail
+       ══════════════════════════════════════════════════════════ #}
+    <section class="alt-event-details" id="event-details" aria-label="Freedom Con event details">
+        <div class="alt-inner">
+            <p class="alt-eyebrow">The Full Picture</p>
+            <div class="alt-event-details__grid">
+                <div>
+                    <h2 class="alt-event-details__title">Two Days. Outdoors.<br><em>Under the Open Sky.</em></h2>
+                    <p class="alt-event-details__copy">
+                        Freedom Con is a two-day, fully outdoor conference held at
+                        <a href="https://www.livenation.com/venue/KovZpZAE6eeA/the-gorge-amphitheatre-events"
+                           target="_blank" rel="noopener noreferrer">The Gorge Amphitheatre</a>
+                        — one of the most iconic music venues in the country, perched above the
+                        Columbia River in George, Washington. Think rolling hills, golden sunsets,
+                        and the river as your backdrop for every session.
+                    </p>
+                    <p class="alt-event-details__copy">
+                        Camping is the primary accommodation. The Gorge has full on-site campgrounds
+                        so you and your crew can arrive the night before, wake up on the grounds, and
+                        soak in every moment.
+                        <a href="https://www.gorgecamping.com" target="_blank" rel="noopener noreferrer">
+                            Book your campsite at gorgecamping.com &rarr;
+                        </a>
+                    </p>
+                    <div class="alt-event-details__badges">
+                        <span class="alt-event-details__badge alt-event-details__badge--hot">Outdoor Venue</span>
+                        <span class="alt-event-details__badge">2 Days</span>
+                        <span class="alt-event-details__badge">On-Site Camping</span>
+                        <span class="alt-event-details__badge">Father&rsquo;s Day Weekend</span>
+                        <span class="alt-event-details__badge">Columbia River Views</span>
+                    </div>
+                    <div class="alt-event-details__gorge-link-row">
+                        <a class="alt-event-details__gorge-link"
+                           href="https://www.livenation.com/venue/KovZpZAE6eeA/the-gorge-amphitheatre-events"
+                           target="_blank" rel="noopener noreferrer">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Visit The Gorge Website
+                        </a>
+                    </div>
+                </div>
+                <div class="alt-event-details__img-side">
+                    <img
+                        src="{{ url_for('static', filename='img/TheGuysFadeFeet.avif') }}"
+                        alt="Speakers at Freedom Con 2026 at The Gorge Amphitheatre"
+                        loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ══════════════════════════════════════════════════════════
+       9. SPEAKERS
+       ══════════════════════════════════════════════════════════ #}
+    <section class="alt-speakers" aria-label="Freedom Con speakers">
+        <div class="alt-inner">
+            <div class="alt-section-head">
+                <p class="alt-eyebrow">National Voices</p>
+                <h2 class="alt-speakers__title">Speakers of Freedom Con</h2>
+                <p class="alt-speakers__sub">Pastors &middot; Veterans &middot; Statesmen &middot; Leaders</p>
+            </div>
+            <div class="alt-speakers__grid">
+                {% set display_speakers = speakers if speakers is defined and speakers | length else alt_speakers %}
+                {% for spk in display_speakers[:6] %}
+                <div class="alt-speaker-card">
+                    <div class="alt-speaker-card__img-wrap">
+                        <img
+                            src="{{ url_for('static', filename=spk.image) }}"
+                            alt="{{ spk.name }}"
+                            loading="lazy">
+                    </div>
+                    <p class="alt-speaker-card__name">{{ spk.name }}</p>
+                    <p class="alt-speaker-card__title">
+                        {% if spk.titles is defined %}
+                            {{ spk.titles[0] if spk.titles | length else '' }}
+                        {% elif spk.title is defined %}
+                            {{ spk.title }}
+                        {% endif %}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="alt-btn-row alt-btn-row--center" style="margin-top:2.5rem;">
+                <a class="alt-btn alt-btn--ghost" href="{{ url_for('public.speakers') }}">See All Speakers</a>
+                <a class="alt-btn alt-btn--primary" href="{{ store_url }}">Get Tickets</a>
+            </div>
+        </div>
+    </section>
+
+    {# ══════════════════════════════════════════════════════════
+       10. TICKETS — all tiers + group 15% off highlighted
+       ══════════════════════════════════════════════════════════ #}
+    <section class="alt-tickets" id="tickets" aria-label="Ticket pricing">
+        <div class="alt-inner">
+            <div class="alt-tickets__header">
+                <p class="alt-eyebrow">Join the Movement</p>
+                <h2 class="alt-tickets__title">Choose Your Ticket</h2>
+                {% if ticket_meta is defined and ticket_meta.notice %}
+                <p class="alt-tickets__notice">⚡ {{ ticket_meta.notice }}</p>
+                {% endif %}
+            </div>
+
+            <div class="alt-ticket-grid">
+
+                {% if ticket_prices is defined %}
+                {% for tier in ticket_prices %}
+                    {% if tier.name != 'Group Rate' %}
+                    <div class="alt-ticket-card{% if tier.highlight %} alt-ticket-card--highlight{% endif %}">
+                        <p class="alt-ticket-card__name">{{ tier.name }}</p>
+                        <p class="alt-ticket-card__price">{{ tier.price }}</p>
+                        {% if tier.tax_total %}
+                        <p class="alt-ticket-card__tax">{{ tier.tax_total }}</p>
+                        {% endif %}
+                        {% if tier.notes %}
+                        <ul class="alt-ticket-card__notes">
+                            {% for note in tier.notes %}
+                            <li>{{ note }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <a class="alt-btn alt-btn--primary alt-ticket-card__cta" href="{{ store_url }}">
+                            {% if ticket_meta is defined %}{{ ticket_meta.cta_label }}{% else %}Get Ticket{% endif %}
+                        </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                {% else %}
+                {# Fallback static tiers #}
+                <div class="alt-ticket-card">
+                    <p class="alt-ticket-card__name">General Admission</p>
+                    <p class="alt-ticket-card__price">$149</p>
+                    <p class="alt-ticket-card__tax">$157.11 with all taxes &amp; fees</p>
+                    <a class="alt-btn alt-btn--primary alt-ticket-card__cta" href="{{ store_url }}">Get Ticket</a>
+                </div>
+                <div class="alt-ticket-card alt-ticket-card--highlight">
+                    <p class="alt-ticket-card__name">VIP Admission</p>
+                    <p class="alt-ticket-card__price">$349</p>
+                    <p class="alt-ticket-card__tax">$364.91 with all taxes &amp; fees</p>
+                    <ul class="alt-ticket-card__notes">
+                        <li>VIP badge</li>
+                        <li>Reserved box seating</li>
+                        <li>In-suite food service</li>
+                        <li>Space limited</li>
+                    </ul>
+                    <a class="alt-btn alt-btn--primary alt-ticket-card__cta" href="{{ store_url }}">Get Ticket</a>
+                </div>
+                <div class="alt-ticket-card">
+                    <p class="alt-ticket-card__name">Under 12 Years Old</p>
+                    <p class="alt-ticket-card__price">$99</p>
+                    <p class="alt-ticket-card__tax">$105.16 with all taxes &amp; fees</p>
+                    <a class="alt-btn alt-btn--primary alt-ticket-card__cta" href="{{ store_url }}">Get Ticket</a>
+                </div>
+                {% endif %}
+
+            </div>
+
+            {# Group rate — 15% off, prominently highlighted #}
+            <div class="alt-tickets__group-note">
+                <strong>🤝 Group of 10 or More? Save 15%</strong>
+                <p>Bringing a men&rsquo;s group, church team, or crew? Buy 10 or more tickets and receive 15% off your order automatically at checkout. The more brothers you bring, the more you save.</p>
+                <div class="alt-btn-row alt-btn-row--center" style="margin-top:1rem;">
+                    <a class="alt-btn alt-btn--gold" href="{{ store_url }}">Claim Group Discount</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ══════════════════════════════════════════════════════════
+       11. CAMPING / ACCOMMODATIONS
+       ══════════════════════════════════════════════════════════ #}
+    <section class="alt-camping" aria-label="Accommodations and camping">
+        <div class="alt-inner">
+            <div class="alt-section-head">
+                <p class="alt-eyebrow">Where You&rsquo;ll Sleep</p>
+                <h2 class="alt-section-title">Camping at The Gorge</h2>
+                <p class="alt-section-desc">
+                    The best way to experience Freedom Con. Wake up on the grounds, coffee in hand, Columbia River on the horizon.
+                </p>
+            </div>
+            <div class="alt-camping__grid">
+                <div>
+                    <h3 class="alt-camping__title">Your Base Camp<br>for the Weekend</h3>
+                    <p class="alt-camping__copy">
+                        The Gorge Amphitheatre sits above one of the most dramatic river gorges in the
+                        Pacific Northwest. On-site camping puts you right in the action — no shuttles,
+                        no traffic, just your crew, your tents, and the mission.
+                    </p>
+                    <p class="alt-camping__copy">
+                        Book your campsite directly through The Gorge&rsquo;s dedicated camping site:
+                        <a href="https://www.gorgecamping.com" target="_blank" rel="noopener noreferrer">
+                            gorgecamping.com &rarr;
+                        </a>
+                    </p>
+                    <p class="alt-camping__copy">
+                        Prefer a hotel? Review travel tips and nearby lodging options on our
+                        <a href="{{ url_for('public.accommodations_page') }}">Accommodations page</a>.
+                    </p>
+                    <div class="alt-camping__stats">
+                        <div class="alt-camping__stat">
+                            <div class="alt-camping__stat-num">2</div>
+                            <div class="alt-camping__stat-label">Days on-site</div>
+                        </div>
+                        <div class="alt-camping__stat">
+                            <div class="alt-camping__stat-num">⛺</div>
+                            <div class="alt-camping__stat-label">On-site camping</div>
+                        </div>
+                        <div class="alt-camping__stat">
+                            <div class="alt-camping__stat-num">🌊</div>
+                            <div class="alt-camping__stat-label">Columbia River views</div>
+                        </div>
+                    </div>
+                    <div class="alt-btn-row">
+                        <a class="alt-btn alt-btn--primary"
+                           href="https://www.gorgecamping.com"
+                           target="_blank" rel="noopener noreferrer">
+                            Book Camping at The Gorge
+                        </a>
+                        <a class="alt-btn alt-btn--ghost" href="{{ url_for('public.accommodations_page') }}">
+                            All Accommodation Options
+                        </a>
+                    </div>
+                </div>
+                <div class="alt-camping__img-side">
+                    <img
+                        src="{{ url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') }}"
+                        alt="The Gorge Amphitheatre grounds and Columbia River"
+                        loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ══════════════════════════════════════════════════════════
+       12. BOTTOM CTA BAND
+       ══════════════════════════════════════════════════════════ #}
+    <section class="alt-bottom-cta" aria-label="Final call to action">
+        <div class="alt-inner">
+            <p class="alt-eyebrow" style="color:rgba(255,255,255,0.7);">Father&rsquo;s Day Weekend · June 19–20, 2026</p>
+            <h2 class="alt-bottom-cta__title">
+                The call has gone out.<br>
+                Will you answer?
+            </h2>
+            <p class="alt-bottom-cta__sub">
+                Tickets are limited. Early bird pricing ends May 1.
+            </p>
+            <div class="alt-btn-row alt-btn-row--center">
+                <a class="alt-btn alt-btn--gold" href="{{ store_url }}">Buy Tickets Now</a>
+                <a class="alt-btn alt-btn--ghost"
+                   href="https://www.gorgecamping.com"
+                   target="_blank" rel="noopener noreferrer">
+                    Book Camping at The Gorge
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include 'components/footer.html' %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+/* ── Alt page countdown timer ───────────────────────────────── */
+(function () {
+    var el = document.querySelector('[data-alt-countdown]');
+    if (!el) return;
+    var target = new Date(el.dataset.altCountdown).getTime();
+    var dEl = el.querySelector('[data-cd-days]');
+    var hEl = el.querySelector('[data-cd-hours]');
+    var mEl = el.querySelector('[data-cd-mins]');
+    var sEl = el.querySelector('[data-cd-secs]');
+    if (!dEl || !hEl || !mEl || !sEl) return;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+        var now  = Date.now();
+        var diff = target - now;
+        if (diff <= 0) {
+            dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = '00';
+            return;
+        }
+        dEl.textContent = pad(Math.floor(diff / 86400000));
+        hEl.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+        mEl.textContent = pad(Math.floor((diff % 3600000)  / 60000));
+        sEl.textContent = pad(Math.floor((diff % 60000)    / 1000));
+        setTimeout(tick, 1000);
+    }
+    tick();
+}());
+</script>
+{% endblock %}
