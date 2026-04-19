@@ -11,7 +11,7 @@
     --alt-muted: #c8c8c8;
     --alt-accent: #BC2A27;
     --alt-accent-hover: #d63330;
-    --alt-gold: #c8a84b;
+    --alt-gold: #ffffff;
     --alt-line: rgba(255,255,255,0.14);
     --alt-radius: 4px;
     --alt-max: 1180px;
@@ -917,4 +917,27 @@
 }
 @media (max-width: 360px) {
     .alt-ticket-grid { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Why-Now component (landing12 classes) — flag background
+   ══════════════════════════════════════════════════════════════ */
+.landing12-why-now {
+    background-color: #0a0a0a;
+    background-image: url('/static/img/FLAG%202.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.landing12-why-now::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.82);
+    pointer-events: none;
+}
+.landing12-why-now__inner {
+    position: relative;
+    z-index: 1;
 }
