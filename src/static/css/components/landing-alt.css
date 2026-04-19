@@ -505,6 +505,61 @@
     height: 100%;
     border: none;
 }
+.alt-sizzle__more {
+    max-width: 960px;
+    margin: 2rem auto 0;
+}
+.alt-sizzle__more-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--alt-muted);
+    margin-bottom: 0.85rem;
+}
+.alt-sizzle__thumb-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+.alt-sizzle__thumb {
+    position: relative;
+    display: block;
+    border-radius: 4px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid var(--alt-line);
+    transition: border-color 0.2s;
+}
+.alt-sizzle__thumb:hover { border-color: var(--alt-accent); }
+.alt-sizzle__thumb img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.75);
+    transition: filter 0.2s;
+}
+.alt-sizzle__thumb:hover img { filter: brightness(0.9); }
+.alt-sizzle__thumb-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    pointer-events: none;
+}
+.alt-sizzle__thumb-title {
+    display: block;
+    padding: 0.5rem 0.6rem 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--alt-muted);
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+}
 
 /* ══════════════════════════════════════════════════════════════
    8. WHAT IS THIS EVENT (2-day outdoor + camping)
