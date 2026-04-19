@@ -125,11 +125,9 @@
                 Are you ready to answer the call?
             </h2>
             <p class="alt-hero-call__sub">Create an Epic Father&rsquo;s Day Adventure for the Memory Books</p>
-            <p class="alt-hero-call__body">
-                Freedom Con isn&rsquo;t happening to you &mdash; it&rsquo;s calling you. Bring your son, your brother, your crew.
-                Two days of bold preaching, live worship, competitions, and the Columbia River horizon as your backdrop.
-                This Father&rsquo;s Day, you don&rsquo;t watch from the sidelines. You answer.
-            </p>
+           
+            {% include 'public/landing/components/why_now.html'   %}
+
             <div class="alt-btn-row alt-btn-row--center">
                 <a class="alt-btn alt-btn--primary" href="{{ store_url }}">Secure Your Spot Now</a>
                 <a class="alt-btn alt-btn--ghost" href="{{ url_for('public.tickets_page') }}">View Ticket Options</a>
@@ -185,7 +183,7 @@
                         1776 to 2026. The nation that was founded by men of faith and courage is calling men of faith and courage to stand again — to worship, repent, and rebuild Washington State and America.
                     </p>
                 </div>
-                <div class="alt-w5__card">
+                <!-- <div class="alt-w5__card">
                     <p class="alt-w5__card-q">Accommodation</p>
                     <p class="alt-w5__card-a">Camping is the Main Experience</p>
                     <p class="alt-w5__card-detail">
@@ -195,7 +193,7 @@
                         </a>
                         &nbsp;or see <a href="{{ url_for('public.accommodations_page') }}">all options</a>.
                     </p>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
