@@ -209,6 +209,15 @@
     margin-bottom: 1rem;
     filter: drop-shadow(0 6px 28px rgba(0,0,0,0.7));
 }
+.alt-hero__subtitle {
+    font-size: clamp(0.78rem, 1.4vw, 0.95rem);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+    margin-bottom: 0.6rem;
+}
 .alt-hero__tagline {
     font-family: var(--font-secondary, 'Oswald', sans-serif);
     font-size: clamp(1.2rem, 2.8vw, 2rem);
