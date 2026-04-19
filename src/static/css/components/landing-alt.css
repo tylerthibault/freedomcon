@@ -169,7 +169,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: clamp(5rem, 12vw, 9rem);
+    padding-top: clamp(3rem, 7vw, 5.5rem);
     padding-bottom: clamp(1rem, 3vw, 2rem);
     overflow: hidden;
 }
@@ -206,7 +206,7 @@
 }
 .alt-hero__logo {
     width: clamp(280px, 72vw, 820px);
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
     filter: drop-shadow(0 6px 28px rgba(0,0,0,0.7));
 }
 .alt-hero__subtitle {
@@ -216,24 +216,24 @@
     text-transform: uppercase;
     color: rgba(255,255,255,0.72);
     text-shadow: 0 1px 8px rgba(0,0,0,0.8);
-    margin-bottom: 0.6rem;
+    margin-bottom: 1.4rem;
 }
 .alt-hero__tagline {
     font-family: var(--font-secondary, 'Oswald', sans-serif);
-    font-size: clamp(1.2rem, 2.8vw, 2rem);
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: #fff;
+    font-size: clamp(0.95rem, 1.8vw, 1.35rem);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.88);
     text-shadow: 0 2px 16px rgba(0,0,0,0.8);
     line-height: 1.15;
-    margin-bottom: 0.3rem;
+    margin-bottom: 1rem;
 }
 .alt-hero__sub {
     font-size: clamp(0.82rem, 1.6vw, 1rem);
     color: rgba(255,255,255,0.9);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.8rem;
     text-shadow: 0 1px 10px rgba(0,0,0,0.7);
 }
 .alt-hero__cta-row {
