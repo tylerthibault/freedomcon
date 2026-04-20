@@ -27,6 +27,9 @@
 				<article class="ticket-card{% if ticket.highlight %} ticket-card--highlight{% endif %}{% if loop.first %} ticket-card--has-includes{% endif %}" role="listitem">
 					<h3 class="ticket-card__name">{{ ticket.name }}</h3>
 					<p class="ticket-card__price">{{ ticket.price|replace('\n', '<br>')|safe }}</p>
+					{% if ticket.tax_total %}
+					<p class="ticket-card__tax-total">{{ ticket.tax_total }}</p>
+					{% endif %}
 					{% if ticket.notes and ticket.notes|length %}
 					<ul class="ticket-card__notes" aria-label="{{ ticket.name }} benefits">
 						{% for note in ticket.notes %}
@@ -68,8 +71,6 @@
 				<li>Stronger Man Competitions</li>
 				<li>Stronger Boy Challenge Course</li>
 				<li>Live-Pod Studio</li>
-				<li>Danny Gokey worship</li>
-				<li>Stephen McKruiter</li>
 				<li>Dragon Killer House Band</li>
 				<li>World Premiere &mdash; Project ManCard Documentary</li>
 				<li>David Crowder Concert</li>

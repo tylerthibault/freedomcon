@@ -59,8 +59,16 @@
 	}
 }
 
+html,
 body {
 	margin: 0;
+}
+
+.page-clip {
+	overflow-x: hidden;
+}
+
+body {
 	font-family: var(--font-primary);
 	font-weight: 300;
 	background: var(--color-bg);

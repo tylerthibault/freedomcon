@@ -105,7 +105,7 @@ def build_seo(
 	canonical_path: str | None = None,
 	robots: str = "index,follow",
 	og_type: str = "website",
-	image_path: str = "/static/img/sharing_pic.png?v=20260413",
+	image_path: str = "/static/img/title_on_black.png?v=20260417",
 ) -> dict[str, str]:
 	resolved_canonical = canonical_path or path
 	resolved_image = image_path if image_path.startswith("http") else f"{SITE_URL}{image_path}"
@@ -196,9 +196,10 @@ def landing() -> str:
 		crowder_audio=crowder_audio,
 		structured_data=[event_schema],
 		seo=build_seo(
-			title="Freedom Con 2026 | Christian Men's Conference at The Gorge",
+			title="A Congress of Christian Men at The Gorge Amphitheatre",
 			description="Join Freedom Con 2026 at The Gorge Amphitheatre in George, WA for two days of speakers, worship, brotherhood, and leadership challenge.",
 			path="/",
+			image_path="/static/img/title_on_black.png?v=20260417",
 		),
 	)
 
@@ -394,6 +395,7 @@ def tickets_page() -> str:
 
 @public_bp.get("/vision")
 def vision_page() -> str:
+	return redirect(url_for("public.landing"))
 	return render_template(
 		"public/vision/index.html",
 		seo=build_seo(
@@ -406,6 +408,7 @@ def vision_page() -> str:
 
 @public_bp.get("/experience")
 def experience_page() -> str:
+	return redirect(url_for("public.landing"))
 	return render_template(
 		"public/experience/index.html",
 		seo=build_seo(
