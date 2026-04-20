@@ -111,10 +111,9 @@
 .social-proof-card__avatar {
     width: 44px;
     height: 44px;
-    object-fit: cover;
-    border-radius: 999px;
+    /* object-fit: cover;
     border: 2px solid rgba(188, 42, 39, 0.4);
-    flex-shrink: 0;
+    flex-shrink: 0; */
 }
 
 .social-proof-card__identity {
@@ -305,9 +304,7 @@
     .social-proof-mobile-card__avatar {
         width: 34px;
         height: 34px;
-        border-radius: 999px;
         object-fit: cover;
-        border: 2px solid rgba(188, 42, 39, 0.38);
         flex-shrink: 0;
     }
 
