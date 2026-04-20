@@ -1,12 +1,12 @@
 FAQ = {
-    "Stronger Man Con FAQ's": [
+    "Freedom Con FAQ's": [
         {
-            "question": "What is Stronger Man Con?",
-            "answer": "Stronger Man Con is a Christian men's conference hosted by Stronger Man Nation, taking place June 19\u201320, 2026 (Father's Day weekend) at The Gorge Amphitheatre in George, Washington. It's built for men who carry deep convictions about patriotism, faith, family, and freedom. Stronger Man Nation is a men's ministry founded by Pastor Josh McPherson in Washington State. Through conferences, sermons, and written resources, it equips men to lead with courage in their families, churches, and communities. Learn more at www.strongermannation.com.",
+            "question": "What is Freedom Con?",
+            "answer": "Freedom Con is a Christian men's conference hosted by Stronger Man Nation, taking place June 19\u201320, 2026 (Father's Day weekend) at The Gorge Amphitheatre in George, Washington. It's built for men who carry deep convictions about patriotism, faith, family, and freedom. Stronger Man Nation is a men's ministry founded by Pastor Josh McPherson in Washington State. Through conferences, sermons, and written resources, it equips men to lead with courage in their families, churches, and communities. Learn more at www.strongermannation.com.",
         },
         {
-            "question": "When is Stronger Man Con 2026?",
-            "answer": "Stronger Man Con 2026 is June 19\u201320 \u2014 Father's Day weekend. Gates open at 4:00 PM on Friday and 8:00 AM on Saturday.",
+            "question": "When is Freedom Con 2026?",
+            "answer": "Freedom Con 2026 is June 19\u201320 \u2014 Father's Day weekend. Gates open at 4:00 PM on Friday and 8:00 AM on Saturday.",
         },
         {
             "question": "Can I bring my son(s)?",
@@ -21,7 +21,7 @@ FAQ = {
             "answer": "Yes. The main sessions of this men's conference will be available via livestream. Links will be shared closer to the event through Stronger Man Nation channels.",
         },
         {
-            "question": "Where is Stronger Man Con 2026 located?",
+            "question": "Where is Freedom Con 2026 located?",
             "answer_html": "<a href='/where'>The Gorge Amphitheatre</a> \u2014 one of the most iconic outdoor venues in the Pacific Northwest and the perfect setting for a men's conference in Washington State. 754 Silica Rd NW, Quincy, WA 98848",
         },
         {
@@ -29,11 +29,11 @@ FAQ = {
             "answer": "Wenatchee (EAT) is your closest option \u2014 about a 45-minute drive. Seattle (SEA) and Spokane (GEG) are both roughly 2 hours away.",
         },
         {
-            "question": "Is parking free at Stronger Man Con?",
+            "question": "Is parking free at Freedom Con?",
             "answer": "Yes \u2014 parking is free and included with your ticket. It's first-come, first-served, with plenty of room and a top-notch parking team on site.",
         },
         {
-            "question": "Where should I stay for Stronger Man Con?",
+            "question": "Where should I stay for Freedom Con?",
             "answer_html": "Two options: camp at The Gorge (highly recommended) or stay at nearby hotels. See <a href='/accommodations'>Accommodations</a> on the website for more details.",
         },
         {
@@ -53,7 +53,7 @@ FAQ = {
             "answer": "The venue and campgrounds are cashless. If you've got cash, head to a Guest Services kiosk and they'll swap it for a card at no charge.",
         },
         {
-            "question": "What food options are available at Stronger Man Con?",
+            "question": "What food options are available at Freedom Con?",
             "answer_html": "Food vendors are available inside the venue for lunch and dinner. Breakfast is on your own. Check out the food options <a href='/where'>on the website</a>.",
         },
         {
@@ -65,11 +65,11 @@ FAQ = {
             "answer": "Yes \u2014 one unopened gallon of water per person is allowed. Refillable water bottles are encouraged, and filling stations are available on site. In high-heat conditions, up to 2 gallons per person are permitted.",
         },
         {
-            "question": "Is alcohol allowed at Stronger Man Con?",
-            "answer": "No. Stronger Man Con is a dry event. Alcohol will not be allowed or sold.",
+            "question": "Is alcohol allowed at Freedom Con?",
+            "answer": "No. Freedom Con is a dry event. Alcohol will not be allowed or sold.",
         },
         {
-            "question": "What is the bag policy for Stronger Man Con?",
+            "question": "What is the bag policy for Freedom Con?",
             "answer": "Two options are allowed inside the venue: small drawstring packs or fanny packs no bigger than 6\" x 9\", or clear bags, clear backpacks, or clear totes no larger than 12\" x 6\" x 12\".",
         },
         {
@@ -77,7 +77,7 @@ FAQ = {
             "answer": "There are 4500 general admission, first come first serve chairs on the floor. There are also lawn chairs for rent to be used on the lawn. You're also welcome to bring a blanket (no larger than 50\" x 60\") to sit on.",
         },
         {
-            "question": "What items are not allowed at Stronger Man Con?",
+            "question": "What items are not allowed at Freedom Con?",
             "answer_list": [
                 "Firearms and weapons of any kind",
                 "Alcohol and illegal substances",
@@ -113,7 +113,7 @@ FAQ = {
             "answer": "Your camping purchase secures a site in the Premier or Terrace Campground areas for Friday night and Saturday night into Sunday morning. Purchase your camping spot when you buy your event ticket.",
         },
         {
-            "question": "Which campground areas are available for Stronger Man Con?",
+            "question": "Which campground areas are available for Freedom Con?",
             "answer": "For this event, only the Premier and Terrace Campground areas are open. You must have an event ticket to camp.",
         },
         {
