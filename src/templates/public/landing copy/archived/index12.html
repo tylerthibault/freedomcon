@@ -1,0 +1,705 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --fc-bg: #fcf9f0;
+        --fc-surface: #f6f3ea;
+        --fc-ink: #00030a;
+        --fc-accent: #b52619;
+        --fc-muted: #6d6d67;
+        --fc-line: rgba(0, 3, 10, 0.14);
+    }
+
+    body {
+        background: var(--fc-bg);
+        color: var(--fc-ink);
+        font-family: "Work Sans", sans-serif;
+    }
+
+    .landing12 {
+        background: var(--fc-bg);
+    }
+
+    .landing12 h1,
+    .landing12 h2,
+    .landing12 h3,
+    .landing12 h4 {
+        font-family: "Newsreader", serif;
+        letter-spacing: -0.01em;
+    }
+
+    .landing12-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(252, 249, 240, 0.94);
+        border-bottom: 1px solid var(--fc-line);
+        backdrop-filter: blur(8px);
+    }
+
+    .landing12-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    .landing12-brand {
+        font-family: "Newsreader", serif;
+        font-size: clamp(1.4rem, 2vw, 2rem);
+        font-weight: 800;
+        text-decoration: none;
+        color: var(--fc-ink);
+    }
+
+    .landing12-links {
+        display: flex;
+        gap: 1.2rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .landing12-links a {
+        text-decoration: none;
+        color: var(--fc-ink);
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .landing12-links a:hover,
+    .landing12-links a:focus-visible {
+        color: var(--fc-accent);
+    }
+
+    .landing12-btn {
+        background: var(--fc-ink);
+        color: #fff;
+        text-decoration: none;
+        border: 0;
+        padding: 0.75rem 1.1rem;
+        text-transform: uppercase;
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        transition: 0.2s ease;
+    }
+
+    .landing12-btn:hover,
+    .landing12-btn:focus-visible {
+        background: var(--fc-accent);
+        color: #fff;
+    }
+
+    .landing12-hero {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        min-height: min(920px, calc(100vh - 90px));
+        border-bottom: 1px solid var(--fc-line);
+    }
+
+    .landing12-hero-copy {
+        padding: clamp(2rem, 5vw, 5rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .landing12-kicker {
+        font-size: 0.72rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--fc-accent);
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .landing12-hero h1 {
+        font-size: clamp(2.4rem, 8vw, 5.7rem);
+        line-height: 0.95;
+        margin-bottom: 1.3rem;
+        font-style: italic;
+        font-weight: 800;
+    }
+
+    .landing12-hero p {
+        max-width: 45ch;
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        color: #2b2d33;
+        margin-bottom: 1.8rem;
+    }
+
+    .landing12-hero-actions {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+    }
+
+    .landing12-btn--ghost {
+        background: transparent;
+        color: var(--fc-ink);
+        border: 1px solid var(--fc-ink);
+    }
+
+    .landing12-btn--ghost:hover,
+    .landing12-btn--ghost:focus-visible {
+        background: var(--fc-ink);
+    }
+
+    .landing12-hero-media {
+        position: relative;
+        min-height: 420px;
+        background: #0a1d37;
+    }
+
+    .landing12-hero-media img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%) contrast(1.1);
+    }
+
+    .landing12-hero-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 3, 10, 0.7), transparent 55%);
+    }
+
+    .landing12-hero-caption {
+        position: absolute;
+        right: clamp(1.2rem, 3vw, 3rem);
+        bottom: clamp(1.2rem, 3vw, 3rem);
+        z-index: 2;
+        text-align: right;
+        color: #fff;
+    }
+
+    .landing12-hero-caption p {
+        margin: 0;
+    }
+
+    .landing12-hero-caption .eyebrow {
+        font-style: italic;
+        font-size: clamp(1.3rem, 2.4vw, 2rem);
+        color: #f7bd48;
+    }
+
+    .landing12-hero-caption .value {
+        text-transform: uppercase;
+        font-size: 0.82rem;
+        letter-spacing: 0.16em;
+        font-weight: 700;
+    }
+
+    .landing12-strip {
+        background: #0a1d37;
+        color: #fff;
+        padding: 0.9rem 0;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .landing12-strip-track {
+        display: flex;
+        width: max-content;
+        gap: 2rem;
+        white-space: nowrap;
+        animation: landing12-scroll 30s linear infinite;
+        opacity: 0.85;
+        font-style: italic;
+        font-family: "Newsreader", serif;
+        font-size: 1.3rem;
+    }
+
+    .landing12-strip-track .landing12-strip-quote {
+        display: inline-block;
+        max-width: min(68vw, 34rem);
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        line-height: 1.28;
+        vertical-align: top;
+    }
+
+    .landing12-strip-track .landing12-strip-sep {
+        white-space: nowrap;
+    }
+
+    @keyframes landing12-scroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+
+    .landing12-wrap {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+    }
+
+    .landing12-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 1px solid var(--fc-line);
+        border-left: 1px solid var(--fc-line);
+    }
+
+    .landing12-meta article {
+        border-right: 1px solid var(--fc-line);
+        border-bottom: 1px solid var(--fc-line);
+        padding: 2rem;
+        background: #fff;
+    }
+
+    .landing12-meta .label {
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--fc-accent);
+        font-weight: 700;
+        font-size: 0.72rem;
+        margin-bottom: 0.9rem;
+    }
+
+    .landing12-meta h3 {
+        margin: 0 0 0.7rem;
+        font-size: 2rem;
+    }
+
+    .landing12-meta p {
+        margin: 0;
+        color: var(--fc-muted);
+    }
+
+    .landing12-speakers-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .landing12-speakers-head h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4.2vw, 4rem);
+        font-style: italic;
+    }
+
+    .landing12-speakers-head p {
+        margin: 0;
+        color: var(--fc-muted);
+        max-width: 58ch;
+    }
+
+    .landing12-speakers-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .landing12-speaker-card {
+        border: 1px solid var(--fc-line);
+        background: #fff;
+    }
+
+    .landing12-speaker-image {
+        aspect-ratio: 3 / 4;
+        overflow: hidden;
+        background: #e5e2da;
+    }
+
+    .landing12-speaker-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%);
+    }
+
+    .landing12-speaker-copy {
+        padding: 1rem;
+    }
+
+    .landing12-speaker-copy h4 {
+        margin: 0 0 0.5rem;
+        font-size: 1.35rem;
+    }
+
+    .landing12-speaker-copy p {
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--fc-accent);
+        font-size: 0.67rem;
+        font-weight: 700;
+    }
+
+    .landing12-impact {
+        background: #0a1d37;
+        color: #fff;
+        text-align: center;
+    }
+
+    .landing12-impact .landing12-wrap {
+        max-width: 980px;
+    }
+
+    .landing12-impact h2 {
+        margin: 0 0 2.2rem;
+        font-size: clamp(2rem, 4.2vw, 3.7rem);
+        font-style: italic;
+    }
+
+    .landing12-impact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .landing12-impact-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        padding: 1.5rem;
+        text-align: left;
+    }
+
+    .landing12-impact-card p {
+        margin: 0;
+        font-style: italic;
+        font-family: "Newsreader", serif;
+        font-size: 1.45rem;
+        line-height: 1.25;
+    }
+
+    .landing12-pricing {
+        background: var(--fc-surface);
+    }
+
+    .landing12-pricing h2 {
+        text-align: center;
+        margin: 0 0 2rem;
+        font-size: clamp(2.2rem, 5vw, 5rem);
+        font-style: italic;
+    }
+
+    .landing12-pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        max-width: 980px;
+        margin: 0 auto;
+    }
+
+    .landing12-price-card {
+        border: 1px solid var(--fc-line);
+        background: #fff;
+        padding: 1.8rem;
+    }
+
+    .landing12-price-card h3 {
+        margin: 0 0 0.7rem;
+        font-size: 2rem;
+        font-style: italic;
+    }
+
+    .landing12-price-card p {
+        margin: 0 0 1rem;
+        color: var(--fc-muted);
+    }
+
+    .landing12-price {
+        margin: 0 0 1.3rem;
+        font-family: "Newsreader", serif;
+        font-size: 3rem;
+        line-height: 1;
+    }
+
+    .landing12-price-card--vip {
+        background: #0a1d37;
+        color: #fff;
+        position: relative;
+    }
+
+    .landing12-price-card--vip p {
+        color: rgba(255, 255, 255, 0.84);
+    }
+
+    .landing12-price-card--vip .landing12-btn {
+        background: var(--fc-accent);
+    }
+
+    .landing12-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #f7bd48;
+        color: #00030a;
+        padding: 0.34rem 0.55rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .landing12-footer {
+        background: #00030a;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .landing12-footer-inner {
+        max-width: 1240px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .landing12-footer a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        margin-right: 1rem;
+    }
+
+    .landing12-footer a:hover,
+    .landing12-footer a:focus-visible {
+        color: #fff;
+    }
+
+    @media (max-width: 1100px) {
+        .landing12-hero {
+            grid-template-columns: 1fr;
+        }
+
+        .landing12-meta,
+        .landing12-speakers-grid,
+        .landing12-pricing-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 760px) {
+        .landing12-nav {
+            flex-wrap: wrap;
+            padding: 1rem;
+        }
+
+        .landing12-links {
+            width: 100%;
+            justify-content: space-between;
+            gap: 0.6rem;
+        }
+
+        .landing12-wrap {
+            padding: 3.2rem 1rem;
+        }
+
+        .landing12-meta,
+        .landing12-speakers-grid,
+        .landing12-impact-grid,
+        .landing12-pricing-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .landing12-speakers-head {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block navigation %}
+<header class="landing12-header">
+    <nav class="landing12-nav" aria-label="Main navigation">
+        <a class="landing12-brand" href="{{ url_for('public.landing') }}">FREEDOM CON</a>
+        <div class="landing12-links">
+            <a href="{{ url_for('public.landing') }}">Home</a>
+            <a href="{{ url_for('public.speakers') }}">Speakers</a>
+            <a href="{{ url_for('public.the_venue_page') }}">Where</a>
+            <a href="{{ url_for('public.faqs') }}">FAQ</a>
+            <a href="{{ url_for('public.accommodations_page') }}">Accommodations</a>
+        </div>
+        <a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+    </nav>
+</header>
+{% endblock %}
+
+{% block content %}
+{% set landing12_speakers = [
+    {
+        'name': 'Josh McPherson',
+        'image': 'img/speakers/JoshM (2).png',
+        'title': 'Lead Pastor, Grace City • Founder, Stronger Man Nation'
+    },
+    {
+        'name': 'Graham Allen',
+        'image': 'img/speakers/GrahamA (3).png',
+        'title': 'Army Veteran, Author, and Podcast Host'
+    },
+    {
+        'name': 'John Lovell',
+        'image': 'img/speakers/JohnL (3).png',
+        'title': 'Founder, Warrior Poet Society'
+    },
+    {
+        'name': 'Chad Robichaux',
+        'image': 'img/speakers/ChadR (3).png',
+        'title': 'Founder, Mighty Oaks Foundation'
+    },
+    {
+        'name': 'Josh Howerton',
+        'image': 'img/speakers/JoshH (2).png',
+        'title': 'Lead Pastor, Lakepointe Church'
+    },
+    {
+        'name': 'Nate Schatzline',
+        'image': 'img/speakers/NateS (2).png',
+        'title': 'Texas House of Representatives'
+    }
+] %}
+
+<main class="landing12">
+    <section class="landing12-hero" aria-label="Freedom Con hero">
+        <div class="landing12-hero-copy">
+            <span class="landing12-kicker">Stronger Man Nation presents</span>
+            <h1>Freedom Con:<br>Rise Of The Statesman</h1>
+            <p>A definitive gathering for men of conviction. Join us Father’s Day Weekend at The Gorge Amphitheater in George, Washington for truth, worship, brotherhood, and bold leadership.</p>
+            <div class="landing12-hero-actions">
+                <a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Your Tickets</a>
+                <a class="landing12-btn landing12-btn--ghost" href="{{ url_for('public.the_venue_page') }}">View Venue Details</a>
+            </div>
+        </div>
+        <div class="landing12-hero-media">
+            <img src="{{ url_for('static', filename='img/TheGuysFadeFeet.avif') }}" alt="Freedom Con speakers lineup">
+            <div class="landing12-hero-caption">
+                <p class="eyebrow">Father’s Day Weekend</p>
+                <p class="value">June 19–20 • The Gorge Amphitheater</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="landing12-strip" aria-label="Impact quotes">
+        <div class="landing12-strip-track">
+            {% for item in social_proof[:6] %}
+            <span class="landing12-strip-quote">“{{ item.quote }}”</span>
+            <span class="landing12-strip-sep">★</span>
+            {% endfor %}
+            {% for item in social_proof[:6] %}
+            <span class="landing12-strip-quote">“{{ item.quote }}”</span>
+            <span class="landing12-strip-sep">★</span>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="landing12-wrap" aria-label="Event details">
+        <div class="landing12-meta">
+            <article>
+                <span class="label">When</span>
+                <h3>June 19 - 20</h3>
+                <p>Father’s Day Weekend 2026</p>
+            </article>
+            <article>
+                <span class="label">Where</span>
+                <h3>The Gorge</h3>
+                <p>George, Washington</p>
+            </article>
+            <article>
+                <span class="label">What</span>
+                <h3>Speakers, Worship, Camping</h3>
+                <p>Faith, brotherhood, and practical leadership in one weekend.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="landing12-wrap" id="speakers" aria-label="Speakers of Freedom Con">
+        <div class="landing12-speakers-head">
+            <div>
+                <h2>Voices of the Conference</h2>
+                <p>The same trusted lineup from your main landing experience, now in the editorial concept layout.</p>
+            </div>
+            <a class="landing12-btn" href="{{ url_for('public.speakers') }}">See Full Lineup</a>
+        </div>
+        <div class="landing12-speakers-grid">
+            {% for speaker in landing12_speakers %}
+            <article class="landing12-speaker-card">
+                <div class="landing12-speaker-image">
+                    <img src="{{ url_for('static', filename=speaker.image) }}" alt="{{ speaker.name }}">
+                </div>
+                <div class="landing12-speaker-copy">
+                    <h4>{{ speaker.name }}</h4>
+                    <p>{{ speaker.title }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="landing12-impact" aria-label="Social proof testimonials">
+        <div class="landing12-wrap">
+            <h2>The Registry of Impact</h2>
+            <div class="landing12-impact-grid">
+                {% for item in social_proof[:4] %}
+                <article class="landing12-impact-card">
+                    <p>“{{ item.quote }}”</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="landing12-pricing" aria-label="Ticket options">
+        <div class="landing12-wrap">
+            <h2>Will You Stand?</h2>
+            <div class="landing12-pricing-grid">
+                <article class="landing12-price-card">
+                    <h3>Patriot Pass</h3>
+                    <p>General access to speakers, vendors, and daytime sessions.</p>
+                    <p class="landing12-price">$299</p>
+                    <a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get Patriot Pass</a>
+                </article>
+                <article class="landing12-price-card landing12-price-card--vip">
+                    <span class="landing12-badge">Most Commanded</span>
+                    <h3>Statesman VIP</h3>
+                    <p>Premium seating, exclusive sessions, and elevated weekend access.</p>
+                    <p class="landing12-price">$850</p>
+                    <a class="landing12-btn" href="{{ url_for('public.tickets_page') }}">Get VIP Pass</a>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer class="landing12-footer">
+    <div class="landing12-footer-inner">
+        <strong>FREEDOM CON</strong>
+        <div>
+            <a href="{{ url_for('public.faqs') }}">FAQ</a>
+            <a href="{{ url_for('public.the_venue_page') }}">Where</a>
+            <a href="{{ url_for('public.tickets_page') }}">Tickets</a>
+        </div>
+        <small>© 2026 Stronger Man Nation</small>
+    </div>
+</footer>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

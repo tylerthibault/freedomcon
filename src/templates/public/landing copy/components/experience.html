@@ -1,0 +1,26 @@
+<section class="experience" aria-label="Experience section">
+	<p class="experience__title">Enter The Experience</p>
+	<p class="experience__subtitle">Choose One</p>
+	<div class="experience__options" role="group" aria-label="Choose your experience">
+		<a class="experience__option" href="#" aria-label="Choose Men of America option">
+			<span class="experience__option-art">
+				<img class="experience__img experience__img--hover" src="{{ url_for('static', filename='svgs/america.svg') }}" alt="" aria-hidden="true">
+				<img class="experience__img experience__img--base" src="{{ url_for('static', filename='svgs/america.svg') }}" alt="Men of America option">
+				<span class="experience__label">
+					<span>Men Of</span>
+					<span>America</span>
+				</span>
+			</span>
+		</a>
+		<a class="experience__option" href="#" aria-label="Choose Men of Washington option">
+			<span class="experience__option-art">
+				<img class="experience__img experience__img--hover" src="{{ url_for('static', filename='svgs/washington.svg') }}" alt="" aria-hidden="true">
+				<img class="experience__img experience__img--base" src="{{ url_for('static', filename='svgs/washington.svg') }}" alt="Men of Washington option">
+				<span class="experience__label">
+					<span>Men Of</span>
+					<span>Washington</span>
+				</span>
+			</span>
+		</a>
+	</div>
+</section>

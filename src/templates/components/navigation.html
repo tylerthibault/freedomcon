@@ -2,39 +2,44 @@
 {% set is_landing = current_endpoint.startswith('public.landing') %}
 
 <header class="landing12-header">
-    <nav class="landing12-nav d-flex align-items-center justify-content-between gap-3 mx-auto" aria-label="Main navigation">
+    <nav class="landing12-nav d-flex align-items-center justify-content-between gap-3 mx-auto"
+        aria-label="Main navigation">
         <a class="landing12-brand" href="{{ url_for('public.landing') }}">FREEDOM CON</a>
-        <button
-            class="landing12-menu-toggle d-flex d-md-none"
-            type="button"
-            aria-expanded="false"
-            aria-controls="landing12MobileMenu"
-            aria-label="Toggle navigation menu">
+        <button class="landing12-menu-toggle d-flex d-md-none" type="button" aria-expanded="false"
+            aria-controls="landing12MobileMenu" aria-label="Toggle navigation menu">
             Menu
         </button>
         <div class="landing12-links d-flex align-items-center flex-nowrap" id="landing12MobileMenu">
             <a class="{% if is_landing %}is-active{% endif %}" href="{{ url_for('public.landing') }}">Home</a>
-            <a class="{% if current_endpoint == 'public.artists_page' %}is-active{% endif %}" href="{{ url_for('public.artists_page') }}">Artists</a>
-            <a class="{% if current_endpoint == 'public.speakers' %}is-active{% endif %}" href="{{ url_for('public.speakers') }}">Speakers</a>
-            <a class="{% if current_endpoint == 'public.the_venue_page' %}is-active{% endif %}" href="{{ url_for('public.the_venue_page') }}">The Venue</a>
-            <a class="{% if current_endpoint == 'public.faqs' %}is-active{% endif %}" href="{{ url_for('public.faqs') }}">FAQ</a>
-            <a class="landing12-link-optional {% if current_endpoint == 'public.accommodations_page' %}is-active{% endif %}" href="{{ url_for('public.accommodations_page') }}">Accommodations</a>
-
+            <a class="{% if current_endpoint == 'public.artists_page' %}is-active{% endif %}"
+                href="{{ url_for('public.artists_page') }}">Artists</a>
+            <a class="{% if current_endpoint == 'public.speakers' %}is-active{% endif %}"
+                href="{{ url_for('public.speakers') }}">Speakers</a>
+            <a class="{% if current_endpoint == 'public.the_venue_page' %}is-active{% endif %}"
+                href="{{ url_for('public.the_venue_page') }}">The Venue</a>
+            <a class="{% if current_endpoint == 'public.faqs' %}is-active{% endif %}"
+                href="{{ url_for('public.faqs') }}">FAQ</a>
+            <a class="landing12-link-optional {% if current_endpoint == 'public.accommodations_page' %}is-active{% endif %}"
+                href="{{ url_for('public.accommodations_page') }}">Accommodations</a>
+            <details
+                class="landing12-nav-dropdown{% if current_endpoint in ('public.vision_page', 'public.experience_page', 'public.about_smn_page', 'public.story_page', 'public.sponsors_page') %} is-active{% endif %}">
+                <summary>More</summary>
+                <div class="landing12-nav-dropdown-menu" aria-label="More navigation links">
+                    <a class="{% if current_endpoint == 'public.vision_page' %}is-active{% endif %}"
+                        href="{{ url_for('public.vision_page') }}">The Vision</a>
+                    <a class="{% if current_endpoint == 'public.experience_page' %}is-active{% endif %}"
+                        href="{{ url_for('public.experience_page') }}">The Experience</a>
+                    <!-- sponsors -->
+                        <a class="{% if current_endpoint == 'public.sponsors_page' %}is-active{% endif %}" href="{{ url_for('public.sponsors_page') }}">Sponsors</a>
+                    <!-- <a class="{% if current_endpoint == 'public.about_smn_page' %}is-active{% endif %}" href="{{ url_for('public.about_smn_page') }}">About SMN</a> -->
+                    <!-- <a class="{% if current_endpoint == 'public.story_page' %}is-active{% endif %}" href="{{ url_for('public.story_page') }}">The Story</a> -->
+                </div>
+            </details>
         </div>
-        <p class="landing12-nav-urgency fs-6 border px-2">Early bird extended <s class="landing12-nav-urgency__strike landing12-nav-urgency__strike--sm">Apr 15</s> <span class="landing12-nav-urgency__new-date">May 1</span></p>
+        <p class="landing12-nav-urgency fs-6 border px-2">Early bird extended <s
+                class="landing12-nav-urgency__strike landing12-nav-urgency__strike--sm">Apr 15</s> <span
+                class="landing12-nav-urgency__new-date">May 1</span></p>
         <button class="landing12-menu-backdrop" type="button" aria-label="Close navigation menu"></button>
         <a class="landing12-btn btn" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
     </nav>
 </header>
-
-{# 
-<details class="landing12-nav-dropdown{% if current_endpoint in ('public.vision_page', 'public.experience_page', 'public.about_smn_page', 'public.story_page') %} is-active{% endif %}">
-    <summary>More</summary>
-    <div class="landing12-nav-dropdown-menu" aria-label="More navigation links">
-        <a class="{% if current_endpoint == 'public.vision_page' %}is-active{% endif %}" href="{{ url_for('public.vision_page') }}">The Vision</a>
-        <a class="{% if current_endpoint == 'public.experience_page' %}is-active{% endif %}" href="{{ url_for('public.experience_page') }}">The Experience</a>
-        <!-- <a class="{% if current_endpoint == 'public.about_smn_page' %}is-active{% endif %}" href="{{ url_for('public.about_smn_page') }}">About SMN</a> -->
-        <!-- <a class="{% if current_endpoint == 'public.story_page' %}is-active{% endif %}" href="{{ url_for('public.story_page') }}">The Story</a> -->
-    </div>
-</details>
-#}

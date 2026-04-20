@@ -66,6 +66,16 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		syncLanding12MobileNavState();
 
+		// Keep --nav-height in sync with actual header height for fixed-nav offset
+		const landing12Header = landing12Nav.closest('.landing12-header');
+		const updateNavHeight = () => {
+			if (landing12Header) {
+				document.documentElement.style.setProperty('--nav-height', landing12Header.offsetHeight + 'px');
+			}
+		};
+		updateNavHeight();
+		window.addEventListener('resize', updateNavHeight);
+
 		const toggle = landing12Nav.querySelector(".landing12-menu-toggle");
 		const menu = landing12Nav.querySelector(".landing12-links");
 		const backdrop = landing12Nav.querySelector(".landing12-menu-backdrop");

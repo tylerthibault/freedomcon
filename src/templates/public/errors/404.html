@@ -1,0 +1,83 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<style>
+    .error-page {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 4rem 1.5rem;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+    }
+
+    .error-code {
+        font-family: var(--font-action);
+        font-size: clamp(6rem, 20vw, 14rem);
+        line-height: 1;
+        color: var(--color-accent);
+        margin: 0;
+        letter-spacing: 0.05em;
+    }
+
+    .error-title {
+        font-family: var(--font-action);
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin: 0.5rem 0 1.5rem;
+        color: var(--color-text);
+    }
+
+    .error-message {
+        font-family: var(--font-regular);
+        font-size: 1.2rem;
+        max-width: 480px;
+        margin: 0 auto 2.5rem;
+        opacity: 0.8;
+        color: var(--color-text);
+    }
+
+    .error-divider {
+        width: 60px;
+        height: 3px;
+        background-color: var(--color-accent);
+        margin: 1rem auto;
+    }
+
+    .error-home-btn {
+        display: inline-block;
+        font-family: var(--font-action);
+        font-size: 1rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.85rem 2.5rem;
+        background-color: var(--color-accent);
+        color: #fff;
+        text-decoration: none;
+        border: 2px solid var(--color-accent);
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .error-home-btn:hover {
+        background-color: transparent;
+        color: var(--color-accent);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="error-page dot-grid-bg">
+    <p class="error-code">404</p>
+    <div class="error-divider"></div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-message">
+        The page you're looking for doesn't exist or has been moved.
+        Head back to the home page to find what you need.
+    </p>
+    <a href="/" class="error-home-btn">Back to Home</a>
+</main>
+{% endblock %}

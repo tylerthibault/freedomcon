@@ -1,10 +1,17 @@
 ticket_prices = [
     {
+        "name": "Under 12 Years Old",
+        "price": "$99",
+        "tax_total": "$105.16 with all taxes & fees",
+        "notes": [],
+        "highlight": False,
+    },
+    {
         "name": "General Admission",
         "price": "$149",
         "tax_total": "$157.11 with all taxes & fees",
         "notes": [],
-        "highlight": False,
+        "highlight": True,
     },
     {
         "name": "VIP Admission",
@@ -16,13 +23,6 @@ ticket_prices = [
             "In-suite food service",
             "Space limited",
         ],
-        "highlight": True,
-    },
-    {
-        "name": "Under 12 Years Old",
-        "price": "$99",
-        "tax_total": "$105.16 with all taxes & fees",
-        "notes": [],
         "highlight": False,
     },
     {
