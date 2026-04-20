@@ -1,23 +1,42 @@
-<section class="hero-seq text-center" aria-label="Freedom Con hero">
-	<div class="hero-seq__nation anim anim-fade-in">
-		<p class="hero-seq__nation-line">Stronger Man Nation</p>
-		<p class="hero-seq__presents">presents</p>
-	</div>
+{# ══════════════════════════════════════════════════════════
+    2. HERO — looping sizzle reel + Columbia River backdrop
+    ══════════════════════════════════════════════════════════ #}
+    <h1 class="visually-hidden">Freedom Con 2026 — Father's Day Weekend at The Gorge Amphitheatre</h1>
+    <section class="alt-hero" aria-label="Freedom Con hero">
+        {# Looping sizzle reel — men with sons, competitions, worship, power preaching,
+        Columbia River landscape. Swap src for the Columbia River cut when available. #}
+        <video class="alt-hero__video-bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+            <source src="https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/PHOTO%20REEL%202.mp4" type="video/mp4">
+        </video>
+        <div class="alt-hero__overlay" aria-hidden="true"></div>
 
-	<div class="hero-seq__event anim anim-slide-up">
-		<div class="hero-seq__title-row d-flex align-items-center justify-content-center">
-			<span class="hero-seq__star" aria-hidden="true">★</span>
-			<h1 class="hero-seq__title">Freedom Con</h1>
-			<span class="hero-seq__star" aria-hidden="true">★</span>
-		</div>
-		<div class="hero-seq__subtitle-row d-flex align-items-center justify-content-center">
-			<span class="hero-seq__year">1776</span>
-			<p class="hero-seq__subtitle">Rise Of The Statesman</p>
-			<span class="hero-seq__year">2026</span>
-		</div>
-	</div>
+        <div class="alt-hero__content">
+            {# Freedom Con logo — top of content stack, matches main logo #}
+            <img class="alt-hero__logo" src="{{ url_for('static', filename='img/title_no_shield.png') }}"
+                alt="Freedom Con 2026 — Rise of the Statesman">
 
-	<div class="hero-seq__men anim anim-zoom-in">
-		<img src="{{ url_for('static', filename='img/TheGuysFadeFeet.avif') }}" alt="Freedom Con speakers lineup">
-	</div>
-</section>
+            <p class="alt-hero__subtitle">The Northwest's Premier 2-Day Men's Christian Conference</p>
+
+            <p class="alt-hero__tagline">Father's Day Weekend &middot; June 19&ndash;20, 2026</p>
+            <p class="alt-hero__sub">The Gorge Amphitheatre &middot; George, Washington</p>
+
+            {# Primary CTAs — large, above the fold, linking directly to store #}
+            <div class="alt-btn-row alt-hero__cta-row">
+                <a class="alt-btn alt-btn--primary" href="{{ store_url }}"
+                    aria-label="Get tickets for Freedom Con 2026">
+                    Get Tickets
+                </a>
+                <a class="alt-btn alt-btn--ghost" href="#what-is-this" aria-label="Learn more about Freedom Con">
+                    Learn More
+                </a>
+            </div>
+        </div>
+
+        {# Quick-fact strip — Who/What/When/Where still visible above fold on desktop #}
+        <div class="alt-hero__facts" aria-label="Event at a glance">
+            <span class="alt-hero__fact">June 19–20, 2026</span>
+            <span class="alt-hero__fact">The Gorge Amphitheatre, WA</span>
+            <span class="alt-hero__fact">2-Day Outdoor Conference + Camping</span>
+            <span class="alt-hero__fact">Worship &middot; Speakers &middot; Brotherhood</span>
+        </div>
+    </section>

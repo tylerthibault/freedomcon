@@ -204,36 +204,36 @@ def landing() -> str:
 	)
 
 
-@public_bp.get("/alt")
-def landing_alt() -> str:
-	"""Alt landing page — Customer-as-Hero / Story Brand variant."""
-	trailers_data = []
-	for index, video in enumerate(videos_data, start=1):
-		video_url = str(video.get("url", "")).strip()
-		youtube_id = extract_youtube_id(video_url)
-		if not youtube_id:
-			continue
-		trailers_data.append(
-			{
-				"title": video.get("title") or f"Freedom Con Trailer {index}",
-				"youtube_id": youtube_id,
-				"alt": video.get("alt") or f"Freedom Con trailer thumbnail {index}",
-			}
-		)
-	ticket_ctx = get_ticket_context()
-	return render_template(
-		"public/landing/alt.html",
-		speakers=speakers_data,
-		trailers=trailers_data,
-		ticket_prices=ticket_ctx["ticket_prices"],
-		ticket_meta=ticket_ctx["ticket_meta"],
-		seo=build_seo(
-			title="Freedom Con 2026 — Father's Day Weekend at The Gorge",
-			description="Two-day outdoor men's conference at The Gorge Amphitheatre, Father's Day Weekend June 19–20 2026. Worship, bold preaching, Crowder, camping, and the Columbia River.",
-			path="/alt",
-			image_path="/static/img/title_on_black.png?v=20260417",
-		),
-	)
+# @public_bp.get("/alt")
+# def landing_alt() -> str:
+# 	"""Alt landing page — Customer-as-Hero / Story Brand variant."""
+# 	trailers_data = []
+# 	for index, video in enumerate(videos_data, start=1):
+# 		video_url = str(video.get("url", "")).strip()
+# 		youtube_id = extract_youtube_id(video_url)
+# 		if not youtube_id:
+# 			continue
+# 		trailers_data.append(
+# 			{
+# 				"title": video.get("title") or f"Freedom Con Trailer {index}",
+# 				"youtube_id": youtube_id,
+# 				"alt": video.get("alt") or f"Freedom Con trailer thumbnail {index}",
+# 			}
+# 		)
+# 	ticket_ctx = get_ticket_context()
+# 	return render_template(
+# 		"public/landing/alt.html",
+# 		speakers=speakers_data,
+# 		trailers=trailers_data,
+# 		ticket_prices=ticket_ctx["ticket_prices"],
+# 		ticket_meta=ticket_ctx["ticket_meta"],
+# 		seo=build_seo(
+# 			title="Freedom Con 2026 — Father's Day Weekend at The Gorge",
+# 			description="Two-day outdoor men's conference at The Gorge Amphitheatre, Father's Day Weekend June 19–20 2026. Worship, bold preaching, Crowder, camping, and the Columbia River.",
+# 			path="/alt",
+# 			image_path="/static/img/title_on_black.png?v=20260417",
+# 		),
+# 	)
 
 
 @public_bp.get("/faqs")
@@ -326,6 +326,18 @@ def vendors_page() -> str:
 	)
 
 
+@public_bp.get("/sponsor")
+def sponsors_page() -> str:
+	return render_template(
+		"public/sponsor/index.html",
+		seo=build_seo(
+			title="Sponsor Freedom Con 2026 | Partner With Us",
+			description="Partner with Freedom Con 2026 and reach thousands of Christian men at The Gorge Amphitheater. Explore sponsorship opportunities.",
+			path="/sponsor",
+		),
+	)
+
+
 @public_bp.get("/press")
 def press_page() -> str:
 	return redirect(url_for("public.landing"))
@@ -395,7 +407,6 @@ def tickets_page() -> str:
 
 @public_bp.get("/vision")
 def vision_page() -> str:
-	return redirect(url_for("public.landing"))
 	return render_template(
 		"public/vision/index.html",
 		seo=build_seo(
@@ -408,7 +419,6 @@ def vision_page() -> str:
 
 @public_bp.get("/experience")
 def experience_page() -> str:
-	return redirect(url_for("public.landing"))
 	return render_template(
 		"public/experience/index.html",
 		seo=build_seo(
@@ -471,3 +481,31 @@ def sitemap_xml() -> Response:
 	urls = [{"loc": f"{SITE_URL}{path}", "lastmod": lastmod} for path in pages]
 	xml = render_template("sitemap.xml", urls=urls)
 	return Response(xml, mimetype="application/xml")
+
+
+
+#  404 handler
+@public_bp.app_errorhandler(404)
+def page_not_found(e) -> Response:
+	return render_template(
+		"public/errors/404.html",
+		seo=build_seo(
+			title="Page Not Found | Freedom Con",
+			description="The page you are looking for cannot be found. Explore Freedom Con 2026 event details, speakers, tickets, and more.",
+			path="/404",
+			robots="noindex,follow",
+		),
+	), 404
+
+# 500 handler
+@public_bp.app_errorhandler(500)
+def internal_server_error(e) -> Response:
+	return render_template(
+		"public/errors/500.html",
+		seo=build_seo(
+			title="Server Error | Freedom Con",
+			description="An unexpected error occurred. Please try again later or contact support for assistance.",
+			path="/500",
+			robots="noindex,follow",
+		),
+	), 500

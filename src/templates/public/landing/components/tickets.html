@@ -1,0 +1,78 @@
+{# ══════════════════════════════════════════════════════════
+9. TICKETS — all tiers + group 15% off highlighted
+══════════════════════════════════════════════════════════ #}
+<section class="alt-tickets" id="tickets" aria-label="Ticket pricing">
+    <div class="alt-inner">
+        <div class="alt-tickets__header">
+            <p class="alt-eyebrow">Join the Movement</p>
+            <h2 class="alt-tickets__title">Choose Your Ticket</h2>
+            {% if ticket_meta is defined and ticket_meta.notice %}
+            <p class="alt-tickets__notice">{{ ticket_meta.notice }}</p>
+            {% endif %}
+        </div>
+
+        <div class="alt-ticket-grid">
+
+            {% if ticket_prices is defined %}
+            {% for tier in ticket_prices %}
+            {% if tier.name != 'Group Rate' %}
+            <div class="alt-ticket-card{% if tier.highlight %} alt-ticket-card--highlight{% endif %}">
+                <p class="alt-ticket-card__name">{{ tier.name }}</p>
+                <p class="alt-ticket-card__price">{{ tier.price }}</p>
+                {% if tier.tax_total %}
+                <p class="alt-ticket-card__tax">{{ tier.tax_total }}</p>
+                {% endif %}
+                {% if tier.notes %}
+                <ul class="alt-ticket-card__notes">
+                    {% for note in tier.notes %}
+                    <li>{{ note }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            {# Fallback static tiers #}
+            <div class="alt-ticket-card">
+                <p class="alt-ticket-card__name">Under 12 Years Old</p>
+                <p class="alt-ticket-card__price">$99</p>
+                <p class="alt-ticket-card__tax">$105.16 with all taxes &amp; fees</p>
+            </div>
+            <div class="alt-ticket-card alt-ticket-card--highlight">
+                <p class="alt-ticket-card__name">General Admission</p>
+                <p class="alt-ticket-card__price">$149</p>
+                <p class="alt-ticket-card__tax">$157.11 with all taxes &amp; fees</p>
+            </div>
+            <div class="alt-ticket-card">
+                <p class="alt-ticket-card__name">VIP Admission</p>
+                <p class="alt-ticket-card__price">$349</p>
+                <p class="alt-ticket-card__tax">$364.91 with all taxes &amp; fees</p>
+                <ul class="alt-ticket-card__notes">
+                    <li>VIP badge</li>
+                    <li>Reserved box seating</li>
+                    <li>In-suite food service</li>
+                    <li>Space limited</li>
+                </ul>
+            </div>
+
+            {% endif %}
+
+        </div>
+
+        <div class="alt-btn-row alt-btn-row--center mb-4" style="margin-top: 2rem;">
+            <a class="alt-btn alt-btn--primary" href="{{ store_url }}"
+                style="font-size: clamp(1rem, 2vw, 1.25rem); padding: 1em 3em;">Get Tickets</a>
+        </div>
+
+        {# Group rate — 15% off, prominently highlighted #}
+        <div class="alt-tickets__group-note">
+            <strong>Group of 10 or More? Save 15%</strong>
+            <p>Bringing a men&rsquo;s group, church team, or crew? Add 10 or more tickets to your order and the 15%
+                discount will apply automatically at checkout.</p>
+            <div class="alt-btn-row alt-btn-row--center" style="margin-top:1rem;">
+                <a class="alt-btn alt-btn--gold" href="{{ store_url }}">Claim Group Discount</a>
+            </div>
+        </div>
+    </div>
+</section>

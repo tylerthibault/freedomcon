@@ -1,0 +1,29 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/sponsor.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include 'components/navigation.html' %}
+{% endblock %}
+
+{% block content %}
+{% set contact_email = 'info@strongermannation.com' %}
+{% set site_url = 'freedomcon26.com/sponsor' %}
+
+<main class="sp-page">
+
+
+    {% include 'public/sponsor/components/hero.html'   %}
+    {% include 'public/sponsor/components/why_partner.html'   %}
+    {% include 'public/sponsor/components/tiers.html'   %}
+    {% include 'public/sponsor/components/cta_1.html'   %}
+    
+    {% include 'public/sponsor/components/pitch.html'   %}
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include 'components/footer.html' %}
+{% endblock %}

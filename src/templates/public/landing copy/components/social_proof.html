@@ -1,0 +1,100 @@
+{% set testimonials = social_proof or [] %}
+{% set marquee_target_count = 20 %}
+{% set top_offset = 0 %}
+{% set marquee_top_ns = namespace(items=[]) %}
+{% set mobile_preview_count = 4 %}
+{% set placeholder_avatar = url_for('static', filename='img/social_proof/placeholder.svg') %}
+
+{% if testimonials|length > 0 %}
+	{% for idx in range(marquee_target_count) %}
+		{% set top_index = (idx + top_offset) % testimonials|length %}
+		{% set marquee_top_ns.items = marquee_top_ns.items + [testimonials[top_index]] %}
+	{% endfor %}
+{% endif %}
+
+{% set marquee_top = marquee_top_ns.items %}
+
+<section id="social-proof" class="social-proof-section landing12-social-proof landing12-social-proof--marquee" aria-label="Social proof marquee testimonials">
+	<div class="social-proof-section__inner">
+		<div class="landing12-social-proof__intro">
+			<!-- <span class="label">Testimonials</span> -->
+			<h2 class="landing12-social-proof__title">What others are saying</h2>
+		</div>
+		<div class="social-proof-marquee" aria-live="off" data-marquee-speed="78">
+			<div class="social-proof-row social-proof-row--right">
+				<div class="social-proof-row__track">
+					{% for _ in range(2) %}
+					<div class="social-proof-row__group">
+						{% for item in marquee_top %}
+						{% set avatar_filename = item.get('image') or 'img/social_proof/placeholder.svg' %}
+						{% set avatar_alt = item.get('alt') or (item.name ~ ' testimonial photo') %}
+						<article class="social-proof-card">
+							<div class="social-proof-card__head">
+								<img
+									class="social-proof-card__avatar"
+									src="{{ url_for('static', filename=avatar_filename) }}"
+									alt="{{ avatar_alt }}"
+									onerror="this.onerror=null;this.src='{{ placeholder_avatar }}';"
+									loading="lazy"
+								>
+								<div class="social-proof-card__identity">
+									<p class="social-proof-card__name">{{ item.name }}</p>
+									<p class="social-proof-card__title">{{ item.title }}</p>
+								</div>
+							</div>
+							<p class="social-proof-card__quote">{{ item.quote }}</p>
+						</article>
+						{% endfor %}
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		{% if testimonials|length %}
+		<div class="social-proof-mobile-grid" aria-label="Mobile testimonials">
+			{% for item in testimonials %}
+			{% set avatar_filename = item.get('image') or 'img/social_proof/placeholder.svg' %}
+			{% set avatar_alt = item.get('alt') or (item.name ~ ' testimonial photo') %}
+			<button
+				type="button"
+				class="social-proof-mobile-card{% if loop.index0 >= mobile_preview_count %} social-proof-mobile-card--extra{% endif %}"
+				data-social-proof-open
+				data-name="{{ item.name }}"
+				data-title="{{ item.title }}"
+				data-quote="{{ item.quote|e }}"
+			>
+				<div class="social-proof-mobile-card__head">
+					<img
+						class="social-proof-mobile-card__avatar"
+						src="{{ url_for('static', filename=avatar_filename) }}"
+						alt="{{ avatar_alt }}"
+						onerror="this.onerror=null;this.src='{{ placeholder_avatar }}';"
+						loading="lazy"
+					>
+					<div class="social-proof-mobile-card__identity">
+						<p class="social-proof-mobile-card__name">{{ item.name }}</p>
+						<p class="social-proof-mobile-card__title">{{ item.title }}</p>
+					</div>
+				</div>
+				<p class="social-proof-mobile-card__quote">{{ item.quote }}</p>
+				<p class="social-proof-mobile-card__hint" aria-hidden="true">Tap for full message</p>
+			</button>
+			{% endfor %}
+		</div>
+		{% if testimonials|length > mobile_preview_count %}
+		<div class="social-proof-see-more-wrap">
+			<button class="social-proof-see-more" type="button" data-social-proof-see-more aria-expanded="false">See More</button>
+		</div>
+		{% endif %}
+		{% endif %}
+	</div>
+	<div class="social-proof-modal" data-social-proof-modal hidden aria-hidden="true">
+		<div class="social-proof-modal__backdrop" data-social-proof-close></div>
+		<div class="social-proof-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="socialProofModalName">
+			<button class="social-proof-modal__close" type="button" aria-label="Close testimonial" data-social-proof-close>&times;</button>
+			<p class="social-proof-modal__name" id="socialProofModalName" data-social-proof-modal-name></p>
+			<p class="social-proof-modal__title" data-social-proof-modal-title></p>
+			<p class="social-proof-modal__quote" data-social-proof-modal-quote></p>
+		</div>
+	</div>
+</section>

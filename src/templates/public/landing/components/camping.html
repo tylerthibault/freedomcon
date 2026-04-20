@@ -1,0 +1,50 @@
+{# ══════════════════════════════════════════════════════════
+10. CAMPING / ACCOMMODATIONS
+══════════════════════════════════════════════════════════ #}
+<section class="alt-camping" aria-label="Accommodations and camping">
+    <div class="alt-inner">
+        <div class="alt-camping__body">
+            <div class="alt-section-head">
+                <p class="alt-eyebrow">Where You&rsquo;ll Sleep</p>
+                <h2 class="alt-section-title">Camping at The Gorge</h2>
+            </div>
+
+            <div class="alt-camping__stats">
+                <div class="alt-camping__stat">
+                    <div class="alt-camping__stat-num">2</div>
+                    <div class="alt-camping__stat-label">Days on-site</div>
+                </div>
+                <div class="alt-camping__stat">
+                    <div class="alt-camping__stat-num">On-Site</div>
+                    <div class="alt-camping__stat-label">Camping available</div>
+                </div>
+                <div class="alt-camping__stat">
+                    <div class="alt-camping__stat-num">River</div>
+                    <div class="alt-camping__stat-label">Columbia River views</div>
+                </div>
+            </div>
+
+            <p class="alt-camping__lead">
+                The Gorge Amphitheatre sits above one of the most dramatic river gorges in the Pacific Northwest.
+                On-site camping puts you right in the action &mdash; no shuttles, no traffic, just your crew,
+                your tents, and the mission.
+            </p>
+
+            <p class="alt-camping__copy">
+                Book your campsite directly through The Gorge&rsquo;s dedicated camping site:
+                <a href="https://www.gorgecamping.com" target="_blank" rel="noopener noreferrer">gorgecamping.com &rarr;</a>
+            </p>
+            <p class="alt-camping__copy">
+                Prefer a hotel? Review travel tips and nearby lodging options on our
+                <a href="{{ url_for('public.accommodations_page') }}">Accommodations page</a>.
+            </p>
+
+            <div class="alt-btn-row">
+                <a class="alt-btn alt-btn--primary" href="{{ store_url }}">Get Tickets</a>
+                <a class="alt-btn alt-btn--ghost" href="{{ url_for('public.accommodations_page') }}">
+                    Travel &amp; Accommodation
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

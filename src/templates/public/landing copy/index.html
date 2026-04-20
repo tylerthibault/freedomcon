@@ -1,0 +1,132 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/social_proof.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/speakers.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-variant-12.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-social-proof-v12.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/mission-statement.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include 'components/navigation.html' %}
+{% endblock %}
+
+{% block content %}
+{% set landing12_speakers = [
+{
+'name': 'Josh McPherson',
+'image': 'img/speakers/JoshM (2).png',
+'title': 'Lead Pastor, Grace City • Founder, Stronger Man Nation'
+},
+{
+'name': 'Graham Allen',
+'image': 'img/speakers/GrahamA (3).png',
+'title': 'Army Veteran, Author, and Podcast Host'
+},
+{
+'name': 'John Lovell',
+'image': 'img/speakers/JohnL (3).png',
+'title': 'Founder, Warrior Poet Society'
+},
+{
+'name': 'Chad Robichaux',
+'image': 'img/speakers/ChadR (3).png',
+'title': 'Founder, Mighty Oaks Foundation'
+},
+{
+'name': 'Josh Howerton',
+'image': 'img/speakers/JoshH (2).png',
+'title': 'Lead Pastor, Lakepointe Church'
+},
+{
+'name': 'Nate Schatzline',
+'image': 'img/speakers/NateS (2).png',
+'title': 'Texas House of Representatives'
+}
+] %}
+
+{% set countdown_target = '2026-06-19T17:00:00-07:00' %}
+{% set declaration_text = (background_text | join(' ')) if background_text is defined else '' %}
+
+<main class="landing12 overflow-hidden">
+    {#
+    {% if declaration_text %}
+    <div class="landing12-declaration-bg" aria-hidden="true" data-declaration-bg>
+        <p class="landing12-declaration-bg__text" data-declaration-text>
+            {% for _ in range(5) %}
+            {% for word in declaration_text.split() %}
+            <span class="landing12-declaration-bg__word">{{ word }}</span>
+            {% endfor %}
+            {% endfor %}
+        </p>
+    </div>
+    {% endif %}
+    #}
+
+    <h1 class="visually-hidden">Freedom Con 2026 at The Gorge Amphitheatre</h1>
+    <section class="landing12-hero" aria-label="Freedom Con hero">
+        <div class="landing12-hero-media">
+            <img class="landing12-hero-title-image" src="{{ url_for('static', filename='img/title_with_shield.svg') }}"
+                alt="Rise of the Statesman title">
+            <img class="landing12-hero-lineup-image" src="{{ url_for('static', filename='img/the_guys_no_guns.png') }}"
+                alt="Freedom Con speakers lineup">
+        </div>
+    </section>
+
+    <section class="landing12-event-highlight" aria-label="Event weekend highlight">
+        <p class="landing12-event-highlight__eyebrow">One Historic Event</p>
+        <h2 class="landing12-event-highlight__title">Father's Day Weekend</h2>
+        <p class="landing12-event-highlight__venue">The Gorge Amphitheatre</p>
+        <p class="landing12-event-highlight__city">in George, Washington</p>
+        <p class="landing12-event-highlight__date">June 19<span class="landing12-event-highlight__date-sup">th</span> -
+            20<span class="landing12-event-highlight__date-sup">th</span></p>
+        <a class="landing12-btn btn btn-xxl mt-3" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+    </section>
+
+    {% include 'public/landing/components/why_now.html' %}
+
+    <section class="landing12-liberty" aria-label="Call to join the cause of liberty">
+        <video class="landing12-liberty-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+            <source src="https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/PHOTO%20REEL%202.mp4" type="video/mp4">
+        </video>
+        <div class="landing12-liberty-inner">
+            <p class="landing12-liberty-text fs-1">Join Thousands Of American Christian Men and Patriots, In The Cause Of Liberty.</p>
+        </div>
+    </section>
+
+
+    {% include 'public/landing/components/mission_statement.html' %}
+
+    <section class="landing12-wrap landing12-wrap--cta container-xl mx-auto" aria-label="Primary calls to action">
+        <div class="landing12-cta-row landing12-cta-row--center d-flex flex-wrap align-items-center justify-content-center">
+            <a class="landing12-btn btn btn-xxl" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+        </div>
+    </section>
+
+    {% include 'public/landing/components/speakers.html' %}
+
+    {% include 'public/landing/components/cta_2.html' %}
+    
+    {% include 'public/landing/components/what_to_expect.html' %}
+
+    {% include 'public/landing/components/includes_teaser.html' %}
+
+    {% include 'public/landing/components/trailers.html' %}
+
+    {% include 'public/landing/components/father_son_callout.html' %}
+
+    {% include 'public/landing/components/crowder.html' %}
+
+    {% include 'public/landing/components/accomodation.html' %}
+
+    {% include 'public/landing/components/social_proof.html' %}
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include 'components/footer.html' %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
