@@ -1,8 +1,18 @@
+from os import getenv
 from pathlib import Path
 
+import sentry_sdk
 from flask import Flask
+from sentry_sdk.integrations.flask import FlaskIntegration
 
 from src.controllers.routes import public_bp
+
+sentry_sdk.init(
+    dsn=getenv("SENTRY_DSN", ""),
+    integrations=[FlaskIntegration()],
+    traces_sample_rate=1.0,
+    send_default_pii=False,
+)
 
 
 def create_app() -> Flask:
