@@ -205,7 +205,7 @@ def build_seo(
 
 
 @public_bp.get("/")
-def landing_alt() -> str:
+def landing() -> str:
 	"""Alt landing page — Customer-as-Hero / Story Brand variant."""
 	trailers_data = []
 	for index, video in enumerate(videos_data, start=1):
