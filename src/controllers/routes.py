@@ -122,7 +122,7 @@ def build_seo(
 	}
 
 
-@public_bp.get("/")
+@public_bp.get("/alt")
 def landing() -> str:
 	trailers_data = []
 	for index, video in enumerate(videos_data, start=1):
@@ -204,36 +204,39 @@ def landing() -> str:
 	)
 
 
-# @public_bp.get("/alt")
-# def landing_alt() -> str:
-# 	"""Alt landing page — Customer-as-Hero / Story Brand variant."""
-# 	trailers_data = []
-# 	for index, video in enumerate(videos_data, start=1):
-# 		video_url = str(video.get("url", "")).strip()
-# 		youtube_id = extract_youtube_id(video_url)
-# 		if not youtube_id:
-# 			continue
-# 		trailers_data.append(
-# 			{
-# 				"title": video.get("title") or f"Freedom Con Trailer {index}",
-# 				"youtube_id": youtube_id,
-# 				"alt": video.get("alt") or f"Freedom Con trailer thumbnail {index}",
-# 			}
-# 		)
-# 	ticket_ctx = get_ticket_context()
-# 	return render_template(
-# 		"public/landing/alt.html",
-# 		speakers=speakers_data,
-# 		trailers=trailers_data,
-# 		ticket_prices=ticket_ctx["ticket_prices"],
-# 		ticket_meta=ticket_ctx["ticket_meta"],
-# 		seo=build_seo(
-# 			title="Freedom Con 2026 — Father's Day Weekend at The Gorge",
-# 			description="Two-day outdoor men's conference at The Gorge Amphitheatre, Father's Day Weekend June 19–20 2026. Worship, bold preaching, Crowder, camping, and the Columbia River.",
-# 			path="/alt",
-# 			image_path="/static/img/title_on_black.png?v=20260417",
-# 		),
-# 	)
+@public_bp.get("/")
+def landing_alt() -> str:
+	"""Alt landing page — Customer-as-Hero / Story Brand variant."""
+	trailers_data = []
+	for index, video in enumerate(videos_data, start=1):
+		video_url = str(video.get("url", "")).strip()
+		youtube_id = extract_youtube_id(video_url)
+		if not youtube_id:
+			continue
+		trailers_data.append(
+			{
+				"title": video.get("title") or f"Freedom Con Trailer {index}",
+				"youtube_id": youtube_id,
+				"alt": video.get("alt") or f"Freedom Con trailer thumbnail {index}",
+				"thumbnail_mobile": video.get("thumbnail_mobile"),
+				"thumbnail_desktop": video.get("thumbnail_desktop"),
+				"thumbnail": video.get("thumbnail"),
+			}
+		)
+	ticket_ctx = get_ticket_context()
+	return render_template(
+		"public/landing copy/index.html",
+		speakers=speakers_data,
+		trailers=trailers_data,
+		ticket_prices=ticket_ctx["ticket_prices"],
+		ticket_meta=ticket_ctx["ticket_meta"],
+		seo=build_seo(
+			title="Freedom Con 2026 — Father's Day Weekend at The Gorge",
+			description="Two-day outdoor men's conference at The Gorge Amphitheatre, Father's Day Weekend June 19–20 2026. Worship, bold preaching, Crowder, camping, and the Columbia River.",
+			path="/alt",
+			image_path="/static/img/title_on_black.png?v=20260417",
+		),
+	)
 
 
 @public_bp.get("/faqs")

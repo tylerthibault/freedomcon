@@ -18,11 +18,11 @@
 				aria-label="Play {{ item.title }}"
 			>
 				<span class="landing12-trailer-thumb">
-					{% set mobile_thumb = item.thumbnail_mobile %}
-					{% set desktop_thumb = item.thumbnail_desktop %}
-					{% set mobile_thumb_src = mobile_thumb if mobile_thumb.startswith('http') else url_for('static', filename=mobile_thumb) %}
-					{% set desktop_thumb_src = desktop_thumb if desktop_thumb.startswith('http') else url_for('static', filename=desktop_thumb) %}
 					{% set trailer_fallback_src = url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') %}
+					{% set mobile_thumb = item.get('thumbnail_mobile') or item.get('thumbnail') %}
+					{% set desktop_thumb = item.get('thumbnail_desktop') or item.get('thumbnail') %}
+					{% set mobile_thumb_src = mobile_thumb if mobile_thumb and mobile_thumb.startswith('http') else (url_for('static', filename=mobile_thumb) if mobile_thumb else trailer_fallback_src) %}
+					{% set desktop_thumb_src = desktop_thumb if desktop_thumb and desktop_thumb.startswith('http') else (url_for('static', filename=desktop_thumb) if desktop_thumb else trailer_fallback_src) %}
 					<picture>
 						<source media="(max-width: 1024px)" srcset="{{ mobile_thumb_src }}">
 						<img src="{{ desktop_thumb_src }}" alt="{{ item.alt or item.title }}" loading="lazy" onerror="this.onerror=null;this.src='{{ trailer_fallback_src }}';">
