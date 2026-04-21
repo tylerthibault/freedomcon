@@ -1,0 +1,40 @@
+<section class="about-smn-conferences" aria-label="Past Stronger Man conferences">
+	<div class="about-smn-conferences__inner">
+		{% for conference in conference_sections %}
+		<article class="about-smn-conference" aria-label="{{ conference.name }}">
+			<details class="about-smn-conference__panel" {% if loop.first %}open{% endif %}>
+				<summary class="about-smn-conference__header">
+					<div class="about-smn-conference__channel-mark" aria-hidden="true">
+						<span>{{ conference.year }}</span>
+					</div>
+					<div class="about-smn-conference__meta">
+						<p class="about-smn-conference__eyebrow">{{ conference.year }} Conference</p>
+						<h2 class="about-smn-conference__title">{{ conference.name }}</h2>
+						{% if conference.theme %}
+						<p class="about-smn-conference__theme">Theme: {{ conference.theme }}</p>
+						{% endif %}
+						{% if conference.summary %}
+						<p class="about-smn-conference__summary">{{ conference.summary }}</p>
+						{% endif %}
+					</div>
+					<span class="about-smn-conference__toggle" aria-hidden="true"></span>
+				</summary>
+
+				<div class="about-smn-conference__body">
+					{% if conference.has_videos %}
+					<div class="about-smn-conference__videos">
+						{% with media_section=conference.media_section %}
+							{% include 'components/media_section.html' %}
+						{% endwith %}
+					</div>
+					{% else %}
+					<div class="about-smn-conference__empty">
+						<p>Video lineup for this year is coming soon.</p>
+					</div>
+					{% endif %}
+				</div>
+			</details>
+		</article>
+		{% endfor %}
+	</div>
+</section>

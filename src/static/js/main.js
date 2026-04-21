@@ -751,60 +751,139 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 
-	const trailerModal = document.querySelector("[data-trailer-modal]");
-	if (trailerModal) {
-		document.body.appendChild(trailerModal);
+	const mediaSections = document.querySelectorAll("[data-media-section]");
+	mediaSections.forEach((section) => {
+		const cards = Array.from(section.querySelectorAll("[data-media-item]"));
+		const toggle = section.querySelector("[data-media-toggle]");
 
-		const trailerIframe = trailerModal.querySelector("[data-trailer-iframe]");
-		const trailerModalTitle = trailerModal.querySelector("[data-trailer-modal-title]");
-		const trailerCloseControls = trailerModal.querySelectorAll("[data-trailer-close]");
-		const trailerCloseButton = trailerModal.querySelector(".landing12-trailer-modal__close");
-		let activeTrailerTrigger = null;
+		if (!cards.length || !(toggle instanceof HTMLButtonElement)) {
+			return;
+		}
 
-		const closeTrailerModal = () => {
-			if (trailerIframe instanceof HTMLIFrameElement) {
-				trailerIframe.src = "";
+		const totalCards = cards.length;
+		const initialCount = Math.max(0, Number(section.dataset.initialCount || 4));
+		const revealCount = Math.max(0, Number(section.dataset.revealCount || 6));
+		const showMoreLabel = toggle.dataset.showMoreLabel || "Show More";
+		const showAllLabel = toggle.dataset.showAllLabel || "Show All";
+
+		let visibleCount = Math.min(totalCards, initialCount);
+		let hasRevealedMore = false;
+
+		const syncMediaGrid = () => {
+			cards.forEach((card, index) => {
+				const isVisible = index < visibleCount;
+				card.hidden = !isVisible;
+				card.toggleAttribute("data-media-hidden", !isVisible);
+			});
+
+			const remainingCount = totalCards - visibleCount;
+			if (remainingCount <= 0) {
+				toggle.hidden = true;
+				toggle.setAttribute("aria-expanded", "true");
+				return;
 			}
-			trailerModal.setAttribute("hidden", "");
-			trailerModal.setAttribute("aria-hidden", "true");
+
+			toggle.hidden = false;
+			toggle.textContent = hasRevealedMore ? showAllLabel : showMoreLabel;
+			toggle.setAttribute("aria-expanded", visibleCount >= totalCards ? "true" : "false");
+		};
+
+		syncMediaGrid();
+
+		toggle.addEventListener("click", () => {
+			if (!hasRevealedMore) {
+				visibleCount = Math.min(totalCards, initialCount + revealCount);
+				hasRevealedMore = true;
+				syncMediaGrid();
+				return;
+			}
+
+			visibleCount = totalCards;
+			syncMediaGrid();
+		});
+	});
+
+	document.querySelectorAll("[data-youtube-thumb]").forEach((image) => {
+		if (!(image instanceof HTMLImageElement)) {
+			return;
+		}
+
+		const handleThumbnailError = () => {
+			const fallbackSrc = image.dataset.thumbFallback || "";
+			const finalSrc = image.dataset.thumbFinal || "";
+			const stage = image.dataset.thumbStage || "primary";
+
+			if (stage === "primary" && fallbackSrc && image.src !== fallbackSrc) {
+				image.dataset.thumbStage = "fallback";
+				image.src = fallbackSrc;
+				return;
+			}
+
+			if (stage !== "final" && finalSrc && image.src !== finalSrc) {
+				image.dataset.thumbStage = "final";
+				image.src = finalSrc;
+				return;
+			}
+
+			image.removeEventListener("error", handleThumbnailError);
+		};
+
+		image.addEventListener("error", handleThumbnailError);
+	});
+
+	const mediaModal = document.querySelector("[data-media-modal]");
+	if (mediaModal) {
+		document.body.appendChild(mediaModal);
+
+		const mediaIframe = mediaModal.querySelector("[data-media-iframe]");
+		const mediaModalTitle = mediaModal.querySelector("[data-media-modal-title]");
+		const mediaCloseControls = mediaModal.querySelectorAll("[data-media-close]");
+		const mediaCloseButton = mediaModal.querySelector(".landing12-trailer-modal__close");
+		let activeMediaTrigger = null;
+
+		const closeMediaModal = () => {
+			if (mediaIframe instanceof HTMLIFrameElement) {
+				mediaIframe.src = "";
+			}
+			mediaModal.setAttribute("hidden", "");
+			mediaModal.setAttribute("aria-hidden", "true");
 			document.body.classList.remove("landing12-no-scroll");
-			if (activeTrailerTrigger) {
-				activeTrailerTrigger.focus();
-				activeTrailerTrigger = null;
+			if (activeMediaTrigger) {
+				activeMediaTrigger.focus();
+				activeMediaTrigger = null;
 			}
 		};
 
 		document.addEventListener("click", (event) => {
-			const trigger = event.target.closest("[data-trailer-open]");
+			const trigger = event.target.closest("[data-media-open]");
 			if (!(trigger instanceof HTMLElement)) return;
 
 			const videoIdRaw = trigger.dataset.videoId || "";
 			const videoId = /^[a-zA-Z0-9_-]{6,}$/.test(videoIdRaw) ? videoIdRaw : "";
 			if (!videoId) return;
 
-			if (trailerModalTitle) {
-				trailerModalTitle.textContent = trigger.dataset.title || "Video";
+			if (mediaModalTitle) {
+				mediaModalTitle.textContent = trigger.dataset.title || "Video";
 			}
 
-			if (trailerIframe instanceof HTMLIFrameElement) {
-				const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-				trailerIframe.src = embedUrl;
+			if (mediaIframe instanceof HTMLIFrameElement) {
+				mediaIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
 			}
 
-			activeTrailerTrigger = trigger;
-			trailerModal.removeAttribute("hidden");
-			trailerModal.setAttribute("aria-hidden", "false");
+			activeMediaTrigger = trigger;
+			mediaModal.removeAttribute("hidden");
+			mediaModal.setAttribute("aria-hidden", "false");
 			document.body.classList.add("landing12-no-scroll");
-			if (trailerCloseButton instanceof HTMLElement) trailerCloseButton.focus();
+			if (mediaCloseButton instanceof HTMLElement) mediaCloseButton.focus();
 		});
 
-		trailerCloseControls.forEach((control) => {
-			control.addEventListener("click", closeTrailerModal);
+		mediaCloseControls.forEach((control) => {
+			control.addEventListener("click", closeMediaModal);
 		});
 
 		window.addEventListener("keydown", (event) => {
-			if (event.key === "Escape" && !trailerModal.hasAttribute("hidden")) {
-				closeTrailerModal();
+			if (event.key === "Escape" && !mediaModal.hasAttribute("hidden")) {
+				closeMediaModal();
 			}
 		});
 	}

@@ -910,6 +910,16 @@ body.landing12-no-scroll {
     line-height: 1.2;
 }
 
+.landing12-media-section__actions {
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: center;
+}
+
+.landing12-media-section__toggle {
+    min-width: clamp(180px, 24vw, 220px);
+}
+
 .landing12-trailer-modal {
     position: fixed;
     inset: 0;
@@ -1428,6 +1438,10 @@ body.landing12-no-scroll {
 @media (max-width: 1024px) {
     .landing12-trailer-thumb {
         aspect-ratio: 9 / 16;
+    }
+
+    .landing12-trailer-thumb img {
+        object-position: calc(50% + var(--mobile-thumb-x, 0%)) 50%;
     }
 }
 

@@ -1,0 +1,88 @@
+{% set section = media_section or {} %}
+{% set section_id = (section.get('section_id') or 'media-section') | replace(' ', '-') | replace('_', '-') | lower %}
+{% set items = section.get('items') or [] %}
+{% set initial_count = section.get('initial_count', 4) | int %}
+{% set reveal_count = section.get('reveal_count', 6) | int %}
+{% set media_fallback_src = url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') %}
+
+{% if items | length %}
+<section
+	class="landing12-trailers landing12-media-section landing12-media-section--{{ section_id }}"
+	aria-label="{{ section.get('aria_label') or section.get('title') or 'Media section' }}"
+	data-media-section
+	data-initial-count="{{ initial_count }}"
+	data-reveal-count="{{ reveal_count }}"
+>
+	<div class="landing12-wrap landing12-trailers-inner mx-auto">
+		<div class="landing12-trailers-head">
+			{% if section.get('eyebrow') %}
+			<span class="label">{{ section.get('eyebrow') }}</span>
+			{% endif %}
+			<h2>{{ section.get('title') or 'Media' }}</h2>
+		</div>
+
+		<div class="landing12-trailers-grid" data-media-grid id="{{ section_id }}-grid">
+			{% for item in items %}
+			{% set is_hidden = loop.index > initial_count %}
+			{% set mobile_thumb = item.get('thumbnail_mobile') %}
+			{% set mobile_image_x = item.get('mobile_image_x') %}
+			{% set mobile_image_x_css = (mobile_image_x ~ '%') if mobile_image_x is number else mobile_image_x %}
+			{% set desktop_thumb = item.get('thumbnail_desktop') %}
+			{% set desktop_thumb_fallback = item.get('thumbnail_desktop_fallback') %}
+			{% set mobile_thumb_src = mobile_thumb if mobile_thumb and mobile_thumb.startswith('http') else (url_for('static', filename=mobile_thumb) if mobile_thumb else '') %}
+			{% set desktop_thumb_src = desktop_thumb if desktop_thumb and desktop_thumb.startswith('http') else (url_for('static', filename=desktop_thumb) if desktop_thumb else media_fallback_src) %}
+			{% set desktop_thumb_fallback_src = desktop_thumb_fallback if desktop_thumb_fallback and desktop_thumb_fallback.startswith('http') else (url_for('static', filename=desktop_thumb_fallback) if desktop_thumb_fallback else media_fallback_src) %}
+
+			<button
+				type="button"
+				class="landing12-trailer-card"
+				data-media-item
+				data-media-open
+				data-video-id="{{ item.get('youtube_id') }}"
+				data-title="{{ item.get('title') }}"
+				aria-label="{{ item.get('play_label') or section.get('play_label') or 'Play Video' }}: {{ item.get('title') }}"
+				{% if is_hidden %}hidden data-media-hidden="true"{% endif %}
+			>
+				<span class="landing12-trailer-thumb">
+					<picture>
+						{% if mobile_thumb_src %}
+						<source media="(max-width: 1024px)" srcset="{{ mobile_thumb_src }}">
+						{% endif %}
+						<img
+							src="{{ desktop_thumb_src }}"
+							alt="{{ item.get('alt') or item.get('title') }}"
+							loading="lazy"
+							{% if mobile_image_x_css is not none and mobile_image_x_css != '' %}style="--mobile-thumb-x: {{ mobile_image_x_css }};"{% endif %}
+							data-youtube-thumb
+							data-thumb-fallback="{{ desktop_thumb_fallback_src }}"
+							data-thumb-final="{{ media_fallback_src }}"
+						>
+					</picture>
+				</span>
+
+				<span class="landing12-trailer-copy">
+					<span class="label">{{ item.get('play_label') or section.get('play_label') or 'Play Video' }}</span>
+					<span class="landing12-trailer-title">{{ item.get('title') }}</span>
+				</span>
+			</button>
+			{% endfor %}
+		</div>
+
+		{% if items | length > initial_count %}
+		<div class="landing12-media-section__actions">
+			<button
+				type="button"
+				class="landing12-btn btn landing12-media-section__toggle"
+				data-media-toggle
+				data-show-more-label="{{ section.get('show_more_label') or 'Show More' }}"
+				data-show-all-label="{{ section.get('show_all_label') or 'Show All' }}"
+				aria-controls="{{ section_id }}-grid"
+				aria-expanded="false"
+			>
+				{{ section.get('show_more_label') or 'Show More' }}
+			</button>
+		</div>
+		{% endif %}
+	</div>
+</section>
+{% endif %}

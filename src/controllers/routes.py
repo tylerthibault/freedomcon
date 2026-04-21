@@ -13,6 +13,8 @@ from src.data.tickers import ticketer1, ticketers
 from src.data.tickets import get_ticket_context
 from src.data.background_text import background_1
 from src.data.sponsors import sponsors
+from src.data.about_smn import about_smn_conferences
+from src.data.podcasts import podcasts as podcasts_data
 
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
@@ -38,6 +40,74 @@ def normalize_video_thumbnail_path(path: str) -> str:
 	if "/" not in trimmed:
 		return f"videos/{trimmed}"
 	return trimmed
+
+
+def normalize_optional_thumbnail_path(path: str | None) -> str | None:
+	raw = str(path or "").strip()
+	if not raw:
+		return None
+	if raw.startswith(("http://", "https://")):
+		return raw
+	return normalize_video_thumbnail_path(raw)
+
+
+def build_youtube_thumbnail_urls(youtube_id: str) -> dict[str, str]:
+	base_url = f"https://i.ytimg.com/vi/{youtube_id}"
+	return {
+		"desktop": f"{base_url}/maxresdefault.jpg",
+		"desktop_fallback": f"{base_url}/hqdefault.jpg",
+	}
+
+
+def build_media_section(
+	*,
+	section_id: str,
+	eyebrow: str,
+	title: str,
+	aria_label: str,
+	items: list[dict[str, object]],
+	initial_count: int = 4,
+	reveal_count: int = 6,
+	play_label: str = "Play Video",
+	show_more_label: str = "Show More",
+	show_all_label: str = "Show All",
+) -> dict[str, object]:
+	normalized_items: list[dict[str, object]] = []
+
+	for index, item in enumerate(items, start=1):
+		video_url = str(item.get("url", "")).strip()
+		youtube_id = str(item.get("youtube_id") or extract_youtube_id(video_url)).strip()
+		if not youtube_id:
+			continue
+
+		youtube_thumbnails = build_youtube_thumbnail_urls(youtube_id)
+		normalized_items.append(
+			{
+				"title": item.get("title") or f"{title} {index}",
+				"youtube_id": youtube_id,
+				"alt": item.get("alt") or f"{title} thumbnail {index}",
+				"thumbnail_mobile": normalize_optional_thumbnail_path(
+					item.get("thumbnail_mobile") or item.get("thumbnail")
+				),
+				"mobile_image_x": item.get("mobile_image_x"),
+				"thumbnail_desktop": youtube_thumbnails["desktop"],
+				"thumbnail_desktop_fallback": youtube_thumbnails["desktop_fallback"],
+				"play_label": item.get("play_label") or play_label,
+			}
+		)
+
+	return {
+		"section_id": section_id,
+		"eyebrow": eyebrow,
+		"title": title,
+		"aria_label": aria_label,
+		"initial_count": max(0, int(initial_count)),
+		"reveal_count": max(0, int(reveal_count)),
+		"show_more_label": show_more_label,
+		"show_all_label": show_all_label,
+		"play_label": play_label,
+		"items": normalized_items,
+	}
 
 
 def strip_html_tags(value: str) -> str:
@@ -208,27 +278,37 @@ def build_seo(
 @public_bp.get("/")
 def landing() -> str:
 	"""Alt landing page — Customer-as-Hero / Story Brand variant."""
-	trailers_data = []
-	for index, video in enumerate(videos_data, start=1):
-		video_url = str(video.get("url", "")).strip()
-		youtube_id = extract_youtube_id(video_url)
-		if not youtube_id:
-			continue
-		trailers_data.append(
-			{
-				"title": video.get("title") or f"Freedom Con Trailer {index}",
-				"youtube_id": youtube_id,
-				"alt": video.get("alt") or f"Freedom Con trailer thumbnail {index}",
-				"thumbnail_mobile": video.get("thumbnail_mobile"),
-				"thumbnail_desktop": video.get("thumbnail_desktop"),
-				"thumbnail": video.get("thumbnail"),
-			}
-		)
+	conference_trailers_section = build_media_section(
+		section_id="conference-trailers",
+		eyebrow="Watch",
+		title="Conference Trailers",
+		aria_label="Freedom Con trailers",
+		items=videos_data,
+		initial_count=4,
+		reveal_count=6,
+		play_label="Play Video",
+		show_more_label="Show More",
+		show_all_label="Show All",
+	)
+	podcast_section = build_media_section(
+		section_id="podcasts",
+		eyebrow="Listen",
+		title="Podcasts",
+		aria_label="Freedom Con podcasts",
+		items=podcasts_data,
+		initial_count=4,
+		reveal_count=6,
+		play_label="Play Podcast",
+		show_more_label="Show More",
+		show_all_label="Show All",
+	)
 	ticket_ctx = get_ticket_context()
 	return render_template(
 		"public/landing copy/index.html",
 		speakers=speakers_data,
-		trailers=trailers_data,
+		trailers=conference_trailers_section["items"],
+		conference_trailers_section=conference_trailers_section,
+		podcast_section=podcast_section,
 		ticket_prices=ticket_ctx["ticket_prices"],
 		ticket_meta=ticket_ctx["ticket_meta"],
 		seo=build_seo(
@@ -282,11 +362,45 @@ def artists_page() -> str:
 
 @public_bp.get("/about-smn")
 def about_smn_page() -> str:
+	conference_sections: list[dict[str, object]] = []
+
+	for conference in about_smn_conferences:
+		year = conference.get("year")
+		conference_name = str(conference.get("name") or f"Stronger Man Conference {year}").strip()
+		conference_theme = str(conference.get("theme") or "").strip()
+		conference_summary = str(conference.get("summary") or "").strip()
+		conference_videos = conference.get("videos") if isinstance(conference.get("videos"), list) else []
+
+		media_section = build_media_section(
+			section_id=f"smn-{year}",
+			eyebrow=f"{year} Conference",
+			title=f"{conference_name} Videos",
+			aria_label=f"{conference_name} videos",
+			items=conference_videos,
+			initial_count=4,
+			reveal_count=6,
+			play_label="Play Video",
+			show_more_label="Show More",
+			show_all_label="Show All",
+		)
+
+		conference_sections.append(
+			{
+				"year": year,
+				"name": conference_name,
+				"theme": conference_theme,
+				"summary": conference_summary,
+				"media_section": media_section,
+				"has_videos": bool(media_section.get("items")),
+			}
+		)
+
 	return render_template(
 		"public/about_smn/index.html",
+		conference_sections=conference_sections,
 		seo=build_seo(
-			title="About SMN | The Road to The Gorge",
-			description="Learn more about Stronger Man Nation and the Road to The Gorge journey leading into Freedom Con.",
+			title="Past SMN Conferences | The Road to The Gorge",
+			description="Explore past Stronger Man Nation conferences and the Road to The Gorge journey leading into Freedom Con.",
 			path="/about-smn",
 		),
 	)

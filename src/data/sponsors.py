@@ -29,9 +29,11 @@ sponsors = {
             },
             {
                 'name': 'Java Dog',
-                'logo_url': 'https://res.cloudinary.com/dzj8q3l9c/image/upload/v1700000000/sponsors/java_dog.png',
-                'website_url': 'https://www.javadog.com/',
-                'show_on_sponsor_page': False
+                'logo_url': '/static/img/sponsor_logos/Java_Dog_logo.png',
+                'website_url': 'https://www.facebook.com/JavaDogWenatchee/',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
+                'scale': 2
             }
     ],
     'ministries': [
