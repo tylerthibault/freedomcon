@@ -1,0 +1,190 @@
+.about-smn-conferences {
+    background: var(--fc-bg);
+}
+
+.about-smn-conferences__inner {
+    width: min(1320px, 96vw);
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 3.5rem) 0 clamp(3rem, 5vw, 4rem);
+    display: grid;
+    gap: clamp(1rem, 2.2vw, 1.5rem);
+}
+
+.about-smn-conference {
+    background: var(--fc-bg);
+}
+
+.about-smn-conference__panel {
+    background: transparent;
+}
+
+.about-smn-conference__panel[open] {
+    background: var(--fc-surface);
+}
+
+.about-smn-conference__header {
+    padding: clamp(1rem, 2.1vw, 1.5rem);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.95rem;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+}
+
+.about-smn-conference__header::-webkit-details-marker {
+    display: none;
+}
+
+.about-smn-conference__channel-mark {
+    inline-size: clamp(2.5rem, 4.3vw, 3rem);
+    block-size: clamp(2.5rem, 4.3vw, 3rem);
+    border-radius: 999px;
+    background: var(--fc-surface);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    color: var(--fc-accent);
+    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+}
+
+.about-smn-conference__meta {
+    min-width: 0;
+}
+
+.about-smn-conference__toggle {
+    inline-size: 0.75rem;
+    block-size: 0.75rem;
+    border-right: 2px solid var(--fc-muted);
+    border-bottom: 2px solid var(--fc-muted);
+    transform: rotate(45deg);
+    transition: transform 180ms ease;
+}
+
+.about-smn-conference__panel[open] .about-smn-conference__toggle {
+    transform: rotate(225deg);
+}
+
+.about-smn-conference__eyebrow {
+    margin: 0 0 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--fc-accent);
+    font-weight: 700;
+}
+
+.about-smn-conference__title {
+    margin: 0;
+    line-height: 1.15;
+    font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+}
+
+.about-smn-conference__theme {
+    margin: 0.4rem 0 0;
+    color: var(--fc-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.about-smn-conference__summary {
+    margin: 0.45rem 0 0;
+    max-width: 70ch;
+    color: var(--fc-muted);
+}
+
+.about-smn-conference__body {
+    padding-bottom: 0.75rem;
+}
+
+.about-smn-conference__videos {
+    padding: 0.25rem 0 0.6rem;
+}
+
+.about-smn-conference .landing12-media-section {
+    background: transparent;
+}
+
+.about-smn-conference .landing12-trailers-inner {
+    max-width: 100%;
+}
+
+.about-smn-conference .landing12-wrap {
+    padding-top: 0.9rem;
+}
+
+.about-smn-conference .landing12-trailers-head {
+    margin-bottom: 0.8rem;
+}
+
+.about-smn-conference .landing12-trailers-head .label {
+    display: none;
+}
+
+.about-smn-conference .landing12-trailers-head h2 {
+    font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+}
+
+.about-smn-conference .landing12-trailers-grid {
+    gap: 0.75rem;
+}
+
+.about-smn-conference .landing12-trailer-card {
+    background: var(--fc-surface);
+    border: 0;
+}
+
+.about-smn-conference .landing12-trailer-copy {
+    padding: 0.58rem 0.65rem 0.7rem;
+}
+
+.about-smn-conference .landing12-trailer-copy .label {
+    margin-bottom: 0.2rem;
+    font-size: 0.6rem;
+}
+
+.about-smn-conference .landing12-trailer-title {
+    font-size: clamp(0.9rem, 1.35vw, 1.05rem);
+    line-height: 1.22;
+}
+
+.about-smn-conference .landing12-media-section__actions {
+    margin-top: 0.95rem;
+}
+
+.about-smn-conference__empty {
+    padding: 0.8rem 1.4rem 1.2rem;
+    color: var(--fc-muted);
+}
+
+.about-smn-conference__empty p {
+    margin: 0;
+}
+
+.about-smn-conference + .about-smn-conference {
+    border-top: 1px solid var(--fc-line);
+    padding-top: 0.7rem;
+}
+
+@media (max-width: 767.98px) {
+    .about-smn-conference__header {
+        padding: 1rem;
+        grid-template-columns: auto 1fr auto;
+        gap: 0.7rem;
+    }
+
+    .about-smn-conference__channel-mark {
+        inline-size: 2.3rem;
+        block-size: 2.3rem;
+    }
+
+    .about-smn-conference__title {
+        font-size: 1.25rem;
+    }
+
+    .about-smn-conference .landing12-wrap {
+        padding: 1rem;
+        padding-top: 0.75rem;
+    }
+}

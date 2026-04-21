@@ -16,12 +16,17 @@
 
 
     {% include 'public/sponsor/components/hero.html'   %}
+    {% include 'public/sponsor/components/donate.html'   %}
     {% include 'public/sponsor/components/sponsor_section.html'   %}
     {% include 'public/sponsor/components/why_partner.html'   %}
     {% include 'public/sponsor/components/tiers.html'   %}
     {% include 'public/sponsor/components/cta_1.html'   %}
     
     {% include 'public/sponsor/components/pitch.html'   %}
+    {% set donate_title = 'Ready to Sponsor Freedom Con?' %}
+    {% set donate_copy = 'Complete your sponsorship on Givebutter or reach out to Kevin directly if you want help choosing the best partnership level for your business or organization.' %}
+    {% set donate_note = 'Spots are limited across the sponsorship tiers, so early commitments receive the best placement opportunities.' %}
+    {% include 'public/sponsor/components/donate.html'   %}
 </main>
 {% endblock %}
 

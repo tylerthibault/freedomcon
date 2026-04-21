@@ -12,7 +12,7 @@
 				<h3 class="sp-sponsors__category">Businesses</h3>
 				<div class="sp-sponsors__logos">
 					{% for sponsor in business_sponsors %}
-					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }};">
+					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }}; --sp-logo-scale: {{ sponsor.scale | default(sponsor.shrink | default(1), true) }};">
 						<img class="sp-sponsors__logo" src="{{ sponsor.logo_url }}" alt="{{ sponsor.name }} logo" loading="lazy">
 					</a>
 					{% endfor %}
@@ -25,7 +25,7 @@
 				<h3 class="sp-sponsors__category">Ministries</h3>
 				<div class="sp-sponsors__logos">
 					{% for sponsor in ministry_sponsors %}
-					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }};">
+					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }}; --sp-logo-scale: {{ sponsor.scale | default(sponsor.shrink | default(1), true) }};">
 						<img class="sp-sponsors__logo" src="{{ sponsor.logo_url }}" alt="{{ sponsor.name }} logo" loading="lazy">
 					</a>
 					{% endfor %}
@@ -38,7 +38,7 @@
 				<h3 class="sp-sponsors__category">Churches</h3>
 				<div class="sp-sponsors__logos">
 					{% for sponsor in church_sponsors %}
-					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }};">
+					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }}; --sp-logo-scale: {{ sponsor.scale | default(sponsor.shrink | default(1), true) }};">
 						<img class="sp-sponsors__logo" src="{{ sponsor.logo_url }}" alt="{{ sponsor.name }} logo" loading="lazy">
 					</a>
 					{% endfor %}

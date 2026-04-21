@@ -1,0 +1,34 @@
+{# ══ GIVEBUTTER SPONSOR CTA ═══════════════════════════════ #}
+{% set donate_title = donate_title | default('Support Freedom Con as a Sponsor') %}
+{% set donate_copy = donate_copy | default('Secure your sponsorship through our Givebutter page and help fund a gathering that equips men to lead with faith, conviction, and courage.') %}
+{% set donate_note = donate_note | default('Questions before you commit? Reach out to Kevin and we will help you find the right sponsorship fit.') %}
+
+<section class="sp-donate" aria-label="Freedom Con sponsorship link">
+	<div class="sp-inner">
+		<div class="sp-donate__panel">
+			<p class="sp-donate__eyebrow">Freedom Con Sponsorship</p>
+			<h2 class="sp-donate__title">{{ donate_title }}</h2>
+			<p class="sp-donate__copy">{{ donate_copy }}</p>
+
+			<div class="sp-btn-row sp-donate__actions">
+				<a class="sp-btn sp-btn--primary"
+					href="https://givebutter.com/freedom-con-sponsorship-pb4aka"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Open the Freedom Con sponsorship page on Givebutter">
+					Sponsor Through Givebutter
+				</a>
+				<a class="sp-btn sp-btn--ghost"
+					href="mailto:kevin@strongermannation.com"
+					aria-label="Email Kevin about Freedom Con sponsorship">
+					Email Kevin
+				</a>
+			</div>
+
+			<p class="sp-donate__note">
+				{{ donate_note }}
+				<a href="mailto:kevin@strongermannation.com">kevin@strongermannation.com</a>
+			</p>
+		</div>
+	</div>
+</section>

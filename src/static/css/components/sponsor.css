@@ -129,8 +129,8 @@
 .sp-sponsors__logo {
     display: block;
     width: 100%;
-    max-width: 190px;
-    max-height: 60px;
+    max-width: calc(190px * var(--sp-logo-scale, 1));
+    max-height: calc(60px * var(--sp-logo-scale, 1));
     object-fit: contain;
 }
 
@@ -336,6 +336,68 @@
     content: '—';
     position: absolute;
     left: 0;
+    color: var(--color-accent);
+}
+
+/* ── Givebutter CTA ───────────────────────────────────────── */
+.sp-donate {
+    padding: clamp(1.5rem, 4vw, 3rem) 0;
+}
+
+.sp-donate__panel {
+    background:
+        linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.03)),
+        var(--sp-surface);
+    border: 1px solid var(--sp-line);
+    padding: clamp(1.5rem, 4vw, 2.75rem);
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+
+.sp-donate__eyebrow {
+    margin: 0 0 0.65rem;
+    color: var(--color-accent);
+    font-size: clamp(0.78rem, 1.4vw, 0.9rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.sp-donate__title {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.4rem, 3.2vw, 2.35rem);
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.sp-donate__copy {
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--sp-muted);
+    font-size: clamp(0.9rem, 1.7vw, 1rem);
+    line-height: 1.7;
+}
+
+.sp-donate__actions {
+    margin-top: 1.5rem;
+}
+
+.sp-donate__note {
+    margin: 1rem auto 0;
+    max-width: 700px;
+    color: var(--sp-muted);
+    font-size: clamp(0.8rem, 1.5vw, 0.92rem);
+    line-height: 1.6;
+}
+
+.sp-donate__note a {
+    color: var(--sp-ink);
+    text-decoration: underline;
+}
+
+.sp-donate__note a:hover {
     color: var(--color-accent);
 }
 
@@ -650,6 +712,14 @@
 }
 
 @media (max-width: 600px) {
+    .sp-donate__panel {
+        padding-inline: 1.1rem;
+    }
+
+    .sp-donate .sp-btn {
+        width: 100%;
+    }
+
     .sp-tier-bottom {
         grid-template-columns: 1fr;
     }
