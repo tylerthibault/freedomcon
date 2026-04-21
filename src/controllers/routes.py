@@ -234,7 +234,7 @@ def landing() -> str:
 			title="Freedom Con 2026 — Father's Day Weekend at The Gorge",
 			description="Two-day outdoor men's conference at The Gorge Amphitheatre, Father's Day Weekend June 19–20 2026. Worship, bold preaching, Crowder, camping, and the Columbia River.",
 			path="/alt",
-			image_path="/static/img/title_on_black.png?v=20260417",
+			image_path="/static/img/sharable.png?v=20260417",
 		),
 	)
 
