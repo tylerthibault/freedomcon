@@ -193,86 +193,86 @@ def build_seo(
 	}
 
 
-# @public_bp.get("/alt")
-# def landing() -> str:
-# 	trailers_data = []
-# 	for index, video in enumerate(videos_data, start=1):
-# 		video_url = str(video.get("url", "")).strip()
-# 		youtube_id = extract_youtube_id(video_url)
-# 		if not youtube_id:
-# 			continue
-# 		thumbnail_mobile = normalize_video_thumbnail_path(
-# 			video.get("thumbnail_mobile") or video.get("thumbnail") or ""
-# 		)
-# 		thumbnail_desktop = f"https://i.ytimg.com/vi/{youtube_id}/hqdefault.jpg"
-# 		trailers_data.append(
-# 			{
-# 				"title": video.get("title") or f"Freedom Con Trailer {index}",
-# 				"youtube_id": youtube_id,
-# 				"thumbnail_mobile": thumbnail_mobile,
-# 				"thumbnail_desktop": thumbnail_desktop,
-# 				"alt": video.get("alt") or f"Freedom Con trailer thumbnail {index}",
-# 			}
-# 		)
-# 	cta_2 = {
-# 		"image": "img/TheGuysFadeFeet.avif",
-# 	}
-# 	crowder_audio = {
-# 		"src": getenv("CROWDER_AUDIO_URL", "").strip() or "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/02_Grave%20Robber.wav",
-# 		"title": "02_Grave Robber",
-# 	}
-# 	event_schema = {
-# 		"@context": "https://schema.org",
-# 		"@type": "Event",
-# 		"name": "Freedom Con 2026",
-# 		"description": "Join Freedom Con 2026 at The Gorge Amphitheatre in George, WA for two days of speakers, worship, brotherhood, and leadership challenge.",
-# 		"startDate": "2026-06-19T17:00:00-07:00",
-# 		"endDate": "2026-06-20T22:00:00-07:00",
-# 		"eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-# 		"eventStatus": "https://schema.org/EventScheduled",
-# 		"image": [f"{SITE_URL}/static/img/TheGuys-WithLogoNoFeet.avif"],
-# 		"location": {
-# 			"@type": "Place",
-# 			"name": "The Gorge Amphitheatre",
-# 			"address": {
-# 				"@type": "PostalAddress",
-# 				"streetAddress": "754 Silica Rd NW",
-# 				"addressLocality": "Quincy",
-# 				"addressRegion": "WA",
-# 				"postalCode": "98848",
-# 				"addressCountry": "US",
-# 			},
-# 		},
-# 		"organizer": {
-# 			"@type": "Organization",
-# 			"name": "Stronger Man Nation",
-# 			"url": SITE_URL,
-# 		},
-# 		"offers": {
-# 			"@type": "Offer",
-# 			"url": f"{SITE_URL}/tickets",
-# 			"priceCurrency": "USD",
-# 			"availability": "https://schema.org/InStock",
-# 		},
-# 	}
-# 	return render_template(
-# 		"public/landing/index.html",
-# 		social_proof=social_proof,
-# 		ticketer1=ticketer1,
-# 		ticketers=ticketers,
-# 		background_text=background_1,
-# 		speakers=speakers_data,
-# 		trailers=trailers_data,
-# 		cta_2=cta_2,
-# 		crowder_audio=crowder_audio,
-# 		structured_data=[event_schema],
-# 		seo=build_seo(
-# 			title="A Congress of Christian Men at The Gorge Amphitheatre",
-# 			description="Join Freedom Con 2026 at The Gorge Amphitheatre in George, WA for two days of speakers, worship, brotherhood, and leadership challenge.",
-# 			path="/",
-# 			image_path="/static/img/title_on_black.png?v=20260417",
-# 		),
-# 	)
+@public_bp.get("/alt")
+def landing_alt() -> str:
+	trailers_data = []
+	for index, video in enumerate(videos_data, start=1):
+		video_url = str(video.get("url", "")).strip()
+		youtube_id = extract_youtube_id(video_url)
+		if not youtube_id:
+			continue
+		thumbnail_mobile = normalize_video_thumbnail_path(
+			video.get("thumbnail_mobile") or video.get("thumbnail") or ""
+		)
+		thumbnail_desktop = f"https://i.ytimg.com/vi/{youtube_id}/hqdefault.jpg"
+		trailers_data.append(
+			{
+				"title": video.get("title") or f"Freedom Con Trailer {index}",
+				"youtube_id": youtube_id,
+				"thumbnail_mobile": thumbnail_mobile,
+				"thumbnail_desktop": thumbnail_desktop,
+				"alt": video.get("alt") or f"Freedom Con trailer thumbnail {index}",
+			}
+		)
+	cta_2 = {
+		"image": "img/TheGuysFadeFeet.avif",
+	}
+	crowder_audio = {
+		"src": getenv("CROWDER_AUDIO_URL", "").strip() or "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/02_Grave%20Robber.wav",
+		"title": "02_Grave Robber",
+	}
+	event_schema = {
+		"@context": "https://schema.org",
+		"@type": "Event",
+		"name": "Freedom Con 2026",
+		"description": "Join Freedom Con 2026 at The Gorge Amphitheatre in George, WA for two days of speakers, worship, brotherhood, and leadership challenge.",
+		"startDate": "2026-06-19T17:00:00-07:00",
+		"endDate": "2026-06-20T22:00:00-07:00",
+		"eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+		"eventStatus": "https://schema.org/EventScheduled",
+		"image": [f"{SITE_URL}/static/img/TheGuys-WithLogoNoFeet.avif"],
+		"location": {
+			"@type": "Place",
+			"name": "The Gorge Amphitheatre",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "754 Silica Rd NW",
+				"addressLocality": "Quincy",
+				"addressRegion": "WA",
+				"postalCode": "98848",
+				"addressCountry": "US",
+			},
+		},
+		"organizer": {
+			"@type": "Organization",
+			"name": "Stronger Man Nation",
+			"url": SITE_URL,
+		},
+		"offers": {
+			"@type": "Offer",
+			"url": f"{SITE_URL}/tickets",
+			"priceCurrency": "USD",
+			"availability": "https://schema.org/InStock",
+		},
+	}
+	return render_template(
+		"public/landing/index.html",
+		social_proof=social_proof,
+		ticketer1=ticketer1,
+		ticketers=ticketers,
+		background_text=background_1,
+		speakers=speakers_data,
+		trailers=trailers_data,
+		cta_2=cta_2,
+		crowder_audio=crowder_audio,
+		structured_data=[event_schema],
+		seo=build_seo(
+			title="A Congress of Christian Men at The Gorge Amphitheatre",
+			description="Join Freedom Con 2026 at The Gorge Amphitheatre in George, WA for two days of speakers, worship, brotherhood, and leadership challenge.",
+			path="/",
+			image_path="/static/img/title_on_black.png?v=20260417",
+		),
+	)
 
 
 @public_bp.get("/")
