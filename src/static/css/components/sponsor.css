@@ -69,6 +69,78 @@
     line-height: 1.6;
 }
 
+/* ── Sponsors Section ─────────────────────────────────────── */
+.sp-sponsors {
+    padding: clamp(2.5rem, 6vw, 4rem) 0;
+    border-top: 1px solid var(--sp-line);
+    border-bottom: 1px solid var(--sp-line);
+}
+
+.sp-sponsors__title {
+    margin: 0 0 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+}
+
+.sp-sponsors__columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.sp-sponsors__column {
+    border: 1px solid var(--sp-line);
+    background: var(--sp-surface);
+    padding: 1rem;
+}
+
+.sp-sponsors__category {
+    margin: 0 0 0.9rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+}
+
+.sp-sponsors__logos {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.sp-sponsors__logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 92px;
+    background: var(--sp-logo-bg, var(--sp-surface-2));
+    border: 1px solid var(--sp-line);
+    text-decoration: none;
+    transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.sp-sponsors__logo-link:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-1px);
+}
+
+.sp-sponsors__logo {
+    display: block;
+    width: 100%;
+    max-width: 190px;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+.sp-sponsors__empty {
+    margin: 0;
+    text-align: center;
+    color: var(--sp-muted);
+    font-size: 0.9rem;
+}
+
 /* ── Why Partner ───────────────────────────────────────────── */
 .sp-why {
     padding: clamp(2rem, 5vw, 4rem) 0;
@@ -565,6 +637,10 @@
 
 /* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 900px) {
+    .sp-sponsors__columns {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     .sp-tier-top {
         grid-template-columns: 1fr;
     }

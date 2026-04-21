@@ -12,6 +12,7 @@ from src.data.videos import videos as videos_data
 from src.data.tickers import ticketer1, ticketers
 from src.data.tickets import get_ticket_context
 from src.data.background_text import background_1
+from src.data.sponsors import sponsors
 
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
@@ -331,8 +332,21 @@ def vendors_page() -> str:
 
 @public_bp.get("/sponsor")
 def sponsors_page() -> str:
+	visible_sponsors = {
+		"businesses": [
+			item for item in sponsors.get("businesses", []) if item.get("show_on_sponsor_page") is True
+		],
+		"ministries": [
+			item for item in sponsors.get("ministries", []) if item.get("show_on_sponsor_page") is True
+		],
+		"churches": [
+			item for item in sponsors.get("churches", []) if item.get("show_on_sponsor_page") is True
+		],
+	}
+
 	return render_template(
 		"public/sponsor/index.html",
+		sponsors=visible_sponsors,
 		seo=build_seo(
 			title="Sponsor Freedom Con 2026 | Partner With Us",
 			description="Partner with Freedom Con 2026 and reach thousands of Christian men at The Gorge Amphitheater. Explore sponsorship opportunities.",

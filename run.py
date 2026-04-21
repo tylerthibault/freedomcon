@@ -11,7 +11,7 @@ sentry_sdk.init(
     dsn=getenv("SENTRY_DSN", ""),
     integrations=[FlaskIntegration()],
     traces_sample_rate=1.0,
-    send_default_pii=False,
+    send_default_pii=True,
 )
 
 
