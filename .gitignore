@@ -3,3 +3,6 @@ __pycache__/
 *.py[cod]
 *.zip
 src/static/img/speakers/Speakers.zip
+.env
+.env.*
+!.env.example
