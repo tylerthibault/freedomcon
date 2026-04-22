@@ -305,6 +305,7 @@ def landing() -> str:
 	ticket_ctx = get_ticket_context()
 	return render_template(
 		"public/landing copy/index.html",
+		social_proof=social_proof,
 		speakers=speakers_data,
 		trailers=conference_trailers_section["items"],
 		conference_trailers_section=conference_trailers_section,

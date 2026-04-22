@@ -23,31 +23,29 @@
 }
 
 .about-smn-conference__header {
-    padding: clamp(1rem, 2.1vw, 1.5rem);
+    padding: clamp(0.9rem, 2vw, 1.4rem) clamp(1rem, 2.1vw, 1.5rem);
     display: grid;
     grid-template-columns: auto 1fr auto;
-    gap: 0.95rem;
+    gap: 1.25rem;
     align-items: center;
     cursor: pointer;
     list-style: none;
+}
+
+.about-smn-conference__year {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    color: var(--fc-accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .about-smn-conference__header::-webkit-details-marker {
     display: none;
 }
 
-.about-smn-conference__channel-mark {
-    inline-size: clamp(2.5rem, 4.3vw, 3rem);
-    block-size: clamp(2.5rem, 4.3vw, 3rem);
-    border-radius: 999px;
-    background: var(--fc-surface);
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-    color: var(--fc-accent);
-    letter-spacing: 0.04em;
-    font-size: 0.72rem;
-}
+
 
 .about-smn-conference__meta {
     min-width: 0;
@@ -67,10 +65,10 @@
 }
 
 .about-smn-conference__eyebrow {
-    margin: 0 0 0.25rem;
+    margin: 0 0 0.2rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: 0.68rem;
+    font-size: 0.7rem;
     color: var(--fc-accent);
     font-weight: 700;
 }
@@ -168,23 +166,30 @@
 }
 
 @media (max-width: 767.98px) {
-    .about-smn-conference__header {
-        padding: 1rem;
-        grid-template-columns: auto 1fr auto;
-        gap: 0.7rem;
+    .about-smn-conferences__inner {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
 
-    .about-smn-conference__channel-mark {
-        inline-size: 2.3rem;
-        block-size: 2.3rem;
+    .about-smn-conference__header {
+        padding: 0.9rem 0.75rem;
+        gap: 0.6rem;
     }
 
     .about-smn-conference__title {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
+    }
+
+    .about-smn-conference__summary {
+        font-size: 0.85rem;
     }
 
     .about-smn-conference .landing12-wrap {
-        padding: 1rem;
-        padding-top: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    .about-smn-conference__toggle {
+        inline-size: 0.6rem;
+        block-size: 0.6rem;
     }
 }
