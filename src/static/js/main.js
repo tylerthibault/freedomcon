@@ -1053,6 +1053,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	var sbmBio    = backdrop.querySelector('[data-sbm-bio]');
 	var sbmOrgs   = backdrop.querySelector('[data-sbm-orgs]');
 	var sbmRight  = backdrop.querySelector('.spk-modal__right');
+	var sbmLeft   = backdrop.querySelector('[data-sbm-left]');
 
 	var ICONS = {
 		church:  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 3h3l-1.5 2H17v2l-5 3-5-3V7h1.5L7 5h3L12 2zm-5 9v10h4v-4h2v4h4V11l-5-3-5 3z"/></svg>',
@@ -1076,6 +1077,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		sbmImg.src = img;
 		sbmImg.alt = alt;
+		if (sbmLeft) sbmLeft.style.setProperty('--sbm-bg-img', 'url(' + img + ')');
 		sbmName.textContent = name;
 		sbmTitles.textContent = titles.filter(Boolean).join('  |  ');
 

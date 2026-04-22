@@ -38,7 +38,7 @@ sponsors = {
             {
                 'name': 'Creative Spaces',
                 'logo_url': '/static/img/sponsor_logos/creative_spaces_logo.png',
-                'website_url': 'https://www.creativespaces.com/',
+                'website_url': '',
                 'show_on_sponsor_page': True,
                 'background_color': "#FFFFFF",
                 'scale': 1.5

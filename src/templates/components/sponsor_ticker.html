@@ -1,0 +1,169 @@
+{#
+    Sponsor Ticker Component
+    ─────────────────────────────────────────────────────────────
+    1. Add to the page's <head> (once per page):
+           <link rel="stylesheet" href="{{ url_for('static', filename='css/components/sponsor_ticker.css') }}">
+
+    2. Then wherever you want the ticker (set ticker_category to
+       'businesses', 'ministries', or 'churches'):
+           set ticker_category = 'businesses'
+           include 'components/sponsor_ticker.html'
+
+    Required template context:
+        - sponsors        : the sponsors dict passed from the route
+        - ticker_category : string key into the sponsors dict
+    ─────────────────────────────────────────────────────────────
+#}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/sponsor.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/sponsor_ticker.css') }}">
+
+
+{% if ticker_category == 'all' %}
+    {% set ns = namespace(ticker_sponsors=[]) %}
+    {% for _cat_items in sponsors.values() %}
+        {% set ns.ticker_sponsors = ns.ticker_sponsors + (_cat_items | selectattr('show_on_sponsor_page') | list) %}
+    {% endfor %}
+    {% set ticker_sponsors = ns.ticker_sponsors %}
+{% else %}
+    {% set ticker_sponsors = sponsors.get(ticker_category, []) | selectattr('show_on_sponsor_page') | list %}
+{% endif %}
+
+{% if ticker_sponsors %}
+<div class="sp-ticker" aria-label="{{ ticker_category | capitalize }} sponsor ticker" data-sp-ticker>
+    {# Quadruple the list so there's always content filling the viewport #}
+    {% set all_items = ticker_sponsors + ticker_sponsors + ticker_sponsors + ticker_sponsors %}
+    <div class="sp-ticker__track">
+        {% for sponsor in all_items %}
+        {% if sponsor.website_url %}
+        <a class="sp-ticker__item" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }};" tabindex="-1">
+        {% else %}
+        <div class="sp-ticker__item" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }};">
+        {% endif %}
+            <img
+                class="sp-ticker__logo"
+                src="{{ sponsor.logo_url }}"
+                alt="{{ sponsor.name }} logo"
+                loading="lazy"
+                style="transform: scale({{ sponsor.scale | default(sponsor.shrink | default(1), true) }});"
+            >
+            <span class="sp-ticker__name">{{ sponsor.name }}</span>
+        {% if sponsor.website_url %}</a>{% else %}</div>{% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<script>
+(function () {
+    document.querySelectorAll('[data-sp-ticker]').forEach(function (ticker) {
+        var track = ticker.querySelector('.sp-ticker__track');
+        if (!track) return;
+
+        /* px per second — increase to scroll faster */
+        var SPEED = 60;
+
+        var offset = 0;       /* current translateX in px (always <= 0) */
+        var setW = 0;         /* width of one set (scrollWidth / 4) */
+        var isDragging = false;
+        var dragStartX = 0;
+        var dragStartOffset = 0;
+        var dragDelta = 0;
+        var lastTime = null;
+        var raf = null;
+        var paused = false;
+
+        /* Disable the CSS animation — JS drives everything */
+        track.style.animation = 'none';
+        track.style.willChange = 'transform';
+
+        function getSetW() {
+            return track.scrollWidth / 4;
+        }
+
+        function wrap(px) {
+            var w = getSetW();
+            if (w === 0) return 0;
+            px = px % w;
+            if (px > 0) px -= w;
+            return px;
+        }
+
+        function apply() {
+            track.style.transform = 'translateX(' + offset + 'px)';
+        }
+
+        function tick(ts) {
+            raf = requestAnimationFrame(tick);
+            if (isDragging || paused) { lastTime = ts; return; }
+            if (lastTime === null) { lastTime = ts; }
+            var dt = (ts - lastTime) / 1000;
+            lastTime = ts;
+            offset = wrap(offset - SPEED * dt);
+            apply();
+        }
+
+        /* Start the loop once the images have had a chance to lay out */
+        requestAnimationFrame(function () {
+            setW = getSetW();
+            offset = 0;
+            raf = requestAnimationFrame(tick);
+        });
+
+        /* ---- Pause on hover (non-drag) ---- */
+        ticker.addEventListener('mouseenter', function () { if (!isDragging) paused = true; });
+        ticker.addEventListener('mouseleave', function () { if (!isDragging) paused = false; });
+
+        /* ---- Drag helpers ---- */
+        function onDragStart(clientX) {
+            isDragging = true;
+            dragStartX = clientX;
+            dragStartOffset = offset;
+            dragDelta = 0;
+            ticker.classList.add('sp-ticker--dragging');
+        }
+
+        function onDragMove(clientX) {
+            if (!isDragging) return;
+            dragDelta = clientX - dragStartX;
+            offset = wrap(dragStartOffset + dragDelta);
+            apply();
+        }
+
+        function onDragEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            paused = false;
+            lastTime = null;   /* reset dt so first auto-scroll tick is clean */
+            ticker.classList.remove('sp-ticker--dragging');
+
+            /* suppress accidental link clicks after a drag */
+            if (Math.abs(dragDelta) > 4) {
+                ticker.addEventListener('click', function stopClick(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    ticker.removeEventListener('click', stopClick, true);
+                }, true);
+            }
+        }
+
+        /* ---- Mouse ---- */
+        ticker.addEventListener('mousedown', function (e) {
+            onDragStart(e.clientX);
+            e.preventDefault();
+        });
+        window.addEventListener('mousemove', function (e) { onDragMove(e.clientX); });
+        window.addEventListener('mouseup', onDragEnd);
+
+        /* ---- Touch ---- */
+        ticker.addEventListener('touchstart', function (e) {
+            onDragStart(e.touches[0].clientX);
+        }, { passive: true });
+        ticker.addEventListener('touchmove', function (e) {
+            onDragMove(e.touches[0].clientX);
+            e.preventDefault();
+        }, { passive: false });
+        ticker.addEventListener('touchend', onDragEnd);
+    });
+})();
+</script>

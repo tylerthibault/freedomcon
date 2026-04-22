@@ -1,3 +1,15 @@
+{% macro sponsor_card(sponsor) %}
+{% set style %}--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }}; --sp-logo-scale: {{ sponsor.scale | default(sponsor.shrink | default(1), true) }};{% endset %}
+{% if sponsor.website_url %}
+<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="{{ style }}">
+{% else %}
+<div class="sp-sponsors__logo-link" style="{{ style }}">
+{% endif %}
+	<img class="sp-sponsors__logo" src="{{ sponsor.logo_url }}" alt="{{ sponsor.name }} logo" loading="lazy">
+	<span class="sp-sponsors__logo-name">{{ sponsor.name }}</span>
+{% if sponsor.website_url %}</a>{% else %}</div>{% endif %}
+{% endmacro %}
+
 {% set business_sponsors = sponsors.get('businesses', []) %}
 {% set ministry_sponsors = sponsors.get('ministries', []) %}
 {% set church_sponsors = sponsors.get('churches', []) %}
@@ -11,12 +23,7 @@
 			<article class="sp-sponsors__column">
 				<h3 class="sp-sponsors__category">Businesses</h3>
 				<div class="sp-sponsors__logos">
-					{% for sponsor in business_sponsors %}
-					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }}; --sp-logo-scale: {{ sponsor.scale | default(sponsor.shrink | default(1), true) }};">
-						<img class="sp-sponsors__logo" src="{{ sponsor.logo_url }}" alt="{{ sponsor.name }} logo" loading="lazy">
-                                                <span class="sp-sponsors__logo-name">{{ sponsor.name }}</span>
-                                        </a>
-					{% endfor %}
+					{% for sponsor in business_sponsors %}{{ sponsor_card(sponsor) }}{% endfor %}
 				</div>
 			</article>
 			{% endif %}
@@ -25,12 +32,7 @@
 			<article class="sp-sponsors__column">
 				<h3 class="sp-sponsors__category">Ministries</h3>
 				<div class="sp-sponsors__logos">
-					{% for sponsor in ministry_sponsors %}
-					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }}; --sp-logo-scale: {{ sponsor.scale | default(sponsor.shrink | default(1), true) }};">
-						<img class="sp-sponsors__logo" src="{{ sponsor.logo_url }}" alt="{{ sponsor.name }} logo" loading="lazy">
-                                                <span class="sp-sponsors__logo-name">{{ sponsor.name }}</span>
-                                        </a>
-					{% endfor %}
+					{% for sponsor in ministry_sponsors %}{{ sponsor_card(sponsor) }}{% endfor %}
 				</div>
 			</article>
 			{% endif %}
@@ -39,12 +41,7 @@
 			<article class="sp-sponsors__column">
 				<h3 class="sp-sponsors__category">Churches</h3>
 				<div class="sp-sponsors__logos">
-					{% for sponsor in church_sponsors %}
-					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }}; --sp-logo-scale: {{ sponsor.scale | default(sponsor.shrink | default(1), true) }};">
-						<img class="sp-sponsors__logo" src="{{ sponsor.logo_url }}" alt="{{ sponsor.name }} logo" loading="lazy">
-                                                <span class="sp-sponsors__logo-name">{{ sponsor.name }}</span>
-                                        </a>
-					{% endfor %}
+					{% for sponsor in church_sponsors %}{{ sponsor_card(sponsor) }}{% endfor %}
 				</div>
 			</article>
 			{% endif %}

@@ -303,6 +303,18 @@ def landing() -> str:
 		show_all_label="Show All",
 	)
 	ticket_ctx = get_ticket_context()
+
+	visible_sponsors = {
+		"businesses": [
+			item for item in sponsors.get("businesses", []) if item.get("show_on_sponsor_page") is True
+		],
+		"ministries": [
+			item for item in sponsors.get("ministries", []) if item.get("show_on_sponsor_page") is True
+		],
+		"churches": [
+			item for item in sponsors.get("churches", []) if item.get("show_on_sponsor_page") is True
+		],
+	}
 	return render_template(
 		"public/landing copy/index.html",
 		social_proof=social_proof,
@@ -312,6 +324,7 @@ def landing() -> str:
 		podcast_section=podcast_section,
 		ticket_prices=ticket_ctx["ticket_prices"],
 		ticket_meta=ticket_ctx["ticket_meta"],
+		sponsors=visible_sponsors,
 		seo=build_seo(
 			title="Freedom Con 2026 — Father's Day Weekend at The Gorge",
 			description="Two-day outdoor men's conference at The Gorge Amphitheatre, Father's Day Weekend June 19–20 2026. Worship, bold preaching, Crowder, camping, and the Columbia River.",
