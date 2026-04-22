@@ -19,23 +19,7 @@
     
     {% include 'public/sponsor/components/hero.html'   %}
     {% include 'public/sponsor/components/donate.html'   %}
-    <hr>
-    <div class="my-2">
-        <!-- <h2>Businesses</h2> -->
-        {% set ticker_category = 'businesses' %}
-        {% include 'components/sponsor_ticker.html' %}
-    </div>
-    <div class="my-2">
-        <!-- <h2>Churches</h2> -->
-        {% set ticker_category = 'churches' %}
-        {% include 'components/sponsor_ticker.html' %}
-    </div>
-    <div class="my-2">
-        <!-- <h2>Ministries</h2> -->
-        {% set ticker_category = 'ministries' %}
-        {% include 'components/sponsor_ticker.html' %}
-    </div>
-    
+   
     {% include 'public/sponsor/components/sponsor_section.html'   %}
     {% include 'public/sponsor/components/why_partner.html'   %}
     {% include 'public/sponsor/components/tiers.html'   %}
