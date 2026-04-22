@@ -91,8 +91,18 @@ app = create_app()
 
 
 if __name__ == "__main__":
+	debug_mode = _env_bool("FLASK_DEBUG", True)
+	host = getenv("FLASK_HOST", "0.0.0.0")
+
+	if debug_mode:
+		app.config.update(
+			TEMPLATES_AUTO_RELOAD=True,
+			SEND_FILE_MAX_AGE_DEFAULT=0,
+		)
+
 	app.run(
-		debug=_env_bool("FLASK_DEBUG", False),
+		debug=debug_mode,
+		use_reloader=debug_mode,
 		port=int(getenv("PORT", "5199")),
-		host=getenv("FLASK_HOST", "127.0.0.1"),
+		host=host,
 	)

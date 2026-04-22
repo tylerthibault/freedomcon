@@ -3,8 +3,6 @@
     color: var(--color-secondary);
     padding: clamp(3rem, 7vw, 5rem) 0;
     overflow: hidden;
-    content-visibility: auto;
-    contain-intrinsic-size: 720px;
 }
 
 .social-proof-section__inner {
