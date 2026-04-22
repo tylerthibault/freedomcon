@@ -803,6 +803,29 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
+	// ── Skeleton loading boxes for <details> conference panels ──
+	document.querySelectorAll(".about-smn-conference__panel").forEach((details) => {
+		if (!(details instanceof HTMLDetailsElement)) return;
+
+		details.addEventListener("toggle", () => {
+			if (!details.open) return;
+
+			details.querySelectorAll("[data-youtube-thumb]").forEach((img) => {
+				if (!(img instanceof HTMLImageElement)) return;
+				if (img.complete && img.naturalWidth > 0) return; // already cached
+
+				const card = img.closest(".landing12-trailer-card");
+				if (!card) return;
+
+				card.classList.add("is-loading");
+
+				const done = () => card.classList.remove("is-loading");
+				img.addEventListener("load",  done, { once: true });
+				img.addEventListener("error", done, { once: true });
+			});
+		});
+	});
+
 	document.querySelectorAll("[data-youtube-thumb]").forEach((image) => {
 		if (!(image instanceof HTMLImageElement)) {
 			return;
@@ -1029,6 +1052,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	var sbmTitles = backdrop.querySelector('[data-sbm-titles]');
 	var sbmBio    = backdrop.querySelector('[data-sbm-bio]');
 	var sbmOrgs   = backdrop.querySelector('[data-sbm-orgs]');
+	var sbmRight  = backdrop.querySelector('.spk-modal__right');
 
 	var ICONS = {
 		church:  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 3h3l-1.5 2H17v2l-5 3-5-3V7h1.5L7 5h3L12 2zm-5 9v10h4v-4h2v4h4V11l-5-3-5 3z"/></svg>',
@@ -1077,6 +1101,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		backdrop.setAttribute('aria-hidden', 'false');
 		backdrop.classList.add('spk-modal-backdrop--open');
 		document.body.classList.add('spk-modal-open');
+		if (sbmRight) sbmRight.scrollTop = 0;
+		backdrop.scrollTop = 0;
 		closeBtn.focus();
 	}
 

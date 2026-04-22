@@ -34,6 +34,14 @@ sponsors = {
                 'show_on_sponsor_page': True,
                 'background_color': "#FFFFFF",
                 'scale': 2
+            },
+            {
+                'name': 'Creative Spaces',
+                'logo_url': '/static/img/sponsor_logos/creative_spaces_logo.png',
+                'website_url': 'https://www.creativespaces.com/',
+                'show_on_sponsor_page': True,
+                'background_color': "#FFFFFF",
+                'scale': 1.5
             }
     ],
     'ministries': [
@@ -90,20 +98,3 @@ sponsors = {
     ]
 }
 
-
-# Businesses 
-# Smith Excavation
-# Firefly 
-# Speiro 
-# KBI
-# Java Dog 
-
-# Ministries 
-# Real Faith
-# Warrior Poet Society 
-# Stronger Man Nation
-
-# Churches 
-# Pursuit Church 
-# Grace City Church 
-# Sage Hills (check with me first)
