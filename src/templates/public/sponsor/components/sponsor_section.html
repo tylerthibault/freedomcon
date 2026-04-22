@@ -14,7 +14,8 @@
 					{% for sponsor in business_sponsors %}
 					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }}; --sp-logo-scale: {{ sponsor.scale | default(sponsor.shrink | default(1), true) }};">
 						<img class="sp-sponsors__logo" src="{{ sponsor.logo_url }}" alt="{{ sponsor.name }} logo" loading="lazy">
-					</a>
+                                                <span class="sp-sponsors__logo-name">{{ sponsor.name }}</span>
+                                        </a>
 					{% endfor %}
 				</div>
 			</article>
@@ -27,7 +28,8 @@
 					{% for sponsor in ministry_sponsors %}
 					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }}; --sp-logo-scale: {{ sponsor.scale | default(sponsor.shrink | default(1), true) }};">
 						<img class="sp-sponsors__logo" src="{{ sponsor.logo_url }}" alt="{{ sponsor.name }} logo" loading="lazy">
-					</a>
+                                                <span class="sp-sponsors__logo-name">{{ sponsor.name }}</span>
+                                        </a>
 					{% endfor %}
 				</div>
 			</article>
@@ -40,7 +42,8 @@
 					{% for sponsor in church_sponsors %}
 					<a class="sp-sponsors__logo-link" href="{{ sponsor.website_url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }} website" style="--sp-logo-bg: {{ sponsor.background_color | default('#171717', true) }}; --sp-logo-scale: {{ sponsor.scale | default(sponsor.shrink | default(1), true) }};">
 						<img class="sp-sponsors__logo" src="{{ sponsor.logo_url }}" alt="{{ sponsor.name }} logo" loading="lazy">
-					</a>
+                                                <span class="sp-sponsors__logo-name">{{ sponsor.name }}</span>
+                                        </a>
 					{% endfor %}
 				</div>
 			</article>

@@ -8,7 +8,7 @@
 	<div class="speakers-section__notch" aria-hidden="true"></div>
 	<div class="speakers-section__inner">
 		<div class="d-flex justify-content-center align-items-center">
-			<h2 class="speakers-section__heading">Speakers of Freedom Con</h2>
+			<h2 class="speakers-section__heading mb-3">Speakers of Freedom Con</h2>
 		</div>
 		<div class="speakers-section__grid">
 			{% for speaker in featured_speakers %}
@@ -20,7 +20,9 @@
 				speaker.alt,
 				speaker.get('image_x'),
 				speaker.get('image_y'),
-				speaker.get('shrink')
+				speaker.get('shrink'),
+				speaker.get('bio', ''),
+				speaker.get('orgs', [])
 			) }}
 			{% endfor %}
 		</div>
@@ -35,7 +37,9 @@
 				speaker.alt,
 				speaker.get('image_x'),
 				speaker.get('image_y'),
-				speaker.get('shrink')
+				speaker.get('shrink'),
+				speaker.get('bio', ''),
+				speaker.get('orgs', [])
 			) }}
 			{% endfor %}
 		</div>

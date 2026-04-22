@@ -1,14 +1,14 @@
 speakers = [
 	{
 		'name': 'Josh McPherson',
-		'image': 'img/speakers/JoshM_5.1.png',
+		'image': 'img/speakers/JoshM_2.png',
 		'alt': 'Josh McPherson',
 		'titles': ['Lead Pastor, Grace City Church', 'Founder, Stronger Man Nation'],
 		'bio': """
 			Josh McPherson is the founding and lead pastor of Grace City Church in Wenatchee, Washington, where he and his wife Sharon planted a small team in 2008 that has grown into a strong, life-giving church family known for its grit, generosity, and bold gospel culture. Before stepping into full-time ministry, Josh worked in real estate, construction, and law enforcement, led youth retreats, and launched Rock Solid, a youth leadership conference, giving him a blue-collar, boots-on-the-ground credibility with the men he leads. He is the founder of Stronger Man Nation, a growing movement calling “Jesus-loving patriots” to reject passive Christianity and embrace biblical manhood—leading their homes, churches, and communities with courage and conviction. Known for his straightforward, unapologetic preaching and visionary leadership, Josh is committed to drawing greatness out of men for Jesus’ sake and building teams, churches, and institutions—including Garden City Academy—that advance the kingdom in the heart of Washington State.
 		 """,
 		'shrink': 0.85,
-	        "orgs": [{"icon": "church", "name": "Grace City Church", "subtitle": "Wenatchee, WA"}, {"icon": "shield", "name": "Stronger Man Nation", "subtitle": "Equipping men. Building leaders."}, {"icon": "cap", "name": "Garden City Academy", "subtitle": "Training the next generation."}],
+		"orgs": [{"icon": "church", "name": "Grace City Church", "subtitle": "Wenatchee, WA"}, {"icon": "shield", "name": "Stronger Man Nation", "subtitle": "Equipping men. Building leaders."}, {"icon": "cap", "name": "Garden City Academy", "subtitle": "Training the next generation."}],
 },
 	{
 		'name': 'Eric Metaxas',
@@ -18,17 +18,19 @@ speakers = [
 		'bio': """
 			Eric Metaxas is a #1 New York Times bestselling author, cultural commentator, and unapologetic defender of Christian faith and Western freedom. He’s known worldwide for his powerful biographies of men who stood up to tyranny—William Wilberforce, Dietrich Bonhoeffer, and Martin Luther—each one a call to moral courage in the face of political and spiritual darkness. Eric hosts a nationally syndicated radio show and speaks across the country, challenging believers to resist soft totalitarianism, fight for religious liberty, and recover America’s forgotten promise of ordered liberty under God. With books like “If You Can Keep It” and “Miracles,” he has emerged as a leading voice urging men to think deeply, live boldly, and push back against the cultural revolution with truth and joy.
 		 """,
-	        "orgs": [{"icon": "book", "name": "Socrates in the City", "subtitle": "Intellectual faith conversations"}, {"icon": "mic", "name": "The Eric Metaxas Show", "subtitle": "Nationally syndicated radio"}, {"icon": "star", "name": "NY Times Bestselling", "subtitle": "Bonhoeffer & Wilberforce"}],
-},
+		"orgs": [{"icon": "book", "name": "Socrates in the City", "subtitle": "Intellectual faith conversations"}, {"icon": "mic", "name": "The Eric Metaxas Show", "subtitle": "Nationally syndicated radio"}, {"icon": "star", "name": "NY Times Bestselling", "subtitle": "Bonhoeffer & Wilberforce"}],
+        'shrink': 0.87,
+	},
 	{
 		'name': 'John Lovell',
-		'image': 'img/speakers/JohnL_3.png',
+		'image': 'img/speakers/JohnL.png',
 		'alt': 'John Lovell',
 		'titles': ['Lead Pastor, Grace City, GA', 'Founder, Warrior Poet Society'],
 		'bio': """
 			John Lovell is a former Army Ranger, combat veteran, and the founder of Warrior Poet Society—a nationwide brotherhood teaching men to be dangerous, disciplined, and deeply grounded in truth. He served in the elite 2nd Ranger Battalion with multiple deployments before leaving special operations to become a Christian missionary in Central America, where his passion for the gospel and courage under fire were forged together. Today, John is a best-selling author, firearms trainer, and media leader whose content has garnered over 100 million views, calling men to embrace the paradox of being both lion and lamb, protector and shepherd. Through Warrior Poet Society’s training, gear, and network, he is equipping police, military, and everyday husbands and fathers to live free, reject cowardice, and stand guard over their homes and communities.
 		 """,
 	        "orgs": [{"icon": "shield", "name": "Warrior Poet Society", "subtitle": "Dangerous. Disciplined. Grounded."}, {"icon": "star", "name": "2nd Ranger Battalion", "subtitle": "U.S. Army Special Operations"}],
+            'shrink': 0.95,
 },
 	{
 		'name': 'Russell Johnson',
@@ -146,7 +148,7 @@ speakers = [
 },
 	{
 		'name': 'Nick Freitas',
-		'image': 'img/speakers/NickF_3.png',
+		'image': 'img/speakers/NickF_2.png',
 		'alt': 'Nick Freitas',
 		'titles': [''],
 		'bio': """

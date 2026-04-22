@@ -1,7 +1,8 @@
 .speakers-section {
-    background: var(--color-secondary);
+    background: #ffffff;
     position: relative;
     padding: 0 0 clamp(3rem, 8vw, 7rem);
+    color: #111111;
 }
 
 .speakers-section--flat .speakers-section__notch {
@@ -143,14 +144,14 @@
     font-family: var(--font-oswald-bold);
     font-size: clamp(1.9rem, 2.2vw, 2.4rem);
     line-height: 1;
-    color: var(--color-primary);
+    color: #111111;
 }
 
 .speaker-card__titles {
     list-style: none;
     margin: clamp(0.25rem, 0.7vw, 0.6rem) 0 0;
     padding: 0;
-    color: var(--color-primary);
+    color: #444444;
     font-family: var(--font-oswald-light);
     font-size: clamp(0.95rem, 1vw, 1.12rem);
     line-height: 1.2;
@@ -184,4 +185,215 @@
     .speakers-section__inner {
         padding-top: clamp(3rem, 5vw, 4.75rem);
     }
+}
+
+/* ============================================================
+   Speaker Bio Modal — clean light design
+   ============================================================ */
+.spk-modal-backdrop {
+    display: none;
+    position: fixed; inset: 0; z-index: 9900;
+    background: rgba(0, 0, 0, 0.65);
+    align-items: center; justify-content: center;
+    padding: clamp(0.75rem, 3vw, 2rem);
+    overflow-y: auto;
+}
+.spk-modal-backdrop--open { display: flex; }
+body.spk-modal-open { overflow: hidden; }
+
+.spk-modal {
+    position: relative;
+    background: #fff;
+    width: 90vw;
+    max-height: 90vh;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+    display: flex; flex-direction: column;
+    animation: sbmIn 0.2s ease;
+}
+@keyframes sbmIn {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.spk-modal__close {
+    position: absolute; top: 1rem; right: 1rem;
+    width: 2.25rem; height: 2.25rem;
+    border-radius: 50%;
+    background: #fff;
+    border: none; cursor: pointer;
+    color: #222;
+    font-size: 1.4rem; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    transition: background 0.15s, transform 0.15s;
+}
+.spk-modal__close:hover { background: #f0f0f0; transform: scale(1.08); }
+
+.spk-modal__body {
+    display: flex; flex-direction: row;
+    align-items: stretch;
+    flex: 1;
+    min-height: 460px;
+    overflow: hidden;
+}
+
+/* Left — photo */
+.spk-modal__left {
+    flex: 0 0 35%;
+    background: #f0eeeb;
+    overflow: hidden;
+    display: flex; align-items: flex-end; justify-content: center;
+}
+.spk-modal__photo {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    display: block;
+}
+
+/* Right — content */
+.spk-modal__right {
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
+    display: flex; flex-direction: column;
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.25rem) 0;
+}
+
+.spk-modal__header { margin-bottom: 1rem; }
+
+.spk-modal__name {
+    margin: 0 0 0.45rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+    line-height: 1.05;
+    color: #111;
+    letter-spacing: -0.01em;
+}
+
+.spk-modal__accent-line {
+    width: 44px; height: 3px;
+    background: #2563eb;
+    border-radius: 2px;
+    margin-bottom: 0.7rem;
+}
+
+.spk-modal__titles {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.spk-modal__bio {
+    flex: 1;
+    color: #374151;
+    font-size: clamp(0.83rem, 1.05vw, 0.95rem);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+.spk-modal__bio p { margin: 0 0 0.8em; }
+.spk-modal__bio p:last-child { margin-bottom: 0; }
+
+/* Org section */
+.spk-modal__orgs-wrap {
+    border-top: 1px solid #e5e7eb;
+    padding: 1rem 0 1.25rem;
+    flex-shrink: 0;
+}
+
+.spk-modal__orgs {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+}
+
+.spk-modal__org-row {
+    flex: 1;
+    display: flex; align-items: center; gap: 0.65rem;
+    padding: 0 1rem;
+    border-right: 1px solid #e5e7eb;
+}
+.spk-modal__org-row:first-child { padding-left: 0; }
+.spk-modal__org-row:last-child { border-right: none; }
+
+.spk-modal__org-icon {
+    flex-shrink: 0;
+    width: 2.25rem; height: 2.25rem;
+    border-radius: 50%;
+    background: #f3f4f6;
+    color: #4b5563;
+    display: flex; align-items: center; justify-content: center;
+}
+.spk-modal__org-icon svg { width: 1.1rem; height: 1.1rem; }
+
+.spk-modal__org-info {
+    display: flex; flex-direction: column; gap: 0.1rem;
+    min-width: 0;
+}
+.spk-modal__org-info strong {
+    font-size: 0.82rem;
+    color: #111;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.spk-modal__org-info small {
+    font-size: 0.72rem;
+    color: #6b7280;
+    line-height: 1.2;
+}
+
+/* Speaker card — clickable */
+[data-speaker-open] { cursor: pointer; }
+[data-speaker-open]:focus-visible { outline: 2px solid #2563eb; outline-offset: 3px; }
+
+/* ---- Mobile: stacked ---- */
+@media (max-width: 767.98px) {
+    .spk-modal {
+        max-height: 95vh;
+        border-radius: 12px;
+    }
+    .spk-modal__body { flex-direction: column; min-height: unset; }
+    .spk-modal__left {
+        flex: 0 0 auto; width: 100%;
+        height: 72vw; max-height: 340px;
+        background: #f0eeeb;
+    }
+    .spk-modal__right {
+        padding: 1.25rem 1.25rem 0;
+        overflow-y: auto;
+        max-height: 60vh;
+    }
+    .spk-modal__photo {
+        object-fit: contain;
+        object-position: center bottom;
+    }
+    .spk-modal__orgs {
+        flex-direction: column;
+        gap: 0;
+    }
+    .spk-modal__org-row {
+        padding: 0.6rem 0;
+        border-right: none;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    .spk-modal__org-row:last-child { border-bottom: none; }
+    .spk-modal__org-row::after {
+        content: '›';
+        margin-left: auto;
+        color: #9ca3af;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+    }
+    .spk-modal__orgs-wrap { padding: 0.75rem 0 1rem; }
 }

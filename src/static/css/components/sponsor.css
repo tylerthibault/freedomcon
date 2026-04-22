@@ -121,11 +121,39 @@
     text-decoration: none;
     transition: border-color 180ms ease, transform 180ms ease;
     overflow: hidden;
+    position: relative;
 }
 
 .sp-sponsors__logo-link:hover {
     border-color: var(--color-accent);
     transform: translateY(-1px);
+}
+
+.sp-sponsors__logo-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.78);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.35em 0.5em;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 180ms ease, opacity 180ms ease;
+    pointer-events: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sp-sponsors__logo-link:hover .sp-sponsors__logo-name {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .sp-sponsors__logo {
