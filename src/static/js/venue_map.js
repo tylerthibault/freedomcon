@@ -158,6 +158,15 @@
 		amenity:  cssVar("--venue-color-amenity"),
 	};
 
+	function escapeHtml(value) {
+		return String(value)
+			.replace(/&/g, "&amp;")
+			.replace(/</g, "&lt;")
+			.replace(/>/g, "&gt;")
+			.replace(/\"/g, "&quot;")
+			.replace(/'/g, "&#39;");
+	}
+
 	// ── State ─────────────────────────────────────────────────────────────────
 	let activeCategory = "all";
 	const markersByPoi = {}; // id → Leaflet marker
@@ -180,9 +189,10 @@
 	// ── Helper: create a coloured div icon ───────────────────────────────────
 	function createIcon(poi) {
 		const color = CAT_COLOR[poi.category] || "#333";
+		const safeName = escapeHtml(poi.name);
 		return L.divIcon({
 			className: "",
-			html: `<div class="venue-map-marker venue-map-marker--${poi.category}" style="background:${color};" title="${poi.name}">${poi.icon}</div>`,
+			html: `<div class="venue-map-marker venue-map-marker--${poi.category}" style="background:${color};" title="${safeName}">${poi.icon}</div>`,
 			iconSize: [32, 32],
 			iconAnchor: [16, 16],
 			popupAnchor: [0, -18],
@@ -191,7 +201,10 @@
 
 	// ── Helper: build popup HTML ──────────────────────────────────────────────
 	function popupHtml(poi) {
-		return `<b>${poi.name}</b><br><span style="color:${CAT_COLOR[poi.category]};font-size:0.8em;text-transform:uppercase;letter-spacing:.06em">${poi.category}</span><br><span style="font-size:.9em">${poi.description}</span>`;
+		const safeName = escapeHtml(poi.name);
+		const safeCategory = escapeHtml(poi.category);
+		const safeDescription = escapeHtml(poi.description);
+		return `<b>${safeName}</b><br><span style="color:${CAT_COLOR[poi.category]};font-size:0.8em;text-transform:uppercase;letter-spacing:.06em">${safeCategory}</span><br><span style="font-size:.9em">${safeDescription}</span>`;
 	}
 
 	// ── Build markers + sidebar list ─────────────────────────────────────────
@@ -209,11 +222,22 @@
 		li.className = "venue-map-poi-list__item";
 		li.dataset.id = poi.id;
 		li.dataset.category = poi.category;
-		li.innerHTML = `
-			<p class="venue-map-poi-list__item-name">${poi.icon} ${poi.name}</p>
-			<p class="venue-map-poi-list__item-cat">${poi.category}</p>
-			<p class="venue-map-poi-list__item-desc">${poi.description}</p>
-		`;
+
+		const nameEl = document.createElement("p");
+		nameEl.className = "venue-map-poi-list__item-name";
+		nameEl.textContent = `${poi.icon} ${poi.name}`;
+
+		const categoryEl = document.createElement("p");
+		categoryEl.className = "venue-map-poi-list__item-cat";
+		categoryEl.textContent = poi.category;
+
+		const descriptionEl = document.createElement("p");
+		descriptionEl.className = "venue-map-poi-list__item-desc";
+		descriptionEl.textContent = poi.description;
+
+		li.appendChild(nameEl);
+		li.appendChild(categoryEl);
+		li.appendChild(descriptionEl);
 		li.addEventListener("click", function () {
 			map.setView([poi.lat, poi.lng], 17, { animate: true });
 			marker.openPopup();

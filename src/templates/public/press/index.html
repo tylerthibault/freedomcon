@@ -52,10 +52,9 @@
 				<div class="press-page__form-column">
 					<section class="press-page-card" aria-label="Press and sponsor inquiry form">
 					<h2 class="press-page-card__title">Contact Us</h2>
-					<form class="press-page-form" method="post" action="{{ formsubmit_action or '#' }}" novalidate>
+					<form class="press-page-form" method="post" action="{{ formsubmit_action or '#' }}">
 						<input type="hidden" name="_subject" value="Freedom Con Press/Sponsor Inquiry">
 						<input type="hidden" name="_next" value="{{ formsubmit_next }}">
-						<input type="hidden" name="_captcha" value="false">
 						<!-- Honeypot field -->
 						<input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
 
