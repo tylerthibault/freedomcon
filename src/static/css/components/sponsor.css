@@ -16,6 +16,7 @@
     --sp-line:      rgba(255,255,255,0.14);
     --sp-radius:    4px;
     --sp-max:       1180px;
+    --sp-logo-block-height: 92px;
 }
 
 /* ── Base ──────────────────────────────────────────────────── */
@@ -114,11 +115,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 92px;
+    height: var(--sp-logo-block-height);
     background: var(--sp-logo-bg, var(--sp-surface-2));
     border: 1px solid var(--sp-line);
     text-decoration: none;
     transition: border-color 180ms ease, transform 180ms ease;
+    overflow: hidden;
 }
 
 .sp-sponsors__logo-link:hover {
