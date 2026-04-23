@@ -1,0 +1,27 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/wives.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="wives-page">
+	{% include "public/wives/components/hero.html" %}
+	{{ slim_banner("For the Women Behind the Men") }}
+	{% include "public/wives/components/sharon_message.html" %}
+	{% include "public/wives/components/dads_sons_gallery.html" %}
+	{% include "public/wives/components/cta.html" %}
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

@@ -1,5 +1,19 @@
 artists = [
     {
+        "name": "Danny Gokey",
+        "image": "img/conference_info/danny_gokey.jpg",
+        "hero_image_x": "50%",
+        "hero_image_y": "0%",
+        "genre": "Christian Pop / Worship",
+        "bio": """Danny Gokey — GRAMMY-nominated artist, American Idol finalist, and one of Contemporary Christian Music's most powerful voices — is bringing his electrifying live show to Freedom Con 2026.
+
+        With multiple number-one hits and a story of faith forged through personal tragedy, Danny Gokey connects with audiences on a level that goes beyond music. His live performances are raw, passionate, and impossible to forget.
+
+        On Father's Day Weekend at The Gorge, Danny Gokey will set the stage for an evening that will leave every man in attendance changed.""",
+        "day": "Saturday",
+        "stage": "Main Stage",
+    },
+    {
         "name": "Crowder",
         "image": "img/conference_info/crowder.jpg",
         "hero_image_x": "63%",

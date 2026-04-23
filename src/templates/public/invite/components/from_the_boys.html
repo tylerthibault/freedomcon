@@ -1,0 +1,44 @@
+{% set boys = invite.from_the_boys %}
+<section class="invite-section invite-section--boys invite-section--alt" aria-label="Invite from Josh's sons" id="from-the-boys">
+	<div class="invite-section__inner container-xl">
+
+		<div class="invite-section__header">
+			<p class="invite-section__eyebrow">{{ boys.eyebrow }}</p>
+			<h2 class="invite-section__title">{{ boys.title }}</h2>
+		</div>
+
+		<div class="invite-section__layout invite-section__layout--reversed">
+
+			<div class="invite-section__letter-col">
+				<div class="invite-section__letter">
+					{% for paragraph in boys.letter %}
+					<p class="invite-section__paragraph">{{ paragraph }}</p>
+					{% endfor %}
+					<p class="invite-section__signature">{{ boys.signature }}</p>
+				</div>
+				<a class="invite-section__cta btn-primary" href="{{ boys.cta_href }}">{{ boys.cta_label }}</a>
+			</div>
+
+			<div class="invite-section__media-col">
+				{% if boys.video_id %}
+				<div class="invite-section__video-wrap">
+					<iframe
+						class="invite-section__video"
+						src="https://www.youtube.com/embed/{{ boys.video_id }}?rel=0"
+						title="Message from Josh's Sons"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+						loading="lazy">
+					</iframe>
+				</div>
+				{% else %}
+				<div class="invite-section__photo-wrap">
+					<img class="invite-section__photo" src="{{ url_for('static', filename=boys.image) }}" alt="The McPherson Boys" loading="lazy">
+				</div>
+				{% endif %}
+			</div>
+
+		</div>
+	</div>
+</section>

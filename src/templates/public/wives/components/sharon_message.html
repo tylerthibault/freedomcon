@@ -1,0 +1,41 @@
+{% set msg = wives.sharon_message %}
+<section class="wives-sharon" aria-label="A message from Sharon McPherson">
+	<div class="wives-sharon__inner container-xl">
+		<div class="wives-sharon__layout">
+
+			<div class="wives-sharon__media-col">
+				{% if msg.image %}
+				<div class="wives-sharon__photo-wrap">
+					<img class="wives-sharon__photo" src="{{ url_for('static', filename=msg.image) }}" alt="{{ msg.name }}" loading="lazy">
+				</div>
+				{% endif %}
+				{% if msg.video_id %}
+				<div class="wives-sharon__video-wrap">
+					<iframe
+						class="wives-sharon__video"
+						src="https://www.youtube.com/embed/{{ msg.video_id }}?rel=0"
+						title="Message from {{ msg.name }}"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+						loading="lazy">
+					</iframe>
+				</div>
+				{% endif %}
+				<p class="wives-sharon__name">{{ msg.name }}</p>
+				<p class="wives-sharon__title-line">{{ msg.title_line }}</p>
+			</div>
+
+			<div class="wives-sharon__letter-col">
+				<p class="wives-sharon__eyebrow">A Letter</p>
+				<div class="wives-sharon__letter">
+					{% for paragraph in msg.letter %}
+					<p class="wives-sharon__paragraph">{{ paragraph }}</p>
+					{% endfor %}
+					<p class="wives-sharon__signature">{{ msg.signature }}</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>

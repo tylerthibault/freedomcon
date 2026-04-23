@@ -1,0 +1,39 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/page_hero.html" import page_hero %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/schedule.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="schedule-page">
+	{{ page_hero("Freedom Con 2026", "Schedule", "Father's Day Weekend · The Gorge Amphitheatre · June 19–20, 2026") }}
+
+	{{ slim_banner("Friday June 19 · Saturday June 20") }}
+
+	<section class="schedule-section" aria-label="Full event schedule">
+		<div class="schedule-section__inner container-xl">
+			{% include "components/schedule/schedule_full.html" %}
+		</div>
+	</section>
+
+	<section class="schedule-cta" aria-label="Get tickets">
+		<div class="schedule-cta__inner container-xl">
+			<p class="schedule-cta__copy">Secure your spot before tickets sell out.</p>
+			<a class="schedule-cta__btn btn-primary" href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">Get Tickets</a>
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

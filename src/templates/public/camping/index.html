@@ -1,0 +1,102 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/page_hero.html" import page_hero %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/camping.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="camping-page">
+
+	<section class="camping-hero" aria-label="Camping at The Gorge">
+		<div class="camping-hero__inner container-xl">
+			<p class="camping-hero__eyebrow">{{ camping.hero.eyebrow }}</p>
+			<h1 class="camping-hero__title">{{ camping.hero.title }}</h1>
+			<p class="camping-hero__copy">{{ camping.hero.copy }}</p>
+		</div>
+	</section>
+
+	{{ slim_banner("Stay On Site · Columbia River · Two Nights") }}
+
+	<!-- Ticket callout -->
+	<section class="camping-ticket-section" aria-label="Camping ticket details">
+		<div class="camping-ticket-section__inner container-xl">
+			<div class="camping-ticket">
+				<div class="camping-ticket__top">
+					<div class="camping-ticket__left">
+						<p class="camping-ticket__label">{{ camping.ticket.label }}</p>
+						<p class="camping-ticket__desc">{{ camping.ticket.description }}</p>
+						<ul class="camping-ticket__details">
+							{% for detail in camping.ticket.details %}
+							<li><strong>{{ detail.split(':')[0] }}:</strong>{{ detail.split(':')[1] if ':' in detail else detail }}</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="camping-ticket__right">
+						<p class="camping-ticket__price">{{ camping.ticket.price }}</p>
+						<p class="camping-ticket__price-note">{{ camping.ticket.price_note }}</p>
+					</div>
+				</div>
+				<a class="camping-ticket__cta btn-primary" href="{{ camping.ticket.cta_href }}">{{ camping.ticket.cta_label }}</a>
+			</div>
+
+			<!-- RV Info -->
+			<div class="camping-rv">
+				<div class="camping-rv__info">
+					<p class="camping-rv__heading">{{ camping.rv_info.heading }}</p>
+					<p class="camping-rv__detail">{{ camping.rv_info.detail }}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Camping Areas -->
+	<section class="camping-areas-section" aria-label="Camping areas">
+		<div class="camping-areas-section__inner container-xl">
+			<h2 class="camping-areas-section__heading">Camping Areas</h2>
+			<div class="camping-areas-list">
+				{% for area in camping.areas %}
+				<article class="camping-area{% if area.highlight %} camping-area--highlight{% endif %}">
+					<h3 class="camping-area__name">{{ area.name }}</h3>
+					<p class="camping-area__description">{{ area.description }}</p>
+				</article>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	<!-- What to Bring -->
+	<section class="camping-logistics" aria-label="What to bring">
+		<div class="camping-logistics__inner container-xl">
+			<h2 class="camping-logistics__heading">{{ camping.logistics.heading }}</h2>
+			<ul class="camping-logistics__list">
+				{% for item in camping.logistics.list %}
+				<li class="camping-logistics__item">{{ item }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="camping-cta" aria-label="Get camping tickets">
+		<div class="camping-cta__inner container-xl">
+			<p class="camping-cta__copy">Secure your campsite before they sell out.</p>
+			<a class="camping-cta__btn btn-primary" href="{{ camping.cta.href }}">{{ camping.cta.label }}</a>
+			<a class="camping-cta__link" href="/accommodations">All Accommodations</a>
+		</div>
+	</section>
+
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

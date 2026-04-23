@@ -1,0 +1,57 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/the_play.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="the-play-page">
+
+	<section class="play-hero" aria-label="The Play">
+		<div class="play-hero__inner container-xl">
+			<p class="play-hero__eyebrow">{{ the_play.hero.eyebrow }}</p>
+			<h1 class="play-hero__title">{{ the_play.hero.title }}</h1>
+			<p class="play-hero__copy">{{ the_play.hero.copy }}</p>
+		</div>
+	</section>
+
+	{{ slim_banner("Register · Camp · Arrive") }}
+
+	<section class="play-steps" aria-label="Three steps to Freedom Con">
+		<div class="play-steps__inner container-xl">
+			{% for step in the_play.steps %}
+			<article class="play-step" aria-label="Step {{ step.number }}: {{ step.label }}">
+				<div class="play-step__number">{{ step.number }}</div>
+				<div class="play-step__body">
+					<p class="play-step__label">{{ step.label }}</p>
+					<h2 class="play-step__title">{{ step.title }}</h2>
+					<p class="play-step__body-text">{{ step.body }}</p>
+					<a class="play-step__cta" href="{{ step.cta_href }}">{{ step.cta_label }}</a>
+				</div>
+			</article>
+			{% endfor %}
+		</div>
+	</section>
+
+	<section class="play-bottom-cta" aria-label="Register for Freedom Con">
+		<div class="play-bottom-cta__inner container-xl">
+			<h2 class="play-bottom-cta__title">Father's Day Weekend at The Gorge</h2>
+			<p class="play-bottom-cta__copy">June 19–20, 2026 · George, WA</p>
+			<a class="play-bottom-cta__btn btn-primary" href="{{ the_play.bottom_cta.href }}">{{ the_play.bottom_cta.label }}</a>
+		</div>
+	</section>
+
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

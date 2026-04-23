@@ -1,0 +1,45 @@
+{% set josh = invite.from_josh %}
+<section class="invite-section invite-section--josh" aria-label="Personal invite from Josh McPherson" id="from-josh">
+	<div class="invite-section__inner container-xl">
+
+		<div class="invite-section__header">
+			<p class="invite-section__eyebrow">{{ josh.eyebrow }}</p>
+			<h2 class="invite-section__title">{{ josh.title }}</h2>
+			<p class="invite-section__name-line">{{ josh.title_line }}</p>
+		</div>
+
+		<div class="invite-section__layout">
+
+			<div class="invite-section__media-col">
+				{% if josh.video_id %}
+				<div class="invite-section__video-wrap">
+					<iframe
+						class="invite-section__video"
+						src="https://www.youtube.com/embed/{{ josh.video_id }}?rel=0"
+						title="Message from Josh McPherson"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+						loading="lazy">
+					</iframe>
+				</div>
+				{% else %}
+				<div class="invite-section__photo-wrap">
+					<img class="invite-section__photo" src="{{ url_for('static', filename=josh.image) }}" alt="{{ josh.name }}" loading="lazy">
+				</div>
+				{% endif %}
+			</div>
+
+			<div class="invite-section__letter-col">
+				<div class="invite-section__letter">
+					{% for paragraph in josh.letter %}
+					<p class="invite-section__paragraph">{{ paragraph }}</p>
+					{% endfor %}
+					<p class="invite-section__signature">{{ josh.signature }}</p>
+				</div>
+				<a class="invite-section__cta btn-primary" href="{{ josh.cta_href }}">{{ josh.cta_label }}</a>
+			</div>
+
+		</div>
+	</div>
+</section>

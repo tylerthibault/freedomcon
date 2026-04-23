@@ -19,8 +19,18 @@
                 href="{{ url_for('public.the_venue_page') }}">The Venue</a>
             <a class="{% if current_endpoint == 'public.faqs' %}is-active{% endif %}"
                 href="{{ url_for('public.faqs') }}">FAQ</a>
-            <a class="landing12-link-optional {% if current_endpoint == 'public.accommodations_page' %}is-active{% endif %}"
-                href="{{ url_for('public.accommodations_page') }}">Accommodations</a>
+            <details
+                class="landing12-nav-dropdown{% if current_endpoint in ('public.accommodations_page', 'public.camping_page', 'public.hotels_page', 'public.schedule_page', 'public.the_play_page') %} is-active{% endif %}">
+                <summary>Attend</summary>
+                <div class="landing12-nav-dropdown-menu" aria-label="Attend navigation links">
+                    <a class="{% if current_endpoint == 'public.schedule_page' %}is-active{% endif %}" href="{{ url_for('public.schedule_page') }}">Schedule</a>
+                    <a class="{% if current_endpoint == 'public.the_play_page' %}is-active{% endif %}" href="{{ url_for('public.the_play_page') }}">The Play</a>
+                    <a class="{% if current_endpoint == 'public.camping_page' %}is-active{% endif %}" href="{{ url_for('public.camping_page') }}">Camping</a>
+                    <a class="{% if current_endpoint == 'public.hotels_page' %}is-active{% endif %}" href="{{ url_for('public.hotels_page') }}">Hotels</a>
+                    <a class="{% if current_endpoint == 'public.accommodations_page' %}is-active{% endif %}"
+                        href="{{ url_for('public.accommodations_page') }}">All Accommodations</a>
+                </div>
+            </details>
             <details
                 class="landing12-nav-dropdown{% if current_endpoint in ('public.vision_page', 'public.experience_page', 'public.about_smn_page', 'public.story_page', 'public.sponsors_page') %} is-active{% endif %}">
                 <summary>More</summary>
@@ -33,6 +43,8 @@
                     <!-- sponsors -->
                         <a class="{% if current_endpoint == 'public.sponsors_page' %}is-active{% endif %}" href="{{ url_for('public.sponsors_page') }}">Sponsors</a>
                     <!-- <a class="{% if current_endpoint == 'public.story_page' %}is-active{% endif %}" href="{{ url_for('public.story_page') }}">The Story</a> -->
+                    <a class="{% if current_endpoint == 'public.wives_page' %}is-active{% endif %}" href="{{ url_for('public.wives_page') }}">For the Wives</a>
+                    <a class="{% if current_endpoint == 'public.invite_page' %}is-active{% endif %}" href="{{ url_for('public.invite_page') }}">Invite a Friend</a>
                 </div>
             </details>
         </div>

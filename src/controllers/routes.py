@@ -15,6 +15,12 @@ from src.data.background_text import background_1
 from src.data.sponsors import sponsors
 from src.data.about_smn import about_smn_conferences
 from src.data.podcasts import podcasts as podcasts_data
+from src.data.wives import wives as wives_data
+from src.data.invite import invite as invite_data
+from src.data.schedule import schedule as schedule_data
+from src.data.the_play import the_play as the_play_data
+from src.data.camping import camping as camping_data
+from src.data.hotels import hotels as hotels_data
 
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
@@ -622,13 +628,97 @@ def sitemap_xml() -> Response:
 		"/worship",
 		"/vendors",
 		"/accommodations",
+		"/camping",
+		"/hotels",
 		"/the-venue",
 		"/tickets",
+		"/schedule",
+		"/the-play",
+		"/invite",
+		"/wives",
 	]
 	urls = [{"loc": f"{SITE_URL}{path}", "lastmod": lastmod} for path in pages]
 	xml = render_template("sitemap.xml", urls=urls)
 	return Response(xml, mimetype="application/xml")
 
+
+
+@public_bp.get("/wives")
+def wives_page() -> str:
+	return render_template(
+		"public/wives/index.html",
+		wives=wives_data,
+		seo=build_seo(
+			title="For the Wives | Freedom Con 2026",
+			description="A personal message from Sharon McPherson to the wives and families supporting the men of Freedom Con.",
+			path="/wives",
+		),
+	)
+
+
+@public_bp.get("/invite")
+def invite_page() -> str:
+	return render_template(
+		"public/invite/index.html",
+		invite=invite_data,
+		seo=build_seo(
+			title="A Personal Invite | Freedom Con 2026",
+			description="Personal invitations from Josh McPherson and his sons to the men of Washington for Freedom Con 2026.",
+			path="/invite",
+		),
+	)
+
+
+@public_bp.get("/schedule")
+def schedule_page() -> str:
+	return render_template(
+		"public/schedule/index.html",
+		schedule=schedule_data,
+		seo=build_seo(
+			title="Schedule | Freedom Con 2026",
+			description="Full event schedule for Freedom Con 2026. Two days of speakers, worship, Danny Gokey, and Crowder at The Gorge Amphitheatre.",
+			path="/schedule",
+		),
+	)
+
+
+@public_bp.get("/the-play")
+def the_play_page() -> str:
+	return render_template(
+		"public/the_play/index.html",
+		the_play=the_play_data,
+		seo=build_seo(
+			title="The Play | Freedom Con 2026",
+			description="Three steps to Freedom Con: Register, Camp, Arrive. Your game plan for Father's Day Weekend at The Gorge.",
+			path="/the-play",
+		),
+	)
+
+
+@public_bp.get("/camping")
+def camping_page() -> str:
+	return render_template(
+		"public/camping/index.html",
+		camping=camping_data,
+		seo=build_seo(
+			title="Camping at The Gorge | Freedom Con 2026",
+			description="Stay on-site at The Gorge Amphitheatre. Camping details, check-in times, RV info, and what to bring for Freedom Con 2026.",
+			path="/camping",
+		),
+	)
+
+
+@public_bp.get("/hotels")
+def hotels_page() -> str:
+	return render_template(
+		"public/hotels/index.html",
+		hotels=hotels_data,
+		seo=build_seo(
+			title="Hotels Near The Gorge | Freedom Con 2026",
+			description="Hotel and lodging options near The Gorge Amphitheatre for Freedom Con 2026. George, Quincy, Ephrata, and Moses Lake.",
+			path="/hotels",
+		),
+	)
 
 
 #  404 handler

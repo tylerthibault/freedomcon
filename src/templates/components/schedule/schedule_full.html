@@ -1,0 +1,10 @@
+{#
+  schedule_full.html
+  Convenience wrapper — renders all days side-by-side.
+  Expects: `schedule` dict with key: days (list of day dicts)
+#}
+<div class="schedule-full">
+	{% for day in schedule.days %}
+	{% include "components/schedule/schedule_day.html" %}
+	{% endfor %}
+</div>
