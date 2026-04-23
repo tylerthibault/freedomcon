@@ -246,6 +246,7 @@ body.spk-modal-open { overflow: hidden; }
     position: relative;
     overflow: hidden;
     display: flex; align-items: flex-end; justify-content: center;
+    background: linear-gradient(160deg, #0d0d0d 0%, #1f1f1f 35%, #3a3a3a 70%, #5c5c5c 100%);
 }
 /* Blurred image background pulled from the speaker photo */
 .spk-modal__left::before {
@@ -273,6 +274,7 @@ body.spk-modal-open { overflow: hidden; }
     overflow-y: auto;
     display: flex; flex-direction: column;
     padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.25rem) 0;
+    background: linear-gradient(145deg, #d6dadf 0%, #e8eaed 25%, #f4f5f7 60%, #ffffff 100%);
 }
 
 .spk-modal__header { margin-bottom: 1rem; }

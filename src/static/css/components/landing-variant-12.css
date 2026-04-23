@@ -552,6 +552,29 @@ body.landing12-no-scroll {
     line-height: 1.35;
 }
 
+@media (max-width: 767.98px) {
+    .landing12-cta-2 {
+        display: flex;
+        flex-direction: column;
+    }
+    .landing12-cta-2__media {
+        width: 100%;
+        grid-area: unset;
+    }
+    .landing12-cta-2__overlay {
+        display: none;
+    }
+    .landing12-cta-2__content {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        background: #000;
+        padding-top: 1.5rem;
+        padding-bottom: 2rem;
+    }
+}
+
 .landing12-wrap {
     /* centering: mx-auto on element */
     max-width: 1240px;
