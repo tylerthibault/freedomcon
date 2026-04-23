@@ -34,6 +34,14 @@ sponsors = {
                 'show_on_sponsor_page': True,
                 'background_color': "#FFFFFF",
                 'scale': 2
+            },
+            {
+                'name': 'Creative Spaces',
+                'logo_url': '/static/img/sponsor_logos/creative_spaces_logo.png',
+                'website_url': '',
+                'show_on_sponsor_page': True,
+                'background_color': "#FFFFFF",
+                'scale': 1.5
             }
     ],
     'ministries': [
@@ -60,16 +68,26 @@ sponsors = {
     ],
     'churches': [
             {
+                'name': 'Real Faith',
+                'logo_url': '/static/img/sponsor_logos/real_faith_logo.png',
+                'website_url': 'https://www.realfaith.com/',
+                'show_on_sponsor_page': True,
+                'background_color': "#FFFFFF"
+            },
+            {
                 'name': 'Pursuit Church',
-                'logo_url': 'https://res.cloudinary.com/dzj8q3l9c/image/upload/v1700000000/sponsors/pursuit_church.png',
-                'website_url': 'https://www.pursuitchurch.com/',
-                'show_on_sponsor_page': False
+                'logo_url': '/static/img/sponsor_logos/pursuit_logo.png',
+                'website_url': 'https://www.thepursuitnw.com/',
+                'show_on_sponsor_page': True,
+                'background_color': "#FFFFFF"
             },
             {
                 'name': 'Grace City Church',
-                'logo_url': 'https://res.cloudinary.com/dzj8q3l9c/image/upload/v1700000000/sponsors/grace_city_church.png',
-                'website_url': 'https://www.gracecitychurch.com/',
-                'show_on_sponsor_page': False
+                'logo_url': '/static/img/sponsor_logos/GCC_logo.png',
+                'website_url': 'https://gracecitychurch.com/',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
+                'scale': 1.5
             },
             {
                 'name': 'Sage Hills Church',
@@ -80,20 +98,3 @@ sponsors = {
     ]
 }
 
-
-# Businesses 
-# Smith Excavation
-# Firefly 
-# Speiro 
-# KBI
-# Java Dog 
-
-# Ministries 
-# Real Faith
-# Warrior Poet Society 
-# Stronger Man Nation
-
-# Churches 
-# Pursuit Church 
-# Grace City Church 
-# Sage Hills (check with me first)

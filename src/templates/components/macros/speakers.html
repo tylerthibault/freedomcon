@@ -1,10 +1,19 @@
-{% macro speaker_card(name, person_image, titles=[], background_image='img/speakers/background.png', alt='', image_x=None, image_y=None, shrink=None) %}
+{% macro speaker_card(name, person_image, titles=[], background_image='img/speakers/background.png', alt='', image_x=None, image_y=None, shrink=None, bio='', orgs=[]) %}
 {% set person_src = person_image if (person_image[:1] == '/' or '://' in person_image) else url_for('static', filename=person_image) %}
 {% set background_src = background_image if (background_image[:1] == '/' or '://' in background_image) else url_for('static', filename=background_image) %}
 
 <article
 	class="speaker-card"
 	data-speaker-card
+	data-speaker-open
+	role="button"
+	tabindex="0"
+	data-name="{{ name | e }}"
+	data-img="{{ person_src }}"
+	data-alt="{{ (alt if alt else name) | e }}"
+	data-bio="{{ bio | trim | e }}"
+	data-titles="{{ titles | tojson | forceescape }}"
+	data-orgs="{{ orgs | tojson | forceescape }}"
 	{% if image_x is not none %}data-image-x="{{ image_x }}"{% endif %}
 	{% if image_y is not none %}data-image-y="{{ image_y }}"{% endif %}
 	{% if shrink is not none %}data-shrink="{{ shrink }}"{% endif %}

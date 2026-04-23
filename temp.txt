@@ -1,0 +1,46 @@
+Plan: Speaker Bio Modal on Card Click
+The bio and orgs data already exists in speakers.py but is never rendered. We'll build a new dedicated speaker bio modal (separate from the YouTube video modal) matching the designs in your screenshots — desktop two-column layout, mobile stacked — wired to open when any speaker card is clicked.
+
+Steps
+
+Update speaker card macro — speakers.html
+
+Add data-speaker-open trigger attribute and role="button" / tabindex="0" to the <article>
+Pass bio, orgs, name, titles, person_image as hidden data-* attributes (JSON-encoded for orgs/titles) so JS can read them without a server round-trip
+Update speakers index template — index.html
+
+Pass bio, orgs into each speaker_card() call
+Include the new speaker_bio_modal.html component at bottom of block content
+Create new modal template — src/templates/components/speaker_bio_modal.html
+
+Structure: backdrop → .speaker-bio-modal → close button (×) → two-column layout
+Left: [data-sbm-img] photo
+Right: [data-sbm-name], [data-sbm-titles], [data-sbm-bio] (paragraphs), [data-sbm-orgs] (icon rows)
+Hidden by default via aria-hidden="true" / display:none
+Create new CSS — src/static/css/components/speaker_bio_modal.css
+
+Desktop: two-column flex, image left ~40%, content right ~60%, max-width ~900px, centered scrollable overlay
+Mobile (≤767px): single column, image full-width top half, scrollable bio below
+Org rows with icon + bold name + small subtitle (matching screenshot design)
+Open/close transitions (opacity + slight scale)
+Add JS wiring — main.js
+
+On [data-speaker-open] click: read data attributes, populate modal fields, show modal
+Close on backdrop click, close button click, and Escape key
+Prevent body scroll while modal is open
+Icon token → SVG/icon mapping for church, shield, book, mic, star, cap, podcast
+Load new CSS in the speakers page {% block styles %} in index.html
+
+Verification
+
+Open /speakers and click any card — modal opens with correct name, bio, orgs
+Test all 14 speakers (spot check a few including Chad Robichaux who has 6 titles)
+Test close via ×, backdrop click, and Escape
+Resize to mobile and confirm stacked layout
+Keyboard accessibility: Tab to card, Enter opens modal
+Decisions
+
+New dedicated modal (not reusing the YouTube media modal) — the bio modal layout is fundamentally different
+Bio data stored as data-* attributes on the card instead of a separate API fetch — no extra server round-trip needed
+Icons rendered as inline SVG paths mapped from token strings (church, shield, book, etc.) to match the screenshot icons
+Does this plan look right? Any changes before I hand it off to implement?

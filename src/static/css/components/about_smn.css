@@ -133,6 +133,42 @@
     border: 0;
 }
 
+/* ── Skeleton loading state ── */
+@keyframes about-smn-shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+}
+
+.about-smn-conference .landing12-trailer-card.is-loading .landing12-trailer-thumb {
+    position: relative;
+}
+
+.about-smn-conference .landing12-trailer-card.is-loading .landing12-trailer-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        var(--fc-surface) 25%,
+        color-mix(in srgb, var(--fc-muted) 18%, var(--fc-surface)) 50%,
+        var(--fc-surface) 75%
+    );
+    background-size: 200% 100%;
+    animation: about-smn-shimmer 1.4s ease-in-out infinite;
+    border-radius: inherit;
+    z-index: 1;
+}
+
+.about-smn-conference .landing12-trailer-card.is-loading .landing12-trailer-thumb img {
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.about-smn-conference .landing12-trailer-card:not(.is-loading) .landing12-trailer-thumb img {
+    opacity: 1;
+    transition: opacity 300ms ease;
+}
+
 .about-smn-conference .landing12-trailer-copy {
     padding: 0.58rem 0.65rem 0.7rem;
 }

@@ -803,6 +803,29 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
+	// ── Skeleton loading boxes for <details> conference panels ──
+	document.querySelectorAll(".about-smn-conference__panel").forEach((details) => {
+		if (!(details instanceof HTMLDetailsElement)) return;
+
+		details.addEventListener("toggle", () => {
+			if (!details.open) return;
+
+			details.querySelectorAll("[data-youtube-thumb]").forEach((img) => {
+				if (!(img instanceof HTMLImageElement)) return;
+				if (img.complete && img.naturalWidth > 0) return; // already cached
+
+				const card = img.closest(".landing12-trailer-card");
+				if (!card) return;
+
+				card.classList.add("is-loading");
+
+				const done = () => card.classList.remove("is-loading");
+				img.addEventListener("load",  done, { once: true });
+				img.addEventListener("error", done, { once: true });
+			});
+		});
+	});
+
 	document.querySelectorAll("[data-youtube-thumb]").forEach((image) => {
 		if (!(image instanceof HTMLImageElement)) {
 			return;
@@ -1015,3 +1038,90 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 });
+
+/* =================================================================
+   Speaker Bio Modal — global, works on every page
+   ================================================================= */
+(function () {
+	var backdrop = document.getElementById('speakerBioModal');
+	if (!backdrop) return;
+
+	var closeBtn  = document.getElementById('sbmClose');
+	var sbmImg    = backdrop.querySelector('[data-sbm-img]');
+	var sbmName   = backdrop.querySelector('[data-sbm-name]');
+	var sbmTitles = backdrop.querySelector('[data-sbm-titles]');
+	var sbmBio    = backdrop.querySelector('[data-sbm-bio]');
+	var sbmOrgs   = backdrop.querySelector('[data-sbm-orgs]');
+	var sbmRight  = backdrop.querySelector('.spk-modal__right');
+	var sbmLeft   = backdrop.querySelector('[data-sbm-left]');
+
+	var ICONS = {
+		church:  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 3h3l-1.5 2H17v2l-5 3-5-3V7h1.5L7 5h3L12 2zm-5 9v10h4v-4h2v4h4V11l-5-3-5 3z"/></svg>',
+		shield:  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 6v6c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V6l-9-4z"/></svg>',
+		book:    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>',
+		mic:     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3zm-7 11a7 7 0 0014 0h-2a5 5 0 01-10 0H5zm7 7v3h-2v-3a9 9 0 01-2-.37v-2.1a7 7 0 004 .47 7 7 0 004-.47v2.1A9 9 0 0119 21v-2z"/></svg>',
+		star:    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+		cap:     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 13L3 11.2V16c0 3.31 4.03 6 9 6s9-2.69 9-6v-4.8L12 16z"/></svg>',
+		podcast: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 1.79.66 3.42 1.74 4.67l1.46-1.46A4.96 4.96 0 017 9a5 5 0 0110 0c0 1.28-.49 2.45-1.29 3.34l1.42 1.42A6.96 6.96 0 0019 9a7 7 0 00-7-7zm0 4a3 3 0 00-3 3c0 .78.3 1.5.78 2.04l1.45-1.45A1 1 0 0111 9a1 1 0 112 0 1 1 0 01-.23.59l1.45 1.45C14.7 10.5 15 9.78 15 9a3 3 0 00-3-3zm-1 8h2v7h-2v-7zm-3 3h2v4H8v-4zm6 0h2v4h-2v-4z"/></svg>',
+		flag:    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6h-5.6z"/></svg>'
+	};
+
+	function openModal(card) {
+		var name = card.dataset.name || '';
+		var img  = card.dataset.img  || '';
+		var alt  = card.dataset.alt  || name;
+		var bio  = card.dataset.bio  || '';
+		var titles = [], orgs = [];
+		try { titles = JSON.parse(card.dataset.titles || '[]'); } catch (e) {}
+		try { orgs   = JSON.parse(card.dataset.orgs   || '[]'); } catch (e) {}
+
+		sbmImg.src = img;
+		sbmImg.alt = alt;
+		if (sbmLeft) sbmLeft.style.setProperty('--sbm-bg-img', 'url(' + img + ')');
+		sbmName.textContent = name;
+		sbmTitles.textContent = titles.filter(Boolean).join('  |  ');
+
+		sbmBio.innerHTML = bio
+			.split('\n')
+			.map(function(p) { return p.trim(); })
+			.filter(Boolean)
+			.map(function(p) { return '<p>' + p + '</p>'; })
+			.join('');
+
+		sbmOrgs.innerHTML = orgs.map(function(org) {
+			return [
+				'<li class="spk-modal__org-row">',
+					'<span class="spk-modal__org-icon">' + (ICONS[org.icon] || '') + '</span>',
+					'<span class="spk-modal__org-info">',
+						'<strong>' + org.name + '</strong>',
+						'<small>' + org.subtitle + '</small>',
+					'</span>',
+				'</li>'
+			].join('');
+		}).join('');
+
+		backdrop.setAttribute('aria-hidden', 'false');
+		backdrop.classList.add('spk-modal-backdrop--open');
+		document.body.classList.add('spk-modal-open');
+		if (sbmRight) sbmRight.scrollTop = 0;
+		backdrop.scrollTop = 0;
+		closeBtn.focus();
+	}
+
+	function closeModal() {
+		backdrop.setAttribute('aria-hidden', 'true');
+		backdrop.classList.remove('spk-modal-backdrop--open');
+		document.body.classList.remove('spk-modal-open');
+	}
+
+	document.querySelectorAll('[data-speaker-open]').forEach(function(card) {
+		card.addEventListener('click', function() { openModal(card); });
+		card.addEventListener('keydown', function(e) {
+			if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card); }
+		});
+	});
+
+	closeBtn.addEventListener('click', closeModal);
+	backdrop.addEventListener('click', function(e) { if (e.target === backdrop) closeModal(); });
+	document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+}());
