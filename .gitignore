@@ -4,5 +4,7 @@ __pycache__/
 # *.zip
 src/static/img/speakers/Speakers.zip
 .env
+src/static/pdfs/FreedomCon Media Kit/
+src/static/pdfs/FreedomCon Media Kit 2/
 .env.*
 !.env.example
