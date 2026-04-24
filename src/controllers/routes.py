@@ -496,7 +496,7 @@ def press_page() -> str:
 		"static", filename="img/TheGuys-WithLogoNoFeet.avif"
 	)
 	formsubmit_action = getenv("PRESS_FORMSUBMIT_ACTION", "").strip()
-	formsubmit_next = getenv("PRESS_FORMSUBMIT_NEXT", "").strip() or f"{SITE_URL}/press?submitted=1"
+	formsubmit_next = f"{SITE_URL}/thankyou"
 
 	return render_template(
 		"public/press/index.html",
@@ -572,6 +572,19 @@ def experience_page() -> str:
 			title="The Experience | Freedom Con 2026",
 			description="Explore the full Freedom Con experience — competitions, side stage, schedule, and everything happening at The Gorge.",
 			path="/experience",
+		),
+	)
+
+
+@public_bp.get("/thankyou")
+def thankyou_page() -> str:
+	return render_template(
+		"public/thankyou/index.html",
+		seo=build_seo(
+			title="Thank You | Freedom Con",
+			description="Thank you for reaching out to Freedom Con. We'll be in touch shortly.",
+			path="/thankyou",
+			robots="noindex,follow",
 		),
 	)
 

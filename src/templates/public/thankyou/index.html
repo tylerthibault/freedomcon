@@ -1,0 +1,28 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/page_hero.html" import page_hero %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/thankyou.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main>
+	{{ page_hero("Message Received", "Thank You", "We've received your message and will be in touch shortly.") }}
+	{{ slim_banner("THANK YOU") }}
+
+	<section class="fc-page" aria-label="Thank you confirmation">
+		<div class="fc-page__inner thankyou-page">
+			<div class="thankyou-page__icon" aria-hidden="true">✓</div>
+			<h1 class="thankyou-page__title">Thank You!</h1>
+			<p class="thankyou-page__lead">Your message has been received. Our team will review your inquiry and get back to you as soon as possible.</p>
+			<p class="thankyou-page__body">In the meantime, feel free to explore the Freedom Con website or check us out on social media.</p>
+			<a href="{{ url_for('public.landing') }}" class="landing12-btn thankyou-page__btn">Back to Home</a>
+		</div>
+	</section>
+</main>
+{% endblock %}
