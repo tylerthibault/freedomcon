@@ -495,7 +495,7 @@ def press_page() -> str:
 	men_picture_url = getenv("PRESS_MEN_PICTURE_URL", "").strip() or url_for(
 		"static", filename="img/TheGuys-WithLogoNoFeet.avif"
 	)
-	formsubmit_action = getenv("PRESS_FORMSUBMIT_ACTION", "").strip()
+	formsubmit_action = getenv("PRESS_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/info@strongermannation.com"
 	formsubmit_next = f"{SITE_URL}/thankyou"
 
 	return render_template(
