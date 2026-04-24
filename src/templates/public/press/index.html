@@ -107,9 +107,6 @@
 							<textarea id="press-message" name="message" rows="5" required></textarea>
 						</div>
 
-						{% if not formsubmit_action %}
-						<p class="press-page-card__empty">Set <strong>PRESS_FORMSUBMIT_ACTION</strong> to enable submissions.</p>
-						{% endif %}
 						<button class="landing12-btn" type="submit" {% if not formsubmit_action %}disabled{% endif %}>Send Inquiry</button>
 					</form>
 				</section>
