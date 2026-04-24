@@ -1,6 +1,7 @@
 {% extends 'bases/public.html' %}
 
 {% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-variant-12.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/speakers.css') }}">
 {% endblock %}
 
@@ -12,6 +13,7 @@
     {% include 'public/landing_v7/components/if_nothing_changes.html' %}
     {% include 'public/landing_v7/components/in_it_together.html' %}
     {% include 'public/landing_v7/components/speakers.html' %}
+    {% include 'public/landing_v7/components/artists.html' %}
 
 </div>
 {% endblock %}

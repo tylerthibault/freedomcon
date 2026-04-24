@@ -1,0 +1,26 @@
+<section class="landing12-crowder" aria-label="Featured artist Crowder" data-crowder-parallax>
+	{% set crowder_audio_src = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/02_Grave%20Robber.wav" %}
+	{% set crowder_audio_title = "Grave Robber" %}
+	<div class="landing12-crowder__bg" data-crowder-parallax-bg aria-hidden="true" style="background-image: url('{{ url_for('static', filename='img/conference_info/crowder.jpg') }}');"></div>
+	<div class="landing12-crowder__overlay">
+		<p class="landing12-crowder__eyebrow">Live at Freedom Con</p>
+		<h2 class="landing12-crowder__title">Crowder</h2>
+		<div class="landing12-crowder-audio" data-crowder-audio>
+			<button class="landing12-btn" type="button" data-crowder-audio-toggle aria-expanded="false" {% if not crowder_audio_src %}disabled{% endif %}>
+				{% if crowder_audio_src %}Play Song{% else %}Song Coming Soon{% endif %}
+			</button>
+			<div class="landing12-crowder-audio__panel" data-crowder-audio-panel hidden>
+				<div class="landing12-crowder-audio__head">
+					<p class="landing12-crowder-audio__title">{{ crowder_audio_title }}</p>
+					<button class="landing12-crowder-audio__close" type="button" aria-label="Close audio player" data-crowder-audio-close>&times;</button>
+				</div>
+				<audio controls preload="none" class="landing12-crowder-audio__native" data-crowder-audio-player>
+					{% if crowder_audio_src %}
+					<source src="{{ crowder_audio_src }}" type="audio/wav">
+					{% endif %}
+					Your browser does not support the audio element.
+				</audio>
+			</div>
+		</div>
+	</div>
+</section>
