@@ -593,14 +593,14 @@ def thankyou_page() -> str:
 @public_bp.get("/videos")
 def videos_page() -> str:
 	trailers_section = build_media_section(
-		section_id="trailers",
+		section_id="conference-trailers",
 		eyebrow="Watch",
 		title="Conference Trailers",
 		aria_label="Freedom Con trailers",
-		items=trailers_data,
+		items=videos_data,
 		initial_count=4,
-		reveal_count=4,
-		play_label="Play Trailer",
+		reveal_count=6,
+		play_label="Play Video",
 		show_more_label="Show More",
 		show_all_label="Show All",
 	)
@@ -624,6 +624,31 @@ def videos_page() -> str:
 			title="Videos | Freedom Con 2026",
 			description="Watch Freedom Con trailers and podcast episodes from Stronger Man Nation.",
 			path="/videos",
+		),
+	)
+
+
+@public_bp.get("/podcasts")
+def podcasts_page() -> str:
+	podcast_section = build_media_section(
+		section_id="podcasts",
+		eyebrow="Listen",
+		title="Podcasts",
+		aria_label="Freedom Con podcasts",
+		items=podcasts_data,
+		initial_count=4,
+		reveal_count=4,
+		play_label="Play Podcast",
+		show_more_label="Show More",
+		show_all_label="Show All",
+	)
+	return render_template(
+		"public/podcasts/index.html",
+		podcast_section=podcast_section,
+		seo=build_seo(
+			title="Podcasts | Freedom Con 2026",
+			description="Listen to Freedom Con podcast episodes from Stronger Man Nation — faith, freedom, and men leading well.",
+			path="/podcasts",
 		),
 	)
 

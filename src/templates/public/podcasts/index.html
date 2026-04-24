@@ -12,24 +12,19 @@
 
 {% block content %}
 <main>
-	{{ page_hero("Watch & Listen", "Videos", "Trailers, podcasts, and everything Freedom Con on video.") }}
-	{{ slim_banner("FREEDOM CON VIDEOS") }}
+	{{ page_hero("Listen", "Podcasts", "Episodes from Stronger Man Nation — faith, freedom, and men leading well.") }}
+	{{ slim_banner("FREEDOM CON PODCASTS") }}
 
 	{% include 'components/media_modal.html' %}
-
-	{% with media_section = trailers_section %}
-	{% include 'components/media_section.html' %}
-	{% endwith %}
 
 	{% with media_section = podcast_section %}
 	{% include 'components/media_section.html' %}
 	{% endwith %}
 
-	<section class="fc-page" aria-label="Past SMN Conferences link">
+	<section class="fc-page" aria-label="Videos page link">
 		<div class="fc-page__inner" style="text-align:center; padding-bottom: 4rem;">
-			<p class="fc-page__lead">Want to dive deeper into the podcasts?</p>
-			<a class="landing12-btn" href="{{ url_for('public.podcasts_page') }}" style="margin-right:1rem;">All Podcasts</a>
-			<a class="landing12-btn" href="{{ url_for('public.about_smn_page') }}">Past SMN Conferences</a>
+			<p class="fc-page__lead">Looking for Freedom Con trailers and other videos?</p>
+			<a class="landing12-btn" href="{{ url_for('public.videos_page') }}">Watch All Videos</a>
 		</div>
 	</section>
 </main>
