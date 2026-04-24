@@ -68,6 +68,25 @@
 							</select>
 						</div>
 
+						<div class="press-page-form__field" id="press-role-other-field" style="display:none;">
+							<label for="press-role-other">Please describe your role <span class="press-page-form__required">*</span></label>
+							<input id="press-role-other" name="role_other" type="text" placeholder="Enter your role">
+						</div>
+
+						<script>
+							(function () {
+								var select = document.getElementById('press-role');
+								var otherField = document.getElementById('press-role-other-field');
+								var otherInput = document.getElementById('press-role-other');
+								function toggle() {
+									var isOther = select.value === 'Other';
+									otherField.style.display = isOther ? '' : 'none';
+									otherInput.required = isOther;
+								}
+								select.addEventListener('change', toggle);
+							})();
+						</script>
+
 						<div class="press-page-form__field">
 							<label for="press-name">Name <span class="press-page-form__required">*</span></label>
 							<input id="press-name" name="name" type="text" required>
