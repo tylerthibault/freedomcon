@@ -1,0 +1,41 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/page_hero.html" import page_hero %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-variant-12.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main>
+	{{ page_hero("Watch & Listen", "Videos", "Trailers, podcasts, and everything Freedom Con on video.") }}
+	{{ slim_banner("FREEDOM CON VIDEOS") }}
+
+	{% include 'components/media_modal.html' %}
+
+	{% with media_section = trailers_section %}
+	{% include 'components/media_section.html' %}
+	{% endwith %}
+
+	{% with media_section = podcast_section %}
+	{% include 'components/media_section.html' %}
+	{% endwith %}
+
+	<section class="fc-page" aria-label="Past SMN Conferences link">
+		<div class="fc-page__inner" style="text-align:center; padding-bottom: 4rem;">
+			<p class="fc-page__lead">Want to see past Stronger Man Nation conferences?</p>
+			<a class="landing12-btn" href="{{ url_for('public.about_smn_page') }}">Past SMN Conferences</a>
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}{% endblock %}

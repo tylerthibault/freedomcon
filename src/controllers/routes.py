@@ -15,6 +15,7 @@ from src.data.background_text import background_1
 from src.data.sponsors import sponsors
 from src.data.about_smn import about_smn_conferences
 from src.data.podcasts import podcasts as podcasts_data
+from src.data.trailers import trailers as trailers_data
 
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
@@ -585,6 +586,44 @@ def thankyou_page() -> str:
 			description="Thank you for reaching out to Freedom Con. We'll be in touch shortly.",
 			path="/thankyou",
 			robots="noindex,follow",
+		),
+	)
+
+
+@public_bp.get("/videos")
+def videos_page() -> str:
+	trailers_section = build_media_section(
+		section_id="trailers",
+		eyebrow="Watch",
+		title="Conference Trailers",
+		aria_label="Freedom Con trailers",
+		items=trailers_data,
+		initial_count=4,
+		reveal_count=4,
+		play_label="Play Trailer",
+		show_more_label="Show More",
+		show_all_label="Show All",
+	)
+	podcast_section = build_media_section(
+		section_id="podcasts",
+		eyebrow="Listen",
+		title="Podcasts",
+		aria_label="Freedom Con podcasts",
+		items=podcasts_data,
+		initial_count=4,
+		reveal_count=4,
+		play_label="Play Podcast",
+		show_more_label="Show More",
+		show_all_label="Show All",
+	)
+	return render_template(
+		"public/videos/index.html",
+		trailers_section=trailers_section,
+		podcast_section=podcast_section,
+		seo=build_seo(
+			title="Videos | Freedom Con 2026",
+			description="Watch Freedom Con trailers and podcast episodes from Stronger Man Nation.",
+			path="/videos",
 		),
 	)
 
