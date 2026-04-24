@@ -29,7 +29,24 @@ ticket_prices = [
         "name": "Group Rate",
         "price": "+10 or more\n15% off",
         "tax_total": None,
-        "notes": [],
+        "notes": [
+            "Valid for groups of 10–200",
+            "For friend groups & men's ministries",
+        ],
+        "highlight": False,
+    },
+    {
+        "name": "VIP Pastor Experience",
+        "price": "$112",
+        "tax_total": None,
+        "notes": [
+            "25% off general ticket — code PASTOR",
+            "Exclusive Swag Bag",
+            "Freedom Lounge Pass",
+            "Meet & Greet with all speakers",
+            "Q & A panel with speakers",
+            "Signed book by Eric Metaxas",
+        ],
         "highlight": False,
     },
 ]

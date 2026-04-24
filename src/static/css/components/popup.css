@@ -120,6 +120,34 @@
     background: #b8922a;
 }
 
+.promo-modal__deal-badge--green {
+    background: #2a7a3b;
+}
+
+.promo-modal__deal-badge--navy {
+    background: #1a3660;
+}
+
+.promo-modal__deal-link {
+    display: block;
+    text-align: center;
+    font-family: var(--font-regular, "Oswald", sans-serif);
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    padding: 0.75rem 0 0;
+    transition: color 0.15s ease;
+}
+
+.promo-modal__deal-link:hover,
+.promo-modal__deal-link:focus-visible {
+    color: #fff;
+    text-decoration: underline;
+    outline: none;
+}
+
 .promo-modal__deal-headline {
     font-family: var(--font-action, "Fremont", "Oswald", sans-serif);
     font-size: 1.1rem;
