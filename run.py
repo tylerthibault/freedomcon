@@ -2,6 +2,9 @@ from os import getenv
 from pathlib import Path
 from secrets import token_urlsafe
 
+from dotenv import load_dotenv
+load_dotenv()
+
 import sentry_sdk
 from flask import Flask, redirect, request
 from sentry_sdk.integrations.flask import FlaskIntegration

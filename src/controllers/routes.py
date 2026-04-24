@@ -15,12 +15,16 @@ from src.data.background_text import background_1
 from src.data.sponsors import sponsors
 from src.data.about_smn import about_smn_conferences
 from src.data.podcasts import podcasts as podcasts_data
+<<<<<<< HEAD
 from src.data.wives import wives as wives_data
 from src.data.invite import invite as invite_data
 from src.data.schedule import schedule as schedule_data
 from src.data.the_play import the_play as the_play_data
 from src.data.camping import camping as camping_data
 from src.data.hotels import hotels as hotels_data
+=======
+from src.data.trailers import trailers as trailers_data
+>>>>>>> main
 
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
@@ -507,8 +511,8 @@ def press_page() -> str:
 	men_picture_url = getenv("PRESS_MEN_PICTURE_URL", "").strip() or url_for(
 		"static", filename="img/TheGuys-WithLogoNoFeet.avif"
 	)
-	formsubmit_action = getenv("PRESS_FORMSUBMIT_ACTION", "").strip()
-	formsubmit_next = getenv("PRESS_FORMSUBMIT_NEXT", "").strip() or f"{SITE_URL}/press?submitted=1"
+	formsubmit_action = getenv("PRESS_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/info@strongermannation.com"
+	formsubmit_next = f"{SITE_URL}/thankyou"
 
 	return render_template(
 		"public/press/index.html",
@@ -584,6 +588,82 @@ def experience_page() -> str:
 			title="The Experience | Freedom Con 2026",
 			description="Explore the full Freedom Con experience — competitions, side stage, schedule, and everything happening at The Gorge.",
 			path="/experience",
+		),
+	)
+
+
+@public_bp.get("/thankyou")
+def thankyou_page() -> str:
+	return render_template(
+		"public/thankyou/index.html",
+		seo=build_seo(
+			title="Thank You | Freedom Con",
+			description="Thank you for reaching out to Freedom Con. We'll be in touch shortly.",
+			path="/thankyou",
+			robots="noindex,follow",
+		),
+	)
+
+
+@public_bp.get("/videos")
+def videos_page() -> str:
+	trailers_section = build_media_section(
+		section_id="conference-trailers",
+		eyebrow="Watch",
+		title="Conference Trailers",
+		aria_label="Freedom Con trailers",
+		items=videos_data,
+		initial_count=4,
+		reveal_count=6,
+		play_label="Play Video",
+		show_more_label="Show More",
+		show_all_label="Show All",
+	)
+	podcast_section = build_media_section(
+		section_id="podcasts",
+		eyebrow="Listen",
+		title="Podcasts",
+		aria_label="Freedom Con podcasts",
+		items=podcasts_data,
+		initial_count=4,
+		reveal_count=4,
+		play_label="Play Podcast",
+		show_more_label="Show More",
+		show_all_label="Show All",
+	)
+	return render_template(
+		"public/videos/index.html",
+		trailers_section=trailers_section,
+		podcast_section=podcast_section,
+		seo=build_seo(
+			title="Videos | Freedom Con 2026",
+			description="Watch Freedom Con trailers and podcast episodes from Stronger Man Nation.",
+			path="/videos",
+		),
+	)
+
+
+@public_bp.get("/podcasts")
+def podcasts_page() -> str:
+	podcast_section = build_media_section(
+		section_id="podcasts",
+		eyebrow="Listen",
+		title="Podcasts",
+		aria_label="Freedom Con podcasts",
+		items=podcasts_data,
+		initial_count=4,
+		reveal_count=4,
+		play_label="Play Podcast",
+		show_more_label="Show More",
+		show_all_label="Show All",
+	)
+	return render_template(
+		"public/podcasts/index.html",
+		podcast_section=podcast_section,
+		seo=build_seo(
+			title="Podcasts | Freedom Con 2026",
+			description="Listen to Freedom Con podcast episodes from Stronger Man Nation — faith, freedom, and men leading well.",
+			path="/podcasts",
 		),
 	)
 

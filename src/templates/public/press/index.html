@@ -55,6 +55,7 @@
 					<form class="press-page-form" method="post" action="{{ formsubmit_action or '#' }}">
 						<input type="hidden" name="_subject" value="Freedom Con Press/Sponsor Inquiry">
 						<input type="hidden" name="_next" value="{{ formsubmit_next }}">
+						<input type="hidden" name="_captcha" value="false">
 						<!-- Honeypot field -->
 						<input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
 
@@ -67,6 +68,25 @@
 								<option value="Other">Other</option>
 							</select>
 						</div>
+
+						<div class="press-page-form__field" id="press-role-other-field" style="display:none;">
+							<label for="press-role-other">Please describe your role <span class="press-page-form__required">*</span></label>
+							<input id="press-role-other" name="role_other" type="text" placeholder="Enter your role">
+						</div>
+
+						<script>
+							(function () {
+								var select = document.getElementById('press-role');
+								var otherField = document.getElementById('press-role-other-field');
+								var otherInput = document.getElementById('press-role-other');
+								function toggle() {
+									var isOther = select.value === 'Other';
+									otherField.style.display = isOther ? '' : 'none';
+									otherInput.required = isOther;
+								}
+								select.addEventListener('change', toggle);
+							})();
+						</script>
 
 						<div class="press-page-form__field">
 							<label for="press-name">Name <span class="press-page-form__required">*</span></label>
@@ -88,9 +108,6 @@
 							<textarea id="press-message" name="message" rows="5" required></textarea>
 						</div>
 
-						{% if not formsubmit_action %}
-						<p class="press-page-card__empty">Set <strong>PRESS_FORMSUBMIT_ACTION</strong> to enable submissions.</p>
-						{% endif %}
 						<button class="landing12-btn" type="submit" {% if not formsubmit_action %}disabled{% endif %}>Send Inquiry</button>
 					</form>
 				</section>
