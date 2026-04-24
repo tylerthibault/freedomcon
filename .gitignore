@@ -1,7 +1,7 @@
 .DS_Store
 __pycache__/
 *.py[cod]
-*.zip
+# *.zip
 src/static/img/speakers/Speakers.zip
 .env
 .env.*
