@@ -37,7 +37,7 @@ ticket_prices = [
     },
     {
         "name": "VIP Pastor Experience",
-        "price": "$112",
+        "price": "25% off",
         "tax_total": None,
         "notes": [
             "25% off general ticket — code PASTOR",
