@@ -1,0 +1,119 @@
+<style>
+    /* Only what Bootstrap can't handle */
+    .eow                     { aspect-ratio: 16 / 9; cursor: ew-resize; touch-action: none; }
+    @media (max-width: 600px){ .eow { aspect-ratio: 4 / 5; } }
+
+    .eow__bad                { clip-path: inset(0 50% 0 0); transition: clip-path 0.05s linear; }
+    .eow--idle .eow__bad     { clip-path: inset(0 50% 0 0); transition: clip-path 0.6s ease; }
+
+    .eow__man                { height: 90%; width: auto; }
+
+    .eow__divider            { width: 3px; box-shadow: 0 0 8px rgba(0,0,0,0.6); transition: left 0.05s linear; left: 50%; transform: translateX(-50%); }
+    .eow--idle .eow__divider { transition: left 0.6s ease; }
+
+    .eow__label-bad,
+    .eow__label-good         { letter-spacing: 0.1em; transition: opacity 0.2s ease; opacity: 0.85; }
+    .eow__label-bad          { color: #ff4444; }
+    .eow__label-good         { color: #66dd66; }
+
+    .eow__text               { bottom: 8%; z-index: 6; }
+    .eow__text p:first-child { font-size: clamp(1rem, 2.5vw, 1.6rem); letter-spacing: 0.12em; text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
+    .eow__text p:last-child  { font-size: clamp(2rem, 6vw, 4.5rem); letter-spacing: 0.06em; line-height: 1; text-shadow: 0 2px 12px rgba(0,0,0,0.9); color: var(--fc-accent, #BC2A27); }
+</style>
+
+<section class="eow eow--idle position-relative w-100 overflow-hidden user-select-none" id="eow">
+
+    <img class="eow__good position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-1"
+         src="{{ url_for('static', filename='img/city_good.jpg') }}"
+         alt="A thriving city">
+
+    <img class="eow__bad position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-2"
+         src="{{ url_for('static', filename='img/city_bad.jpg') }}"
+         alt="A city in chaos">
+
+    <div class="eow__divider position-absolute top-0 bottom-0 z-2 bg-white pe-none"
+         id="eowDivider"></div>
+
+    <img class="eow__man position-absolute bottom-0 start-50 translate-middle-x z-3 pe-none"
+         src="{{ url_for('static', filename='img/Man.png') }}"
+         alt="A man standing at the crossroads">
+
+    <span class="eow__label-bad position-absolute top-0 mt-3 start-0 ms-3 z-3 pe-none fw-bold text-uppercase rounded-1 px-2 py-1"
+          style="background:rgba(0,0,0,0.5);">Without You</span>
+
+    <span class="eow__label-good position-absolute top-0 mt-3 end-0 me-3 z-3 pe-none fw-bold text-uppercase rounded-1 px-2 py-1"
+          style="background:rgba(0,0,0,0.5);">With You</span>
+
+    <div class="eow__text position-absolute start-50 translate-middle-x w-90 text-center pe-none">
+        <p class="mb-0 fw-normal text-white text-uppercase">The cost of doing nothing</p>
+        <p class="mb-0 fw-bold text-uppercase">Is Too High</p>
+    </div>
+
+</section>
+
+<script>
+(function () {
+    const section    = document.getElementById('eow');
+    const badImg     = section.querySelector('.eow__bad');
+    const divider    = document.getElementById('eowDivider');
+    const labelBad   = section.querySelector('.eow__label-bad');
+    const labelGood  = section.querySelector('.eow__label-good');
+    let idleTimer    = null;
+
+    function setReveal(pct) {
+        const rightClip = (100 - pct) + '%';
+        badImg.style.clipPath = `inset(0 ${rightClip} 0 0)`;
+        divider.style.left    = pct + '%';
+
+        // Hide "Without You" when divider slides left past it (~18%)
+        labelBad.style.opacity  = pct < 18  ? '0' : '0.85';
+        // Hide "With You" when divider slides right past it (~82%)
+        labelGood.style.opacity = pct > 82  ? '0' : '0.85';
+    }
+
+    section.addEventListener('mousemove', function (e) {
+        section.classList.remove('eow--idle');
+        clearTimeout(idleTimer);
+
+        const rect = section.getBoundingClientRect();
+        const pct  = ((e.clientX - rect.left) / rect.width) * 100;
+        setReveal(Math.min(Math.max(pct, 0), 100));
+    });
+
+    section.addEventListener('mouseleave', function () {
+        idleTimer = setTimeout(function () {
+            section.classList.add('eow--idle');
+            badImg.style.clipPath    = '';
+            divider.style.left       = '';
+            labelBad.style.opacity   = '0.85';
+            labelGood.style.opacity  = '0.85';
+        }, 100);
+    });
+
+    // ── Touch support ──────────────────────────────────────────
+    section.addEventListener('touchstart', function (e) {
+        section.classList.remove('eow--idle');
+        clearTimeout(idleTimer);
+        e.preventDefault();
+    }, { passive: false });
+
+    section.addEventListener('touchmove', function (e) {
+        clearTimeout(idleTimer);
+        const touch = e.touches[0];
+        const rect  = section.getBoundingClientRect();
+        const pct   = ((touch.clientX - rect.left) / rect.width) * 100;
+        setReveal(Math.min(Math.max(pct, 0), 100));
+        e.preventDefault();
+    }, { passive: false });
+
+    section.addEventListener('touchend', function () {
+        idleTimer = setTimeout(function () {
+            section.classList.add('eow--idle');
+            badImg.style.clipPath    = '';
+            divider.style.left       = '';
+            labelBad.style.opacity   = '0.85';
+            labelGood.style.opacity  = '0.85';
+        }, 800);
+    });
+})();
+</script>

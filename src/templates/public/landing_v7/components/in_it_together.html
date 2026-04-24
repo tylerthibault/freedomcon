@@ -1,0 +1,245 @@
+<style>
+    .iit {
+        background: #0a0a0a;
+        color: #fff;
+        padding: 4rem 1.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* contour line background — invert() flips cream→dark so lines read as white */
+    .iit::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url("{{ url_for('static', filename='img/contour_lines.png') }}") center/cover repeat;
+        filter: invert(1);
+        opacity: 0.07;
+        pointer-events: none;
+    }
+
+    .iit__inner {
+        max-width: 720px;
+    }
+
+    /* ── eyebrow ── */
+    .iit__eyebrow {
+        /* fw-bold text-uppercase text-white handled by Bootstrap */
+        font-family: var(--font-action, 'Oswald', sans-serif);
+        font-size: clamp(0.85rem, 2.2vw, 1.1rem); /* clamp not replicable with Bootstrap */
+        letter-spacing: 0.12em;
+    }
+
+    .iit__eyebrow::before,
+    .iit__eyebrow::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--fc-line, rgba(255,255,255,0.2));
+    }
+
+    .iit__eyebrow-star {
+        color: var(--fc-accent, #BC2A27);
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
+
+    /* ── shared circle size — matches inc__icon (2.8rem) ── */
+    .iit__emp-icon,
+    .iit__step-icon {
+        /* d-flex align-items-center justify-content-center rounded-circle text-white handled by Bootstrap */
+        flex-shrink: 0;
+        width: 2.8rem;
+        height: 2.8rem;
+        border: 2px solid var(--fc-accent, #BC2A27); /* custom accent color */
+    }
+
+    .iit__emp-title {
+        /* fw-bold text-uppercase text-white handled by Bootstrap */
+        font-family: var(--font-action, 'Oswald', sans-serif);
+        font-size: clamp(0.95rem, 2vw, 1.1rem); /* clamp not replicable with Bootstrap */
+        letter-spacing: 0.04em;
+        margin: 0 0 0.25rem;
+    }
+
+    .iit__emp-desc {
+        /* fw-light handled by Bootstrap */
+        font-size: clamp(0.8rem, 1.8vw, 0.9rem); /* clamp not replicable with Bootstrap */
+        color: var(--fc-muted, #c9c9c9); /* custom CSS variable; Bootstrap text-secondary differs */
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    /* ── vertical accent rule between columns ── */
+    .iit__col-divider {
+        width: 1px;
+        background: var(--fc-line, rgba(255,255,255,0.12));
+        align-self: stretch;
+    }
+
+    /* ── path subheading ── */
+    .iit__path-heading {
+        /* fw-bold text-uppercase handled by Bootstrap */
+        font-family: var(--font-action, 'Oswald', sans-serif);
+        font-size: clamp(1.1rem, 3vw, 1.5rem); /* clamp not replicable with Bootstrap */
+        letter-spacing: 0.06em;
+        color: var(--fc-accent, #BC2A27); /* custom CSS variable */
+        margin: 0;
+    }
+
+    .iit__step-num {
+        /* d-flex align-items-center justify-content-center fw-bold text-white handled by Bootstrap */
+        flex-shrink: 0;
+        width: 2.2rem;
+        height: 2.2rem;
+        background: var(--fc-accent, #BC2A27); /* custom accent color; not a circle — square badge */
+        font-family: var(--font-action, 'Oswald', sans-serif);
+        font-size: 1.1rem;
+    }
+
+    .iit__step-title {
+        /* fw-bold text-uppercase text-white handled by Bootstrap */
+        font-family: var(--font-action, 'Oswald', sans-serif);
+        font-size: clamp(1.1rem, 3vw, 1.5rem); /* clamp not replicable with Bootstrap */
+        letter-spacing: 0.04em;
+        margin: 0 0 0.3rem;
+    }
+
+    .iit__step-desc {
+        /* fw-light handled by Bootstrap */
+        font-size: clamp(0.85rem, 2vw, 0.95rem); /* clamp not replicable with Bootstrap */
+        color: var(--fc-muted, #c9c9c9); /* custom CSS variable */
+        line-height: 1.6;
+        margin: 0;
+    }
+</style>
+
+<section class="iit">
+    <div class="iit__inner position-relative mx-auto">
+
+        <!-- eyebrow -->
+        <p class="iit__eyebrow d-flex align-items-center justify-content-center gap-3 mb-4 fw-bold text-uppercase text-white">
+            <span class="iit__eyebrow-star">★</span>
+            You don't have to figure this out alone
+            <span class="iit__eyebrow-star">★</span>
+        </p>
+
+        <!-- two-column grid: empathy (left) | steps (right) -->
+        <div class="row g-0 align-items-start">
+
+            <!-- ── LEFT COLUMN — empathy items ── -->
+            <div class="col-12 col-md-6 pe-md-4">
+                <ul class="list-unstyled p-0 d-flex flex-column gap-4 mb-0">
+
+                    <li class="d-flex align-items-start gap-3">
+                        <div class="iit__emp-icon d-flex align-items-center justify-content-center rounded-circle text-white flex-shrink-0">
+                            <!-- handshake / understanding -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 17a4 4 0 0 0 4-4V7H7v6a4 4 0 0 0 4 4z"/>
+                                <path d="M7 7H5a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h2"/>
+                                <path d="M17 7h2a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-2"/>
+                                <path d="M9 21h6"/><path d="M12 17v4"/>
+                            </svg>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <span class="iit__emp-title fw-bold text-uppercase text-white">We Understand</span>
+                            <span class="iit__emp-desc fw-light">We know what it feels like to see what's happening in the world—and feel the weight of knowing you should step up, but not having a clear path forward.</span>
+                        </div>
+                    </li>
+
+                    <li class="d-flex align-items-start gap-3">
+                        <div class="iit__emp-icon d-flex align-items-center justify-content-center rounded-circle text-white flex-shrink-0">
+                            <!-- shield with cross -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <line x1="12" y1="9" x2="12" y2="15"/>
+                                <line x1="9" y1="12" x2="15" y2="12"/>
+                            </svg>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <span class="iit__emp-title fw-bold text-uppercase text-white">We've Been There</span>
+                            <span class="iit__emp-desc fw-light">That's why Freedom Con was created—to equip thousands of Christian men with real clarity, practical strategy, and a brotherhood that pushes you to lead where it matters most.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- vertical rule — hidden on mobile -->
+            <div class="iit__col-divider d-none d-md-block mx-2"></div>
+
+            <!-- ── RIGHT COLUMN — path steps ── -->
+            <div class="col-12 col-md ps-md-4 mt-5 mt-md-0">
+                <ul class="list-unstyled p-0 d-flex flex-column gap-4 mb-0">
+
+                    <li class="d-flex flex-row-reverse flex-md-row align-items-start gap-3">
+                        <div class="iit__step-icon d-flex align-items-center justify-content-center rounded-circle text-white flex-shrink-0">
+                            <!-- lightbulb / clarity -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M9 12v2a3 3 0 0 0 6 0v-2"/>
+                                <line x1="8" y1="20" x2="16" y2="20"/>
+                                <line x1="9" y1="22" x2="15" y2="22"/>
+                            </svg>
+                        </div>
+                        <div class="d-flex align-items-start gap-2">
+                            <div class="iit__step-num d-flex align-items-center justify-content-center fw-bold text-white flex-shrink-0">1</div>
+                            <div class="d-flex flex-column">
+                                <h4 class="iit__step-title fw-bold text-uppercase text-white">Get Clear on Your Role</h4>
+                                <p class="iit__step-desc fw-light">Understand what it actually means to lead as a man, husband, and father in today's culture—and where you need to step up first.</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="d-flex flex-row-reverse flex-md-row align-items-start gap-3">
+                        <div class="iit__step-icon d-flex align-items-center justify-content-center rounded-circle text-white flex-shrink-0">
+                            <!-- flag / mission -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 21V4"/>
+                                <path d="M4 4l12 4-12 4"/>
+                                <circle cx="7" cy="18" r="1.5"/>
+                                <line x1="4" y1="18" x2="7" y2="18"/>
+                            </svg>
+                        </div>
+                        <div class="d-flex align-items-start gap-2">
+                            <div class="iit__step-num d-flex align-items-center justify-content-center fw-bold text-white flex-shrink-0">2</div>
+                            <div class="d-flex flex-column">
+                                <h4 class="iit__step-title fw-bold text-uppercase text-white">Learn What to Do Next</h4>
+                                <p class="iit__step-desc fw-light">Walk away with practical frameworks and real-world strategies you can apply immediately in your home, church, and community.</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="d-flex flex-row-reverse flex-md-row align-items-start gap-3">
+                        <div class="iit__step-icon d-flex align-items-center justify-content-center rounded-circle text-white flex-shrink-0">
+                            <!-- group of people / brotherhood -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="6" r="2.5"/>
+                                <circle cx="15" cy="6" r="2.5"/>
+                                <circle cx="5" cy="8" r="2"/>
+                                <circle cx="19" cy="8" r="2"/>
+                                <path d="M2 20v-1a4 4 0 0 1 4-4h2"/>
+                                <path d="M16 15h2a4 4 0 0 1 4 4v1"/>
+                                <path d="M7 15h10a4 4 0 0 1 4 4v1H3v-1a4 4 0 0 1 4-4z"/>
+                            </svg>
+                        </div>
+                        <div class="d-flex align-items-start gap-2">
+                            <div class="iit__step-num d-flex align-items-center justify-content-center fw-bold text-white flex-shrink-0">3</div>
+                            <div class="d-flex flex-column">
+                                <h4 class="iit__step-title fw-bold text-uppercase text-white">Lock Arms with Other Men</h4>
+                                <p class="iit__step-desc fw-light">Build relationships with men who will challenge you, support you, and hold you accountable long after the event ends.</p>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</section>

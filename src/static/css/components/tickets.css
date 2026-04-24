@@ -323,6 +323,28 @@
     background: #b8922a;
 }
 
+.tickets-promo-card__badge--green {
+    background: #2a7a3b;
+}
+
+.tickets-promo-card__badge--navy {
+    background: #1a3660;
+}
+
+.tickets-promo-card__list {
+    font-family: var(--font-regular, "Oswald", sans-serif);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.6;
+    margin: 0 0 1rem;
+    padding-left: 1.4em;
+}
+
+.tickets-promo-card__list li {
+    margin-bottom: 0.2em;
+}
+
 .tickets-promo-card__title {
     font-family: var(--font-action, "Fremont", "Oswald", sans-serif);
     font-size: 1.2rem;

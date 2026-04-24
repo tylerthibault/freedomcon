@@ -1,0 +1,17 @@
+{% extends 'bases/public.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/speakers.css') }}">
+{% endblock %}
+
+{% block page_wrapper %}
+{% include 'components/navigation.html'   %}
+<div class="page-clip">
+    {% include 'public/landing_v7/components/hero.html' %}
+    {% include 'public/landing_v7/components/end_of_world.html' %}
+    {% include 'public/landing_v7/components/if_nothing_changes.html' %}
+    {% include 'public/landing_v7/components/in_it_together.html' %}
+    {% include 'public/landing_v7/components/speakers.html' %}
+
+</div>
+{% endblock %}
