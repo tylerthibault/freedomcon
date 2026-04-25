@@ -401,12 +401,5 @@ body.spk-modal-open { overflow: hidden; }
         border-bottom: 1px solid #e5e7eb;
     }
     .spk-modal__org-row:last-child { border-bottom: none; }
-    .spk-modal__org-row::after {
-        content: '›';
-        margin-left: auto;
-        color: #9ca3af;
-        font-size: 1.1rem;
-        flex-shrink: 0;
-    }
     .spk-modal__orgs-wrap { padding: 0.75rem 0 1rem; }
 }

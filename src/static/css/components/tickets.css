@@ -214,6 +214,13 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.tickets-includes__lead,
+.tickets-includes__note {
+    font-family: var(--font-primary);
+    text-transform: none;
+    letter-spacing: normal;
+}
+
 .tickets-includes__lead {
     margin: 0 auto 1.8rem;
     max-width: 680px;
@@ -222,16 +229,34 @@
     line-height: 1.6;
 }
 
-/* pill grid — overrides the experience-page dash list */
-.tickets-includes .fc-exp-includes__list {
+/* two-column wrapper */
+.tickets-includes .fc-exp-includes__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+    max-width: 860px;
     margin-left: auto;
     margin-right: auto;
-    max-width: 860px;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 0.55rem;
 }
 
-.tickets-includes .fc-exp-includes__list li {
+/* pill grid — overrides the experience-page dash list */
+.tickets-includes .fc-exp-includes__columns .fc-exp-includes__list {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: unset !important;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (max-width: 575.98px) {
+    .tickets-includes .fc-exp-includes__columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+.tickets-includes .fc-exp-includes__columns .fc-exp-includes__list li {
     padding: 0.3rem 0 0.3rem 1rem;
     border: none;
     border-left: 3px solid var(--fc-accent, #BC2A27);
@@ -245,7 +270,7 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-.tickets-includes .fc-exp-includes__list li::before {
+.tickets-includes .fc-exp-includes__columns .fc-exp-includes__list li::before {
     display: none;
 }
 

@@ -283,6 +283,7 @@ def build_seo(
 
 @public_bp.get("/alt")
 def landing_alt() -> str:
+	# return redirect(url_for("public.landing_alt"))
 	context = {
 		"speakers": speakers_data,
 	}
@@ -290,6 +291,7 @@ def landing_alt() -> str:
 
 @public_bp.get("/")
 def landing() -> str:
+	# return redirect(url_for("public.landing_alt"))
 	"""Alt landing page — Customer-as-Hero / Story Brand variant."""
 	conference_trailers_section = build_media_section(
 		section_id="conference-trailers",
@@ -511,6 +513,80 @@ def press_page() -> str:
 	formsubmit_action = getenv("PRESS_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/info@strongermannation.com"
 	formsubmit_next = f"{SITE_URL}/thankyou"
 
+	_mk = "pdfs/FreedomCon Media Kit"
+	press_assets = [
+		{
+			"id": "posters",
+			"label": "Posters & Flyers",
+			"assets": [
+				{"label": "FreedomCon Banner",                    "thumb": f"{_mk}/Graphics/FreedomCon_Banner.png",                          "download": f"{_mk}/Graphics/FreedomCon_Banner.png"},
+				{"label": "Postcard",                             "thumb": f"{_mk}/Graphics/FreedomCon_PostCard.png",                        "download": f"{_mk}/Graphics/FreedomCon_PostCard.png"},
+				{"label": "Make Washington America Again",        "thumb": f"{_mk}/Graphics/FreedomCon Make Washington America Again.png",    "download": f"{_mk}/Graphics/FreedomCon Make Washington America Again.png"},
+				{"label": "Save The West",                        "thumb": f"{_mk}/Graphics/FreedomCon Save The West.png",                   "download": f"{_mk}/Graphics/FreedomCon Save The West.png"},
+				{"label": "We Will Have Our Home Again",          "thumb": f"{_mk}/Graphics/FreedomCon We Will Have Our Home Again.png",      "download": f"{_mk}/Graphics/FreedomCon We Will Have Our Home Again.png"},
+				{"label": "We Will Have Our Home Again (Alt)",    "thumb": f"{_mk}/Graphics/FreedomCon We Will Have Our Home Again2.png",     "download": f"{_mk}/Graphics/FreedomCon We Will Have Our Home Again2.png"},
+				{"label": "1080×1920 Vertical Graphic",           "thumb": f"{_mk}/Graphics/FreedomCon_1080x1920 Vertical Graphic.jpg",      "download": f"{_mk}/Graphics/FreedomCon_1080x1920 Vertical Graphic.jpg"},
+				{"label": "Speakers Flyer (PDF)",                 "thumb": None,                                                             "download": f"{_mk}/Flyers/FreedomCon_Speakers_Flyer.pdf"},
+				{"label": "Cover Flyer (PDF)",                    "thumb": None,                                                             "download": f"{_mk}/Flyers/FreedomCon_Cover.pdf"},
+				{"label": "Sponsor Packages (PDF)",               "thumb": None,                                                             "download": f"{_mk}/Flyers/FreedomCon_Sponsor_Packages.pdf"},
+			],
+		},
+		{
+			"id": "speakers",
+			"label": "Speaker Headshots",
+			"assets": [
+				{"label": "Featured Speakers (16:9)",             "thumb": f"{_mk}/Speakers & Headshots/FreedomCon 1920x1080 Featured Speakers.jpg",   "download": f"{_mk}/Speakers & Headshots/FreedomCon 1920x1080 Featured Speakers.jpg"},
+				{"label": "Featured Speakers + Gen Z (Print)",    "thumb": f"{_mk}/Speakers & Headshots/8.5x11 Featured Speakers PLUS GEN Z.jpg",      "download": f"{_mk}/Speakers & Headshots/8.5x11 Featured Speakers PLUS GEN Z.jpg"},
+				{"label": "Steven Crowder",                       "thumb": f"{_mk}/Speakers & Headshots/FreedomCon_Crowder.jpeg",                       "download": f"{_mk}/Speakers & Headshots/FreedomCon_Crowder.jpeg"},
+				{"label": "Josh McPherson",                       "thumb": f"{_mk}/Speakers & Headshots/FreedomCon_Josh_McPherson.jpg",                 "download": f"{_mk}/Speakers & Headshots/FreedomCon_Josh_McPherson.jpg"},
+				{"label": "Adam J",                               "thumb": "img/speakers/AdamJ_3.png",          "download": "img/speakers/AdamJ_3.png"},
+				{"label": "Chad R",                               "thumb": "img/speakers/ChadR_3.png",          "download": "img/speakers/ChadR_3.png"},
+				{"label": "Dave B",                               "thumb": "img/speakers/DaveB_2.png",          "download": "img/speakers/DaveB_2.png"},
+				{"label": "Eric M",                               "thumb": "img/speakers/EricM_3.png",          "download": "img/speakers/EricM_3.png"},
+				{"label": "Graham A",                             "thumb": "img/speakers/GrahamA_3.png",        "download": "img/speakers/GrahamA_3.png"},
+				{"label": "John L",                               "thumb": "img/speakers/JohnL_3.png",          "download": "img/speakers/JohnL_3.png"},
+				{"label": "Josh H",                               "thumb": "img/speakers/JoshH.png",            "download": "img/speakers/JoshH.png"},
+				{"label": "Josh M",                               "thumb": "img/speakers/JoshM_5.1.png",        "download": "img/speakers/JoshM_5.1.png"},
+				{"label": "Mark",                                 "thumb": "img/speakers/Mark_4.png",           "download": "img/speakers/Mark_4.png"},
+				{"label": "Nate S",                               "thumb": "img/speakers/NateS_5.1.png",        "download": "img/speakers/NateS_5.1.png"},
+				{"label": "Nick F",                               "thumb": "img/speakers/NickF_3.png",          "download": "img/speakers/NickF_3.png"},
+				{"label": "Russell J",                            "thumb": "img/speakers/RussellJ_3.png",       "download": "img/speakers/RussellJ_3.png"},
+				{"label": "Ryan V",                               "thumb": "img/speakers/RyanV_2.png",          "download": "img/speakers/RyanV_2.png"},
+				{"label": "Tim B",                                "thumb": "img/speakers/TimB_2.png",           "download": "img/speakers/TimB_2.png"},
+			],
+		},
+		{
+			"id": "logos",
+			"label": "Logos & Brand Assets",
+			"assets": [
+				{"label": "FreedomCon Logo (Color)",              "thumb": f"{_mk}/Logos/SMN_FreedomCon_Logo.jpg",       "download": f"{_mk}/Logos/SMN_FreedomCon_Logo.jpg"},
+				{"label": "FreedomCon Logo (Red)",                "thumb": f"{_mk}/Logos/SMN_FreedomCon_Logo_Red.png",   "download": f"{_mk}/Logos/SMN_FreedomCon_Logo_Red.png"},
+				{"label": "FreedomCon Logo 1",                    "thumb": f"{_mk}/Logos/freedomcon_logo1.png",          "download": f"{_mk}/Logos/freedomcon_logo1.png"},
+				{"label": "FreedomCon Logo 2",                    "thumb": f"{_mk}/Logos/freedomcon_logo2.png",          "download": f"{_mk}/Logos/freedomcon_logo2.png"},
+				{"label": "SMN Logo",                             "thumb": "img/sponsor_logos/SMN_logo.avif",            "download": "img/sponsor_logos/SMN_logo.avif"},
+				{"label": "Title with Shield",                    "thumb": "img/title_with_shield.svg",                  "download": "img/title_with_shield.svg"},
+				{"label": "Title (No Shield)",                    "thumb": "img/title_no_shield.png",                    "download": "img/title_no_shield.png"},
+				{"label": "Title on Black",                       "thumb": "img/title_on_black.png",                     "download": "img/title_on_black.png"},
+			],
+		},
+		{
+			"id": "social",
+			"label": "Social Media Graphics",
+			"assets": [
+				{"label": "Shareable Graphic",                    "thumb": "img/sharable.png",                                                        "download": "img/sharable.png"},
+				{"label": "FreedomCon – See You There (Mobile)",  "thumb": "img/videos/Well_See_You_at_Freedom_Con-mobile.png",                       "download": "img/videos/Well_See_You_at_Freedom_Con-mobile.png"},
+				{"label": "George Washington Story (Mobile)",     "thumb": "img/videos/george_washington_story-mobile.jpg",                           "download": "img/videos/george_washington_story-mobile.jpg"},
+				{"label": "Our Home (Mobile)",                    "thumb": "img/videos/our_home-mobile.jpg",                                          "download": "img/videos/our_home-mobile.jpg"},
+				{"label": "To Every Man (Mobile)",                "thumb": "img/videos/to_every_man-mobile.png",                                      "download": "img/videos/to_every_man-mobile.png"},
+				{"label": "A Vision for Young Men (Story)",       "thumb": "img/videos/A Vision for Young Men (Instagram Story).jpeg",                "download": "img/videos/A Vision for Young Men (Instagram Story).jpeg"},
+				{"label": "Win Back Washington (Story)",          "thumb": "img/videos/WE CAN FLIP WASHINGTON STATE (Instagram Story).png",           "download": "img/videos/WE CAN FLIP WASHINGTON STATE (Instagram Story).png"},
+				{"label": "Winning Back (Story)",                 "thumb": "img/videos/WINNING BACK (Instagram Story) - 1.png",                       "download": "img/videos/WINNING BACK (Instagram Story) - 1.png"},
+				{"label": "Make Washington America Again",        "thumb": f"{_mk}/Graphics/FreedomCon Make Washington America Again.png",             "download": f"{_mk}/Graphics/FreedomCon Make Washington America Again.png"},
+				{"label": "1080×1920 Vertical Graphic",          "thumb": f"{_mk}/Graphics/FreedomCon_1080x1920 Vertical Graphic.jpg",               "download": f"{_mk}/Graphics/FreedomCon_1080x1920 Vertical Graphic.jpg"},
+			],
+		},
+	]
+
 	return render_template(
 		"public/press/index.html",
 		media_kit_download_url=media_kit_download_url,
@@ -518,6 +594,7 @@ def press_page() -> str:
 		men_picture_url=men_picture_url,
 		formsubmit_action=formsubmit_action,
 		formsubmit_next=formsubmit_next,
+		press_assets=press_assets,
 		seo=build_seo(
 			title="Freedom Con Press & Media Kit",
 			description="Download the Freedom Con media kit and connect with us for sponsor interviews, press requests, and partnership details.",

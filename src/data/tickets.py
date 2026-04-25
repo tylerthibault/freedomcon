@@ -1,17 +1,17 @@
 ticket_prices = [
     {
-        "name": "Under 12 Years Old",
-        "price": "$99",
-        "tax_total": "$105.16 with all taxes & fees",
-        "notes": [],
-        "highlight": False,
-    },
-    {
         "name": "General Admission",
         "price": "$149",
         "tax_total": "$157.11 with all taxes & fees",
         "notes": [],
         "highlight": True,
+    },
+    {
+        "name": "Youth (Under 12)",
+        "price": "$99",
+        "tax_total": "$105.16 with all taxes & fees",
+        "notes": [],
+        "highlight": False,
     },
     {
         "name": "VIP Admission",
@@ -25,8 +25,7 @@ ticket_prices = [
         ],
         "highlight": False,
     },
-    {
-        "name": "Group Rate",
+    {        "name": "Group Rate",
         "price": "+10 or more\n15% off",
         "tax_total": None,
         "notes": [
@@ -35,8 +34,7 @@ ticket_prices = [
         ],
         "highlight": False,
     },
-    {
-        "name": "VIP Pastor Experience",
+    {        "name": "Pastor VIP",
         "price": "25% off",
         "tax_total": None,
         "notes": [

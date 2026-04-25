@@ -74,6 +74,28 @@ body:has(.landing12-header) .page-clip {
     /* layout: d-flex align-items-center justify-content-between gap-3 mx-auto on element */
     padding: 1rem 2rem;
     max-width: 1440px;
+    transition: padding 220ms ease;
+}
+
+/* ── Desktop condensed (scroll-down) state ────────────────────────────── */
+@media (min-width: 768px) {
+    .landing12-nav.is-condensed {
+        padding-top: 0.45rem;
+        padding-bottom: 0.45rem;
+    }
+
+    .landing12-nav.is-condensed .landing12-nav-urgency {
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transition: opacity 180ms ease, visibility 180ms ease, max-height 180ms ease;
+    }
+
+    .landing12-nav-urgency {
+        transition: opacity 220ms ease, visibility 220ms ease, max-height 220ms ease;
+    }
 }
 
 .landing12-brand {
@@ -83,6 +105,19 @@ body:has(.landing12-header) .page-clip {
     font-weight: 800;
     text-decoration: none;
     flex-shrink: 0;
+}
+
+.landing12-brand-logo {
+    height: 1.2rem;
+    width: auto;
+    display: block;
+    opacity: 1;
+    transition: opacity 220ms ease;
+}
+
+.landing12-nav.is-at-top .landing12-brand-logo {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .landing12-links {
@@ -354,6 +389,7 @@ body:has(.landing12-header) .page-clip {
         opacity: 1;
         overflow: hidden;
         transform: translateY(0);
+        transition: opacity 220ms ease, visibility 220ms ease, max-height 260ms ease, margin-top 260ms ease;
     }
 
     .landing12-nav.is-condensed {
@@ -373,12 +409,16 @@ body:has(.landing12-header) .page-clip {
     .landing12-nav.is-condensed .landing12-nav-urgency {
         opacity: 0;
         visibility: hidden;
+        max-height: 0;
+        margin-top: 0;
         transform: translateY(-0.35rem);
     }
 
     .landing12-nav.is-at-top .landing12-nav-urgency {
         opacity: 0;
         visibility: hidden;
+        max-height: 0;
+        margin-top: 0;
         transform: translateY(-0.35rem);
     }
 

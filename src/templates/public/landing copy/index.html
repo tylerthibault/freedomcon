@@ -86,23 +86,15 @@
     </section>
 
     {% include 'public/landing copy/components/why_now.html' %}
-
     <section class="landing12-liberty" aria-label="Call to join the cause of liberty">
         <video class="landing12-liberty-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
             <source src="https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/PHOTO%20REEL%202.mp4" type="video/mp4">
         </video>
         <div class="landing12-liberty-inner">
-            <p class="landing12-liberty-text fs-1">Join Thousands Of American Christian Men and Patriots, In The Cause
-                Of Liberty.</p>
+            <!-- <p class="landing12-liberty-text fs-1">Join Thousands Of American Christian Men and Patriots in The Cause Of Liberty.</p> -->
+            <p class="landing12-liberty-text fs-1">This Is What It Looks Like When Men Show Up.</p>
         </div>
     </section>
-
-
-    
-    <div class="my-2">
-        {% set ticker_category = 'all' %}
-        {% include 'components/sponsor_ticker.html' %}
-    </div>
     
     {% include 'public/landing copy/components/mission_statement.html' %}
     
@@ -133,6 +125,11 @@
     {% include 'public/landing copy/components/accomodation.html' %}
 
     {% include 'public/landing copy/components/social_proof.html' %}
+
+    <div class="my-2">
+        {% set ticker_category = 'all' %}
+        {% include 'components/sponsor_ticker.html' %}
+    </div>
 </main>
 {% endblock %}
 
