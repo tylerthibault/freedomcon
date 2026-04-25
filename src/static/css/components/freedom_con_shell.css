@@ -62,7 +62,6 @@ body.landing12-no-scroll {
     right: 0;
     z-index: 1000;
     background: rgba(0, 0, 0, 0.92);
-    border-bottom: 1px solid var(--fc-line);
 }
 
 /* Push page content below the fixed nav */
@@ -111,7 +110,6 @@ body:has(.landing12-header) .page-clip {
     height: 1.2rem;
     width: auto;
     display: block;
-    opacity: 1;
     transition: opacity 220ms ease;
 }
 

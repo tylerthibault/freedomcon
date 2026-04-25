@@ -4,7 +4,7 @@
 
 .landing12-mission {
     padding-top: clamp(2.25rem, 4vw, 3.75rem);
-    padding-bottom: clamp(1rem, 2vw, 1.75rem);
+    /* padding-bottom: clamp(1rem, 2vw, 1.75rem); */
 }
 
 .landing12-mission__grid {

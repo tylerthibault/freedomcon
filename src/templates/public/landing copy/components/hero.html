@@ -1,23 +1,79 @@
-<section class="hero-seq text-center" aria-label="Freedom Con hero">
-	<div class="hero-seq__nation anim anim-fade-in">
-		<p class="hero-seq__nation-line">Stronger Man Nation</p>
-		<p class="hero-seq__presents">presents</p>
-	</div>
+<style>
+  /* ── Hero ─────────────────────────────────────────────────────── */
+  .landing12-hero {
+    display: block;
+    padding: 0;
+  }
 
-	<div class="hero-seq__event anim anim-slide-up">
-		<div class="hero-seq__title-row d-flex align-items-center justify-content-center">
-			<span class="hero-seq__star" aria-hidden="true">★</span>
-			<h1 class="hero-seq__title">Freedom Con</h1>
-			<span class="hero-seq__star" aria-hidden="true">★</span>
-		</div>
-		<div class="hero-seq__subtitle-row d-flex align-items-center justify-content-center">
-			<span class="hero-seq__year">1776</span>
-			<p class="hero-seq__subtitle">Rise Of The Statesman</p>
-			<span class="hero-seq__year">2026</span>
-		</div>
-	</div>
+  .landing12-hero-media {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background: #000;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0;
+    padding: 0;
+  }
 
-	<div class="hero-seq__men anim anim-zoom-in">
-		<img src="{{ url_for('static', filename='img/TheGuysFadeFeet.avif') }}" alt="Freedom Con speakers lineup">
+  .landing12-hero-title-image {
+    width: 90vw;
+    height: auto;
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    animation: landing12-fade-up 900ms ease-out 180ms forwards;
+  }
+
+  .landing12-hero-lineup-image {
+    width: 100vw;
+    height: auto;
+    display: block;
+    margin-top: clamp(-6.5rem, -7vw, -2.5rem);
+    opacity: 0;
+    animation: landing12-fade-up 1050ms ease-out 960ms forwards;
+  }
+
+  @keyframes landing12-fade-up {
+    from { opacity: 0; transform: translate3d(0, 22px, 0); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+
+  @media (max-width: 767.98px) {
+    .landing12-hero { padding-top: 0; }
+    .landing12-hero-media { min-height: 0; padding: 0; width: 100vw; }
+    .landing12-hero-title-image {
+      padding-top: 2em;
+      /* width: min(450px, 80vw); */
+    }
+    .landing12-hero-lineup-image {
+      width: min(1540px, 104vw);
+      margin-top: clamp(-3rem, -5vw, -1.5rem);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .landing12-hero-media img { width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .landing12-hero-title-image,
+    .landing12-hero-lineup-image {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<h1 class="visually-hidden">Freedom Con 2026 at The Gorge Amphitheatre</h1>
+<section class="landing12-hero" aria-label="Freedom Con hero">
+	<div class="landing12-hero-media">
+		<img class="landing12-hero-title-image" src="{{ url_for('static', filename='img/freedom_con_congress.png') }}"
+			alt="Rise of the Statesman title">
+		<img class="landing12-hero-lineup-image px-3s" src="{{ url_for('static', filename='img/guys_rise_of_the_statesmen.png') }}"
+			alt="Freedom Con speakers lineup">
 	</div>
 </section>

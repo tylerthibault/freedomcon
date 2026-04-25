@@ -57,6 +57,15 @@
 .fw-bold    { font-weight: 700 !important; }
 .fw-bolder  { font-weight: 900 !important; }
 
+/* text colors */
+.text-primary { color: var(--color-primary) !important; }
+.text-secondary { color: var(--color-secondary) !important; }
+.text-accent { color: var(--color-accent) !important; }
+.text-muted { color: var(--color-secondary) !important; }
+.text-red { color: var(--color-accent) !important; }
+.text-green { color: var(--color-green) !important; }
+.text-navy { color: var(--color-navy) !important; }
+
 /* Buttons */
 .btn-primary {
 	background-color: var(--color-accent) !important;

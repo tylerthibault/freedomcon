@@ -580,7 +580,7 @@ body.landing12-no-scroll {
 .landing12-wrap {
     /* centering: mx-auto on element */
     max-width: 1240px;
-    padding: 5rem 2rem;
+    /* padding: 5rem 2rem; */
 }
 
 .landing12-wrap--cta {
@@ -1564,7 +1564,7 @@ body.landing12-no-scroll {
     }
 
     .landing12-wrap {
-        padding: 3.2rem 1rem;
+        /* padding: 3.2rem 1rem; */
     }
 
     .landing12-liberty-inner {
