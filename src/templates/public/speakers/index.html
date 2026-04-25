@@ -51,8 +51,8 @@
 {% endblock %}
 
 {% block scripts %}
-{# Modal JS lives in main.js — available globally #}
-{% endblock %}
+<script>
+(function () {
 	const backdrop = document.getElementById('speakerBioModal');
 	if (!backdrop) return;
 
@@ -132,5 +132,6 @@
 	backdrop.addEventListener('click', e => { if (e.target === backdrop) closeModal(); });
 	document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-}()); #}
+}());
+</script>
 {% endblock %}
