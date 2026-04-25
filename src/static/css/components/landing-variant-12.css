@@ -115,10 +115,6 @@ body.landing12-no-scroll {
     gap: 0.7rem;
 }
 
-.landing12-cta-row--center {
-    /* justify-content-center on element */
-}
-
 .landing12-cta-row--top-gap {
     margin-top: 1rem;
 }
@@ -298,6 +294,7 @@ body.landing12-no-scroll {
 .landing12-event-highlight,
 .landing12-liberty,
 .landing12-wrap--cta,
+.landing12-info-cards,
 .speakers-section,
 .landing12-cta-2,
 .landing12-trailers,
@@ -326,6 +323,10 @@ body.landing12-no-scroll {
 
 .landing12-wrap--cta {
     animation-delay: 1540ms;
+}
+
+.landing12-info-cards {
+    animation-delay: 1620ms;
 }
 
 .speakers-section {
@@ -375,6 +376,7 @@ body.landing12-no-scroll {
     .landing12-event-highlight,
     .landing12-liberty,
     .landing12-wrap--cta,
+    .landing12-info-cards,
     .speakers-section,
     .landing12-cta-2,
     .landing12-trailers,
@@ -1899,7 +1901,6 @@ body.landing12-no-scroll {
     color: rgba(255, 255, 255, 0.75);
     line-height: 1.65;
     font-size: clamp(0.9rem, 1.4vw, 1.05rem);
-}
 }
 .landing12-father-son__inner {
     text-align: center;
