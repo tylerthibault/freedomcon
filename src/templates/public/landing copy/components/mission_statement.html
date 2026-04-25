@@ -1,3 +1,49 @@
+<style>
+  .animation_underline {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .animation_underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 3px;
+    width: 0;
+    background-color: var(--color-accent);
+    transition: none;
+  }
+  .animation_underline.is-visible::after {
+    animation: underline-grow 0.8s ease forwards;
+  }
+  @keyframes underline-grow {
+    to { width: 100%; }
+  }
+</style>
+<script>
+  (function () {
+    function initUnderlineObserver() {
+      var els = document.querySelectorAll('.animation_underline');
+      if (!els.length) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      els.forEach(function (el) { observer.observe(el); });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initUnderlineObserver);
+    } else {
+      initUnderlineObserver();
+    }
+  })();
+</script>
+
 <!--
   COPY SOURCE — master_plan_1.txt / master_plan_2.txt
   ─────────────────────────────────────────────────────────────────────
@@ -23,25 +69,49 @@
     <div class="landing12-mission__grid">
         <article class="landing12-mission__panel landing12-mission__panel--story">
             <p class="landing12-mission__bg-copy" aria-hidden="true">Declaration Of Independence</p>
-            <p class="landing12-mission__eyebrow">The Mission Statement</p>
-            <h2 class="landing12-mission__title">A Strategic Assembly For Courageous, Coordinated Action</h2>
-            <p class="landing12-mission__body">FREEDOM CON is more than a conference, it is a <strong>STRATEGIC ASSEMBLY</strong> of men from Washington and across the nation to confront tax tyranny, radical legislation, and bureaucratic overreach that threaten to suffocate families, small businesses, and churches.</p>
-            <p class="landing12-mission__body">Through worship, preaching, historic storytelling, side-stage equipping, and a clear playbook for civic engagement and reform, men will be given language for their frustration and specific steps to channel it into <strong>COURAGEOUS, COORDINATED ACTION.</strong></p>
+            <!-- <p class="landing12-mission__eyebrow text-center">The Mission</p> -->
+            <p class="landing12-mission__title fs-1 text-start">Griping changes nothing.</p>
+            <p class="landing12-mission__title text-red fs-1 text-start">Men with a plan changes <span class="animation_underline">everything</span>.</p>
+            <p class="landing12-mission__title">Reformation Starts Now</p>
+
+            <!-- <p class="landing12-mission__body">FREEDOM CON is a <strong>STRATEGIC ASSEMBLY</strong> of men from Washington and across the nation to confront tax tyranny, radical legislation, and bureaucratic overreach that crushes families, suffocates small businesses, and weakens churches.</p>
+            <p class="landing12-mission__body">Through worship, preaching, storytelling, side-stage equipping, and a clear playbook for civic engagement and reform, men will be given language for their frustration and specific steps to channel it into <strong>COURAGEOUS, COORDINATED ACTION.</strong></p> -->
+            <ul class="landing12-mission__impact-list">
+                    <li class="landing12-mission__impact-item">
+                        <svg class="landing12-mission__impact-icon" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
+                            <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z" />
+                        </svg>
+                        <span><span class="fw-bold">FREEDOM CON</span>, designed as a catalytic experience, will call men to a plan of action for preserving the vision of America's Founding Fathers.</span>
+                    </li>
+                    <li class="landing12-mission__impact-item">
+                        <svg class="landing12-mission__impact-icon" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
+                            <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z" />
+                        </svg>
+                        <span><span class="fw-bold">SPEAKERS</span> will unpack the historical precedent, biblical foundation, and moral necessity of Christian statesmanship.</span>
+                    </li>
+                    <li class="landing12-mission__impact-item">
+                        <svg class="landing12-mission__impact-icon" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
+                            <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z" />
+                        </svg>
+                        <span><span class="fw-bold">SESSIONS</span> will combine intellectual rigor, unapologetic patriotism, and unwavering biblical conviction to summon men and boys to this noble call as a capstone expression of stronger manhood.</span>
+                    </li>
+                </ul>
             <div class="landing12-cta-row landing12-mission__cta d-flex flex-wrap align-items-center">
                 <!-- <a class="landing12-btn" href="{{ url_for('public.story_page') }}">Review The Playbook</a> -->
                 <!-- <a class="landing12-btn landing12-btn" href="{{ url_for('public.experience_page') }}">View Schedule</a> -->
             </div>
         </article>
 
-        <div class="landing12-mission__rail">
+        <!-- <div class="landing12-mission__rail">
             <aside class="landing12-mission__panel landing12-mission__panel--impact" aria-label="Strategic impact">
-                <p class="landing12-mission__eyebrow">Strategic Impact</p>
+                <p class="landing12-mission__eyebrow text-center">Strategic Impact</p>
+                <p class="fs-7"> </p>
                 <ul class="landing12-mission__impact-list">
                     <li class="landing12-mission__impact-item">
                         <svg class="landing12-mission__impact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                             <path d="M4 11h16M4 15h16M6 7h12M7 19h10M8.5 7V4h7V7" />
                         </svg>
-                        <span>Civic defense protocols for local leadership.</span>
+                        <span>Designed as a catalytic experience, FREEDOM CON will call men to a plan of action for preserving the vision of America's Founding Fathers.</span>
                     </li>
                     <li class="landing12-mission__impact-item">
                         <svg class="landing12-mission__impact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -49,14 +119,14 @@
                             <path d="M5.5 19c0-2.6 2.9-4.2 6.5-4.2s6.5 1.6 6.5 4.2" />
                             <path d="M2.8 15.5c.5-1.7 2-3.2 3.9-3.6M21.2 15.5c-.5-1.7-2-3.2-3.9-3.6" />
                         </svg>
-                        <span>Restoring the foundations of Christianity in the American political sphere.</span>
+                        <span>Speakers will unpack the historical precedent, biblical foundation, and moral necessity of Christian statesmanship.</span>
                     </li>
                     <li class="landing12-mission__impact-item">
                         <svg class="landing12-mission__impact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                             <path d="M4 12h12" />
                             <path d="M13 7l5 5-5 5" />
                         </svg>
-                        <span>Unifying fragmented voices into a singular, coordinated movement of reformation.</span>
+                        <span>Sessions will combine intellectual rigor, unapologetic patriotism, and unwavering conviction to summon men and boys to this noble call as a capstone expression of stronger manhood.</span>
                     </li>
                 </ul>
             </aside>
@@ -68,6 +138,6 @@
                     <p class="landing12-mission__yield">Refuse To Yield.</p>
                 </figcaption>
             </figure>
-        </div>
+        </div> -->
     </div>
 </section>

@@ -1,0 +1,17 @@
+{% set ds = wives.dads_sons %}
+<section class="wives-dads-sons" aria-label="Dads and sons at Freedom Con">
+	<div class="wives-dads-sons__inner container-xl">
+		<p class="wives-dads-sons__eyebrow">{{ ds.eyebrow }}</p>
+		<h2 class="wives-dads-sons__title">{{ ds.title }}</h2>
+		<p class="wives-dads-sons__copy">{{ ds.copy }}</p>
+		{% if ds.gallery and ds.gallery|length %}
+		<div class="wives-dads-sons__gallery">
+			{% for img in ds.gallery %}
+			<div class="wives-dads-sons__gallery-item">
+				<img src="{{ url_for('static', filename=img.src) }}" alt="{{ img.alt }}" loading="lazy">
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+	</div>
+</section>

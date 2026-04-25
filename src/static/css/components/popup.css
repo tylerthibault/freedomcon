@@ -101,7 +101,26 @@
 
 /* ---- Individual deal ---- */
 .promo-modal__deal {
-    padding: 1.25rem 0;
+    display: block;
+    padding: 1.25rem 0.75rem;
+    margin: 0 -0.75rem;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 6px;
+    transition: background 0.15s ease, transform 0.15s ease;
+    cursor: pointer;
+}
+
+a.promo-modal__deal:hover,
+a.promo-modal__deal:focus-visible {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateX(3px);
+    outline: none;
+}
+
+a.promo-modal__deal:hover .promo-modal__deal-headline,
+a.promo-modal__deal:focus-visible .promo-modal__deal-headline {
+    color: var(--color-accent, #BC2A27);
 }
 
 .promo-modal__deal-badge {

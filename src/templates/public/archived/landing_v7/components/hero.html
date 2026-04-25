@@ -1,0 +1,78 @@
+<style>
+    /* Mobile: stacked layout */
+    #hero-speakers {
+        margin-top: -1rem;
+        width: 100%;
+    }
+
+    p.hero-headline {
+        font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+    }
+
+    /* Desktop: two-column layout below the title */
+    @media (min-width: 768px) {
+        #hero-body {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 0;
+        }
+
+        #hero-speakers {
+            width: 45%;
+            flex-shrink: 0;
+            margin-top: 0;
+        }
+
+        #hero-content {
+            flex: 1;
+        }
+
+        #hero-content p.hero-headline {
+            text-align: left;
+            font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+        }
+
+        #hero-content .hero-buttons {
+            justify-content: flex-start;
+        }
+
+        #hero-content .hero-tagline {
+            justify-content: flex-start;
+        }
+
+        #hero-content .hero-details {
+            justify-content: flex-start;
+        }
+    }
+</style>
+
+<section id="hero" class="hero my-3">
+    <img class="w-100" src="{{ url_for('static', filename='img/title_no_shield_congress.png') }}" alt="Hero Image">
+
+    <div id="hero-body">
+        <img id="hero-speakers" src="{{ url_for('static', filename='img/the_guys_mobile.png') }}" alt="Speakers of Freedom Con">
+
+        <div id="hero-content">
+            <p class="hero-headline text-uppercase fw-bold text-center mb-0">It's Time to Step into the man you're called to be</p>
+            <p class="mt-0 pt-0">Freedom Con 2026 is a 2-day gathering for Christian men who are ready to lead their families, stand firm in their communities, and take responsibility for the future.</p>
+            <div class="hero-buttons d-flex gap-3 justify-content-center align-items-center flex-wrap">
+                <a href="/tickets" class="btn btn-primary btn-xl">Get Tickets</a>
+                <a href="#speakers" class="btn btn-secondary btn-xl">See Speakers</a>
+            </div>
+            <div class="hero-tagline d-flex gap-3 border-top border-bottom border-1 border-light justify-content-center align-items-center mt-3 text-uppercase">
+                <p class="text-center mt-3 fw-lighter">Find your battle,</p>
+                <p class="text-center mt-3 fw-lighter">Join the Congress</p>
+            </div>
+            <div class="hero-details d-flex flex-wrap justify-content-center align-items-center gap-2 mt-3 text-uppercase fw-lighter">
+                <span>June 19-20, 2026</span>
+                <span>|</span>
+                <span>The Gorge Amphitheatre, WA</span>
+                <span>|</span>
+                <span>2-Day Outdoor Conference + Camping</span>
+                <span>|</span>
+                <span>Worship · Speakers · Brotherhood</span>
+            </div>
+        </div>
+    </div>
+</section>

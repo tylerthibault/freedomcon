@@ -1,0 +1,60 @@
+{# ══════════════════════════════════════════════════════════
+1. COUNTDOWN BAR
+══════════════════════════════════════════════════════════ #}
+{% set countdown_iso = '2026-06-19T17:00:00-07:00' %}
+<div class="alt-countdown-bar" role="timer" aria-live="polite" aria-label="Event countdown">
+    <span class="alt-countdown-bar__label">Freedom Con starts in</span>
+    <span class="alt-countdown-bar__units" data-alt-countdown="{{ countdown_iso }}">
+        <span class="alt-countdown-bar__unit">
+            <span class="alt-countdown-bar__num" data-cd-days>--</span>
+            <span class="alt-countdown-bar__lbl">days</span>
+        </span>
+        <span class="alt-countdown-bar__sep">:</span>
+        <span class="alt-countdown-bar__unit">
+            <span class="alt-countdown-bar__num" data-cd-hours>--</span>
+            <span class="alt-countdown-bar__lbl">hrs</span>
+        </span>
+        <span class="alt-countdown-bar__sep">:</span>
+        <span class="alt-countdown-bar__unit">
+            <span class="alt-countdown-bar__num" data-cd-mins>--</span>
+            <span class="alt-countdown-bar__lbl">min</span>
+        </span>
+        <span class="alt-countdown-bar__sep">:</span>
+        <span class="alt-countdown-bar__unit">
+            <span class="alt-countdown-bar__num" data-cd-secs>--</span>
+            <span class="alt-countdown-bar__lbl">sec</span>
+        </span>
+    </span>
+    <!-- <span class="alt-countdown-bar__urgency">· Early bird ends May 1</span> -->
+</div>
+
+<script>
+    /* ── Alt page countdown timer ───────────────────────────────── */
+    (function () {
+        var el = document.querySelector('[data-alt-countdown]');
+        if (!el) return;
+        var target = new Date(el.dataset.altCountdown).getTime();
+        var dEl = el.querySelector('[data-cd-days]');
+        var hEl = el.querySelector('[data-cd-hours]');
+        var mEl = el.querySelector('[data-cd-mins]');
+        var sEl = el.querySelector('[data-cd-secs]');
+        if (!dEl || !hEl || !mEl || !sEl) return;
+
+        function pad(n) { return String(n).padStart(2, '0'); }
+
+        function tick() {
+            var now = Date.now();
+            var diff = target - now;
+            if (diff <= 0) {
+                dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = '00';
+                return;
+            }
+            dEl.textContent = pad(Math.floor(diff / 86400000));
+            hEl.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+            mEl.textContent = pad(Math.floor((diff % 3600000) / 60000));
+            sEl.textContent = pad(Math.floor((diff % 60000) / 1000));
+            setTimeout(tick, 1000);
+        }
+        tick();
+    }());
+</script>

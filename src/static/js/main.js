@@ -10,29 +10,27 @@ document.addEventListener("DOMContentLoaded", () => {
 		const syncLanding12MobileNavState = () => {
 			landing12ScrollTicking = false;
 
-			if (!mobileNavQuery.matches) {
-				landing12Nav.classList.remove("is-condensed");
-				landing12Nav.classList.remove("is-at-top");
-				landing12LastScrollY = window.scrollY;
-				return;
-			}
-
 			const currentScrollY = Math.max(window.scrollY, 0);
 			const isAtTop = currentScrollY <= 24;
 			const nearBottom = (currentScrollY + window.innerHeight) >= (document.documentElement.scrollHeight - 80);
 			landing12Nav.classList.toggle("is-at-top", isAtTop);
 
-			if (isAtTop) {
-				landing12Nav.classList.add("is-condensed");
+			if (mobileNavQuery.matches) {
+				// Mobile: always condensed once past the top
+				if (isAtTop) {
+					landing12Nav.classList.add("is-condensed");
+				} else {
+					landing12Nav.classList.add("is-condensed");
+				}
 				landing12LastScrollY = currentScrollY;
 				return;
-			}
-
-			// Near the bottom: keep nav condensed to prevent promo strip from animating in
-			if (nearBottom) {
-				landing12Nav.classList.add("is-condensed");
-				landing12LastScrollY = currentScrollY;
-				return;
+			} else {
+				// Desktop: full size at top, shrink when scrolling down
+				if (isAtTop) {
+					landing12Nav.classList.remove("is-condensed");
+					landing12LastScrollY = currentScrollY;
+					return;
+				}
 			}
 
 			const scrollDelta = currentScrollY - landing12LastScrollY;

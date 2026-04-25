@@ -1,0 +1,284 @@
+<style>
+	.landing12-info-cards {
+		background: #000;
+	}
+
+	.landing12-info-cards__inner {
+		padding-top: clamp(1.25rem, 2.4vw, 2rem);
+		padding-bottom: clamp(1.6rem, 2.8vw, 2.4rem);
+	}
+
+	.landing12-info-cards__eyebrow {
+		margin: 0;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--fc-accent);
+		font-weight: 700;
+	}
+
+	.landing12-info-cards__grid {
+		margin-top: 0.9rem;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(0.5rem, 1.1vw, 0.8rem);
+	}
+
+	.landing12-info-cards__item {
+		margin: 0;
+		background: #0a0a0a;
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		border-radius: 0.55rem;
+		overflow: hidden;
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+		position: relative;
+		aspect-ratio: 3 / 4;
+		max-height: clamp(320px, 42vw, 480px);
+	}
+
+	.landing12-info-cards__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.landing12-info-cards__overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: clamp(0.65rem, 1.7vw, 1rem);
+		background:
+			linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.45) 52%, rgba(0, 0, 0, 0.7) 100%);
+	}
+
+	.landing12-info-cards__title {
+		margin: 0;
+		color: #fff;
+		text-transform: uppercase;
+		font-family: var(--font-action);
+		letter-spacing: 0.05em;
+		line-height: 1;
+		font-size: clamp(1.55rem, 3.2vw, 2.45rem);
+	}
+
+	.landing12-info-cards__subtitle {
+		margin: 0.3rem 0 0;
+		color: var(--fc-accent);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-weight: 700;
+		line-height: 1;
+		font-size: clamp(0.8rem, 1.8vw, 1.12rem);
+	}
+
+	.landing12-info-cards__list {
+		list-style: none;
+		margin: clamp(0.7rem, 1.8vw, 1.1rem) 0 0;
+		padding: 0;
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	.landing12-info-cards__list li {
+		display: flex;
+		align-items: center;
+		gap: 0.42rem;
+		color: #f3f3f3;
+		text-transform: uppercase;
+		letter-spacing: 0.045em;
+		font-size: clamp(0.76rem, 1.65vw, 1.08rem);
+		font-weight: 600;
+		line-height: 1.25;
+	}
+
+	.landing12-info-cards__list li::before {
+		content: "";
+		width: 0.42rem;
+		height: 0.42rem;
+		border: 1px solid rgba(188, 42, 39, 0.95);
+		border-radius: 50%;
+		flex-shrink: 0;
+		box-shadow: inset 0 0 0 1px rgba(188, 42, 39, 0.25);
+	}
+
+	.landing12-info-cards__tagline {
+		margin: 0;
+		background: rgba(0, 0, 0, 0.68);
+		border: 1px solid rgba(188, 42, 39, 0.5);
+		border-radius: 0.35rem;
+		padding: 0.48rem 0.58rem;
+		display: grid;
+		gap: 0.08rem;
+	}
+
+	.landing12-info-cards__tagline span {
+		display: block;
+		text-transform: uppercase;
+		color: #f2f2f2;
+		line-height: 1.15;
+	}
+
+	.landing12-info-cards__tagline span:first-child {
+		font-family: var(--font-action);
+		letter-spacing: 0.06em;
+		font-size: clamp(0.9rem, 1.95vw, 1.28rem);
+	}
+
+	.landing12-info-cards__tagline span:last-child {
+		color: #d5d5d5;
+		letter-spacing: 0.05em;
+		font-size: clamp(0.62rem, 1.3vw, 0.9rem);
+	}
+
+	@media (max-width: 560px) {
+		.landing12-info-cards__grid {
+			gap: 0.45rem;
+		}
+
+		.landing12-info-cards__item {
+			border-radius: 0.45rem;
+			aspect-ratio: 5 / 7;
+		}
+
+		.landing12-info-cards__overlay {
+			padding: 0.55rem;
+		}
+
+		.landing12-info-cards__tagline {
+			padding: 0.36rem 0.45rem;
+		}
+
+		.landing12-info-cards__title {
+			font-size: clamp(1.26rem, 6.2vw, 1.58rem);
+		}
+
+		.landing12-info-cards__subtitle {
+			font-size: clamp(0.72rem, 3.5vw, 0.9rem);
+		}
+
+		.landing12-info-cards__list li {
+			font-size: clamp(0.68rem, 3.2vw, 0.86rem);
+		}
+
+		.landing12-info-cards__tagline span:first-child {
+			font-size: clamp(0.78rem, 3.8vw, 0.96rem);
+		}
+
+		.landing12-info-cards__tagline span:last-child {
+			font-size: clamp(0.56rem, 2.8vw, 0.7rem);
+		}
+	}
+</style>
+
+<section class="landing12-info-cards" aria-label="What to expect at Freedom Con">
+	<div class="landing12-wrap landing12-info-cards__inner mx-auto">
+		<p class="landing12-info-cards__eyebrow">What to Expect at Freedom Con</p>
+		<div class="landing12-info-cards__grid" role="list">
+			<figure class="landing12-info-cards__item" role="listitem">
+				<img
+					class="landing12-info-cards__image"
+					src="{{ url_for('static', filename='img/info_cards/camping.png') }}"
+					alt="Camp at Freedom Con"
+					loading="lazy"
+					decoding="async"
+				>
+				<figcaption class="landing12-info-cards__overlay">
+					<div>
+						<h3 class="landing12-info-cards__title">Camp</h3>
+						<p class="landing12-info-cards__subtitle">At Freedom Con</p>
+						<ul class="landing12-info-cards__list">
+							<li>Brotherhood</li>
+							<li>Rest &amp; Refuel</li>
+							<li>Stronger Together</li>
+						</ul>
+					</div>
+					<p class="landing12-info-cards__tagline">
+						<span>Freedom Con</span>
+						<span>Equip. Encourage. Empower.</span>
+					</p>
+				</figcaption>
+			</figure>
+
+			<figure class="landing12-info-cards__item" role="listitem">
+				<img
+					class="landing12-info-cards__image"
+					src="{{ url_for('static', filename='img/info_cards/worship.png') }}"
+					alt="Concerts and worship at Freedom Con"
+					loading="lazy"
+					decoding="async"
+				>
+				<figcaption class="landing12-info-cards__overlay">
+					<div>
+						<h3 class="landing12-info-cards__title">Concerts</h3>
+						<p class="landing12-info-cards__subtitle">At Freedom Con</p>
+						<ul class="landing12-info-cards__list">
+							<li>Worship</li>
+							<li>Brotherhood</li>
+							<li>Unity</li>
+							<li>Glory to God</li>
+						</ul>
+					</div>
+					<p class="landing12-info-cards__tagline">
+						<span>Freedom Con</span>
+						<span>Strong Men. Strong Families. Strong Nation.</span>
+					</p>
+				</figcaption>
+			</figure>
+
+			<figure class="landing12-info-cards__item" role="listitem">
+				<img
+					class="landing12-info-cards__image"
+					src="{{ url_for('static', filename='img/info_cards/speaking.jpg') }}"
+					alt="Speakers at Freedom Con"
+					loading="lazy"
+					decoding="async"
+				>
+				<figcaption class="landing12-info-cards__overlay">
+					<div>
+						<h3 class="landing12-info-cards__title">Speakers</h3>
+						<p class="landing12-info-cards__subtitle">At Freedom Con</p>
+						<ul class="landing12-info-cards__list">
+							<li>Biblical Truth</li>
+							<li>Leadership</li>
+							<li>Purpose</li>
+							<li>Legacy</li>
+						</ul>
+					</div>
+					<p class="landing12-info-cards__tagline">
+						<span>Freedom Con</span>
+						<span>Iron Sharpens Iron.</span>
+					</p>
+				</figcaption>
+			</figure>
+
+			<figure class="landing12-info-cards__item" role="listitem">
+				<img
+					class="landing12-info-cards__image"
+					src="{{ url_for('static', filename='img/info_cards/eats.jpg') }}"
+					alt="Food and fellowship at Freedom Con"
+					loading="lazy"
+					decoding="async"
+				>
+				<figcaption class="landing12-info-cards__overlay">
+					<div>
+						<h3 class="landing12-info-cards__title">Eats</h3>
+						<p class="landing12-info-cards__subtitle">At Freedom Con</p>
+						<ul class="landing12-info-cards__list">
+							<li>Good Food</li>
+							<li>Strong Coffee</li>
+							<li>Great Company</li>
+							<li>Built for More</li>
+						</ul>
+					</div>
+					<p class="landing12-info-cards__tagline">
+						<span>Freedom Con</span>
+						<span>Fueled Up. Built Up. Sent Out.</span>
+					</p>
+				</figcaption>
+			</figure>
+		</div>
+	</div>
+</section>

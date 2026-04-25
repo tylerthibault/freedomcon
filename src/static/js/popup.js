@@ -61,7 +61,7 @@
 
         // ---- Page detection ----
 
-        var isLanding = !!document.querySelector('.landing12');
+        var isLanding = !!document.querySelector('.landing12') || !!document.querySelector('[data-landing12]');
         var isTickets = !!document.querySelector('.tickets-page');
 
         if (isLanding) {

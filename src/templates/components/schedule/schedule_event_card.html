@@ -1,0 +1,26 @@
+{#
+  schedule_event_card.html
+  Renders a single schedule event row.
+  Expects: `event` dict with keys: time, title, speaker, type, description, highlight
+#}
+<article class="schedule-event schedule-event--{{ event.type }}{% if event.highlight %} schedule-event--highlight{% endif %}" aria-label="{{ event.title }}">
+	<div class="schedule-event__time">{{ event.time }}</div>
+	<div class="schedule-event__body">
+		<div class="schedule-event__top">
+			<h3 class="schedule-event__title">{{ event.title }}</h3>
+			{% if event.type in ('concert', 'session', 'worship') %}
+			<span class="schedule-event__badge schedule-event__badge--{{ event.type }}">
+				{% if event.type == 'concert' %}Concert
+				{% elif event.type == 'worship' %}Worship
+				{% else %}Session{% endif %}
+			</span>
+			{% endif %}
+		</div>
+		{% if event.speaker %}
+		<p class="schedule-event__speaker">{{ event.speaker }}</p>
+		{% endif %}
+		{% if event.description %}
+		<p class="schedule-event__description">{{ event.description }}</p>
+		{% endif %}
+	</div>
+</article>

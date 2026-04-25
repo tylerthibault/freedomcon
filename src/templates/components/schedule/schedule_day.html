@@ -1,0 +1,16 @@
+{#
+  schedule_day.html
+  Renders one full day's schedule timeline.
+  Expects: `day` dict with keys: date, label, events (list)
+#}
+<div class="schedule-day" aria-label="{{ day.date }} schedule">
+	<div class="schedule-day__header">
+		<span class="schedule-day__label">{{ day.label }}</span>
+		<h2 class="schedule-day__date">{{ day.date }}</h2>
+	</div>
+	<div class="schedule-day__events">
+		{% for event in day.events %}
+		{% include "components/schedule/schedule_event_card.html" %}
+		{% endfor %}
+	</div>
+</div>

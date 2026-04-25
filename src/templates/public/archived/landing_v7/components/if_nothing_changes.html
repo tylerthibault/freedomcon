@@ -1,0 +1,259 @@
+<style>
+    .inc {
+        background: #0a0a0a;
+        color: #fff;
+        padding: 4rem 1.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* faint city_bad background */
+    .inc::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url("{{ url_for('static', filename='img/city_bad.jpg') }}") center/cover no-repeat;
+        opacity: 0.08;
+        pointer-events: none;
+    }
+
+    .inc__inner {
+        /* position-relative mx-auto handled by Bootstrap; max-width kept custom */
+        max-width: 720px;
+    }
+
+    /* ── eyebrow ── */
+    .inc__eyebrow {
+        /* d-flex align-items-center justify-content-center gap-3 mb-3 tb handled by Bootstrap */
+        font-family: var(--font-action, 'Oswald', sans-serif);
+        font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+        font-weight: 400;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--fc-muted, #c9c9c9);
+    }
+
+    .inc__eyebrow::before,
+    .inc__eyebrow::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--fc-line, rgba(255,255,255,0.2));
+    }
+
+    .inc__eyebrow-star {
+        color: var(--fc-accent, #BC2A27);
+        font-size: 0.7rem;
+    }
+
+    /* ── headline ── */
+    .inc__headline {
+        font-family: var(--font-action, 'Oswald', sans-serif);
+        text-transform: uppercase;
+        line-height: 0.95;
+        margin: 0 0 0.1em;
+    }
+
+    .inc__headline--top {
+        font-size: clamp(3.2rem, 7vw, 5rem);
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.01em;
+    }
+
+    .inc__headline--bottom {
+        font-size: clamp(3.6rem, 9vw, 6.5rem);
+        font-weight: 700;
+        color: var(--fc-accent, #BC2A27);
+        letter-spacing: -0.02em;
+        /* grungy text-stroke effect */
+        -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+    }
+
+    /* ── divider star ── */
+    .inc__star-divider {
+        /* d-flex justify-content-center my-4 handled by Bootstrap */
+    }
+
+    .inc__star-divider::before,
+    .inc__star-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--fc-line, rgba(255,255,255,0.2));
+        align-self: center;
+    }
+
+    .inc__star-divider span {
+        color: var(--fc-accent, #BC2A27);
+        font-size: 1rem;
+        padding: 0 0.75rem;
+    }
+
+    /* ── body copy ── */
+    .inc__body {
+        /* mb-4 handled by Bootstrap */
+        font-family: var(--font-regular, 'Oswald', sans-serif);
+        font-size: clamp(0.95rem, 2vw, 1.1rem); /* clamp not replicable with Bootstrap */
+        font-weight: 300;
+        color: var(--fc-muted, #c9c9c9);
+        line-height: 1.7;
+    }
+
+    /* ── consequence list ── */
+    .inc__list-heading {
+        font-family: var(--font-action, 'Oswald', sans-serif);
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        font-weight: 700;
+        color: var(--fc-accent, #BC2A27);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin: 0 0 1.25rem;
+    }
+
+    .inc__list {
+        /* list-unstyled p-0 d-flex flex-column handled by Bootstrap */
+        margin: 0 0 2.5rem; /* bottom spacing kept; Bootstrap mb-5 = 3rem which differs */
+        gap: 1.1rem; /* gap-3 = 1rem; 1.1rem kept custom */
+    }
+
+    .inc__item {
+        /* d-flex align-items-start gap-3 handled by Bootstrap */
+    }
+
+    .inc__icon {
+        flex-shrink: 0;
+        width: 2.8rem;
+        height: 2.8rem;
+        border: 2px solid var(--fc-accent, #BC2A27);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--fc-accent, #BC2A27);
+        font-size: 1.1rem;
+    }
+
+    .inc__item-text {
+        /* d-flex flex-column handled by Bootstrap */
+        gap: 0.1rem; /* no Bootstrap equivalent at this scale */
+    }
+
+    .inc__item-title {
+        font-family: var(--font-action, 'Oswald', sans-serif);
+        font-size: clamp(0.95rem, 2vw, 1.1rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #fff;
+    }
+
+    .inc__item-desc {
+        font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+        font-weight: 300;
+        color: var(--fc-muted, #c9c9c9);
+        line-height: 1.5;
+    }
+
+    /* ── callout banner ── */
+    .inc__callout {
+        /* d-flex align-items-center justify-content-center gap-3 text-center text-white rounded handled by Bootstrap */
+        border: 1px solid rgba(255,255,255,0.15); /* custom opacity border; Bootstrap border-white is fully opaque */
+        padding: 1.1rem 1.5rem; /* py/px not exact Bootstrap steps */
+        font-family: var(--font-action, 'Oswald', sans-serif);
+        font-size: clamp(0.8rem, 2vw, 1rem); /* clamp not replicable with Bootstrap */
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        line-height: 1.5;
+    }
+
+    .inc__callout-star {
+        color: var(--fc-accent, #BC2A27);
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+</style>
+
+<section class="inc">
+    <div class="inc__inner position-relative mx-auto">
+
+        <p class="inc__eyebrow text-center d-flex align-items-center justify-content-center gap-3 mb-3">
+            <span class="inc__eyebrow-star">★</span>
+                The cost of doing nothing is too high
+            <span class="inc__eyebrow-star">★</span>
+        </p>
+        <div class="d-flex flex-column align-items-center text-center mb-4">
+            <h2 class="inc__headline inc__headline--top">If Nothing Changes...</h2>
+            <h2 class="inc__headline inc__headline--bottom">Nothing Changes.</h2>
+        </div>
+
+        <div class="inc__star-divider d-flex justify-content-center my-4"><span>★</span></div>
+
+        <p class="inc__body mb-4">
+            You can feel it—things aren't going in the right direction.<br>
+            The pressure is increasing. The expectations are higher.<br>
+            And deep down, you know you're meant to step up.
+        </p>
+
+        <p class="inc__list-heading">But if nothing changes:</p>
+
+        <ul class="list-unstyled p-0 d-flex flex-column flex-md-row gap-3 ">
+            <li class="inc__item d-flex align-items-start gap-3">
+                <div class="inc__icon">
+                    <!-- cycle arrows -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 0 1 15-6.7L21 8"/>
+                        <path d="M21 12a9 9 0 0 1-15 6.7L3 16"/>
+                        <polyline points="18 8 21 8 21 5"/>
+                        <polyline points="3 19 3 16 6 16"/>
+                    </svg>
+                </div>
+                <div class="inc__item-text d-flex flex-column">
+                    <span class="inc__item-title">You Stay Stuck</span>
+                    <span class="inc__item-desc">in the same cycle of hesitation and frustration.</span>
+                </div>
+            </li>
+            <li class="inc__item d-flex align-items-start gap-3">
+                <div class="inc__icon">
+                    <!-- family / people -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="7" r="3"/>
+                        <circle cx="15" cy="7" r="3"/>
+                        <path d="M3 21v-2a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v2"/>
+                    </svg>
+                </div>
+                <div class="inc__item-text d-flex flex-column">
+                    <span class="inc__item-title">Your Family Continues</span>
+                    <span class="inc__item-desc">without the leadership they need.</span>
+                </div>
+            </li>
+            <li class="inc__item d-flex align-items-start gap-3">
+                <div class="inc__icon">
+                    <!-- building / community -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="22" x2="21" y2="22"/>
+                        <polyline points="5 22 5 10 12 3 19 10 19 22"/>
+                        <line x1="9" y1="22" x2="9" y2="15"/>
+                        <line x1="15" y1="22" x2="15" y2="15"/>
+                        <line x1="9" y1="15" x2="15" y2="15"/>
+                    </svg>
+                </div>
+                <div class="inc__item-text d-flex flex-column">
+                    <span class="inc__item-title">Your Community</span>
+                    <span class="inc__item-desc">is shaped by men who chose to step up instead.</span>
+                </div>
+            </li>
+        </ul>
+
+        <div class="inc__callout d-flex align-items-center justify-content-center gap-3 text-center text-white rounded">
+            <span class="inc__callout-star">★</span>
+            Men were never meant to sit on the sidelines<br>while everything around them shifts.
+            <span class="inc__callout-star">★</span>
+        </div>
+
+    </div>
+</section>

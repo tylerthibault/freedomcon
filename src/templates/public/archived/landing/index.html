@@ -1,0 +1,42 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-variant-12.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-alt.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/speakers.css') }}">
+{% endblock %}
+
+{% block navigation %}
+    {% include 'components/navigation.html' %}
+{% endblock %}
+
+{% block content %}
+{% set store_url = '/tickets' %}
+
+
+<main class="alt-page">
+    
+    {% include 'public/landing/components/count_down.html' %}
+    {% include 'public/landing/components/hero.html' %}
+    {% include 'public/landing/components/customer_as_hero.html' %}
+    {% include 'public/landing/components/why_now.html' %}
+    {% include 'public/landing/components/crowder.html' %}
+    {% include 'public/landing/components/fathers_day_cta.html' %}
+    {% include 'public/landing/components/speakers.html' %}
+    {% include 'public/landing/components/sizzle.html' %}
+    {% include 'public/landing/components/the_ws.html' %}
+    {% include 'public/landing/components/event_details.html' %}
+    {% include 'public/landing/components/tickets.html' %}
+    {% include 'public/landing/components/camping.html' %}
+    {% include 'public/landing/components/cta_2.html' %}
+</main>
+{% endblock %}
+
+{# 
+
+
+#}
+
+{% block footer %}
+{% include 'components/footer.html' %}
+{% endblock %}

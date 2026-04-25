@@ -63,18 +63,26 @@
 		<div class="tickets-section__inner container-xl">
 			<h2 class="tickets-section__heading">What&apos;s Included</h2>
 			<p class="tickets-includes__lead">Registration covers all events Friday &amp; Saturday, including:</p>
-			<ul class="fc-exp-includes__list">
-				<li>Parking</li>
-				<li>Swag bag</li>
-				<li>3 main sessions</li>
-				<li>6 breakout sessions</li>
-				<li>Stronger Man Competitions</li>
-				<li>Stronger Boy Challenge Course</li>
-				<li>Live-Pod Studio</li>
-				<li>Dragon Killer House Band</li>
-				<li>World Premiere &mdash; Project ManCard Documentary</li>
-				<li>David Crowder Concert</li>
-			</ul>
+			<div class="fc-exp-includes__columns">
+				<ul class="fc-exp-includes__list">
+					<li>Parking</li>
+					<li>Swag bag</li> 
+					<li>Main sessions</li>
+					<li>Breakout sessions</li>
+					<li>Worship</li>
+					<li>Man Competitions</li>
+					<li>Stronger Boy Challenge Course</li>
+										<li>Live-Pod Studio</li>
+					<li>ManCard Documentary Premiere... <br> <span class="fs-7 tickets-includes__note">A-rite-of-passage-story</span></li>
+					<li>Man Town
+						<br> <span class="fs-8 tickets-includes__note">Explore 20+ different vendors</span>
+					</li>
+					<li>Side Stage Bands</li>
+					<li>David Crowder Concert</li>
+					<li>Danny Gokey Concert</li>
+
+				</ul>
+			</div>
 			<div class="mt-4">
 				{% with cta_url='https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets' %}
 				{% include 'components/cta_button.html' %}
@@ -89,14 +97,14 @@
 
 			<div class="tickets-promos__grid">
 
-				<div class="tickets-promo-card">
+				<div id="deal-early-bird" class="tickets-promo-card">
 					<div class="tickets-promo-card__badge">Early Bird</div>
 					<h3 class="tickets-promo-card__title">May 1st Early Bird Pricing</h3>
 					<p class="tickets-promo-card__desc">Prices increase after May 1st. Whether you're bringing yourself, your son, or a whole crew — locking in now is the smart move. Don't leave savings on the table.</p>
 					<p class="tickets-promo-card__cta-hint">Ends <strong>May 1st</strong> — grab your ticket above before pricing updates.</p>
 				</div>
 
-				<div class="tickets-promo-card">
+				<div id="deal-fifty" class="tickets-promo-card">
 					<div class="tickets-promo-card__badge tickets-promo-card__badge--gold">50 / 50 / 50</div>
 					<h3 class="tickets-promo-card__title">First 50 Guys in Each State Save $50</h3>
 					<p class="tickets-promo-card__desc">The first 50 men to register from each of the 50 states receive <strong>$50 off</strong> their ticket. This is a first-come, first-served deal — once those spots are gone, they're gone. Claim your state's discount now.</p>
@@ -109,7 +117,7 @@
 				</div>
 
 				<!-- Group Rate -->
-				<div class="tickets-promo-card">
+				<div id="deal-group" class="tickets-promo-card">
 					<div class="tickets-promo-card__badge tickets-promo-card__badge--green">Group Rate</div>
 					<h3 class="tickets-promo-card__title">15% Off — Bring Your Bros or Men&apos;s Ministry</h3>
 					<p class="tickets-promo-card__desc">Guys bringing their crew and churches bringing their men's ministry save <strong>15% off</strong> general admission. Valid for groups of <strong>10–200 people</strong>.</p>
@@ -118,7 +126,7 @@
 				</div>
 
 				<!-- VIP Pastor Experience -->
-				<div class="tickets-promo-card tickets-promo-card--pastor">
+				<div id="deal-pastor" class="tickets-promo-card tickets-promo-card--pastor">
 					<div class="tickets-promo-card__badge tickets-promo-card__badge--navy">VIP Pastor</div>
 					<h3 class="tickets-promo-card__title">VIP Pastor Experience &mdash; 25% Off</h3>
 					<p class="tickets-promo-card__desc">Pastors receive <strong>25% off</strong> general admission plus an exclusive VIP experience. Covers all General Admission benefits and:</p>

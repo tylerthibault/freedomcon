@@ -6,6 +6,38 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-variant-12.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/landing-social-proof-v12.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/mission-statement.css') }}">
+<style>
+  .alt-countdown-bar {
+    --alt-accent: var(--color-accent, #BC2A27);
+    position: relative;
+    z-index: 200;
+    background: #fff;
+    padding: 0.45rem 1rem;
+    text-align: center;
+  }
+  .alt-countdown-bar__label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--alt-accent);
+    margin-right: 0.75rem;
+  }
+  .alt-countdown-bar__units { display: inline-flex; gap: 0.5rem; align-items: baseline; }
+  .alt-countdown-bar__unit { display: inline-flex; align-items: baseline; gap: 0.22rem; }
+  .alt-countdown-bar__num {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    color: #111;
+    min-width: 2ch;
+    text-align: right;
+  }
+  .alt-countdown-bar__lbl { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.5); }
+  .alt-countdown-bar__sep { color: rgba(0,0,0,0.3); font-size: 1.1rem; line-height: 1; font-weight: 300; }
+  .alt-countdown-bar__urgency { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; color: rgba(0,0,0,0.7); margin-left: 1rem; }
+</style>
 {% endblock %}
 
 {% block navigation %}
@@ -13,6 +45,7 @@
 {% endblock %}
 
 {% block content %}
+
 {% set landing12_speakers = [
 {
 'name': 'Josh McPherson',
@@ -49,7 +82,7 @@
 {% set countdown_target = '2026-06-19T17:00:00-07:00' %}
 {% set declaration_text = (background_text | join(' ')) if background_text is defined else '' %}
 
-<main class="landing12 overflow-hidden">
+<main class="landing12 overflow-hidden px-3">
     {#
     {% if declaration_text %}
     <div class="landing12-declaration-bg" aria-hidden="true" data-declaration-bg>
@@ -64,49 +97,89 @@
     {% endif %}
     #}
 
-    <h1 class="visually-hidden">Freedom Con 2026 at The Gorge Amphitheatre</h1>
-    <section class="landing12-hero" aria-label="Freedom Con hero">
-        <div class="landing12-hero-media">
-            <img class="landing12-hero-title-image" src="{{ url_for('static', filename='img/title_with_shield.svg') }}"
-                alt="Rise of the Statesman title">
-            <img class="landing12-hero-lineup-image" src="{{ url_for('static', filename='img/the_guys_no_guns.png') }}"
-                alt="Freedom Con speakers lineup">
-        </div>
-    </section>
+    {% include 'public/landing copy/components/hero.html' %}
 
+    <style>
+        .landing12-event-highlight {
+            background: transparent;
+            color: #fff;
+            text-align: center;
+            padding: clamp(2rem, 5vw, 4rem) 1rem clamp(2rem, 5vw, 4rem);
+        }
+        .landing12-event-highlight__heading {
+            font-family: "Oswald", Arial, sans-serif !important;
+            font-weight: 700;
+            font-size: clamp(2.6rem, 8vw, 7rem);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            line-height: 1;
+            margin: 0 0 0.3em;
+            color: var(--color-accent);
+        }
+        .landing12-event-highlight__meta {
+            font-family: var(--font-action);
+            font-size: clamp(0.7rem, 1.8vw, 1.1rem);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.75);
+            margin: 0 0 0.5em;
+        }
+        .landing12-event-highlight__date {
+            font-family: var(--font-oswald-light);
+            font-size: clamp(3rem, 10vw, 7.5rem);
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            line-height: 1;
+            color: #fff;
+            margin: 0 0 0.15em;
+            text-decoration: underline;
+            text-decoration-color: var(--color-accent, #BC2A27);
+            text-underline-offset: 0.12em;
+            text-decoration-thickness: 3px;
+        }
+        .landing12-event-highlight__btn {
+            display: inline-block;
+            margin-top: 1.2em;
+            padding: 0.75rem 3.5rem;
+            background: var(--color-accent, #BC2A27);
+            color: #fff;
+            font-family: var(--font-action);
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        .landing12-event-highlight__btn:hover { background: #a02220; color: #fff; }
+    </style>
     <section class="landing12-event-highlight" aria-label="Event weekend highlight">
-        <p class="landing12-event-highlight__eyebrow">One Historic Event</p>
-        <h2 class="landing12-event-highlight__title">Father's Day Weekend</h2>
-        <p class="landing12-event-highlight__venue">The Gorge Amphitheatre</p>
-        <p class="landing12-event-highlight__city">in George, Washington</p>
-        <p class="landing12-event-highlight__date">June 19<span class="landing12-event-highlight__date-sup">th</span> -
-            20<span class="landing12-event-highlight__date-sup">th</span></p>
-        <a class="landing12-btn btn btn-xxl mt-3"
+        <h2 class="landing12-event-highlight__heading">One Historic Event</h2>
+        <p class="landing12-event-highlight__meta">The Gorge Amphitheater &nbsp;|&nbsp; George, WA</p>
+        <p class="landing12-event-highlight__date">June 19 – 20</p>
+        <a class="landing12-event-highlight__btn"
             href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">Get Tickets</a>
     </section>
 
-    {% include 'public/landing copy/components/why_now.html' %}
+
+    {% include 'public/landing copy/components/count_down.html' %}
+
+    {% include 'public/landing copy/components/mission_statement.html' %}
 
     <section class="landing12-liberty" aria-label="Call to join the cause of liberty">
         <video class="landing12-liberty-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
             <source src="https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/PHOTO%20REEL%202.mp4" type="video/mp4">
         </video>
         <div class="landing12-liberty-inner">
-            <p class="landing12-liberty-text fs-1">Join Thousands Of American Christian Men and Patriots, In The Cause
-                Of Liberty.</p>
+            <!-- <p class="landing12-liberty-text fs-1">Join Thousands Of American Christian Men and Patriots in The Cause Of Liberty.</p> -->
+            <!-- <p class="landing12-liberty-text fs-1">This Is What It Looks Like When Men Show Up.</p> -->
         </div>
     </section>
 
-
+    {% include 'public/landing copy/components/why_now.html' %}
     
-    <div class="my-2">
-        {% set ticker_category = 'all' %}
-        {% include 'components/sponsor_ticker.html' %}
-    </div>
-    
-    {% include 'public/landing copy/components/mission_statement.html' %}
-    
-    <section class="landing12-wrap landing12-wrap--cta container-xl mx-auto" aria-label="Primary calls to action">
+    <section class="mb-3" aria-label="Primary calls to action">
         <div
             class="landing12-cta-row landing12-cta-row--center d-flex flex-wrap align-items-center justify-content-center">
             <a class="landing12-btn btn btn-xxl"
@@ -133,6 +206,11 @@
     {% include 'public/landing copy/components/accomodation.html' %}
 
     {% include 'public/landing copy/components/social_proof.html' %}
+
+    <div class="my-2">
+        {% set ticker_category = 'all' %}
+        {% include 'components/sponsor_ticker.html' %}
+    </div>
 </main>
 {% endblock %}
 

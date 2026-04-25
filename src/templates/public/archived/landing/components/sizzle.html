@@ -1,0 +1,45 @@
+{# ══════════════════════════════════════════════════════════
+6. SIZZLE REEL — embedded YouTube (promo video)
+══════════════════════════════════════════════════════════ #}
+{% if trailers and trailers | length %}
+{%- set featured_video = trailers | selectattr('title', 'equalto', 'To Every Man') | first | default(trailers[0]) %}
+<section class="alt-sizzle" aria-label="Freedom Con promotional video">
+    <div class="alt-inner">
+        <div class="alt-sizzle__title-row">
+            <p class="alt-eyebrow">See It for Yourself</p>
+            <h2 class="alt-sizzle__title">{{ featured_video.title }}</h2>
+            <p class="alt-sizzle__sub">Men, sons, worship &amp; the Columbia River</p>
+        </div>
+        <div class="alt-sizzle__player-wrap">
+            <iframe src="https://www.youtube-nocookie.com/embed/{{ featured_video.youtube_id }}?rel=0&modestbranding=1"
+                title="{{ featured_video.title }}"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen loading="lazy">
+            </iframe>
+        </div>
+
+        {# Other videos listed below as thumbnail links #}
+        {% set other_videos = trailers | rejectattr('youtube_id', 'equalto', featured_video.youtube_id) | list %}
+        {% if other_videos | length %}
+        <div class="alt-sizzle__more d-flex flex-column align-items-center">
+            <p class="alt-sizzle__more-label">More Videos</p>
+            <div class="alt-sizzle__thumb-row">
+                {% for vid in other_videos %}
+                <a class="alt-sizzle__thumb" href="https://www.youtube.com/watch?v={{ vid.youtube_id }}" target="_blank"
+                    rel="noopener noreferrer" aria-label="Watch: {{ vid.title }}">
+                    <img src="https://img.youtube.com/vi/{{ vid.youtube_id }}/hqdefault.jpg" alt="{{ vid.title }}"
+                        loading="lazy">
+                    <span class="alt-sizzle__thumb-play" aria-hidden="true">&#9654;</span>
+                    <span class="alt-sizzle__thumb-title">{{ vid.title }}</span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="alt-btn-row alt-btn-row--center" style="margin-top:2rem;">
+            <a class="alt-btn alt-btn--primary" href="{{ store_url }}">Get Tickets</a>
+        </div>
+    </div>
+</section>
+{% endif %}
