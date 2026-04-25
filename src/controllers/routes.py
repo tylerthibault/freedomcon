@@ -15,16 +15,13 @@ from src.data.background_text import background_1
 from src.data.sponsors import sponsors
 from src.data.about_smn import about_smn_conferences
 from src.data.podcasts import podcasts as podcasts_data
-<<<<<<< HEAD
 from src.data.wives import wives as wives_data
 from src.data.invite import invite as invite_data
 from src.data.schedule import schedule as schedule_data
 from src.data.the_play import the_play as the_play_data
 from src.data.camping import camping as camping_data
 from src.data.hotels import hotels as hotels_data
-=======
 from src.data.trailers import trailers as trailers_data
->>>>>>> main
 
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
