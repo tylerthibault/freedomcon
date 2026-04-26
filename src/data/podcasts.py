@@ -17,6 +17,6 @@ podcasts = [
 	{
 		"url": "https://www.youtube.com/watch?v=JorOoNHBzqY",
 		"title": "How to Pray for and Support Your Husband | Road To Freedom Con Ep. 4",
-		"thumbnail_mobile": "img/videos/A Vision for Young Men (Instagram Story).jpeg",
+		"thumbnail_mobile": "img/videos/podcast_pray_for_husband.jpeg",
 	},
 ]
