@@ -797,7 +797,7 @@ def sitemap_xml() -> Response:
 
 @public_bp.get("/wives")
 def wives_page() -> str:
-	formsubmit_action = getenv("WIVES_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/ladies.freedomcon26@gracecitychurch.com"
+	formsubmit_action = getenv("WIVES_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/ladies.freedomcon26@strongermannation.com"
 	formsubmit_next = f"{SITE_URL}/thankyou"
 	return render_template(
 		"public/wives/index.html",
