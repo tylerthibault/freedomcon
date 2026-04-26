@@ -292,7 +292,7 @@ def build_seo(
 
 @public_bp.get("/alt")
 def landing_alt() -> str:
-	# return redirect(url_for("public.landing"))
+	return redirect(url_for("public.landing"))
 	context = {
 		"speakers": speakers_data,
 	}
