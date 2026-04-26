@@ -8,11 +8,18 @@
 
 {% block content %}
 <main>
-	{{ page_hero("What to Expect", "The Experience", "Father’s Day Weekend at The Gorge Amphitheater. Two days built to move the heart, sharpen conviction, and commission men.") }}
-	{{ slim_banner("FATHER'S DAY WEEKEND · JUNE 19–20 · THE GORGE") }}
+	<!-- Hero -->
+	<section class="experience-hero" aria-label="Experience page header">
+		<div class="experience-hero__inner container-xl">
+			<p class="experience-hero__eyebrow">Father's Day Weekend &bull; June 19&ndash;20</p>
+			<h1 class="experience-hero__title">
+				<span class="experience-hero__title-filled">Freedom Con</span><span class="experience-hero__title-outlined">Experience</span>
+			</h1>
+		</div>
+	</section>
 	<section class="fc-page" aria-label="The Experience">
 		<div class="fc-page__inner">
-			<p class="fc-page__lead">Father&apos;s Day Weekend at The Gorge Amphitheater. Two days built to move the heart, sharpen conviction, and commission men for what comes next. This is not a passive event—it is a summons to show up, be undone, and be rebuilt.</p>
+			<p class="fc-page__lead">Father&apos;s Day Weekend at The Gorge Amphitheatre. Two days built to move the heart, sharpen conviction, and commission men for what comes next. This is not a passive event—it is a summons to show up, be undone, and be rebuilt.</p>
 
 			<div class="fc-page__mantra" aria-label="Experience pillars">
 				<p class="fc-page__mantra-line">Worship. Repent. Receive.</p>
@@ -160,7 +167,7 @@
 
 			<div class="fc-page__finale d-flex flex-column align-items-center text-center">
 				<blockquote class="fc-page__quote">&ldquo;This isn&apos;t a conference. It&apos;s a congress of men. A summons. Answer it.&rdquo;</blockquote>
-				<p class="fc-page__finale-cta-label">Father&apos;s Day Weekend &bull; June 19&ndash;20, 2026 &bull; The Gorge Amphitheater, George WA</p>
+				<p class="fc-page__finale-cta-label">Father&apos;s Day Weekend &bull; June 19&ndash;20, 2026 &bull; The Gorge Amphitheatre, George WA</p>
 				<div class="fc-page__actions d-flex flex-wrap justify-content-center">
 					<a class="landing12-btn" href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">Get Tickets</a>
 					<a class="landing12-btn landing12-btn--ghost" href="{{ url_for('public.vision_page') }}">Read The Vision</a>

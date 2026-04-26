@@ -1,0 +1,126 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/prayer_guide.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="prayer-guide-page">
+
+    <!-- Hero -->
+    <section class="prayer-hero" aria-label="Prayer Guide header">
+        <div class="prayer-hero__inner container-xl">
+            <p class="prayer-hero__eyebrow">FREEDOM CON 2026</p>
+            <h1 class="prayer-hero__title">
+                <span class="prayer-hero__title-filled">Prayer</span><span class="prayer-hero__title-outlined">Guide</span>
+            </h1>
+            <p class="prayer-hero__copy">FREEDOM CON is more than a conference — it is a gathering born out of prayer. Use this guide in the days leading up to June 19–20 to cover the event, the speakers, the attendees, and the nation in prayer.</p>
+        </div>
+    </section>
+
+    <!-- Body -->
+    <section class="prayer-guide-body" aria-label="Prayer guide content">
+        <div class="prayer-guide-body__inner container-xl">
+
+            <!-- Pray for the Event -->
+            <div class="prayer-section">
+                <p class="prayer-section__label">Section 1</p>
+                <h2 class="prayer-section__heading">Pray for the Event</h2>
+                <blockquote class="prayer-section__scripture">
+                    "Unless the Lord builds the house, those who build it labor in vain."
+                    <cite>— Psalm 127:1</cite>
+                </blockquote>
+                <div class="prayer-section__body">
+                    <p>Ask the Lord to be the center of every session, every conversation, and every moment at FREEDOM CON. Pray that nothing would distract from what He wants to do in the hearts of men.</p>
+                </div>
+                <ul class="prayer-points">
+                    <li>That God would be glorified above all else throughout the conference.</li>
+                    <li>For the logistics, staff, and volunteers — that everything would run smoothly and safely.</li>
+                    <li>For the weather, the venue, and the atmosphere to be a backdrop for God's presence.</li>
+                    <li>That the Holy Spirit would move powerfully in the worship and in the preaching.</li>
+                </ul>
+            </div>
+
+            <!-- Pray for the Speakers -->
+            <div class="prayer-section">
+                <p class="prayer-section__label">Section 2</p>
+                <h2 class="prayer-section__heading">Pray for the Speakers</h2>
+                <blockquote class="prayer-section__scripture">
+                    "Pray also for me, that whenever I speak, words may be given me so that I will fearlessly make known the mystery of the gospel."
+                    <cite>— Ephesians 6:19</cite>
+                </blockquote>
+                <div class="prayer-section__body">
+                    <p>Our speakers have given months of preparation and heart to what they will share. Pray that God would guard their minds, strengthen their families, and give them holy boldness on the stage.</p>
+                </div>
+                <ul class="prayer-points">
+                    <li>For clarity, conviction, and anointing on every message delivered.</li>
+                    <li>For protection over their families and health in the days leading up to the event.</li>
+                    <li>That each speaker would speak only what God has placed on their heart.</li>
+                    <li>For travel safety and peace as they make their way to FREEDOM CON.</li>
+                </ul>
+            </div>
+
+            <!-- Pray for the Attendees -->
+            <div class="prayer-section">
+                <p class="prayer-section__label">Section 3</p>
+                <h2 class="prayer-section__heading">Pray for the Men</h2>
+                <blockquote class="prayer-section__scripture">
+                    "Be watchful, stand firm in the faith, act like men, be strong."
+                    <cite>— 1 Corinthians 16:13–14 ESV</cite>
+                </blockquote>
+                <div class="prayer-section__body">
+                    <p>Thousands of men will travel from across the country to attend FREEDOM CON. Many will come carrying burdens, doubts, or wounds. Pray that every man would encounter God in a personal and transforming way.</p>
+                </div>
+                <ul class="prayer-points">
+                    <li>That men would come with open hearts, ready to hear and be changed.</li>
+                    <li>For men who are on the fence — that God would stir them and confirm they need to be there.</li>
+                    <li>For safe travel for every attendee making the journey to George, WA.</li>
+                    <li>That marriages, families, and communities would be strengthened as men return home.</li>
+                    <li>For men who do not yet know Christ — that this would be the moment of their salvation.</li>
+                </ul>
+            </div>
+
+            <!-- Pray for the Nation -->
+            <div class="prayer-section">
+                <p class="prayer-section__label">Section 4</p>
+                <h2 class="prayer-section__heading">Pray for the Nation</h2>
+                <blockquote class="prayer-section__scripture">
+                    "If my people who are called by my name humble themselves, and pray and seek my face and turn from their wicked ways, then I will hear from heaven and will forgive their sin and heal their land."
+                    <cite>— 2 Chronicles 7:14</cite>
+                </blockquote>
+                <div class="prayer-section__body">
+                    <p>FREEDOM CON coincides with America's 250th anniversary. We believe God has ordained this moment for men to rise — in their homes, their churches, their businesses, and their government. Pray for a great awakening.</p>
+                </div>
+                <ul class="prayer-points">
+                    <li>For national repentance and a turning back to God at every level of society.</li>
+                    <li>For a generation of statesmen to rise who govern with biblical wisdom and integrity.</li>
+                    <li>For the protection of religious liberty and the freedom to gather and preach the gospel.</li>
+                    <li>That FREEDOM CON would spark a movement that outlasts our lifetime.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="prayer-guide-cta" aria-label="Get Tickets">
+        <div class="prayer-guide-cta__inner container-xl">
+            <h2 class="prayer-guide-cta__heading">Join Us at FREEDOM CON</h2>
+            <p class="prayer-guide-cta__copy">June 19–20, 2026 · George, WA. Don't just pray from a distance — be there.</p>
+            <a class="btn btn-primary btn-xxl" href="{{ url_for('public.tickets_page') }}">Get Tickets</a>
+        </div>
+    </section>
+
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

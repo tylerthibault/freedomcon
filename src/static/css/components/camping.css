@@ -1,0 +1,315 @@
+/* ═══════════════════════════════════════════
+   CAMPING PAGE
+═══════════════════════════════════════════ */
+
+.camping-page {
+	background: var(--fc-bg);
+	color: var(--fc-ink);
+}
+
+/* ── Hero ── */
+.camping-hero {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    padding: clamp(3.2rem, 7vw, 6rem) 0 clamp(2.4rem, 5vw, 4.2rem);
+}
+
+.camping-hero__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.78rem;
+    opacity: 0.65;
+}
+
+.camping-hero__title {
+    display: block;
+    margin: 0.3rem 0 0;
+    text-transform: uppercase;
+    font-family: var(--font-action);
+    line-height: 0.88;
+    letter-spacing: 0.03em;
+    font-size: clamp(3.8rem, 10vw, 8.5rem);
+}
+
+.camping-hero__title-filled {
+    display: block;
+    color: #ffffff;
+}
+
+.camping-hero__title-outlined {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px #ffffff;
+}
+
+.camping-hero__copy {
+    margin: 1.25rem 0 0;
+    width: min(62ch, 100%);
+    line-height: 1.4;
+    opacity: 0.75;
+}
+
+/* ── Ticket section ── */
+.camping-ticket-section {
+	padding: clamp(2.4rem, 5vw, 4rem) 0;
+	background: #000;
+}
+
+.camping-ticket {
+	border: 1px solid var(--fc-accent);
+	border-radius: 12px;
+	background: #0d0d0d;
+	overflow: hidden;
+	margin-bottom: 1.75rem;
+}
+
+.camping-ticket__top {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 1.5rem;
+	padding: clamp(1.1rem, 2vw, 1.6rem);
+}
+
+.camping-ticket__left {
+	flex: 1;
+}
+
+.camping-ticket__label {
+	margin: 0;
+	font-family: var(--font-action);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: #ffffff;
+}
+
+.camping-ticket__desc {
+	margin: 0.4rem 0 0.75rem;
+	color: var(--fc-muted);
+	line-height: 1.45;
+}
+
+.camping-ticket__details {
+	margin: 0;
+	padding-left: 1.1rem;
+	color: var(--fc-muted);
+	font-size: clamp(0.88rem, 0.96vw, 0.96rem);
+	line-height: 1.5;
+}
+
+.camping-ticket__details li + li {
+	margin-top: 0.3rem;
+}
+
+.camping-ticket__details strong {
+	color: #ffffff;
+}
+
+.camping-ticket__right {
+	flex-shrink: 0;
+	text-align: right;
+}
+
+.camping-ticket__price {
+	margin: 0;
+	font-family: var(--font-action);
+	font-size: clamp(2.2rem, 4vw, 3rem);
+	color: var(--fc-accent);
+	letter-spacing: 0.04em;
+	line-height: 1;
+}
+
+.camping-ticket__price-note {
+	margin: 0.2rem 0 0;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--fc-muted);
+}
+
+.camping-ticket__cta {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 clamp(1.1rem, 2vw, 1.6rem) clamp(1.1rem, 2vw, 1.6rem);
+	text-decoration: none;
+}
+
+/* ── Amenity strips ── */
+.camping-amenities {
+	background: var(--fc-surface);
+	padding: clamp(1.6rem, 3vw, 2.4rem) 0;
+}
+
+.camping-amenity-strip {
+	display: flex;
+	align-items: flex-start;
+	gap: 1.25rem;
+	padding: clamp(1rem, 2vw, 1.4rem) clamp(1.1rem, 2vw, 1.6rem);
+	border: 1px solid var(--fc-line, rgba(255,255,255,0.1));
+	border-radius: 12px;
+	background: #0a0a0a;
+	margin-bottom: 0.75rem;
+}
+
+.camping-amenity-strip--alt {
+	border-color: var(--fc-accent);
+	margin-bottom: 0;
+}
+
+.camping-amenity-strip__icon {
+	flex-shrink: 0;
+	width: 2.4rem;
+	height: 2.4rem;
+	color: var(--fc-accent);
+	margin-top: 0.15rem;
+}
+
+.camping-amenity-strip__icon svg {
+	width: 100%;
+	height: 100%;
+}
+
+.camping-amenity-strip__rv-img {
+	width: clamp(120px, 18vw, 220px);
+	height: auto;
+	flex-shrink: 0;
+	display: block;
+	border-radius: 8px;
+}
+
+.camping-amenity-strip__body {
+	flex: 1;
+}
+
+.camping-amenity-strip__heading {
+	margin: 0 0 0.3rem;
+	font-family: var(--font-action);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+	color: #ffffff;
+}
+
+.camping-amenity-strip__detail {
+	margin: 0;
+	color: var(--fc-muted);
+	font-size: clamp(0.85rem, 0.95vw, 0.95rem);
+	line-height: 1.5;
+}
+
+/* ── Camping areas section ── */
+.camping-areas-section {
+	padding: clamp(2.4rem, 5vw, 4rem) 0;
+	background: var(--fc-surface);
+}
+
+.camping-areas-section__heading {
+	margin: 0 0 clamp(1rem, 2vw, 1.4rem);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	font-size: clamp(1.8rem, 3vw, 2.3rem);
+}
+
+.camping-areas-list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+.camping-area {
+	border: 1px solid var(--fc-line);
+	border-radius: 12px;
+	background: #0a0a0a;
+	padding: clamp(0.9rem, 1.8vw, 1.2rem);
+}
+
+.camping-area--highlight {
+	border-color: var(--fc-accent);
+}
+
+.camping-area__name {
+	margin: 0;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	line-height: 1.05;
+}
+
+.camping-area__description {
+	margin: 0.45rem 0 0;
+	color: var(--fc-muted);
+	line-height: 1.3;
+}
+
+/* ── What to bring ── */
+.camping-logistics {
+	padding: clamp(2.4rem, 5vw, 4rem) 0;
+	background: #000;
+}
+
+.camping-logistics__heading {
+	margin: 0 0 clamp(1rem, 2vw, 1.4rem);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	font-size: clamp(1.8rem, 3vw, 2.3rem);
+}
+
+.camping-logistics__list {
+	margin: 0;
+	padding-left: 1.2rem;
+	color: var(--fc-muted);
+	line-height: 1.6;
+}
+
+.camping-logistics__item + .camping-logistics__item {
+	margin-top: 0.4rem;
+}
+
+/* ── Bottom CTA ── */
+.camping-cta {
+	padding: clamp(2.4rem, 5vw, 4rem) 0;
+	background: var(--fc-surface);
+	text-align: center;
+}
+
+.camping-cta__copy {
+	margin: 0 0 1.25rem;
+	font-size: clamp(1rem, 1.5vw, 1.2rem);
+	color: var(--fc-muted);
+}
+
+.camping-cta__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+}
+
+.camping-cta__link {
+	display: block;
+	margin-top: 1rem;
+	color: var(--fc-muted);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	font-size: 0.95rem;
+	transition: color 0.15s;
+}
+
+.camping-cta__link:hover {
+	color: #ffffff;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+	.camping-ticket__top {
+		flex-direction: column;
+	}
+
+	.camping-ticket__right {
+		text-align: left;
+	}
+
+	.camping-areas-list {
+		grid-template-columns: 1fr;
+	}
+}

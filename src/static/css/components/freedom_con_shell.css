@@ -586,6 +586,126 @@ body:has(.landing12-header) .page-clip {
     padding: clamp(2.2rem, 5vw, 4.2rem) 1.5rem clamp(3rem, 6vw, 5rem);
 }
 
+/* ── Videos hero ── */
+.videos-hero {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    padding: clamp(3.2rem, 7vw, 6rem) 0 clamp(2.4rem, 5vw, 4.2rem);
+}
+
+.videos-hero__inner {
+    padding: 0 1.5rem;
+}
+
+.videos-hero__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.78rem;
+    opacity: 0.65;
+}
+
+.videos-hero__title {
+    display: block;
+    margin: 0.3rem 0 0;
+    text-transform: uppercase;
+    font-family: var(--font-action);
+    line-height: 0.88;
+    letter-spacing: 0.03em;
+    font-size: clamp(3.8rem, 10vw, 8.5rem);
+}
+
+.videos-hero__title-filled {
+    display: block;
+    color: #ffffff;
+}
+
+.videos-hero__title-outlined {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px #ffffff;
+}
+
+/* ── Experience hero ── */
+.experience-hero {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    padding: clamp(3.2rem, 7vw, 6rem) 0 clamp(2.4rem, 5vw, 4.2rem);
+}
+
+.experience-hero__inner {
+    padding: 0 1.5rem;
+}
+
+.experience-hero__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.78rem;
+    opacity: 0.65;
+}
+
+.experience-hero__title {
+    display: block;
+    margin: 0.3rem 0 0;
+    text-transform: uppercase;
+    font-family: var(--font-action);
+    line-height: 0.88;
+    letter-spacing: 0.03em;
+    font-size: clamp(3.2rem, 8.5vw, 7.5rem);
+}
+
+.experience-hero__title-filled {
+    display: block;
+    color: #ffffff;
+}
+
+.experience-hero__title-outlined {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px #ffffff;
+}
+
+/* ── Vision hero ── */
+.vision-hero {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    padding: clamp(3.2rem, 7vw, 6rem) 0 clamp(2.4rem, 5vw, 4.2rem);
+}
+
+.vision-hero__inner {
+    padding: 0 1.5rem;
+}
+
+.vision-hero__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.78rem;
+    opacity: 0.65;
+}
+
+.vision-hero__title {
+    display: block;
+    margin: 0.3rem 0 0;
+    text-transform: uppercase;
+    font-family: var(--font-action);
+    line-height: 0.88;
+    letter-spacing: 0.03em;
+    font-size: clamp(2.6rem, 7.5vw, 6.5rem);
+}
+
+.vision-hero__title-filled {
+    display: block;
+    color: #ffffff;
+}
+
+.vision-hero__title-outlined {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px #ffffff;
+}
+
 .fc-page__inner {
     width: min(960px, 100%);
     margin: 0 auto;

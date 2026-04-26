@@ -278,6 +278,174 @@
     }
 }
 
+/* ── Hotels hero ── */
+.hotels-hero {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    padding: clamp(3.2rem, 7vw, 6rem) 0 clamp(2.4rem, 5vw, 4.2rem);
+}
+
+.hotels-hero__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.78rem;
+    opacity: 0.65;
+}
+
+.hotels-hero__title {
+    display: block;
+    margin: 0.3rem 0 0;
+    text-transform: uppercase;
+    font-family: var(--font-action);
+    line-height: 0.88;
+    letter-spacing: 0.03em;
+    font-size: clamp(3.8rem, 10vw, 8.5rem);
+}
+
+.hotels-hero__title-filled {
+    display: block;
+    color: #ffffff;
+}
+
+.hotels-hero__title-outlined {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px #ffffff;
+}
+
+.hotels-hero__copy {
+    margin: 1.25rem 0 0;
+    width: min(62ch, 100%);
+    line-height: 1.4;
+    opacity: 0.75;
+}
+
+/* ── Road-work notice ── */
+.hotels-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--fc-line);
+    border-left: 3px solid var(--fc-accent);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hotels-notice__label {
+    font-family: var(--font-action);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    color: var(--fc-accent);
+    white-space: nowrap;
+    padding-top: 0.15rem;
+}
+
+.hotels-notice__text {
+    margin: 0;
+    color: var(--fc-muted);
+    line-height: 1.4;
+    font-size: 0.9rem;
+}
+
+/* ── Camping alt callout ── */
+.hotels-camping-alt {
+    background: #0a0a0a;
+    border-top: 1px solid var(--fc-line);
+    padding: clamp(2.8rem, 6vw, 5rem) 0;
+}
+
+.hotels-camping-alt__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.hotels-camping-alt__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+    color: var(--fc-accent);
+}
+
+.hotels-camping-alt__heading {
+    margin: 0;
+    text-transform: uppercase;
+    font-family: var(--font-action);
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+}
+
+.hotels-camping-alt__copy {
+    margin: 0.4rem 0 0.9rem;
+    color: var(--fc-muted);
+    line-height: 1.45;
+    max-width: 52ch;
+}
+
+.hotels-camping-alt__cta {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.88rem;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 2px;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.hotels-camping-alt__cta:hover {
+    color: var(--fc-accent);
+    border-color: var(--fc-accent);
+}
+
+/* ── Tickets CTA ── */
+.hotels-tickets-cta {
+    background: var(--color-primary);
+    border-top: 1px solid var(--fc-line);
+    padding: clamp(2rem, 4vw, 3rem) 0;
+}
+
+.hotels-tickets-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.hotels-tickets-cta__copy {
+    margin: 0;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-family: var(--font-action);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.hotels-tickets-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+@media (max-width: 575.98px) {
+    .hotels-tickets-cta__inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ── Hotel list ── */
 .accommodations-hotel-list {
     margin: 0.65rem 0 0;
     padding-left: 1.1rem;
@@ -318,4 +486,133 @@
     .accommodations-list__item {
         flex-direction: column;
     }
+}
+
+
+/* ── Traveling hero ── */
+.traveling-hero {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    padding: clamp(3.2rem, 7vw, 6rem) 0 clamp(2.4rem, 5vw, 4.2rem);
+}
+
+.traveling-hero__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.78rem;
+    opacity: 0.65;
+}
+
+.traveling-hero__title {
+    display: block;
+    margin: 0.3rem 0 0;
+    text-transform: uppercase;
+    font-family: var(--font-action);
+    line-height: 0.88;
+    letter-spacing: 0.03em;
+    font-size: clamp(3.8rem, 10vw, 8.5rem);
+}
+
+.traveling-hero__title-filled {
+    display: block;
+    color: #ffffff;
+}
+
+.traveling-hero__title-outlined {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px #ffffff;
+}
+
+.traveling-hero__copy {
+    margin: 1.25rem 0 0;
+    width: min(62ch, 100%);
+    line-height: 1.4;
+    opacity: 0.75;
+}
+
+/* ── Traveling "Where to Stay" CTA section ── */
+.traveling-cta {
+    background: var(--fc-bg, #0a0a0a);
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    border-top: 1px solid var(--fc-line, rgba(255,255,255,0.1));
+}
+
+.traveling-cta__heading {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-action);
+    text-transform: uppercase;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--fc-ink, #fff);
+    letter-spacing: 0.04em;
+}
+
+.traveling-cta__copy {
+    margin: 0 0 2rem;
+    color: var(--fc-muted, rgba(255,255,255,0.6));
+    font-size: 1rem;
+    line-height: 1.55;
+    max-width: 60ch;
+}
+
+/* ── Hub grid ── */
+.accommodations-hub__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.accommodations-hub__card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.75rem 1.5rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--fc-line, rgba(255,255,255,0.1));
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.accommodations-hub__card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--fc-accent, #1e6fff);
+}
+
+.accommodations-hub__card-eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.72rem;
+    color: var(--fc-accent, #1e6fff);
+}
+
+.accommodations-hub__card-title {
+    margin: 0;
+    font-family: var(--font-action);
+    text-transform: uppercase;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: #fff;
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.accommodations-hub__card-copy {
+    margin: 0.25rem 0 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--fc-muted, rgba(255,255,255,0.6));
+    flex: 1;
+}
+
+.accommodations-hub__card-cta {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--fc-accent, #1e6fff);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }

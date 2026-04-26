@@ -12,16 +12,6 @@
 {% block content %}
 <main class="the-play-page">
 
-	<section class="play-hero" aria-label="The Play">
-		<div class="play-hero__inner container-xl">
-			<p class="play-hero__eyebrow">{{ the_play.hero.eyebrow }}</p>
-			<h1 class="play-hero__title">{{ the_play.hero.title }}</h1>
-			<p class="play-hero__copy">{{ the_play.hero.copy }}</p>
-		</div>
-	</section>
-
-	{{ slim_banner("Register · Camp · Arrive") }}
-
 	<section class="play-steps" aria-label="Three steps to Freedom Con">
 		<div class="play-steps__inner container-xl">
 			{% for step in the_play.steps %}

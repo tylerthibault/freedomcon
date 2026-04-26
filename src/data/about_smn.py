@@ -25,7 +25,7 @@ about_smn_conferences = [
 	{
 		"year": 2022,
 		"name": "Forge",
-		"summary": "",
+		"summary": "Josh McPherson",
 		"videos": [],
 	},
 	{
@@ -60,13 +60,13 @@ about_smn_conferences = [
 	{
 		"year": 2024,
 		"name": "Kill Dragons",
-		"summary": "",
+		"summary": "Josh McPherson and Adam James",
 		"videos": [],
 	},
 	{
 		"year": 2025,
 		"name": "The Brotherhood",
-		"summary": "Josh McPherson, Shaun, John Lovell, Adam James, and Brent Frank",
+		"summary": "Josh McPherson, John Lovell, Adam James, and Brent Frank",
 		"videos": [
 			{
 				"url": "https://www.youtube.com/watch?v=c_N-rVMVNig&list=PLptTyphw8iGNn3CP6uMGliJIU3ZwXieqZ&index=1&pp=iAQB",
@@ -105,5 +105,6 @@ about_smn_conferences = [
 		"name": "The Statesman",
 		"summary": "Josh McPherson, John Lovell, Eric Metaxas, Graham Allen, Josh Howerton, David Barton, Tim Barton, Adam James, Russell Johnson, Ryan Visconti, Mark Driscoll, Chad Robichaux, and Nate Schatzline",
 		"videos": [],
+		"empty_message": "The video lineup for 2026 will be available on the Stronger Man Nation app.",
 	},
 ]

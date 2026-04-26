@@ -1,0 +1,60 @@
+/* ── Wives page ── */
+
+.wives-coming-soon {
+    padding: clamp(4rem, 10vw, 8rem) 0;
+    background-color: var(--color-dark, #0d0d0d);
+    color: #ffffff;
+    text-align: center;
+}
+
+.wives-coming-soon__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.wives-coming-soon__title {
+    display: block;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: var(--font-action);
+    line-height: 0.88;
+    letter-spacing: 0.03em;
+    font-size: clamp(3.8rem, 10vw, 8.5rem);
+}
+
+.wives-coming-soon__title-filled {
+    display: block;
+    color: #ffffff;
+}
+
+.wives-coming-soon__title-outlined {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px #ffffff;
+}
+
+.wives-coming-soon__copy {
+    margin: 0;
+    width: min(62ch, 100%);
+    line-height: 1.4;
+    opacity: 0.75;
+}
+.wives-coming-soon__list {
+    margin: 0;
+    padding-left: 1.4rem;
+    width: min(62ch, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    line-height: 1.6;
+    opacity: 0.75;
+}
+
+.wives-coming-soon__signature {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-american-scribe);
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    letter-spacing: 0.01em;
+}

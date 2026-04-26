@@ -311,3 +311,57 @@
 		letter-spacing: 0.12em;
 	}
 }
+
+/* Video play button trigger */
+.where__video-trigger {
+	display: block;
+	width: 100%;
+	max-width: 480px;
+	position: relative;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	border-radius: 6px;
+	overflow: hidden;
+	margin-bottom: 1.5rem;
+}
+
+.where__video-trigger .landing12-trailer-thumb {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+}
+
+.where__video-trigger .landing12-trailer-thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.where__video-trigger .landing12-trailer-copy {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.6rem 0.75rem;
+	background: rgba(0,0,0,0.7);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	color: #fff;
+	font-size: 0.85rem;
+}
+
+.where__video-trigger .landing12-trailer-copy .label {
+	flex-shrink: 0;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.where__video-trigger:hover .landing12-trailer-thumb img {
+	transform: scale(1.03);
+	transition: transform 0.3s ease;
+}

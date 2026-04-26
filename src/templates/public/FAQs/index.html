@@ -12,24 +12,24 @@
 
 {% block content %}
 <main class="faq-page">
-    {{ page_hero("Get Answers", "FAQs", "Everything you need to know about attending Freedom Con.") }}
-
-    {{ slim_banner("Frequently Asked Questions") }}
-
     <section class="faq-body container-xl" aria-label="Frequently asked questions">
         {% for category, entries in faq_content.items() %}
         {% set accordion_id = 'faq-accordion-' ~ loop.index %}
-        <section aria-label="{{ category }}">
-            <h2 class="faq-category-title text-center text-uppercase">{{ category }}</h2>
-            <div class="accordion accordion-flush faq-accordion" id="{{ accordion_id }}">
+        {% set section_collapse_id = 'faq-section-' ~ loop.index %}
+        <section class="faq-section" aria-label="{{ category }}">
+            <button class="faq-category-title faq-category-toggle text-center text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#{{ section_collapse_id }}" aria-expanded="false" aria-controls="{{ section_collapse_id }}">
+                {{ category }}
+                <span class="faq-category-toggle__icon" aria-hidden="true"></span>
+            </button>
+            <div id="{{ section_collapse_id }}" class="accordion accordion-flush faq-accordion collapse">
                 {% for item in entries %}
                 {% set heading_id = accordion_id ~ '-heading-' ~ loop.index %}
                 {% set collapse_id = accordion_id ~ '-collapse-' ~ loop.index %}
                 <div class="accordion-item faq-item">
                     <h3 class="accordion-header" id="{{ heading_id }}">
-                        <button class="accordion-button{% if not loop.first %} collapsed{% endif %} faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ collapse_id }}" aria-expanded="{{ 'true' if loop.first else 'false' }}" aria-controls="{{ collapse_id }}">{{ item.question }}</button>
+                        <button class="accordion-button collapsed faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ collapse_id }}" aria-expanded="false" aria-controls="{{ collapse_id }}">{{ item.question }}</button>
                     </h3>
-                    <div id="{{ collapse_id }}" class="accordion-collapse collapse{% if loop.first %} show{% endif %}" aria-labelledby="{{ heading_id }}" data-bs-parent="#{{ accordion_id }}">
+                    <div id="{{ collapse_id }}" class="accordion-collapse collapse" aria-labelledby="{{ heading_id }}" data-bs-parent="#{{ section_collapse_id }}">
                         <div class="accordion-body faq-answer">
                             {% if item.answer_list is defined %}
                             <ul>

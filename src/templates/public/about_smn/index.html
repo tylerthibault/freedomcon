@@ -11,8 +11,16 @@
 {% endblock %}
 
 {% block content %}
-{{ page_hero("Our Story", "Past SMN Conferences", "For the last five years we\u2019ve held Stronger Man Nation conferences at home. Now we\u2019re taking it to The Gorge.") }}
 
+<!-- Hero -->
+<section class="past-conf-hero" aria-label="Past conferences page header">
+	<div class="past-conf-hero__inner container-xl">
+		<p class="past-conf-hero__eyebrow">The Road to The Gorge</p>
+		<h1 class="past-conf-hero__title">
+			<span class="past-conf-hero__title-filled">Past Stronger Man</span><span class="past-conf-hero__title-outlined">Conferences</span>
+		</h1>
+	</div>
+</section>
 
 {% if conference_sections | selectattr('has_videos') | list | length %}
 {% include 'components/media_modal.html' %}

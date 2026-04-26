@@ -72,6 +72,33 @@ hotels = {
                 },
             ],
         },
+        # {
+        #     "name": "Ellensburg",
+        #     "distance": "~55 miles",
+        #     "details": "Drive Time: 55\u201365 minutes. More hotel options and a college town with solid amenity options.",
+        #     "hotels": [
+        #         {
+        #             "name": "Hampton Inn & Suites Ellensburg",
+        #             "link": "https://www.hilton.com/en/hotels/elswahx-hampton-suites-ellensburg/",
+        #             "valid_link": True,
+        #         },
+        #         {
+        #             "name": "Holiday Inn Express & Suites Ellensburg",
+        #             "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/ellensburg/ellwa/hoteldetail",
+        #             "valid_link": True,
+        #         },
+        #         {
+        #             "name": "Quality Inn & Suites Ellensburg",
+        #             "link": "https://www.choicehotels.com/washington/ellensburg/quality-inn-hotels/wa108",
+        #             "valid_link": True,
+        #         },
+        #         {
+        #             "name": "Super 8 by Wyndham Ellensburg",
+        #             "link": "https://www.wyndhamhotels.com/super-8/ellensburg-washington/super-8-ellensburg/overview",
+        #             "valid_link": True,
+        #         },
+        #     ],
+        # },
         {
             "name": "Moses Lake",
             "distance": "~30 miles",

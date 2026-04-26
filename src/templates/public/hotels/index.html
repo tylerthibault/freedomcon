@@ -13,24 +13,28 @@
 {% block content %}
 <main class="hotels-page">
 
-	<section class="accommodations-hero" aria-label="Hotels near The Gorge">
-		<div class="accommodations-hero__inner container-xl">
-			<p class="accommodations-hero__eyebrow">{{ hotels.hero.eyebrow }}</p>
-			<h1 class="accommodations-hero__title">{{ hotels.hero.title }}</h1>
-			<p class="accommodations-hero__copy">{{ hotels.hero.copy }}</p>
+	<!-- Hero -->
+	<section class="hotels-hero" aria-label="Hotels page header">
+		<div class="hotels-hero__inner container-xl">
+			<p class="hotels-hero__eyebrow">{{ hotels.hero.eyebrow }}</p>
+			<h1 class="hotels-hero__title">
+				<span class="hotels-hero__title-filled">Hotels</span><span class="hotels-hero__title-outlined">Near The Gorge</span>
+			</h1>
+			<p class="hotels-hero__copy">{{ hotels.hero['copy'] }}</p>
 		</div>
 	</section>
-
-	{{ slim_banner("George · Quincy · Ephrata · Moses Lake") }}
 
 	<section class="accommodations-section" aria-label="Hotel listings">
 		<div class="accommodations-section__inner container-xl">
 			{% if hotels.important_note %}
-			<p class="accommodations-panel__note"><strong>Note:</strong> {{ hotels.important_note }}</p>
+			<div class="hotels-notice">
+				<span class="hotels-notice__label">Notice</span>
+				<p class="hotels-notice__text">{{ hotels.important_note }}</p>
+			</div>
 			{% endif %}
 			<div class="accommodations-list accommodations-list--lodging">
 				{% for option in hotels.options %}
-				<article class="accommodations-list__item d-flex justify-content-between align-items-start">
+				<article class="accommodations-list__item">
 					<div>
 						<h3>{{ option.name }}</h3>
 						<p class="accommodations-list__type">{{ option.distance }}</p>
@@ -53,18 +57,19 @@
 		</div>
 	</section>
 
-	<section class="accommodations-section accommodations-section--alt" aria-label="Prefer camping?">
-		<div class="accommodations-section__inner container-xl">
-			<h2 class="accommodations-section__heading">Prefer Camping?</h2>
-			<p>Stay on-site at The Gorge. Wake up to the Columbia River. One ticket covers both nights.</p>
-			<a class="play-step__cta" href="/camping">View Camping Details</a>
+	<section class="hotels-camping-alt" aria-label="Prefer camping?">
+		<div class="hotels-camping-alt__inner container-xl">
+			<p class="hotels-camping-alt__eyebrow">On-Site Option</p>
+			<h2 class="hotels-camping-alt__heading">Prefer Camping?</h2>
+			<p class="hotels-camping-alt__copy">Stay on-site at The Gorge. Wake up to the Columbia River. One ticket covers both nights.</p>
+			<a class="hotels-camping-alt__cta" href="/camping">View Camping Details &rarr;</a>
 		</div>
 	</section>
 
-	<section class="camping-cta" aria-label="Get tickets">
-		<div class="camping-cta__inner container-xl">
-			<p class="camping-cta__copy">Lock in your tickets before they sell out.</p>
-			<a class="camping-cta__btn btn-primary" href="{{ hotels.cta.href }}">{{ hotels.cta.label }}</a>
+	<section class="hotels-tickets-cta" aria-label="Get tickets">
+		<div class="hotels-tickets-cta__inner container-xl">
+			<p class="hotels-tickets-cta__copy">Lock in your tickets before they sell out.</p>
+			<a class="hotels-tickets-cta__btn btn-primary" href="{{ hotels.cta.href }}">{{ hotels.cta.label }}</a>
 		</div>
 	</section>
 

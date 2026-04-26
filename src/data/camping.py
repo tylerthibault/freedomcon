@@ -14,8 +14,6 @@ camping = {
             "Check-out: 11:00 AM on Sunday",
             "Up to 6 people per site (~20\u2019 \xd7 35\u2019)",
         ],
-        "cta_label": "Add Camping at Checkout",
-        "cta_href": "https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets",
     },
     "rv_info": {
         "heading": "RV Friendly",

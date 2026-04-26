@@ -27,7 +27,7 @@
 					</div>
 					{% else %}
 					<div class="about-smn-conference__empty">
-						<p>Video lineup for this year is coming soon.</p>
+						<p>{{ conference.empty_message if conference.empty_message else 'Video lineup for this year is coming soon.' }}</p>
 					</div>
 					{% endif %}
 				</div>

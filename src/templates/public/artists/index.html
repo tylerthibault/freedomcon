@@ -12,32 +12,27 @@
 
 {% block content %}
 <main>
-	{% set featured_artist = artists[0] if artists and artists|length else None %}
-	{{ page_hero("Freedom Con Live", "Artists", "Featuring Crowder live at Freedom Con.") }}
-
-	{{ slim_banner("Featured Artist") }}
-
-	<section class="artists-section" aria-label="Featured artist">
+	<section class="artists-section" aria-label="Artists">
 		<div class="artists-section__inner container-xl">
-			{% if featured_artist %}
-			<article class="artist-card artist-card--featured">
-				<div class="artist-card__media-shell artist-card__media-shell--featured">
-					<img class="artist-card__media" src="{{ url_for('static', filename=featured_artist.image) }}" alt="{{ featured_artist.name }}">
+			{% for artist in artists %}
+			<article class="artist-card mt-3 {% if loop.first %}artist-card--featured{% endif %}">
+				<div class="artist-card__media-shell {% if loop.first %}artist-card__media-shell--featured{% endif %}">
+					<img class="artist-card__media" src="{{ url_for('static', filename=artist.image) }}" alt="{{ artist.name }}">
 				</div>
 				<div class="artist-card__body">
-					<h2 class="artist-card__name">{{ featured_artist.name }}</h2>
-					<p class="artist-card__genre">{{ featured_artist.genre }}</p>
+					<h2 class="artist-card__name">{{ artist.name }}</h2>
+					<p class="artist-card__genre">{{ artist.genre }}</p>
 					<div class="artist-card__bio">
-						{% for paragraph in featured_artist.bio.split('\n\n') %}
+						{% for paragraph in artist.bio.split('\n\n') %}
 						{% if paragraph|trim %}
 						<p class="artist-card__bio-paragraph">{{ paragraph|trim }}</p>
 						{% endif %}
 						{% endfor %}
 					</div>
-					<p class="artist-card__meta">{{ featured_artist.day }} · {{ featured_artist.stage }}</p>
+					<p class="artist-card__meta">{{ artist.day }} · {{ artist.stage }}</p>
 				</div>
 			</article>
-			{% endif %}
+			{% endfor %}
 		</div>
 	</section>
 </main>

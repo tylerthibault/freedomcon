@@ -47,7 +47,7 @@ ticket_prices = [
             "Exclusive meet & greet with speakers",
             "Off-record Q/A with speaker panel",
             "Signed book by Eric Metaxas",
-            "Enter code PASTOR at checkout",
+            "Enter promo code <strong>PASTOR</strong> at checkout to receive your 25% discount and register for the VIP experience. You will be contacted with further details and instructions. Already registered? Use code PASTOR to claim your discount.",
         ],
         "highlight": False,
     },

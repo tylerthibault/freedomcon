@@ -11,6 +11,7 @@
 					aria-controls="{{ accordion_id }}-collapse-{{ category.id }}">
 				{{ category.label }}
 				<span class="press-assets__count">{{ category.assets | length }} asset{{ 's' if category.assets | length != 1 }}</span>
+				<span class="press-assets__accordion-icon" aria-hidden="true"></span>
 			</button>
 		</h3>
 		<div id="{{ accordion_id }}-collapse-{{ category.id }}"
@@ -100,8 +101,11 @@
 
 <script>
 (function () {
-	// ── Modal preview – update Download href to proxy URL ──────────
+	// ── Move modal to <body> so it escapes any stacking context ──────
 	var modal = document.getElementById('pressAssetPreviewModal');
+	if (modal && modal.parentNode !== document.body) {
+		document.body.appendChild(modal);
+	}
 	if (modal) {
 		modal.addEventListener('show.bs.modal', function (e) {
 			var btn = e.relatedTarget;

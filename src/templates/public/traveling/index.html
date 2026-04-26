@@ -1,0 +1,78 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/banner.html" import slim_banner %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/accommodations.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="traveling-page">
+
+	<!-- Hero -->
+	<section class="traveling-hero" aria-label="Travel page header">
+		<div class="traveling-hero__inner container-xl">
+			<p class="traveling-hero__eyebrow">Getting Here</p>
+			<h1 class="traveling-hero__title">
+				<span class="traveling-hero__title-filled">Travel</span><span class="traveling-hero__title-outlined"> to The Gorge</span>
+			</h1>
+			<p class="traveling-hero__copy">{{ travel_info.overview }}</p>
+		</div>
+	</section>
+
+	<section class="accommodations-section" aria-label="Travel details">
+		<div class="accommodations-section__inner container-xl">
+			<div class="accommodations-panel">
+
+				<div class="accommodations-panel__grid">
+					{% for airport in travel_info.airports %}
+					<article class="accommodations-card">
+						<h3>{{ airport.name }}</h3>
+						<p><strong>Distance:</strong> {{ airport.distance }}</p>
+						<p><strong>Drive Time:</strong> {{ airport.drive_time }}</p>
+						<ol class="accommodations-route-list">
+							{% for step in airport.route %}
+							<li>{{ step }}</li>
+							{% endfor %}
+						</ol>
+						<p>{{ airport.notes }}</p>
+					</article>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="traveling-cta" aria-label="Where to stay">
+		<div class="traveling-cta__inner container-xl">
+			<h2 class="traveling-cta__heading">Where to Stay</h2>
+			<p class="traveling-cta__copy">Once you arrive, choose between on-site camping at The Gorge or nearby hotels in George, Quincy, and Moses Lake.</p>
+			<div class="accommodations-hub__grid" style="margin-top: 1.5rem;">
+				<a class="accommodations-hub__card" href="/camping">
+					<p class="accommodations-hub__card-eyebrow">On-Site</p>
+					<h3 class="accommodations-hub__card-title">Camping</h3>
+					<p class="accommodations-hub__card-copy">Stay at The Gorge. Wake up to the Columbia River. Two nights, one ticket, up to 6 per site.</p>
+					<span class="accommodations-hub__card-cta">View Camping Details &rarr;</span>
+				</a>
+				<a class="accommodations-hub__card" href="/hotels">
+					<p class="accommodations-hub__card-eyebrow">Nearby</p>
+					<h3 class="accommodations-hub__card-title">Hotels</h3>
+					<p class="accommodations-hub__card-copy">George, Quincy, Ephrata, and Moses Lake all within 30&ndash;40 minutes of the venue.</p>
+					<span class="accommodations-hub__card-cta">View Hotel Listings &rarr;</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

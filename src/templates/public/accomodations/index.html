@@ -11,16 +11,6 @@
 
 {% block content %}
 <main>
-	<section class="accommodations-hero" aria-label="Travel and lodging information">
-		<div class="accommodations-hero__inner container-xl">
-			<p class="accommodations-hero__eyebrow">Plan Your Stay</p>
-			<h1 class="accommodations-hero__title">Accommodations</h1>
-			<p class="accommodations-hero__copy">Travel guidance, camping options, and nearby hotels to help you lock in your weekend.</p>
-		</div>
-	</section>
-
-	{{ slim_banner("Travel · Camping · Hotels") }}
-
 	<section class="accommodations-hub" aria-label="Accommodation options">
 		<div class="accommodations-hub__inner container-xl">
 			<div class="accommodations-hub__grid">
@@ -36,80 +26,12 @@
 					<p class="accommodations-hub__card-copy">George, Quincy, Ephrata, and Moses Lake all within 30&ndash;40 minutes of the venue.</p>
 					<span class="accommodations-hub__card-cta">View Hotel Listings &rarr;</span>
 				</a>
-			</div>
-		</div>
-	</section>
-
-	<section class="accommodations-section" aria-label="Travel details">
-		<div class="accommodations-section__inner container-xl">
-			<h2 class="accommodations-section__heading">Travel</h2>
-			<div class="accommodations-panel">
-				<p class="accommodations-panel__lead">{{ travel_info.overview }}</p>
-				<div class="accommodations-panel__grid">
-					{% for airport in travel_info.airports %}
-					<article class="accommodations-card">
-						<h3>{{ airport.name }}</h3>
-						<p><strong>Distance:</strong> {{ airport.distance }}</p>
-						<p><strong>Drive Time:</strong> {{ airport.drive_time }}</p>
-						<ol class="accommodations-route-list">
-							{% for step in airport.route %}
-							<li>{{ step }}</li>
-							{% endfor %}
-						</ol>
-						<p>{{ airport.notes }}</p>
-					</article>
-					{% endfor %}
-				</div>
-				<p class="accommodations-panel__note"><strong>Important:</strong> {{ travel_info.important_note }}</p>
-			</div>
-		</div>
-	</section>
-
-	<section class="accommodations-section accommodations-section--alt" aria-label="Camping options">
-		<div class="accommodations-section__inner container-xl">
-			<h2 class="accommodations-section__heading">Camping</h2>
-
-			<!-- Single ticket callout -->
-			<div class="accommodations-camping-ticket">
-				<div class="accommodations-camping-ticket__top">
-					<div class="accommodations-camping-ticket__left">
-						<p class="accommodations-camping-ticket__label">One Camping Ticket</p>
-						<p class="accommodations-camping-ticket__desc">Covers Friday night and Saturday night into Sunday morning. Add it during ticket checkout.</p>
-						<ul class="accommodations-camping-ticket__details">
-							<li><strong>Check-in:</strong> 12:00 PM on Friday</li>
-							<li><strong>Check-out:</strong> 11:00 AM on Sunday</li>
-							<li>Up to 6 people per site (~20&rsquo; &times; 35&rsquo;)</li>
-						</ul>
-					</div>
-					<div class="accommodations-camping-ticket__right">
-						<p class="accommodations-camping-ticket__price">$132</p>
-						<p class="accommodations-camping-ticket__price-note">at checkout</p>
-					</div>
-				</div>
-				<div class="accommodations-camping-ticket__rv">
-					<img src="{{ url_for('static', filename='img/RV.png') }}" alt="RVs welcome" class="accommodations-camping-ticket__rv-img">
-					<div class="accommodations-camping-ticket__rv-info">
-						<p class="accommodations-camping-ticket__rv-heading">RV Friendly</p>
-						<p class="accommodations-camping-ticket__rv-detail">RVs welcome &mdash; no hookups, generators allowed. RVs longer than 35&rsquo; will need two camping spots.</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Camping area descriptions -->
-			<p class="accommodations-section__subnote accommodations-section__subnote--heading">Camping Areas</p>
-			<div class="accommodations-list accommodations-list--camping">
-					<article class="accommodations-list__item d-flex justify-content-between align-items-start">
-					<div>
-						<h3>Premier Camping</h3>
-						<p>Closer to the venue with quicker entry and exit, upgraded facilities, and a more spacious setup.</p>
-					</div>
-				</article>
-				<!-- <article class="accommodations-list__item">
-					<div>
-						<h3>Terrace Camping</h3>
-						<p>Premium views, expanded space, private restrooms, and dedicated staff on site.</p>
-					</div>
-				</article> -->
+				<a class="accommodations-hub__card" href="/travel">
+					<p class="accommodations-hub__card-eyebrow">Getting Here</p>
+					<h2 class="accommodations-hub__card-title">Traveling</h2>
+					<p class="accommodations-hub__card-copy">Airport routes and drive times from Seattle and Spokane to The Gorge Amphitheatre.</p>
+					<span class="accommodations-hub__card-cta">View Travel Details &rarr;</span>
+				</a>
 			</div>
 		</div>
 	</section>

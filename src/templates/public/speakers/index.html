@@ -14,17 +14,14 @@
 {% block content %}
 <main>
 	<h1 class="visually-hidden">Freedom Con 2026 Speakers</h1>
-	{{ page_hero("Voices of the Conference", "Speakers", "Statesmen, pastors, and leaders called to exhort men toward the high calling of statesmanship.") }}
-	{{ slim_banner("FREEDOM CON SPEAKERS") }}
 	<section class="speakers-section speakers-section--flat" aria-label="Voices of the conference">
 		<div class="speakers-section__notch" aria-hidden="true"></div>
 				<div class="speakers-section__inner container-xl">
 			<article class="speakers-message" aria-label="Message from Pastor Josh McPherson">
 				<h2 class="speakers-message__title">A Message From Pastor Josh McPherson</h2>
-				<p>Each man I've invited to speak at our historic Stronger Man Nation FREEDOM CON is not just here because they are faithful followers of Jesus, exceptional warriors, true patriots, and faithful Stronger Men—they are also personal friends.</p>
-				<p>I've asked each of them to exhort us as men to the high calling of statesmanship. It is the lost art and gaping hole in our society today. These men are statesmen, each living into that critical role in their own way. My sons and I can hardly wait to learn from them alongside you.</p>
+				<p>Each man I've invited to speak at our historic FREEDOM CON is not just here because they are faithful men, they are personal friends. They are patriots, warriors, statesmen...a lost art and gaping hole in our society today.  I am thrilled for my sons and I to learn from them alongside you.</p>
 			</article>
-					<h2 class="speakers-section__heading text-center text-uppercase">Speakers of Freedom Con</h2>
+					<h2 class="speakers-section__heading text-center text-uppercase my-3">Speakers of Freedom Con</h2>
 			<div class="speakers-section__grid">
 				{% for speaker in speakers %}
 				{{ speaker_card(

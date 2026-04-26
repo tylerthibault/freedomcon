@@ -23,10 +23,10 @@ travel_info = {
                 "Take Exit 143 (Silica Road) toward George.",
                 "Follow signs to The Gorge Amphitheatre.",
             ],
-            "notes": "This route crosses Snoqualmie Pass and Central Washington terrain.",
+            "notes": "\u26a0\ufe0f Due to heavy construction near Vantage Bridge on I-90, we strongly recommend taking US-2 East through Wenatchee instead. From Seattle, take I-5 North to US-2 East through Leavenworth and Wenatchee, then head south on US-97 to I-90 East toward George. This detour can save 3\u20134 hours compared to sitting in construction traffic near Vantage.",
         },
     ],
-    "important_note": "Travelers using I-90 East from Seattle may experience delays near the Vantage Bridge due to ongoing construction.",
+    # "important_note": "Travelers coming from Seattle-Tacoma should avoid I-90 East through Vantage due to major ongoing construction. Take US-2 East through Wenatchee instead — this can save 3\u20134 hours. See the Seattle-Tacoma route details below.",
 }
 
 hotel_options = [

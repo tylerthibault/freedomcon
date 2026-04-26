@@ -154,9 +154,9 @@
         }
         .landing12-event-highlight__btn:hover { background: #a02220; color: #fff; }
     </style>
-    <section class="d-flex flex-column justify-content-center align-items-center" aria-label="Event weekend highlight">
+    <section class="d-flex flex-column justify-content-center align-items-center my-3" aria-label="Event weekend highlight">
         <h2 class="landing12-event-highlight__heading">One Historic Event</h2>
-        <p class="landing12-event-highlight__meta">The Gorge Amphitheater &nbsp;|&nbsp; George, WA</p>
+        <p class="landing12-event-highlight__meta">The Gorge Amphitheatre &nbsp;|&nbsp; George, WA</p>
         <p class="landing12-event-highlight__date">June 19 – 20</p>
     </section>
     <div class="d-flex gap-3 justify-content-center align-content-center my-3">
@@ -195,6 +195,10 @@
 
     {% include 'public/landing copy/components/cta_2.html' %}
 
+    <div class="d-flex justify-content-center align-content-center my-3">
+		<a class="landing12-btn btn btn-xxl" href="/tickets">Get Tickets</a>
+	</div>
+
     {% include 'public/landing copy/components/what_to_expect.html' %}
 
     {% include 'public/landing copy/components/trailers.html' %}
@@ -203,13 +207,14 @@
 
     {% include 'public/landing copy/components/father_son_callout.html' %}
 
-    {% include 'public/landing copy/components/crowder.html' %}
+    {% include 'public/landing copy/components/artists.html' %}
 
     {% include 'public/landing copy/components/accomodation.html' %}
 
     {% include 'public/landing copy/components/social_proof.html' %}
 
     <div class="my-2">
+        <h2 class="d-flex justify-content-center align-content-center">Sponsors</h2>
         {% set ticker_category = 'all' %}
         {% include 'components/sponsor_ticker.html' %}
     </div>

@@ -27,8 +27,8 @@ from src.data.wives import wives as wives_data
 from src.data.invite import invite as invite_data
 from src.data.schedule import schedule as schedule_data
 from src.data.the_play import the_play as the_play_data
-from src.data.camping import camping as camping_data
 from src.data.hotels import hotels as hotels_data
+from src.data.camping import camping as camping_data
 from src.data.trailers import trailers as trailers_data
 from src.data.media_downloads import media_downloads
 
@@ -398,8 +398,8 @@ def artists_page() -> str:
 	)
 
 
-@public_bp.get("/about-smn")
-def about_smn_page() -> str:
+@public_bp.get("/past-conferences")
+def past_conferences_page() -> str:
 	conference_sections: list[dict[str, object]] = []
 
 	for conference in about_smn_conferences:
@@ -430,6 +430,7 @@ def about_smn_page() -> str:
 				"summary": conference_summary,
 				"media_section": media_section,
 				"has_videos": bool(media_section.get("items")),
+				"empty_message": conference.get("empty_message", ""),
 			}
 		)
 
@@ -439,7 +440,7 @@ def about_smn_page() -> str:
 		seo=build_seo(
 			title="Past SMN Conferences | The Road to The Gorge",
 			description="Explore past Stronger Man Nation conferences and the Road to The Gorge journey leading into Freedom Con.",
-			path="/about-smn",
+			path="/past-conferences",
 		),
 	)
 
@@ -454,6 +455,19 @@ def accommodations_page() -> str:
 			title="FREEDOM CON Accommodations | Travel, Camping, and Lodging",
 			description="Plan your Freedom Con stay with travel routes, camping options, and nearby hotel listings around The Gorge Amphitheatre.",
 			path="/accommodations",
+		),
+	)
+
+
+@public_bp.get("/travel")
+def travel_page() -> str:
+	return render_template(
+		"public/traveling/index.html",
+		travel_info=travel_info,
+		seo=build_seo(
+			title="FREEDOM CON Travel Guide | Getting to The Gorge Amphitheatre",
+			description="Plan your drive to The Gorge Amphitheatre for Freedom Con. Airport routes, drive times, and travel tips from Seattle and Spokane.",
+			path="/travel",
 		),
 	)
 
@@ -767,12 +781,11 @@ def sitemap_xml() -> Response:
 		"/worship",
 		"/vendors",
 		"/accommodations",
+		"/travel",
 		"/camping",
 		"/hotels",
 		"/the-venue",
 		"/tickets",
-		"/schedule",
-		"/the-play",
 		"/invite",
 		"/wives",
 	]
@@ -794,6 +807,17 @@ def wives_page() -> str:
 		),
 	)
 
+@public_bp.get("/prayer_guide")
+def prayer_guide_page() -> str:
+	return render_template(
+		"public/prayer_guide/index.html",
+		# prayer_guide=prayer_guide_data,
+		seo=build_seo(
+			title="Prayer Guide | Freedom Con 2026",
+			description="A prayer guide for attendees of Freedom Con 2026.",
+			path="/prayer_guide",
+		),
+	)
 
 @public_bp.get("/invite")
 def invite_page() -> str:
@@ -810,6 +834,7 @@ def invite_page() -> str:
 
 @public_bp.get("/schedule")
 def schedule_page() -> str:
+	return redirect(url_for("public.landing"), code=302)
 	return render_template(
 		"public/schedule/index.html",
 		schedule=schedule_data,
@@ -838,12 +863,12 @@ def the_play_page() -> str:
 def camping_page() -> str:
 	return render_template(
 		"public/camping/index.html",
-		camping=camping_data,
 		seo=build_seo(
 			title="Camping at The Gorge | Freedom Con 2026",
 			description="Stay on-site at The Gorge Amphitheatre. Camping details, check-in times, RV info, and what to bring for Freedom Con 2026.",
 			path="/camping",
 		),
+		camping=camping_data,
 	)
 
 

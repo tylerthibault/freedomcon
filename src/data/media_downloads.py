@@ -43,4 +43,16 @@ media_downloads = [
             {"label": "We Will Have Our Home Again",        "thumb": f"{_CDN}/We%20Will%20Have%20Our%20Home%20Again%202.png",  "download": f"{_CDN}/We%20Will%20Have%20Our%20Home%20Again%202.png"},
         ],
     },
+    {
+        "id": "conference_graphics",
+        "label": "Conference Graphics",
+        "assets": [
+            # https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Freedom_con_front_3.png
+            {"label": "Freedom Con Hero 1",      "thumb": f"{_CDN}/Freedom_con_front_3.png",        "download": f"{_CDN}/Freedom_con_front_3.png"},
+            # https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Freedom_con_front_4.png
+            {"label": "Freedom Con Hero 2",      "thumb": f"{_CDN}/Freedom_con_front_4.png",        "download": f"{_CDN}/Freedom_con_front_4.png"},
+            # https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Freedom_con_front_5.png
+            {"label": "Freedom Con Hero 3",      "thumb": f"{_CDN}/Freedom_con_front_5.png",        "download": f"{_CDN}/Freedom_con_front_5.png"},
+        ],
+    },
 ]

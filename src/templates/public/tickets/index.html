@@ -13,9 +13,6 @@
 {% block content %}
 {% set countdown_target = '2026-06-19T17:00:00-07:00' %}
 <main class="tickets-page">
-	{{ page_hero("Stronger Man Nation Presents", ticket_meta.event_title, ticket_meta.subtitle ~ " · " ~ ticket_meta.kicker) }}
-	{{ slim_banner("GET YOUR TICKET") }}
-
 	<section class="tickets-section" aria-label="Ticket pricing">
 		<div class="tickets-section__inner container-xl">
 			<h2 class="tickets-section__heading">Tickets</h2>
@@ -34,7 +31,7 @@
 					{% if ticket.notes and ticket.notes|length %}
 					<ul class="ticket-card__notes" aria-label="{{ ticket.name }} benefits">
 						{% for note in ticket.notes %}
-						<li>{{ note }}</li>
+							<li>{{ note|safe }}</li>
 						{% endfor %}
 					</ul>
 					{% endif %}

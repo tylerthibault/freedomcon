@@ -1,6 +1,6 @@
 <div class="footer-countdown-wrap" aria-label="Countdown to event">
     <div class="footer-countdown" data-countdown data-countdown-target="2026-06-19T17:00:00-07:00" aria-live="polite">
-        <span class="footer-countdown-label">Kickoff Starts In</span>
+        <span class="footer-countdown-label">Freedom Con Starts In</span>
         <span class="footer-countdown-value">
             <span class="footer-countdown-inline"><strong data-unit="days">00</strong><span>Days</span></span>
             <span class="footer-countdown-inline"><strong data-unit="hours">00</strong><span>Hours</span></span>
@@ -21,23 +21,28 @@
 
             <section class="landing12-footer-col d-flex flex-column" aria-label="Explore">
                 <h3 class="landing12-footer-heading">Explore</h3>
-                <a class="landing12-footer-link" href="{{ url_for('public.speakers') }}">Speakers</a>
                 <a class="landing12-footer-link" href="{{ url_for('public.artists_page') }}">Artists</a>
+                <a class="landing12-footer-link" href="{{ url_for('public.speakers') }}">Speakers</a>
                 <a class="landing12-footer-link" href="{{ url_for('public.the_venue_page') }}">The Venue</a>
-                <a class="landing12-footer-link" href="{{ url_for('public.accommodations_page') }}">Accommodations</a>
+            </section>
+
+            <section class="landing12-footer-col d-flex flex-column" aria-label="Attend">
+                <h3 class="landing12-footer-heading">Attend</h3>
+                <a class="landing12-footer-link" href="{{ url_for('public.camping_page') }}">Camping</a>
+                <a class="landing12-footer-link" href="{{ url_for('public.hotels_page') }}">Hotels</a>
+                <a class="landing12-footer-link" href="{{ url_for('public.travel_page') }}">Travel</a>
+                <a class="landing12-footer-link" href="{{ url_for('public.faqs') }}">FAQ</a>
+            </section>
+
+            <section class="landing12-footer-col d-flex flex-column" aria-label="More">
+                <h3 class="landing12-footer-heading">More</h3>
+                <a class="landing12-footer-link" href="{{ url_for('public.vision_page') }}">The Vision</a>
+                <a class="landing12-footer-link" href="{{ url_for('public.experience_page') }}">The Experience</a>
+                <a class="landing12-footer-link" href="{{ url_for('public.past_conferences_page') }}">Past SMN Conferences</a>
+                <a class="landing12-footer-link" href="{{ url_for('public.sponsors_page') }}">Sponsors</a>
+                <a class="landing12-footer-link" href="{{ url_for('public.invite_page') }}">A Personal Invitation from Pastor Josh</a>
                 <a class="landing12-footer-link" href="{{ url_for('public.videos_page') }}">Videos</a>
-            </section>
-
-            <section class="landing12-footer-col d-flex flex-column" aria-label="Resources">
-                <h3 class="landing12-footer-heading">Resources</h3>
-                <a class="landing12-footer-link" href="{{ asset_url('pdfs/FREEDOM CON FAQs - FINAL.pdf') }}" download="FREEDOM CON FAQs - FINAL.pdf">Freedom Con FAQ PDF</a>
-                <a class="landing12-footer-link" href="{{ asset_url('pdfs/FREEDOMCON CAMPING FAQs - FINAL.pdf') }}" download="FREEDOMCON CAMPING FAQs - FINAL.pdf">Camping FAQ PDF</a>
-                 <a class="landing12-footer-link" href="{{ url_for('public.press_page') }}">Press / Media Kit</a>
-            </section>
-
-            <section class="landing12-footer-col d-flex flex-column" aria-label="Help">
-                <h3 class="landing12-footer-heading">Help</h3>
-                <a class="landing12-footer-link" href="{{ url_for('public.faqs') }}">Frequently Asked Questions</a>
+                <a class="landing12-footer-link" href="{{ url_for('public.press_page') }}">Press / Media Kit</a>
             </section>
         </div>
         <small class="landing12-footer-legal">© 2026 Stronger Man Nation</small>
