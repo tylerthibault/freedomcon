@@ -413,3 +413,11 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* ── Ticket grid full-width divider ───────────────────────────── */
+.ticket-grid__divider {
+    grid-column: 1 / -1;
+    border: none;
+    border-top: 1px solid #fff;
+    margin: 0;
+}

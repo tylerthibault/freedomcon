@@ -1,22 +1,32 @@
 invite = {
     "from_josh": {
-        "eyebrow": "A Personal Word",
-        "title": "From Josh",
+        "eyebrow": "a word from our founder",
+        "title": "Josh McPherson",
         "name": "Josh McPherson",
         "title_line": "Lead Pastor, Grace City Church · Founder, Stronger Man Nation",
         "image": "img/speakers/JoshM (2).png",
         "video_id": "",  # YouTube embed ID — add when available
-        "letter": [
-            "Hey man — I wanted to reach out personally.",
-            "I've been building toward this moment for years. Freedom Con at The Gorge Amphitheatre on Father's Day Weekend is the largest gathering of Christian men this state has ever seen. And I need you there.",
-            "This isn't a typical church event. It's two days at one of the most iconic outdoor venues in America — the Columbia River as your backdrop, Crowder closing out Saturday night, and some of the most compelling voices in the country speaking directly to the men of Washington.",
-            "The theme is Rise of the Statesman. It's a call for Christian men to stop sitting on the sidelines — in their families, in their communities, and in this state. Washington is worth fighting for. And it starts with men like you showing up.",
-            "I'm not asking you to come because it'll be a great time — though it will be. I'm asking you to come because I believe God is doing something real here, and I want you to be part of it.",
-            "Come. Bring your son. Bring your brother. Bring a friend who needs to be in a room like this.",
-            "I'll see you at The Gorge.",
+        "letter_col_1": [
+            "Everywhere he looks, the Stronger Man feels something is deeply wrong. Everything he holds dear appears under ruthless, relentless attack. He often feels alone. Is he the only one who sees the dumpster fire of a godless culture and feels the burden to do something?",
+            '<span class="invite-letter__highlight">Enter FREEDOM CON: Rise of the Statesman&hellip; An American Congress of Christian Men.</span>',
+            "You aren&#8217;t alone. Good men are stirring. Reformation is coming.",
+            "FREEDOM CON will call men to a plan of action for preserving the vision of America&#8217;s Founding Fathers. Speakers will unpack the historical precedent, biblical foundation, and moral necessity of Christian statesmanship. Sessions will combine intellectual rigor, unapologetic patriotism, and unwavering conviction to summon men and boys to this noble call as a capstone expression of stronger manhood.",
+            'At the heart of our movement is a theological conviction: <span class="invite-letter__highlight">men were made for freedom.</span> Spiritual freedom in Christ is the root out of which economic &amp; political freedom grow. The heart of a free man cannot be controlled by a tyrant. Freedom is our birthright as men under God.',
+            "Sadly in our day, the modern state treats the strong man as a scourge on the environment — something to be limited and controlled. God treated the strong man as a blessing to the environment by placing him in the garden and bidding him be fruitful. Hard work, productivity, and dominion are our calling. To &#8220;leave it better than you found it&#8221; is our privilege.",
+            'FREEDOM CON has been 6 years in the making, a slow-boil churning in my heart to gather an army of men to charge into the breach with the cry of &#8220;For Liberty &amp; Christ!&#8221; <span class="invite-letter__highlight">This is not merely a conference to attend, it is a call to noble duty and decisive action.</span> My home state of Washington needs men who know the urgency of the hour. Our country needs men marked by resolute valor.',
+            "We&#8217;re gathering good men who&#8217;ve had enough, to give them hope, by handing them a plan. It is unapologetically Christian, deeply American, and focused on real change for every county. Our nation is not a lost cause and it&#8217;s worth fighting for. We are the men we&#8217;ve been waiting for, and we will have our home back.",
+            "This Father&#8217;s Day weekend will be unlike any other. We will gather to worship together. We will bring our sons to see a picture of men celebrating their values and standing firm when their state and nation are in trouble.",
+            '<span class="invite-letter__highlight">Before we are dads, pastors, businessmen, and civic leaders, we are sons of God. Before there is public reformation there must be personal revival that leads to holy consecration.</span>',
+        ],
+        "letter_col_2": [
+            "So pack the truck, bring your Bible, grab your boy, and meet me in George, Washington. We&#8217;re moving men from complaints and memes to action and statesmanship. We&#8217;re standing to ensure this experiment against tyranny called America stays strong. We&#8217;re calling pastors, businessmen, and ordinary dads to stop outsourcing courage.",
+            "We are not just hot air, we&#8217;re a hurricane of common sense and uncommon courage. Reformation doesn&#8217;t start in D.C., it starts in dads&#8217; hearts and local churches.",
+            "It&#8217;s time for good men to step into the fire of personal consecration. It&#8217;s time for sons of liberty to take up the sacred work of public reformation.",
+            '<span class="invite-letter__highlight">It&#8217;s time for Statesmen to rise.</span>',
+            "An American Revolution of government founded our nation. An American Reformation of the family and the church will save it. And it starts with us, the men.",
+            '<span class="invite-letter__highlight">Reformation is coming. I can feel it in my bones.</span> What if it started with you? What if it started Father&#8217;s Day weekend? I&#8217;ll see you there.',
         ],
         "signature": "— Josh McPherson",
-        "cta_label": "Register Now",
         "cta_href": "https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets",
     },
     "from_the_boys": {
@@ -32,7 +42,6 @@ invite = {
             "This is the kind of thing you'll remember. Trust us.",
         ],
         "signature": "— The McPherson Boys",
-        "cta_label": "Register — Dad & Son",
         "cta_href": "https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets",
     },
 }

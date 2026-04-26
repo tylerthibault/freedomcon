@@ -1,8 +1,16 @@
 from datetime import date
 from os import getenv
 import re
+import ssl as _ssl
+import urllib.request as _urllib_req
+try:
+    import certifi as _certifi
+    _SSL_CTX = _ssl.create_default_context(cafile=_certifi.where())
+except ImportError:
+    _SSL_CTX = None
 
-from flask import Blueprint, Response, redirect, render_template, url_for
+
+from flask import Blueprint, Response, redirect, render_template, request, url_for
 from src.data.FAQ import FAQ
 from src.data.accommodations import hotel_options, travel_info
 from src.data.artists import artists
@@ -22,6 +30,7 @@ from src.data.the_play import the_play as the_play_data
 from src.data.camping import camping as camping_data
 from src.data.hotels import hotels as hotels_data
 from src.data.trailers import trailers as trailers_data
+from src.data.media_downloads import media_downloads
 
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
@@ -283,7 +292,7 @@ def build_seo(
 
 @public_bp.get("/alt")
 def landing_alt() -> str:
-	# return redirect(url_for("public.landing_alt"))
+	return redirect(url_for("public.landing"))
 	context = {
 		"speakers": speakers_data,
 	}
@@ -296,7 +305,7 @@ def landing() -> str:
 	conference_trailers_section = build_media_section(
 		section_id="conference-trailers",
 		eyebrow="Watch",
-		title="Conference Trailers",
+		title="FREEDOM CON Trailers",
 		aria_label="Freedom Con trailers",
 		items=videos_data,
 		initial_count=4,
@@ -308,7 +317,7 @@ def landing() -> str:
 	podcast_section = build_media_section(
 		section_id="podcasts",
 		eyebrow="Listen",
-		title="Podcasts",
+		title="FREEDOM CON Podcasts",
 		aria_label="Freedom Con podcasts",
 		items=podcasts_data,
 		initial_count=4,
@@ -341,7 +350,7 @@ def landing() -> str:
 		ticket_meta=ticket_ctx["ticket_meta"],
 		sponsors=visible_sponsors,
 		seo=build_seo(
-			title="Freedom Con 2026 — Father's Day Weekend at The Gorge",
+			title="FREEDOM CON 2026 — Father's Day Weekend at The Gorge",
 			description="Two-day outdoor men's conference at The Gorge Amphitheatre, Father's Day Weekend June 19–20 2026. Worship, bold preaching, Crowder, camping, and the Columbia River.",
 			path="/alt",
 			image_path="/static/img/sharable.png?v=20260417",
@@ -356,7 +365,7 @@ def faqs() -> str:
 		faq_content=FAQ,
 		structured_data=[build_faq_schema(FAQ)],
 		seo=build_seo(
-			title="Freedom Con FAQs | Event, Travel, and Camping Questions",
+			title="FREEDOM CON FAQs | Event, Travel, and Camping Questions",
 			description="Get answers to common Freedom Con questions including event details, what to bring, travel guidance, and camping information.",
 			path="/faqs",
 		),
@@ -369,7 +378,7 @@ def speakers() -> str:
 		"public/speakers/index.html",
 		speakers=speakers_data,
 		seo=build_seo(
-			title="Freedom Con Speakers | 2026 Conference Lineup",
+			title="FREEDOM CON Speakers | 2026 Conference Lineup",
 			description="Meet the Freedom Con 2026 speaker lineup featuring pastors, veterans, leaders, and voices challenging men toward faith and statesmanship.",
 			path="/speakers",
 		),
@@ -382,7 +391,7 @@ def artists_page() -> str:
 		"public/artists/index.html",
 		artists=artists,
 		seo=build_seo(
-			title="Freedom Con Artist | Live Worship and Concert",
+			title="FREEDOM CON Artist | Live Worship and Concert",
 			description="See the featured Freedom Con artist and live worship experience planned for Father’s Day weekend 2026.",
 			path="/artists",
 		),
@@ -442,7 +451,7 @@ def accommodations_page() -> str:
 		travel_info=travel_info,
 		hotel_options=hotel_options,
 		seo=build_seo(
-			title="Freedom Con Accommodations | Travel, Camping, and Lodging",
+			title="FREEDOM CON Accommodations | Travel, Camping, and Lodging",
 			description="Plan your Freedom Con stay with travel routes, camping options, and nearby hotel listings around The Gorge Amphitheatre.",
 			path="/accommodations",
 		),
@@ -466,7 +475,7 @@ def vendors_page() -> str:
 	return render_template(
 		"public/vendors/index.html",
 		seo=build_seo(
-			title="Freedom Con Vendors | Information Coming Soon",
+			title="FREEDOM CON Vendors | Information Coming Soon",
 			description="Vendor information for Freedom Con is coming soon. Check back for details on participating partners and on-site offerings.",
 			path="/vendors",
 		),
@@ -498,6 +507,48 @@ def sponsors_page() -> str:
 	)
 
 
+_TRUSTED_CDN = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/"
+
+@public_bp.get("/press/download")
+def press_download() -> Response:
+	"""Proxy a CDN asset so the browser receives Content-Disposition: attachment."""
+	url  = request.args.get("url",  "").strip()
+	name = request.args.get("name", "download").strip()
+
+	if not url.startswith(_TRUSTED_CDN):
+		return Response("Forbidden", status=403)
+
+	try:
+		req = _urllib_req.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+		kwargs = {"timeout": 30}
+		if _SSL_CTX:
+			kwargs["context"] = _SSL_CTX
+		with _urllib_req.urlopen(req, **kwargs) as resp:
+			content_type = resp.headers.get("Content-Type", "application/octet-stream")
+			data = resp.read()
+	except Exception as e:
+		return Response(f"Failed: {e}", status=502)
+
+	# Build filename: use label + extension extracted from URL
+	url_path = url.split("?")[0]
+	last_seg = url_path.rsplit("/", 1)[-1]
+	try:
+		last_seg = _urllib_req.urllib.parse.unquote(last_seg)
+	except Exception:
+		pass
+	dot_idx = last_seg.rfind(".")
+	ext = last_seg[dot_idx:] if dot_idx != -1 else ""
+	safe_name = name.replace('"', "").strip()
+	if ext and not safe_name.lower().endswith(ext.lower()):
+		safe_name += ext
+
+	return Response(data, headers={
+		"Content-Disposition": f'attachment; filename="{safe_name}"',
+		"Content-Type": content_type,
+		"Cache-Control": "public, max-age=3600",
+	})
+
+
 @public_bp.get("/press")
 def press_page() -> str:
 	# return redirect(url_for("public.landing"))
@@ -513,79 +564,7 @@ def press_page() -> str:
 	formsubmit_action = getenv("PRESS_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/info@strongermannation.com"
 	formsubmit_next = f"{SITE_URL}/thankyou"
 
-	_mk = "pdfs/FreedomCon Media Kit"
-	press_assets = [
-		{
-			"id": "posters",
-			"label": "Posters & Flyers",
-			"assets": [
-				{"label": "FreedomCon Banner",                    "thumb": f"{_mk}/Graphics/FreedomCon_Banner.png",                          "download": f"{_mk}/Graphics/FreedomCon_Banner.png"},
-				{"label": "Postcard",                             "thumb": f"{_mk}/Graphics/FreedomCon_PostCard.png",                        "download": f"{_mk}/Graphics/FreedomCon_PostCard.png"},
-				{"label": "Make Washington America Again",        "thumb": f"{_mk}/Graphics/FreedomCon Make Washington America Again.png",    "download": f"{_mk}/Graphics/FreedomCon Make Washington America Again.png"},
-				{"label": "Save The West",                        "thumb": f"{_mk}/Graphics/FreedomCon Save The West.png",                   "download": f"{_mk}/Graphics/FreedomCon Save The West.png"},
-				{"label": "We Will Have Our Home Again",          "thumb": f"{_mk}/Graphics/FreedomCon We Will Have Our Home Again.png",      "download": f"{_mk}/Graphics/FreedomCon We Will Have Our Home Again.png"},
-				{"label": "We Will Have Our Home Again (Alt)",    "thumb": f"{_mk}/Graphics/FreedomCon We Will Have Our Home Again2.png",     "download": f"{_mk}/Graphics/FreedomCon We Will Have Our Home Again2.png"},
-				{"label": "1080×1920 Vertical Graphic",           "thumb": f"{_mk}/Graphics/FreedomCon_1080x1920 Vertical Graphic.jpg",      "download": f"{_mk}/Graphics/FreedomCon_1080x1920 Vertical Graphic.jpg"},
-				{"label": "Speakers Flyer (PDF)",                 "thumb": None,                                                             "download": f"{_mk}/Flyers/FreedomCon_Speakers_Flyer.pdf"},
-				{"label": "Cover Flyer (PDF)",                    "thumb": None,                                                             "download": f"{_mk}/Flyers/FreedomCon_Cover.pdf"},
-				{"label": "Sponsor Packages (PDF)",               "thumb": None,                                                             "download": f"{_mk}/Flyers/FreedomCon_Sponsor_Packages.pdf"},
-			],
-		},
-		{
-			"id": "speakers",
-			"label": "Speaker Headshots",
-			"assets": [
-				{"label": "Featured Speakers (16:9)",             "thumb": f"{_mk}/Speakers & Headshots/FreedomCon 1920x1080 Featured Speakers.jpg",   "download": f"{_mk}/Speakers & Headshots/FreedomCon 1920x1080 Featured Speakers.jpg"},
-				{"label": "Featured Speakers + Gen Z (Print)",    "thumb": f"{_mk}/Speakers & Headshots/8.5x11 Featured Speakers PLUS GEN Z.jpg",      "download": f"{_mk}/Speakers & Headshots/8.5x11 Featured Speakers PLUS GEN Z.jpg"},
-				{"label": "Steven Crowder",                       "thumb": f"{_mk}/Speakers & Headshots/FreedomCon_Crowder.jpeg",                       "download": f"{_mk}/Speakers & Headshots/FreedomCon_Crowder.jpeg"},
-				{"label": "Josh McPherson",                       "thumb": f"{_mk}/Speakers & Headshots/FreedomCon_Josh_McPherson.jpg",                 "download": f"{_mk}/Speakers & Headshots/FreedomCon_Josh_McPherson.jpg"},
-				{"label": "Adam J",                               "thumb": "img/speakers/AdamJ_3.png",          "download": "img/speakers/AdamJ_3.png"},
-				{"label": "Chad R",                               "thumb": "img/speakers/ChadR_3.png",          "download": "img/speakers/ChadR_3.png"},
-				{"label": "Dave B",                               "thumb": "img/speakers/DaveB_2.png",          "download": "img/speakers/DaveB_2.png"},
-				{"label": "Eric M",                               "thumb": "img/speakers/EricM_3.png",          "download": "img/speakers/EricM_3.png"},
-				{"label": "Graham A",                             "thumb": "img/speakers/GrahamA_3.png",        "download": "img/speakers/GrahamA_3.png"},
-				{"label": "John L",                               "thumb": "img/speakers/JohnL_3.png",          "download": "img/speakers/JohnL_3.png"},
-				{"label": "Josh H",                               "thumb": "img/speakers/JoshH.png",            "download": "img/speakers/JoshH.png"},
-				{"label": "Josh M",                               "thumb": "img/speakers/JoshM_5.1.png",        "download": "img/speakers/JoshM_5.1.png"},
-				{"label": "Mark",                                 "thumb": "img/speakers/Mark_4.png",           "download": "img/speakers/Mark_4.png"},
-				{"label": "Nate S",                               "thumb": "img/speakers/NateS_5.1.png",        "download": "img/speakers/NateS_5.1.png"},
-				{"label": "Nick F",                               "thumb": "img/speakers/NickF_3.png",          "download": "img/speakers/NickF_3.png"},
-				{"label": "Russell J",                            "thumb": "img/speakers/RussellJ_3.png",       "download": "img/speakers/RussellJ_3.png"},
-				{"label": "Ryan V",                               "thumb": "img/speakers/RyanV_2.png",          "download": "img/speakers/RyanV_2.png"},
-				{"label": "Tim B",                                "thumb": "img/speakers/TimB_2.png",           "download": "img/speakers/TimB_2.png"},
-			],
-		},
-		{
-			"id": "logos",
-			"label": "Logos & Brand Assets",
-			"assets": [
-				{"label": "FreedomCon Logo (Color)",              "thumb": f"{_mk}/Logos/SMN_FreedomCon_Logo.jpg",       "download": f"{_mk}/Logos/SMN_FreedomCon_Logo.jpg"},
-				{"label": "FreedomCon Logo (Red)",                "thumb": f"{_mk}/Logos/SMN_FreedomCon_Logo_Red.png",   "download": f"{_mk}/Logos/SMN_FreedomCon_Logo_Red.png"},
-				{"label": "FreedomCon Logo 1",                    "thumb": f"{_mk}/Logos/freedomcon_logo1.png",          "download": f"{_mk}/Logos/freedomcon_logo1.png"},
-				{"label": "FreedomCon Logo 2",                    "thumb": f"{_mk}/Logos/freedomcon_logo2.png",          "download": f"{_mk}/Logos/freedomcon_logo2.png"},
-				{"label": "SMN Logo",                             "thumb": "img/sponsor_logos/SMN_logo.avif",            "download": "img/sponsor_logos/SMN_logo.avif"},
-				{"label": "Title with Shield",                    "thumb": "img/title_with_shield.svg",                  "download": "img/title_with_shield.svg"},
-				{"label": "Title (No Shield)",                    "thumb": "img/title_no_shield.png",                    "download": "img/title_no_shield.png"},
-				{"label": "Title on Black",                       "thumb": "img/title_on_black.png",                     "download": "img/title_on_black.png"},
-			],
-		},
-		{
-			"id": "social",
-			"label": "Social Media Graphics",
-			"assets": [
-				{"label": "Shareable Graphic",                    "thumb": "img/sharable.png",                                                        "download": "img/sharable.png"},
-				{"label": "FreedomCon – See You There (Mobile)",  "thumb": "img/videos/Well_See_You_at_Freedom_Con-mobile.png",                       "download": "img/videos/Well_See_You_at_Freedom_Con-mobile.png"},
-				{"label": "George Washington Story (Mobile)",     "thumb": "img/videos/george_washington_story-mobile.jpg",                           "download": "img/videos/george_washington_story-mobile.jpg"},
-				{"label": "Our Home (Mobile)",                    "thumb": "img/videos/our_home-mobile.jpg",                                          "download": "img/videos/our_home-mobile.jpg"},
-				{"label": "To Every Man (Mobile)",                "thumb": "img/videos/to_every_man-mobile.png",                                      "download": "img/videos/to_every_man-mobile.png"},
-				{"label": "A Vision for Young Men (Story)",       "thumb": "img/videos/A Vision for Young Men (Instagram Story).jpeg",                "download": "img/videos/A Vision for Young Men (Instagram Story).jpeg"},
-				{"label": "Win Back Washington (Story)",          "thumb": "img/videos/WE CAN FLIP WASHINGTON STATE (Instagram Story).png",           "download": "img/videos/WE CAN FLIP WASHINGTON STATE (Instagram Story).png"},
-				{"label": "Winning Back (Story)",                 "thumb": "img/videos/WINNING BACK (Instagram Story) - 1.png",                       "download": "img/videos/WINNING BACK (Instagram Story) - 1.png"},
-				{"label": "Make Washington America Again",        "thumb": f"{_mk}/Graphics/FreedomCon Make Washington America Again.png",             "download": f"{_mk}/Graphics/FreedomCon Make Washington America Again.png"},
-				{"label": "1080×1920 Vertical Graphic",          "thumb": f"{_mk}/Graphics/FreedomCon_1080x1920 Vertical Graphic.jpg",               "download": f"{_mk}/Graphics/FreedomCon_1080x1920 Vertical Graphic.jpg"},
-			],
-		},
-	]
+	press_assets = media_downloads
 
 	return render_template(
 		"public/press/index.html",
@@ -596,7 +575,7 @@ def press_page() -> str:
 		formsubmit_next=formsubmit_next,
 		press_assets=press_assets,
 		seo=build_seo(
-			title="Freedom Con Press & Media Kit",
+			title="FREEDOM CON Press & Media Kit",
 			description="Download the Freedom Con media kit and connect with us for sponsor interviews, press requests, and partnership details.",
 			path="/press",
 		),
@@ -608,7 +587,7 @@ def worship_page() -> str:
 	return render_template(
 		"public/worship/index.html",
 		seo=build_seo(
-			title="Freedom Con Worship | Information Coming Soon",
+			title="FREEDOM CON Worship | Information Coming Soon",
 			description="More worship information for Freedom Con is coming soon. Check back for updates on worship experiences and schedule details.",
 			path="/worship",
 		),
@@ -623,7 +602,7 @@ def tickets_page() -> str:
 		ticket_meta=ticket_context["ticket_meta"],
 		ticket_prices=ticket_context["ticket_prices"],
 		seo=build_seo(
-			title="Freedom Con Tickets | 2026 Pricing and Registration",
+			title="FREEDOM CON Tickets | 2026 Pricing and Registration",
 			description="View Freedom Con 2026 ticket options, pricing tiers, and secure your spot for Father’s Day weekend at The Gorge.",
 			path="/tickets",
 		),
@@ -635,7 +614,7 @@ def tickets_page() -> str:
 # 	return render_template(
 # 		"public/venue_map_svg/index.html",
 # 		seo=build_seo(
-# 			title="Freedom Con Venue Map | The Gorge Amphitheatre",
+# 			title="FREEDOM CON Venue Map | The Gorge Amphitheatre",
 # 			description="Explore the Freedom Con venue diagram for gates, stage area, parking, camping zones, and key amenities at The Gorge Amphitheatre.",
 # 			path="/venue-map",
 # 		),
@@ -684,7 +663,7 @@ def videos_page() -> str:
 	trailers_section = build_media_section(
 		section_id="conference-trailers",
 		eyebrow="Watch",
-		title="Conference Trailers",
+		title="FREEDOM CON Trailers",
 		aria_label="Freedom Con trailers",
 		items=videos_data,
 		initial_count=4,
@@ -696,7 +675,7 @@ def videos_page() -> str:
 	podcast_section = build_media_section(
 		section_id="podcasts",
 		eyebrow="Listen",
-		title="Podcasts",
+		title="FREEDOM CON Podcasts",
 		aria_label="Freedom Con podcasts",
 		items=podcasts_data,
 		initial_count=4,
@@ -722,7 +701,7 @@ def podcasts_page() -> str:
 	podcast_section = build_media_section(
 		section_id="podcasts",
 		eyebrow="Listen",
-		title="Podcasts",
+		title="FREEDOM CON odcasts",
 		aria_label="Freedom Con podcasts",
 		items=podcasts_data,
 		initial_count=4,
@@ -735,7 +714,7 @@ def podcasts_page() -> str:
 		"public/podcasts/index.html",
 		podcast_section=podcast_section,
 		seo=build_seo(
-			title="Podcasts | Freedom Con 2026",
+			title="FREEDOM CON Podcasts | Freedom Con 2026",
 			description="Listen to Freedom Con podcast episodes from Stronger Man Nation — faith, freedom, and men leading well.",
 			path="/podcasts",
 		),

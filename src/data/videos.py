@@ -1,19 +1,19 @@
 videos = [
     {
         "url": "https://www.youtube.com/watch?v=jyELgvvS5r8",
-        "title": "George Washington Story",
+        "title": "The story of Destiny Behind FREEDOM CON",
         "thumbnail_mobile": "img/videos/george_washington_story-mobile.jpg",
         "thumbnail_desktop": "videos/george_washington_story.jpg",
     },
     {
         "url": "https://www.youtube.com/watch?v=rgeV0qRHtPA",
-        "title": "To Every Man",
+        "title": "The heart of the American Man coming to FREEDOM CON",
         "thumbnail_mobile": "img/videos/to_every_man-mobile.png",
         "thumbnail_desktop": "videos/to_every_man.jpg",
     },
     {
         "url": "https://www.youtube.com/watch?v=IV7C_Gw2Ss8",
-        "title": "Our Home",
+        "title": "A personal Invitation to the Men of WA",
         "thumbnail_mobile": "img/videos/our_home-mobile.jpg",
         "thumbnail_desktop": "videos/our_home.jpg",
     },

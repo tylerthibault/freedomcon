@@ -1,5 +1,9 @@
-{% with media_section=conference_trailers_section %}
-	{% include "components/media_section.html" %}
-{% endwith %}
 
-{% include "components/media_modal.html" %}
+<section id="trailers">
+
+	{% with media_section=conference_trailers_section %}
+	{% include "components/media_section.html" %}
+	{% endwith %}
+	
+	{% include "components/media_modal.html" %}
+</section>

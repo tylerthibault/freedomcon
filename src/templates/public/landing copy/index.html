@@ -11,7 +11,7 @@
     --alt-accent: var(--color-accent, #BC2A27);
     position: relative;
     z-index: 200;
-    background: var(--alt-accent);
+    background: #fff;
     padding: 0.45rem 1rem;
     text-align: center;
   }
@@ -20,7 +20,7 @@
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--alt-accent);
     margin-right: 0.75rem;
   }
   .alt-countdown-bar__units { display: inline-flex; gap: 0.5rem; align-items: baseline; }
@@ -30,13 +30,13 @@
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     line-height: 1;
-    color: #fff;
+    color: #111;
     min-width: 2ch;
     text-align: right;
   }
-  .alt-countdown-bar__lbl { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
-  .alt-countdown-bar__sep { color: rgba(255,255,255,0.5); font-size: 1.1rem; line-height: 1; font-weight: 300; }
-  .alt-countdown-bar__urgency { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; color: rgba(255,255,255,0.9); margin-left: 1rem; }
+  .alt-countdown-bar__lbl { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.5); }
+  .alt-countdown-bar__sep { color: rgba(0,0,0,0.3); font-size: 1.1rem; line-height: 1; font-weight: 300; }
+  .alt-countdown-bar__urgency { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; color: rgba(0,0,0,0.7); margin-left: 1rem; }
 </style>
 {% endblock %}
 
@@ -49,32 +49,32 @@
 {% set landing12_speakers = [
 {
 'name': 'Josh McPherson',
-'image': 'img/speakers/JoshM (2).png',
+'image': 'img/speakers/JoshM_2.png',
 'title': 'Lead Pastor, Grace City • Founder, Stronger Man Nation'
 },
 {
 'name': 'Graham Allen',
-'image': 'img/speakers/GrahamA (3).png',
+'image': 'img/speakers/GrahamA_3.png',
 'title': 'Army Veteran, Author, and Podcast Host'
 },
 {
 'name': 'John Lovell',
-'image': 'img/speakers/JohnL (3).png',
+'image': 'img/speakers/JohnL_3.png',
 'title': 'Founder, Warrior Poet Society'
 },
 {
 'name': 'Chad Robichaux',
-'image': 'img/speakers/ChadR (3).png',
+'image': 'img/speakers/ChadR_3.png',
 'title': 'Founder, Mighty Oaks Foundation'
 },
 {
 'name': 'Josh Howerton',
-'image': 'img/speakers/JoshH (2).png',
+'image': 'img/speakers/JoshH_2.png',
 'title': 'Lead Pastor, Lakepointe Church'
 },
 {
 'name': 'Nate Schatzline',
-'image': 'img/speakers/NateS (2).png',
+'image': 'img/speakers/NateS_5.1.png',
 'title': 'Texas House of Representatives'
 }
 ] %}
@@ -154,13 +154,17 @@
         }
         .landing12-event-highlight__btn:hover { background: #a02220; color: #fff; }
     </style>
-    <section class="landing12-event-highlight" aria-label="Event weekend highlight">
+    <section class="d-flex flex-column justify-content-center align-items-center" aria-label="Event weekend highlight">
         <h2 class="landing12-event-highlight__heading">One Historic Event</h2>
-        <p class="landing12-event-highlight__meta">The Gorge Amphitheater &nbsp;|&nbsp; George, Washington</p>
+        <p class="landing12-event-highlight__meta">The Gorge Amphitheater &nbsp;|&nbsp; George, WA</p>
         <p class="landing12-event-highlight__date">June 19 – 20</p>
-        <a class="landing12-event-highlight__btn"
-            href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">Get Tickets</a>
     </section>
+    <div class="d-flex gap-3 justify-content-center align-content-center my-3">
+        <a class="btn btn-primary btn-xxl"
+            href="/tickets">Get Tickets</a>
+        <!-- View Trailers -->
+        <a class="btn btn-secondary btn-xxl" href="#trailers">View Trailers</a>
+    </div>
 
 
     {% include 'public/landing copy/components/count_down.html' %}
@@ -179,12 +183,11 @@
 
     {% include 'public/landing copy/components/why_now.html' %}
     
-    
     <section class="mb-3" aria-label="Primary calls to action">
         <div
             class="landing12-cta-row landing12-cta-row--center d-flex flex-wrap align-items-center justify-content-center">
             <a class="landing12-btn btn btn-xxl"
-                href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">Get Tickets</a>
+                href="/tickets">Get Tickets</a>
         </div>
     </section>
 

@@ -119,7 +119,7 @@
 .alt-countdown-bar {
     position: relative;
     z-index: 200;
-    background: var(--alt-accent);
+    background: #fff;
     padding: 0.45rem 1rem;
     text-align: center;
 }
@@ -128,7 +128,7 @@
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--alt-accent);
     margin-right: 0.75rem;
 }
 .alt-countdown-bar__units {
@@ -146,7 +146,7 @@
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     line-height: 1;
-    color: #fff;
+    color: #111;
     min-width: 2ch;
     text-align: right;
 }
@@ -154,10 +154,10 @@
     font-size: 0.65rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.8);
+    color: rgba(0,0,0,0.5);
 }
 .alt-countdown-bar__sep {
-    color: rgba(255,255,255,0.5);
+    color: rgba(0,0,0,0.3);
     font-size: 1.1rem;
     line-height: 1;
     font-weight: 300;

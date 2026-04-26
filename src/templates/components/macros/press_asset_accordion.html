@@ -1,0 +1,141 @@
+{% macro press_asset_accordion(press_assets, accordion_id='pressAssetsAccordion') %}
+<div class="accordion press-assets__accordion" id="{{ accordion_id }}">
+	{% for category in press_assets %}
+	<div class="accordion-item press-assets__accordion-item">
+		<h3 class="accordion-header" id="{{ accordion_id }}-heading-{{ category.id }}">
+			<button class="accordion-button press-assets__accordion-btn collapsed"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#{{ accordion_id }}-collapse-{{ category.id }}"
+					aria-expanded="false"
+					aria-controls="{{ accordion_id }}-collapse-{{ category.id }}">
+				{{ category.label }}
+				<span class="press-assets__count">{{ category.assets | length }} asset{{ 's' if category.assets | length != 1 }}</span>
+			</button>
+		</h3>
+		<div id="{{ accordion_id }}-collapse-{{ category.id }}"
+			 class="accordion-collapse collapse"
+			 aria-labelledby="{{ accordion_id }}-heading-{{ category.id }}">
+			<div class="accordion-body press-assets__accordion-body">
+				<div class="press-assets__download-all-row">
+					<button class="press-assets__download-all-btn"
+							type="button"
+							onclick="pressAssetsDownloadAll('{{ accordion_id }}-collapse-{{ category.id }}')"
+							aria-label="Download all {{ category.label }} assets">
+						↓ Download All
+					</button>
+				</div>
+				<div class="press-assets__grid">
+					{% for asset in category.assets %}
+					{# Resolve URLs – support both external (http) and local static paths #}
+					{% set is_external_thumb    = asset.thumb    and asset.thumb.startswith('http') %}
+					{% set is_external_download = asset.download and asset.download.startswith('http') %}
+					{% set thumb_src    = asset.thumb    if is_external_thumb    else (url_for('static', filename=asset.thumb)    if asset.thumb    else None) %}
+					{% set download_src = asset.download if is_external_download else (url_for('static', filename=asset.download) if asset.download else '#') %}
+					{% set is_pdf = asset.download and asset.download.endswith('.pdf') %}
+					{% set proxy_url = url_for('public.press_download', url=download_src, name=asset.label) %}
+					<div class="press-asset-card">
+						<div class="press-asset-card__thumb-wrap">
+							{% if not is_pdf and thumb_src %}
+							<img class="press-asset-card__thumb"
+								 src="{{ thumb_src }}"
+								 alt="{{ asset.label }}"
+								 loading="lazy">
+							<button class="press-asset-card__preview-btn"
+									type="button"
+									data-preview-src="{{ thumb_src }}"
+									data-preview-label="{{ asset.label }}"
+									data-bs-toggle="modal"
+									data-bs-target="#pressAssetPreviewModal"
+									aria-label="Preview {{ asset.label }}">
+								&#128065; Preview
+							</button>
+							{% else %}
+							<div class="press-asset-card__pdf-icon" aria-hidden="true">
+								<svg viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="48" height="56" rx="4" fill="#c0392b"/><text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="11" font-family="sans-serif" font-weight="bold">PDF</text></svg>
+							</div>
+							<a class="press-asset-card__preview-btn"
+							   href="{{ download_src }}"
+							   target="_blank"
+							   rel="noopener noreferrer"
+							   aria-label="Open {{ asset.label }} in new tab">
+								&#128065; Preview
+							</a>
+							{% endif %}
+						</div>
+						<p class="press-asset-card__label">{{ asset.label }}</p>
+					<a class="press-asset-card__download-btn press-assets__download-btn"
+					   href="{{ proxy_url }}"
+					   download
+					   aria-label="Download {{ asset.label }}">
+						↓ Download
+					</a>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+<!-- Image preview modal -->
+<div class="modal fade" id="pressAssetPreviewModal" tabindex="-1" aria-labelledby="pressAssetPreviewModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-xl">
+		<div class="modal-content press-asset-modal">
+			<div class="modal-header press-asset-modal__header">
+				<h4 class="modal-title press-asset-modal__title" id="pressAssetPreviewModalLabel"></h4>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body press-asset-modal__body">
+				<img id="pressAssetPreviewImg" class="press-asset-modal__img" src="" alt="">
+			</div>
+			<div class="modal-footer press-asset-modal__footer">
+				<a id="pressAssetPreviewDownload" class="btn btn-primary" href="#" download>Download</a>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+(function () {
+	// ── Modal preview – update Download href to proxy URL ──────────
+	var modal = document.getElementById('pressAssetPreviewModal');
+	if (modal) {
+		modal.addEventListener('show.bs.modal', function (e) {
+			var btn = e.relatedTarget;
+			if (!btn) return;
+			var src   = btn.getAttribute('data-preview-src');
+			var label = btn.getAttribute('data-preview-label');
+			document.getElementById('pressAssetPreviewModalLabel').textContent = label || '';
+			var img = document.getElementById('pressAssetPreviewImg');
+			img.src = src || '';
+			img.alt = label || '';
+			// build proxy URL on the fly so the Download button in the modal works
+			var dl = document.getElementById('pressAssetPreviewDownload');
+			if (dl && src) {
+				dl.href = '/press/download?url=' + encodeURIComponent(src) + '&name=' + encodeURIComponent(label || 'download');
+			}
+		});
+	}
+
+	// ── Download All ─────────────────────────────────────────────
+	window.pressAssetsDownloadAll = function (sectionId) {
+		var section = document.getElementById(sectionId);
+		if (!section) return;
+		var links = Array.from(section.querySelectorAll('a.press-assets__download-btn'));
+		links.forEach(function (a, i) {
+			setTimeout(function () {
+				var tmp = document.createElement('a');
+				tmp.href = a.href;
+				tmp.download = a.download || '';
+				document.body.appendChild(tmp);
+				tmp.click();
+				document.body.removeChild(tmp);
+			}, i * 600);
+		});
+	};
+})();
+</script>
+{% endmacro %}

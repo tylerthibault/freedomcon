@@ -14,4 +14,9 @@ podcasts = [
 		"title": "The Freedom Conference Matters for Today | Road To Freedom Con Ep. 3",
 		"thumbnail_mobile": "img/videos/A Vision for Young Men (Instagram Story).jpeg",
 	},
+	{
+		"url": "https://www.youtube.com/watch?v=JorOoNHBzqY",
+		"title": "How to Pray for and Support Your Husband | Road To Freedom Con Ep. 4",
+		"thumbnail_mobile": "img/videos/A Vision for Young Men (Instagram Story).jpeg",
+	},
 ]

@@ -7,19 +7,6 @@
     /* padding-bottom: clamp(1rem, 2vw, 1.75rem); */
 }
 
-.landing12-mission__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-    gap: clamp(1rem, 2.6vw, 2.5rem);
-    align-items: stretch;
-}
-
-.landing12-mission__panel {
-    border: 0;
-    background: linear-gradient(180deg, rgba(188, 42, 39, 0.08), rgba(10, 10, 10, 0.95));
-    padding: clamp(1.15rem, 2.2vw, 2rem);
-}
-
 .landing12-mission__panel--story {
     position: relative;
     overflow: hidden;
@@ -83,16 +70,6 @@
     margin-top: 1.35rem;
 }
 
-.landing12-mission__rail {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: clamp(0.9rem, 1.8vw, 1.25rem);
-}
-
-.landing12-mission__panel--impact {
-    background: #0a0a0a;
-}
-
 .landing12-mission__impact-list {
     list-style: none;
     margin: 0;
@@ -119,15 +96,6 @@
     flex: 0 0 auto;
 }
 
-.landing12-mission__media {
-    margin: 0;
-    position: relative;
-    border: 0;
-    overflow: hidden;
-    min-height: clamp(180px, 18vw, 260px);
-    height: 100%;
-}
-
 .landing12-mission__cta .landing12-btn--ghost {
     border-color: transparent;
 }
@@ -137,49 +105,7 @@
     border-color: transparent;
 }
 
-.landing12-mission__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.landing12-mission__overlay {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    align-content: end;
-    gap: 0.2rem;
-    padding: clamp(0.9rem, 2vw, 1.4rem);
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.84));
-}
-
-.landing12-mission__stand {
-    margin: 0;
-    font-family: var(--font-action);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    line-height: 0.95;
-    color: var(--fc-ink);
-}
-
-.landing12-mission__yield {
-    margin: 0;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--fc-accent);
-    font-weight: 700;
-}
-
-@media (max-width: 1100px) {
-    .landing12-mission__grid {
-        grid-template-columns: 1fr;
-    }
-
-    .landing12-mission__rail {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    }
-}
+@media (max-width: 1100px) {}
 
 @media (max-width: 1024px) {
     .landing12-mission .landing12-btn {
@@ -193,17 +119,9 @@
         padding-bottom: 2.2rem;
     }
 
-    .landing12-mission__panel {
-        padding: 1rem;
-    }
-
     .landing12-mission__bg-copy {
         font-size: clamp(1.25rem, 8vw, 2.2rem);
         opacity: 0.55;
-    }
-
-    .landing12-mission__rail {
-        grid-template-columns: 1fr;
     }
 
     .landing12-mission__cta {

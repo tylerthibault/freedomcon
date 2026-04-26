@@ -16,23 +16,29 @@
 			<p class="invite-hero__eyebrow">An Invitation</p>
 			<h1 class="invite-hero__title">We Want You There</h1>
 			<p class="invite-hero__copy">Personal words from Josh McPherson and his sons to the men — and the families — of Washington.</p>
-			<div class="invite-hero__jumps">
+			<!-- <div class="invite-hero__jumps">
 				<a class="invite-hero__jump" href="#from-josh">From Josh</a>
 				<a class="invite-hero__jump" href="#from-the-boys">From the Boys</a>
-			</div>
+			</div> -->
 		</div>
 	</section>
 
 	{{ slim_banner("Father's Day Weekend · The Gorge · June 19–20, 2026") }}
 
 	{% include "public/invite/components/from_josh.html" %}
-	{% include "public/invite/components/from_the_boys.html" %}
+	{# 
+		{% include "public/invite/components/from_the_boys.html" %}
+	#}
+	
+	<div class="d-flex justify-content-center align-content-center my-3">
+		<button onclick="window.location.href='/tickets'" class="btn btn-primary btn-xxl">Get Tickets</button>
+	</div>
 
 	<section class="invite-bottom-cta" aria-label="Register for Freedom Con">
 		<div class="invite-bottom-cta__inner container-xl">
 			<h2 class="invite-bottom-cta__title">The Gorge is Waiting</h2>
 			<p class="invite-bottom-cta__copy">Father's Day Weekend. June 19–20, 2026. George, WA.</p>
-			<a class="invite-bottom-cta__btn btn-primary" href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">Get Tickets</a>
+			<a class="invite-bottom-cta__btn btn-primary" href="/tickets">Get Tickets</a>
 		</div>
 	</section>
 </main>
