@@ -599,7 +599,7 @@ body.landing12-no-scroll {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.58);
+    background: rgba(0, 0, 0, 0.25);
     z-index: 1;
 }
 
@@ -610,6 +610,7 @@ body.landing12-no-scroll {
     height: 100%;
     object-fit: cover;
     z-index: 0;
+    filter: brightness(1.35);
 }
 
 .landing12-liberty-inner {

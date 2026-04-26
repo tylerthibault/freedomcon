@@ -292,11 +292,11 @@ def build_seo(
 
 @public_bp.get("/alt")
 def landing_alt() -> str:
-	return redirect(url_for("public.landing"))
+	# return redirect(url_for("public.landing"))
 	context = {
 		"speakers": speakers_data,
 	}
-	return render_template('public/landing_v7/index.html', **context)
+	return render_template('public/archived/landing_v7/index.html', **context)
 
 @public_bp.get("/")
 def landing() -> str:
@@ -797,9 +797,13 @@ def sitemap_xml() -> Response:
 
 @public_bp.get("/wives")
 def wives_page() -> str:
+	formsubmit_action = getenv("WIVES_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/ladies@freedomcon26.com"
+	formsubmit_next = f"{SITE_URL}/thankyou"
 	return render_template(
 		"public/wives/index.html",
 		wives=wives_data,
+		formsubmit_action=formsubmit_action,
+		formsubmit_next=formsubmit_next,
 		seo=build_seo(
 			title="For the Wives | Freedom Con 2026",
 			description="A personal message from Sharon McPherson to the wives and families supporting the men of Freedom Con.",

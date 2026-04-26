@@ -226,4 +226,10 @@
 {% endblock %}
 
 {% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var v = document.querySelector('.landing12-liberty-video');
+    if (v) v.playbackRate = 0.35;
+  });
+</script>
 {% endblock %}

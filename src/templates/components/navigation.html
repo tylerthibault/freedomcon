@@ -14,15 +14,19 @@
         <div class="landing12-links d-flex align-items-center flex-nowrap" id="landing12MobileMenu">
             <a class="{% if is_landing %}is-active{% endif %}" href="{{ url_for('public.landing_alt') }}">Home</a>
             <details
-            class="landing12-nav-dropdown{% if current_endpoint in ('public.speakers', 'public.the_venue_page') %} is-active{% endif %}">
-            <summary>Explore</summary>
-            <div class="landing12-nav-dropdown-menu" aria-label="Explore navigation links">
-                    <a class="{% if current_endpoint == 'public.artists_page' %}is-active{% endif %}"
-                        href="{{ url_for('public.artists_page') }}">Artists</a>
-                    <a class="{% if current_endpoint == 'public.speakers' %}is-active{% endif %}"
-                        href="{{ url_for('public.speakers') }}">Speakers</a>
-                    <a class="{% if current_endpoint == 'public.the_venue_page' %}is-active{% endif %}"
-                        href="{{ url_for('public.the_venue_page') }}">The Venue</a>
+                name="nav-menu"
+                class="landing12-nav-dropdown{% if current_endpoint in ('public.vision_page', 'public.experience_page', 'public.invite_page', 'public.artists_page', 'public.speakers', 'public.the_venue_page') %} is-active{% endif %}">
+                <summary>Explore</summary>
+                <div class="landing12-nav-dropdown-menu" aria-label="Explore navigation links">
+                    <a class="{% if current_endpoint == 'public.vision_page' %}is-active{% endif %}" href="{{ url_for('public.vision_page') }}">Vision</a>
+                    <a class="{% if current_endpoint == 'public.experience_page' %}is-active{% endif %}" href="{{ url_for('public.experience_page') }}">Experience</a>
+                    <a class="{% if current_endpoint == 'public.invite_page' %}is-active{% endif %}" href="{{ url_for('public.invite_page') }}">A Personal Invite from Pastor Josh</a>
+                    <a class="{% if current_endpoint == 'public.artists_page' %}is-active{% endif %}" href="{{ url_for('public.artists_page') }}">Artists</a>
+                    <a class="{% if current_endpoint == 'public.speakers' %}is-active{% endif %}" href="{{ url_for('public.speakers') }}">Speakers</a>
+                    <a class="{% if current_endpoint == 'public.the_venue_page' %}is-active{% endif %}" href="{{ url_for('public.the_venue_page') }}">Venue</a>
+                    <a class="is-disabled" href="#" aria-disabled="true" tabindex="-1">Map <span class="nav-coming-soon">Coming Soon</span></a>
+                    <a class="is-disabled" href="#" aria-disabled="true" tabindex="-1">Schedule <span class="nav-coming-soon">Coming Soon</span></a>
+
                 </div>
             </details>
             <a class="{% if current_endpoint == 'public.tickets_page' %}is-active{% endif %}"
@@ -30,37 +34,24 @@
             <a class="{% if current_endpoint == 'public.faqs' %}is-active{% endif %}"
                 href="{{ url_for('public.faqs') }}">FAQ</a>
             <details
-                class="landing12-nav-dropdown{% if current_endpoint in ('public.accommodations_page', 'public.camping_page', 'public.hotels_page', 'public.the_play_page') %} is-active{% endif %}">
+                name="nav-menu"
+                class="landing12-nav-dropdown{% if current_endpoint in ('public.camping_page', 'public.hotels_page', 'public.travel_page') %} is-active{% endif %}">
                 <summary>Attend</summary>
                 <div class="landing12-nav-dropdown-menu" aria-label="Attend navigation links">
-                    <!-- <a class="{% if current_endpoint == 'public.schedule_page' %}is-active{% endif %}" href="{{ url_for('public.schedule_page') }}">Schedule</a> -->
-                    <!-- <a class="{% if current_endpoint == 'public.the_play_page' %}is-active{% endif %}" href="{{ url_for('public.the_play_page') }}">The Play</a> -->
                     <a class="{% if current_endpoint == 'public.camping_page' %}is-active{% endif %}" href="{{ url_for('public.camping_page') }}">Camping</a>
                     <a class="{% if current_endpoint == 'public.hotels_page' %}is-active{% endif %}" href="{{ url_for('public.hotels_page') }}">Hotels</a>
                     <a class="{% if current_endpoint == 'public.travel_page' %}is-active{% endif %}" href="{{ url_for('public.travel_page') }}">Travel</a>
-
-                    <!-- <a class="{% if current_endpoint == 'public.accommodations_page' %}is-active{% endif %}"
-                        href="{{ url_for('public.accommodations_page') }}">All Accommodations</a> -->
                 </div>
             </details>
             <details
-                class="landing12-nav-dropdown{% if current_endpoint in ('public.vision_page', 'public.experience_page', 'public.past_conferences_page', 'public.story_page', 'public.sponsors_page', 'public.videos_page') %} is-active{% endif %}">
+                name="nav-menu"
+                class="landing12-nav-dropdown{% if current_endpoint in ('public.prayer_guide_page', 'public.wives_page', 'public.past_conferences_page', 'public.sponsors_page') %} is-active{% endif %}">
                 <summary>More</summary>
                 <div class="landing12-nav-dropdown-menu" aria-label="More navigation links">
-                    <a class="{% if current_endpoint == 'public.vision_page' %}is-active{% endif %}"
-                        href="{{ url_for('public.vision_page') }}">The Vision</a>
-                    <a class="{% if current_endpoint == 'public.experience_page' %}is-active{% endif %}"
-                        href="{{ url_for('public.experience_page') }}">The Experience</a>
-                        <a class="{% if current_endpoint == 'public.past_conferences_page' %}is-active{% endif %}" href="{{ url_for('public.past_conferences_page') }}">Past SMN Conferences</a>
-                    <!-- sponsors -->
-                        <a class="{% if current_endpoint == 'public.sponsors_page' %}is-active{% endif %}" href="{{ url_for('public.sponsors_page') }}">Sponsors</a>
-                    <!-- <a class="{% if current_endpoint == 'public.story_page' %}is-active{% endif %}" href="{{ url_for('public.story_page') }}">The Story</a> -->
-                    <a class="{% if current_endpoint == 'public.wives_page' %}is-active{% endif %}" href="{{ url_for('public.wives_page') }}">For the Wives</a>
                     <a class="{% if current_endpoint == 'public.prayer_guide_page' %}is-active{% endif %}" href="{{ url_for('public.prayer_guide_page') }}">Prayer Guide</a>
-                    <a class="{% if current_endpoint == 'public.invite_page' %}is-active{% endif %}" href="{{ url_for('public.invite_page') }}">A Personal Invitation from Pastor Josh</a>
-                    <a class="{% if current_endpoint == 'public.videos_page' %}is-active{% endif %}" href="{{ url_for('public.videos_page') }}">Videos</a>
-                    <a class="{% if current_endpoint == 'public.press_page' %}is-active{% endif %}" href="{{ url_for('public.press_page') }}">Press / Media Kit</a>
-
+                    <a class="{% if current_endpoint == 'public.wives_page' %}is-active{% endif %}" href="{{ url_for('public.wives_page') }}">For the Wives</a>
+                    <a class="{% if current_endpoint == 'public.past_conferences_page' %}is-active{% endif %}" href="{{ url_for('public.past_conferences_page') }}">Past SMN Conferences</a>
+                    <a class="{% if current_endpoint == 'public.sponsors_page' %}is-active{% endif %}" href="{{ url_for('public.sponsors_page') }}">Sponsorships</a>
                 </div>
             </details>
         </div>

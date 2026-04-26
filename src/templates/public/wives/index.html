@@ -19,13 +19,26 @@
 			</h1>
 			<p class="wives-coming-soon__copy">Hello ladies! I am so excited for your man to experience this weekend.</p>
 			<p class="wives-coming-soon__copy">A couple things quickly for you.</p>
-			<ol class="wives-coming-soon__list">
+			<ol class="text-start d-flex flex-column gap-3">
 				<li>I hope to have some special resources for you here soon, including the possibility of live-stream access to the entire weekend! That way you can follow along with what our men are hearing and learning.</li>
 				<li>Make sure your man gets signed up. This is an incredible way we can help our husbands and sons&#8230;by encouraging them to go to events like these. I love that our husbands and sons get to do this. Let&#8217;s make sure we get them there!</li>
 				<li>Lastly, if you give me your email, I&#8217;ll send you these resources as they come available.</li>
 			</ol>
 			<p class="wives-coming-soon__copy">God bless!</p>
-			<p class="wives-coming-soon__signature">&#8212; Sharon McPherson</p>
+			<p class="wives-coming-soon__signature fs-1">&#8212; Sharon McPherson</p>
+			<div class="wives-form-wrap">
+				<form class="wives-form" method="post" action="{{ formsubmit_action }}">
+					<input type="hidden" name="_subject" value="Freedom Con Wives Resources Sign-Up">
+					<input type="hidden" name="_next" value="{{ formsubmit_next }}">
+					<input type="hidden" name="_captcha" value="false">
+					<input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off">
+					<label class="wives-form__label" for="wives-email">Your email address</label>
+					<div class="wives-form__row">
+						<input class="wives-form__input" type="email" id="wives-email" name="email" placeholder="you@example.com" required autocomplete="email">
+						<button class="wives-form__btn btn btn-primary" type="submit">Send me the resources</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</section>
 </main>

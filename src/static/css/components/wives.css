@@ -58,3 +58,52 @@
     font-size: clamp(1.2rem, 2.2vw, 1.6rem);
     letter-spacing: 0.01em;
 }
+
+/* ── Email form ── */
+.wives-form-wrap {
+    width: min(52ch, 100%);
+    margin: 0 auto;
+}
+
+.wives-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.wives-form__label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+}
+
+.wives-form__row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.wives-form__input {
+    flex: 1 1 200px;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.wives-form__input::placeholder {
+    opacity: 0.4;
+}
+
+.wives-form__input:focus {
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.wives-form__btn {
+    white-space: nowrap;
+}

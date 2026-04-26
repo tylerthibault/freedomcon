@@ -521,6 +521,26 @@ body:has(.landing12-header) .page-clip {
     color: var(--fc-accent);
 }
 
+.landing12-nav-dropdown-menu a.is-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.nav-coming-soon {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.8;
+    border: 1px solid currentColor;
+    padding: 0.1em 0.4em;
+    border-radius: 2px;
+    line-height: 1;
+}
+
 @media (max-width: 767.98px) {
     .landing12-nav-dropdown {
         width: 100%;
