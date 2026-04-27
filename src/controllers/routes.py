@@ -192,7 +192,7 @@ def build_seo(
 	canonical_path: str | None = None,
 	robots: str = "index,follow",
 	og_type: str = "website",
-	image_path: str = "/static/img/title_on_black.png?v=20260417",
+	image_path: str = "/static/img/Freedom_con_front_on_black.png?v=20260417",
 ) -> dict[str, str]:
 	resolved_canonical = canonical_path or path
 	resolved_image = image_path if image_path.startswith("http") else f"{SITE_URL}{image_path}"
@@ -350,10 +350,9 @@ def landing() -> str:
 		ticket_meta=ticket_ctx["ticket_meta"],
 		sponsors=visible_sponsors,
 		seo=build_seo(
-			title="FREEDOM CON 2026 — Father's Day Weekend at The Gorge",
+			title="A Congress of Christian Men at The Gorge Amphitheatre",
 			description="Two-day outdoor men's conference at The Gorge Amphitheatre, Father's Day Weekend June 19–20 2026. Worship, bold preaching, Crowder, camping, and the Columbia River.",
 			path="/alt",
-			image_path="/static/img/sharable.png?v=20260417",
 		),
 	)
 
