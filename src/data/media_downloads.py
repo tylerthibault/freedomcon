@@ -114,6 +114,101 @@ media_downloads = [
                 "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again%202.png",
                 "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again%202.png"
             },
+            {
+                "label": "We Will Have Our Home Again 3",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/we%20will%20have%20our%20home%20again%20part%203.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/we%20will%20have%20our%20home%20again%20part%203.png"
+            },
+            {
+                "label": "We Will Have Our Home Again (Alt)",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again-1.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again-1.png"
+            },
+            {
+                "label": "Make Washington America Again 2",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20gain%202.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20gain%202.png"
+            },
+            {
+                "label": "Make Washington America Again 3",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again%203.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again%203.png"
+            },
+            {
+                "label": "Make Washington America Again 6",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/make%20washington%20america%20again%206.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/make%20washington%20america%20again%206.png"
+            },
+            {
+                "label": "Make Washington America Again (Alt)",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again-1.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again-1.png"
+            },
+            {
+                "label": "Calling All Men",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Calling%20All%20Men.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Calling%20All%20Men.png"
+            },
+            {
+                "label": "Obey God Defy Tyrants",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20God%20Defy%20Tyrants.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20God%20Defy%20Tyrants.png"
+            },
+            {
+                "label": "Obey God Defy Tyrants 2",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20Good%20Defy%20Tyrants%202.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20Good%20Defy%20Tyrants%202.png"
+            },
+            {
+                "label": "Obey God Defy Tyrants 3",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/obey%20God%20Defy%20Tyrants%203.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/obey%20God%20Defy%20Tyrants%203.png"
+            },
+            {
+                "label": "Save The West #",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%20%23.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%20%23.png"
+            },
+            {
+                "label": "Save The West 1 (Alt)",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%201-1.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%201-1.png"
+            },
+            {
+                "label": "Save The West 2",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20the%20West%202.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20the%20West%202.png"
+            },
+            {
+                "label": "Save The West 2 (Alt)",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/save%20the%20west%202%281%29.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/save%20the%20west%202%281%29.png"
+            },
+            {
+                "label": "Save The West 3",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%203.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%203.png"
+            },
+            {
+                "label": "The American Family Is Not DEAD 1",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%201.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%201.png"
+            },
+            {
+                "label": "The American Family Is Not DEAD 2",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%202.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%202.png"
+            },
+            {
+                "label": "ChatGPT Image 1",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2003_52_16%20PM.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2003_52_16%20PM.png"
+            },
+            {
+                "label": "ChatGPT Image 2",
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2004_21_33%20PM.png",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2004_21_33%20PM.png"
+            },
         ],
     },
     {
@@ -148,3 +243,6 @@ media_downloads = [
         ],
     },
 ]
+
+
+

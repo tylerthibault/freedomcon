@@ -12,6 +12,12 @@ videos = [
         "thumbnail_desktop": "videos/to_every_man.jpg",
     },
     {
+        "url": "https://www.youtube.com/watch?v=DWbXOHmL1Ws",
+        "title": "Trailer #2 | Rise of the Statesman",
+        "thumbnail_mobile": "img/videos/rise_of_the_statesman_trailer_mobile.png",
+        "thumbnail_desktop": "videos/rise_of_the_statesman.jpg",
+    },
+    {
         "url": "https://www.youtube.com/watch?v=jyELgvvS5r8",
         "title": "The story of Destiny Behind FREEDOM CON",
         "thumbnail_mobile": "img/videos/george_washington_story-mobile.jpg",
@@ -23,6 +29,4 @@ videos = [
         "thumbnail_mobile": "img/videos/our_home-mobile.jpg",
         "thumbnail_desktop": "videos/our_home.jpg",
     },
-
-
 ]
