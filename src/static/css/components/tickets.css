@@ -143,6 +143,17 @@
     text-transform: none;
 }
 
+.ticket-card__pastor-note {
+    margin: 0.85rem 0 0;
+    padding: 0.6rem 0.75rem;
+    border-left: 2px solid var(--fc-accent, #bc2a27);
+    font-size: clamp(0.65rem, 0.8vw, 0.78rem);
+    line-height: 1.5;
+    opacity: 0.75;
+    font-style: italic;
+    text-transform: none;
+}
+
 .tickets-section__cta-wrap {
     margin-top: clamp(1.6rem, 3vw, 2.35rem);
 }

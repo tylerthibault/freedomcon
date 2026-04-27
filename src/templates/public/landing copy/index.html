@@ -99,74 +99,6 @@
 
     {% include 'public/landing copy/components/hero.html' %}
 
-    <style>
-        .landing12-event-highlight {
-            background: transparent;
-            color: #fff;
-            text-align: center;
-            padding: clamp(2rem, 5vw, 4rem) 1rem clamp(2rem, 5vw, 4rem);
-        }
-        .landing12-event-highlight__heading {
-            font-family: "Oswald", Arial, sans-serif !important;
-            font-weight: 700;
-            font-size: clamp(2.6rem, 8vw, 7rem);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            line-height: 1;
-            margin: 0 0 0.3em;
-            color: var(--color-accent);
-        }
-        .landing12-event-highlight__meta {
-            font-family: var(--font-action);
-            font-size: clamp(0.7rem, 1.8vw, 1.1rem);
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.75);
-            margin: 0 0 0.5em;
-        }
-        .landing12-event-highlight__date {
-            font-family: var(--font-oswald-light);
-            font-size: clamp(3rem, 10vw, 7.5rem);
-            font-weight: 400;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            line-height: 1;
-            color: #fff;
-            margin: 0 0 0.15em;
-            text-decoration: underline;
-            text-decoration-color: var(--color-accent, #BC2A27);
-            text-underline-offset: 0.12em;
-            text-decoration-thickness: 3px;
-        }
-        .landing12-event-highlight__btn {
-            display: inline-block;
-            margin-top: 1.2em;
-            padding: 0.75rem 3.5rem;
-            background: var(--color-accent, #BC2A27);
-            color: #fff;
-            font-family: var(--font-action);
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 6px;
-        }
-        .landing12-event-highlight__btn:hover { background: #a02220; color: #fff; }
-    </style>
-    <section class="d-flex flex-column justify-content-center align-items-center my-3" aria-label="Event weekend highlight">
-        <h2 class="landing12-event-highlight__heading">One Historic Event</h2>
-        <p class="landing12-event-highlight__meta">The Gorge Amphitheatre &nbsp;|&nbsp; George, WA</p>
-        <p class="landing12-event-highlight__date">June 19 – 20</p>
-    </section>
-    <div class="d-flex gap-3 justify-content-center align-content-center my-3">
-        <a class="btn btn-primary btn-xxl"
-            href="/tickets">Get Tickets</a>
-        <!-- View Trailers -->
-        <a class="btn btn-secondary btn-xxl" href="#trailers">View Trailers</a>
-    </div>
-
-
     {% include 'public/landing copy/components/count_down.html' %}
 
     {% include 'public/landing copy/components/mission_statement.html' %}
@@ -175,10 +107,6 @@
         <video class="landing12-liberty-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
             <source src="https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/PHOTO%20REEL%202.mp4" type="video/mp4">
         </video>
-        <div class="landing12-liberty-inner">
-            <!-- <p class="landing12-liberty-text fs-1">Join Thousands Of American Christian Men and Patriots in The Cause Of Liberty.</p> -->
-            <!-- <p class="landing12-liberty-text fs-1">This Is What It Looks Like When Men Show Up.</p> -->
-        </div>
     </section>
 
     {% include 'public/landing copy/components/why_now.html' %}

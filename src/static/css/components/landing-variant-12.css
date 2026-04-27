@@ -304,7 +304,7 @@ body.landing12-no-scroll {
     opacity: 0;
     transform: translate3d(0, 22px, 0);
     animation: landing12-fade-up 850ms ease-out forwards;
-    min-height: 10em;
+    min-height: 25em;
 }
 
 .landing12-wrap--cta {
