@@ -106,16 +106,19 @@ def convert_image(
     orig_size = src_path.stat().st_size
 
     with Image.open(src_path) as img:
-        # Ensure RGB compatibility (handles RGBA, P, L modes)
-        if img.mode in ("RGBA", "LA", "PA"):
-            # Composite onto white background — safe for all current images
-            background = Image.new("RGB", img.size, (255, 255, 255))
-            if img.mode == "PA":
+        # Preserve transparency — WebP supports alpha natively.
+        # Only flatten to RGB when there is genuinely no alpha channel.
+        if img.mode in ("RGBA", "LA"):
+            img = img.convert("RGBA")
+        elif img.mode == "PA":
+            img = img.convert("RGBA")
+        elif img.mode == "P":
+            # Palette image: check if it carries transparency
+            if "transparency" in img.info:
                 img = img.convert("RGBA")
-            if img.mode in ("RGBA", "LA"):
-                background.paste(img, mask=img.split()[-1])
-            img = background
-        elif img.mode != "RGB":
+            else:
+                img = img.convert("RGB")
+        elif img.mode not in ("RGB", "RGBA"):
             img = img.convert("RGB")
 
         img = resize_if_needed(img, max_width)
