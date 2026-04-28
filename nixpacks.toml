@@ -10,5 +10,8 @@ cmds = [
 	"/opt/venv/bin/pip install --no-cache-dir -r requirements.txt"
 ]
 
-[start]
-cmd = "/opt/venv/bin/gunicorn run:app --bind 0.0.0.0:${PORT:-8000} --workers 2 --threads 4 --timeout 120"
+[phases.build]
+cmds = [
+    "/opt/venv/bin/python build.py"
+]
+

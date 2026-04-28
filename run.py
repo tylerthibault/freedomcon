@@ -7,6 +7,8 @@ load_dotenv()
 
 import sentry_sdk
 from flask import Flask, redirect, request
+from flask_compress import Compress
+from flask_minify import Minify
 from sentry_sdk.integrations.flask import FlaskIntegration
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -61,6 +63,7 @@ def create_app() -> Flask:
 		SESSION_COOKIE_SECURE=secure_cookies,
 		SESSION_COOKIE_SAMESITE=getenv("SESSION_COOKIE_SAMESITE", "Lax"),
 		PREFERRED_URL_SCHEME="https",
+		MINIFIED=not is_debug,
 	)
 
 	@app.before_request
@@ -83,9 +86,21 @@ def create_app() -> Flask:
 		response.headers.setdefault("Cross-Origin-Opener-Policy", "same-origin")
 		if request.is_secure:
 			response.headers.setdefault("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
+		# Long cache for static assets
+		if request.path.startswith("/static/"):
+			response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
 		return response
 
+	@app.context_processor
+	def _inject_min_ext():
+		"""Exposes `min_ext` in every template: '.min' in prod, '' in dev."""
+		return {"min_ext": ".min" if app.config.get("MINIFIED") else ""}
+
 	app.register_blueprint(public_bp)
+
+	Compress(app)
+	if not is_debug:
+		Minify(app=app, html=True, js=True, cssless=True)
 
 	return app
 
@@ -94,6 +109,7 @@ app = create_app()
 
 
 if __name__ == "__main__":
+	# debug_mode = _env_bool("FLASK_DEBUG", True)
 	debug_mode = _env_bool("FLASK_DEBUG", True)
 	host = getenv("FLASK_HOST", "0.0.0.0")
 

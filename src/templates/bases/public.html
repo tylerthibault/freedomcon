@@ -52,12 +52,12 @@
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrapcss/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/freedom_con_shell.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/animations.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/dot-grid-bg.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main' ~ min_ext ~ '.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/freedom_con_shell' ~ min_ext ~ '.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/banner' ~ min_ext ~ '.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/animations' ~ min_ext ~ '.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/dot-grid-bg' ~ min_ext ~ '.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/popup' ~ min_ext ~ '.css') }}">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NW372T7XVX"></script>
@@ -146,8 +146,8 @@
 
     <!-- bootstrap -->
     <script src="{{ url_for('static', filename='js/bootstrapjs/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/popup.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main' ~ min_ext ~ '.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popup' ~ min_ext ~ '.js') }}"></script>
     {% block scripts %}
 
     {% endblock %}
