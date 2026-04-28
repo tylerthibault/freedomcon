@@ -1,3 +1,6 @@
 <section>
-    <img src="{{ url_for('static', filename='img/danny_section.png') }}" alt="Danny Gokey" class="w-100">
+    <picture>
+        <source srcset="{{ url_for('static', filename='img/danny_section.webp') }}" type="image/webp">
+        <img src="{{ url_for('static', filename='img/danny_section.png') }}" alt="Danny Gokey" class="w-100">
+    </picture>
 </section>

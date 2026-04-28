@@ -103,11 +103,7 @@
 
     {% include 'public/landing copy/components/mission_statement.html' %}
 
-    <section class="landing12-liberty" aria-label="Call to join the cause of liberty">
-        <video class="landing12-liberty-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-            <source src="https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/PHOTO%20REEL%202.mp4" type="video/mp4">
-        </video>
-    </section>
+    {% include 'public/landing copy/components/silent_video.html' %}
 
     {% include 'public/landing copy/components/why_now.html' %}
     
@@ -154,10 +150,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var v = document.querySelector('.landing12-liberty-video');
-    if (v) v.playbackRate = 0.35;
-  });
-</script>
+
 {% endblock %}

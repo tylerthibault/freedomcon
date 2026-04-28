@@ -29,8 +29,10 @@
 	<section class="camping-amenities" aria-label="Camping amenities">
 		<div class="camping-amenities__inner container-xl">
 			<div class="camping-amenity-strip">
-				<img src="{{ url_for('static', filename='img/RV.png') }}" alt="RVs welcome"
-					class="camping-amenity-strip__rv-img">
+				<picture>
+					<source srcset="{{ url_for('static', filename='img/RV.webp') }}" type="image/webp">
+					<img src="{{ url_for('static', filename='img/RV.png') }}" alt="RVs welcome" class="camping-amenity-strip__rv-img">
+				</picture>
 				<div class="camping-amenity-strip__body">
 					<p class="camping-amenity-strip__heading">RV Friendly</p>
 					<p class="camping-amenity-strip__detail">RVs welcome &mdash; no hookups, generators allowed. RVs
@@ -38,8 +40,10 @@
 				</div>
 			</div>
 			<div class="camping-amenity-strip">
-				<img src="{{ url_for('static', filename='img/camping_icon.png') }}" alt="Tent camping welcome"
-					class="camping-amenity-strip__rv-img">
+				<picture>
+					<source srcset="{{ url_for('static', filename='img/camping_icon.webp') }}" type="image/webp">
+					<img src="{{ url_for('static', filename='img/camping_icon.png') }}" alt="Tent camping welcome" class="camping-amenity-strip__rv-img">
+				</picture>
 				<div class="camping-amenity-strip__body">
 					<p class="camping-amenity-strip__heading">Tent Camping Welcome</p>
 					<p class="camping-amenity-strip__detail">Bring your own tent and set up right on the grounds. Each
@@ -48,8 +52,10 @@
 				</div>
 			</div>
 			<div class="camping-amenity-strip camping-amenity-strip--alt">
-				<img src="{{ url_for('static', filename='img/bathrooms_showers.png') }}" alt="Showers on site"
-					class="camping-amenity-strip__rv-img">
+				<picture>
+					<source srcset="{{ url_for('static', filename='img/bathrooms_showers.webp') }}" type="image/webp">
+					<img src="{{ url_for('static', filename='img/bathrooms_showers.png') }}" alt="Showers on site" class="camping-amenity-strip__rv-img">
+				</picture>
 				<div class="camping-amenity-strip__body">
 					<p class="camping-amenity-strip__heading">Showers On Site</p>
 					<p class="camping-amenity-strip__detail">Shower facilities are available on the campgrounds so you

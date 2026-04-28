@@ -2,19 +2,25 @@
 <section class="bg-black overflow-hidden" aria-label="Freedom Con hero">
 
   <!-- Freedom Con title / logo – full width across top -->
-  <img class="d-block mx-auto img-fluid pt-3 pt-md-4"
-       style="max-width: min(92vw, 1100px);"
-       src="{{ url_for('static', filename='img/freedom_con_congress.png') }}"
-       alt="Freedom Con – An American Congress of Christian Men">
+  <picture>
+    <source srcset="{{ url_for('static', filename='img/freedom_con_congress.webp') }}" type="image/webp">
+    <img class="d-block mx-auto img-fluid pt-3 pt-md-4"
+         style="max-width: min(92vw, 1100px);"
+         src="{{ url_for('static', filename='img/freedom_con_congress.png') }}"
+         alt="Freedom Con – An American Congress of Christian Men">
+  </picture>
 
   <!-- Two-column split: lineup photo left, event info right -->
   <div class="d-flex flex-column flex-lg-row align-items-md-stretch">
 
     <!-- Left: speakers / guys photo -->
     <div class="flex-md-fill" style="flex-basis: 52%;">
-      <img class="d-block w-100 h-100 object-fit-cover"
-           src="{{ url_for('static', filename='img/guys_rise_of_the_statesmen.png') }}"
-           alt="Freedom Con speakers lineup – Rise of the Statesman">
+      <picture>
+        <source srcset="{{ url_for('static', filename='img/guys_rise_of_the_statesmen.webp') }}" type="image/webp">
+        <img class="d-block w-100 h-100 object-fit-cover"
+             src="{{ url_for('static', filename='img/guys_rise_of_the_statesmen.png') }}"
+             alt="Freedom Con speakers lineup – Rise of the Statesman">
+      </picture>
     </div>
 
     <!-- Right: event info + CTAs -->
