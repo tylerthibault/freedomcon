@@ -11,7 +11,7 @@ podcasts = [
 	},
 	{
 		"url": "https://www.youtube.com/watch?v=FMWMV9EBTB4",
-		"title": "The Freedom Conference Matters for Today | Road To Freedom Con Ep. 3",
+		"title": "Why you should bring your son | Road To Freedom Con Ep. 3",
 		"thumbnail_mobile": "img/videos/A Vision for Young Men (Instagram Story).jpeg",
 	},
 	{

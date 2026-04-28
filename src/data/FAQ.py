@@ -18,7 +18,7 @@ FAQ = {
         },
         {
             "question": "Is there a livestream option?",
-            "answer": "Yes. The main sessions of this men's conference will be available via livestream. Links will be shared closer to the event through Stronger Man Nation channels.",
+            "answer": "Yet to be determined.",
         },
         {
             "question": "Where is Freedom Con 2026 located?",
@@ -38,7 +38,7 @@ FAQ = {
         },
         {
             "question": "What time should I arrive?",
-            "answer": "Gates open 2 hours before the event \u2014 4:00 PM on Friday and 8:00 AM on Saturday. Plan to arrive early to get settled.",
+            "answer": "Arriving early is critical. Gates open at 4:00 PM on Friday and 8:00 AM on Saturday. Plan to arrive an hour or two before gates open in order to park. \nFor those camping on-site, The Gorge campground will open at noon on Friday to allow for set up.",
         },
         {
             "question": "What should I expect for check-in and security?",
@@ -106,7 +106,7 @@ FAQ = {
     "Camping FAQ's": [
         {
             "question": "What time is check in/check out at the campground?",
-            "answer": "You can check into the campground as early as 12pm on Friday. Check out will be 11am on Sunday.",
+            "answer": "Check-in for the campground opens at 12pm on Friday to allow plenty of time for finding and setting up your camp. Check out will be 11am on Sunday.",
         },
         {
             "question": "What does the camping purchase include?",
@@ -114,7 +114,7 @@ FAQ = {
         },
         {
             "question": "Which campground areas are available for Freedom Con?",
-            "answer": "For this event, only the Premier and Terrace Campground areas are open. You must have an event ticket to camp.",
+            "answer": "For this event, only the Premier and Terrace Campground areas are open. You must have an event ticket to camp. Check out campgrounds here on The Gorge website \n(Important Note: You cannot register on the Gorge site…you must register for your campground on Brushfire when you purchase your ticket)",
         },
         {
             "question": "How many people can share one campsite?",
