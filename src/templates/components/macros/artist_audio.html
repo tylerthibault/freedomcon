@@ -3,10 +3,13 @@
     <img src="{{ img_src }}" alt="{{ img_alt }}" style="width:100%;display:block;">
 
     <div class="artist-audio" data-artist-audio>
-        <button class="btn btn-primary btn-xxl artist-play-btn" type="button"
-            data-artist-audio-toggle aria-expanded="false"
+        <button class="artist-play-circle" type="button"
+            data-artist-audio-toggle aria-label="Play {{ audio_title }}"
             {% if not audio_src %}disabled{% endif %}>
-            {% if audio_src %}Play Song{% else %}Song Coming Soon{% endif %}
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.55)"/>
+                <polygon points="9,7 19,12 9,17" fill="#fff"/>
+            </svg>
         </button>
 
         <div class="artist-audio__panel" data-artist-audio-panel hidden>
