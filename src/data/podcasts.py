@@ -22,7 +22,7 @@ podcasts = [
 	{
 		"url": "https://www.youtube.com/watch?v=A7JSCpBjFzk",
 		"title": "Is It Time for Pastors to Run for Office? | The Mark Driscoll Show | Ep 28",
-		"thumbnail_mobile": "img/videos/podcasts/time_for_pastors.webp",
+		"thumbnail_mobile": "img/videos/podcasts/new_congress.webp",
 	},
 	{
 		"url": "https://youtu.be/xQsYHwypW0k?t=1507",
