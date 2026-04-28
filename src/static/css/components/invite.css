@@ -134,18 +134,37 @@
 }
 
 .josh-letter__col {
-	display: grid;
-	gap: 1.1rem;
+	display: block;
+	overflow: hidden; /* clearfix — contains the float */
+}
+
+/* Image floats left on desktop, stacks on mobile */
+.josh-letter__img {
+	width: clamp(140px, 30%, 220px);
+	float: left;
+	margin: 0.25rem 1.5rem 1rem 0;
+	border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+	.josh-letter__img {
+		float: none;
+		width: 100%;
+		margin: 0 0 1.25rem 0;
+	}
 }
 
 /* Paragraph text */
 .josh-letter__p {
-	margin: 0;
+	margin: 0 0 1.1rem;
 	font-family: var(--font-regular);
 	font-size: clamp(0.92rem, 1.35vw, 1.05rem);
 	line-height: 1.75;
 	color: rgba(255, 255, 255, 0.88);
 	text-align: justify;
+}
+.josh-letter__p:last-of-type {
+	margin-bottom: 0;
 }
 
 /* Highlighted text (accent color inline or full-paragraph) */
