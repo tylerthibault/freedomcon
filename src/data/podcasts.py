@@ -27,11 +27,16 @@ podcasts = [
 	{
 		"url": "https://youtu.be/xQsYHwypW0k?t=1507",
 		"title": "This FORMER SNL STAR'S Cancer Fight Looks Different | Ep. 103",
-		"thumbnail_mobile": "",
+		"thumbnail_mobile": "img/videos/podcasts/josh_eric.webp",
 	},
 	{
 		"url": "https://www.youtube.com/watch?v=jtUNTfig_xE",
 		"title": "Can You REALLY Follow Jesus and Stay Silent on Politics? with Pastor @Josh_McPherson",
-		"thumbnail_mobile": "",
+		"thumbnail_mobile": "img/videos/podcasts/josh_cross_examined.webp",
+	},
+	{
+		"url": "https://www.youtube.com/watch?v=rfVN6dBLO2o",
+		"title": "The Missing Piece in the Church Today | Road To Freedom Con Ep. 5",
+		"thumbnail_mobile": "img/videos/podcasts/statesmanship_ep5.webp",
 	},
 ]
