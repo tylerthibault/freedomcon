@@ -1,3 +1,4 @@
+{% from 'components/macros/cta_buttons.html' import cta_buttons %}
 <div class="footer-countdown-wrap" aria-label="Countdown to event">
     <div class="footer-countdown" data-countdown data-countdown-target="2026-06-19T17:00:00-07:00" aria-live="polite">
         <span class="footer-countdown-label">Freedom Con Starts In</span>
@@ -16,7 +17,7 @@
             <section class="landing12-footer-col d-flex flex-column" aria-label="Brand">
                 <strong class="landing12-footer-brand">FREEDOM CON</strong>
                 <p class="landing12-footer-copy">June 19–20, 2026 · The Gorge Amphitheatre</p>
-                <a class="btn btn-primary btn-xxl" href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">Get Tickets</a>
+                {{ cta_buttons(link_only=true, primary_class='btn btn-primary btn-xxl') }}
             </section>
 
             <section class="landing12-footer-col d-flex flex-column" aria-label="Explore">

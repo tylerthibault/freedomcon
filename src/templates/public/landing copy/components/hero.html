@@ -40,10 +40,14 @@
                 border-bottom: 3px solid #BC2A27; padding-bottom:0.1em;">
         June 19&nbsp;–&nbsp;20
       </p>
-      <div class="d-flex gap-2">
-        <a class="btn btn-primary btn-lg px-4" href="/tickets">Get Tickets</a>
-        <a class="btn btn-secondary btn-lg px-4" href="#trailers">View Trailer</a>
-      </div>
+      {% from 'components/macros/cta_buttons.html' import cta_buttons %}
+      {{ cta_buttons(
+           primary_class   = 'btn btn-primary btn-lg px-4',
+           secondary_text  = 'View Trailer',
+           secondary_href  = '#trailers',
+           secondary_class = 'btn btn-secondary btn-lg px-4',
+           wrapper_class   = 'gap-2'
+         ) }}
     </div>
 
   </div>

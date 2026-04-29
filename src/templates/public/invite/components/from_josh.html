@@ -1,3 +1,4 @@
+{% from 'components/macros/cta_buttons.html' import cta_buttons %}
 <section class="josh-letter" aria-label="A word from Josh McPherson" id="from-josh">
 	<div class="josh-letter__inner container-xl">
 
@@ -34,7 +35,7 @@
 				<p class="josh-letter__p">What if it started with you? <br> What if it started Father&#8217;s Day weekend? <br> This is our time, men. I&#8217;ll see you there.</p>
 
 				<p class="josh-letter__signature">— Josh McPherson</p>
-				<a class="josh-letter__cta btn-primary" href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">Get Tickets</a>
+				{{ cta_buttons(link_only=true, primary_class='josh-letter__cta btn-primary') }}
 			</div>
 		</div>
 	</div>

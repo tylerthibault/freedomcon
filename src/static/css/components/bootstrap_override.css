@@ -66,6 +66,11 @@
 .text-green { color: var(--color-green) !important; }
 .text-navy { color: var(--color-navy) !important; }
 
+/* backgrounds */
+.bg-primary { background-color: var(--color-primary) !important; }
+.bg-secondary { background-color: var(--color-secondary) !important; }
+.bg-accent { background-color: var(--color-accent) !important; }
+
 /* Buttons */
 .btn-primary {
 	background-color: var(--color-accent) !important;

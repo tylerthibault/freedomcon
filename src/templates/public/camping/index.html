@@ -1,6 +1,7 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
 {% from "components/macros/page_hero.html" import page_hero %}
+{% from "components/macros/cta_buttons.html" import cta_buttons %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/camping.css') }}">
@@ -93,12 +94,10 @@
 						<p class="camping-ticket__price-note">at checkout, when you purchase your event ticket</p>
 					</div>
 				</div>
-				<div class="d-flex justify-content-center align-content-center my-3">
-					<a class="camping-ticket__btn btn-primary btn btn-xxl"
-						href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">
-						Get Tickets
-					</a>
-				</div>
+				{{ cta_buttons(
+					primary_class = 'camping-ticket__btn btn-primary btn btn-xxl',
+					wrapper_class = 'my-3'
+				) }}
 			</div>
 
 		</div>
@@ -149,12 +148,10 @@
 		<div class="camping-cta__inner container-xl">
 			<p class="camping-cta__copy">Secure your campsite before they sell out.</p>
 
-			<div class="d-flex justify-content-center align-content-center my-3">
-				<a class="camping-ticket__btn btn-primary btn btn-xxl"
-					href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">
-					Get Tickets
-				</a>
-			</div>
+			{{ cta_buttons(
+				primary_class = 'camping-ticket__btn btn-primary btn btn-xxl',
+				wrapper_class = 'my-3'
+			) }}
 
 			<a class="camping-cta__link" href="/accommodations">All Accommodations</a>
 		</div>

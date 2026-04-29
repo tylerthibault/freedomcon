@@ -1,0 +1,106 @@
+{#
+  CTA Buttons Macro  –  Global component
+  ══════════════════════════════════════
+  Single source of truth for the "Get Tickets" button across the whole site.
+  To change the URL or label sitewide, edit the defaults below.
+
+  ── Import ──────────────────────────────────────────────────────────────────
+    {% from 'components/macros/cta_buttons.html' import cta_buttons %}
+
+  ── Usage examples ──────────────────────────────────────────────────────────
+
+  1. Default primary button only (renders full centered row):
+       {{ cta_buttons() }}
+
+  2. Primary + secondary button:
+       {{ cta_buttons(
+            secondary_text = 'Plan Your Trip',
+            secondary_href = '/accommodations'
+          ) }}
+
+  3. Inline / embedded (no wrapper div — just the <a> tag):
+       {{ cta_buttons(link_only=true) }}
+
+  4. Inline with custom class override:
+       {{ cta_buttons(link_only=true, primary_class='my-custom-btn') }}
+
+  5. Disable the urgency strip (e.g. in nav/footer):
+       {{ cta_buttons(show_urgency=false) }}
+
+  6. Custom urgency text / subtext:
+       {{ cta_buttons(
+            urgency_text = '⚡ Seats filling fast',
+            subtext      = 'Limited availability'
+          ) }}
+
+  ── Parameters ──────────────────────────────────────────────────────────────
+    primary_text      – button label          (default: 'Get Tickets')
+    primary_href      – button URL            (default: '/tickets')
+    primary_class     – CSS classes           (default: 'landing12-btn btn btn-xxl')
+    secondary_text    – 2nd button label      (default: '' → hidden)
+    secondary_href    – 2nd button URL        (default: '#')
+    secondary_class   – 2nd button CSS        (default: 'landing12-btn landing12-btn--ghost btn btn-xxl')
+    wrapper_class     – classes on the row    (default: '')
+    link_only         – skip wrapper, output <a> only (default: false)
+    show_urgency      – show animated strip + subtext    (default: true)
+    urgency_text      – strip message                   (default: '🔥 Price increases May 1')
+    subtext           – always-visible caption below    (default: 'Early bird pricing ends May 1')
+#}
+
+{% macro cta_buttons(
+    primary_text    = 'Get Tickets',
+    primary_href    = '/tickets',
+    primary_class   = 'landing12-btn btn btn-xxl',
+    secondary_text  = '',
+    secondary_href  = '#',
+    secondary_class = 'landing12-btn landing12-btn--ghost btn btn-xxl',
+    wrapper_class   = '',
+    link_only       = false,
+    show_urgency    = true,
+    urgency_text    = 'Price increases May 1',
+    subtext         = 'Early bird pricing ends May 1'
+) %}
+{% if link_only %}
+<a class="{{ primary_class }}" href="{{ primary_href }}">{{ primary_text }}</a>
+{% else %}
+<div class="landing12-cta-row landing12-cta-row--center d-flex flex-wrap align-items-center justify-content-center gap-2 {{ wrapper_class }}">
+    {% if show_urgency %}
+    <a href="{{ primary_href }}" class="cta-ticket-shell">
+        <div class="{{ primary_class }}">{{ primary_text }}</div>
+        <div class="cta-urgency-strip" aria-hidden="true" role="status">{{ urgency_text }}</div>
+    </a>
+    {% else %}
+    <a class="{{ primary_class }}" href="{{ primary_href }}">{{ primary_text }}</a>
+    {% endif %}
+    {% if secondary_text %}
+    <a class="{{ secondary_class }}" href="{{ secondary_href }}">{{ secondary_text }}</a>
+    {% endif %}
+</div>
+<script>(function(){
+  if(window.__ctaUrgencyInit)return;
+  window.__ctaUrgencyInit=true;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  function cycle(strip){
+    var delay=1500;
+    // var delay=6000+Math.random()*2000;
+    setTimeout(function(){
+      strip.classList.add('is-visible');
+      strip.removeAttribute('aria-hidden');
+      setTimeout(function(){
+        strip.classList.remove('is-visible');
+        strip.setAttribute('aria-hidden','true');
+        cycle(strip);
+      },2000);
+    },delay);
+  }
+  function init(){
+    document.querySelectorAll('.cta-urgency-strip').forEach(cycle);
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',init);
+  } else {
+    init();
+  }
+})();</script>
+{% endif %}
+{% endmacro %}
