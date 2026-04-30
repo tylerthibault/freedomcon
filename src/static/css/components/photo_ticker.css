@@ -1,0 +1,98 @@
+/* ============================================================
+   Father & Son Photo Ticker Strip
+   ============================================================ */
+
+.ft-section {
+    padding: clamp(2.5rem, 5vw, 4rem) 0;
+    background: var(--color-primary, #0a0a0a);
+    overflow: hidden;
+}
+
+.ft-section__heading {
+    text-align: center;
+    margin: 0 0 clamp(1.2rem, 2.5vw, 2rem);
+    font-family: var(--font-secondary, "Oswald", sans-serif);
+    font-size: clamp(0.7rem, 1.2vw, 0.88rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.ft-section__heading span {
+    color: var(--fc-accent, #bc2a27);
+}
+
+/* ── Ticker wrapper ─────────────────────────────────────────── */
+.ft-ticker {
+    width: 100%;
+    overflow: hidden;
+    cursor: grab;
+    /* edge fade */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
+}
+
+.ft-ticker--dragging {
+    cursor: grabbing;
+    user-select: none;
+}
+
+.ft-ticker__track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: clamp(0.6rem, 1.2vw, 1rem);
+    width: max-content;
+    will-change: transform;
+}
+
+/* ── Individual photo card ──────────────────────────────────── */
+.ft-ticker__item {
+    flex: 0 0 auto;
+    width: clamp(160px, 18vw, 240px);
+    aspect-ratio: 3 / 4;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background: #1a1a1a;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ft-ticker__item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+}
+
+.ft-ticker__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ── Reduced motion fallback ────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .ft-ticker__track {
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 1200px;
+        margin-inline: auto;
+        justify-content: center;
+        padding: 0 1rem;
+    }
+}

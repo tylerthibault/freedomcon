@@ -1,0 +1,162 @@
+{#
+  ──────────────────────────────────────────────────────
+  Father & Son Photo Scroller
+  ──────────────────────────────────────────────────────
+  Add your Cloudflare Images URLs to the list below.
+  Each entry: { "src": "<full cloudflare url>", "alt": "<caption>" }
+
+  Cloudflare Images URL format:
+    https://imagedelivery.net/<account_hash>/<image_id>/public
+  ──────────────────────────────────────────────────────
+#}
+
+{% set father_son_photos = [
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/001_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/014_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/009_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/004_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/010_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/008_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/015_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/011_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/018_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/034_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/012_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/037_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/007_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/019_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/030_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/006_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/038_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/016_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    ] %}
+
+{% if father_son_photos %}
+<section class="ft-section" aria-label="Fathers and sons at Freedom Con">
+
+    <p class="ft-section__heading">Fathers &amp; Sons &mdash; <span>Freedom Con</span></p>
+
+    <div class="ft-ticker" aria-hidden="true" data-ft-ticker>
+        {# Quadruple the list so the strip always fills the viewport #}
+        {% set all_photos = father_son_photos + father_son_photos + father_son_photos + father_son_photos %}
+        <div class="ft-ticker__track">
+            {% for photo in all_photos %}
+            <div class="ft-ticker__item">
+                <img
+                    class="ft-ticker__img"
+                    src="{{ photo.src }}"
+                    alt="{{ photo.alt }}"
+                    loading="lazy"
+                    draggable="false"
+                >
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+
+<script>
+(function () {
+    document.querySelectorAll('[data-ft-ticker]').forEach(function (ticker) {
+        var track = ticker.querySelector('.ft-ticker__track');
+        if (!track) return;
+
+        /* px per second */
+        var SPEED = 50;
+
+        var offset = 0;
+        var setW = 0;
+        var isDragging = false;
+        var dragStartX = 0;
+        var dragStartOffset = 0;
+        var dragDelta = 0;
+        var lastTime = null;
+        var paused = false;
+
+        /* Respect reduced-motion preference */
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        track.style.animation = 'none';
+        track.style.willChange = 'transform';
+
+        function getSetW() { return track.scrollWidth / 4; }
+
+        function wrap(px) {
+            var w = getSetW();
+            if (w === 0) return 0;
+            px = px % w;
+            if (px > 0) px -= w;
+            return px;
+        }
+
+        function apply() {
+            track.style.transform = 'translateX(' + offset + 'px)';
+        }
+
+        function tick(ts) {
+            requestAnimationFrame(tick);
+            if (isDragging || paused) { lastTime = ts; return; }
+            if (lastTime === null) { lastTime = ts; }
+            var dt = (ts - lastTime) / 1000;
+            lastTime = ts;
+            offset = wrap(offset - SPEED * dt);
+            apply();
+        }
+
+        requestAnimationFrame(function () {
+            setW = getSetW();
+            offset = 0;
+            requestAnimationFrame(tick);
+        });
+
+        /* Pause on hover */
+        ticker.addEventListener('mouseenter', function () { if (!isDragging) paused = true; });
+        ticker.addEventListener('mouseleave', function () { if (!isDragging) paused = false; });
+
+        /* Drag helpers */
+        function onDragStart(clientX) {
+            isDragging = true;
+            dragStartX = clientX;
+            dragStartOffset = offset;
+            dragDelta = 0;
+            ticker.classList.add('ft-ticker--dragging');
+        }
+
+        function onDragMove(clientX) {
+            if (!isDragging) return;
+            dragDelta = clientX - dragStartX;
+            offset = wrap(dragStartOffset + dragDelta);
+            apply();
+        }
+
+        function onDragEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            paused = false;
+            lastTime = null;
+            ticker.classList.remove('ft-ticker--dragging');
+            if (Math.abs(dragDelta) > 4) {
+                ticker.addEventListener('click', function stopClick(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    ticker.removeEventListener('click', stopClick, true);
+                }, true);
+            }
+        }
+
+        /* Mouse */
+        ticker.addEventListener('mousedown', function (e) { onDragStart(e.clientX); e.preventDefault(); });
+        window.addEventListener('mousemove', function (e) { onDragMove(e.clientX); });
+        window.addEventListener('mouseup', onDragEnd);
+
+        /* Touch */
+        ticker.addEventListener('touchstart', function (e) { onDragStart(e.touches[0].clientX); }, { passive: true });
+        ticker.addEventListener('touchmove', function (e) { onDragMove(e.touches[0].clientX); e.preventDefault(); }, { passive: false });
+        ticker.addEventListener('touchend', onDragEnd);
+    });
+})();
+</script>
+{% endif %}
+
+
