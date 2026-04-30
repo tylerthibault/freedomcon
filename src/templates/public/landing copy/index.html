@@ -15,6 +15,7 @@
     padding: 0.45rem 1rem;
     text-align: center;
   }
+
   .alt-countdown-bar__label {
     font-size: 0.78rem;
     font-weight: 700;
@@ -23,8 +24,19 @@
     color: var(--alt-accent);
     margin-right: 0.75rem;
   }
-  .alt-countdown-bar__units { display: inline-flex; gap: 0.5rem; align-items: baseline; }
-  .alt-countdown-bar__unit { display: inline-flex; align-items: baseline; gap: 0.22rem; }
+
+  .alt-countdown-bar__units {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  .alt-countdown-bar__unit {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.22rem;
+  }
+
   .alt-countdown-bar__num {
     font-size: clamp(1.1rem, 2.5vw, 1.5rem);
     font-weight: 700;
@@ -34,9 +46,28 @@
     min-width: 2ch;
     text-align: right;
   }
-  .alt-countdown-bar__lbl { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.5); }
-  .alt-countdown-bar__sep { color: rgba(0,0,0,0.3); font-size: 1.1rem; line-height: 1; font-weight: 300; }
-  .alt-countdown-bar__urgency { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; color: rgba(0,0,0,0.7); margin-left: 1rem; }
+
+  .alt-countdown-bar__lbl {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .alt-countdown-bar__sep {
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 1.1rem;
+    line-height: 1;
+    font-weight: 300;
+  }
+
+  .alt-countdown-bar__urgency {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(0, 0, 0, 0.7);
+    margin-left: 1rem;
+  }
 </style>
 {% endblock %}
 
@@ -45,6 +76,7 @@
 {% endblock %}
 
 {% block content %}
+{% from 'components/macros/cta_buttons.html' import cta_buttons %}
 
 {% set landing12_speakers = [
 {
@@ -83,141 +115,64 @@
 {% set declaration_text = (background_text | join(' ')) if background_text is defined else '' %}
 
 <main class="landing12 overflow-hidden px-3">
-    {#
-    {% if declaration_text %}
-    <div class="landing12-declaration-bg" aria-hidden="true" data-declaration-bg>
-        <p class="landing12-declaration-bg__text" data-declaration-text>
-            {% for _ in range(5) %}
-            {% for word in declaration_text.split() %}
-            <span class="landing12-declaration-bg__word">{{ word }}</span>
-            {% endfor %}
-            {% endfor %}
-        </p>
-    </div>
-    {% endif %}
-    #}
+  {#
+  {% if declaration_text %}
+  <div class="landing12-declaration-bg" aria-hidden="true" data-declaration-bg>
+    <p class="landing12-declaration-bg__text" data-declaration-text>
+      {% for _ in range(5) %}
+      {% for word in declaration_text.split() %}
+      <span class="landing12-declaration-bg__word">{{ word }}</span>
+      {% endfor %}
+      {% endfor %}
+    </p>
+  </div>
+  {% endif %}
+  #}
 
-    {% include 'public/landing copy/components/hero.html' %}
+  {% include 'public/landing copy/components/hero.html' %}
 
-    <style>
-        .landing12-event-highlight {
-            background: transparent;
-            color: #fff;
-            text-align: center;
-            padding: clamp(2rem, 5vw, 4rem) 1rem clamp(2rem, 5vw, 4rem);
-        }
-        .landing12-event-highlight__heading {
-            font-family: "Oswald", Arial, sans-serif !important;
-            font-weight: 700;
-            font-size: clamp(2.6rem, 8vw, 7rem);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            line-height: 1;
-            margin: 0 0 0.3em;
-            color: var(--color-accent);
-        }
-        .landing12-event-highlight__meta {
-            font-family: var(--font-action);
-            font-size: clamp(0.7rem, 1.8vw, 1.1rem);
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.75);
-            margin: 0 0 0.5em;
-        }
-        .landing12-event-highlight__date {
-            font-family: var(--font-oswald-light);
-            font-size: clamp(3rem, 10vw, 7.5rem);
-            font-weight: 400;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            line-height: 1;
-            color: #fff;
-            margin: 0 0 0.15em;
-            text-decoration: underline;
-            text-decoration-color: var(--color-accent, #BC2A27);
-            text-underline-offset: 0.12em;
-            text-decoration-thickness: 3px;
-        }
-        .landing12-event-highlight__btn {
-            display: inline-block;
-            margin-top: 1.2em;
-            padding: 0.75rem 3.5rem;
-            background: var(--color-accent, #BC2A27);
-            color: #fff;
-            font-family: var(--font-action);
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 6px;
-        }
-        .landing12-event-highlight__btn:hover { background: #a02220; color: #fff; }
-    </style>
-    <section class="d-flex flex-column justify-content-center align-items-center my-3" aria-label="Event weekend highlight">
-        <h2 class="landing12-event-highlight__heading">One Historic Event</h2>
-        <p class="landing12-event-highlight__meta">The Gorge Amphitheatre &nbsp;|&nbsp; George, WA</p>
-        <p class="landing12-event-highlight__date">June 19 – 20</p>
-    </section>
-    <div class="d-flex gap-3 justify-content-center align-content-center my-3">
-        <a class="btn btn-primary btn-xxl"
-            href="/tickets">Get Tickets</a>
-        <!-- View Trailers -->
-        <a class="btn btn-secondary btn-xxl" href="#trailers">View Trailers</a>
-    </div>
+  {% include 'public/landing copy/components/count_down.html' %}
 
+  {% include 'public/landing copy/components/mission_statement.html' %}
 
-    {% include 'public/landing copy/components/count_down.html' %}
+  {% include 'public/landing copy/components/silent_video.html' %}
 
-    {% include 'public/landing copy/components/mission_statement.html' %}
+  {% include 'public/landing copy/components/why_now.html' %}
 
-    <section class="landing12-liberty" aria-label="Call to join the cause of liberty">
-        <video class="landing12-liberty-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-            <source src="https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/PHOTO%20REEL%202.mp4" type="video/mp4">
-        </video>
-        <div class="landing12-liberty-inner">
-            <!-- <p class="landing12-liberty-text fs-1">Join Thousands Of American Christian Men and Patriots in The Cause Of Liberty.</p> -->
-            <!-- <p class="landing12-liberty-text fs-1">This Is What It Looks Like When Men Show Up.</p> -->
-        </div>
-    </section>
+  <section class="mb-3" aria-label="Primary calls to action">
+    {{ cta_buttons() }}
+  </section>
 
-    {% include 'public/landing copy/components/why_now.html' %}
-    
-    <section class="mb-3" aria-label="Primary calls to action">
-        <div
-            class="landing12-cta-row landing12-cta-row--center d-flex flex-wrap align-items-center justify-content-center">
-            <a class="landing12-btn btn btn-xxl"
-                href="/tickets">Get Tickets</a>
-        </div>
-    </section>
+  {% include 'public/landing copy/components/speakers.html' %}
 
-    {% include 'public/landing copy/components/speakers.html' %}
+  {% include 'public/landing copy/components/cta_2.html' %}
 
-    {% include 'public/landing copy/components/cta_2.html' %}
+  <div class="my-3">
+    {{ cta_buttons() }}
+  </div>
 
-    <div class="d-flex justify-content-center align-content-center my-3">
-		<a class="landing12-btn btn btn-xxl" href="/tickets">Get Tickets</a>
-	</div>
+  {% include 'public/landing copy/components/what_to_expect.html' %}
 
-    {% include 'public/landing copy/components/what_to_expect.html' %}
+  {% include 'public/landing copy/components/trailers.html' %}
 
-    {% include 'public/landing copy/components/trailers.html' %}
+  {% include 'public/landing copy/components/podcast.html' %}
 
-    {% include 'public/landing copy/components/podcast.html' %}
+  {% include 'public/landing copy/components/father_son_callout.html' %}
 
-    {% include 'public/landing copy/components/father_son_callout.html' %}
+  <div class="mb-3">
+    {% from 'components/macros/cta_buttons.html' import cta_buttons %}
+    {{ cta_buttons() }}
+  </div>
 
-    {% include 'public/landing copy/components/artists.html' %}
+  {% include 'public/landing copy/components/artists.html' %}
 
-    {% include 'public/landing copy/components/accomodation.html' %}
+  {% include 'public/landing copy/components/social_proof.html' %}
 
-    {% include 'public/landing copy/components/social_proof.html' %}
-
-    <div class="my-2">
-        <h2 class="d-flex justify-content-center align-content-center">Sponsors</h2>
-        {% set ticker_category = 'all' %}
-        {% include 'components/sponsor_ticker.html' %}
-    </div>
+  <div class="my-2">
+    <h2 class="d-flex justify-content-center align-content-center">Sponsors</h2>
+    {% set ticker_category = 'all' %}
+    {% include 'components/sponsor_ticker.html' %}
+  </div>
 </main>
 {% endblock %}
 
@@ -226,10 +181,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var v = document.querySelector('.landing12-liberty-video');
-    if (v) v.playbackRate = 0.35;
-  });
-</script>
+
 {% endblock %}

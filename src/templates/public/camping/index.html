@@ -1,6 +1,7 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
 {% from "components/macros/page_hero.html" import page_hero %}
+{% from "components/macros/cta_buttons.html" import cta_buttons %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/camping.css') }}">
@@ -29,8 +30,10 @@
 	<section class="camping-amenities" aria-label="Camping amenities">
 		<div class="camping-amenities__inner container-xl">
 			<div class="camping-amenity-strip">
-				<img src="{{ url_for('static', filename='img/RV.png') }}" alt="RVs welcome"
-					class="camping-amenity-strip__rv-img">
+				<picture>
+					<source srcset="{{ url_for('static', filename='img/RV.webp') }}" type="image/webp">
+					<img src="{{ url_for('static', filename='img/RV.png') }}" alt="RVs welcome" class="camping-amenity-strip__rv-img">
+				</picture>
 				<div class="camping-amenity-strip__body">
 					<p class="camping-amenity-strip__heading">RV Friendly</p>
 					<p class="camping-amenity-strip__detail">RVs welcome &mdash; no hookups, generators allowed. RVs
@@ -38,8 +41,10 @@
 				</div>
 			</div>
 			<div class="camping-amenity-strip">
-				<img src="{{ url_for('static', filename='img/camping_icon.png') }}" alt="Tent camping welcome"
-					class="camping-amenity-strip__rv-img">
+				<picture>
+					<source srcset="{{ url_for('static', filename='img/camping_icon.webp') }}" type="image/webp">
+					<img src="{{ url_for('static', filename='img/camping_icon.png') }}" alt="Tent camping welcome" class="camping-amenity-strip__rv-img">
+				</picture>
 				<div class="camping-amenity-strip__body">
 					<p class="camping-amenity-strip__heading">Tent Camping Welcome</p>
 					<p class="camping-amenity-strip__detail">Bring your own tent and set up right on the grounds. Each
@@ -48,8 +53,10 @@
 				</div>
 			</div>
 			<div class="camping-amenity-strip camping-amenity-strip--alt">
-				<img src="{{ url_for('static', filename='img/bathrooms_showers.png') }}" alt="Showers on site"
-					class="camping-amenity-strip__rv-img">
+				<picture>
+					<source srcset="{{ url_for('static', filename='img/bathrooms_showers.webp') }}" type="image/webp">
+					<img src="{{ url_for('static', filename='img/bathrooms_showers.png') }}" alt="Showers on site" class="camping-amenity-strip__rv-img">
+				</picture>
 				<div class="camping-amenity-strip__body">
 					<p class="camping-amenity-strip__heading">Showers On Site</p>
 					<p class="camping-amenity-strip__detail">Shower facilities are available on the campgrounds so you
@@ -87,12 +94,10 @@
 						<p class="camping-ticket__price-note">at checkout, when you purchase your event ticket</p>
 					</div>
 				</div>
-				<div class="d-flex justify-content-center align-content-center my-3">
-					<a class="camping-ticket__btn btn-primary btn btn-xxl"
-						href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">
-						Get Tickets
-					</a>
-				</div>
+				{{ cta_buttons(
+					primary_class = 'camping-ticket__btn btn-primary btn btn-xxl',
+					wrapper_class = 'my-3'
+				) }}
 			</div>
 
 		</div>
@@ -143,12 +148,10 @@
 		<div class="camping-cta__inner container-xl">
 			<p class="camping-cta__copy">Secure your campsite before they sell out.</p>
 
-			<div class="d-flex justify-content-center align-content-center my-3">
-				<a class="camping-ticket__btn btn-primary btn btn-xxl"
-					href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">
-					Get Tickets
-				</a>
-			</div>
+			{{ cta_buttons(
+				primary_class = 'camping-ticket__btn btn-primary btn btn-xxl',
+				wrapper_class = 'my-3'
+			) }}
 
 			<a class="camping-cta__link" href="/accommodations">All Accommodations</a>
 		</div>

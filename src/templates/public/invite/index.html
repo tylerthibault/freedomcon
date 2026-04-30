@@ -1,5 +1,6 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
+{% from "components/macros/cta_buttons.html" import cta_buttons %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/invite.css') }}">
@@ -17,15 +18,13 @@
 		{% include "public/invite/components/from_the_boys.html" %}
 	#}
 	
-	<div class="d-flex justify-content-center align-content-center my-3">
-		<button onclick="window.location.href='/tickets'" class="btn btn-primary btn-xxl">Get Tickets</button>
-	</div>
+	{{ cta_buttons(wrapper_class='my-3') }}
 
 	<section class="invite-bottom-cta" aria-label="Register for Freedom Con">
 		<div class="invite-bottom-cta__inner container-xl">
 			<h2 class="invite-bottom-cta__title">The Gorge is Waiting</h2>
 			<p class="invite-bottom-cta__copy">Father's Day Weekend. June 19–20, 2026. George, WA.</p>
-			<a class="invite-bottom-cta__btn btn-primary" href="/tickets">Get Tickets</a>
+			{{ cta_buttons(link_only=true, primary_class='invite-bottom-cta__btn btn-primary') }}
 		</div>
 	</section>
 </main>

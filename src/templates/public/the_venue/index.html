@@ -1,6 +1,7 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
 {% from "components/macros/page_hero.html" import page_hero %}
+{% from "components/macros/cta_buttons.html" import cta_buttons %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/the_venue.css') }}">
@@ -58,11 +59,13 @@
 						</li>
 					</ul>
 
-					<div class="where__actions">
-						<a class="landing12-btn" href="/tickets">Get Tickets</a>
-						<a class="landing12-btn landing12-btn--ghost"
-							href="{{ url_for('public.accommodations_page') }}">Plan Lodging</a>
-					</div>
+					{{ cta_buttons(
+						primary_class   = 'landing12-btn',
+						secondary_text  = 'Plan Lodging',
+						secondary_href  = url_for('public.accommodations_page'),
+						secondary_class = 'landing12-btn landing12-btn--ghost',
+						wrapper_class   = 'where__actions'
+					) }}
 				</div>
 
 				<div class="where__map-col">

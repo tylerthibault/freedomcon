@@ -132,8 +132,6 @@ speakers = [
 		'titles': ['Exec. Pastor, Grace City Church', 'Washington State Rep. Candidate'],
 		'bio': """
 			Adam James is one of the founding pastor of Grace City Church, where he is raising up men and families to follow Jesus with grit, joy, and conviction in everyday life. Drawing on years of local-church ministry, Adam preaches a clear, Christ-centered gospel and calls men out of passivity into sacrificial service at home, in church, and in the public square. In a cultural moment obsessed with image and comfort, he is steadily building a biblical, masculine culture that prizes repentance, responsibility, and brotherhood over hype. Adam is running for state representative in Washington, where he’s challenging the status quo with a bold vision for freedom, family, and faith in the public square. 
-
-			If you send me a link to his church’s bio page, I can tighten this further to match his exact story and accomplishments.
 		 """,
 		'shrink': 0.9,
 	        "orgs": [{"icon": "church", "name": "Grace City Church", "subtitle": "Local pastoral leadership"}, {"icon": "church", "name": "Running for state representative", "subtitle": "Washington State"}],

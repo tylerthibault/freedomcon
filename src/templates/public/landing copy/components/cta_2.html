@@ -1,6 +1,9 @@
-<section class="landing12-cta-2 pt-6 mt-3" aria-label="CTA 2 section">
+<section class="pt-6 mt-3" aria-label="CTA 2 section">
 	<div class="landing12-cta-2__media p-" aria-hidden="true">
-		<img class="landing12-cta-2__image" src="{{ url_for('static', filename='img/gen_z_speakers.png') }}" alt="" loading="lazy" decoding="async">
+		<picture>
+			<source srcset="{{ url_for('static', filename='img/gen_z_speakers.webp') }}" type="image/webp">
+			<img class="landing12-cta-2__image" src="{{ url_for('static', filename='img/gen_z_speakers.png') }}" alt="" loading="lazy" decoding="async">
+		</picture>
 	</div>
 	<div class="landing12-cta-2__overlay"></div>
 </section>

@@ -1,15 +1,58 @@
+{#
+  CTA Buttons Macro  –  Global component
+  ══════════════════════════════════════
+  Single source of truth for the "Get Tickets" button across the whole site.
+  To change the URL or label sitewide, edit the defaults below.
+
+  ── Import ──────────────────────────────────────────────────────────────────
+    {% from 'components/macros/cta_buttons.html' import cta_buttons %}
+
+  ── Usage examples ──────────────────────────────────────────────────────────
+
+  1. Default primary button only (renders full centered row):
+       {{ cta_buttons() }}
+
+  2. Primary + secondary button:
+       {{ cta_buttons(
+            secondary_text = 'Plan Your Trip',
+            secondary_href = '/accommodations'
+          ) }}
+
+  3. Inline / embedded (no wrapper div — just the <a> tag):
+       {{ cta_buttons(link_only=true) }}
+
+  4. Inline with custom class override:
+       {{ cta_buttons(link_only=true, primary_class='my-custom-btn') }}
+
+  5. Disable the urgency bird (e.g. in nav/footer):
+       {{ cta_buttons(show_urgency=false) }}
+
+  ── Parameters ──────────────────────────────────────────────────────────────
+    primary_text      – button label          (default: 'Get Tickets')
+    primary_href      – button URL            (default: '/tickets')
+    primary_class     – CSS classes           (default: 'landing12-btn btn btn-xxl')
+    secondary_text    – 2nd button label      (default: '' → hidden)
+    secondary_href    – 2nd button URL        (default: '#')
+    secondary_class   – 2nd button CSS        (default: 'landing12-btn landing12-btn--ghost btn btn-xxl')
+    wrapper_class     – classes on the row    (default: '')
+    link_only         – skip wrapper, output <a> only (default: false)
+    show_urgency      – show wiggling bird on button    (default: true)
+    urgency_text      – (unused, kept for compat)       (default: 'Price increases May 1')
+    subtext           – (unused, kept for compat)       (default: 'Early bird pricing ends May 1')
+#}
+
 {% macro cta_buttons(
-    primary_text='Get Tickets',
-    primary_href='/tickets',
-    primary_class='landing12-btn btn btn-xxl',
-    secondary_text='',
-    secondary_href='#',
-    secondary_class='landing12-btn landing12-btn--ghost btn btn-xxl',
-    wrapper_class='',
-    link_only=false,
-    show_urgency=true,
-    urgency_text='Price increases May 1',
-    subtext='Early bird pricing ends May 1'
+    primary_text    = 'Get Tickets',
+    primary_href    = '/tickets',
+    primary_class   = 'landing12-btn btn btn-xxl',
+    secondary_text  = '',
+    secondary_href  = '#',
+    secondary_class = 'landing12-btn landing12-btn--ghost btn btn-xxl',
+    wrapper_class   = '',
+    link_only       = false,
+    show_urgency    = true,
+    urgency_text    = 'Price increases May 1',
+    subtext         = 'Early bird pricing ends May 1'
 ) %}
 
 {%- if link_only -%}

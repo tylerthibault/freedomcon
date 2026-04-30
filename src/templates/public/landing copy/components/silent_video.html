@@ -1,0 +1,50 @@
+<style>
+    /* .landing12-liberty-video {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.landing12-liberty-video.loaded {
+    opacity: 1;
+} */
+</style>
+
+<section class="landing12-liberty" aria-label="Call to join the cause of liberty">
+    <video 
+        class="landing12-liberty-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="none"
+        poster="/static/img/hero-fallback.webp"
+        data-src="https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/PHOTO%20REEL%202.mp4"
+        aria-hidden="true">
+    </video>
+</section>
+
+
+<script>
+    window.addEventListener("load", () => {
+    const video = document.querySelector(".landing12-liberty-video");
+    if (!video) return;
+
+    const source = document.createElement("source");
+    source.src = video.dataset.src;
+    source.type = "video/mp4";
+
+    video.appendChild(source);
+    video.load();
+
+    video.play().catch(() => {});
+});
+video.addEventListener("canplay", () => {
+    video.classList.add("loaded");
+});
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var v = document.querySelector('.landing12-liberty-video');
+    if (v) v.playbackRate = 0.35;
+  });
+</script>

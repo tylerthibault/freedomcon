@@ -25,12 +25,18 @@
 			</div>
 		</div>
 		<div class="speaker-card__person-shell">
-			<img
-				class="speaker-card__person"
-				src="{{ person_src }}"
-				alt="{{ alt if alt else name }}"
-				loading="lazy"
-			>
+			{%- set person_webp_src = person_src | replace('.png', '.webp') | replace('.jpg', '.webp') | replace('.jpeg', '.webp') %}
+			<picture>
+				{% if person_webp_src != person_src %}
+				<source srcset="{{ person_webp_src }}" type="image/webp">
+				{% endif %}
+				<img
+					class="speaker-card__person"
+					src="{{ person_src }}"
+					alt="{{ alt if alt else name }}"
+					loading="lazy"
+				>
+			</picture>
 		</div>
 	</div>
 

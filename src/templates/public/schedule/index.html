@@ -1,6 +1,7 @@
 {% extends "bases/public.html" %}
 {% from "components/macros/banner.html" import slim_banner %}
 {% from "components/macros/page_hero.html" import page_hero %}
+{% from "components/macros/cta_buttons.html" import cta_buttons %}
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components/schedule.css') }}">
@@ -21,7 +22,7 @@
 	<section class="schedule-cta" aria-label="Get tickets">
 		<div class="schedule-cta__inner container-xl">
 			<p class="schedule-cta__copy">Secure your spot before tickets sell out.</p>
-			<a class="schedule-cta__btn btn-primary" href="https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets">Get Tickets</a>
+			{{ cta_buttons(link_only=true, primary_class='schedule-cta__btn btn-primary') }}
 		</div>
 	</section>
 </main>

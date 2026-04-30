@@ -1,0 +1,30 @@
+{% macro artist_audio(img_src, img_alt, audio_src, audio_title, audio_type="audio/mpeg") %}
+<section class="audio-section">
+    <img src="{{ img_src }}" alt="{{ img_alt }}" style="width:100%;display:block;">
+
+    <div class="artist-audio" data-artist-audio>
+        <button class="artist-play-circle" type="button"
+            data-artist-audio-toggle aria-label="Play {{ audio_title }}"
+            {% if not audio_src %}disabled{% endif %}>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.55)"/>
+                <polygon points="9,7 19,12 9,17" fill="#fff"/>
+            </svg>
+        </button>
+
+        <div class="artist-audio__panel" data-artist-audio-panel hidden>
+            <div class="artist-audio__head">
+                <p class="artist-audio__title">{{ audio_title }}</p>
+                <button class="artist-audio__close" type="button"
+                    aria-label="Close audio player" data-artist-audio-close>&times;</button>
+            </div>
+            <audio controls preload="metadata" class="artist-audio__native" data-artist-audio-player>
+                {% if audio_src %}
+                <source src="{{ audio_src }}" type="{{ audio_type }}">
+                {% endif %}
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+</section>
+{% endmacro %}

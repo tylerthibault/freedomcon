@@ -1,76 +1,55 @@
-<style>
-  /* ── Hero ─────────────────────────────────────────────────────── */
-  .landing12-hero {
-    display: block;
-    padding: 0;
-  }
-
-  .landing12-hero-media {
-    position: relative;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    background: #000;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0;
-    padding: 0;
-  }
-
-  .landing12-hero-title-image {
-    width: 90vw;
-    height: auto;
-    opacity: 0;
-    transform: translate3d(0, 18px, 0);
-    animation: landing12-fade-up 900ms ease-out 180ms forwards;
-  }
-
-  .landing12-hero-lineup-image {
-    width: 100vw;
-    height: auto;
-    display: block;
-    margin-top: clamp(-6.5rem, -7vw, -2.5rem);
-    opacity: 0;
-    animation: landing12-fade-up 1050ms ease-out 960ms forwards;
-  }
-
-  @keyframes landing12-fade-up {
-    from { opacity: 0; transform: translate3d(0, 22px, 0); }
-    to   { opacity: 1; transform: translate3d(0, 0, 0); }
-  }
-
-  @media (max-width: 767.98px) {
-    .landing12-hero { padding-top: 0; }
-    .landing12-hero-media { min-height: 0; padding: 0; width: 100vw; }
-
-    .landing12-hero-lineup-image {
-      width: min(1540px, 104vw);
-      margin-top: clamp(-3rem, -5vw, -1.5rem);
-    }
-  }
-
-  @media (max-width: 600px) {
-    .landing12-hero-media img { width: 100%; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .landing12-hero-title-image,
-    .landing12-hero-lineup-image {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-  }
-</style>
-
 <h1 class="visually-hidden">Freedom Con 2026 at The Gorge Amphitheatre</h1>
-<section class="landing12-hero" aria-label="Freedom Con hero">
-	<div class="landing12-hero-media">
-		<img class="landing12-hero-title-image" src="{{ url_for('static', filename='img/freedom_con_congress.png') }}"
-			alt="Rise of the Statesman title">
-		<img class="landing12-hero-lineup-image px-3s" src="{{ url_for('static', filename='img/guys_rise_of_the_statesmen.png') }}"
-			alt="Freedom Con speakers lineup">
-	</div>
+<section class="bg-black overflow-hidden" aria-label="Freedom Con hero">
+
+  <!-- Freedom Con title / logo – full width across top -->
+  <picture>
+    <source srcset="{{ url_for('static', filename='img/freedom_con_congress.webp') }}" type="image/webp">
+    <img class="d-block mx-auto img-fluid pt-3 pt-md-4"
+         style="max-width: min(92vw, 1100px);"
+         src="{{ url_for('static', filename='img/freedom_con_congress.png') }}"
+         alt="Freedom Con – An American Congress of Christian Men">
+  </picture>
+
+  <!-- Two-column split: lineup photo left, event info right -->
+  <div class="d-flex flex-column flex-lg-row align-items-md-stretch">
+
+    <!-- Left: speakers / guys photo -->
+    <div class="flex-md-fill" style="flex-basis: 52%;">
+      <picture>
+        <source srcset="{{ url_for('static', filename='img/guys_rise_of_the_statesmen.webp') }}" type="image/webp">
+        <img class="d-block w-100 h-100 object-fit-cover"
+             src="{{ url_for('static', filename='img/guys_rise_of_the_statesmen.png') }}"
+             alt="Freedom Con speakers lineup – Rise of the Statesman">
+      </picture>
+    </div>
+
+    <!-- Right: event info + CTAs -->
+    <div class="d-flex flex-column justify-content-center align-items-center text-center text-white
+                px-3 px-md-4 py-4 py-md-5 gap-2"
+         style="flex-basis: 48%;">
+      <h2 class="text-uppercase fw-bold lh-1 mb-1"
+          style="font-family:'Oswald',sans-serif; font-size:clamp(2rem,3.5vw,4rem);">
+        One Historic Event
+      </h2>
+      <p class="text-uppercase text-white-50 ls-wide mb-1"
+         style="font-size:clamp(0.7rem,1.2vw,0.95rem); letter-spacing:0.18em;">
+        The Gorge Amphitheatre&nbsp;&nbsp;|&nbsp;&nbsp;George, Washington
+      </p>
+      <p class="text-uppercase fw-light lh-1 mb-2"
+         style="font-family:'Oswald',sans-serif; font-size:clamp(2.5rem,4.5vw,5rem);
+                border-bottom: 3px solid #BC2A27; padding-bottom:0.1em;">
+        June 19&nbsp;–&nbsp;20
+      </p>
+      {% from 'components/macros/cta_buttons.html' import cta_buttons %}
+      {{ cta_buttons(
+           primary_class   = 'btn btn-primary btn-lg px-4',
+           secondary_text  = 'View Trailer',
+           secondary_href  = '#trailers',
+           secondary_class = 'btn btn-secondary btn-lg px-4',
+           wrapper_class   = 'gap-2'
+         ) }}
+    </div>
+
+  </div>
 </section>
+

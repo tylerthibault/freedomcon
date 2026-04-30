@@ -55,6 +55,74 @@ body.landing12-no-scroll {
     background: transparent;
 }
 
+/* ── CTA Urgency Strip ──────────────────────────────────────────────────── */
+.cta-ticket-shell {
+    position: relative;
+    display: block;
+    z-index: 100;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.cta-ticket-shell > a {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+}
+
+.cta-urgency-strip {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%) translateX(-100%);
+    background: #000;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.45rem 0.5rem;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.2;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+    pointer-events: none;
+    border: white solid 1px;
+}
+
+.cta-urgency-strip.is-visible {
+    transform: translateY(-50%) translateX(0);
+    pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cta-urgency-strip {
+        transition: none;
+    }
+}
+
+.cta-subtext {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cta-urgency-strip {
+        transition: none;
+    }
+}
+/* ── end CTA Urgency Strip ──────────────────────────────────────────────── */
+
 .landing12-header {
     position: fixed;
     top: 0;
@@ -209,7 +277,7 @@ body:has(.landing12-header) .page-clip {
     color: var(--fc-accent);
 }
 
-/* Hide urgency strip at sizes too tight to fit everything on one row */
+/* Hide urgency strip at desktop sizes too tight to fit everything on one row */
 @media (min-width: 768px) and (max-width: 1059.98px) {
     .landing12-nav-urgency {
         display: none;
@@ -377,17 +445,15 @@ body:has(.landing12-header) .page-clip {
         padding: 0.5rem 0;
     }
 
-    .landing12-nav-urgency {
-        width: 100%;
-        order: 4;
-        white-space: normal;
-        text-align: center;
-        margin-top: 0.4rem;
-        max-height: 2.6rem;
-        opacity: 1;
-        overflow: hidden;
-        transform: translateY(0);
-        transition: opacity 220ms ease, visibility 220ms ease, max-height 260ms ease, margin-top 260ms ease;
+    /* Inline urgency label next to the mobile menu button */
+    .landing12-nav-urgency--inline {
+        margin: 0;
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        font-size: 0.6rem;
     }
 
     .landing12-nav.is-condensed {
@@ -402,22 +468,6 @@ body:has(.landing12-header) .page-clip {
         padding: 0.45rem 0.65rem;
         font-size: 0.62rem;
         letter-spacing: 0.1em;
-    }
-
-    .landing12-nav.is-condensed .landing12-nav-urgency {
-        opacity: 0;
-        visibility: hidden;
-        max-height: 0;
-        margin-top: 0;
-        transform: translateY(-0.35rem);
-    }
-
-    .landing12-nav.is-at-top .landing12-nav-urgency {
-        opacity: 0;
-        visibility: hidden;
-        max-height: 0;
-        margin-top: 0;
-        transform: translateY(-0.35rem);
     }
 
     .landing12-nav > .landing12-btn {

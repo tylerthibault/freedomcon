@@ -2,7 +2,7 @@ sponsors = {
     'businesses': [
             {
                 'name': 'Smith Excavation',
-                'logo_url': '/static/img/sponsor_logos/smith_excavation_logo.png',
+                'logo_url': '/static/img/sponsor_logos/smith_excavation_logo.webp',
                 'show_on_sponsor_page': True,
                 'background_color': '#000000',
                 'scale': 2
@@ -21,33 +21,40 @@ sponsors = {
             },
             {
                 'name': 'KBI',
-                'logo_url': 'https://res.cloudinary.com/dzj8q3l 9c/image/upload/v1700000000/sponsors/kbi.png',
+                'logo_url': 'https://res.cloudinary.com/dzj8q3l 9c/image/upload/v1700000000/sponsors/kbi.webp',
                 'show_on_sponsor_page': False
             },
             {
                 'name': 'Java Dog',
-                'logo_url': '/static/img/sponsor_logos/java_dog_logo.jpg',
+                'logo_url': '/static/img/sponsor_logos/java_dog_logo.webp',
                 'show_on_sponsor_page': True,
                 'background_color': "#FFFFFF",
                 'scale': 2
             },
             {
                 'name': 'Creative Spaces',
-                'logo_url': '/static/img/sponsor_logos/creative_spaces_logo.png',
+                'logo_url': '/static/img/sponsor_logos/creative_spaces_logo.webp',
                 'show_on_sponsor_page': True,
                 'background_color': "#FFFFFF",
+                'scale': 1.5
+            },
+            {
+                'name': 'DogHouse',
+                'logo_url': '/static/img/sponsor_logos/DHM-Golf.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
                 'scale': 1.5
             },
     ],
     'ministries': [
             {
                 'name': 'Real Faith',
-                'logo_url': 'https://res.cloudinary.com/dzj8q3l9c/image/upload/v1700000000/sponsors/real_faith.png',
+                'logo_url': 'https://res.cloudinary.com/dzj8q3l9c/image/upload/v1700000000/sponsors/real_faith.webp',
                 'show_on_sponsor_page': False
             },
             {
                 'name': 'Warrior Poet Society',
-                'logo_url': '/static/img/sponsor_logos/wps_logo.png',
+                'logo_url': '/static/img/sponsor_logos/wps_logo.webp',
                 'show_on_sponsor_page': True,
                 'background_color': "#000000"
             },
@@ -61,26 +68,26 @@ sponsors = {
     'churches': [
             {
                 'name': 'Real Faith',
-                'logo_url': '/static/img/sponsor_logos/real_faith_logo.png',
+                'logo_url': '/static/img/sponsor_logos/real_faith_logo.webp',
                 'show_on_sponsor_page': True,
                 'background_color': "#FFFFFF"
             },
             {
                 'name': 'Pursuit Church',
-                'logo_url': '/static/img/sponsor_logos/pursuit_logo.png',
+                'logo_url': '/static/img/sponsor_logos/pursuit_logo.webp',
                 'show_on_sponsor_page': True,
                 'background_color': "#FFFFFF"
             },
             {
                 'name': 'Grace City Church',
-                'logo_url': '/static/img/sponsor_logos/GCC_logo.png',
+                'logo_url': '/static/img/sponsor_logos/GCC_logo.webp',
                 'show_on_sponsor_page': True,
                 'background_color': "#000000",
                 'scale': 1.5
             },
             {
                 'name': 'Sage Hills Church',
-                'logo_url': 'https://res.cloudinary.com/dzj8q3l9c/image/upload/v1700000000/sponsors/sage_hills_church.png',
+                'logo_url': 'https://res.cloudinary.com/dzj8q3l9c/image/upload/v1700000000/sponsors/sage_hills_church.webp',
                 'show_on_sponsor_page': False
             }
     ]

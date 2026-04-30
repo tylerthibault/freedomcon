@@ -1,0 +1,5 @@
+---
+name: frontend-refactor
+description: Describe when to use this prompt
+---
+Refactor the page to use Bootstrap classes wherever possible. Review the existing HTML and any linked CSS files to understand the current styling and reusable class patterns before making changes. Replace inline styles with Bootstrap utilities and components when possible. If a style cannot be represented cleanly with Bootstrap, create a dedicated custom CSS class for that specific purpose instead of leaving it inline. Prefer reusing or consolidating existing stylesheet patterns when appropriate. Keep any page-specific custom CSS inside the HTML page in a <style> block unless the styling clearly belongs in an existing shared stylesheet. Maintain the current appearance and behavior as closely as possible while improving consistency, structure, and maintainability.

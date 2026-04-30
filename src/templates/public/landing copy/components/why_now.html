@@ -1,35 +1,95 @@
-<!--
-  COPY SOURCE — master_plan_1.txt / master_plan_2.txt
-  ─────────────────────────────────────────────────────────────────────
-  • Event concept & tagline ("Rise of the Statesman / AN AMERICAN CONGRESS
-    OF CHRISTIAN MEN") — p. 1, opening header
-  • WA State grievances (taxes, gas prices, cost of living, schools) that
-    frame "why this year is different" — p. 2, "Out of Despair, Hope. Out
-    of Darkness, Light."
-  • "Stay and fight / don't flee" thesis + America's 250th anniversary
-    framing — p. 3 opening paragraphs & p. 4 "We will make men love
-    Washington again"
-  • Statesmanship-as-legacy + every man activated language — p. 4, "We
-    will leave it better than we found it"
-  • Website tone brief (MASCULINE / CLEAR / INFORMATIVE) — p. 7,
-    Experience Element #2 "Website"
--->
-<section class="landing12-why-now px-3" aria-label="Why this year is different">
-  <div class="landing12-wrap landing12-why-now__inner mx-auto">
-    <p class="landing12-why-now__eyebrow d-flex justify-content-center text-center">Our nation is in her defining moment. <br> Good men know it. <br> This is our response</p>
-    <div class="landing12-why-now__cols">
-      <p>FREEDOM CON is built for men who still believe America is worth fighting for.</p>
 
-        <p>Set within the backdrop of America’s 250th anniversary, FREEDOM CON will summon thousands of men to celebrate the
-        courageous work of the Founders that built this great nation, and call a new generation of Statesmen to preserve
-        it.</p>
+<style>
+  .why-now-section {
+    background-color: #0a0a0a;
+    background-image: url('/static/img/FLAG%202.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
 
-      <!-- <p class="landing12-why-now__copy">FREEDOM CON: Rise of the Statesman is a summoning - a gathering of christian
-        men to celebrate America's heritage and make a plan to preserve it.</p>
-      <p class="landing12-why-now__copy">Set within the backdrop of America’s 250th anniversary, this event will summon
-        thousands of men to worship, repent, and receive a concrete, actionable playbook for rebuilding their homes,
-        churches, counties, and state.</p> -->
+  .why-now-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.82);
+    pointer-events: none;
+  }
+
+  .why-now-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1240px;
+    padding-top: clamp(1.2rem, 2.3vw, 2rem);
+    padding-bottom: clamp(1.2rem, 2.3vw, 2rem);
+  }
+
+  /* letter-spacing + CSS var color — no Bootstrap equivalent */
+  .why-now-eyebrow {
+    letter-spacing: 0.14em;
+    color: var(--fc-accent);
+  }
+
+  /* clamp font-size + custom font-family — no Bootstrap equivalent */
+  .why-now-title {
+    font-family: var(--font-action);
+    font-size: clamp(1.3rem, 2.8vw, 2.15rem);
+    letter-spacing: 0.04em;
+    line-height: 1.08;
+  }
+
+  /* max-width in ch units — no Bootstrap equivalent */
+  .why-now-copy {
+    max-width: 72ch;
+  }
+
+  /* Pull quote — CSS var border color */
+  .why-now-pull {
+    border-left: 3px solid var(--fc-accent);
+    background: rgba(188, 42, 39, 0.07);
+    max-width: 72ch;
+  }
+
+  @media (max-width: 640px) {
+    .why-now-cols > .col:first-child {
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid rgba(188, 42, 39, 0.45);
+    }
+
+    .why-now-cols > .col:last-child {
+      padding-top: 1.1rem;
+    }
+
+    .why-now-pull {
+      border-left: none;
+      border-top: 3px solid var(--fc-accent);
+      padding: 1rem 0.25rem 0 !important;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<section class="why-now-section px-3" aria-label="Why this year is different">
+  <div class="why-now-inner mx-auto">
+
+    <p class="why-now-eyebrow text-uppercase fw-bold text-center mb-0">
+      Our nation is in her defining moment. <br> Good men know it. <br> This is our response
+    </p>
+
+    <div class="d-flex flex-column w-100 gap-3 justify-content-center align-items-center g-4 mt-1">
+      <div class="col-12 col-md-6">
+        <p class="why-now-copy text-white lh-base mb-0">
+          FREEDOM CON is built for men who still believe America is worth fighting for.
+        </p>
+      </div>
+      <div class="col-12 col-md-6">
+        <p class="why-now-copy text-white lh-base mb-0">
+          Set within the backdrop of America's 250th anniversary, FREEDOM CON will summon thousands of men to celebrate the
+          courageous work of the Founders that built this great nation, and call a new generation of Statesmen to preserve it.
+        </p>
+      </div>
     </div>
-    <!-- <blockquote class="landing12-why-now__pull">“With national voices, historic stories, and a distinctly Washington-flavored battle cry, FREEDOM CON will call men to stay, stand, and flip this state—not flee it—so their children and grandchildren can thrive in the land they love.”</blockquote> -->
+
   </div>
 </section>

@@ -1,3 +1,111 @@
+{% from "components/macros/artist_audio.html" import artist_audio %}
 
-<img src="{{ url_for('static', filename='img/crowder_section.png') }}" alt="Crowder – Live at Freedom Con" style="width:100%;display:block;">
-{% include 'public/landing copy/components/danny.html'   %}
+<style>
+    .audio-section {
+        position: relative;
+    }
+    .artist-audio {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10;
+    }
+    .artist-play-circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: clamp(48px, 8vw, 68px);
+        height: clamp(48px, 8vw, 68px);
+        padding: 0;
+        background: none;
+        border: 3px solid rgba(255,255,255,0.85);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: border-color 0.2s, transform 0.15s;
+    }
+    .artist-play-circle:hover {
+        border-color: var(--fc-accent, #c0392b);
+        transform: scale(1.08);
+    }
+    .artist-play-circle svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    .artist-audio__panel {
+        background: #111;
+        color: #fff;
+        border-radius: 8px;
+        padding: 1rem 1rem 0.75rem;
+        width: min(90vw, 380px);
+        position: fixed;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+    }
+    .artist-audio__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.6rem;
+    }
+    .artist-audio__title {
+        margin: 0;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+    }
+    .artist-audio__close {
+        background: none;
+        border: none;
+        color: #888;
+        font-size: 1.4rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0 0 0 0.75rem;
+        transition: color 0.15s;
+    }
+    .artist-audio__close:hover { color: #fff; }
+    .artist-audio__native { width: 100%; display: block; }
+</style>
+
+{{ artist_audio(
+    img_src     = url_for('static', filename='img/crowder_section.webp'),
+    img_alt     = "Crowder – Live at Freedom Con",
+    audio_src   = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/02_Grave%20Robber.wav",
+    audio_title = "Grave Robber",
+    audio_type  = "audio/wav"
+) }}
+
+{{ artist_audio(
+    img_src     = url_for('static', filename='img/danny_section.webp'),
+    img_alt     = "Danny Gokey – Live at Freedom Con",
+    audio_src   = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/Sound%20Of%20Heaven.mp3",
+    audio_title = "Sound Of Heaven",
+    audio_type  = "audio/mpeg"
+) }}
+
+<script>
+  document.querySelectorAll('[data-artist-audio]').forEach(function (wrapper) {
+    var toggle = wrapper.querySelector('[data-artist-audio-toggle]');
+    var panel  = wrapper.querySelector('[data-artist-audio-panel]');
+    var close  = wrapper.querySelector('[data-artist-audio-close]');
+    var player = wrapper.querySelector('[data-artist-audio-player]');
+
+    toggle.addEventListener('click', function () {
+      panel.hidden = false;
+      toggle.style.display = 'none';
+      player.load();
+      player.play().catch(function () { /* autoplay blocked — user can press play */ });
+    });
+
+    close.addEventListener('click', function () {
+      panel.hidden = true;
+      toggle.style.display = '';
+      player.pause();
+      player.currentTime = 0;
+    });
+  });
+</script>

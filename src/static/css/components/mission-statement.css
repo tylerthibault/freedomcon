@@ -84,8 +84,8 @@
     gap: 0.72rem;
     align-items: start;
     color: var(--fc-muted);
-    font-size: 0.95rem;
-    line-height: 1.42;
+    font-size: 1.1rem;
+    line-height: 1.5;
 }
 
 .landing12-mission__impact-icon {

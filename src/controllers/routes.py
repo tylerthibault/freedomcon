@@ -29,7 +29,7 @@ from src.data.schedule import schedule as schedule_data
 from src.data.the_play import the_play as the_play_data
 from src.data.hotels import hotels as hotels_data
 from src.data.camping import camping as camping_data
-from src.data.trailers import trailers as trailers_data
+# from src.data.trailers import trailers as trailers_data
 from src.data.media_downloads import media_downloads
 
 public_bp = Blueprint("public", __name__)
@@ -192,7 +192,7 @@ def build_seo(
 	canonical_path: str | None = None,
 	robots: str = "index,follow",
 	og_type: str = "website",
-	image_path: str = "/static/img/title_on_black.png?v=20260417",
+	image_path: str = "/static/img/Freedom_con_front_on_black.png?v=20260417",
 ) -> dict[str, str]:
 	resolved_canonical = canonical_path or path
 	resolved_image = image_path if image_path.startswith("http") else f"{SITE_URL}{image_path}"
@@ -292,7 +292,7 @@ def build_seo(
 
 @public_bp.get("/alt")
 def landing_alt() -> str:
-	# return redirect(url_for("public.landing"))
+	return redirect(url_for("public.landing"))
 	context = {
 		"speakers": speakers_data,
 	}
@@ -350,10 +350,9 @@ def landing() -> str:
 		ticket_meta=ticket_ctx["ticket_meta"],
 		sponsors=visible_sponsors,
 		seo=build_seo(
-			title="FREEDOM CON 2026 — Father's Day Weekend at The Gorge",
+			title="A Congress of Christian Men at The Gorge Amphitheatre",
 			description="Two-day outdoor men's conference at The Gorge Amphitheatre, Father's Day Weekend June 19–20 2026. Worship, bold preaching, Crowder, camping, and the Columbia River.",
 			path="/alt",
-			image_path="/static/img/sharable.png?v=20260417",
 		),
 	)
 
@@ -809,7 +808,7 @@ def sitemap_xml() -> Response:
 
 @public_bp.get("/wives")
 def wives_page() -> str:
-	formsubmit_action = getenv("WIVES_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/ladies@freedomcon26.com"
+	formsubmit_action = getenv("WIVES_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/ladies.freedomcon26@strongermannation.com"
 	formsubmit_next = f"{SITE_URL}/thankyou"
 	return render_template(
 		"public/wives/index.html",

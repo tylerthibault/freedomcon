@@ -11,39 +11,74 @@
 {% endblock %}
 
 {% block content %}
-{% set countdown_target = '2026-06-19T17:00:00-07:00' %}
 <main class="tickets-page">
 	<section class="tickets-section" aria-label="Ticket pricing">
 		<div class="tickets-section__inner container-xl">
 			<h2 class="tickets-section__heading">Tickets</h2>
-			<p class="tickets-section__dates">{{ ticket_meta.dates }}</p>
+			<p class="tickets-section__dates">June 19-20</p>
 			<p class="tickets-section__urgency">Early pricing closes May 1 — Lock in your rate before pricing updates.</p>
 
-			<div class="tickets-grid" role="list">
-				{% for ticket in ticket_prices %}
-				{% if loop.index == 5 %}<hr class="ticket-grid__divider">{% endif %}
-				<article class="ticket-card{% if ticket.highlight %} ticket-card--highlight{% endif %}" role="listitem">
-					<h3 class="ticket-card__name">{{ ticket.name }}</h3>
-					<p class="ticket-card__price">{{ ticket.price|replace('\n', '<br>')|safe }}</p>
-					{% if ticket.tax_total %}
-					<p class="ticket-card__tax-total">{{ ticket.tax_total }}</p>
-					{% endif %}
-					{% if ticket.notes and ticket.notes|length %}
-					<ul class="ticket-card__notes" aria-label="{{ ticket.name }} benefits">
-						{% for note in ticket.notes %}
-							<li>{{ note|safe }}</li>
-						{% endfor %}
-					</ul>
-					{% endif %}
-				</article>
-				{% endfor %}
-			</div>
+		<div class="tickets-grid" role="list">
+
+			<article class="ticket-card ticket-card--highlight" role="listitem">
+				<h3 class="ticket-card__name">General Admission</h3>
+				<p class="ticket-card__price">$149</p>
+				<p class="ticket-card__tax-total">$157.11 with all taxes &amp; fees</p>
+			</article>
+
+			<article class="ticket-card" role="listitem">
+				<h3 class="ticket-card__name">Youth (Under 12)</h3>
+				<p class="ticket-card__price">$99</p>
+				<p class="ticket-card__tax-total">$105.16 with all taxes &amp; fees</p>
+			</article>
+
+			<article class="ticket-card" role="listitem">
+				<h3 class="ticket-card__name">VIP Seats</h3>
+				<p class="ticket-card__price">$349</p>
+				<p class="ticket-card__tax-total">$364.91 with all taxes &amp; fees</p>
+				<ul class="ticket-card__notes" aria-label="VIP Seats benefits">
+					<li>VIP badge</li>
+					<li>Reserved box seating</li>
+					<li>In-suite food service</li>
+					<li>Space limited</li>
+				</ul>
+			</article>
+
+			<article class="ticket-card" role="listitem">
+				<h3 class="ticket-card__name">Group Rate</h3>
+				<p class="ticket-card__price">+10 or more<br>15% off</p>
+				<ul class="ticket-card__notes" aria-label="Group Rate benefits">
+					<li>Save 15% off general admission</li>
+					<li>Valid for groups of 10–200 people</li>
+					<li>For friend groups &amp; men's ministries</li>
+					<li>Use the group promo code at checkout to redeem</li>
+					<li>Reach out to us for your group code if you haven't received it</li>
+				</ul>
+			</article>
+
+			<hr class="ticket-grid__divider">
+
+			<article class="ticket-card" role="listitem">
+				<h3 class="ticket-card__name">Pastor VIP</h3>
+				<p class="ticket-card__price">25% off</p>
+				<ul class="ticket-card__notes" aria-label="Pastor VIP benefits">
+					<li>25% off general admission</li>
+					<li>Pastor Swag Bag</li>
+					<li>Private Freedom Con Lounge Pass</li>
+					<li>Exclusive meet &amp; greet with speakers</li>
+					<li>Closed door Q/A with speaker panel</li>
+					<li>Signed book by Eric Metaxas</li>
+				</ul>
+				<p class="ticket-card__pastor-note">Enter promo code <strong>PASTOR</strong> at checkout to receive your 25% discount and register for the VIP experience. You will be contacted with further details and instructions. Already registered? Reach out to <a href="mailto:info@strongermannation.com">info@strongermannation.com</a></p>
+			</article>
+
+		</div>
 			<div class="my-3">
 				{% with cta_url='https://brushfire.com/gracecitychurch/FreedomCon26/628938/tickets' %}
 				{% include 'components/cta_button.html' %}
 				{% endwith %}
 			</div>
-			<p class="tickets-section__notice">{{ ticket_meta.notice }}</p>
+			<p class="tickets-section__notice">General Admission early pricing ends May 1!!</p>
 		</div>
 	</section>
 
@@ -95,7 +130,7 @@
 				<div id="deal-fifty" class="tickets-promo-card">
 					<div class="tickets-promo-card__badge tickets-promo-card__badge--gold">50 / 50 / 50</div>
 					<h3 class="tickets-promo-card__title">First 50 Guys in Each State Save $50</h3>
-					<p class="tickets-promo-card__desc">The first 50 men to register from each of the 50 states receive <strong>$50 off</strong> their ticket. This is a first-come, first-served deal — once those spots are gone, they're gone. Claim your state's discount now.</p>
+					<p class="tickets-promo-card__desc">The first 50 men to register from each of the 50 states receive <strong>$50 off</strong> their ticket. This is a first-come, first-served deal — once those spots are gone, they're gone. Claim your state's discount now. The promo applies to GA tickets only</p>
 					<p class="tickets-promo-card__desc">To redeem, enter your state's promo code at checkout — <strong>your state must match the billing address on your card:</strong></p>
 					<div class="tickets-promo-card__code-block">
 						<span class="tickets-promo-card__code"><em>[STATE]</em>50</span>
