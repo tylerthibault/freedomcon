@@ -1,0 +1,80 @@
+{% macro cta_buttons(
+    primary_text='Get Tickets',
+    primary_href='/tickets',
+    primary_class='landing12-btn btn btn-xxl',
+    secondary_text='',
+    secondary_href='#',
+    secondary_class='landing12-btn landing12-btn--ghost btn btn-xxl',
+    wrapper_class='',
+    link_only=false,
+    show_urgency=true,
+    urgency_text='Price increases May 1',
+    subtext='Early bird pricing ends May 1'
+) %}
+
+{%- if link_only -%}
+<a class="{{ primary_class }}" href="{{ primary_href }}">{{ primary_text }}</a>
+{%- else -%}
+
+<style>
+.cta-ticket-shell {
+    position: relative;
+    display: inline-block;
+}
+.cta-ticket-shell .landing12-btn,
+.cta-ticket-shell a {
+    display: block;
+    width: 100%;
+}
+.cta-bird {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-30%, -55%);
+    width: 2.2rem;
+    pointer-events: none;
+    z-index: 1;
+}
+.cta-bird img,
+.cta-bird svg {
+    width: 100%;
+    height: auto;
+    animation: cta-bird-wiggle 3s ease-in-out infinite;
+}
+@keyframes cta-bird-wiggle {
+    0%   { transform: rotate(0deg) scale(1); }
+    5%   { transform: rotate(-22deg) scale(1.05); }
+    10%  { transform: rotate(18deg) scale(1.05); }
+    15%  { transform: rotate(-14deg) scale(1.05); }
+    20%  { transform: rotate(10deg) scale(1.05); }
+    25%  { transform: rotate(-6deg) scale(1); }
+    30%  { transform: rotate(0deg) scale(1); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .cta-bird img,
+    .cta-bird svg {
+        animation: none;
+    }
+}
+</style>
+
+<div class="d-flex flex-wrap align-items-center gap-2 {{ wrapper_class }}">
+    {% if show_urgency %}
+    <div class="cta-ticket-shell">
+        <div class="cta-bird" aria-hidden="true">
+            <img src="{{ url_for('static', filename='svgs/earlybirds-brands-solid-full.svg') }}" alt="">
+        </div>
+        <a class="{{ primary_class }}" href="{{ primary_href }}">{{ primary_text }}</a>
+    </div>
+    {% else %}
+    <a class="{{ primary_class }}" href="{{ primary_href }}">{{ primary_text }}</a>
+    {% endif %}
+
+    {% if secondary_text %}
+    <a class="{{ secondary_class }}" href="{{ secondary_href }}">{{ secondary_text }}</a>
+    {% endif %}
+</div>
+
+{%- endif -%}
+{% endmacro %}

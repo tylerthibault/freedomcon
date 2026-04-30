@@ -726,6 +726,89 @@ body:has(.landing12-header) .page-clip {
     -webkit-text-stroke: 2px #ffffff;
 }
 
+/* ── Pastors Hero ── */
+.pastors-hero {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    padding: clamp(3.2rem, 7vw, 6rem) 0 clamp(2.4rem, 5vw, 4.2rem);
+}
+
+.pastors-hero__inner {
+    padding: 0 1.5rem;
+}
+
+.pastors-hero__eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.78rem;
+    opacity: 0.65;
+}
+
+.pastors-hero__title {
+    display: block;
+    margin: 0.3rem 0 0;
+    text-transform: uppercase;
+    font-family: var(--font-action);
+    line-height: 0.88;
+    letter-spacing: 0.03em;
+    font-size: clamp(2.6rem, 7.5vw, 6.5rem);
+}
+
+.pastors-hero__title-filled {
+    display: block;
+    color: #ffffff;
+}
+
+.pastors-hero__title-outlined {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--fc-accent);
+}
+
+.pastors-hero__sub {
+    margin: 0.8rem 0 0;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    opacity: 0.8;
+}
+
+.pastors-hero__cta {
+    margin-top: 2rem;
+}
+
+/* ── Pastors Quote Blocks ── */
+.pastors-quotes {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.pastors-quote {
+    border-left: 3px solid var(--fc-accent);
+    margin: 0;
+    padding: 1rem 0 1rem 1.5rem;
+}
+
+.pastors-quote p {
+    margin: 0 0 0.5rem;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--fc-ink);
+}
+
+.pastors-quote cite {
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fc-muted);
+    font-style: normal;
+}
+
+.fc-page__actions {
+    margin-top: 2rem;
+}
+
 .fc-page__inner {
     width: min(960px, 100%);
     margin: 0 auto;

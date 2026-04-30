@@ -1,0 +1,129 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/cta_buttons.html" import cta_buttons %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main>
+	<!-- Hero -->
+	<section class="pastors-hero" aria-label="Pastor VIP page header">
+		<div class="pastors-hero__inner container-xl">
+			<p class="pastors-hero__eyebrow">A Word to the Shepherds</p>
+			<h1 class="pastors-hero__title">
+				<span class="pastors-hero__title-filled">The Flock Is</span><span class="pastors-hero__title-outlined">Leaving</span>
+			</h1>
+			<p class="pastors-hero__sub">You have seen it. We have to talk about it.</p>
+			<div class="pastors-hero__cta">
+				{{ cta_buttons(
+					primary_text='Pastor VIP Access',
+					primary_href='/tickets',
+					show_urgency=false
+				) }}
+			</div>
+		</div>
+	</section>
+
+	<section class="fc-page" aria-label="Pastor VIP content">
+		<div class="fc-page__inner">
+
+			<p class="fc-page__lead">Men, we are hearing this over and over again across the state. The pastors who
+				are paying attention are watching their congregations quietly bleed out — the families, the business
+				owners, the young couples. They are not leaving their faith. They are leaving Washington.</p>
+
+			<!-- Testimonials -->
+			<section class="fc-page__section pastors-quotes" aria-label="What pastors are saying">
+				<h2>What Pastors Are Saying</h2>
+
+				<blockquote class="pastors-quote">
+					<p>&ldquo;After the income tax law was passed, 4 of my 5 board members told me they would be moving
+						out of state. Over the past several years, our congregation has lost approximately 25% of our
+						families. These are the most engaged and involved families in our church.&rdquo;</p>
+					<cite>— Pastor, Western Washington</cite>
+				</blockquote>
+
+				<blockquote class="pastors-quote">
+					<p>&ldquo;We&apos;ve had numerous families leave our church — and our state — because of what is
+						happening in the public schools. One father reached out to me in tears because his child was being
+						targeted and groomed at school and he felt he had no recourse except to leave.&rdquo;</p>
+					<cite>— Pastor, Puget Sound Area</cite>
+				</blockquote>
+
+				<blockquote class="pastors-quote">
+					<p>&ldquo;I&apos;ve stopped counting the number of businessmen who&apos;ve left our church. Every
+						time I look up, another family has transferred their membership and moved to Idaho or Texas or
+						Montana. We are losing our most productive and capable men.&rdquo;</p>
+					<cite>— Pastor, Eastern Washington</cite>
+				</blockquote>
+
+				<blockquote class="pastors-quote">
+					<p>&ldquo;Our church is bleeding young people. They are not leaving the faith — they are leaving the
+						state. They can&apos;t start a business or buy a home. They feel like the future has been stolen
+						from them.&rdquo;</p>
+					<cite>— Pastor, Southwest Washington</cite>
+				</blockquote>
+			</section>
+
+			<!-- Problem Statement -->
+			<section class="fc-page__section" aria-label="The problem">
+				<h2>The Problem Is Not Going Away</h2>
+				<p>Rogue politicians and wicked legislation are combining to make war on the families, businesses, and
+					churches of Washington State. The exodus is not random — it is the predictable result of policies
+					designed to squeeze out the salt and light.</p>
+				<p>If nothing changes, the people who remain will be the people who had nowhere else to go — and the
+					ones who left will have taken their children, their tithing, and their kingdom influence with them.</p>
+				<p>This is a shepherd&apos;s problem. It demands a shepherd&apos;s response.</p>
+			</section>
+
+			<div class="fc-page__mantra" aria-label="Call to action statements">
+				<p class="fc-page__mantra-line">Identify the problem.</p>
+				<p class="fc-page__mantra-line">Unite the pastors.</p>
+				<p class="fc-page__mantra-line fc-page__mantra-line--accent">Make a plan.</p>
+			</div>
+
+			<!-- Solution Bridge -->
+			<section class="fc-page__section" aria-label="What Freedom Con is doing about it">
+				<h2>Why We Built Freedom Con</h2>
+				<p>FREEDOM CON was built to address exactly this. We are bringing together pastors, fathers, and civic
+					leaders for a two-day congress at The Gorge Amphitheatre on Father&apos;s Day weekend 2026. The
+					purpose is not to vent — it is to build.</p>
+				<p>We want Washington&apos;s pastors in the same room. Comparing notes. Praying together. Leaving with a
+					clear-eyed plan for their congregation, their county, and their state. If the shepherds are scattered,
+					the flock will scatter. If the shepherds are unified, the flock has a chance.</p>
+			</section>
+
+			<!-- What Pastors Get -->
+			<section class="fc-page__section" aria-label="Pastor VIP access details">
+				<h2>Pastor VIP Access</h2>
+				<p>We are reserving dedicated access for pastors and ministry leaders. Pastor VIP includes:</p>
+				<ul class="fc-page__list fc-page__list--accented">
+					<li>Priority reserved seating for the full two-day conference</li>
+					<li>Access to the Pastors&apos; Roundtable — a private session with pastoral leadership and key speakers</li>
+					<li>Pre-event networking dinner with speakers and civic leaders</li>
+					<li>Dedicated pastoral track sessions on shepherding families through cultural pressure</li>
+					<li>A network of Washington pastors who are fighting, not fleeing</li>
+				</ul>
+			</section>
+
+			<!-- Final CTA -->
+			<section class="fc-page__section fc-page__section--valley" aria-label="Register as a Pastor VIP">
+				<h2>The Flock Needs Its Shepherds Here</h2>
+				<p>If you are a pastor in Washington State who sees what is happening — and refuses to watch it continue
+					unchallenged — this gathering is for you. Come with your sons. Come with your elders. Come ready to
+					build something that outlasts this moment.</p>
+				<div class="fc-page__actions">
+					{{ cta_buttons(
+						primary_text='Claim Pastor VIP Access',
+						primary_href='/tickets',
+						show_urgency=true,
+						urgency_text='Limited VIP spots',
+						subtext='Pastor VIP access is limited — reserve your spot now'
+					) }}
+				</div>
+			</section>
+
+		</div>
+	</section>
+</main>
+{% endblock %}

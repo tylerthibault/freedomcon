@@ -635,6 +635,18 @@ def tickets_page() -> str:
 # 	)
 
 
+@public_bp.get("/pastors")
+def pastors_page() -> str:
+	return render_template(
+		"public/pastors/index.html",
+		seo=build_seo(
+			title="Pastor VIP | Freedom Con 2026",
+			description="Washington pastors are watching their congregations leave the state. Freedom Con is gathering shepherds to identify the problem, unite, and make a plan.",
+			path="/pastors",
+		),
+	)
+
+
 @public_bp.get("/vision")
 def vision_page() -> str:
 	return render_template(
