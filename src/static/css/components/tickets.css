@@ -143,6 +143,16 @@
     text-transform: none;
 }
 
+.ticket-card--full {
+    grid-column: 1 / -1;
+    border-right: 0;
+}
+
+.ticket-card__pastor-cta {
+    letter-spacing: 0.04em;
+    text-decoration: none;
+}
+
 .ticket-card__pastor-note {
     margin: 0.85rem 0 0;
     padding: 0.6rem 0.75rem;
@@ -300,6 +310,7 @@
     .ticket-card:last-child {
         border-bottom: 0;
     }
+
 }
 
 /* =========================================================
