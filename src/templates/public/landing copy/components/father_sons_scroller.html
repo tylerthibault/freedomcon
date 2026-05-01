@@ -10,6 +10,7 @@
   ──────────────────────────────────────────────────────
 #}
 
+
 {% set father_son_photos = [
     { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/001_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
     { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/014_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
@@ -29,6 +30,20 @@
     { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/006_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
     { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/038_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
     { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/016_fathersandsons.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_1193.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_1873.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_2898.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_4988.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_6008.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_7991.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_7994.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_8005.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_8010.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_9150.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_9463.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_9507.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_9679.webp", "alt": "Father and son at Freedom Con" },
+    { "src": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_9725.webp", "alt": "Father and son at Freedom Con" },
     ] %}
 
 {% if father_son_photos %}
@@ -37,8 +52,8 @@
     <p class="ft-section__heading">Fathers &amp; Sons &mdash; <span>Freedom Con</span></p>
 
     <div class="ft-ticker" aria-hidden="true" data-ft-ticker>
-        {# Quadruple the list so the strip always fills the viewport #}
-        {% set all_photos = father_son_photos + father_son_photos + father_son_photos + father_son_photos %}
+        {# Double the list — 32 photos is wide enough to fill any viewport #}
+        {% set all_photos = father_son_photos + father_son_photos %}
         <div class="ft-ticker__track">
             {% for photo in all_photos %}
             <div class="ft-ticker__item">
@@ -47,6 +62,8 @@
                     src="{{ photo.src }}"
                     alt="{{ photo.alt }}"
                     loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
                     draggable="false"
                 >
             </div>
@@ -56,63 +73,108 @@
 
 </section>
 
+
 <script>
 (function () {
     document.querySelectorAll('[data-ft-ticker]').forEach(function (ticker) {
         var track = ticker.querySelector('.ft-ticker__track');
         if (!track) return;
 
-        /* px per second */
         var SPEED = 50;
-
         var offset = 0;
-        var setW = 0;
         var isDragging = false;
         var dragStartX = 0;
         var dragStartOffset = 0;
         var dragDelta = 0;
         var lastTime = null;
         var paused = false;
+        var raf = null;
+        var cachedSetW = 0;
+        var resizeTimer = null;
+        var unpauseTimer = null;
 
-        /* Respect reduced-motion preference */
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         track.style.animation = 'none';
         track.style.willChange = 'transform';
 
-        function getSetW() { return track.scrollWidth / 4; }
+        /* Shuffle on load */
+        (function shuffleTrack() {
+            var items = Array.from(track.querySelectorAll('.ft-ticker__item'));
+            var setSize = items.length / 2;
+            var originals = items.slice(0, setSize);
+            for (var i = originals.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var tmp = originals[i]; originals[i] = originals[j]; originals[j] = tmp;
+            }
+            track.innerHTML = '';
+            for (var c = 0; c < 2; c++) {
+                originals.forEach(function (el) {
+                    track.appendChild(c === 0 ? el : el.cloneNode(true));
+                });
+            }
+        })();
+
+        /* Cache scrollWidth — never read inside tick() */
+        function measureSetW() { cachedSetW = track.scrollWidth / 2; }
+        function scheduleRemeasure() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () { measureSetW(); offset = wrap(offset); }, 150);
+        }
 
         function wrap(px) {
-            var w = getSetW();
+            var w = cachedSetW;
             if (w === 0) return 0;
             px = px % w;
             if (px > 0) px -= w;
             return px;
         }
 
-        function apply() {
-            track.style.transform = 'translateX(' + offset + 'px)';
-        }
+        function apply() { track.style.transform = 'translateX(' + offset + 'px)'; }
 
         function tick(ts) {
-            requestAnimationFrame(tick);
+            raf = requestAnimationFrame(tick);
             if (isDragging || paused) { lastTime = ts; return; }
             if (lastTime === null) { lastTime = ts; }
             var dt = (ts - lastTime) / 1000;
+            if (dt > 0.1) dt = 0.1; /* clamp after tab-switch gap */
             lastTime = ts;
             offset = wrap(offset - SPEED * dt);
             apply();
         }
 
+        /* Two rAF frames so lazy images settle before measuring */
         requestAnimationFrame(function () {
-            setW = getSetW();
-            offset = 0;
-            requestAnimationFrame(tick);
+            requestAnimationFrame(function () {
+                measureSetW();
+                offset = 0;
+                raf = requestAnimationFrame(tick);
+            });
         });
 
-        /* Pause on hover */
-        ticker.addEventListener('mouseenter', function () { if (!isDragging) paused = true; });
-        ticker.addEventListener('mouseleave', function () { if (!isDragging) paused = false; });
+        window.addEventListener('resize', scheduleRemeasure);
+
+        /* Stop rAF when off-screen */
+        if (typeof IntersectionObserver !== 'undefined') {
+            new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        if (!raf) { lastTime = null; raf = requestAnimationFrame(tick); }
+                    } else {
+                        if (raf) { cancelAnimationFrame(raf); raf = null; }
+                    }
+                });
+            }, { threshold: 0 }).observe(ticker);
+        }
+
+        /* Debounce unpause so hovering between cards doesn't flicker */
+        ticker.addEventListener('mouseenter', function () {
+            clearTimeout(unpauseTimer);
+            paused = true;
+        });
+        ticker.addEventListener('mouseleave', function () {
+            unpauseTimer = setTimeout(function () { paused = false; lastTime = null; }, 80);
+        });
 
         /* Drag helpers */
         function onDragStart(clientX) {
@@ -122,14 +184,12 @@
             dragDelta = 0;
             ticker.classList.add('ft-ticker--dragging');
         }
-
         function onDragMove(clientX) {
             if (!isDragging) return;
             dragDelta = clientX - dragStartX;
             offset = wrap(dragStartOffset + dragDelta);
             apply();
         }
-
         function onDragEnd() {
             if (!isDragging) return;
             isDragging = false;
@@ -145,12 +205,9 @@
             }
         }
 
-        /* Mouse */
         ticker.addEventListener('mousedown', function (e) { onDragStart(e.clientX); e.preventDefault(); });
         window.addEventListener('mousemove', function (e) { onDragMove(e.clientX); });
         window.addEventListener('mouseup', onDragEnd);
-
-        /* Touch */
         ticker.addEventListener('touchstart', function (e) { onDragStart(e.touches[0].clientX); }, { passive: true });
         ticker.addEventListener('touchmove', function (e) { onDragMove(e.touches[0].clientX); e.preventDefault(); }, { passive: false });
         ticker.addEventListener('touchend', onDragEnd);

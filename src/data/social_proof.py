@@ -4,12 +4,17 @@ social_proof = [
         "title": "District Business Manager, Chelan County PUD",
         "quote": "My son and I look forward to the Stronger Man Conferences every year on Father’s Day weekend. It’s a blessing to have my dad travel up from Arizona to join us. It’s always a powerful time we wouldn’t miss. Three generations of Morgan men trusting the Lord, heeding His call, and working together to change our generational legacy.",
         "alt": "Jacob Morgan testimonial photo",
+        "img": [],
     },
     {
         "name": "Clyde Foreman",
         "title": "Retired FBI Special Agent",
         "quote": "The opportunity to stand shoulder to shoulder with my sons and grandsons worshiping the Lord is special. Knowing that they have captured the same vision of generational legacy in Jesus and that we are finishing the race strong together is priceless!",
         "alt": "Clyde Foreman testimonial photo",
+        "img": [
+            "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/Clyde_Foreman1.webp",
+            "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/Clyde_Foreman2.webp"
+            ],
     },
     {
         "name": "Patrick Valeri",
@@ -28,17 +33,59 @@ social_proof = [
         "title": "Excavation Manager & Estimator",
         "quote": "Stronger Man Nation Conferences are a launching pad that I use to build a life of purpose with my three sons. The things we learn, the ideas generated, and the brotherhood formed are the basis for our annual plan to become stronger men! Every SMN Conference we attend the Spirit of God shows up and the hearts of my sons and I change. The battle for the hearts of our sons is real! I never miss a Stronger Man Nation Conference.",
         "alt": "Eric Chase testimonial photo",
+        "img": [
+            "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/Eric_Chase1.webp"
+        ],
     },
     {
         "name": "Dom Mutch",
         "title": "Law Enforcement Officer",
         "quote": "The Stronger Man Nation Conferences are the top of all events for the year. Other men can’t wait for events like the Super Bowl, World Series, NHL Cup, Daytona 500. The SMN Conference are all these plus more to me and my son. It has changed our life. Men’s legacies change. The SMN launching pad is ready. Be the rocket for your family, city, county, state, and nation.",
         "alt": "Dom Mutch testimonial photo",
+        "img": [
+            "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/Dom_Mutch.webp"
+        ],
     },
     {
         "name": "Steve Schiff",
         "title": "Electrician",
         "quote": "Stronger man conference is more than just a gathering of men, it’s the bonding and forging of a brotherhood for Christ.  I came for the conference in 2024 from Arizona.  It was such an impactful weekend that it changed the trajectory of my life.  3 months after the conference, I moved my family across 3 states so that my boys and I can stand alongside these men we now call brothers!",
         "alt": "Steve Schiff testimonial photo",
-    }
+    },
+    {
+        "name": "Brian Blair",
+        "title": "Pastor at Grace City Church",
+        "quote": "The Stronger Man Nation men’s conference has become a Father’s Day tradition that we won’t miss. It’s a weekend full of those magic moments that I know will solidify in the minds of my sons as anchor points - even at their age. Not only because it’s a blast for them with the competition and camaraderie and all the tangible stuff that appeals to the heart of every boy … but because something stirs in their hearts when they’re surrounded by an army men  who have all assembled to praise and lift high the name of Jesus as act of war - it’s a moment! The whole weekend stands a reminder that we’re apart of something much bigger than us. \nYou leave with courage, conviction, commitment, and fire in your veins to get back to dragon killin’. \nThat’s why we go. ",
+        "alt": "Brian Blair testimonial photo",
+        "img": [
+            "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_7991.webp",
+            "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_7994.webp",
+            "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_8005.webp",
+            "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_8010.webp",
+        ],
+    },
+
+]
+
+boys_social_proof = [
+    # {
+    #     "name": "Caleb Morgan",
+    #     "title": "High School Student",
+    #     "quote": "Coming to the Stronger Man Conference with my dad and grandpa every year is the best weekend of my year. Hearing men talk straight about faith and what it means to be a man — it's not something you get anywhere else.",
+    # },
+    # {
+    #     "name": "Nathan Foreman",
+    #     "title": "College Student",
+    #     "quote": "I've watched my dad and grandpa build something real. The brotherhood at these conferences showed me what I want to build too. It changed how I think about my future family.",
+    # },
+    # {
+    #     "name": "Elijah Vasquez",
+    #     "title": "Youth",
+    #     "quote": "I used to think church was just something my dad made me do. After attending the Stronger Man Conference with him I get it now. There's something happening in that room that you can't fake.",
+    # },
+    # {
+    #     "name": "Tyler Chase",
+    #     "title": "Teenager",
+    #     "quote": "My brothers and I all go with our dad every year. The speakers actually talk to us like we're capable of something great — not just telling us to stay out of trouble. It fires me up every time.",
+    # },
 ]

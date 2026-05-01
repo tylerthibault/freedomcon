@@ -60,11 +60,8 @@
         var track = ticker.querySelector('.sp-ticker__track');
         if (!track) return;
 
-        /* px per second — increase to scroll faster */
         var SPEED = 60;
-
-        var offset = 0;       /* current translateX in px (always <= 0) */
-        var setW = 0;         /* width of one set (scrollWidth / 4) */
+        var offset = 0;
         var isDragging = false;
         var dragStartX = 0;
         var dragStartOffset = 0;
@@ -72,49 +69,74 @@
         var lastTime = null;
         var raf = null;
         var paused = false;
+        var cachedSetW = 0;
+        var resizeTimer = null;
+        var unpauseTimer = null;
 
-        /* Disable the CSS animation — JS drives everything */
         track.style.animation = 'none';
         track.style.willChange = 'transform';
 
-        function getSetW() {
-            return track.scrollWidth / 4;
+        /* Cache scrollWidth — never read inside tick() */
+        function measureSetW() { cachedSetW = track.scrollWidth / 4; }
+        function scheduleRemeasure() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () { measureSetW(); offset = wrap(offset); }, 150);
         }
 
         function wrap(px) {
-            var w = getSetW();
+            var w = cachedSetW;
             if (w === 0) return 0;
             px = px % w;
             if (px > 0) px -= w;
             return px;
         }
 
-        function apply() {
-            track.style.transform = 'translateX(' + offset + 'px)';
-        }
+        function apply() { track.style.transform = 'translateX(' + offset + 'px)'; }
 
         function tick(ts) {
             raf = requestAnimationFrame(tick);
             if (isDragging || paused) { lastTime = ts; return; }
             if (lastTime === null) { lastTime = ts; }
             var dt = (ts - lastTime) / 1000;
+            if (dt > 0.1) dt = 0.1;
             lastTime = ts;
             offset = wrap(offset - SPEED * dt);
             apply();
         }
 
-        /* Start the loop once the images have had a chance to lay out */
+        /* Two rAF frames so images settle before measuring */
         requestAnimationFrame(function () {
-            setW = getSetW();
-            offset = 0;
-            raf = requestAnimationFrame(tick);
+            requestAnimationFrame(function () {
+                measureSetW();
+                offset = 0;
+                raf = requestAnimationFrame(tick);
+            });
         });
 
-        /* ---- Pause on hover (non-drag) ---- */
-        ticker.addEventListener('mouseenter', function () { if (!isDragging) paused = true; });
-        ticker.addEventListener('mouseleave', function () { if (!isDragging) paused = false; });
+        window.addEventListener('resize', scheduleRemeasure);
 
-        /* ---- Drag helpers ---- */
+        /* Stop rAF when off-screen */
+        if (typeof IntersectionObserver !== 'undefined') {
+            new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        if (!raf) { lastTime = null; raf = requestAnimationFrame(tick); }
+                    } else {
+                        if (raf) { cancelAnimationFrame(raf); raf = null; }
+                    }
+                });
+            }, { threshold: 0 }).observe(ticker);
+        }
+
+        /* Debounce unpause so hovering between logos doesn't flicker */
+        ticker.addEventListener('mouseenter', function () {
+            clearTimeout(unpauseTimer);
+            if (!isDragging) paused = true;
+        });
+        ticker.addEventListener('mouseleave', function () {
+            unpauseTimer = setTimeout(function () { if (!isDragging) { paused = false; lastTime = null; } }, 80);
+        });
+
         function onDragStart(clientX) {
             isDragging = true;
             dragStartX = clientX;
@@ -122,22 +144,18 @@
             dragDelta = 0;
             ticker.classList.add('sp-ticker--dragging');
         }
-
         function onDragMove(clientX) {
             if (!isDragging) return;
             dragDelta = clientX - dragStartX;
             offset = wrap(dragStartOffset + dragDelta);
             apply();
         }
-
         function onDragEnd() {
             if (!isDragging) return;
             isDragging = false;
             paused = false;
-            lastTime = null;   /* reset dt so first auto-scroll tick is clean */
+            lastTime = null;
             ticker.classList.remove('sp-ticker--dragging');
-
-            /* suppress accidental link clicks after a drag */
             if (Math.abs(dragDelta) > 4) {
                 ticker.addEventListener('click', function stopClick(e) {
                     e.preventDefault();
@@ -147,22 +165,11 @@
             }
         }
 
-        /* ---- Mouse ---- */
-        ticker.addEventListener('mousedown', function (e) {
-            onDragStart(e.clientX);
-            e.preventDefault();
-        });
+        ticker.addEventListener('mousedown', function (e) { onDragStart(e.clientX); e.preventDefault(); });
         window.addEventListener('mousemove', function (e) { onDragMove(e.clientX); });
         window.addEventListener('mouseup', onDragEnd);
-
-        /* ---- Touch ---- */
-        ticker.addEventListener('touchstart', function (e) {
-            onDragStart(e.touches[0].clientX);
-        }, { passive: true });
-        ticker.addEventListener('touchmove', function (e) {
-            onDragMove(e.touches[0].clientX);
-            e.preventDefault();
-        }, { passive: false });
+        ticker.addEventListener('touchstart', function (e) { onDragStart(e.touches[0].clientX); }, { passive: true });
+        ticker.addEventListener('touchmove', function (e) { onDragMove(e.touches[0].clientX); e.preventDefault(); }, { passive: false });
         ticker.addEventListener('touchend', onDragEnd);
     });
 })();

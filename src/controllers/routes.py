@@ -14,7 +14,7 @@ from flask import Blueprint, Response, redirect, render_template, request, url_f
 from src.data.FAQ import FAQ
 from src.data.accommodations import hotel_options, travel_info
 from src.data.artists import artists
-from src.data.social_proof import social_proof
+from src.data.social_proof import social_proof, boys_social_proof
 from src.data.speakers import speakers as speakers_data
 from src.data.videos import videos as videos_data
 from src.data.tickers import ticketer1, ticketers
@@ -342,6 +342,7 @@ def landing() -> str:
 	return render_template(
 		"public/landing copy/index.html",
 		social_proof=social_proof,
+		boys_social_proof=boys_social_proof,
 		speakers=speakers_data,
 		trailers=conference_trailers_section["items"],
 		conference_trailers_section=conference_trailers_section,

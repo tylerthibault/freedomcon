@@ -556,113 +556,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 				if (!(track instanceof HTMLElement) || !(group instanceof HTMLElement)) return;
 
-				row.classList.add("is-interactive");
-				track.style.animation = "none";
+				if (prefersReducedMotion) return;
 
-				const direction = row.classList.contains("social-proof-row--right") ? 1 : -1;
-				let groupWidth = Math.max(1, group.getBoundingClientRect().width);
-				let position = direction === 1 ? -groupWidth : 0;
-				let pointerId = null;
-				let dragStartX = 0;
-				let dragStartPosition = position;
-				let isDragging = false;
-				let animationFrameId = 0;
-				let lastFrameTime = 0;
+				const isRight = row.classList.contains("social-proof-row--right");
 
-				const normalizePosition = (value) => {
-					let normalized = value;
-					while (normalized <= -groupWidth) normalized += groupWidth;
-					while (normalized > 0) normalized -= groupWidth;
-					return normalized;
+				/* Compute and apply CSS animation duration from pixel speed */
+				const applyDuration = () => {
+					const groupWidth = Math.max(1, group.getBoundingClientRect().width);
+					const duration = groupWidth / baseSpeed;
+					track.style.setProperty("--marquee-duration", `${duration}s`);
 				};
 
-				const applyPosition = () => {
-					track.style.transform = `translate3d(${position}px, 0, 0)`;
-				};
+				track.classList.add(isRight ? "marquee-right" : "marquee-left");
+				applyDuration();
 
-				const refreshDimensions = () => {
-					groupWidth = Math.max(1, group.getBoundingClientRect().width);
-					position = normalizePosition(position);
-					applyPosition();
-				};
-
-				const onFrame = (time) => {
-					if (!lastFrameTime) {
-						lastFrameTime = time;
-					}
-
-					const deltaSeconds = (time - lastFrameTime) / 1000;
-					lastFrameTime = time;
-
-					if (!isDragging) {
-						position = normalizePosition(position + (direction * baseSpeed * deltaSeconds));
-						applyPosition();
-					}
-
-					animationFrameId = window.requestAnimationFrame(onFrame);
-				};
-
-				const endDrag = () => {
-					if (!isDragging) return;
-					isDragging = false;
-					pointerId = null;
-					row.classList.remove("is-dragging");
-					lastFrameTime = 0;
-				};
-
-				row.addEventListener("pointerdown", (event) => {
-					if (event.pointerType === "mouse" && event.button !== 0) return;
-
-					isDragging = true;
-					pointerId = event.pointerId;
-					dragStartX = event.clientX;
-					dragStartPosition = position;
-					row.classList.add("is-dragging");
-					row.setPointerCapture(event.pointerId);
-					event.preventDefault();
+				let resizeTimer = 0;
+				window.addEventListener("resize", () => {
+					clearTimeout(resizeTimer);
+					resizeTimer = setTimeout(applyDuration, 150);
 				});
 
-				row.addEventListener("pointermove", (event) => {
-					if (!isDragging || event.pointerId !== pointerId) return;
-
-					const deltaX = event.clientX - dragStartX;
-					position = normalizePosition(dragStartPosition + deltaX);
-					applyPosition();
-				});
-
-				row.addEventListener("pointerup", (event) => {
-					if (event.pointerId !== pointerId) return;
-					endDrag();
-				});
-
-				row.addEventListener("pointercancel", (event) => {
-					if (event.pointerId !== pointerId) return;
-					endDrag();
-				});
-
-				row.addEventListener("lostpointercapture", endDrag);
-				window.addEventListener("resize", refreshDimensions);
-
-				applyPosition();
-
-				if (!prefersReducedMotion) {
-					animationFrameId = window.requestAnimationFrame(onFrame);
+				/* Pause CSS animation when row is off-screen */
+				if (typeof IntersectionObserver !== "undefined") {
+					new IntersectionObserver((entries) => {
+						entries.forEach((e) => {
+							track.style.animationPlayState = e.isIntersecting ? "running" : "paused";
+						});
+					}, { threshold: 0 }).observe(row);
 				}
-
-				row.addEventListener("remove", () => {
-					if (animationFrameId) {
-						window.cancelAnimationFrame(animationFrameId);
-					}
-				});
 			});
 		});
 	};
 
 	initInteractiveSocialProofMarquee();
 
-	const socialProofSection = document.querySelector(".social-proof-section");
-	const socialProofSeeMoreButton = socialProofSection ? socialProofSection.querySelector("[data-social-proof-see-more]") : null;
-	if (socialProofSection && socialProofSeeMoreButton instanceof HTMLButtonElement) {
+	document.querySelectorAll(".social-proof-section").forEach((socialProofSection) => {
+		const socialProofSeeMoreButton = socialProofSection.querySelector("[data-social-proof-see-more]");
+		if (!(socialProofSeeMoreButton instanceof HTMLButtonElement)) return;
+
 		const mobileBreakpoint = window.matchMedia("(max-width: 768px)");
 		const hasExtraMobileCards = socialProofSection.querySelector(".social-proof-mobile-card--extra") !== null;
 		let isMobileExpanded = false;
@@ -700,7 +631,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		} else {
 			mobileBreakpoint.addListener(syncMobileSocialProofState);
 		}
-	}
+	});
 
 	const socialProofModal = document.querySelector("[data-social-proof-modal]");
 	if (socialProofModal) {
@@ -709,9 +640,91 @@ document.addEventListener("DOMContentLoaded", () => {
 		const modalName = socialProofModal.querySelector("[data-social-proof-modal-name]");
 		const modalTitle = socialProofModal.querySelector("[data-social-proof-modal-title]");
 		const modalQuote = socialProofModal.querySelector("[data-social-proof-modal-quote]");
+		const modalPhoto = socialProofModal.querySelector("[data-social-proof-modal-photo]");
+		const modalCarousel = socialProofModal.querySelector("[data-social-proof-modal-carousel]");
 		const modalCloseControls = socialProofModal.querySelectorAll("[data-social-proof-close]");
 		const closeButton = socialProofModal.querySelector(".social-proof-modal__close");
 		let activeTrigger = null;
+
+		const buildCarousel = (imgs) => {
+			if (!modalCarousel) return;
+			modalCarousel.innerHTML = "";
+			if (!imgs || imgs.length === 0) {
+				modalCarousel.setAttribute("hidden", "");
+				return;
+			}
+			let current = 0;
+
+			// Build one slide per image: blurred bg + foreground img
+			const slides = imgs.map((src, i) => {
+				const slide = document.createElement("div");
+				slide.className = "sp-carousel__slide";
+				if (i !== 0) slide.setAttribute("hidden", "");
+
+				const blurBg = document.createElement("div");
+				blurBg.className = "sp-carousel__blur-bg";
+				blurBg.style.backgroundImage = `url(${src})`;
+
+				const img = document.createElement("img");
+				img.src = src;
+				img.alt = "";
+				img.className = "sp-carousel__img";
+				img.loading = "lazy";
+				img.decoding = "async";
+
+				slide.appendChild(blurBg);
+				slide.appendChild(img);
+				return slide;
+			});
+			const track = document.createElement("div");
+			track.className = "sp-carousel__track";
+			slides.forEach(img => track.appendChild(img));
+
+			const goTo = (idx) => {
+				slides[current].setAttribute("hidden", "");
+				current = (idx + slides.length) % slides.length;
+				slides[current].removeAttribute("hidden");
+				if (dots.length) dots.forEach((d, i) => d.classList.toggle("is-active", i === current));
+			};
+
+			if (imgs.length > 1) {
+				const prev = document.createElement("button");
+				prev.type = "button";
+				prev.className = "sp-carousel__btn sp-carousel__btn--prev";
+				prev.setAttribute("aria-label", "Previous photo");
+				prev.innerHTML = "&#8249;";
+				prev.addEventListener("click", (e) => { e.stopPropagation(); goTo(current - 1); });
+
+				const next = document.createElement("button");
+				next.type = "button";
+				next.className = "sp-carousel__btn sp-carousel__btn--next";
+				next.setAttribute("aria-label", "Next photo");
+				next.innerHTML = "&#8250;";
+				next.addEventListener("click", (e) => { e.stopPropagation(); goTo(current + 1); });
+
+				const dotsWrap = document.createElement("div");
+				dotsWrap.className = "sp-carousel__dots";
+				const dots = imgs.map((_, i) => {
+					const d = document.createElement("button");
+					d.type = "button";
+					d.className = "sp-carousel__dot" + (i === 0 ? " is-active" : "");
+					d.setAttribute("aria-label", `Photo ${i + 1}`);
+					d.addEventListener("click", (e) => { e.stopPropagation(); goTo(i); });
+					dotsWrap.appendChild(d);
+					return d;
+				});
+
+				modalCarousel.appendChild(track);
+				modalCarousel.appendChild(prev);
+				modalCarousel.appendChild(next);
+				modalCarousel.appendChild(dotsWrap);
+			} else {
+				const dots = [];
+				modalCarousel.appendChild(track);
+			}
+
+			modalCarousel.removeAttribute("hidden");
+		};
 
 		const closeSocialProofModal = () => {
 			socialProofModal.setAttribute("hidden", "");
@@ -730,6 +743,21 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (modalName) modalName.textContent = trigger.dataset.name || "";
 			if (modalTitle) modalTitle.textContent = trigger.dataset.title || "";
 			if (modalQuote) modalQuote.textContent = trigger.dataset.quote || "";
+			if (modalPhoto) {
+				const imgSrc = trigger.dataset.image || "";
+				if (imgSrc) {
+					modalPhoto.src = imgSrc;
+					modalPhoto.alt = trigger.dataset.name || "";
+					modalPhoto.removeAttribute("hidden");
+				} else {
+					modalPhoto.setAttribute("hidden", "");
+					modalPhoto.src = "";
+				}
+			}
+
+			const imgsRaw = trigger.dataset.imgs || "";
+			const imgs = imgsRaw ? imgsRaw.split(",").map(s => s.trim()).filter(Boolean) : [];
+			buildCarousel(imgs);
 
 			activeTrigger = trigger;
 			socialProofModal.removeAttribute("hidden");

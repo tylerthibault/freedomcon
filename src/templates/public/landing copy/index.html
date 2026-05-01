@@ -163,12 +163,7 @@
 
   {% include 'public/landing copy/components/artists.html' %}
 
-    {% include 'public/landing copy/components/father_sons_scroller.html' %}
-    <div class="mb-3">
-      {% from 'components/macros/cta_buttons.html' import cta_buttons %}
-      {{ cta_buttons() }}
-    </div>
-
+  {% include 'public/landing copy/components/father_sons_scroller.html' %}
   {% include 'public/landing copy/components/social_proof.html' %}
 
   <div class="my-2">
@@ -176,6 +171,7 @@
     {% set ticker_category = 'all' %}
     {% include 'components/sponsor_ticker.html' %}
   </div>
+
 </main>
 {% endblock %}
 
