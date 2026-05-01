@@ -36,24 +36,29 @@ about_smn_conferences = [
 			{
 				"url": "https://www.youtube.com/watch?v=7YQbhEtGPac&list=PLptTyphw8iGNT2YDcnvE4DhSYpqGnVqVQ&index=1",
 				"title": "Be Strong To Win (ft. John Lovell)",
+				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/BraveToFight2.png",
 			},
 			{
 				"url": "https://www.youtube.com/watch?v=0nN8OWTI_E0&list=PLptTyphw8iGNT2YDcnvE4DhSYpqGnVqVQ&index=2",
 				"title": "Be Brave To Fight (ft. John Lovell)",
+				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/BeBraveToFight.png",
 			},
 			{
 				"url": "https://www.youtube.com/watch?v=IYFSwPhglBw&list=PLptTyphw8iGNT2YDcnvE4DhSYpqGnVqVQ&index=3",
 				"title": "Be Filled With Power (ft. Mark Driscoll)",
 				"mobile_image_x": -50,
+				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/BeFilledWithPower.png",
 			},
 			{
 				"url": "https://www.youtube.com/watch?v=Hyo06G9CWH4&list=PLptTyphw8iGNT2YDcnvE4DhSYpqGnVqVQ&index=4",
 				"title": "Be First to Battle | Josh McPherson",
+				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/BeFirstToBattle.png",
 			},
 			{
 				"url": "https://www.youtube.com/watch?v=lqEMqd9QTXw&list=PLptTyphw8iGNT2YDcnvE4DhSYpqGnVqVQ&index=5",
 				"title": "Q&A with John Lovell",
 				"mobile_image_x": -45,
+				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/QAWithJohnLovell.png",
 			},
 		],
 	},

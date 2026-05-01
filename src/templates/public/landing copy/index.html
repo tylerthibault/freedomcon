@@ -155,12 +155,6 @@
   {% include 'public/landing copy/components/what_to_expect.html' %}
 
   {% include 'public/landing copy/components/trailers.html' %}
-  
-    {% include 'public/landing copy/components/father_sons_scroller.html' %}
-    <div class="mb-3">
-      {% from 'components/macros/cta_buttons.html' import cta_buttons %}
-      {{ cta_buttons() }}
-    </div>
 
   {% include 'public/landing copy/components/podcast.html' %}
 
@@ -168,6 +162,12 @@
 
 
   {% include 'public/landing copy/components/artists.html' %}
+
+    {% include 'public/landing copy/components/father_sons_scroller.html' %}
+    <div class="mb-3">
+      {% from 'components/macros/cta_buttons.html' import cta_buttons %}
+      {{ cta_buttons() }}
+    </div>
 
   {% include 'public/landing copy/components/social_proof.html' %}
 
