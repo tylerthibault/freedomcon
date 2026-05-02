@@ -16,9 +16,6 @@
             aria-controls="landing12MobileMenu" aria-label="Toggle navigation menu">
             Menu
         </button>
-        <div class="w-100 d-flex justify-content-center align-items-center bg-accent">
-            <p class="m-0 p-0">Early Bird Expires <span class="fw-bold text-black">May 1</span></p>
-        </div>
         <div class="landing12-links d-flex align-items-center flex-nowrap" id="landing12MobileMenu">
             <a class="{% if is_landing %}is-active{% endif %}" href="{{ url_for('public.landing_alt') }}">Home</a>
             <details name="nav-menu"

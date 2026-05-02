@@ -1,8 +1,8 @@
 ticket_prices = [
     {
         "name": "General Admission",
-        "price": "$149",
-        "tax_total": "$157.11 with all taxes & fees",
+        "price": "$179",
+        "tax_total": "$188.72 with all taxes & fees",
         "notes": [],
         "highlight": True,
     },
@@ -58,7 +58,7 @@ ticket_meta = {
     "subtitle": "Rise Of The Statesman",
     "kicker": "An American Congress of Christian Men",
     "dates": "June 19-20",
-    "notice": "General Admission early pricing ends May 1!!",
+    "notice": "",
     "cta_label": "Get Your Ticket",
     "cta_href": "#",
 }
