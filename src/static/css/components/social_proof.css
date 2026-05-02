@@ -217,12 +217,44 @@
     font-weight: 700;
 }
 
-.social-proof-mobile-grid {
+.social-proof-marquee {
     display: none;
 }
 
-.social-proof-see-more-wrap {
+.social-proof-mobile-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.65rem;
+}
+
+.social-proof-section .social-proof-mobile-grid .social-proof-mobile-card--extra {
     display: none;
+}
+
+.social-proof-section.is-mobile-expanded .social-proof-mobile-grid .social-proof-mobile-card--extra {
+    display: grid;
+}
+
+.social-proof-see-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.9rem;
+}
+
+.social-proof-section.is-mobile-expanded .social-proof-see-more-wrap {
+    display: none;
+}
+
+.social-proof-see-more {
+    border: 1px solid rgba(188, 42, 39, 0.44);
+    background: transparent;
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.48rem 1.1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 .social-proof-modal {
@@ -452,6 +484,12 @@
     transform: translateZ(0);
 }
 
+/* Pause on hover/focus so users can read cards */
+.social-proof-row:hover .social-proof-row__track,
+.social-proof-row:focus-within .social-proof-row__track {
+    animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .social-proof-row__track.marquee-left,
     .social-proof-row__track.marquee-right {
@@ -464,130 +502,8 @@
         overflow-x: clip;
     }
 
-    .social-proof-marquee {
-        display: none;
-    }
-
     .social-proof-mobile-grid {
-        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.65rem;
-    }
-
-    .social-proof-section .social-proof-mobile-grid .social-proof-mobile-card--extra {
-        display: none;
-    }
-
-    .social-proof-section.is-mobile-expanded .social-proof-mobile-grid .social-proof-mobile-card--extra {
-        display: grid;
-    }
-
-    .social-proof-see-more-wrap {
-        display: flex;
-        justify-content: center;
-        margin-top: 0.9rem;
-    }
-
-    .social-proof-see-more {
-        border: 1px solid rgba(188, 42, 39, 0.44);
-        background: transparent;
-        color: #fff;
-        border-radius: 999px;
-        padding: 0.48rem 1.1rem;
-        font-size: 0.78rem;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-
-    .social-proof-section.is-mobile-expanded .social-proof-see-more-wrap {
-        display: none;
-    }
-
-    .social-proof-mobile-card {
-        border: 1px solid rgba(188, 42, 39, 0.28);
-        border-radius: 12px;
-        background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
-        color: #111;
-        text-align: left;
-        min-height: 170px;
-        padding: 0.62rem;
-        display: grid;
-        grid-template-rows: auto 1fr;
-        gap: 0.52rem;
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
-    }
-
-    .social-proof-mobile-card__head {
-        display: flex;
-        align-items: center;
-        gap: 0.45rem;
-        min-width: 0;
-    }
-
-    .social-proof-mobile-card__avatar {
-        width: 34px;
-        height: 34px;
-        object-fit: cover;
-        flex-shrink: 0;
-    }
-
-    .social-proof-mobile-card__identity {
-        min-width: 0;
-    }
-
-    .social-proof-mobile-card__name {
-        margin: 0;
-        font-size: 0.72rem;
-        line-height: 1.18;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        color: #111;
-    }
-
-    .social-proof-mobile-card__title {
-        margin: 0.12rem 0 0;
-        font-size: 0.65rem;
-        line-height: 1.18;
-        color: #616161;
-    }
-
-    .social-proof-mobile-card__quote {
-        margin: 0;
-        line-height: 1.36;
-        color: #242424;
-        position: relative;
-        display: -webkit-box;
-        line-clamp: 4;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    .social-proof-mobile-card__quote::before {
-        content: "“";
-        color: rgba(188, 42, 39, 0.52);
-    }
-
-    .social-proof-mobile-card__quote::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 1.1rem;
-        background: linear-gradient(180deg, rgba(245, 245, 245, 0), #f5f5f5 84%);
-    }
-
-    .social-proof-mobile-card__hint {
-        margin: 0.15rem 0 0;
-        font-size: 0.62rem;
-        line-height: 1.2;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        color: rgba(188, 42, 39, 0.92);
-        font-weight: 700;
     }
 
     .social-proof-modal {
@@ -597,46 +513,208 @@
     .social-proof-modal__dialog {
         width: min(520px, 100%);
     }
+}
 
-    .social-proof-marquee {
-        gap: 1rem;
-    }
+.social-proof-mobile-card {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid rgba(188, 42, 39, 0.28);
+    border-radius: 12px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+    color: #111;
+    text-align: left;
+    min-height: 170px;
+    padding: 0.62rem;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 0.52rem;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    font: inherit;
+    cursor: pointer;
+    width: 100%;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
 
-    .social-proof-row {
-        overflow: visible;
-    }
+.social-proof-mobile-card:hover,
+.social-proof-mobile-card:focus-visible {
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.32);
+    transform: translateY(-2px);
+    outline: none;
+}
 
-    .social-proof-row__track {
-        width: 100%;
-        display: block;
-        animation: none !important;
-        transform: none !important;
-    }
+.social-proof-mobile-card__head {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-width: 0;
+}
 
-    .social-proof-row__group {
-        flex: initial;
-        grid-template-columns: 1fr;
-        padding-inline: 0;
-    }
+.social-proof-mobile-card__avatar {
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
 
-    .social-proof-row__group + .social-proof-row__group {
-        display: none;
-    }
+.social-proof-mobile-card__identity {
+    min-width: 0;
+}
 
-    .social-proof-card__quote {
-    }
+.social-proof-mobile-card__name {
+    margin: 0;
+    font-size: 0.72rem;
+    line-height: 1.18;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #111;
+}
 
-    .social-proof-card {
-        min-height: 164px;
-        padding: 0.75rem 0.7rem;
-    }
+.social-proof-mobile-card__title {
+    margin: 0.12rem 0 0;
+    font-size: 0.65rem;
+    line-height: 1.18;
+    color: #616161;
+}
 
-    .social-proof-card__avatar {
-        width: 40px;
-        height: 40px;
-    }
+.social-proof-mobile-card__quote {
+    margin: 0;
+    line-height: 1.36;
+    color: #242424;
+    position: relative;
+    display: -webkit-box;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 
-    .social-proof-card__title {
-        white-space: normal;
-    }
+.social-proof-mobile-card__quote::before {
+    content: "“";
+    color: rgba(188, 42, 39, 0.52);
+}
+
+.social-proof-mobile-card__quote::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1.1rem;
+    background: linear-gradient(180deg, rgba(245, 245, 245, 0), #f5f5f5 84%);
+}
+
+.social-proof-mobile-card__hint {
+    margin: 0.15rem 0 0;
+    font-size: 0.62rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(188, 42, 39, 0.92);
+    font-weight: 700;
+}
+
+.social-proof-mobile-card__tags {
+    display: flex;
+    gap: 0.3rem;
+    margin-bottom: -0.1rem;
+}
+
+.social-proof-mobile-card {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid rgba(188, 42, 39, 0.28);
+    border-radius: 12px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+    color: #111;
+    text-align: left;
+    min-height: 170px;
+    padding: 0.62rem;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 0.52rem;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    font: inherit;
+    cursor: pointer;
+    width: 100%;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.social-proof-mobile-card:hover,
+.social-proof-mobile-card:focus-visible {
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.32);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.social-proof-mobile-card__head {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-width: 0;
+}
+
+.social-proof-mobile-card__avatar {
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.social-proof-mobile-card__identity {
+    min-width: 0;
+}
+
+.social-proof-mobile-card__name {
+    margin: 0;
+    font-size: 0.72rem;
+    line-height: 1.18;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #111;
+}
+
+.social-proof-mobile-card__title {
+    margin: 0.12rem 0 0;
+    font-size: 0.65rem;
+    line-height: 1.18;
+    color: #616161;
+}
+
+.social-proof-mobile-card__quote {
+    margin: 0;
+    line-height: 1.36;
+    color: #242424;
+    position: relative;
+    display: -webkit-box;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.social-proof-mobile-card__quote::before {
+    content: "“";
+    color: rgba(188, 42, 39, 0.52);
+}
+
+.social-proof-mobile-card__quote::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1.1rem;
+    background: linear-gradient(180deg, rgba(245, 245, 245, 0), #f5f5f5 84%);
+}
+
+.social-proof-mobile-card__hint {
+    margin: 0.15rem 0 0;
+    font-size: 0.62rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(188, 42, 39, 0.92);
+    font-weight: 700;
 }

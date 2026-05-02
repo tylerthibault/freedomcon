@@ -560,15 +560,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 				const isRight = row.classList.contains("social-proof-row--right");
 
-				/* Compute and apply CSS animation duration from pixel speed */
+				/* Compute and apply CSS animation duration from pixel speed.
+				   Measure BEFORE adding the animation class so the track has no
+				   transform applied yet; use scrollWidth so overflow:hidden on
+				   the parent row doesn't clip the reported value. */
 				const applyDuration = () => {
-					const groupWidth = Math.max(1, group.getBoundingClientRect().width);
+					const groupWidth = Math.max(1, group.scrollWidth || group.getBoundingClientRect().width);
 					const duration = groupWidth / baseSpeed;
 					track.style.setProperty("--marquee-duration", `${duration}s`);
 				};
 
-				track.classList.add(isRight ? "marquee-right" : "marquee-left");
 				applyDuration();
+				track.classList.add(isRight ? "marquee-right" : "marquee-left");
 
 				let resizeTimer = 0;
 				window.addEventListener("resize", () => {
@@ -594,43 +597,28 @@ document.addEventListener("DOMContentLoaded", () => {
 		const socialProofSeeMoreButton = socialProofSection.querySelector("[data-social-proof-see-more]");
 		if (!(socialProofSeeMoreButton instanceof HTMLButtonElement)) return;
 
-		const mobileBreakpoint = window.matchMedia("(max-width: 768px)");
-		const hasExtraMobileCards = socialProofSection.querySelector(".social-proof-mobile-card--extra") !== null;
-		let isMobileExpanded = false;
-		let wasMobile = mobileBreakpoint.matches;
+		const hasExtraCards = socialProofSection.querySelector(".social-proof-mobile-card--extra") !== null;
+		let isExpanded = false;
 
-		const syncMobileSocialProofState = () => {
-			const isMobile = mobileBreakpoint.matches;
-
-			if (isMobile && !wasMobile) {
-				isMobileExpanded = false;
-			}
-			wasMobile = isMobile;
-
-			if (!isMobile || !hasExtraMobileCards) {
+		const syncState = () => {
+			if (!hasExtraCards) {
 				socialProofSection.classList.add("is-mobile-expanded");
 				socialProofSeeMoreButton.hidden = true;
 				socialProofSeeMoreButton.setAttribute("aria-expanded", "true");
 				return;
 			}
-
-			socialProofSection.classList.toggle("is-mobile-expanded", isMobileExpanded);
-			socialProofSeeMoreButton.hidden = isMobileExpanded;
-			socialProofSeeMoreButton.setAttribute("aria-expanded", isMobileExpanded ? "true" : "false");
+			socialProofSection.classList.toggle("is-mobile-expanded", isExpanded);
+			socialProofSeeMoreButton.hidden = isExpanded;
+			socialProofSeeMoreButton.setAttribute("aria-expanded", isExpanded ? "true" : "false");
 		};
 
 		socialProofSection.classList.remove("is-mobile-expanded");
 		socialProofSeeMoreButton.addEventListener("click", () => {
-			isMobileExpanded = true;
-			syncMobileSocialProofState();
+			isExpanded = true;
+			syncState();
 		});
 
-		syncMobileSocialProofState();
-		if (typeof mobileBreakpoint.addEventListener === "function") {
-			mobileBreakpoint.addEventListener("change", syncMobileSocialProofState);
-		} else {
-			mobileBreakpoint.addListener(syncMobileSocialProofState);
-		}
+		syncState();
 	});
 
 	const socialProofModal = document.querySelector("[data-social-proof-modal]");

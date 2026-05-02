@@ -64,6 +64,17 @@ social_proof = [
             "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/IMG_8010.webp",
         ],
     },
+    {
+        "name": "Ryan McKelvie",
+        "title": "Head of School, Garden City School",
+        "quote": "The Stronger Man Nation men’s conference has become a Father’s Day tradition that we won’t miss. It’s a weekend full of those magic moments that I know will solidify in the minds of my sons as anchor points - even at their age. Not only because it’s a blast for them with the competition and camaraderie and all the tangible stuff that appeals to the heart of every boy … but because something stirs in their hearts when they’re surrounded by an army men  who have all assembled to praise and lift high the name of Jesus as act of war - it’s a moment! The whole weekend stands a reminder that we’re apart of something much bigger than us. \nYou leave with courage, conviction, commitment, and fire in your veins to get back to dragon killin’. \nThat’s why we go. ",
+        "alt": "Ryan McKelvie testimonial photo",
+        "img": [
+            "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/Ryan_McKelvie1.webp",
+            "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/fathers_sons/Ryan_McKelvie2.webp",
+    
+        ],
+    },
 
 ]
 
