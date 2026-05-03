@@ -94,7 +94,7 @@ speakers = [
 		'titles': ['Lead Pastor, Lakepointe Church', 'Live Free Podcast'],
 		'bio': """
             Josh Howerton is the senior pastor of Lakepointe Church, a multi-site, multilingual movement with multiple campuses across the Dallas area committed to helping people know Christ, live free, and change the world. Before taking the helm at Lakepointe, Josh studied Biblical Studies at Union University, continued his theological training at Southern Seminary, and spent a decade pastoring The Bridge Church in Nashville. He hosts the “Live Free with Josh Howerton” podcast, where he speaks straight to men and women about sin, freedom, marriage, and mission in a style that connects with a broad audience. Under his leadership, Lakepointe has become a place where men are challenged to throw off religious apathy, embrace authentic repentance, and step into spiritual leadership at home, in church, and in culture.
-            <strong><em>Due to scheduling conflict, Josh will be joining us via video message.</em></strong>
+            <strong><em>Due to schedule conflict, Josh will join us via video with a special message just for the men of FREEDOM CON.</em></strong>
 		 """,
 		'shrink': 0.85,
         'image_x': 20,
@@ -153,7 +153,7 @@ speakers = [
 		'titles': ['Green Beret Combat Veteran', 'Virginia House of Delegates', 'Social Media Influencer'],
 		'bio': """
 			Nick Freitas is a Green Beret combat veteran, husband and father, and member of the Virginia House of Delegates who brings battlefield clarity to the chaos of modern politics. He served 11 years in the U.S. Army, including two combat tours in Iraq with Army Special Forces, before stepping into public office to fight for limited government, individual liberty, and the rights of families. As a delegate, Nick has served on key committees dealing with transportation, technology, courts, education, and finance, and he’s become widely known for viral, no-notes floor speeches dismantling leftist arguments with calm, surgical logic. His growing social media presence has turned him into a go-to example of what it looks like when a warrior-statesman brings courage, competence, and conviction into the halls of power.
-            <strong><em>Due to scheduling conflict, Josh will be joining us via video message.</em></strong>
+            <strong><em>Due to schedule conflict, Nick will join us via video with a special message just for the men of FREEDOM CON.</em></strong>
 		 """,
          'shrink': 0.9,
 	        "orgs": [{"icon": "flag", "name": "Virginia House of Delegates", "subtitle": "Limited government"}, {"icon": "star", "name": "Green Beret", "subtitle": "11-year Army veteran"}],
