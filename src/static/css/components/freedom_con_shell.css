@@ -860,6 +860,35 @@ body:has(.landing12-header) .page-clip {
     margin-top: 2rem;
 }
 
+/* ── Pastor Letter Float Image ── */
+.pastors-letter__float-img {
+    float: right;
+    width: clamp(160px, 26%, 240px);
+    margin: 0 0 1.5rem 2.5rem;
+    border-radius: 4px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+    display: block;
+    shape-outside: border-box;
+}
+
+.pastors-letter__sign-off {
+    font-family: var(--font-secondary);
+    font-size: 1.2rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 1.25rem;
+    color: var(--fc-secondary);
+    clear: right;
+}
+
+@media (max-width: 540px) {
+    .pastors-letter__float-img {
+        float: none;
+        width: 60%;
+        margin: 1.5rem auto;
+    }
+}
+
 .fc-page__inner {
     width: min(960px, 100%);
     margin: 0 auto;
@@ -937,7 +966,7 @@ body:has(.landing12-header) .page-clip {
     margin-top: 2.2rem;
     width: 100%;
     height: clamp(180px, 25vw, 300px);
-    background-image: url('/static/img/past_smc/CDC4907R.jpg');
+    background-image: url('/static/img/past_smc/CDC4907R.webp');
     background-size: cover;
     background-position: center 35%;
     position: relative;
@@ -1234,7 +1263,7 @@ body:has(.landing12-header) .page-clip {
 
 .fc-exp-fatherson {
     margin-top: 2.4rem;
-    background-image: url('/static/img/past_smc/CDC4835.jpg');
+    background-image: url('/static/img/past_smc/CDC4835.webp');
     background-size: cover;
     background-position: center;
     position: relative;

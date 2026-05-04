@@ -192,7 +192,7 @@ def build_seo(
 	canonical_path: str | None = None,
 	robots: str = "index,follow",
 	og_type: str = "website",
-	image_path: str = "/static/img/Freedom_con_front_on_black.png?v=20260417",
+	image_path: str = "/static/img/Freedom_con_front_on_black.webp?v=20260417",
 ) -> dict[str, str]:
 	resolved_canonical = canonical_path or path
 	resolved_image = image_path if image_path.startswith("http") else f"{SITE_URL}{image_path}"
@@ -286,7 +286,7 @@ def build_seo(
 # 			title="A Congress of Christian Men at The Gorge Amphitheatre",
 # 			description="Join Freedom Con 2026 at The Gorge Amphitheatre in George, WA for two days of speakers, worship, brotherhood, and leadership challenge.",
 # 			path="/",
-# 			image_path="/static/img/title_on_black.png?v=20260417",
+# 			image_path="/static/img/title_on_black.webp?v=20260417",
 # 		),
 # 	)
 
@@ -570,7 +570,7 @@ def press_page() -> str:
 		"static", filename="pdfs/FreedomCon-Media-Kit-v1.zip"
 	)
 	media_kit_image_url = getenv("MEDIA_KIT_IMAGE_URL", "").strip() or url_for(
-		"static", filename="img/freedom_con_media_kit_flyer.jpg"
+		"static", filename="img/freedom_con_media_kit_flyer.webp"
 	)
 	men_picture_url = getenv("PRESS_MEN_PICTURE_URL", "").strip() or url_for(
 		"static", filename="img/TheGuys-WithLogoNoFeet.avif"

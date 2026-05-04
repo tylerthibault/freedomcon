@@ -36,29 +36,29 @@ about_smn_conferences = [
 			{
 				"url": "https://www.youtube.com/watch?v=7YQbhEtGPac&list=PLptTyphw8iGNT2YDcnvE4DhSYpqGnVqVQ&index=1",
 				"title": "Be Strong To Win (ft. John Lovell)",
-				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/BraveToFight2.png",
+				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/StrongToWin2.webp",
 			},
 			{
 				"url": "https://www.youtube.com/watch?v=0nN8OWTI_E0&list=PLptTyphw8iGNT2YDcnvE4DhSYpqGnVqVQ&index=2",
 				"title": "Be Brave To Fight (ft. John Lovell)",
-				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/BeBraveToFight.png",
+				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/BraveToFight2.webp",
 			},
 			{
 				"url": "https://www.youtube.com/watch?v=IYFSwPhglBw&list=PLptTyphw8iGNT2YDcnvE4DhSYpqGnVqVQ&index=3",
 				"title": "Be Filled With Power (ft. Mark Driscoll)",
 				"mobile_image_x": -50,
-				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/BeFilledWithPower.png",
+				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/BeFilledWithPower2.webp",
 			},
 			{
 				"url": "https://www.youtube.com/watch?v=Hyo06G9CWH4&list=PLptTyphw8iGNT2YDcnvE4DhSYpqGnVqVQ&index=4",
 				"title": "Be First to Battle | Josh McPherson",
-				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/BeFirstToBattle.png",
+				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/FirstToBattle2.webp",
 			},
 			{
 				"url": "https://www.youtube.com/watch?v=lqEMqd9QTXw&list=PLptTyphw8iGNT2YDcnvE4DhSYpqGnVqVQ&index=5",
 				"title": "Q&A with John Lovell",
 				"mobile_image_x": -45,
-				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/QAWithJohnLovell.png",
+				"thumbnail_mobile": "img/past_smc/thumbnails/into_the_breach/Q&A2.webp",
 			},
 		],
 	},
@@ -66,7 +66,28 @@ about_smn_conferences = [
 		"year": 2024,
 		"name": "Kill Dragons",
 		"summary": "Josh McPherson and Adam James",
-		"videos": [],
+		"videos": [
+			{
+				"url": "https://www.youtube.com/watch?v=404fYAcsr0w&list=PLptTyphw8iGM7fYmm8bZ7n44JAXtFA-5c&index=1",
+				"title": "Kill Dragons... Or Become One | Josh McPherson",
+				"thumbnail_mobile": "img/past_smc/thumbnails/kill_dragons/KD_1.webp",
+			},
+			{
+				"url": "https://www.youtube.com/watch?v=s8t-vPDR-CA&list=PLptTyphw8iGM7fYmm8bZ7n44JAXtFA-5c&index=2",
+				"title": "Kill Dragons... Or Become One | Josh McPherson",
+				"thumbnail_mobile": "img/past_smc/thumbnails/kill_dragons/KD_2.webp",
+			},
+			{
+				"url": "https://www.youtube.com/watch?v=404fYAcsr0w&list=PLptTyphw8iGM7fYmm8bZ7n44JAXtFA-5c&index=3",
+				"title": "Kill Dragons... Or Become One | Josh McPherson",
+				"thumbnail_mobile": "img/past_smc/thumbnails/kill_dragons/KD_3.webp",
+			},
+			{
+				"url": "https://www.youtube.com/watch?v=404fYAcsr0w&list=PLptTyphw8iGM7fYmm8bZ7n44JAXtFA-5c&index=4",
+				"title": "Kill Dragons... Or Become One | Josh McPherson",
+				"thumbnail_mobile": "img/past_smc/thumbnails/kill_dragons/KD_4.webp",
+			},
+		],
 	},
 	{
 		"year": 2025,

@@ -47,7 +47,7 @@
 
 .tickets-section {
     background: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)),
-        url("../../img/speakers/background.png") center / cover no-repeat;
+        url("../../img/speakers/background.webp") center / cover no-repeat;
     padding: clamp(2rem, 5vw, 3rem) 0 clamp(2.8rem, 6vw, 4.8rem);
 }
 

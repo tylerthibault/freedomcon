@@ -7,85 +7,85 @@ media_downloads = [
         "assets": [
             {
                 "label": "Featured Speakers 1",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20Featured%20Speakers%20(1).jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20Featured%20Speakers%20(1).jpg"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20Featured%20Speakers%20(1).webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20Featured%20Speakers%20(1).webp"
             },
             {
                 "label": "Featured Speakers 2",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20Featured%20Speakers%20VERTICAL%20(1).jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20Featured%20Speakers%20VERTICAL%20(1).jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20Featured%20Speakers%20VERTICAL%20(1).webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20Featured%20Speakers%20VERTICAL%20(1).webp"},
             {
                 "label": "Gen Z Featured Speakers 1",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20GEN%20Z%20Featured%20Speakers%20(1).jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20GEN%20Z%20Featured%20Speakers%20(1).jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20GEN%20Z%20Featured%20Speakers%20(1).webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20GEN%20Z%20Featured%20Speakers%20(1).webp"},
             {
                 "label": "Gen Z Featured Speakers 2",
-                 "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20GEN%20Z%20Featured%20Speakers%20VERTICAL.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20GEN%20Z%20Featured%20Speakers%20VERTICAL.jpg"},
+                 "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20GEN%20Z%20Featured%20Speakers%20VERTICAL.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/1920x1080%20GEN%20Z%20Featured%20Speakers%20VERTICAL.webp"},
             {
                 "label": "Featured Speakers + Gen Z",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/8.5x11%20Featured%20Speakers%20PLUS%20GEN%20Z.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/8.5x11%20Featured%20Speakers%20PLUS%20GEN%20Z.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/8.5x11%20Featured%20Speakers%20PLUS%20GEN%20Z.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/8.5x11%20Featured%20Speakers%20PLUS%20GEN%20Z.webp"},
             {
                 "label": "Featured Speakers (Square)",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/SQUARE%20Featured%20Speakers%20(1).jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/SQUARE%20Featured%20Speakers%20(1).jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/SQUARE%20Featured%20Speakers%20(1).webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/SQUARE%20Featured%20Speakers%20(1).webp"},
             {
                 "label": "Gen Z Featured Speakers (Square)",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/SQUARE%20GEN%20Z%20Featured%20Speakers.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/SQUARE%20GEN%20Z%20Featured%20Speakers.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/SQUARE%20GEN%20Z%20Featured%20Speakers.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/SQUARE%20GEN%20Z%20Featured%20Speakers.webp"},
             {
                 "label": "Adam James",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Adam%20James.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Adam%20James.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Adam%20James.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Adam%20James.webp"},
             {
                 "label": "Chad Robichaux",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Chad%20Robichaux.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Chad%20Robichaux.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Chad%20Robichaux.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Chad%20Robichaux.webp"},
             {
                 "label": "Dave Barton",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Dave%20Barton.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Dave%20Barton.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Dave%20Barton.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Dave%20Barton.webp"},
             {
                 "label": "Eric Metaxas",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Eric%20Metaxas.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Eric%20Metaxas.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Eric%20Metaxas.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Eric%20Metaxas.webp"},
             {
                 "label": "Graham Allen",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Graham%20Allen.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Graham%20Allen.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Graham%20Allen.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Graham%20Allen.webp"},
             {
                 "label": "John Lovell",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/John%20Lovell.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/John%20Lovell.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/John%20Lovell.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/John%20Lovell.webp"},
             {
                 "label": "Josh Howerton",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Josh%20Howerton.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Josh%20Howerton.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Josh%20Howerton.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Josh%20Howerton.webp"},
             {
                 "label": "Josh McPherson",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Josh%20McPherson.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Josh%20McPherson.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Josh%20McPherson.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Josh%20McPherson.webp"},
             {
                 "label": "Mark Driscoll",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Mark%20Driscoll.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Mark%20Driscoll.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Mark%20Driscoll.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Mark%20Driscoll.webp"},
             {
                 "label": "Nate Schatzline",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Nate%20Schatzline.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Nate%20Schatzline.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Nate%20Schatzline.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Nate%20Schatzline.webp"},
             {
                 "label": "Russell Johnson",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Russell%20Johnson.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Russell%20Johnson.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Russell%20Johnson.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Russell%20Johnson.webp"},
             {
                 "label": "Ryan Visconti",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Ryan%20Visconti.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Ryan%20Visconti.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Ryan%20Visconti.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Ryan%20Visconti.webp"},
             {
                 "label": "Tim Barton",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Time%20Barton.jpg",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Time%20Barton.jpg"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Time%20Barton.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Speaker%20Graphics/Time%20Barton.webp"},
         ],
     },
     {
@@ -94,120 +94,120 @@ media_downloads = [
         "assets": [
             {
                 "label": "Make Washington America Again",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again.png"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again.webp"},
             {
                 "label": "Save The West",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%201.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%201.png"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%201.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%201.webp"},
             {
                 "label": "WA America Again",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/WA_america_again.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/WA_america_again.png"},
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/WA_america_again.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/WA_america_again.webp"},
             {
                 "label": "We Will Have Our Home Again 1",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again.webp"
             },
             {
                 "label": "We Will Have Our Home Again 2",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again%202.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again%202.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again%202.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again%202.webp"
             },
             {
                 "label": "We Will Have Our Home Again 3",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/we%20will%20have%20our%20home%20again%20part%203.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/we%20will%20have%20our%20home%20again%20part%203.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/we%20will%20have%20our%20home%20again%20part%203.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/we%20will%20have%20our%20home%20again%20part%203.webp"
             },
             {
                 "label": "We Will Have Our Home Again (Alt)",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again-1.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again-1.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again-1.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/We%20Will%20Have%20Our%20Home%20Again-1.webp"
             },
             {
                 "label": "Make Washington America Again 2",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20gain%202.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20gain%202.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20gain%202.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20gain%202.webp"
             },
             {
                 "label": "Make Washington America Again 3",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again%203.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again%203.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again%203.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again%203.webp"
             },
             {
                 "label": "Make Washington America Again 6",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/make%20washington%20america%20again%206.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/make%20washington%20america%20again%206.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/make%20washington%20america%20again%206.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/make%20washington%20america%20again%206.webp"
             },
             {
                 "label": "Make Washington America Again (Alt)",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again-1.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again-1.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again-1.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Make%20Washington%20America%20Again-1.webp"
             },
             {
                 "label": "Calling All Men",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Calling%20All%20Men.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Calling%20All%20Men.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Calling%20All%20Men.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Calling%20All%20Men.webp"
             },
             {
                 "label": "Obey God Defy Tyrants",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20God%20Defy%20Tyrants.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20God%20Defy%20Tyrants.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20God%20Defy%20Tyrants.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20God%20Defy%20Tyrants.webp"
             },
             {
                 "label": "Obey God Defy Tyrants 2",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20Good%20Defy%20Tyrants%202.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20Good%20Defy%20Tyrants%202.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20Good%20Defy%20Tyrants%202.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Obey%20Good%20Defy%20Tyrants%202.webp"
             },
             {
                 "label": "Obey God Defy Tyrants 3",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/obey%20God%20Defy%20Tyrants%203.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/obey%20God%20Defy%20Tyrants%203.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/obey%20God%20Defy%20Tyrants%203.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/obey%20God%20Defy%20Tyrants%203.webp"
             },
             {
                 "label": "Save The West #",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%20%23.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%20%23.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%20%23.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%20%23.webp"
             },
             {
                 "label": "Save The West 1 (Alt)",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%201-1.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%201-1.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%201-1.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%201-1.webp"
             },
             {
                 "label": "Save The West 2",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20the%20West%202.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20the%20West%202.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20the%20West%202.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20the%20West%202.webp"
             },
             {
                 "label": "Save The West 2 (Alt)",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/save%20the%20west%202%281%29.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/save%20the%20west%202%281%29.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/save%20the%20west%202%281%29.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/save%20the%20west%202%281%29.webp"
             },
             {
                 "label": "Save The West 3",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%203.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%203.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%203.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/Save%20The%20West%203.webp"
             },
             {
                 "label": "The American Family Is Not DEAD 1",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%201.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%201.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%201.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%201.webp"
             },
             {
                 "label": "The American Family Is Not DEAD 2",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%202.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%202.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%202.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/The%20American%20Family%20Is%20Not%20DEAD%202.webp"
             },
             {
                 "label": "ChatGPT Image 1",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2003_52_16%20PM.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2003_52_16%20PM.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2003_52_16%20PM.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2003_52_16%20PM.webp"
             },
             {
                 "label": "ChatGPT Image 2",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2004_21_33%20PM.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2004_21_33%20PM.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2004_21_33%20PM.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Posters%20%26%20Graphics/ChatGPT%20Image%20Apr%2020%2C%202026%2C%2004_21_33%20PM.webp"
             },
         ],
     },
@@ -217,28 +217,28 @@ media_downloads = [
         "assets": [
              {
                 "label": "Freedom Con Hero 1",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/freedom_con_front_1.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/freedom_con_front_1.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/freedom_con_front_1.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/freedom_con_front_1.webp"
             },
             {
                 "label": "Freedom Con Hero 2",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/freedom_con_front_2.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/freedom_con_front_2.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/freedom_con_front_2.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/freedom_con_front_2.webp"
             },
             {
                 "label": "Freedom Con Hero 3",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_3.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_3.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_3.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_3.webp"
             },
             {
                 "label": "Freedom Con Hero 4",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_4.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_4.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_4.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_4.webp"
             },
             {
                 "label": "Freedom Con Hero 5",
-                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_5.png",
-                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_5.png"
+                "thumb": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_5.webp",
+                "download": f"https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Conference%20Graphics/Freedom_con_front_5.webp"
             },
         ],
     },

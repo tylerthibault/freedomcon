@@ -4,7 +4,7 @@ invite = {
         "title": "Josh McPherson",
         "name": "Josh McPherson",
         "title_line": "Lead Pastor, Grace City Church · Founder, Stronger Man Nation",
-        "image": "img/speakers/JoshM (2).png",
+        "image": "img/speakers/JoshM (2).webp",
         "video_id": "",  # YouTube embed ID — add when available
         "letter_col_1": [
             "Everywhere he looks, the Stronger Man feels something is deeply wrong. Everything he holds dear appears under ruthless, relentless attack. He often feels alone. Is he the only one who sees the dumpster fire of a godless culture and feels the burden to do something?",
@@ -32,7 +32,7 @@ invite = {
     "from_the_boys": {
         "eyebrow": "From the Next Generation",
         "title": "From Josh's Boys",
-        "image": "img/speakers/JoshM (2).png",  # Update with a dad/sons photo when available
+        "image": "img/speakers/JoshM (2).webp",  # Update with a dad/sons photo when available
         "video_id": "",  # YouTube embed ID — add when available
         "letter": [
             "Hey — we're Josh's sons.",

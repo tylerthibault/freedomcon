@@ -72,27 +72,15 @@
 
             <p>I look forward to connecting and hope to see you there. Blessings,</p>
 
-            <p>Pastor Josh</p>
+            <p class="pastors-letter__sign-off">— Pastor Josh McPherson</p>
+
+            <img src="{{ url_for('static', filename='img/josh_mcpherson_2.webp') }}" alt="Pastor Josh McPherson" class="pastors-letter__float-img">
 
             <div class="fc-page__mantra" aria-label="Pastor rally statements">
                 <p class="fc-page__mantra-line">Unite the Pastors.</p>
                 <p class="fc-page__mantra-line">Get the Plan.</p>
                 <p class="fc-page__mantra-line fc-page__mantra-line--accent">Save our state.</p>
             </div>
-
-            <!-- What Pastors Get -->
-            <!-- <section class="fc-page__section" aria-label="Pastor VIP access details">
-                <h2>Pastor VIP Access</h2>
-                <p>We are reserving dedicated access for pastors and ministry leaders. Pastor VIP includes:</p>
-                <ul class="fc-page__list fc-page__list--accented">
-                    <li>Free general admission ticket for you and your sons</li>
-                    <li>Pastor Swag Bag</li>
-                    <li>Private Freedom Con Lounge Pass</li>
-                    <li>Exclusive meet &amp; greet with speakers</li>
-                    <li>Closed door Q&amp;A with speaker panel</li>
-                    <li>Signed book by Eric Metaxas</li>
-                </ul>
-            </section> -->
             <div class="pastors-hero__cta d-flex justify-content-center align-items-center">
                 {{ cta_buttons(
                 primary_text='Pastor VIP Access',

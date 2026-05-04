@@ -1019,7 +1019,7 @@ body.landing12-no-scroll {
 .landing12-crowder__bg {
     position: absolute;
     inset: -10% 0;
-    background-image: url("../../img/conference_info/crowder.jpg");
+    background-image: url("../../img/conference_info/crowder.webp");
     background-size: cover;
     background-position: center 12%;
     transform: translate3d(0, 0, 0) scale(1.18);
@@ -1647,7 +1647,7 @@ body.landing12-no-scroll {
 
 .landing12-why-now {
     background-color: #0a0a0a;
-    background-image: url('/static/img/FLAG%202.png');
+    background-image: url('/static/img/FLAG%202.webp');
     background-size: cover;
     background-position: center;
     position: relative;

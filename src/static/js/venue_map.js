@@ -180,7 +180,7 @@
 		scrollWheelZoom: true,
 	});
 
-	L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+	L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.webp", {
 		maxZoom: 19,
 		attribution:
 			'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',

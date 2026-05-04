@@ -7,7 +7,7 @@ wives = {
     "sharon_message": {
         "name": "Sharon McPherson",
         "title": "Co-founder, Stronger Man Nation",
-        "image": "img/speakers/sharon_mcpherson.jpg",
+        "image": "img/speakers/sharon_mcpherson.webp",
         "video_id": "",  # YouTube embed ID — add when available
         "letter": [
             "I want to talk to you directly, wife to wife.",
@@ -26,7 +26,7 @@ wives = {
         "copy": "Freedom Con isn't just a men's conference — it's one of the best things a dad can do with his son. There's something that happens when a father and son stand side by side in a moment like this.",
         "gallery": [
             # Add image paths in static/img/dads_sons/ as they become available
-            # {"src": "img/dads_sons/dad_son_01.jpg", "alt": "Father and son at Freedom Con"},
+            # {"src": "img/dads_sons/dad_son_01.webp", "alt": "Father and son at Freedom Con"},
         ],
     },
     "cta": {

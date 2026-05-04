@@ -10,7 +10,7 @@
     {% set seo_og_type = seo_data.get('og_type', 'website') %}
     {% set seo_site_name = seo_data.get('site_name', 'Freedom Con') %}
     {% set seo_twitter_card = seo_data.get('twitter_card', 'summary_large_image') %}
-    {% set default_og_image = url_for('static', filename='img/sharable.png', _external=True) ~ '?v=20260421' %}
+    {% set default_og_image = url_for('static', filename='img/sharable.webp', _external=True) ~ '?v=20260421' %}
     {% set seo_og_image = seo_data.get('og_image_url', default_og_image) %}
 
     <meta charset="UTF-8">
@@ -48,7 +48,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrapcss/bootstrap.min.css') }}">
@@ -82,7 +83,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -99,24 +100,33 @@
 
     <!-- Meta Pixel Code -->
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1687192149361638');
-    fbq('track', 'PageView');
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1687192149361638');
+        fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1687192149361638&ev=PageView&noscript=1"
-    /></noscript>
+            src="https://www.facebook.com/tr?id=1687192149361638&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
 
     {% block head_extra %}{% endblock %}
 
+    <style>
+        .content {
+            max-width: 1440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
     {% block styles %}
 
     {% endblock %}
@@ -129,7 +139,7 @@
     {% include "components/navigation.html" %}
     {% endblock %}
 
-    <div class="page-clip">
+    <div class="page-clip content">
         {% block content %}
         <p>Content Here</p>
         {% endblock %}

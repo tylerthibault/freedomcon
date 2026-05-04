@@ -1,7 +1,7 @@
 speakers = [
 	{
 		'name': 'Josh McPherson',
-		'image': 'img/speakers/JoshM_2.png',
+		'image': 'img/speakers/JoshM_2.webp',
 		'alt': 'Josh McPherson',
 		'titles': ['Lead Pastor, Grace City Church', 'Founder, Stronger Man Nation'],
 		'bio': """
@@ -12,7 +12,7 @@ speakers = [
 },
 	{
 		'name': 'Eric Metaxas',
-		'image': 'img/speakers/EricM_3.png',
+		'image': 'img/speakers/EricM_3.webp',
 		'alt': 'Eric Metaxas',
 		'titles': ['#1 NY Times best-selling author', 'Founder, Socrates in the City', 'Host, The Eric Metaxas Show'],
 		'bio': """
@@ -23,7 +23,7 @@ speakers = [
 	},
 	{
 		'name': 'John Lovell',
-		'image': 'img/speakers/JohnL.png',
+		'image': 'img/speakers/JohnL.webp',
 		'alt': 'John Lovell',
 		'titles': ['Lead Pastor, Grace City, GA', 'Founder, Warrior Poet Society'],
 		'bio': """
@@ -34,7 +34,7 @@ speakers = [
 },
 	{
 		'name': 'Russell Johnson',
-		'image': 'img/speakers/RussellJ_3.png',
+		'image': 'img/speakers/RussellJ_3.webp',
 		'alt': 'Russell Johnson',
 		'titles': ['Lead Pastor, The Pursuit Church'],
 		'bio': """
@@ -46,7 +46,7 @@ speakers = [
 },
 	{
 		'name': 'Graham Allen',
-		'image': 'img/speakers/GrahamA_3.png',
+		'image': 'img/speakers/GrahamA_3.webp',
 		'alt': 'Graham Allen',
 		'titles': ['U.S. Army Veteran', 'The Graham Allen Show & Dear America'],
 		'bio': """
@@ -56,7 +56,7 @@ speakers = [
 },
 	{
 		'name': 'Mark Driscoll',
-		'image': 'img/speakers/Mark_4.png',
+		'image': 'img/speakers/Mark_4.webp',
 		'alt': 'Mark Driscoll',
 		'titles': ['Lead Pastor, Trinity Church', 'Founder, Real Faith'],
 		'bio': """
@@ -66,7 +66,7 @@ speakers = [
 },
 	{
 		'name': 'Chad Robichaux',
-		'image': 'img/speakers/ChadR-Sitting.png',
+		'image': 'img/speakers/ChadR-Sitting.webp',
 		'alt': 'Chad Robichaux',
 		'titles': ['Force Recon Marine', 'DoD Contractor', 'Founder, Mighty Oaks Foundation', 'Host, The Resilient Show', 'Best Selling Author & Speaker', 'Pro MMA Champion'],
 		'bio': """
@@ -77,7 +77,7 @@ speakers = [
 },
 	{
 		'name': 'Nate Schatzline',
-		'image': 'img/speakers/NateS_5.1.png',
+		'image': 'img/speakers/NateS_5.1.webp',
 		'alt': 'Nate Schatzline',
 		'titles': ['Preaching Pastor, Mercy Culture', 'Texas House of Representatives', 'Founder, For Liberty & Justice'],
 		'bio': """
@@ -89,7 +89,7 @@ speakers = [
 },
 	{
 		'name': 'Josh Howerton',
-		'image': 'img/speakers/JoshH_2.png',
+		'image': 'img/speakers/JoshH_2.webp',
 		'alt': 'Josh Howerton',
 		'titles': ['Lead Pastor, Lakepointe Church', 'Live Free Podcast'],
 		'bio': """
@@ -103,31 +103,32 @@ speakers = [
 
 	{
 		'name': 'Tim Barton',
-		'image': 'img/speakers/TimB_2.png',
+		'image': 'img/speakers/TimB_3.webp',
 		'alt': 'Tim Barton',
 		'titles': ['President of WallBuilders', 'The American Story Podcast'],
 		'bio': """
 			Tim Barton is the president of WallBuilders, a national pro-family organization dedicated to recovering America’s true history and biblical foundations. Standing in the legacy of his father, David Barton, Tim spends countless hours in original founding-era documents, unearthing the forgotten stories of statesmen, pastors, and patriots who built this nation on faith and moral courage. He is a sought-after speaker and media voice, appearing on outlets like Ben Shapiro, Glenn Beck, PragerU, and TBN to expose the lies in modern revisionist history and arm believers with the truth about our religious and constitutional heritage. An ordained minister, Tim has invested deeply in young people as a pastor, athletic director, and coach, helping forge a generation that loves God, loves America, and understands the duty that comes with both.
 		 """,
 	        "orgs": [{"icon": "book", "name": "WallBuilders", "subtitle": "Founding-era documents"}, {"icon": "podcast", "name": "American Story Podcast", "subtitle": "True American history"}],
-},
-	{
-		'name': 'Dave Barton',
-		'image': 'img/speakers/DaveB_2.png',
-		'alt': 'Dave Barton',
-		'titles': ['Founder of WallBuilders', 'The WallBuilders Show', 'Author & Historian'],
-		'bio': """
-			David Barton is the founder of WallBuilders and one of the most influential Christian voices on America’s religious and constitutional heritage. Drawing from one of the largest private collections of original founding-era documents in the country, he has written numerous bestselling books and served as a consultant to state and federal legislators, even participating in cases at the U.S. Supreme Court. David has helped shape history and social studies standards in states like Texas and California and has assisted in producing textbooks used in schools nationwide, pushing back against secular revisionism with hard primary-source evidence. For decades, he has been calling pastors, parents, and patriots alike to reject historical amnesia and embrace the call to rebuild our culture on the same biblical foundations that made this nation free.
+		"shrink": 0.9,
+	},
+	# {
+	# 	'name': 'Dave Barton',
+	# 	'image': 'img/speakers/DaveB_2.webp',
+	# 	'alt': 'Dave Barton',
+	# 	'titles': ['Founder of WallBuilders', 'The WallBuilders Show', 'Author & Historian'],
+	# 	'bio': """
+	# 		David Barton is the founder of WallBuilders and one of the most influential Christian voices on America’s religious and constitutional heritage. Drawing from one of the largest private collections of original founding-era documents in the country, he has written numerous bestselling books and served as a consultant to state and federal legislators, even participating in cases at the U.S. Supreme Court. David has helped shape history and social studies standards in states like Texas and California and has assisted in producing textbooks used in schools nationwide, pushing back against secular revisionism with hard primary-source evidence. For decades, he has been calling pastors, parents, and patriots alike to reject historical amnesia and embrace the call to rebuild our culture on the same biblical foundations that made this nation free.
 
-			David Barton is the founder of WallBuilders and one of the most influential Christian voices on America’s religious and constitutional heritage. Drawing from one of the largest private collections of original founding-era documents in the country, he has written numerous bestselling books and served as a consultant to state and federal legislators, even participating in cases at the U.S. Supreme Court. David has helped shape history and social studies standards in states like Texas and California and has assisted in producing textbooks used in schools nationwide, pushing back against secular revisionism with hard primary-source evidence. For decades, he has been calling pastors, parents, and patriots alike to reject historical amnesia and embrace the call to rebuild our culture on the same biblical foundations that made this nation free.
-		 """,
-		'image_y': -20,
-        'shrink': 0.92,
-	        "orgs": [{"icon": "book", "name": "WallBuilders", "subtitle": "Founder & Historian"}, {"icon": "podcast", "name": "The WallBuilders Show", "subtitle": "Weekly radio"}],
-},
+	# 		David Barton is the founder of WallBuilders and one of the most influential Christian voices on America’s religious and constitutional heritage. Drawing from one of the largest private collections of original founding-era documents in the country, he has written numerous bestselling books and served as a consultant to state and federal legislators, even participating in cases at the U.S. Supreme Court. David has helped shape history and social studies standards in states like Texas and California and has assisted in producing textbooks used in schools nationwide, pushing back against secular revisionism with hard primary-source evidence. For decades, he has been calling pastors, parents, and patriots alike to reject historical amnesia and embrace the call to rebuild our culture on the same biblical foundations that made this nation free.
+	# 	 """,
+	# 	'image_y': -20,
+    #     'shrink': 0.92,
+	#         "orgs": [{"icon": "book", "name": "WallBuilders", "subtitle": "Founder & Historian"}, {"icon": "podcast", "name": "The WallBuilders Show", "subtitle": "Weekly radio"}],
+	# },
 	{
 		'name': 'Adam James',
-		'image': 'img/speakers/AdamJ_3.png',
+		'image': 'img/speakers/AdamJ_3.webp',
 		'alt': 'Adam James',
 		'titles': ['Exec. Pastor, Grace City Church', 'Washington State Rep. Candidate'],
 		'bio': """
@@ -138,7 +139,7 @@ speakers = [
 },
 	{
 		'name': 'Ryan Visconti',
-		'image': 'img/speakers/RyanV_2.png',
+		'image': 'img/speakers/RyanV_2.webp',
 		'alt': 'Ryan Visconti',
 		'titles': ['U.S. Army Veteran', 'Lead Pastor, Generation Church'],
 		'bio': """
@@ -148,7 +149,7 @@ speakers = [
 },
 	{
 		'name': 'Nick Freitas',
-		'image': 'img/speakers/NickF_2.png',
+		'image': 'img/speakers/NickF_2.webp',
 		'alt': 'Nick Freitas',
 		'titles': ['Green Beret Combat Veteran', 'Virginia House of Delegates', 'Social Media Influencer'],
 		'bio': """

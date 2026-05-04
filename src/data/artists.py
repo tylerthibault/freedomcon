@@ -1,7 +1,7 @@
 artists = [
         {
         "name": "Crowder",
-        "image": "img/crowder_section.png",
+        "image": "img/crowder_section.webp",
         "hero_image_x": "63%",
         "hero_image_y": "0%",
         "genre": "Worship / Folk Rock",
@@ -15,7 +15,7 @@ artists = [
     },
     {
         "name": "Danny Gokey",
-        "image": "img/danny_section.png",
+        "image": "img/danny_section.webp",
         "hero_image_x": "50%",
         "hero_image_y": "0%",
         "genre": "Christian Pop / Worship",
