@@ -10,6 +10,11 @@
 		object-fit: cover;
 		object-position: center;
 	}
+
+	.food-drinks-section-image--contain {
+		object-fit: contain;
+		background: #050505;
+	}
 </style>
 {% endblock %}
 
@@ -39,11 +44,11 @@
 
 	<section class="accommodations-section" aria-label="Bites options">
 		<div class="accommodations-section__inner container-xl">
-			<h2 class="accommodations-section__heading">Bites</h2>
+			<!-- <h2 class="accommodations-section__heading">Bites</h2> -->
 			<img
-				class="food-drinks-section-image rounded-3 mb-4"
-				src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1600&q=80"
-				alt="Fresh pizza and food options at an outdoor event"
+				class="food-drinks-section-image food-drinks-section-image--contain rounded-3 mb-4"
+				src="{{ url_for('static', filename='img/food.webp') }}"
+				alt="Chilled soda cans on ice"
 				loading="lazy"
 				decoding="async"
 			>
@@ -102,11 +107,11 @@
 
 	<section class="accommodations-section" id="drinks" aria-label="Drinks options">
 		<div class="accommodations-section__inner container-xl">
-			<h2 class="accommodations-section__heading">Drinks</h2>
+			<!-- <h2 class="accommodations-section__heading">Drinks</h2> -->
 			<img
-				class="food-drinks-section-image rounded-3 mb-4"
-				src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1600&q=80"
-				alt="Refreshing cold drinks ready for a concert crowd"
+				class="food-drinks-section-image food-drinks-section-image--contain rounded-3 mb-4"
+				src="{{ url_for('static', filename='img/drinks.webp') }}"
+				alt="Chilled soda cans on ice"
 				loading="lazy"
 				decoding="async"
 			>
@@ -126,7 +131,7 @@
 				<article class="accommodations-list__item">
 					<div>
 						<h3>Riffresher</h3>
-						<p>Crisp, vibrant, and exclusively at our venues, Riffresher is made for those who thrive in the front row and live for the encore. These non-alcoholic drinks are made with real juice and come in bold energy, lemonade, and cream soda flavors. Stay refreshed, stay amped.</p>
+						<p>Crisp, vibrant, and exclusively at our venues, Riffresher is made for those who thrive in the front row and live for the encore. These drinks are made with real juice and come in bold energy, lemonade, and cream soda flavors. Stay refreshed, stay amped.</p>
 					</div>
 				</article>
 				<article class="accommodations-list__item">
