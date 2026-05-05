@@ -1,0 +1,146 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/accommodations.css') }}">
+<style>
+	.churches-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: clamp(0.85rem, 1.6vw, 1.2rem);
+	}
+
+	.church-card {
+		border: 1px solid var(--fc-line);
+		border-radius: 12px;
+		background: #0a0a0a;
+		padding: clamp(0.9rem, 1.8vw, 1.2rem);
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+
+	.church-card__logo-wrap {
+		height: clamp(90px, 11vw, 130px);
+		border-radius: 8px;
+		background: #050505;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.8rem;
+	}
+
+	.church-card__logo {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+	}
+
+	.church-card__name {
+		margin: 0;
+		font-family: var(--font-oswald-light);
+		font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+		line-height: 1.35;
+	}
+
+	@media (max-width: 992px) {
+		.churches-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 640px) {
+		.churches-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="churches-page">
+	<section class="accommodations-hero" aria-label="Churches header">
+		<div class="accommodations-hero__inner container-xl">
+			<p class="accommodations-hero__eyebrow">Partner Churches</p>
+			<h1 class="accommodations-hero__title">Churches</h1>
+			<p class="accommodations-hero__copy">These churches are represented across Freedom Con. More partner churches may be added.</p>
+		</div>
+	</section>
+
+	<section class="accommodations-section" aria-label="Churches list">
+		<div class="accommodations-section__inner container-xl">
+			<div class="churches-grid">
+				<article class="church-card">
+					<div class="church-card__logo-wrap bg-white">
+						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/GraceCity_MasterLogo-03.webp') }}" alt="Grace City Church logo" loading="lazy" decoding="async">
+					</div>
+					<p class="church-card__name">Grace City Church (Wenatchee, WA)</p>
+				</article>
+
+				<article class="church-card">
+					<div class="church-card__logo-wrap">
+						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/GCR.webp') }}" alt="Grace City Rome logo" loading="lazy" decoding="async">
+					</div>
+					<p class="church-card__name">Grace City Rome, GA</p>
+				</article>
+
+				<article class="church-card">
+					<div class="church-card__logo-wrap bg-white">
+						<img class="church-card__logo" src="{{ url_for('static', filename='img/sponsor_logos/pursuit_logo.webp') }}" alt="The Pursuit logo" loading="lazy" decoding="async">
+					</div>
+					<p class="church-card__name">The Pursuit (Snohomish, Kirland, Seattle, Spokane, WA)</p>
+				</article>
+
+				<article class="church-card">
+					<div class="church-card__logo-wrap bg-white">
+						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/logo black long.webp') }}" alt="Father's House logo" loading="lazy" decoding="async">
+					</div>
+					<p class="church-card__name">Father's House (Longview, WA)</p>
+				</article>
+
+				<article class="church-card">
+					<div class="church-card__logo-wrap bg-white">
+						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/cropped-GC-Website-Logo.webp') }}" alt="Generation Church logo" loading="lazy" decoding="async">
+					</div>
+					<p class="church-card__name">Generation (Mesa, AZ)</p>
+				</article>
+
+				<article class="church-card">
+					<div class="church-card__logo-wrap bg-white">
+						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/Westside Church.webp') }}" alt="Westside Church logo" loading="lazy" decoding="async">
+					</div>
+					<p class="church-card__name">Westside Church</p>
+				</article>
+
+				<article class="church-card">
+					<div class="church-card__logo-wrap bg-white">
+						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/mercy fellowship logo.webp') }}" alt="Mercy Fellowship logo" loading="lazy" decoding="async">
+					</div>
+					<p class="church-card__name">Mercy Fellowship (Marysville, WA)</p>
+				</article>
+
+				<article class="church-card">
+					<div class="church-card__logo-wrap bg-white">
+						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/Lakepointe-logo-desktop-menu.webp') }}" alt="Lakepointe Church logo" loading="lazy" decoding="async">
+					</div>
+					<p class="church-card__name">Lakepointe Church (Rockwall, TX)</p>
+				</article>
+
+				<article class="church-card">
+					<div class="church-card__logo-wrap">
+						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/mercy-culture-logo.webp') }}" alt="Mercy Culture logo" loading="lazy" decoding="async">
+					</div>
+					<p class="church-card__name">Mercy Culture (Fort Worth, TX)</p>
+				</article>
+			</div>
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}

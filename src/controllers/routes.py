@@ -796,6 +796,7 @@ def sitemap_xml() -> Response:
 		"/travel",
 		"/camping",
 		"/hotels",
+		"/churches",
 		"/food-and-drinks",
 		"/drinks",
 		"/the-venue",
@@ -911,6 +912,18 @@ def food_and_drinks_page() -> str:
 			title="Food & Drinks | Freedom Con 2026",
 			description="Food and beverage options at The Gorge Amphitheatre for Freedom Con attendees, plus a full drinks list.",
 			path="/food-and-drinks",
+		),
+	)
+
+
+@public_bp.get("/churches")
+def churches_page() -> str:
+	return render_template(
+		"public/churches/index.html",
+		seo=build_seo(
+			title="Churches | Freedom Con 2026",
+			description="Partner churches represented at Freedom Con 2026 and their locations.",
+			path="/churches",
 		),
 	)
 
