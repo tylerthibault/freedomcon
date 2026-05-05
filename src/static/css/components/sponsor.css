@@ -230,6 +230,15 @@
     gap: 1.5rem;
 }
 
+/* Feature row — Titan */
+.sp-tier-feature {
+    margin-top: 1.5rem;
+}
+
+.sp-card--feature .sp-card__name {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
 /* ── Single Tier Card ──────────────────────────────────────── */
 .sp-card {
     border: 2px solid var(--color-accent);
