@@ -45,6 +45,13 @@ sponsors = {
                 'background_color': "#000000",
                 'scale': 1.5
             },
+            {
+                'name': 'Business Makers Network',
+                'logo_url': '/static/img/sponsor_logos/BMN_logo_HQ.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
+                'scale': 1.5
+            },
     ],
     'ministries': [
             {

@@ -796,6 +796,9 @@ def sitemap_xml() -> Response:
 		"/travel",
 		"/camping",
 		"/hotels",
+		"/churches",
+		"/food-and-drinks",
+		"/drinks",
 		"/the-venue",
 		"/tickets",
 		"/invite",
@@ -899,6 +902,35 @@ def hotels_page() -> str:
 			path="/hotels",
 		),
 	)
+
+
+@public_bp.get("/food-and-drinks")
+def food_and_drinks_page() -> str:
+	return render_template(
+		"public/food_and_drinks/index.html",
+		seo=build_seo(
+			title="Food & Drinks | Freedom Con 2026",
+			description="Food and beverage options at The Gorge Amphitheatre for Freedom Con attendees, plus a full drinks list.",
+			path="/food-and-drinks",
+		),
+	)
+
+
+@public_bp.get("/churches")
+def churches_page() -> str:
+	return render_template(
+		"public/churches/index.html",
+		seo=build_seo(
+			title="Churches | Freedom Con 2026",
+			description="Partner churches represented at Freedom Con 2026 and their locations.",
+			path="/churches",
+		),
+	)
+
+
+@public_bp.get("/drinks")
+def drinks_page() -> str:
+	return redirect(url_for("public.food_and_drinks_page") + "#drinks", code=301)
 
 
 #  404 handler

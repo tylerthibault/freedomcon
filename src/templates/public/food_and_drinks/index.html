@@ -1,0 +1,168 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/accommodations.css') }}">
+<style>
+	.food-drinks-section-image {
+		display: block;
+		width: 100%;
+		height: clamp(220px, 38vw, 420px);
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.food-drinks-section-image--contain {
+		object-fit: contain;
+		background: #050505;
+	}
+</style>
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="food-drinks-page">
+
+	<section class="accommodations-hero" aria-label="Food and drinks header">
+		<div class="accommodations-hero__inner container-xl">
+			<p class="accommodations-hero__eyebrow">Plan Your Weekend</p>
+			<h1 class="accommodations-hero__title">Food &amp; Drinks</h1>
+			<p class="accommodations-hero__copy">The Gorge has a rotating mix of quick bites, savory meals, frozen treats, and beverage stands throughout the venue.</p>
+		</div>
+	</section>
+
+	<section class="accommodations-section" aria-label="Vendor lineup notice">
+		<div class="accommodations-section__inner container-xl">
+			<div class="accommodations-panel">
+				<p class="accommodations-panel__lead"><strong>Vendor Lineup Notice</strong></p>
+				<p class="accommodations-panel__note">Food vendors depend on projected attendance and may change as ticket sales grow closer to the event.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="accommodations-section" aria-label="Bites options">
+		<div class="accommodations-section__inner container-xl">
+			<!-- <h2 class="accommodations-section__heading">Bites</h2> -->
+			<img
+				class="food-drinks-section-image food-drinks-section-image--contain rounded-3 mb-4"
+				src="{{ url_for('static', filename='img/food.webp') }}"
+				alt="Chilled soda cans on ice"
+				loading="lazy"
+				decoding="async"
+			>
+			<div class="accommodations-list accommodations-list--lodging">
+				<article class="accommodations-list__item">
+					<div>
+						<h3>Mosh Burger</h3>
+						<p>Mosh Burger brings you patties that are built to thrash. Made from 100% U.S., hormone-free beef, stacked high with melty American cheese, rich caramelized onions, and a punchy burger sauce to finish. Rock your hunger away.</p>
+					</div>
+				</article>
+				<article class="accommodations-list__item">
+					<div>
+						<h3>Rebel Hen Crispy Chicken</h3>
+						<p>At Rebel Hen, every tender is fried with pride, seasoned to perfection, and packed with a whole lotta flavor. It&rsquo;s real food with real flair&mdash;crispy, juicy, and made to steal the spotlight. Be sure to check out our house-made sauces, and you&rsquo;ll see why we keep our fans cluckin&rsquo; for more!</p>
+					</div>
+				</article>
+				<article class="accommodations-list__item">
+					<div>
+						<h3>Ziggy's Magic Pizza Shop</h3>
+						<p>A NYC-inspired pizza joint conjured by Ziggy the Wizard, serving up delicious cheesy pies, made with a touch of magic. Come early and feed your vibe!</p>
+					</div>
+				</article>
+				<article class="accommodations-list__item">
+					<div>
+						<h3>Koko's</h3>
+						<p>Koko&rsquo;s Bavarian celebrates the historical German culture of Central Texas with a menu featuring specialty sausages, hot dogs, Bavarian pretzels, and Belgian-style fries. Founded in Austin, Texas, Koko&rsquo;s is named for co-founder Konstantin Prinz von Bayern (aka Koko), the Prince of Bavaria&mdash;yes, the actual Prince.</p>
+					</div>
+				</article>
+				<article class="accommodations-list__item">
+					<div>
+						<h3>Jade Lane Dumplings</h3>
+						<p>Jade Lane serves up juicy dumplings with a modern Asian twist. Pinched, fried, drizzled, tossed &amp; gone&mdash;each bite is bold, craveable, and ready when you are. Eat dumplings. Be happy.</p>
+					</div>
+				</article>
+				<article class="accommodations-list__item">
+					<div>
+						<h3>Tacos del Centro</h3>
+						<p>At Tacos Del Centro, Mexican street eats come hot and fresh with bold flavor in every bite. From carne asada to pollo asado, go on&mdash;have a taco.</p>
+					</div>
+				</article>
+				<article class="accommodations-list__item">
+					<div>
+						<h3>General Concessions</h3>
+						<p>From classic concert bites to refreshing drinks, our general concessions offer something for everyone. Find your favorites at our conveniently located concession stands and get back to the show!</p>
+					</div>
+				</article>
+				<article class="accommodations-list__item">
+					<div>
+						<h3>CVT Soft Serve</h3>
+						<p>Premium Soft Serve Ice Cream in a Pouch&hellip;No, Seriously! No machine, no prep, no mess. Just thaw, squeeze and eat! Flavors include Chocolate and Vanilla, with a Twist on the way!</p>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="accommodations-section" id="drinks" aria-label="Drinks options">
+		<div class="accommodations-section__inner container-xl">
+			<!-- <h2 class="accommodations-section__heading">Drinks</h2> -->
+			<img
+				class="food-drinks-section-image food-drinks-section-image--contain rounded-3 mb-4"
+				src="{{ url_for('static', filename='img/drinks.webp') }}"
+				alt="Chilled soda cans on ice"
+				loading="lazy"
+				decoding="async"
+			>
+			<div class="accommodations-list accommodations-list--lodging">
+				<article class="accommodations-list__item">
+					<div>
+						<h3>Subzero Frozen Drinks</h3>
+						<p>Turn up the chill! Subzero is the ultimate slushie experience, blending bold, electrifying flavors that hit as hard as the bass. Cool off with summer flavors like strawberry or limeade, made with all-natural ingredients.</p>
+					</div>
+				</article>
+				<article class="accommodations-list__item">
+					<div>
+						<h3>ColdRush Shaved Ice</h3>
+						<p>ColdRush serves up shaved ice with bold, punchy flavors like Very Berry, Pi&ntilde;a Colada, and Miami Vice that play just like your favorite song.</p>
+					</div>
+				</article>
+				<article class="accommodations-list__item">
+					<div>
+						<h3>Riffresher</h3>
+						<p>Crisp, vibrant, and exclusively at our venues, Riffresher is made for those who thrive in the front row and live for the encore. These drinks are made with real juice and come in bold energy, lemonade, and cream soda flavors. Stay refreshed, stay amped.</p>
+					</div>
+				</article>
+				<article class="accommodations-list__item">
+					<div>
+						<h3>Liquid Death</h3>
+						<p>Liquid Death will not kill you. But make no mistake, our infinitely recyclable cans of premium low-calorie beverages will absolutely murder your thirst. And it doesn&rsquo;t stop there. Beverages include: Mountain Water, Soda-Flavored Sparkling Water, and Iced Teas.</p>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="accommodations-section accommodations-section--alt" aria-label="Food and drinks notes">
+		<div class="accommodations-section__inner container-xl">
+			<h2 class="accommodations-section__heading">Before You Go</h2>
+			<ul class="accommodations-route-list">
+				<li>Vendor availability can change by event date.</li>
+				<li>Menus and pricing are set by the venue and partners.</li>
+				<li>Mobile ordering and line speed vary by show.</li>
+				<li>Drink selections can vary by event and stand location.</li>
+			</ul>
+			<div class="d-flex flex-wrap gap-3 mt-4">
+				<a class="btn btn-outline-light btn-xxl" href="https://www.gorgeamphitheatre.com/bites" target="_blank" rel="noopener noreferrer">View official venue Bites page</a>
+				<a class="btn btn-outline-light btn-xxl" href="https://www.gorgeamphitheatre.com/drinks" target="_blank" rel="noopener noreferrer">View official venue Drinks page</a>
+			</div>
+		</div>
+	</section>
+
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
