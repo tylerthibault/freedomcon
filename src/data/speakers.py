@@ -190,6 +190,21 @@ gen_z_speakers = [
 				'subtitle': ' '
 			}
 		],
+        'shrink': 0.98,
+    },
+    {
+        'name': 'Keyton Lawter',
+        'image': 'img/speakers/gen_z/keyton.webp',
+        'alt': 'Keyton Lawter',
+        'titles': [' '],
+        'bio': 'Recently deemed "local activist" Keyton Lawter is in his 2nd year at Vector West University. Throughout his time in Vector West, Keyton has organized and started a Turning Point USA chapter at the college. With the help of his team Keyton has organized multiple rallies both locally and on the steps of the state capitol building. More recently he has taken on the battle of replacing the gay pride flags typically flown along the streets of Wenatchee, with banners that celebrate the core of every community: family. Keyton is 19 years old with the ultimate goal of one day being a loving husband, father and leaving the world a little bit better than he found it, while serving Christ the best he can.',
+		'orgs': [
+			{
+				'icon': ' ',
+				'name': ' ',
+				'subtitle': ' '
+			}
+		],
     },
     {
         'name': 'Caden Vasquez',
