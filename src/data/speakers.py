@@ -160,3 +160,91 @@ speakers = [
 	        "orgs": [{"icon": "flag", "name": "Virginia House of Delegates", "subtitle": "Limited government"}, {"icon": "star", "name": "Green Beret", "subtitle": "11-year Army veteran"}],
 },
 ]
+
+# Levi, Caiden Lenssen, Caden Vasquez, Austin Smoke, David Prince, Ben James
+gen_z_speakers = [
+    {
+        'name': 'Levi McPherson',
+        'image': 'img/speakers/gen_z/levi.webp',
+        'alt': 'Levi McPherson',
+        'titles': [' '],
+        'bio': 'Levi McPherson comes from a legacy of great fathers, businessmen, statesmen, and churchmen. Born and raised in the Wenatchee Valley, WA, he was brought up in the local church and shaped by sitting under his father’s preaching, even before he could understand it. He grew up heavily involved in the ministry and considers it one of the greatest privileges of his life to grow up as a Pastor Josh’s son. He also participated in the inaugural cycle of Project ManCard in early high school. After graduating from the inaugural class of Garden City Academy, while simultaneously completing his first year at Vector West University, he married his high school sweetheart. They now live in Wenatchee, serving the church together. Having led worship throughout high school in various church ministries, he currently helps lead worship at Grace City Church, and also works in communications for Stronger Man Nation, helping spread the message of the gospel alongside his immediate and extended family. Levi is 19 years old, two years into Vector West University, a year into marriage, and excited to grow as an effective kingdom leader, loving husband, faithful churchman, and one day father, endeavoring to carry the legacy he has been given forward in his own life. Levi is driven by a holy ambition to leverage all that he has and is responsible for to advance the kingdom of God in his generation and raise up the next to do the same.',
+        'orgs': [
+            {
+                'icon': ' ', 
+				'name': ' ', 
+				'subtitle': ' '
+			}
+		],
+    },
+    {
+        'name': 'Caiden Lenssen',
+        'image': 'img/speakers/gen_z/caiden.webp',
+        'alt': 'Caiden Lenssen',
+        'titles': [' '],
+        'bio': 'Caiden Lenssen was born and raised in Wenatchee, Washington. Growing up in a Christian family, Caiden attended several homeschool co-ops before enrolling at a private Christian school called The River Academy. During the pandemic, he was offered an amazing opportunity to attend Vector College. Joining Vector was a life-changing experience, where the Lord began to cultivate a strong desire in him to dive deeper into theology and all things Bible. After graduating in the inaugural class he went on to join his family’s construction company, Lenssen Homes. During this time he also started a window washing company on the side. Currently, Caiden is 22 years old and in his final year at Vector College. He also regularly serves at Grace City Church while working full-time. Caiden is striving to become the kind of leader, husband, and man who will inspire change in the hearts of those around him. He is deeply grateful for the many strong leaders that inspire and encourage him to be bold, to be humble, and to face adversity with courage.',
+		'orgs': [
+			{
+				'icon': ' ',
+				'name': ' ',
+				'subtitle': ' '
+			}
+		],
+    },
+    {
+        'name': 'Caden Vasquez',
+        'image': 'img/speakers/gen_z/caden.webp',
+        'alt': 'Caden Vasquez',
+        'titles': [' '],
+        'bio': "Caden Vasquez is a 19 year old and a second-year student at Vector West University. He was raised in a Christian household, where faith and church life formed the foundation of his upbringing. He spent his early academic years in public education, where he struggled with academic performance and the pressure to conform to the patterns and expectations of the world around him. During this season, and especially through the isolation of the COVID-19 pandemic, Caden experienced confusion about his identity, purpose, and direction in life, as well as a deep sense of unfulfillment. Seeking a different path, Caden later pursued private Christian education, which became a turning point in his life. There, he developed a stronger desire to grow intellectually, spiritually, and physically , and began to pursue a more disciplined and intentional way of living. At Vector, Caden has continued that growth through rigorous academic study, spiritual formation, and leadership development. He serves as Vice President of a Turning Point USA chapter he helped establish with a close friend, gaining experience in leadership, organization, and public engagement. Caden’s goal is to become a faithful husband, father, and servant leader who impacts his community, state, and nation with conviction, courage, and Christ centered purpose.",
+		'orgs': [
+			{
+				'icon': ' ',
+				'name': ' ',
+				'subtitle': ' '
+			}
+		],
+    },
+    {
+        'name': 'Austin Smoke',
+        'image': 'img/speakers/gen_z/austin.webp',
+        'alt': 'Austin Smoke',
+        'titles': [' '],
+        'bio': "Austin Smoke is 19 years old and lives in Waterville, WA. He currently spends summers working on his family's fifth generation farm. Austin grew up in a family of eight and was homeschooled until enrolling at the local college his junior year. After attending for a year, he was grieved by the secular agendas that were being taught in and out of class. Frustrated by the state of the education system, he decided that going forward with his education in this way would not be a fruitful endeavor. Wishing to deepen his faith and attain a better understanding of today's society he decided to enroll in Vector West University. Austin is passionate about helping other young men become stronger men who love Jesus, their families and nation. He believes that Christian men should be the best of men and need to be active in, government, business, and education so that others will be able to live in and experience the great blessings of our country. Austin is looking forward to enlisting in the military after he graduates. He hopes to one day be a husband and father and to use his influence to shape culture and rebuild it to reflect basic biblical ideas and principles.",
+		'orgs': [
+			{
+				'icon': ' ',
+				'name': ' ',
+				'subtitle': ' '
+			}
+		],
+    },
+    {
+        'name': 'David Prince',
+        'image': 'img/speakers/gen_z/david.webp',
+        'alt': 'David Prince',
+        'titles': [' '],
+        'bio': "David Prince is a third-generation Christian, and a beloved son, brother, and friend. He was raised in a Law Enforcement family and classically homeschooled in western Washington, culminating in an education as a freshman this year at Vector West, where he has sought to build a life-long foundation of faith. He competed in swimming at the state level and captained a water polo team during his years of high school. He has a passion for music and has served the church for multiple years in worship ministry. With his father, David started a lawnmowing business at age ten, and recently entered into the electrical trade as an apprentice. David is currently 19 years old and has aspirations to become a faithful husband, a caring father, a lifelong provider, and a godly man, continuing his own legacy of faith for generations to come.",
+		'orgs': [
+			{
+				'icon': ' ',
+				'name': ' ',
+				'subtitle': ' '
+			}
+		],
+    },
+    {
+        'name': 'Ben James',
+        'image': 'img/speakers/gen_z/ben.webp',
+        'alt': 'Ben James',
+        'titles': [' '],
+        'bio': "Ben James is 20 years old and was born and raised in Wenatchee, Washington, where he is continuing to build his life, faith, and future in the same community that shaped him. The son of Grace City Church Elder Adam James, Ben has been formed by a gospel-centered culture of conviction and responsibility. He was part of Alpha Squadron in the inaugural 2022 cycle of ManCard, where he began sharpening his identity as a man called to lead and serve others. While still in high school, Ben graduated at the top of his class from year one of Vector West University, earning a residency opportunity at Garden City Academy, where he stepped into student teaching and hands-on leadership development. It was during this season that he met his wife Emily, who was in Vector year one at the time. Ben went on to complete his residency and now works on the communications team at Grace City Church and recently finished year two at Vector. Recently purchasing his first home, he is actively setting roots and taking responsibility for the future of Washington State. Ben is driven by a vision to build a strong family, serve the local church, and fight for what is good, true, and beautiful—living free and leading with purpose in the state that he loves.",
+		'orgs': [
+			{
+				'icon': ' ',
+				'name': ' ',
+				'subtitle': ' '
+			}
+		],
+    },
+]

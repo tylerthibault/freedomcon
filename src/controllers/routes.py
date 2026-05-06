@@ -15,7 +15,7 @@ from src.data.FAQ import FAQ
 from src.data.accommodations import hotel_options, travel_info
 from src.data.artists import artists
 from src.data.social_proof import social_proof, boys_social_proof
-from src.data.speakers import speakers as speakers_data
+from src.data.speakers import speakers as speakers_data, gen_z_speakers
 from src.data.videos import videos as videos_data
 from src.data.tickers import ticketer1, ticketers
 from src.data.tickets import get_ticket_context
@@ -381,6 +381,19 @@ def speakers() -> str:
 			title="FREEDOM CON Speakers | 2026 Conference Lineup",
 			description="Meet the Freedom Con 2026 speaker lineup featuring pastors, veterans, leaders, and voices challenging men toward faith and statesmanship.",
 			path="/speakers",
+		),
+	)
+
+
+@public_bp.get("/speakers/gen-z")
+def gen_z_speakers_page() -> str:
+	return render_template(
+		"public/speakers/gen_z.html",
+		speakers=gen_z_speakers,
+		seo=build_seo(
+			title="FREEDOM CON Gen Z Speakers | 2026 Conference Lineup",
+			description="Meet the Gen Z speaker lineup for Freedom Con 2026.",
+			path="/speakers/gen-z",
 		),
 	)
 

@@ -524,6 +524,15 @@ body.landing12-no-scroll {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.62) 80%);
 }
 
+.landing12-cta-2__actions {
+    position: relative;
+    z-index: 3;
+    grid-area: 1 / 1;
+    align-self: end;
+    justify-self: center;
+    margin-bottom: clamp(1.25rem, 3vw, 2.5rem);
+}
+
 .landing12-cta-2__content {
     position: absolute;
     bottom: 0;
