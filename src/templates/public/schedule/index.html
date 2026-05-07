@@ -10,55 +10,49 @@
 {% endblock %}
 
 {% block content %}
-<main class="schedule-page">
-	<section class="schedule-section" aria-label="Full event schedule">
-		<div class="schedule-section__inner container-xl">
+<main class="bg-black text-white">
+	<section class="py-5" aria-label="Full event schedule">
+		<div class="container-xl px-3">
 
-			<div class="schedule-full">
+			<div class="d-flex flex-column gap-4">
 
 				<!-- ═══════════════════════════════════════════════
 				     FRIDAY PM — JUNE 19
 				═══════════════════════════════════════════════ -->
-				<div class="schedule-day" aria-label="Friday June 19 schedule">
-					<div class="schedule-day__header">
-						<div class="schedule-day__date-box">
-							<span class="schedule-day__day-of-week">Friday PM</span>
-							<span class="schedule-day__day-number">19</span>
-							<span class="schedule-day__month">June</span>
+				<div class="sched-day-grid border border-fc-red rounded overflow-hidden" aria-label="Friday June 19 schedule">
+					<div class="d-flex flex-column align-items-center justify-content-center text-center p-3 border-end border-fc-red">
+						<span class="text-white text-uppercase fw-bold small lh-sm ls-wide">Friday PM</span>
+						<span class="sched-date-num text-fc-red fw-black lh-1">19</span>
+						<span class="text-white text-uppercase fw-bold small ls-wide">June</span>
+					</div>
+					<div class="d-flex flex-column p-3 gap-0">
+						<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+							<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">12:00 PM...</span>
+							<span class="text-uppercase fw-bold text-white">Check In | Camp Set-Up</span>
 						</div>
-						<div class="schedule-day__events">
-							<div class="schedule-event schedule-event--logistics">
-								<span class="schedule-event__time">12:00 PM...</span>
-								<span class="schedule-event__title">Gorge Campground Opens</span>
-							</div>
-							<div class="schedule-event schedule-event--logistics">
-								<span class="schedule-event__time">4:00 PM...</span>
-								<span class="schedule-event__title">Gates to Amphitheater Open</span>
-							</div>
-							<div class="schedule-event schedule-event--logistics">
-								<span class="schedule-event__time">4:00 PM...</span>
-								<span class="schedule-event__title">Vendors, Booths, Food Open</span>
-							</div>
-							<div class="schedule-event schedule-event--worship">
-								<span class="schedule-event__time">5:00 PM...</span>
-								<span class="schedule-event__title">Pre-Show Worship</span>
-							</div>
-							<div class="schedule-event schedule-event--session schedule-event--highlight">
-								<span class="schedule-event__time">6:00 PM...</span>
-								<span class="schedule-event__title">Main Session One</span>
-							</div>
-							<div class="schedule-event schedule-event--concert schedule-event--highlight">
-								<span class="schedule-event__time">9:00 PM...</span>
-								<span class="schedule-event__title">Danny Gokey Concert</span>
-							</div>
-							<div class="schedule-event schedule-event--special">
-								<span class="schedule-event__time">10:00 PM...</span>
-								<span class="schedule-event__title">Project Mancard Documentary Premier</span>
-							</div>
-							<div class="schedule-event schedule-event--logistics">
-								<span class="schedule-event__time">11:30 PM...</span>
-								<span class="schedule-event__title">Amphitheater Closes</span>
-							</div>
+						<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+							<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">4:00 PM...</span>
+							<span class="text-uppercase fw-bold text-white">Gates Open | Vendors, Booths, Food Open</span>
+						</div>
+						<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+							<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">5:00 PM...</span>
+							<span class="text-uppercase fw-bold text-white">Pre-Show Worship</span>
+						</div>
+						<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+							<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">6:00 PM...</span>
+							<span class="text-uppercase fw-bold text-white">Session One</span>
+						</div>
+						<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+							<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">9:00 PM...</span>
+							<span class="text-uppercase fw-bold text-white">Concert: Danny Gokey</span>
+						</div>
+						<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+							<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">10:00 PM...</span>
+							<span class="text-uppercase fw-bold text-white">Project Mancard Documentary Premier</span>
+						</div>
+						<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+							<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">11:30 PM...</span>
+							<span class="text-uppercase fw-bold text-white">Amphitheater Closes</span>
 						</div>
 					</div>
 				</div>
@@ -66,105 +60,126 @@
 				<!-- ═══════════════════════════════════════════════
 				     SATURDAY AM — JUNE 20
 				═══════════════════════════════════════════════ -->
-				<div class="schedule-day" aria-label="Saturday June 20 schedule">
-					<div class="schedule-day__header">
-						<div class="schedule-day__date-box">
-							<span class="schedule-day__day-of-week">Saturday AM</span>
-							<span class="schedule-day__day-number">20</span>
-							<span class="schedule-day__month">June</span>
-						</div>
-						<div class="schedule-day__events">
-							<div class="schedule-event schedule-event--logistics">
-								<span class="schedule-event__time">7:00 AM...</span>
-								<span class="schedule-event__title">Gates Open</span>
-							</div>
-							<div class="schedule-event schedule-event--session schedule-event--highlight">
-								<span class="schedule-event__time">9:00 AM...</span>
-								<span class="schedule-event__title">Main Session Two</span>
-							</div>
-							<div class="schedule-event schedule-event--break">
-								<span class="schedule-event__time">12:00 PM...</span>
-								<span class="schedule-event__title">Lunch</span>
-							</div>
-							<div class="schedule-event schedule-event--open">
-								<span class="schedule-event__time">12–6:00 PM...</span>
-								<span class="schedule-event__title">Open Time</span>
-								<span class="schedule-event__desc">(Side Stage Sessions, Live Music, Food, Stronger Boy Way Challenge Course, Stronger Man Comps, Vendors, Book Signings, Man Camp, Meet &amp; Greets)</span>
-							</div>
-						</div>
+				<div class="sched-day-grid border border-fc-red rounded overflow-hidden" aria-label="Saturday June 20 schedule">
+
+					<div class="d-flex flex-column align-items-center justify-content-center text-center p-3 border-end border-fc-red">
+						<span class="text-white text-uppercase fw-bold small lh-sm ls-wide">Saturday AM</span>
+						<span class="sched-date-num text-fc-red fw-black lh-1">20</span>
+						<span class="text-white text-uppercase fw-bold small ls-wide">June</span>
 					</div>
 
-					<!-- ── Parallel stages ── -->
-					<div class="schedule-tracks">
+					<div class="d-flex flex-column gap-3 p-3 overflow-hidden">
 
-						<!-- Side Stage #1 -->
-						<div class="schedule-track-col">
-							<div class="schedule-tracks__label">Side Stage #1</div>
-							<div class="schedule-track">
-								<article class="schedule-track__event schedule-track__event--session">
-									<span class="schedule-track__time">1:00 PM...</span>
-									<span class="schedule-track__title">For Liberty and Justice</span>
-								</article>
-								<article class="schedule-track__event schedule-track__event--session">
-									<span class="schedule-track__time">2:30 PM...</span>
-									<span class="schedule-track__title">Vector West University Panel</span>
-								</article>
-								<article class="schedule-track__event schedule-track__event--session">
-									<span class="schedule-track__time">4:00 PM...</span>
-									<span class="schedule-track__title">Building Wealth &amp; The Kingdom</span>
-								</article>
+						<!-- Morning events -->
+						<div class="d-flex flex-column gap-0">
+							<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+								<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">7:00 AM...</span>
+								<span class="text-uppercase fw-bold text-white">Gates Open</span>
+							</div>
+							<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+								<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">9:00 AM...</span>
+								<span class="text-uppercase fw-bold text-white">Session Two</span>
+							</div>
+							<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+								<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">12:00 PM...</span>
+								<span class="text-uppercase fw-bold text-white">Lunch</span>
 							</div>
 						</div>
 
-						<!-- Side Stage #2 -->
-						<div class="schedule-track-col">
-							<div class="schedule-tracks__label">Side Stage #2</div>
-							<div class="schedule-track">
-								<article class="schedule-track__event schedule-track__event--concert">
-									<span class="schedule-track__time">1:00 PM...</span>
-									<span class="schedule-track__title">Band</span>
-								</article>
-								<article class="schedule-track__event schedule-track__event--concert">
-									<span class="schedule-track__time">2:30 PM...</span>
-									<span class="schedule-track__title">Band</span>
-								</article>
-								<article class="schedule-track__event schedule-track__event--concert">
-									<span class="schedule-track__time">4:00 PM...</span>
-									<span class="schedule-track__title">Band</span>
-								</article>
+						<!-- ── Open Time block: 12–6 PM ── -->
+						<div class="d-flex flex-column gap-2">
+							<div class="bg-fc-red text-white text-uppercase fw-bold small ls-wide px-3 py-2 rounded-1">Open Time (12:00–6:00 PM)</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-2 align-items-start">
+
+								<!-- Side Stage #1 -->
+								<div class="col d-flex flex-column gap-2">
+									<div class="badge bg-fc-red rounded-pill w-100 py-2 text-uppercase fw-bold ls-wide">Side Stage #1</div>
+									<div class="border border-fc-red rounded p-3 d-flex flex-column gap-2 h-100">
+										<div class="d-flex flex-column">
+											<span class="text-white-50 fw-bold small text-uppercase">1:00 PM...</span>
+											<span class="text-white text-uppercase fw-bold">For Liberty and Justice</span>
+										</div>
+										<div class="d-flex flex-column">
+											<span class="text-white-50 fw-bold small text-uppercase">2:30 PM...</span>
+											<span class="text-white text-uppercase fw-bold">Vector West University Panel</span>
+										</div>
+										<div class="d-flex flex-column">
+											<span class="text-white-50 fw-bold small text-uppercase">4:00 PM...</span>
+											<span class="text-white text-uppercase fw-bold">Building Wealth &amp; The Kingdom</span>
+										</div>
+									</div>
+								</div>
+
+								<!-- Side Stage #2 -->
+								<div class="col d-flex flex-column gap-2">
+									<div class="badge bg-fc-red rounded-pill w-100 py-2 text-uppercase fw-bold ls-wide">Side Stage #2</div>
+									<div class="border border-fc-red rounded p-3 d-flex flex-column gap-2 h-100">
+										<div class="d-flex flex-column">
+											<span class="text-white-50 fw-bold small text-uppercase">1:00 PM...</span>
+											<span class="text-white text-uppercase fw-bold">Band</span>
+										</div>
+										<div class="d-flex flex-column">
+											<span class="text-white-50 fw-bold small text-uppercase">2:30 PM...</span>
+											<span class="text-white text-uppercase fw-bold">Band</span>
+										</div>
+										<div class="d-flex flex-column">
+											<span class="text-white-50 fw-bold small text-uppercase">4:00 PM...</span>
+											<span class="text-white text-uppercase fw-bold">Band</span>
+										</div>
+									</div>
+								</div>
+
+								<!-- Liberty Lounge -->
+								<div class="col d-flex flex-column gap-2">
+									<div class="badge bg-fc-red rounded-pill w-100 py-2 text-uppercase fw-bold ls-wide">Liberty Lounge</div>
+									<div class="border border-fc-red rounded p-3 d-flex flex-column gap-2 h-100">
+										<div class="d-flex flex-column">
+											<span class="text-white-50 fw-bold small text-uppercase">1:30 PM...</span>
+											<span class="text-white text-uppercase fw-bold">Pastor &amp; Speaker Meet &amp; Greet</span>
+										</div>
+										<div class="d-flex flex-column">
+											<span class="text-white-50 fw-bold small text-uppercase">3:00 PM...</span>
+											<span class="text-white text-uppercase fw-bold">Elected Officials Meet &amp; Greet</span>
+										</div>
+									</div>
+								</div>
+
+								<!-- Open All Afternoon -->
+								<div class="col d-flex flex-column gap-2">
+									<div class="badge bg-fc-red rounded-pill w-100 py-2 text-uppercase fw-bold ls-wide">Open All Afternoon</div>
+									<div class="border border-fc-red rounded p-3 d-flex flex-column gap-1 h-100 text-center">
+										<span class="text-fc-red text-uppercase fw-bold small ls-wide">Sponsor Booths</span>
+										<span class="text-fc-red text-uppercase fw-bold small ls-wide">Vendors</span>
+										<span class="text-fc-red text-uppercase fw-bold small ls-wide">Stronger Boy Way Challenge Course</span>
+										<span class="text-fc-red text-uppercase fw-bold small ls-wide">Stronger Man Challenges &amp; Competitions</span>
+									</div>
+								</div>
+
 							</div>
 						</div>
 
-						<!-- Liberty Lounge -->
-						<div class="schedule-track-col">
-							<div class="schedule-tracks__label">Liberty Lounge</div>
-							<div class="schedule-track">
-								<article class="schedule-track__event schedule-track__event--meetgreet">
-									<span class="schedule-track__time">1:30 PM...</span>
-									<span class="schedule-track__title">Pastor &amp; Speaker Meet &amp; Greet</span>
-								</article>
-								<article class="schedule-track__event schedule-track__event--meetgreet">
-									<span class="schedule-track__time">3:00 PM...</span>
-									<span class="schedule-track__title">Elected Officials Meet &amp; Greet</span>
-								</article>
+						<!-- ── Saturday evening ── -->
+						<div class="rounded p-3 d-flex flex-column gap-0">
+							<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+								<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">5:00 PM...</span>
+								<span class="text-uppercase fw-bold text-white">Pre-Show Worship</span>
 							</div>
-						</div>
-
-						<!-- Open All Afternoon -->
-						<div class="schedule-track-col">
-							<div class="schedule-tracks__label">Open All Afternoon</div>
-							<div class="schedule-open">
-								<ul class="schedule-open__list">
-									<li>Sponsor Booths</li>
-									<li>Vendors</li>
-									<li>Stronger Boy Way Challenge Course</li>
-									<li>Stronger Man Challenges/Competitions</li>
-								</ul>
+							<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+								<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">6:00 PM...</span>
+								<span class="text-uppercase fw-bold text-white">Session Three</span>
+							</div>
+							<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+								<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">9:30 PM...</span>
+								<span class="text-uppercase fw-bold text-white">Concert: Crowder</span>
+							</div>
+							<div class="sched-event d-flex flex-wrap align-items-baseline gap-1 py-1">
+								<span class="sched-time text-white-50 fw-bold small text-uppercase text-nowrap">11:00 PM...</span>
+								<span class="text-uppercase fw-bold text-white">Event Ends</span>
 							</div>
 						</div>
 
 					</div>
-
 				</div>
 				<!-- end Saturday -->
 
@@ -173,9 +188,9 @@
 		</div>
 	</section>
 
-	<section class="schedule-cta" aria-label="Get tickets">
-		<div class="schedule-cta__inner container-xl">
-			<p class="schedule-cta__copy">Secure your spot before tickets sell out.</p>
+	<section class="border-top border-secondary border-opacity-25 py-5 text-center" aria-label="Get tickets">
+		<div class="container" style="max-width:600px">
+			<p class="text-uppercase fw-bold ls-wide text-white opacity-75 mb-3">Secure your spot before tickets sell out.</p>
 			{{ cta_buttons(link_only=true, primary_class='schedule-cta__btn btn-primary') }}
 		</div>
 	</section>
