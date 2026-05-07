@@ -52,6 +52,20 @@ sponsors = {
                 'background_color': "#000000",
                 'scale': 1.5
             },
+            {
+                'name': 'The Family Capitain',
+                'logo_url': '/static/img/sponsor_logos/the_family_captin_logo.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
+                'scale': 1.5
+            },
+            {
+                'name': 'Freedom Fuel',
+                'logo_url': '/static/img/sponsor_logos/freedom_fuel.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
+                'scale': 1.5
+            },
     ],
     'ministries': [
             {

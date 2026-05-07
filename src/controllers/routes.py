@@ -25,7 +25,6 @@ from src.data.about_smn import about_smn_conferences
 from src.data.podcasts import podcasts as podcasts_data
 from src.data.wives import wives as wives_data
 from src.data.invite import invite as invite_data
-from src.data.schedule import schedule as schedule_data
 from src.data.the_play import the_play as the_play_data
 from src.data.hotels import hotels as hotels_data
 from src.data.camping import camping as camping_data
@@ -868,10 +867,8 @@ def invite_page() -> str:
 
 @public_bp.get("/schedule")
 def schedule_page() -> str:
-	return redirect(url_for("public.landing"), code=302)
 	return render_template(
 		"public/schedule/index.html",
-		schedule=schedule_data,
 		seo=build_seo(
 			title="Schedule | Freedom Con 2026",
 			description="Full event schedule for Freedom Con 2026. Two days of speakers, worship, Danny Gokey, and Crowder at The Gorge Amphitheatre.",

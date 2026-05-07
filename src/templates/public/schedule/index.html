@@ -1,6 +1,4 @@
 {% extends "bases/public.html" %}
-{% from "components/macros/banner.html" import slim_banner %}
-{% from "components/macros/page_hero.html" import page_hero %}
 {% from "components/macros/cta_buttons.html" import cta_buttons %}
 
 {% block styles %}
@@ -15,7 +13,163 @@
 <main class="schedule-page">
 	<section class="schedule-section" aria-label="Full event schedule">
 		<div class="schedule-section__inner container-xl">
-			{% include "components/schedule/schedule_full.html" %}
+
+			<div class="schedule-full">
+
+				<!-- ═══════════════════════════════════════════════
+				     FRIDAY PM — JUNE 19
+				═══════════════════════════════════════════════ -->
+				<div class="schedule-day" aria-label="Friday June 19 schedule">
+					<div class="schedule-day__header">
+						<div class="schedule-day__date-box">
+							<span class="schedule-day__day-of-week">Friday PM</span>
+							<span class="schedule-day__day-number">19</span>
+							<span class="schedule-day__month">June</span>
+						</div>
+						<div class="schedule-day__events">
+							<div class="schedule-event schedule-event--logistics">
+								<span class="schedule-event__time">12:00 PM...</span>
+								<span class="schedule-event__title">Gorge Campground Opens</span>
+							</div>
+							<div class="schedule-event schedule-event--logistics">
+								<span class="schedule-event__time">4:00 PM...</span>
+								<span class="schedule-event__title">Gates to Amphitheater Open</span>
+							</div>
+							<div class="schedule-event schedule-event--logistics">
+								<span class="schedule-event__time">4:00 PM...</span>
+								<span class="schedule-event__title">Vendors, Booths, Food Open</span>
+							</div>
+							<div class="schedule-event schedule-event--worship">
+								<span class="schedule-event__time">5:00 PM...</span>
+								<span class="schedule-event__title">Pre-Show Worship</span>
+							</div>
+							<div class="schedule-event schedule-event--session schedule-event--highlight">
+								<span class="schedule-event__time">6:00 PM...</span>
+								<span class="schedule-event__title">Main Session One</span>
+							</div>
+							<div class="schedule-event schedule-event--concert schedule-event--highlight">
+								<span class="schedule-event__time">9:00 PM...</span>
+								<span class="schedule-event__title">Danny Gokey Concert</span>
+							</div>
+							<div class="schedule-event schedule-event--special">
+								<span class="schedule-event__time">10:00 PM...</span>
+								<span class="schedule-event__title">Project Mancard Documentary Premier</span>
+							</div>
+							<div class="schedule-event schedule-event--logistics">
+								<span class="schedule-event__time">11:30 PM...</span>
+								<span class="schedule-event__title">Amphitheater Closes</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- ═══════════════════════════════════════════════
+				     SATURDAY AM — JUNE 20
+				═══════════════════════════════════════════════ -->
+				<div class="schedule-day" aria-label="Saturday June 20 schedule">
+					<div class="schedule-day__header">
+						<div class="schedule-day__date-box">
+							<span class="schedule-day__day-of-week">Saturday AM</span>
+							<span class="schedule-day__day-number">20</span>
+							<span class="schedule-day__month">June</span>
+						</div>
+						<div class="schedule-day__events">
+							<div class="schedule-event schedule-event--logistics">
+								<span class="schedule-event__time">7:00 AM...</span>
+								<span class="schedule-event__title">Gates Open</span>
+							</div>
+							<div class="schedule-event schedule-event--session schedule-event--highlight">
+								<span class="schedule-event__time">9:00 AM...</span>
+								<span class="schedule-event__title">Main Session Two</span>
+							</div>
+							<div class="schedule-event schedule-event--break">
+								<span class="schedule-event__time">12:00 PM...</span>
+								<span class="schedule-event__title">Lunch</span>
+							</div>
+							<div class="schedule-event schedule-event--open">
+								<span class="schedule-event__time">12–6:00 PM...</span>
+								<span class="schedule-event__title">Open Time</span>
+								<span class="schedule-event__desc">(Side Stage Sessions, Live Music, Food, Stronger Boy Way Challenge Course, Stronger Man Comps, Vendors, Book Signings, Man Camp, Meet &amp; Greets)</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- ── Parallel stages ── -->
+					<div class="schedule-tracks">
+
+						<!-- Side Stage #1 -->
+						<div class="schedule-track-col">
+							<div class="schedule-tracks__label">Side Stage #1</div>
+							<div class="schedule-track">
+								<article class="schedule-track__event schedule-track__event--session">
+									<span class="schedule-track__time">1:00 PM...</span>
+									<span class="schedule-track__title">For Liberty and Justice</span>
+								</article>
+								<article class="schedule-track__event schedule-track__event--session">
+									<span class="schedule-track__time">2:30 PM...</span>
+									<span class="schedule-track__title">Vector West University Panel</span>
+								</article>
+								<article class="schedule-track__event schedule-track__event--session">
+									<span class="schedule-track__time">4:00 PM...</span>
+									<span class="schedule-track__title">Building Wealth &amp; The Kingdom</span>
+								</article>
+							</div>
+						</div>
+
+						<!-- Side Stage #2 -->
+						<div class="schedule-track-col">
+							<div class="schedule-tracks__label">Side Stage #2</div>
+							<div class="schedule-track">
+								<article class="schedule-track__event schedule-track__event--concert">
+									<span class="schedule-track__time">1:00 PM...</span>
+									<span class="schedule-track__title">Band</span>
+								</article>
+								<article class="schedule-track__event schedule-track__event--concert">
+									<span class="schedule-track__time">2:30 PM...</span>
+									<span class="schedule-track__title">Band</span>
+								</article>
+								<article class="schedule-track__event schedule-track__event--concert">
+									<span class="schedule-track__time">4:00 PM...</span>
+									<span class="schedule-track__title">Band</span>
+								</article>
+							</div>
+						</div>
+
+						<!-- Liberty Lounge -->
+						<div class="schedule-track-col">
+							<div class="schedule-tracks__label">Liberty Lounge</div>
+							<div class="schedule-track">
+								<article class="schedule-track__event schedule-track__event--meetgreet">
+									<span class="schedule-track__time">1:30 PM...</span>
+									<span class="schedule-track__title">Pastor &amp; Speaker Meet &amp; Greet</span>
+								</article>
+								<article class="schedule-track__event schedule-track__event--meetgreet">
+									<span class="schedule-track__time">3:00 PM...</span>
+									<span class="schedule-track__title">Elected Officials Meet &amp; Greet</span>
+								</article>
+							</div>
+						</div>
+
+						<!-- Open All Afternoon -->
+						<div class="schedule-track-col">
+							<div class="schedule-tracks__label">Open All Afternoon</div>
+							<div class="schedule-open">
+								<ul class="schedule-open__list">
+									<li>Sponsor Booths</li>
+									<li>Vendors</li>
+									<li>Stronger Boy Way Challenge Course</li>
+									<li>Stronger Man Challenges/Competitions</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<!-- end Saturday -->
+
+			</div>
+
 		</div>
 	</section>
 
