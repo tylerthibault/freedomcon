@@ -1,0 +1,17 @@
+<!-- ── HD Raffle expanding drawer ── -->
+<div class="hd-drawer" id="hd-drawer">
+  <div class="hd-drawer__panel w-100" id="hd-drawer-panel">
+    <picture class="w-100">
+      <source media="(max-width: 1440px)" srcset="{{ url_for('static', filename='img/hd_raffle_sm.webp') }}">
+      <img src="{{ url_for('static', filename='img/hd_raffle_lg.webp') }}" alt="Win a Harley-Davidson Softail Breakout — Raffled Live at FreedomCon June 19-20 2026" class="hd-drawer__img w-100" loading="lazy">
+    </picture>
+  </div>
+  <button class="hd-teaser" id="hd-teaser-btn" aria-expanded="false" aria-controls="hd-drawer-panel" aria-label="Win a Harley-Davidson Softail Breakout — tap to expand">
+    <span class="hd-teaser__shimmer" aria-hidden="true"></span>
+    <span class="hd-teaser__text">
+      <span class="hd-teaser__win">Win This</span>
+      <span class="hd-teaser__model">Harley-Davidson Softail Breakout</span>
+    </span>
+    <span class="hd-teaser__cta text-white border border-white" id="hd-teaser-cta-label">Raffled Live ›</span>
+  </button>
+</div>

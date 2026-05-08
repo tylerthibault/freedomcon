@@ -896,15 +896,18 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (!(trigger instanceof HTMLElement)) return;
 
 			const videoIdRaw = trigger.dataset.videoId || "";
-			const videoId = /^[a-zA-Z0-9_-]{6,}$/.test(videoIdRaw) ? videoIdRaw : "";
+			const videoId = /^[a-zA-Z0-9_-]{11}$/.test(videoIdRaw) ? videoIdRaw : "";
 			if (!videoId) return;
+
+			const startSec = parseInt(trigger.dataset.start || "0", 10) || 0;
 
 			if (mediaModalTitle) {
 				mediaModalTitle.textContent = trigger.dataset.title || "Video";
 			}
 
 			if (mediaIframe instanceof HTMLIFrameElement) {
-				mediaIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+				const startParam = startSec > 0 ? `&start=${startSec}` : "";
+				mediaIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0&modestbranding=1${startParam}`;
 			}
 
 			activeMediaTrigger = trigger;

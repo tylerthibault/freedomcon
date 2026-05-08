@@ -70,6 +70,131 @@
     margin-left: 1rem;
   }
 </style>
+
+<style>
+  /* ── HD Raffle Teaser Bar ── */
+  .hd-teaser {
+    position: relative;
+    background: linear-gradient(135deg, #0e0e0e 0%, #1c1c1c 50%, #0e0e0e 100%);
+    border-top: 2px solid #bc2a27;
+    border-left: none; border-right: none; border-bottom: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1rem;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    font-family: inherit;
+    width: 100%;
+  }
+  .hd-teaser__shimmer {
+    position: absolute;
+    top: 0; left: -60%;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+    animation: hd-shimmer 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes hd-shimmer {
+    0%   { left: -60%; }
+    100% { left: 120%; }
+  }
+  .hd-teaser__icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .hd-teaser__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.25;
+    min-width: 0;
+  }
+  .hd-teaser__win {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #bc2a27;
+    font-weight: 700;
+  }
+  .hd-teaser__model {
+    font-size: 1.05rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .hd-teaser__cta {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #bc2a27;
+    white-space: nowrap;
+    border: 1px solid #bc2a27;
+    padding: 0.45rem 0.85rem;
+    border-radius: 3px;
+    flex-shrink: 0;
+    transition: background 0.15s, color 0.15s;
+  }
+  .hd-teaser:hover .hd-teaser__cta,
+  .hd-teaser:focus-visible .hd-teaser__cta {
+    background: #bc2a27;
+    color: #fff;
+  }
+
+  @media (max-width: 480px) {
+    .hd-teaser {
+      gap: 0.6rem;
+      padding: 0.75rem 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .hd-teaser__icon {
+      font-size: 1.5rem;
+    }
+    .hd-teaser__model {
+      font-size: 0.85rem;
+      white-space: normal;
+    }
+    .hd-teaser__cta {
+      margin-left: auto;
+      font-size: 0.72rem;
+      padding: 0.35rem 0.65rem;
+    }
+    .hd-teaser__text {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+
+  /* ── HD Drawer (expanding panel) ── */
+  .hd-drawer {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .hd-drawer__panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #0e0e0e;
+    display: block;
+    width: 100%;
+  }
+  .hd-drawer.is-open .hd-drawer__panel {
+    max-height: 2000px; /* large enough for any portrait image at full width */
+  }
+  .hd-drawer__img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>
 {% endblock %}
 
 {% block navigation %}
@@ -135,6 +260,8 @@
 
   {% include 'public/landing copy/components/count_down.html' %}
 
+    {% include 'public/landing copy/components/hd_raffle.html' %}
+
   {% include 'public/landing copy/components/mission_statement.html' %}
 
   {% include 'public/landing copy/components/silent_video.html' %}
@@ -149,10 +276,6 @@
 
   {% include 'public/landing copy/components/cta_2.html' %}
 
-  <!-- <div class="my-3">
-    {{ cta_buttons() }}
-  </div> -->
-
   {% include 'public/landing copy/components/what_to_expect.html' %}
 
   {% include 'public/landing copy/components/trailers.html' %}
@@ -161,10 +284,10 @@
 
   {% include 'public/landing copy/components/father_son_callout.html' %}
 
-
   {% include 'public/landing copy/components/artists.html' %}
 
   {% include 'public/landing copy/components/father_sons_scroller.html' %}
+
   {% include 'public/landing copy/components/social_proof.html' %}
 
   <div class="my-2">
@@ -181,5 +304,30 @@
 {% endblock %}
 
 {% block scripts %}
+<script>
+(function () {
+  var drawer  = document.getElementById('hd-drawer');
+  var btn     = document.getElementById('hd-teaser-btn');
+  var ctaLabel = document.getElementById('hd-teaser-cta-label');
+  if (!drawer || !btn) return;
 
+  var isOpen = false;
+
+  btn.addEventListener('click', function () {
+    isOpen = !isOpen;
+    drawer.classList.toggle('is-open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    ctaLabel.textContent = isOpen ? 'Close ×' : 'Raffled Live ›';
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && isOpen) {
+      isOpen = false;
+      drawer.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+      ctaLabel.textContent = 'Raffled Live ›';
+    }
+  });
+})();
+</script>
 {% endblock %}

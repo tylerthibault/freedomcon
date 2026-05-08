@@ -36,6 +36,9 @@
 	display: grid;
 	gap: 1rem;
 	align-content: start;
+	max-width: 480px;
+	margin-inline: auto;
+	width: 100%;
 }
 
 .press-page__kit-image-link {
@@ -85,13 +88,16 @@
 
 .press-page__content-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	gap: clamp(1.5rem, 3vw, 3rem);
 	align-items: start;
 }
 
 .press-page__form-column {
 	display: grid;
+	max-width: 600px;
+	margin-inline: auto;
+	width: 100%;
 }
 
 .press-page__thank-you {
@@ -190,12 +196,6 @@
 .press-page-form .landing12-btn[disabled] {
 	opacity: 0.6;
 	cursor: not-allowed;
-}
-
-@media (max-width: 1000px) {
-	.press-page__content-grid {
-		grid-template-columns: 1fr;
-	}
 }
 
 

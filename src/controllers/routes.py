@@ -46,6 +46,18 @@ def extract_youtube_id(url: str) -> str:
 	return ""
 
 
+def extract_youtube_start(url: str) -> int:
+	"""Return the t= or start= timestamp (in seconds) from a YouTube URL, or 0."""
+	for param in ("t=", "start="):
+		if param in url:
+			raw = url.split(param, 1)[1].split("&", 1)[0].split("#", 1)[0]
+			try:
+				return max(0, int(raw))
+			except ValueError:
+				pass
+	return 0
+
+
 def normalize_video_thumbnail_path(path: str) -> str:
 	trimmed = str(path).strip().lstrip("/")
 	if not trimmed:
@@ -100,6 +112,7 @@ def build_media_section(
 			{
 				"title": item.get("title") or f"{title} {index}",
 				"youtube_id": youtube_id,
+				"start": item.get("start") or extract_youtube_start(video_url),
 				"alt": item.get("alt") or f"{title} thumbnail {index}",
 				"thumbnail_mobile": normalize_optional_thumbnail_path(
 					item.get("thumbnail_mobile") or item.get("thumbnail")
