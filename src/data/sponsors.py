@@ -66,6 +66,20 @@ sponsors = {
                 'background_color': "#000000",
                 'scale': 1.5
             },
+            {
+                'name': 'Stable Storfronts',
+                'logo_url': '/static/img/sponsor_logos/stable_storfronts_logo.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
+                'scale': 1.5
+            },
+            {
+                'name': 'Thacker E & T',
+                'logo_url': '/static/img/sponsor_logos/thacker_logo.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
+                'scale': 1.5
+            },
     ],
     'ministries': [
             {

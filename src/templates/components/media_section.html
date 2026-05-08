@@ -39,6 +39,7 @@
 				data-media-item
 				data-media-open
 				data-video-id="{{ item.get('youtube_id') }}"
+				data-start="{{ item.get('start', 0) }}"
 				data-title="{{ item.get('title') }}"
 				aria-label="{{ item.get('play_label') or section.get('play_label') or 'Play Video' }}: {{ item.get('title') }}"
 				{% if is_hidden %}hidden data-media-hidden="true"{% endif %}

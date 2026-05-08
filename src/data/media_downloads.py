@@ -242,6 +242,182 @@ media_downloads = [
             },
         ],
     },
+    {
+        "id": "media_assets",
+        "label": "Media Assets",
+        "assets": [
+            {
+                "label": "4 Speakers 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/4%20Speakers%201x1%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/4%20Speakers%201x1%20.webp",
+            },
+            {
+                "label": "4 Speakers 4x5",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/4%20Speakers%204x5%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/4%20Speakers%204x5%20.webp",
+            },
+            {
+                "label": "4 Speakers 9x16",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/4%20Speakers%209x16%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/4%20Speakers%209x16%20.webp",
+            },
+            {
+                "label": "20% Off 4x5",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/20OFF%204x5%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/20OFF%204x5%20.webp",
+            },
+            {
+                "label": "20% Off 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/20off1x1.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/20off1x1.webp",
+            },
+            {
+                "label": "20% Off 9x16",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/20off9x16.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/20off9x16.webp",
+            },
+            {
+                "label": "Action Plan 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Action%20Plan%201x1%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Action%20Plan%201x1%20.webp",
+            },
+            {
+                "label": "Action Plan 4x5",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Action%20Plan%204x5%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Action%20Plan%204x5%20.webp",
+            },
+            {
+                "label": "Action Plan 9x16",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Action%20Plan%209x16%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Action%20Plan%209x16%20.webp",
+            },
+            {
+                "label": "Bring Your Son 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/bringyourson1x1.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/bringyourson1x1.webp",
+            },
+            {
+                "label": "Bring Your Son 4x5",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/bringyourson3.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/bringyourson3.webp",
+            },
+            {
+                "label": "Bring Your Son 9x16",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/bringyourson9x16.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/bringyourson9x16.webp",
+            },
+            {
+                "label": "Father",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/FATHER.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/FATHER.webp",
+            },
+            {
+                "label": "Fathers 2",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/FATHERS%202.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/FATHERS%202.webp",
+            },
+            {
+                "label": "Fathers Day 4x5",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Fathers%20Day%204_5%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Fathers%20Day%204_5%20.webp",
+            },
+            {
+                "label": "Flip WA 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Flip%20WA%201x1.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Flip%20WA%201x1.webp",
+            },
+            {
+                "label": "Flip WA 4x5",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Flip%20WA%204x5%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Flip%20WA%204x5%20.webp",
+            },
+            {
+                "label": "Flip WA 9x16",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Flip%20WA%209x16%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Flip%20WA%209x16%20.webp",
+            },
+            {
+                "label": "FreedomCon Front",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Freedom_con_front_3.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Freedom_con_front_3.webp",
+            },
+            {
+                "label": "Lineup 4x5",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/lineup.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/lineup.webp",
+            },
+            {
+                "label": "Lineup 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/lineup1x1.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/lineup1x1.webp",
+            },
+            {
+                "label": "Lineup 9x16",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/lineup9x16.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/lineup9x16.webp",
+            },
+            {
+                "label": "Make Your Stand Speakers 4x5",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Stand%20Speakers%204x5%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Stand%20Speakers%204x5%20.webp",
+            },
+            {
+                "label": "Make Your Stand 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Your%20Stand%201x1%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Your%20Stand%201x1%20.webp",
+            },
+            {
+                "label": "Make Your Stand 4x5",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Your%20Stand%204_5%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Your%20Stand%204_5%20.webp",
+            },
+            {
+                "label": "Make Your Stand 9x16",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Your%20Stand%209x16%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Your%20Stand%209x16%20.webp",
+            },
+            {
+                "label": "Make Your Stand Speaker 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Your%20Stand%20Speaker%201x1%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Your%20Stand%20Speaker%201x1%20.webp",
+            },
+            {
+                "label": "Make Your Stand Speakers 9x16",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Your%20Stand%20Speakers%209x16%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Make%20Your%20Stand%20Speakers%209x16%20.webp",
+            },
+            {
+                "label": "One Historic Event 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/OHE%201X1.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/OHE%201X1.webp",
+            },
+            {
+                "label": "One Historic Event 9x16",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/OHE%209X16.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/OHE%209X16.webp",
+            },
+            {
+                "label": "One Historic Event 1:2",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/ONE%20HISTORIC%20EVENT%201_2.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/ONE%20HISTORIC%20EVENT%201_2.webp",
+            },
+            {
+                "label": "Testimonial 1 — 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%201%201x1%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%201%201x1%20.webp",
+            },
+            {
+                "label": "Testimonial 2 — 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%202%201x1%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%202%201x1%20.webp",
+            },
+            {
+                "label": "Testimonial 3 — 1x1",
+                "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%203%201x1%20.webp",
+                "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%203%201x1%20.webp",
+            },
+        ],
+    },
 ]
 
 
