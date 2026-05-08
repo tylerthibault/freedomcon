@@ -148,6 +148,31 @@
     color: #fff;
   }
 
+  @media (max-width: 480px) {
+    .hd-teaser {
+      gap: 0.6rem;
+      padding: 0.75rem 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .hd-teaser__icon {
+      font-size: 1.5rem;
+    }
+    .hd-teaser__model {
+      font-size: 0.85rem;
+      white-space: normal;
+    }
+    .hd-teaser__cta {
+      margin-left: auto;
+      font-size: 0.72rem;
+      padding: 0.35rem 0.65rem;
+    }
+    .hd-teaser__text {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+
   /* ── HD Drawer (expanding panel) ── */
   .hd-drawer {
     display: flex;
@@ -162,7 +187,7 @@
     width: 100%;
   }
   .hd-drawer.is-open .hd-drawer__panel {
-    max-height: 100vw; /* tall enough for any aspect ratio at full width */
+    max-height: 2000px; /* large enough for any portrait image at full width */
   }
   .hd-drawer__img {
     display: block;
