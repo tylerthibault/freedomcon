@@ -581,8 +581,18 @@ def press_download() -> Response:
 	if ext and not safe_name.lower().endswith(ext.lower()):
 		safe_name += ext
 
+	# HTTP headers only allow ASCII in the plain filename= token.
+	# For non-ASCII characters (e.g. em-dashes) use RFC 5987 filename* alongside
+	# an ASCII-only fallback for older clients.
+	ascii_name = safe_name.encode("ascii", errors="replace").decode("ascii").replace("?", "_")
+	from urllib.parse import quote as _urlquote
+	rfc5987_name = _urlquote(safe_name, safe=" !#$&+-.^_`|~")
+	content_disposition = (
+		f'attachment; filename="{ascii_name}"; filename*=UTF-8\'\'{rfc5987_name}'
+	)
+
 	return Response(data, headers={
-		"Content-Disposition": f'attachment; filename="{safe_name}"',
+		"Content-Disposition": content_disposition,
 		"Content-Type": content_type,
 		"Cache-Control": "public, max-age=3600",
 	})

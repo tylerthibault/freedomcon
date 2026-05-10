@@ -402,17 +402,17 @@ media_downloads = [
                 "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/ONE%20HISTORIC%20EVENT%201_2.webp",
             },
             {
-                "label": "Testimonial 1 — 1x1",
+                "label": "Testimonial 1 - 1x1",
                 "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%201%201x1%20.webp",
                 "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%201%201x1%20.webp",
             },
             {
-                "label": "Testimonial 2 — 1x1",
+                "label": "Testimonial 2 - 1x1",
                 "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%202%201x1%20.webp",
                 "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%202%201x1%20.webp",
             },
             {
-                "label": "Testimonial 3 — 1x1",
+                "label": "Testimonial 3 - 1x1",
                 "thumb": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%203%201x1%20.webp",
                 "download": "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/media_download/Media%20Assets/Testimonial%203%201x1%20.webp",
             },
