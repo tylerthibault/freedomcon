@@ -7,12 +7,12 @@ sponsors = {
                 'background_color': '#000000',
                 'scale': 2
             },
-            {
-                'name': 'Firefly',
-                'logo_url': '/static/img/sponsor_logos/Firefly_logo.webp',
-                'show_on_sponsor_page': True,
-                'background_color': "#FFFFFF"
-            },
+            # {
+            #     'name': 'Firefly',
+            #     'logo_url': '/static/img/sponsor_logos/Firefly_logo.webp',
+            #     'show_on_sponsor_page': True,
+            #     'background_color': "#FFFFFF"
+            # },
             {
                 'name': 'Speiro',
                 'logo_url': '/static/img/sponsor_logos/Speiro_logo.webp',
