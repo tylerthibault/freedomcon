@@ -80,6 +80,13 @@ sponsors = {
                 'background_color': "#000000",
                 'scale': 1.5
             },
+            {
+                'name': 'Cuts',
+                'logo_url': '/static/img/sponsor_logos/cuts.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#FFFFFF",
+                'scale': 1
+            },
     ],
     'ministries': [
             {
