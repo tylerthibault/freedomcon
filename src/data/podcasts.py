@@ -49,4 +49,14 @@ podcasts = [
 		"title": "Josh McPherson - The Christian & Politics",
 		"thumbnail_mobile": "img/videos/podcasts/the_christian_politics_three_of_seven.webp",
 	},
+	{
+		"url": "https://www.youtube.com/watch?v=pfS1v_ydbyI",
+		"title": "Washington Is the Left's Testing Ground!",
+		"thumbnail_mobile": "img/videos/podcasts/coming_to_your_state.webp",
+	},
+	{
+		"url": "https://www.youtube.com/watch?v=M-Czt6mzvDU",
+		"title": "What is about to Happen in Washington State",
+		"thumbnail_mobile": "img/videos/podcasts/revolution_begins.webp",
+	},
 ]
