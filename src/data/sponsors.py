@@ -31,13 +31,13 @@ sponsors = {
                 'background_color': "#FFFFFF",
                 'scale': 2
             },
-            {
-                'name': 'Creative Spaces',
-                'logo_url': '/static/img/sponsor_logos/creative_spaces_logo.webp',
-                'show_on_sponsor_page': True,
-                'background_color': "#FFFFFF",
-                'scale': 1.5
-            },
+            # {
+            #     'name': 'Creative Spaces',
+            #     'logo_url': '/static/img/sponsor_logos/creative_spaces_logo.webp',
+            #     'show_on_sponsor_page': True,
+            #     'background_color': "#FFFFFF",
+            #     'scale': 1.5
+            # },
             {
                 'name': 'DogHouse',
                 'logo_url': '/static/img/sponsor_logos/DHM-Golf.webp',
@@ -83,6 +83,13 @@ sponsors = {
             {
                 'name': 'Cuts',
                 'logo_url': '/static/img/sponsor_logos/cuts.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#FFFFFF",
+                'scale': 1
+            },
+            {
+                'name': 'American Reconstruction Concepts',
+                'logo_url': '/static/img/sponsor_logos/arc.webp',
                 'show_on_sponsor_page': True,
                 'background_color': "#FFFFFF",
                 'scale': 1
