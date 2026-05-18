@@ -82,7 +82,7 @@ sponsors = {
             },
             {
                 'name': 'Cuts',
-                'logo_url': '/static/img/sponsor_logos/cuts.webp',
+                'logo_url': '/static/img/sponsor_logos/Cuts.webp',
                 'show_on_sponsor_page': True,
                 'background_color': "#FFFFFF",
                 'scale': 1
