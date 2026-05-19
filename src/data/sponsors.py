@@ -94,6 +94,27 @@ sponsors = {
                 'background_color': "#FFFFFF",
                 'scale': 1
             },
+            {
+                'name': 'APOC World LLC.',
+                'logo_url': '/static/img/sponsor_logos/apoc.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
+                'scale': 1.5
+            },
+            {
+                'name': 'McGregor Farms Bee',
+                'logo_url': '/static/img/sponsor_logos/mcgregor_farms_bee.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#FFFFFF",
+                'scale': 1.5
+            },
+            {
+                'name': 'Valley Mariine',
+                'logo_url': '/static/img/sponsor_logos/valley_marine.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
+                'scale': 1
+            },
     ],
     'ministries': [
             {
