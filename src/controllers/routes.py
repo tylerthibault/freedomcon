@@ -11,25 +11,31 @@ except ImportError:
 
 
 from flask import Blueprint, Response, redirect, render_template, request, url_for
-from src.data.FAQ import FAQ
-from src.data.accommodations import hotel_options, travel_info
-from src.data.artists import artists
-from src.data.social_proof import social_proof, boys_social_proof
-from src.data.speakers import speakers as speakers_data, gen_z_speakers
-from src.data.videos import videos as videos_data
-from src.data.tickers import ticketer1, ticketers
-from src.data.tickets import get_ticket_context
-from src.data.background_text import background_1
-from src.data.sponsors import sponsors
-from src.data.about_smn import about_smn_conferences
-from src.data.podcasts import podcasts as podcasts_data
-from src.data.wives import wives as wives_data
-from src.data.invite import invite as invite_data
-from src.data.the_play import the_play as the_play_data
-from src.data.hotels import hotels as hotels_data
-from src.data.camping import camping as camping_data
-# from src.data.trailers import trailers as trailers_data
-from src.data.media_downloads import media_downloads
+from src.services.main import (
+    get_artists,
+    get_background_text,
+    get_boys_social_proof,
+    get_camping,
+    get_faq,
+    get_gen_z_speakers,
+    get_hotels_data,
+    get_hotel_groups,
+    get_invite,
+    get_media_downloads,
+    get_past_conferences,
+    get_podcasts,
+    get_social_proof,
+    get_speakers,
+    get_the_play,
+    get_ticket_context,
+    get_ticketers,
+    get_ticker,
+    get_travel_info,
+    get_videos,
+    get_visible_sponsors,
+    get_wives,
+    get_churches,
+)
 
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
@@ -314,6 +320,12 @@ def landing_alt() -> str:
 def landing() -> str:
 	# return redirect(url_for("public.landing_alt"))
 	"""Alt landing page — Customer-as-Hero / Story Brand variant."""
+	videos_data = get_videos()
+	podcasts_data = get_podcasts()
+	social_proof = get_social_proof()
+	boys_social_proof = get_boys_social_proof()
+	speakers_data = get_speakers()
+	ticket_ctx = get_ticket_context()
 	conference_trailers_section = build_media_section(
 		section_id="conference-trailers",
 		eyebrow="Watch",
@@ -338,19 +350,7 @@ def landing() -> str:
 		show_more_label="Show More",
 		show_all_label="Show All",
 	)
-	ticket_ctx = get_ticket_context()
-
-	visible_sponsors = {
-		"businesses": [
-			item for item in sponsors.get("businesses", []) if item.get("show_on_sponsor_page") is True
-		],
-		"ministries": [
-			item for item in sponsors.get("ministries", []) if item.get("show_on_sponsor_page") is True
-		],
-		"churches": [
-			item for item in sponsors.get("churches", []) if item.get("show_on_sponsor_page") is True
-		],
-	}
+	visible_sponsors = get_visible_sponsors()
 	return render_template(
 		"public/landing copy/index.html",
 		social_proof=social_proof,
@@ -372,10 +372,11 @@ def landing() -> str:
 
 @public_bp.get("/faqs")
 def faqs() -> str:
+	faq_content = get_faq()
 	return render_template(
 		"public/FAQs/index.html",
-		faq_content=FAQ,
-		structured_data=[build_faq_schema(FAQ)],
+		faq_content=faq_content,
+		structured_data=[build_faq_schema(faq_content)],
 		seo=build_seo(
 			title="FREEDOM CON FAQs | Event, Travel, and Camping Questions",
 			description="Get answers to common Freedom Con questions including event details, what to bring, travel guidance, and camping information.",
@@ -388,7 +389,7 @@ def faqs() -> str:
 def speakers() -> str:
 	return render_template(
 		"public/speakers/index.html",
-		speakers=speakers_data,
+		speakers=get_speakers(),
 		seo=build_seo(
 			title="FREEDOM CON Speakers | 2026 Conference Lineup",
 			description="Meet the Freedom Con 2026 speaker lineup featuring pastors, veterans, leaders, and voices challenging men toward faith and statesmanship.",
@@ -401,7 +402,7 @@ def speakers() -> str:
 def gen_z_speakers_page() -> str:
 	return render_template(
 		"public/speakers/gen_z.html",
-		speakers=gen_z_speakers,
+		speakers=get_gen_z_speakers(),
 		seo=build_seo(
 			title="FREEDOM CON Gen Z Speakers | 2026 Conference Lineup",
 			description="Meet the Gen Z speaker lineup for Freedom Con 2026.",
@@ -414,7 +415,7 @@ def gen_z_speakers_page() -> str:
 def artists_page() -> str:
 	return render_template(
 		"public/artists/index.html",
-		artists=artists,
+		artists=get_artists(),
 		seo=build_seo(
 			title="FREEDOM CON Artist | Live Worship and Concert",
 			description="See the featured Freedom Con artist and live worship experience planned for Father’s Day weekend 2026.",
@@ -427,7 +428,7 @@ def artists_page() -> str:
 def past_conferences_page() -> str:
 	conference_sections: list[dict[str, object]] = []
 
-	for conference in about_smn_conferences:
+	for conference in get_past_conferences():
 		year = conference.get("year")
 		conference_name = str(conference.get("name") or f"Stronger Man Conference {year}").strip()
 		conference_theme = str(conference.get("theme") or "").strip()
@@ -474,8 +475,8 @@ def past_conferences_page() -> str:
 def accommodations_page() -> str:
 	return render_template(
 		"public/accomodations/index.html",
-		travel_info=travel_info,
-		hotel_options=hotel_options,
+		travel_info=get_travel_info(),
+		hotel_options=get_hotel_groups("accommodations"),
 		seo=build_seo(
 			title="FREEDOM CON Accommodations | Travel, Camping, and Lodging",
 			description="Plan your Freedom Con stay with travel routes, camping options, and nearby hotel listings around The Gorge Amphitheatre.",
@@ -488,7 +489,7 @@ def accommodations_page() -> str:
 def travel_page() -> str:
 	return render_template(
 		"public/traveling/index.html",
-		travel_info=travel_info,
+		travel_info=get_travel_info(),
 		seo=build_seo(
 			title="FREEDOM CON Travel Guide | Getting to The Gorge Amphitheatre",
 			description="Plan your drive to The Gorge Amphitheatre for Freedom Con. Airport routes, drive times, and travel tips from Seattle and Spokane.",
@@ -523,21 +524,9 @@ def vendors_page() -> str:
 
 @public_bp.get("/sponsor")
 def sponsors_page() -> str:
-	visible_sponsors = {
-		"businesses": [
-			item for item in sponsors.get("businesses", []) if item.get("show_on_sponsor_page") is True
-		],
-		"ministries": [
-			item for item in sponsors.get("ministries", []) if item.get("show_on_sponsor_page") is True
-		],
-		"churches": [
-			item for item in sponsors.get("churches", []) if item.get("show_on_sponsor_page") is True
-		],
-	}
-
 	return render_template(
 		"public/sponsor/index.html",
-		sponsors=visible_sponsors,
+		sponsors=get_visible_sponsors(),
 		seo=build_seo(
 			title="Sponsor Freedom Con 2026 | Partner With Us",
 			description="Partner with Freedom Con 2026 and reach thousands of Christian men at The Gorge Amphitheater. Explore sponsorship opportunities.",
@@ -613,7 +602,7 @@ def press_page() -> str:
 	formsubmit_action = getenv("PRESS_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/info@strongermannation.com"
 	formsubmit_next = f"{SITE_URL}/thankyou"
 
-	press_assets = media_downloads
+	press_assets = get_media_downloads()
 
 	return render_template(
 		"public/press/index.html",
@@ -645,7 +634,7 @@ def worship_page() -> str:
 
 @public_bp.get("/tickets")
 def tickets_page() -> str:
-	ticket_context = get_ticket_context()
+	ticket_context = get_ticket_context()  # queries DB
 	return render_template(
 		"public/tickets/index.html",
 		ticket_meta=ticket_context["ticket_meta"],
@@ -727,7 +716,7 @@ def videos_page() -> str:
 		eyebrow="Watch",
 		title="FREEDOM CON Trailers",
 		aria_label="Freedom Con trailers",
-		items=videos_data,
+		items=get_videos(),
 		initial_count=4,
 		reveal_count=6,
 		play_label="Play Video",
@@ -739,7 +728,7 @@ def videos_page() -> str:
 		eyebrow="Listen",
 		title="FREEDOM CON Podcasts",
 		aria_label="Freedom Con podcasts",
-		items=podcasts_data,
+		items=get_podcasts(),
 		initial_count=4,
 		reveal_count=4,
 		play_label="Play Podcast",
@@ -853,7 +842,7 @@ def wives_page() -> str:
 	formsubmit_next = f"{SITE_URL}/thankyou"
 	return render_template(
 		"public/wives/index.html",
-		wives=wives_data,
+		wives=get_wives(),
 		formsubmit_action=formsubmit_action,
 		formsubmit_next=formsubmit_next,
 		seo=build_seo(
@@ -879,7 +868,7 @@ def prayer_guide_page() -> str:
 def invite_page() -> str:
 	return render_template(
 		"public/invite/index.html",
-		invite=invite_data,
+		invite=get_invite(),
 		seo=build_seo(
 			title="A Personal Invite | Freedom Con 2026",
 			description="Personal invitations from Josh McPherson and his sons to the men of Washington for Freedom Con 2026.",
@@ -904,7 +893,7 @@ def schedule_page() -> str:
 def the_play_page() -> str:
 	return render_template(
 		"public/the_play/index.html",
-		the_play=the_play_data,
+		the_play=get_the_play(),
 		seo=build_seo(
 			title="The Play | Freedom Con 2026",
 			description="Three steps to Freedom Con: Register, Camp, Arrive. Your game plan for Father's Day Weekend at The Gorge.",
@@ -922,7 +911,7 @@ def camping_page() -> str:
 			description="Stay on-site at The Gorge Amphitheatre. Camping details, check-in times, RV info, and what to bring for Freedom Con 2026.",
 			path="/camping",
 		),
-		camping=camping_data,
+		camping=get_camping(),
 	)
 
 
@@ -930,7 +919,7 @@ def camping_page() -> str:
 def hotels_page() -> str:
 	return render_template(
 		"public/hotels/index.html",
-		hotels=hotels_data,
+		hotels=get_hotels_data(),
 		seo=build_seo(
 			title="Hotels Near The Gorge | Freedom Con 2026",
 			description="Hotel and lodging options near The Gorge Amphitheatre for Freedom Con 2026. George, Quincy, Ephrata, and Moses Lake.",
@@ -955,6 +944,7 @@ def food_and_drinks_page() -> str:
 def churches_page() -> str:
 	return render_template(
 		"public/churches/index.html",
+		churches=get_churches(),
 		seo=build_seo(
 			title="Churches | Freedom Con 2026",
 			description="Partner churches represented at Freedom Con 2026 and their locations.",

@@ -1,0 +1,223 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/lib.html' as lib with context %}
+{% from 'admin/lib.html' import extra with context %}
+
+{% block head %}
+  {{ super() }}
+  {{ lib.form_css() }}
+  <style>
+    #church-preview-wrap {
+      position: sticky;
+      top: 20px;
+    }
+    #church-preview-bg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid #dee2e6;
+      transition: background-color 0.15s ease;
+    }
+    #church-preview-img {
+      max-width: 200px;
+      max-height: 120px;
+      object-fit: contain;
+      display: none;
+      transition: transform 0.15s ease;
+    }
+    #church-preview-placeholder {
+      color: #adb5bd;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .church-preview-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #6c757d;
+      margin-bottom: 4px;
+    }
+    .preview-meta {
+      font-size: 0.8rem;
+      color: #6c757d;
+      margin-top: 8px;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  {# ---- nav tabs ---- #}
+  <ul class="nav nav-tabs mb-3">
+    <li class="nav-item">
+      <a href="{{ return_url }}" class="nav-link">{{ _gettext('List') }}</a>
+    </li>
+    {%- if admin_view.can_create -%}
+    <li class="nav-item">
+      <a href="{{ get_url('.create_view', url=return_url) }}"
+         class="nav-link{% if not is_edit %} active{% endif %}">{{ _gettext('Create') }}</a>
+    </li>
+    {%- endif -%}
+    {%- if is_edit -%}
+    <li class="nav-item">
+      <a href="javascript:void(0)" class="nav-link active">{{ _gettext('Edit') }}</a>
+    </li>
+    {%- endif -%}
+  </ul>
+
+  {# ---- two-column layout ---- #}
+  <div class="row">
+    {# left: the form #}
+    <div class="col-lg-7">
+      {{ lib.render_form(form, return_url, extra(), form_opts) }}
+    </div>
+
+    {# right: live preview #}
+    <div class="col-lg-5">
+      <div id="church-preview-wrap">
+        <div class="card shadow-sm">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span>Live Preview</span>
+            <small class="text-muted ms-auto">updates as you type</small>
+          </div>
+          <div class="card-body text-center">
+            <p class="church-preview-label">Church tile</p>
+            <div id="church-preview-bg">
+              <img id="church-preview-img" src="" alt="Logo preview" />
+              <div id="church-preview-placeholder">
+                Upload a logo to<br>see the preview
+              </div>
+            </div>
+            <div class="preview-meta mt-2 d-flex justify-content-between">
+              <span>Background: <span id="preview-color-text">none</span></span>
+              <span>Scale: <span id="preview-scale-text">1.00x</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block tail %}
+  {{ super() }}
+  {{ lib.form_js() }}
+  <script>
+  (function () {
+    const bgEl      = document.getElementById('church-preview-bg');
+    const imgEl     = document.getElementById('church-preview-img');
+    const phEl      = document.getElementById('church-preview-placeholder');
+    const colorText = document.getElementById('preview-color-text');
+    const scaleDisplay = document.getElementById('preview-scale-text');
+
+    function setPreviewBg(color) {
+      bgEl.style.backgroundColor = color || '';
+      colorText.textContent = color || 'none';
+    }
+
+    function showImg(src) {
+      if (src) {
+        imgEl.src = src;
+        imgEl.style.display = 'block';
+        phEl.style.display = 'none';
+      } else {
+        imgEl.style.display = 'none';
+        imgEl.src = '';
+        phEl.style.display = '';
+      }
+    }
+
+    function applyScale(val) {
+      const n = parseFloat(val);
+      const s = isNaN(n) || n <= 0 ? 1 : n;
+      imgEl.style.transform = `scale(${s})`;
+      imgEl.style.transformOrigin = 'center';
+      if (scaleDisplay) scaleDisplay.textContent = s.toFixed(2) + 'x';
+    }
+
+    // ---- color picker: upgrade background_color input to type="color" ----
+    const bgColorInput = document.querySelector('input[name="background_color"]');
+    if (bgColorInput) {
+      function normalizeHex(val) {
+        val = (val || '').trim();
+        if (!val) return '';
+        if (!val.startsWith('#')) val = '#' + val;
+        if (/^#[0-9a-fA-F]{3}$/.test(val)) {
+          val = '#' + val[1]+val[1]+val[2]+val[2]+val[3]+val[3];
+        }
+        return /^#[0-9a-fA-F]{6}$/.test(val) ? val : '#000000';
+      }
+
+      // Wrap the text input alongside a color swatch button
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = 'display:flex; gap:6px; align-items:center;';
+      bgColorInput.parentNode.insertBefore(wrapper, bgColorInput);
+      wrapper.appendChild(bgColorInput);
+
+      const swatch = document.createElement('input');
+      swatch.type = 'color';
+      swatch.style.cssText = 'width:42px; height:36px; padding:2px; cursor:pointer; border-radius:4px;';
+      const initHex = normalizeHex(bgColorInput.value);
+      swatch.value = initHex || '#000000';
+      wrapper.appendChild(swatch);
+
+      // Clear button
+      const clearBtn = document.createElement('button');
+      clearBtn.type = 'button';
+      clearBtn.textContent = '✕ clear';
+      clearBtn.className = 'btn btn-sm btn-secondary';
+      wrapper.appendChild(clearBtn);
+
+      if (initHex) setPreviewBg(initHex);
+
+      swatch.addEventListener('input', () => {
+        bgColorInput.value = swatch.value;
+        setPreviewBg(swatch.value);
+      });
+
+      bgColorInput.addEventListener('input', () => {
+        const h = normalizeHex(bgColorInput.value);
+        if (h) { swatch.value = h; setPreviewBg(h); }
+        else setPreviewBg('');
+      });
+
+      clearBtn.addEventListener('click', () => {
+        bgColorInput.value = '';
+        swatch.value = '#000000';
+        setPreviewBg('');
+      });
+    }
+
+    // ---- file upload preview ----
+    const uploadInput = document.querySelector('input[name="logo_upload"]');
+    if (uploadInput) {
+      uploadInput.addEventListener('change', function () {
+        const file = this.files && this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => showImg(e.target.result);
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    // ---- scale input ----
+    const scaleInput = document.querySelector('input[name="scale"]');
+    if (scaleInput) {
+      applyScale(scaleInput.value);
+      scaleInput.addEventListener('input', () => applyScale(scaleInput.value));
+    }
+
+    // ---- existing logo (edit mode) ----
+    const currentLogo = {{ current_logo_url | tojson }};
+    if (currentLogo) {
+      showImg(currentLogo);
+    }
+
+    // ---- read existing scale (edit mode) ----
+    if (scaleInput) applyScale(scaleInput.value);
+
+  })();
+  </script>
+{% endblock %}

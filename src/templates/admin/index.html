@@ -1,0 +1,134 @@
+{% extends 'admin/master.html' %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/static/css/admin_theme.css">
+  <style>
+    /* ── Dashboard-only: hero, cards, nav links ── */
+    .fc-hero {
+      background: #000;
+      border-bottom: 2px solid #BC2A27;
+      padding: 3.5rem 2rem 3rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .fc-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 75% 50%, rgba(188,42,39,.22) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .fc-hero__eyebrow {
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #BC2A27;
+      margin: 0 0 .55rem;
+      font-weight: 600;
+    }
+    .fc-hero__title {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin: 0 0 .6rem;
+      color: #fff;
+      line-height: 1.05;
+    }
+    .fc-hero__sub {
+      color: #777;
+      font-size: .9rem;
+      margin: 0;
+      font-weight: 300;
+    }
+    .fc-section-label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #BC2A27;
+      margin-bottom: 1rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid #1e1e1e;
+    }
+    .fc-card {
+      background: #0d0d0d;
+      border: 1px solid #1c1c1c;
+      border-radius: 10px;
+      padding: 1.4rem 1.5rem;
+      height: 100%;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .fc-card:hover { border-color: #3a0a09; box-shadow: 0 0 20px rgba(188,42,39,.12); }
+    .fc-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .6rem .9rem;
+      border-radius: 6px;
+      border: 1px solid #1e1e1e;
+      background: #111;
+      color: #d8d8d8 !important;
+      text-decoration: none !important;
+      font-size: .9rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: background .15s, border-color .15s, color .15s;
+      margin-bottom: .45rem;
+    }
+    .fc-link:last-child { margin-bottom: 0; }
+    .fc-link:hover { background: #BC2A27; border-color: #BC2A27; color: #fff !important; }
+    .fc-link__arrow { opacity: .35; font-size: .75rem; transition: opacity .15s; }
+    .fc-link:hover .fc-link__arrow { opacity: 1; }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="fc-hero">
+    <div style="max-width:1140px; margin:0 auto; position:relative; z-index:1;">
+      <p class="fc-hero__eyebrow">Freedom Con 2026</p>
+      <h1 class="fc-hero__title">Admin Panel</h1>
+      <p class="fc-hero__sub">Welcome back, <strong style="color:#fff; font-weight:600;">{{ admin_username }}</strong> &mdash; changes take effect immediately.</p>
+    </div>
+  </div>
+
+  <div style="max-width:1140px; margin:0 auto; padding:0 1.5rem 3rem;">
+    <div class="row g-4">
+
+      <div class="col-12 col-md-6 col-xl-4">
+        <div class="fc-card">
+          <p class="fc-section-label">Content</p>
+          <a href="/admin/sponsor/"        class="fc-link">Sponsors         <span class="fc-link__arrow">›</span></a>
+          <a href="/admin/church/"         class="fc-link">Churches         <span class="fc-link__arrow">›</span></a>
+          <a href="/admin/faq/"            class="fc-link">FAQs             <span class="fc-link__arrow">›</span></a>
+          <a href="/admin/socialproof/"    class="fc-link">Social Proof     <span class="fc-link__arrow">›</span></a>
+          <a href="/admin/pastconference/" class="fc-link">Past Conferences <span class="fc-link__arrow">›</span></a>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4">
+        <div class="fc-card">
+          <p class="fc-section-label">Media</p>
+          <a href="/admin/video/"   class="fc-link">Videos   <span class="fc-link__arrow">›</span></a>
+          <a href="/admin/podcast/" class="fc-link">Podcasts <span class="fc-link__arrow">›</span></a>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl-4 d-flex flex-column gap-4">
+        <div class="fc-card">
+          <p class="fc-section-label">Logistics</p>
+          <a href="/admin/hotelgroup/" class="fc-link">Hotel Groups <span class="fc-link__arrow">›</span></a>
+          <a href="/admin/airport/"    class="fc-link">Airports     <span class="fc-link__arrow">›</span></a>
+        </div>
+        <div class="fc-card">
+          <p class="fc-section-label">Site</p>
+          <a href="/admin/adminuser/" class="fc-link">Admin Users <span class="fc-link__arrow">›</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

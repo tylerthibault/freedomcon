@@ -1,0 +1,225 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/lib.html' as lib with context %}
+{% from 'admin/lib.html' import extra with context %}
+
+{% block head %}
+  {{ super() }}
+  {{ lib.form_css() }}
+  <style>
+    #sponsor-preview-wrap {
+      position: sticky;
+      top: 20px;
+    }
+    #sponsor-preview-bg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid #dee2e6;
+      transition: background-color 0.15s ease;
+    }
+    #sponsor-preview-img {
+      max-width: 200px;
+      max-height: 120px;
+      object-fit: contain;
+      display: none;
+    }
+    #sponsor-preview-placeholder {
+      color: #adb5bd;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .sponsor-preview-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #6c757d;
+      margin-bottom: 4px;
+    }
+    .preview-meta {
+      font-size: 0.8rem;
+      color: #6c757d;
+      margin-top: 8px;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  {# ---- nav tabs (same as Flask-Admin default, works for both create & edit) ---- #}
+  <ul class="nav nav-tabs mb-3">
+    <li class="nav-item">
+      <a href="{{ return_url }}" class="nav-link">{{ _gettext('List') }}</a>
+    </li>
+    {%- if admin_view.can_create -%}
+    <li class="nav-item">
+      <a href="{{ get_url('.create_view', url=return_url) }}"
+         class="nav-link{% if not is_edit %} active{% endif %}">{{ _gettext('Create') }}</a>
+    </li>
+    {%- endif -%}
+    {%- if is_edit -%}
+    <li class="nav-item">
+      <a href="javascript:void(0)" class="nav-link active">{{ _gettext('Edit') }}</a>
+    </li>
+    {%- endif -%}
+  </ul>
+
+  {# ---- duplicate name modal ---- #}
+  {% if form.name.errors %}
+  <div class="modal fade" id="duplicateNameModal" tabindex="-1" aria-labelledby="duplicateNameModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-warning">
+          <h5 class="modal-title" id="duplicateNameModalLabel">⚠ Duplicate Sponsor Name</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {% for error in form.name.errors %}
+            <p class="mb-1">{{ error }}</p>
+          {% endfor %}
+          <p class="text-muted small mt-2 mb-0">Please use a unique name, or edit the existing sponsor instead.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK, go back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>document.addEventListener('DOMContentLoaded', function() { new bootstrap.Modal(document.getElementById('duplicateNameModal')).show(); });</script>
+  {% endif %}
+
+  {# ---- two-column layout ---- #}
+  <div class="row">
+    {# left: the form #}
+    <div class="col-lg-7">
+      {% if is_edit %}
+        {{ lib.render_form(form, return_url, extra(), form_opts) }}
+      {% else %}
+        {{ lib.render_form(form, return_url, extra(), form_opts) }}
+      {% endif %}
+    </div>
+
+    {# right: live preview #}
+    <div class="col-lg-5">
+      <div id="sponsor-preview-wrap">
+        <div class="card shadow-sm">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span>Live Preview</span>
+            <small class="text-muted ms-auto">updates as you type</small>
+          </div>
+          <div class="card-body text-center">
+            <p class="sponsor-preview-label">Sponsor tile</p>
+            <div id="sponsor-preview-bg">
+              <img id="sponsor-preview-img" src="" alt="Logo preview" />
+              <div id="sponsor-preview-placeholder">
+                Upload a logo to<br>see the preview
+              </div>
+            </div>
+            <div class="preview-meta mt-2 d-flex justify-content-between">
+              <span>Background: <span id="preview-color-text">#000000</span></span>
+              <span>Scale: <span id="preview-scale-text">1.00x</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block tail %}
+  {{ super() }}
+  {{ lib.form_js() }}
+  <script>
+  (function () {
+    // ---- elements ----
+    const bgEl      = document.getElementById('sponsor-preview-bg');
+    const imgEl     = document.getElementById('sponsor-preview-img');
+    const phEl      = document.getElementById('sponsor-preview-placeholder');
+    const colorText = document.getElementById('preview-color-text');
+
+    // ---- helpers ----
+    function setPreviewBg(color) {
+      if (!color) return;
+      bgEl.style.backgroundColor = color;
+      colorText.textContent = color;
+    }
+
+    function showImg(src) {
+      if (src) {
+        imgEl.src = src;
+        imgEl.style.display = 'block';
+        phEl.style.display = 'none';
+      } else {
+        imgEl.style.display = 'none';
+        imgEl.src = '';
+        phEl.style.display = '';
+      }
+    }
+
+    // ---- color picker ----
+    // Upgrade the background_color text input to type="color"
+    const bgColorInput = document.querySelector('input[name="background_color"]');
+    if (bgColorInput) {
+      // Convert hex with forced-6-digit format for input[type=color]
+      function normalizeHex(val) {
+        val = val.trim();
+        if (!val.startsWith('#')) val = '#' + val;
+        // expand short form #abc -> #aabbcc
+        if (/^#[0-9a-fA-F]{3}$/.test(val)) {
+          val = '#' + val[1]+val[1]+val[2]+val[2]+val[3]+val[3];
+        }
+        if (/^#[0-9a-fA-F]{6}$/.test(val)) return val;
+        return '#000000';
+      }
+
+      bgColorInput.type = 'color';
+      bgColorInput.value = normalizeHex(bgColorInput.value || '#000000');
+      bgColorInput.style.width = '60px';
+      bgColorInput.style.height = '36px';
+      bgColorInput.style.padding = '2px';
+      bgColorInput.style.cursor = 'pointer';
+
+      setPreviewBg(bgColorInput.value);
+      bgColorInput.addEventListener('input', () => setPreviewBg(bgColorInput.value));
+    }
+
+    // ---- file upload preview ----
+    const uploadInput = document.querySelector('input[name="logo_upload"]');
+    if (uploadInput) {
+      uploadInput.addEventListener('change', function () {
+        const file = this.files && this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => showImg(e.target.result);
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    // ---- scale input ----
+    const scaleInput = document.querySelector('input[name="scale"]');
+    const scaleDisplay = document.getElementById('preview-scale-text');
+
+    function applyScale(val) {
+      const n = parseFloat(val);
+      const s = isNaN(n) || n <= 0 ? 1 : n;
+      imgEl.style.transform = `scale(${s})`;
+      imgEl.style.transformOrigin = 'center';
+      if (scaleDisplay) scaleDisplay.textContent = s.toFixed(2) + 'x';
+    }
+
+    if (scaleInput) {
+      applyScale(scaleInput.value);
+      scaleInput.addEventListener('input', () => applyScale(scaleInput.value));
+    }
+
+    // ---- existing logo (edit mode) ----
+    const currentLogo = {{ current_logo_url | tojson }};
+    if (currentLogo) {
+      showImg(currentLogo);
+    }
+
+  })();
+  </script>
+{% endblock %}

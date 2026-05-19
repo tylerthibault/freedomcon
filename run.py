@@ -11,6 +11,9 @@ from sentry_sdk.integrations.flask import FlaskIntegration
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from src.controllers.routes import public_bp
+from src.controllers.admin_auth import admin_auth_bp, limiter
+from src.controllers.admin_views import create_admin
+from src.models.main import db, login_manager
 
 def _env_bool(name: str, default: bool = False) -> bool:
 	value = getenv(name)
@@ -61,6 +64,11 @@ def create_app() -> Flask:
 		SESSION_COOKIE_SECURE=secure_cookies,
 		SESSION_COOKIE_SAMESITE=getenv("SESSION_COOKIE_SAMESITE", "Lax"),
 		PREFERRED_URL_SCHEME="https",
+		# SQLite database file in project root (override via DATABASE_URL env var)
+		SQLALCHEMY_DATABASE_URI=getenv(
+			"DATABASE_URL", f"sqlite:///{base_dir / 'freedomcon.db'}"
+		),
+		SQLALCHEMY_TRACK_MODIFICATIONS=False,
 	)
 
 	@app.before_request
@@ -86,11 +94,64 @@ def create_app() -> Flask:
 		return response
 
 	app.register_blueprint(public_bp)
+	app.register_blueprint(admin_auth_bp)
+
+	# --- Database & auth ---
+	db.init_app(app)
+	limiter.init_app(app)
+	login_manager.init_app(app)
+	login_manager.login_view = "admin_auth.login_page"   # type: ignore[assignment]
+	login_manager.login_message_category = "error"
+
+	# --- Create tables if they don't exist yet ---
+	with app.app_context():
+		db.create_all()
+
+	# --- Flask-Admin ---
+	create_admin(app)
 
 	return app
 
 
 app = create_app()
+
+
+# ---------------------------------------------------------------------------
+# CLI commands
+# ---------------------------------------------------------------------------
+
+@app.cli.command("seed")
+def seed_command():
+    """Seed the SQLite database from the legacy Python data files."""
+    import click
+    from seed_db import seed
+    click.echo("Seeding database …")
+    seed(app)
+    click.echo("Done.")
+
+
+@app.cli.command("create-admin")
+def create_admin_user():
+    """Create or reset an admin user. Usage: flask create-admin"""
+    import click
+    from src.models.main import AdminUser, db
+
+    username = click.prompt("Username", default="admin")
+    password = click.prompt("Password", hide_input=True, confirmation_prompt=True)
+
+    with app.app_context():
+        user = db.session.execute(
+            db.select(AdminUser).where(AdminUser.username == username)
+        ).scalar_one_or_none()
+        if user:
+            user.set_password(password)
+            click.echo(f"Updated password for '{username}'.")
+        else:
+            user = AdminUser(username=username)
+            user.set_password(password)
+            db.session.add(user)
+            click.echo(f"Created admin user '{username}'.")
+        db.session.commit()
 
 
 if __name__ == "__main__":
