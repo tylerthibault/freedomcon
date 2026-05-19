@@ -75,7 +75,7 @@ sponsors = {
             },
             {
                 'name': 'Thacker E & T',
-                'logo_url': '/static/img/sponsor_logos/thacker_logo.webp',
+                'logo_url': '/static/img/sponsor_logos/thacker_logo_2.webp',
                 'show_on_sponsor_page': True,
                 'background_color': "#000000",
                 'scale': 1.5
@@ -126,13 +126,15 @@ sponsors = {
                 'name': 'Warrior Poet Society',
                 'logo_url': '/static/img/sponsor_logos/wps_logo.webp',
                 'show_on_sponsor_page': True,
-                'background_color': "#000000"
+                'background_color': "#000000",
+                'scale': 1.5
             },
             {
                 'name': 'Stronger Man Nation',
                 'logo_url': '/static/img/sponsor_logos/SMN_logo.avif',
                 'show_on_sponsor_page': True,
-                'background_color': '#000000'
+                'background_color': '#000000',
+                'scale': 1.5
             }
     ],
     'churches': [
