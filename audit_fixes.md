@@ -115,4 +115,18 @@ Files changed:
 - **File:** `src/controllers/routes.py`
 - **Change:** `"A Congress of Christian Men..."` → `"Freedom Con 2026 | A Congress of Christian Men at The Gorge Amphitheatre"`
 
+---
+
+### 6. No Reassurance Copy at Brushfire Checkout CTA
+
+**Issue:** "Get Your Tickets" routes off-domain to brushfire.com with no explanation. New visitors have no signal that the transition is intentional and secure, increasing checkout abandonment risk.
+
+**Fix:** Added a reassurance line beneath both CTA buttons on the tickets page:
+> 🔒 Secure checkout powered by Brushfire — trusted by hundreds of faith-based events nationwide.
+
+- **File:** `src/templates/public/tickets/index.html` — added to both CTA `<div>` blocks (ticket grid section and What's Included section)
+
+**Action still required (cannot be done in code):**
+Contact Brushfire support to confirm the Freedom Con Meta Pixel and GA4 purchase event tags are firing on the Brushfire order confirmation page. Without this, all paid ad attribution for completed ticket sales is broken — clicks will show in campaigns but zero purchases will be reported.
+
 
