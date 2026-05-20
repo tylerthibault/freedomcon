@@ -196,6 +196,17 @@
     width: 100%;
     height: auto;
   }
+
+  /* Hero two-column grid */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+  }
+  @media (max-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 {% endblock %}
 

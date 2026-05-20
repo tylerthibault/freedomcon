@@ -129,4 +129,20 @@ Files changed:
 **Action still required (cannot be done in code):**
 Contact Brushfire support to confirm the Freedom Con Meta Pixel and GA4 purchase event tags are firing on the Brushfire order confirmation page. Without this, all paid ad attribution for completed ticket sales is broken — clicks will show in campaigns but zero purchases will be reported.
 
+---
+
+## STRATEGIC
+
+### 1. Hero Has No Plain-Language Summary for Cold Paid Traffic
+
+**Issue:** The hero right column showed "One Historic Event", a venue line, a date, and CTAs — nothing that told a first-time visitor what actually happens that weekend. Cold paid traffic had no context to evaluate the event before scrolling.
+
+**Fix:** Added a one-sentence summary between the venue line and the date in the hero right column:
+
+> *2 days of bold preaching, live worship, Crowder & Danny Gokey, and father‑son experiences — with a concrete plan you can act on.*
+
+The copy slots into the natural read order: **what → where → when → action**, so it answers the cold-traffic question before the CTA appears.
+
+- **File:** `src/templates/public/landing copy/components/hero.html`
+
 
