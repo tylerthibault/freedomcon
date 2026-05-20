@@ -5,7 +5,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_login import current_user, login_required, login_user, logout_user
 
-from src.models.main import AdminUser, db
+from src.models.main import AdminUser, db, log_audit
 
 admin_auth_bp = Blueprint("admin_auth", __name__, url_prefix="/admin")
 
@@ -36,10 +36,15 @@ def login_post():
     ).scalar_one_or_none()
 
     if user is None or not user.check_password(password):
+        # Log failed attempt (use username as typed, may not exist)
+        log_audit(username=username or "<unknown>", action="LOGIN_FAILED",
+                  detail=f"Failed login attempt from {request.remote_addr}")
         flash("Invalid username or password.", "error")
         return render_template("admin/login.html"), 401
 
     login_user(user, remember=remember)
+    log_audit(username=user.username, action="LOGIN",
+              detail=f"Logged in (remember={remember})")
     # Validate next is a relative path to prevent open redirect
     next_url = request.args.get("next", "")
     if not next_url or not next_url.startswith("/") or next_url.startswith("//"):
@@ -50,5 +55,6 @@ def login_post():
 @admin_auth_bp.get("/logout")
 @login_required
 def logout():
+    log_audit(username=current_user.username, action="LOGOUT")
     logout_user()
     return redirect(url_for("admin_auth.login_page"))

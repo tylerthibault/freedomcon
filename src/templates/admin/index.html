@@ -98,45 +98,20 @@
 
   <div style="max-width:1140px; margin:0 auto; padding:0 1.5rem 3rem;">
     <div class="row g-4">
-
+      {% for category, views in accessible_views.items() %}
       <div class="col-12 col-md-6 col-xl-4">
         <div class="fc-card">
-          <p class="fc-section-label">Content</p>
-          <a href="/admin/sponsor/"        class="fc-link">Sponsors         <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/artist/"         class="fc-link">Artists          <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/speaker/"        class="fc-link">Speakers         <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/church/"         class="fc-link">Churches         <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/faq/"            class="fc-link">FAQs             <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/socialproof/"    class="fc-link">Social Proof     <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/pastconference/" class="fc-link">Past Conferences <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/ticketprice/"    class="fc-link">Ticket Prices    <span class="fc-link__arrow">›</span></a>
+          <p class="fc-section-label">{{ category }}</p>
+          {% for ep, label in views %}
+            {% if ep in ('adminuser','auditlog','permissions') %}
+          <a href="/admin/{{ ep }}/" class="fc-link" style="border-color:#3a0a09;color:#e57370 !important;">{{ label }}<span class="fc-link__arrow">›</span></a>
+            {% else %}
+          <a href="/admin/{{ ep }}/" class="fc-link">{{ label }}<span class="fc-link__arrow">›</span></a>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
-
-      <div class="col-12 col-md-6 col-xl-4">
-        <div class="fc-card">
-          <p class="fc-section-label">Media</p>
-          <a href="/admin/video/"         class="fc-link">Videos          <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/podcast/"       class="fc-link">Podcasts        <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/mediadownload/" class="fc-link">Media Downloads <span class="fc-link__arrow">›</span></a>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-xl-4 d-flex flex-column gap-4">
-        <div class="fc-card">
-          <p class="fc-section-label">Logistics</p>
-          <a href="/admin/hotelgroup/" class="fc-link">Hotel Groups <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/airport/"    class="fc-link">Airports     <span class="fc-link__arrow">›</span></a>
-        </div>
-        <div class="fc-card">
-          <p class="fc-section-label">Site</p>
-          <a href="/admin/ticker/"         class="fc-link">Tickers          <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/backgroundtext/" class="fc-link">Background Text  <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/siteconfig/"     class="fc-link">Site Config      <span class="fc-link__arrow">›</span></a>
-          <a href="/admin/adminuser/"      class="fc-link">Admin Users      <span class="fc-link__arrow">›</span></a>
-        </div>
-      </div>
-
+      {% endfor %}
     </div>
   </div>
 {% endblock %}

@@ -6,6 +6,7 @@ can display them in a simple <textarea> without complex inline forms.
 """
 
 import json
+from datetime import datetime
 
 from flask_login import LoginManager, UserMixin
 from flask_sqlalchemy import SQLAlchemy
@@ -56,6 +57,86 @@ class AdminUser(db.Model, UserMixin):
 @login_manager.user_loader
 def load_user(user_id: str):
     return db.session.get(AdminUser, int(user_id))
+
+
+# ---------------------------------------------------------------------------
+# Audit log
+# ---------------------------------------------------------------------------
+
+class AuditLog(db.Model):
+    """Immutable record of every significant admin action."""
+    __tablename__ = "audit_log"
+
+    id         = db.Column(db.Integer, primary_key=True)
+    timestamp  = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    username   = db.Column(db.String(100), nullable=False)
+    # LOGIN | LOGOUT | CREATE | EDIT | DELETE | PASSWORD_CHANGE
+    action     = db.Column(db.String(30), nullable=False)
+    # Model class name or page name (nullable for auth events)
+    resource   = db.Column(db.String(100))
+    # Primary key of the affected record (nullable)
+    record_id  = db.Column(db.Integer)
+    # Human-readable summary
+    detail     = db.Column(db.Text)
+    # IP address of the request
+    ip_address = db.Column(db.String(64))
+
+    def __repr__(self) -> str:
+        return f"<AuditLog {self.action} by {self.username} at {self.timestamp}>"
+
+
+class ViewPermission(db.Model):
+    """Stores which endpoints each non-superadmin role may access.
+
+    When the table is empty (fresh install) every authenticated user is allowed
+    everywhere — this prevents accidental lockout on first deploy.
+    Once any row exists the table is authoritative.
+    """
+    __tablename__ = "view_permissions"
+
+    id       = db.Column(db.Integer, primary_key=True)
+    role     = db.Column(db.String(50), nullable=False)
+    endpoint = db.Column(db.String(100), nullable=False)
+
+    __table_args__ = (db.UniqueConstraint("role", "endpoint", name="uq_role_endpoint"),)
+
+    def __repr__(self) -> str:
+        return f"<ViewPermission {self.role} → {self.endpoint}>"
+
+
+def role_can_access(role: str, endpoint: str) -> bool:
+    """Return True if *role* may access *endpoint*.
+
+    Superadmin always passes.  If no permissions have been configured yet
+    (empty table) every authenticated user passes so a fresh install is not
+    accidentally locked.
+    """
+    if role == "superadmin":
+        return True
+    if ViewPermission.query.count() == 0:
+        return True
+    return ViewPermission.query.filter_by(role=role, endpoint=endpoint).count() > 0
+
+
+def log_audit(username: str, action: str, resource: str | None = None,
+              record_id: int | None = None, detail: str | None = None,
+              ip_address: str | None = None) -> None:
+    """Write an audit entry and commit it immediately."""
+    try:
+        from flask import request as _req
+        ip = ip_address or _req.remote_addr
+    except RuntimeError:
+        ip = ip_address
+    entry = AuditLog(
+        username=username,
+        action=action,
+        resource=resource,
+        record_id=record_id,
+        detail=detail,
+        ip_address=ip,
+    )
+    db.session.add(entry)
+    db.session.commit()
 
 
 # ---------------------------------------------------------------------------
