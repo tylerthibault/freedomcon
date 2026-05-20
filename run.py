@@ -58,16 +58,18 @@ def create_app() -> Flask:
 
 	app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1)
 
+	# Heroku sets DATABASE_URL with legacy "postgres://" scheme; SQLAlchemy requires "postgresql://"
+	_db_url = getenv("DATABASE_URL", f"sqlite:///{base_dir / 'freedomcon.db'}")
+	if _db_url.startswith("postgres://"):
+		_db_url = _db_url.replace("postgres://", "postgresql://", 1)
+
 	app.config.update(
 		SECRET_KEY=secret_key,
 		SESSION_COOKIE_HTTPONLY=True,
 		SESSION_COOKIE_SECURE=secure_cookies,
 		SESSION_COOKIE_SAMESITE=getenv("SESSION_COOKIE_SAMESITE", "Lax"),
 		PREFERRED_URL_SCHEME="https",
-		# SQLite database file in project root (override via DATABASE_URL env var)
-		SQLALCHEMY_DATABASE_URI=getenv(
-			"DATABASE_URL", f"sqlite:///{base_dir / 'freedomcon.db'}"
-		),
+		SQLALCHEMY_DATABASE_URI=_db_url,
 		SQLALCHEMY_TRACK_MODIFICATIONS=False,
 	)
 

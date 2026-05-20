@@ -36,6 +36,12 @@ class AdminUser(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.String(256), nullable=False)
+    # "superadmin" has full access including Admin Users page; "admin" is everything else
+    role = db.Column(db.String(20), nullable=False, default="admin")
+
+    @property
+    def is_superadmin(self) -> bool:
+        return self.role == "superadmin"
 
     def set_password(self, password: str) -> None:
         self.password_hash = generate_password_hash(password)

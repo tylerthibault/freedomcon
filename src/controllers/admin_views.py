@@ -2,8 +2,8 @@
 
 import os
 
-from flask import current_app, redirect, render_template, url_for
-from flask_admin import Admin, AdminIndexView, expose
+from flask import current_app, flash, redirect, render_template, request, url_for
+from flask_admin import Admin, AdminIndexView, BaseView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.form.upload import FileUploadField
 from flask_login import current_user
@@ -57,6 +57,7 @@ class SecureAdminIndexView(AdminIndexView):
             "admin/index.html",
             logout_url=url_for("admin_auth.logout"),
             admin_username=current_user.username,
+            admin_role=current_user.role,
         )
 
 
@@ -362,17 +363,68 @@ class ChurchAdmin(SecureModelView):
 
 
 class AdminUserAdmin(SecureModelView):
-    column_list = ("username",)
-    form_columns = ("username", "password_hash")
+    """Only superadmins can manage admin users."""
+
+    column_list = ("username", "role")
+    form_columns = ("username", "password_hash", "role")
     column_descriptions = {
-        "password_hash": "Enter the raw password here — it will be hashed automatically on save."
+        "password_hash": "Enter the raw password here — it will be hashed automatically on save.",
+        "role": '"superadmin" has full access including this page. "admin" has access to all other sections.',
     }
+
+    def is_accessible(self):
+        return current_user.is_authenticated and current_user.is_superadmin
+
+    def inaccessible_callback(self, name, **kwargs):
+        if not current_user.is_authenticated:
+            return redirect(url_for("admin_auth.login_page", next=request.url))
+        flash("You need superadmin access to manage admin users.", "error")
+        return redirect(url_for("admin.index"))
 
     def on_model_change(self, form, model, is_created):
         """Hash the password field before saving."""
         raw = form.password_hash.data
         if raw:
             model.set_password(raw)
+
+
+class ChangePasswordView(BaseView):
+    """Lets any logged-in admin change their own password."""
+
+    extra_css = ['/static/css/admin_theme.css']
+
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect(url_for("admin_auth.login_page", next=request.url))
+
+    @expose("/", methods=("GET", "POST"))
+    def index(self):
+        error = None
+        success = None
+        if request.method == "POST":
+            current_pw = request.form.get("current_password", "")
+            new_pw     = request.form.get("new_password", "")
+            confirm_pw = request.form.get("confirm_password", "")
+
+            if not current_user.check_password(current_pw):
+                error = "Current password is incorrect."
+            elif len(new_pw) < 8:
+                error = "New password must be at least 8 characters."
+            elif new_pw != confirm_pw:
+                error = "New passwords do not match."
+            else:
+                current_user.set_password(new_pw)
+                from src.models.main import db as _db
+                _db.session.commit()
+                success = "Password updated successfully."
+
+        return self.render(
+            "admin/change_password.html",
+            error=error,
+            success=success,
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -396,5 +448,6 @@ def create_admin(app) -> Admin:
     admin.add_view(PastConferenceAdmin(PastConference, db.session, name="Past Conferences", category="Content"))
     admin.add_view(ChurchAdmin(Church, db.session, name="Churches", category="Content"))
     admin.add_view(AdminUserAdmin(AdminUser, db.session, name="Admin Users", category="Site"))
+    admin.add_view(ChangePasswordView(name="Change Password", endpoint="change_password", category="Site"))
 
     return admin

@@ -22,6 +22,7 @@ def seed(app=None):
             Airport,
             Artist,
             BackgroundText,
+            Church,
             FAQ,
             HotelGroup,
             MediaDownload,
@@ -49,7 +50,7 @@ def seed(app=None):
             for model in [
                 Speaker, Sponsor, Artist, TicketPrice, Video, Podcast,
                 SocialProof, FAQ, HotelGroup, Airport, PastConference,
-                MediaDownload, Ticker, BackgroundText, SiteConfig,
+                MediaDownload, Ticker, BackgroundText, SiteConfig, Church,
             ]:
                 db.session.query(model).delete()
             db.session.commit()
@@ -338,6 +339,22 @@ def seed(app=None):
                 sort_order=i,
                 group_name="background_1",
                 text=text,
+            ))
+
+        # ------------------------------------------------------------------ #
+        # Churches
+        # ------------------------------------------------------------------ #
+        from src.data.churches import churches as _churches
+
+        for i, c in enumerate(_churches):
+            db.session.add(Church(
+                sort_order=i,
+                name=c["name"],
+                logo_url=c.get("logo_url", ""),
+                logo_bg=c.get("logo_bg", ""),
+                background_color=c.get("background_color", ""),
+                scale=c.get("scale", 1.0),
+                active=True,
             ))
 
         # ------------------------------------------------------------------ #
