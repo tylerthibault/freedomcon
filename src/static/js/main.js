@@ -344,7 +344,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 		const autoRevealSelector = [
-			"main > section",
 			"main .speakers-section__grid > *",
 			"main .tickets-grid > *",
 			"main .accommodations-list > *",
@@ -415,7 +414,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		}, {
 			root: null,
-			rootMargin: isMobile ? "0px 0px -22% 0px" : "0px 0px -10% 0px",
+			rootMargin: isMobile ? "0px 0px -5% 0px" : "0px 0px -4% 0px",
 			threshold: 0,
 		});
 

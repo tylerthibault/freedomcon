@@ -17,7 +17,7 @@
             Menu
         </button>
         <div class="landing12-links d-flex align-items-center flex-nowrap" id="landing12MobileMenu">
-            <a class="{% if is_landing %}is-active{% endif %}" href="{{ url_for('public.landing_alt') }}">Home</a>
+            <a class="{% if is_landing %}is-active{% endif %}" href="{{ url_for('public.landing') }}">Home</a>
             <details name="nav-menu"
                 class="landing12-nav-dropdown{% if current_endpoint in ('public.vision_page', 'public.experience_page', 'public.invite_page', 'public.artists_page', 'public.speakers', 'public.the_venue_page', 'public.venue_map_page', 'public.food_and_drinks_page', 'public.schedule_page') %} is-active{% endif %}">
                 <summary>Explore</summary>

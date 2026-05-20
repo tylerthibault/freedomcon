@@ -64,7 +64,7 @@ def test_page_ok(client, path):
 # ---------------------------------------------------------------------------
 
 REDIRECTS = [
-    ("/alt",           302, "/"),
+    ("/faq",           301, "/faqs"),
     ("/venue-map-svg", 301, "/venue-map"),
     ("/drinks",        301, "/food-and-drinks#drinks"),
 ]

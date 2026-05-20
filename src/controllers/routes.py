@@ -318,8 +318,7 @@ def landing_alt() -> str:
 
 @public_bp.get("/")
 def landing() -> str:
-	# return redirect(url_for("public.landing_alt"))
-	"""Alt landing page — Customer-as-Hero / Story Brand variant."""
+	"""Homepage — Customer-as-Hero / Story Brand variant."""
 	videos_data = get_videos()
 	podcasts_data = get_podcasts()
 	social_proof = get_social_proof()
@@ -351,6 +350,40 @@ def landing() -> str:
 		show_all_label="Show All",
 	)
 	visible_sponsors = get_visible_sponsors()
+	event_schema = {
+		"@context": "https://schema.org",
+		"@type": "Event",
+		"name": "Freedom Con 2026",
+		"description": "A two-day outdoor men's conference at The Gorge Amphitheatre. Speakers, worship, bold preaching, Crowder, camping, and the Columbia River.",
+		"startDate": "2026-06-19T17:00:00-07:00",
+		"endDate": "2026-06-20T22:00:00-07:00",
+		"eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+		"eventStatus": "https://schema.org/EventScheduled",
+		"image": [f"{SITE_URL}/static/img/TheGuys-WithLogoNoFeet.avif"],
+		"location": {
+			"@type": "Place",
+			"name": "The Gorge Amphitheatre",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "754 Silica Rd NW",
+				"addressLocality": "Quincy",
+				"addressRegion": "WA",
+				"postalCode": "98848",
+				"addressCountry": "US",
+			},
+		},
+		"organizer": {
+			"@type": "Organization",
+			"name": "Stronger Man Nation",
+			"url": SITE_URL,
+		},
+		"offers": {
+			"@type": "Offer",
+			"url": f"{SITE_URL}/tickets",
+			"priceCurrency": "USD",
+			"availability": "https://schema.org/InStock",
+		},
+	}
 	return render_template(
 		"public/landing copy/index.html",
 		social_proof=social_proof,
@@ -362,12 +395,18 @@ def landing() -> str:
 		ticket_prices=ticket_ctx["ticket_prices"],
 		ticket_meta=ticket_ctx["ticket_meta"],
 		sponsors=visible_sponsors,
+		structured_data=[event_schema],
 		seo=build_seo(
-			title="A Congress of Christian Men at The Gorge Amphitheatre",
+			title="Freedom Con 2026 | A Congress of Christian Men at The Gorge Amphitheatre",
 			description="Two-day outdoor men's conference at The Gorge Amphitheatre, Father's Day Weekend June 19–20 2026. Worship, bold preaching, Crowder, camping, and the Columbia River.",
-			path="/alt",
+			path="/",
 		),
 	)
+
+
+@public_bp.get("/faq")
+def faq_redirect() -> str:
+	return redirect(url_for("public.faqs"), 301)
 
 
 @public_bp.get("/faqs")

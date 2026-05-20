@@ -67,9 +67,14 @@
                     class="ft-ticker__img"
                     src="{{ photo.src }}"
                     alt="{{ photo.alt }}"
+                    {% if loop.index <= 8 %}
+                    loading="eager"
+                    fetchpriority="auto"
+                    {% else %}
                     loading="lazy"
-                    decoding="async"
                     fetchpriority="low"
+                    {% endif %}
+                    decoding="async"
                     draggable="false"
                 >
             </div>

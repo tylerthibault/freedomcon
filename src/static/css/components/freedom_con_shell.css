@@ -181,11 +181,6 @@ body:has(.landing12-header) .page-clip {
     transition: opacity 220ms ease;
 }
 
-.landing12-nav.is-at-top .landing12-brand-logo {
-    opacity: 0;
-    pointer-events: none;
-}
-
 .landing12-links {
     /* layout: d-flex align-items-center flex-nowrap on element */
     gap: 1.2rem;
