@@ -66,9 +66,6 @@ class SecureAdminIndexView(AdminIndexView):
 # ---------------------------------------------------------------------------
 
 class SpeakerAdmin(SecureModelView):
-    can_create = False
-    can_edit = False
-    can_delete = False
     column_list = ("sort_order", "name", "is_gen_z", "shrink", "image")
     column_sortable_list = ("sort_order", "name", "is_gen_z")
     column_searchable_list = ("name",)
@@ -79,6 +76,7 @@ class SpeakerAdmin(SecureModelView):
         "titles_json", "orgs_json", "is_gen_z",
     )
     column_descriptions = {
+        "image": "Path relative to /static, e.g. /static/img/speakers/foo.webp",
         "titles_json": 'JSON array of title strings, e.g. ["Lead Pastor, Grace City Church"]',
         "orgs_json": 'JSON array: [{"icon":"church","name":"Grace City","subtitle":"Wenatchee, WA"}]',
     }
@@ -170,22 +168,22 @@ class SponsorAdmin(SecureModelView):
 
 
 class ArtistAdmin(SecureModelView):
-    can_create = False
-    can_edit = False
-    can_delete = False
     column_list = ("sort_order", "name", "day", "stage", "genre")
+    column_sortable_list = ("sort_order", "name", "day", "stage")
     column_searchable_list = ("name",)
     column_filters = ("day", "stage")
     form_columns = (
         "sort_order", "name", "image",
         "hero_image_x", "hero_image_y", "genre", "bio", "day", "stage",
     )
+    column_descriptions = {
+        "image": "Path relative to /static, e.g. /static/img/artists/foo.webp",
+        "hero_image_x": "CSS background-position X, e.g. 50%",
+        "hero_image_y": "CSS background-position Y, e.g. 0%",
+    }
 
 
 class TicketPriceAdmin(SecureModelView):
-    can_create = False
-    can_edit = False
-    can_delete = False
     column_list = ("sort_order", "name", "price", "highlight")
     column_sortable_list = ("sort_order", "name")
     form_columns = ("sort_order", "name", "price", "tax_total", "notes_json", "highlight")
@@ -265,9 +263,6 @@ class PastConferenceAdmin(SecureModelView):
 
 
 class MediaDownloadAdmin(SecureModelView):
-    can_create = False
-    can_edit = False
-    can_delete = False
     column_list = ("sort_order", "label", "external_id")
     column_searchable_list = ("label", "external_id")
     form_columns = ("sort_order", "external_id", "label", "assets_json")
@@ -290,9 +285,6 @@ class BackgroundTextAdmin(SecureModelView):
 
 
 class SiteConfigAdmin(SecureModelView):
-    can_create = False
-    can_edit = False
-    can_delete = False
     column_list = ("key",)
     column_searchable_list = ("key",)
     form_columns = ("key", "value_json")
@@ -439,14 +431,21 @@ def create_admin(app) -> Admin:
     )
 
     admin.add_view(SponsorAdmin(Sponsor, db.session, name="Sponsors", category="Content"))
+    admin.add_view(ArtistAdmin(Artist, db.session, name="Artists", category="Content"))
+    admin.add_view(SpeakerAdmin(Speaker, db.session, name="Speakers", category="Content"))
     admin.add_view(VideoAdmin(Video, db.session, name="Videos", category="Media"))
     admin.add_view(PodcastAdmin(Podcast, db.session, name="Podcasts", category="Media"))
+    admin.add_view(MediaDownloadAdmin(MediaDownload, db.session, name="Media Downloads", category="Media"))
     admin.add_view(SocialProofAdmin(SocialProof, db.session, name="Social Proof", category="Content"))
     admin.add_view(FAQAdmin(FAQ, db.session, name="FAQs", category="Content"))
+    admin.add_view(TicketPriceAdmin(TicketPrice, db.session, name="Ticket Prices", category="Content"))
     admin.add_view(HotelGroupAdmin(HotelGroup, db.session, name="Hotel Groups", category="Logistics"))
     admin.add_view(AirportAdmin(Airport, db.session, name="Airports", category="Logistics"))
     admin.add_view(PastConferenceAdmin(PastConference, db.session, name="Past Conferences", category="Content"))
     admin.add_view(ChurchAdmin(Church, db.session, name="Churches", category="Content"))
+    admin.add_view(TickerAdmin(Ticker, db.session, name="Tickers", category="Site"))
+    admin.add_view(BackgroundTextAdmin(BackgroundText, db.session, name="Background Text", category="Site"))
+    admin.add_view(SiteConfigAdmin(SiteConfig, db.session, name="Site Config", category="Site"))
     admin.add_view(AdminUserAdmin(AdminUser, db.session, name="Admin Users", category="Site"))
     admin.add_view(ChangePasswordView(name="Change Password", endpoint="change_password", category="Site"))
 
