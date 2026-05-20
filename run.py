@@ -140,6 +140,7 @@ def create_admin_user():
 
     username = click.prompt("Username", default="admin")
     password = click.prompt("Password", hide_input=True, confirmation_prompt=True)
+    role = click.prompt("Role", default="superadmin", type=click.Choice(["superadmin", "admin"]))
 
     with app.app_context():
         user = db.session.execute(
@@ -147,13 +148,34 @@ def create_admin_user():
         ).scalar_one_or_none()
         if user:
             user.set_password(password)
-            click.echo(f"Updated password for '{username}'.")
+            user.role = role
+            click.echo(f"Updated '{username}' (role: {role}).")
         else:
-            user = AdminUser(username=username)
+            user = AdminUser(username=username, role=role)
             user.set_password(password)
             db.session.add(user)
-            click.echo(f"Created admin user '{username}'.")
+            click.echo(f"Created admin user '{username}' (role: {role}).")
         db.session.commit()
+
+
+@app.cli.command("make-superadmin")
+def make_superadmin():
+    """Elevate an existing admin user to superadmin. Usage: flask make-superadmin"""
+    import click
+    from src.models.main import AdminUser, db
+
+    username = click.prompt("Username to elevate")
+
+    with app.app_context():
+        user = db.session.execute(
+            db.select(AdminUser).where(AdminUser.username == username)
+        ).scalar_one_or_none()
+        if not user:
+            click.echo(f"No user '{username}' found.", err=True)
+            return
+        user.role = "superadmin"
+        db.session.commit()
+        click.echo(f"'{username}' is now a superadmin.")
 
 
 if __name__ == "__main__":
