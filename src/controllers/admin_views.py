@@ -74,6 +74,8 @@ class SecureModelView(ModelView):
     """All admin model views inherit from this to require login."""
 
     extra_css = ['/static/css/admin_theme.css']
+    list_template = 'admin/sortable_list.html'
+    column_default_sort = ('sort_order', False)
 
     def is_accessible(self):
         if not current_user.is_authenticated:
@@ -148,7 +150,7 @@ class SpeakerAdmin(SecureModelView):
     column_searchable_list = ("name",)
     column_filters = ("is_gen_z",)
     form_columns = (
-        "sort_order", "name", "image", "alt", "bio",
+        "name", "image", "alt", "bio",
         "shrink", "image_x", "image_y",
         "titles_json", "orgs_json", "is_gen_z",
     )
@@ -167,13 +169,21 @@ def _church_logo_path():
     return os.path.join(current_app.static_folder, "img", "churches")
 
 
+def _video_thumb_path():
+    return os.path.join(current_app.static_folder, "img", "videos")
+
+
+def _podcast_thumb_path():
+    return os.path.join(current_app.static_folder, "img", "videos", "podcasts")
+
+
 class SponsorAdmin(SecureModelView):
     column_list = ("sort_order", "name", "category", "show_on_sponsor_page", "scale")
     column_sortable_list = ("sort_order", "name", "category")
     column_searchable_list = ("name",)
     column_filters = ("category", "show_on_sponsor_page")
     form_columns = (
-        "sort_order", "name", "logo_upload", "category",
+        "name", "logo_upload", "category",
         "show_on_sponsor_page", "background_color", "scale",
     )
     form_extra_fields = {
@@ -250,7 +260,7 @@ class ArtistAdmin(SecureModelView):
     column_searchable_list = ("name",)
     column_filters = ("day", "stage")
     form_columns = (
-        "sort_order", "name", "image",
+        "name", "image",
         "hero_image_x", "hero_image_y", "genre", "bio", "day", "stage",
     )
     column_descriptions = {
@@ -263,7 +273,7 @@ class ArtistAdmin(SecureModelView):
 class TicketPriceAdmin(SecureModelView):
     column_list = ("sort_order", "name", "price", "highlight")
     column_sortable_list = ("sort_order", "name")
-    form_columns = ("sort_order", "name", "price", "tax_total", "notes_json", "highlight")
+    form_columns = ("name", "price", "tax_total", "notes_json", "highlight")
     column_descriptions = {
         "notes_json": 'JSON array of note strings, e.g. ["VIP badge","Reserved seating"]'
     }
@@ -272,13 +282,105 @@ class TicketPriceAdmin(SecureModelView):
 class VideoAdmin(SecureModelView):
     column_list = ("sort_order", "title", "url", "thumbnail_mobile")
     column_searchable_list = ("title", "url")
-    form_columns = ("sort_order", "url", "title", "thumbnail_mobile")
+    form_columns = ("url", "title", "thumbnail_upload")
+    form_extra_fields = {
+        "thumbnail_upload": FileUploadField(
+            "Upload Thumbnail",
+            base_path=_video_thumb_path,
+            allowed_extensions=["webp", "png", "jpg", "jpeg"],
+            validators=[validators.Optional()],
+        )
+    }
+    form_args = {
+        "url": {"label": "YouTube URL"},
+    }
+    column_descriptions = {
+        "thumbnail_upload": "Upload mobile thumbnail (portrait, webp/jpg/png). Auto-converted to WebP.",
+    }
+    create_template = "admin/video_podcast_form.html"
+    edit_template   = "admin/video_podcast_form.html"
+
+    def render(self, template, **kwargs):
+        if template in (self.create_template, self.edit_template):
+            from flask import request as flask_request
+            kwargs.setdefault("current_thumb_url", None)
+            kwargs.setdefault("is_edit", False)
+            model_id = flask_request.args.get("id")
+            if model_id:
+                try:
+                    model = self.get_one(model_id)
+                    if model and model.thumbnail_mobile:
+                        kwargs["current_thumb_url"] = model.thumbnail_mobile
+                        kwargs["is_edit"] = True
+                except Exception:
+                    pass
+        return super().render(template, **kwargs)
+
+    def on_model_change(self, form, model, is_created):
+        from pathlib import Path
+        from src.services.image_optimizer import convert_to_webp
+        raw = getattr(model, "thumbnail_upload", None)
+        if raw and isinstance(raw, str):
+            abs_path = Path(current_app.static_folder) / "img" / "videos" / raw
+            try:
+                webp_path = convert_to_webp(abs_path)
+                model.thumbnail_mobile = f"img/videos/{webp_path.name}"
+            except Exception as exc:
+                current_app.logger.warning("Video thumb WebP conversion failed: %s", exc)
+                model.thumbnail_mobile = f"img/videos/{raw}"
+        super().on_model_change(form, model, is_created)
 
 
 class PodcastAdmin(SecureModelView):
     column_list = ("sort_order", "title", "url", "thumbnail_mobile")
     column_searchable_list = ("title", "url")
-    form_columns = ("sort_order", "url", "title", "thumbnail_mobile")
+    form_columns = ("url", "title", "thumbnail_upload")
+    form_extra_fields = {
+        "thumbnail_upload": FileUploadField(
+            "Upload Thumbnail",
+            base_path=_podcast_thumb_path,
+            allowed_extensions=["webp", "png", "jpg", "jpeg"],
+            validators=[validators.Optional()],
+        )
+    }
+    form_args = {
+        "url": {"label": "YouTube URL"},
+    }
+    column_descriptions = {
+        "thumbnail_upload": "Upload mobile thumbnail (portrait, webp/jpg/png). Auto-converted to WebP.",
+    }
+    create_template = "admin/video_podcast_form.html"
+    edit_template   = "admin/video_podcast_form.html"
+
+    def render(self, template, **kwargs):
+        if template in (self.create_template, self.edit_template):
+            from flask import request as flask_request
+            kwargs.setdefault("current_thumb_url", None)
+            kwargs.setdefault("is_edit", False)
+            model_id = flask_request.args.get("id")
+            if model_id:
+                try:
+                    model = self.get_one(model_id)
+                    if model and model.thumbnail_mobile:
+                        kwargs["current_thumb_url"] = model.thumbnail_mobile
+                        kwargs["is_edit"] = True
+                except Exception:
+                    pass
+        return super().render(template, **kwargs)
+
+    def on_model_change(self, form, model, is_created):
+        from pathlib import Path
+        from src.services.image_optimizer import convert_to_webp
+        raw = getattr(model, "thumbnail_upload", None)
+        if raw and isinstance(raw, str):
+            abs_path = Path(current_app.static_folder) / "img" / "videos" / "podcasts" / raw
+            try:
+                webp_path = convert_to_webp(abs_path)
+                model.thumbnail_mobile = f"img/videos/podcasts/{webp_path.name}"
+            except Exception as exc:
+                current_app.logger.warning("Podcast thumb WebP conversion failed: %s", exc)
+                model.thumbnail_mobile = f"img/videos/podcasts/{raw}"
+        super().on_model_change(form, model, is_created)
 
 
 class SocialProofAdmin(SecureModelView):
@@ -286,7 +388,7 @@ class SocialProofAdmin(SecureModelView):
     column_sortable_list = ("sort_order", "name")
     column_searchable_list = ("name", "title")
     column_filters = ("is_boys",)
-    form_columns = ("sort_order", "name", "title", "quote", "alt", "img_json", "is_boys")
+    form_columns = ("name", "title", "quote", "alt", "img_json", "is_boys")
     column_descriptions = {
         "img_json": 'JSON array of image URL strings (can be empty [])',
         "is_boys": "Check if this belongs to the boys_social_proof list",
@@ -299,7 +401,7 @@ class FAQAdmin(SecureModelView):
     column_searchable_list = ("question", "category")
     column_filters = ("category",)
     form_columns = (
-        "sort_order", "category", "question",
+        "category", "question",
         "answer", "answer_html", "answer_list_json",
     )
     column_descriptions = {
@@ -313,7 +415,7 @@ class HotelGroupAdmin(SecureModelView):
     column_list = ("sort_order", "name", "distance", "source")
     column_filters = ("source",)
     column_searchable_list = ("name",)
-    form_columns = ("sort_order", "name", "distance", "details", "hotels_json", "source")
+    form_columns = ("name", "distance", "details", "hotels_json", "source")
     column_descriptions = {
         "hotels_json": 'JSON array: [{"name":"Hotel Name","link":"https://...","valid_link":true}]',
         "source": '"hotels" = hotels page, "accommodations" = accommodations page',
@@ -323,7 +425,7 @@ class HotelGroupAdmin(SecureModelView):
 class AirportAdmin(SecureModelView):
     column_list = ("sort_order", "name", "distance", "drive_time")
     column_searchable_list = ("name",)
-    form_columns = ("sort_order", "name", "distance", "drive_time", "route_json", "notes")
+    form_columns = ("name", "distance", "drive_time", "route_json", "notes")
     column_descriptions = {
         "route_json": 'JSON array of step strings, e.g. ["Take I-90 East","Take Exit 143"]'
     }
@@ -333,7 +435,7 @@ class PastConferenceAdmin(SecureModelView):
     column_list = ("sort_order", "year", "name", "summary")
     column_sortable_list = ("sort_order", "year", "name")
     column_searchable_list = ("name",)
-    form_columns = ("sort_order", "year", "name", "summary", "videos_json")
+    form_columns = ("year", "name", "summary", "videos_json")
     column_descriptions = {
         "videos_json": 'JSON array: [{"url":"https://...","title":"...","thumbnail_mobile":"..."}]'
     }
@@ -342,7 +444,7 @@ class PastConferenceAdmin(SecureModelView):
 class MediaDownloadAdmin(SecureModelView):
     column_list = ("sort_order", "label", "external_id")
     column_searchable_list = ("label", "external_id")
-    form_columns = ("sort_order", "external_id", "label", "assets_json")
+    form_columns = ("external_id", "label", "assets_json")
     column_descriptions = {
         "assets_json": 'JSON array: [{"label":"...","thumb":"https://...","download":"https://..."}]'
     }
@@ -352,13 +454,13 @@ class TickerAdmin(SecureModelView):
     column_list = ("sort_order", "ticker_name", "text")
     column_filters = ("ticker_name",)
     column_searchable_list = ("text",)
-    form_columns = ("sort_order", "ticker_name", "text")
+    form_columns = ("ticker_name", "text")
 
 
 class BackgroundTextAdmin(SecureModelView):
     column_list = ("sort_order", "group_name", "text")
     column_filters = ("group_name",)
-    form_columns = ("sort_order", "group_name", "text")
+    form_columns = ("group_name", "text")
 
 
 class SiteConfigAdmin(SecureModelView):
@@ -376,7 +478,7 @@ class ChurchAdmin(SecureModelView):
     column_searchable_list = ("name",)
     column_filters = ("active", "logo_bg")
     form_columns = (
-        "sort_order", "name", "logo_upload",
+        "name", "logo_upload",
         "background_color", "scale", "active",
     )
     form_extra_fields = {

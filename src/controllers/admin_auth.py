@@ -1,6 +1,6 @@
 """Admin authentication routes (login / logout)."""
 
-from flask import Blueprint, flash, redirect, render_template, request, url_for
+from flask import Blueprint, flash, jsonify, redirect, render_template, request, url_for
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_login import current_user, login_required, login_user, logout_user
@@ -58,3 +58,60 @@ def logout():
     log_audit(username=current_user.username, action="LOGOUT")
     logout_user()
     return redirect(url_for("admin_auth.login_page"))
+
+
+@admin_auth_bp.post("/reorder")
+@login_required
+def reorder():
+    """AJAX – set sort_order for any sortable model.
+    Body: {"model": "video", "ids": [3, 1, 2]}
+    """
+    from src.models.main import (
+        Artist, BackgroundText, Church, FAQ, MediaDownload,
+        PastConference, Podcast, SocialProof, Speaker, Sponsor,
+        TicketPrice, Ticker, Video,
+    )
+
+    MODEL_MAP = {
+        "artist":         Artist,
+        "backgroundtext": BackgroundText,
+        "church":         Church,
+        "faq":            FAQ,
+        "mediadownload":  MediaDownload,
+        "pastconference": PastConference,
+        "podcast":        Podcast,
+        "socialproof":    SocialProof,
+        "speaker":        Speaker,
+        "sponsor":        Sponsor,
+        "ticketprice":    TicketPrice,
+        "ticker":         Ticker,
+        "video":          Video,
+    }
+
+    data = request.get_json(silent=True) or {}
+    model_name = (data.get("model") or "").lower().strip()
+    ids = data.get("ids", [])
+
+    ModelClass = MODEL_MAP.get(model_name)
+    if ModelClass is None:
+        return jsonify(ok=False, error=f"Unknown model: {model_name}"), 400
+    if not isinstance(ids, list) or not ids:
+        return jsonify(ok=False, error="ids must be a non-empty list"), 400
+
+    try:
+        for position, record_id in enumerate(ids):
+            record = db.session.get(ModelClass, int(record_id))
+            if record is not None:
+                record.sort_order = position
+        db.session.commit()
+        log_audit(
+            username=current_user.username,
+            action="REORDER",
+            resource=ModelClass.__name__,
+            detail=f"New order: {ids}",
+        )
+    except Exception as exc:
+        db.session.rollback()
+        return jsonify(ok=False, error=str(exc)), 500
+
+    return jsonify(ok=True)
