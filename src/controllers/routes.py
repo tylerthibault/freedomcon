@@ -2,6 +2,7 @@ from datetime import date
 from os import getenv
 import re
 import ssl as _ssl
+import time as _time
 import urllib.request as _urllib_req
 try:
     import certifi as _certifi
@@ -10,7 +11,7 @@ except ImportError:
     _SSL_CTX = None
 
 
-from flask import Blueprint, Response, redirect, render_template, request, url_for
+from flask import Blueprint, Response, redirect, render_template, request, stream_with_context, url_for
 from src.services.main import (
     get_artists,
     get_background_text,
@@ -188,17 +189,44 @@ def build_faq_schema(faq_content: dict[str, list[dict[str, object]]]) -> dict[st
 	}
 
 
+# ---------------------------------------------------------------------------
+# Simple module-level TTL cache for global promos (avoids a DB hit on every
+# single request). TTL is intentionally short so admin changes surface
+# quickly. Call invalidate_promo_cache() from admin views after any save.
+# ---------------------------------------------------------------------------
+_PROMO_CACHE_TTL = 60  # seconds
+_promo_cache: list | None = None
+_promo_cache_at: float = 0.0
+
+
+def invalidate_promo_cache() -> None:
+	"""Force the next request to re-query promos from the database."""
+	global _promo_cache, _promo_cache_at
+	_promo_cache = None
+	_promo_cache_at = 0.0
+
+
 @public_bp.app_context_processor
 def inject_global_urgency() -> dict[str, object]:
+	global _promo_cache, _promo_cache_at
+
 	def asset_url(path: str) -> str:
 		normalized = path.lstrip("/")
 		if ASSET_BASE_URL and normalized.startswith(("pdfs/", "downloads/", "media/")):
 			return f"{ASSET_BASE_URL}/{normalized}"
 		return url_for("static", filename=normalized)
 
+	now = _time.monotonic()
+	if _promo_cache is None or (now - _promo_cache_at) > _PROMO_CACHE_TTL:
+		from src.models.main import Promo
+		activepromos = Promo.query.filter_by(active=True).order_by(Promo.sort_order).all()
+		_promo_cache = [p.to_dict() for p in activepromos]
+		_promo_cache_at = now
+
 	return {
 		"asset_url": asset_url,
 		"asset_base_url": ASSET_BASE_URL,
+		"global_promos": _promo_cache,
 	}
 
 
@@ -578,52 +606,75 @@ _TRUSTED_CDN = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/"
 
 @public_bp.get("/press/download")
 def press_download() -> Response:
-	"""Proxy a CDN asset so the browser receives Content-Disposition: attachment."""
+	"""Stream a trusted CDN asset to the browser as an attachment.
+
+	Previous implementation called resp.read() which buffered the entire file
+	into worker memory and blocked the Gunicorn worker for up to 30 seconds,
+	guaranteeing H12 timeouts on large files. This version:
+	  - Opens the CDN connection with a 10-second timeout (fail fast)
+	  - Streams 64 KB chunks directly to the client without buffering
+	  - Releases the worker incrementally so Gunicorn's 25-second timeout
+	    is not hit unless the CDN itself is genuinely unresponsive
+	"""
 	url  = request.args.get("url",  "").strip()
 	name = request.args.get("name", "download").strip()
 
 	if not url.startswith(_TRUSTED_CDN):
 		return Response("Forbidden", status=403)
 
-	try:
-		req = _urllib_req.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-		kwargs = {"timeout": 30}
-		if _SSL_CTX:
-			kwargs["context"] = _SSL_CTX
-		with _urllib_req.urlopen(req, **kwargs) as resp:
-			content_type = resp.headers.get("Content-Type", "application/octet-stream")
-			data = resp.read()
-	except Exception as e:
-		return Response(f"Failed: {e}", status=502)
-
-	# Build filename: use label + extension extracted from URL
+	# Build safe filename before opening the network connection.
+	import re as _re
+	from urllib.parse import quote as _urlquote, unquote as _urlunquote
 	url_path = url.split("?")[0]
 	last_seg = url_path.rsplit("/", 1)[-1]
 	try:
-		last_seg = _urllib_req.urllib.parse.unquote(last_seg)
+		last_seg = _urlunquote(last_seg)
 	except Exception:
 		pass
 	dot_idx = last_seg.rfind(".")
 	ext = last_seg[dot_idx:] if dot_idx != -1 else ""
-	safe_name = name.replace('"', "").strip()
+	# Strip control characters (including CR/LF) and quotes from user-supplied name.
+	safe_name = _re.sub(r'[\x00-\x1f\x7f\r\n"]', "", name).strip()
 	if ext and not safe_name.lower().endswith(ext.lower()):
 		safe_name += ext
-
-	# HTTP headers only allow ASCII in the plain filename= token.
-	# For non-ASCII characters (e.g. em-dashes) use RFC 5987 filename* alongside
-	# an ASCII-only fallback for older clients.
 	ascii_name = safe_name.encode("ascii", errors="replace").decode("ascii").replace("?", "_")
-	from urllib.parse import quote as _urlquote
 	rfc5987_name = _urlquote(safe_name, safe=" !#$&+-.^_`|~")
 	content_disposition = (
 		f'attachment; filename="{ascii_name}"; filename*=UTF-8\'\'{rfc5987_name}'
 	)
 
-	return Response(data, headers={
-		"Content-Disposition": content_disposition,
-		"Content-Type": content_type,
-		"Cache-Control": "public, max-age=3600",
-	})
+	try:
+		req = _urllib_req.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+		kwargs: dict = {"timeout": 10}  # fail fast — don't hold the worker indefinitely
+		if _SSL_CTX:
+			kwargs["context"] = _SSL_CTX
+		# Open the connection now to read Content-Type; body is streamed lazily below.
+		cdn_resp = _urllib_req.urlopen(req, **kwargs)
+		content_type = cdn_resp.headers.get("Content-Type", "application/octet-stream")
+	except Exception as e:
+		return Response(f"Failed to reach CDN: {e}", status=502)
+
+	_CHUNK = 64 * 1024  # 64 KB
+
+	@stream_with_context
+	def _generate():
+		try:
+			while True:
+				chunk = cdn_resp.read(_CHUNK)
+				if not chunk:
+					break
+				yield chunk
+		finally:
+			cdn_resp.close()
+
+	return Response(
+		_generate(),
+		headers={
+			"Content-Disposition": content_disposition,
+			"Content-Type": content_type,
+			"Cache-Control": "public, max-age=3600",
+		},
+	)
 
 
 @public_bp.get("/press")
@@ -673,11 +724,14 @@ def worship_page() -> str:
 
 @public_bp.get("/tickets")
 def tickets_page() -> str:
+	from src.models.main import Promo
 	ticket_context = get_ticket_context()  # queries DB
+	ticket_promos = Promo.query.filter_by(active=True, show_on_tickets=True).order_by(Promo.sort_order).all()
 	return render_template(
 		"public/tickets/index.html",
 		ticket_meta=ticket_context["ticket_meta"],
 		ticket_prices=ticket_context["ticket_prices"],
+		ticket_promos=[p.to_dict() for p in ticket_promos],
 		seo=build_seo(
 			title="FREEDOM CON Tickets | 2026 Pricing and Registration",
 			description="View Freedom Con 2026 ticket options, pricing tiers, and secure your spot for Father’s Day weekend at The Gorge.",

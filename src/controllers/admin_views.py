@@ -21,6 +21,7 @@ from src.models.main import (
     MediaDownload,
     PastConference,
     Podcast,
+    Promo,
     SiteConfig,
     SocialProof,
     Speaker,
@@ -42,6 +43,7 @@ from src.models.main import (
 # ---------------------------------------------------------------------------
 ADMIN_VIEWS = [
     ("sponsor",        "Sponsors",         "Content",   False),
+    ("promo",          "Promos",            "Content",   False),
     ("artist",         "Artists",          "Content",   False),
     ("speaker",        "Speakers",         "Content",   False),
     ("church",         "Churches",         "Content",   False),
@@ -388,6 +390,40 @@ class PodcastAdmin(SecureModelView):
         super().on_model_change(form, model, is_created)
 
 
+class PromoAdmin(SecureModelView):
+    column_list = ("sort_order", "badge", "headline", "show_in_popup", "show_on_tickets", "active")
+    column_sortable_list = ("sort_order", "badge", "active")
+    column_searchable_list = ("badge", "headline")
+    column_filters = ("active", "show_in_popup", "show_on_tickets")
+    form_columns = (
+        "badge", "badge_style", "headline", "description",
+        "promo_code", "code_examples", "cta_hint",
+        "anchor", "show_in_popup", "show_on_tickets", "active",
+    )
+    column_descriptions = {
+        "badge": 'Short label shown on the badge, e.g. "50/50/50" or "Group Rate"',
+        "badge_style": 'Colour variant: gold, green, navy, or red',
+        "headline": 'One-liner shown in the popup and as the card title on the tickets page',
+        "description": 'Full description paragraph (tickets page only)',
+        "promo_code": 'Promo code text shown in the code block, e.g. "[STATE]50"',
+        "code_examples": 'Examples shown below the code block, e.g. "e.g. WA50 · TX50 · FL50"',
+        "cta_hint": 'Small hint text shown below the code examples',
+        "anchor": 'HTML id anchor on the tickets page (no #), e.g. "deal-fifty"',
+        "show_in_popup": 'Show this promo in the popup modal',
+        "show_on_tickets": 'Show this promo as a card on the tickets page',
+    }
+
+    def after_model_change(self, form, model, is_created):
+        super().after_model_change(form, model, is_created)
+        from src.controllers.routes import invalidate_promo_cache
+        invalidate_promo_cache()
+
+    def after_model_delete(self, model):
+        super().after_model_delete(model)
+        from src.controllers.routes import invalidate_promo_cache
+        invalidate_promo_cache()
+
+
 class SocialProofAdmin(SecureModelView):
     column_list = ("sort_order", "name", "title", "is_boys")
     column_sortable_list = ("sort_order", "name")
@@ -723,6 +759,7 @@ def create_admin(app) -> Admin:
     )
 
     admin.add_view(SponsorAdmin(Sponsor, db.session, name="Sponsors", category="Content"))
+    admin.add_view(PromoAdmin(Promo, db.session, name="Promos", category="Content"))
     admin.add_view(ArtistAdmin(Artist, db.session, name="Artists", category="Content"))
     admin.add_view(SpeakerAdmin(Speaker, db.session, name="Speakers", category="Content"))
     admin.add_view(VideoAdmin(Video, db.session, name="Videos", category="Media"))
