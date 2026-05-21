@@ -75,7 +75,12 @@ class SecureModelView(ModelView):
 
     extra_css = ['/static/css/admin_theme.css']
     list_template = 'admin/sortable_list.html'
-    column_default_sort = ('sort_order', False)
+
+    @property
+    def column_default_sort(self):
+        if hasattr(self.model, 'sort_order'):
+            return ('sort_order', False)
+        return None
 
     def is_accessible(self):
         if not current_user.is_authenticated:
