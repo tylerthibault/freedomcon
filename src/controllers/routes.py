@@ -190,15 +190,19 @@ def build_faq_schema(faq_content: dict[str, list[dict[str, object]]]) -> dict[st
 
 @public_bp.app_context_processor
 def inject_global_urgency() -> dict[str, object]:
+	from src.models.main import Promo
 	def asset_url(path: str) -> str:
 		normalized = path.lstrip("/")
 		if ASSET_BASE_URL and normalized.startswith(("pdfs/", "downloads/", "media/")):
 			return f"{ASSET_BASE_URL}/{normalized}"
 		return url_for("static", filename=normalized)
 
+	activepromos = Promo.query.filter_by(active=True).order_by(Promo.sort_order).all()
+
 	return {
 		"asset_url": asset_url,
 		"asset_base_url": ASSET_BASE_URL,
+		"global_promos": [p.to_dict() for p in activepromos],
 	}
 
 
@@ -673,11 +677,14 @@ def worship_page() -> str:
 
 @public_bp.get("/tickets")
 def tickets_page() -> str:
+	from src.models.main import Promo
 	ticket_context = get_ticket_context()  # queries DB
+	ticket_promos = Promo.query.filter_by(active=True, show_on_tickets=True).order_by(Promo.sort_order).all()
 	return render_template(
 		"public/tickets/index.html",
 		ticket_meta=ticket_context["ticket_meta"],
 		ticket_prices=ticket_context["ticket_prices"],
+		ticket_promos=[p.to_dict() for p in ticket_promos],
 		seo=build_seo(
 			title="FREEDOM CON Tickets | 2026 Pricing and Registration",
 			description="View Freedom Con 2026 ticket options, pricing tiers, and secure your spot for Father’s Day weekend at The Gorge.",

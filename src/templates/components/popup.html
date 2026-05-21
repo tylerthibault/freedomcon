@@ -12,30 +12,14 @@
         <h2 class="promo-modal__title" id="promo-modal-title">Don't Miss Out on These Deals</h2>
         <div class="promo-modal__deals">
 
-
-            <!-- Deal 2: 50/50/50 -->
-            <a class="promo-modal__deal promo-modal__deal--fifty" href="/tickets#deal-fifty">
-                <div class="promo-modal__deal-badge promo-modal__deal-badge--gold">50/50/50</div>
-                <h3 class="promo-modal__deal-headline">First 50 Guys in Each State Save $50</h3>
+            {% set popup_promos = global_promos | selectattr("show_in_popup") | list %}
+            {% for promo in popup_promos %}
+            <a class="promo-modal__deal" href="/tickets{% if promo.anchor %}#{{ promo.anchor }}{% endif %}">
+                <div class="promo-modal__deal-badge promo-modal__deal-badge--{{ promo.badge_style }}">{{ promo.badge }}</div>
+                <h3 class="promo-modal__deal-headline">{{ promo.headline }}</h3>
             </a>
-
-            <div class="promo-modal__divider" aria-hidden="true"></div>
-
-            <!-- Deal 3: Group Rate -->
-            <a class="promo-modal__deal promo-modal__deal--group" href="/tickets#deal-group">
-                <div class="promo-modal__deal-badge promo-modal__deal-badge--green">Group Rate</div>
-                <h3 class="promo-modal__deal-headline">15% Off — Bring Your Bros or Men&apos;s Ministry</h3>
-            </a>
-
-            <div class="promo-modal__divider" aria-hidden="true"></div>
-
-            <!-- Deal 4: VIP Pastor Experience -->
-            <!-- <a class="promo-modal__deal promo-modal__deal--pastor" href="/tickets#deal-pastor">
-                <div class="promo-modal__deal-badge promo-modal__deal-badge--navy">VIP Pastor</div>
-                <h3 class="promo-modal__deal-headline">VIP Pastor Experience — 25% Off</h3>
-            </a>
-
-            <a class="promo-modal__deal-link" href="/tickets#current-deals">See All Deal Details &rarr;</a> -->
+            {% if not loop.last %}<div class="promo-modal__divider" aria-hidden="true"></div>{% endif %}
+            {% endfor %}
 
         </div>
 

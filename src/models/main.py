@@ -301,6 +301,58 @@ class TicketPrice(db.Model):
 
 
 # ---------------------------------------------------------------------------
+# Promos
+# ---------------------------------------------------------------------------
+
+class Promo(db.Model):
+    """A promotional deal shown in the popup modal and on the tickets page."""
+    __tablename__ = "promos"
+
+    id         = db.Column(db.Integer, primary_key=True)
+    # Short badge label, e.g. "50/50/50", "Group Rate", "VIP Pastor"
+    badge      = db.Column(db.String(100), default="")
+    # Badge colour variant: gold | green | navy | red
+    badge_style = db.Column(db.String(30), default="gold")
+    # One-liner shown in popup and as card title
+    headline   = db.Column(db.String(300), nullable=False)
+    # Full description paragraph (tickets page only, optional)
+    description = db.Column(db.Text, default="")
+    # Optional promo code snippet, e.g. "[STATE]50"
+    promo_code  = db.Column(db.String(200), default="")
+    # Examples text shown under the code, e.g. "e.g. WA50 · TX50"
+    code_examples = db.Column(db.String(300), default="")
+    # Additional hint / CTA text below the code block
+    cta_hint   = db.Column(db.Text, default="")
+    # URL anchor on the tickets page, e.g. "deal-fifty"
+    anchor     = db.Column(db.String(100), default="")
+    # Show in popup modal
+    show_in_popup = db.Column(db.Boolean, default=True)
+    # Show on tickets page
+    show_on_tickets = db.Column(db.Boolean, default=True)
+    active     = db.Column(db.Boolean, default=True)
+    sort_order = db.Column(db.Integer, default=0)
+
+    def to_dict(self) -> dict:
+        return {
+            "id": self.id,
+            "badge": self.badge,
+            "badge_style": self.badge_style,
+            "headline": self.headline,
+            "description": self.description,
+            "promo_code": self.promo_code,
+            "code_examples": self.code_examples,
+            "cta_hint": self.cta_hint,
+            "anchor": self.anchor,
+            "show_in_popup": self.show_in_popup,
+            "show_on_tickets": self.show_on_tickets,
+            "active": self.active,
+        }
+
+    def __str__(self) -> str:
+        return self.headline or self.badge
+
+
+# ---------------------------------------------------------------------------
 # Videos & Podcasts
 # ---------------------------------------------------------------------------
 

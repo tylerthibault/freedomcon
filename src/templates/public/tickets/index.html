@@ -127,18 +127,20 @@
 
 			<div class="tickets-promos__grid">
 
-				<div id="deal-fifty" class="tickets-promo-card">
-					<div class="tickets-promo-card__badge tickets-promo-card__badge--gold">50 / 50 / 50</div>
-					<h3 class="tickets-promo-card__title">First 50 Guys in Each State Save $50</h3>
-					<p class="tickets-promo-card__desc">The first 50 men to register from each of the 50 states receive <strong>$50 off</strong> their ticket. This is a first-come, first-served deal — once those spots are gone, they're gone. Claim your state's discount now. The promo applies to GA tickets only</p>
-					<p class="tickets-promo-card__desc">To redeem, enter your state's promo code at checkout — <strong>your state must match the billing address on your card:</strong></p>
+				{% for promo in ticket_promos %}
+				<div{% if promo.anchor %} id="{{ promo.anchor }}"{% endif %} class="tickets-promo-card">
+					<div class="tickets-promo-card__badge tickets-promo-card__badge--{{ promo.badge_style }}">{{ promo.badge }}</div>
+					<h3 class="tickets-promo-card__title">{{ promo.headline }}</h3>
+					{% if promo.description %}<p class="tickets-promo-card__desc">{{ promo.description }}</p>{% endif %}
+					{% if promo.promo_code %}
 					<div class="tickets-promo-card__code-block">
-						<span class="tickets-promo-card__code"><em>[STATE]</em>50</span>
-						<span class="tickets-promo-card__code-examples">e.g. <strong>WA50</strong> · <strong>TX50</strong> · <strong>FL50</strong></span>
+						<span class="tickets-promo-card__code">{{ promo.promo_code | safe }}</span>
+						{% if promo.code_examples %}<span class="tickets-promo-card__code-examples">{{ promo.code_examples }}</span>{% endif %}
 					</div>
-					<p class="tickets-promo-card__cta-hint">Use the 2-letter abbreviation for the state on your billing address. Spots are filling fast — register above and enter your code at checkout.</p>
+					{% endif %}
+					{% if promo.cta_hint %}<p class="tickets-promo-card__cta-hint">{{ promo.cta_hint }}</p>{% endif %}
 				</div>
-
+				{% endfor %}
 
 			</div>
 		</div>
