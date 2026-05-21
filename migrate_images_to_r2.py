@@ -54,10 +54,12 @@ load_dotenv(REPO_ROOT / ".env")
 parser = argparse.ArgumentParser(description="Migrate static/img to Cloudflare R2")
 parser.add_argument("--dry-run", action="store_true", help="Print actions without uploading or changing the DB")
 parser.add_argument("--delete-local", action="store_true", help="Delete local img files after migration without prompting")
+parser.add_argument("--db-only", action="store_true", help="Skip file uploads; just update DB records to CDN URLs (use when files are already in R2)")
 args = parser.parse_args()
 
 DRY_RUN = args.dry_run
 AUTO_DELETE = args.delete_local
+DB_ONLY = args.db_only
 
 # ---------------------------------------------------------------------------
 # Preflight: check R2 env vars
@@ -111,75 +113,70 @@ def _build_r2_key(local_path: Path, override_stem: str | None = None) -> str:
 # ---------------------------------------------------------------------------
 # Phase 1: upload files
 # ---------------------------------------------------------------------------
-print(f"\n{'[DRY RUN] ' if DRY_RUN else ''}Scanning {IMG_ROOT} …\n")
-
-# key_map: local_path -> uploaded CDN URL
-# Used in Phase 2 to update DB rows.
-key_map: dict[str, str] = {}   # str(local_path) -> cdn_url
-
+# Phase 1: upload files
+# ---------------------------------------------------------------------------
+key_map: dict[str, str] = {}
 uploaded = 0
 converted = 0
 skipped = 0
 errors = 0
 
-for local_path in sorted(IMG_ROOT.rglob("*")):
-    if not local_path.is_file():
-        continue
-
-    suffix = local_path.suffix.lower()
-    rel = local_path.relative_to(REPO_ROOT / "src" / "static")  # e.g. img/speakers/foo.webp
-    size = local_path.stat().st_size
-
-    # Decide whether to convert/recompress to WebP (any raster >1 MB)
-    should_convert = (suffix in SUPPORTED_CONVERT) and (size > ONE_MB)
-
-    if should_convert:
-        r2_stem = local_path.stem + ".webp"
-        r2_key = _build_r2_key(local_path, override_stem=r2_stem)
-        verb = "RECOMPRESS+UPLOAD" if suffix == ".webp" else "CONVERT+UPLOAD"
-        action = f"{verb} ({size / 1024:.0f} KB  →  webp)"
-        converted += 1
-    else:
-        r2_key = _build_r2_key(local_path)
-        action = f"UPLOAD ({size / 1024:.0f} KB)"
-
-    cdn_url = f"{R2_PUBLIC_URL}/{r2_key}"
-    print(f"  {action}\n    {rel}  →  {r2_key}")
-
-    if not DRY_RUN:
-        try:
-            raw = local_path.read_bytes()
-            if should_convert:
-                from src.services.image_optimizer import convert_bytes_to_webp
-                raw, _ = convert_bytes_to_webp(raw, local_path.name, force=suffix == ".webp")
-                mime = "image/webp"
-            else:
-                mime = _mime(local_path)
-            cdn_url = upload_bytes(raw, r2_key, mime)
-            uploaded += 1
-        except Exception as exc:
-            print(f"    ⚠  FAILED: {exc}")
-            errors += 1
+if DB_ONLY:
+    print(f"\n[DB ONLY] Skipping file scan — files already in R2, will update DB from URL pattern.\n")
+else:
+    print(f"\n{'[DRY RUN] ' if DRY_RUN else ''}Scanning {IMG_ROOT} …\n")
+    for local_path in sorted(IMG_ROOT.rglob("*")):
+        if not local_path.is_file():
             continue
 
-    # Record the mapping using both path styles templates might store
-    local_abs = str(local_path)
-    key_map[local_abs] = cdn_url
+        suffix = local_path.suffix.lower()
+        rel = local_path.relative_to(REPO_ROOT / "src" / "static")
+        size = local_path.stat().st_size
 
-    # Also record by relative paths used in DB columns:
-    # e.g. "img/speakers/foo.webp"  or  "/static/img/speakers/foo.webp"
-    static_rel = str(rel)                        # img/speakers/foo.webp
-    static_slash = f"/static/{static_rel}"       # /static/img/speakers/foo.webp
+        should_convert = (suffix in SUPPORTED_CONVERT) and (size > ONE_MB)
 
-    key_map[static_rel]   = cdn_url
-    key_map[static_slash] = cdn_url
+        if should_convert:
+            r2_stem = local_path.stem + ".webp"
+            r2_key = _build_r2_key(local_path, override_stem=r2_stem)
+            verb = "RECOMPRESS+UPLOAD" if suffix == ".webp" else "CONVERT+UPLOAD"
+            action = f"{verb} ({size / 1024:.0f} KB  →  webp)"
+            converted += 1
+        else:
+            r2_key = _build_r2_key(local_path)
+            action = f"UPLOAD ({size / 1024:.0f} KB)"
 
-    # If a conversion happened, the old filename in the DB is the pre-webp name
-    if should_convert:
-        old_rel   = str(rel.parent / local_path.name)             # img/.../foo.jpg
-        old_slash = f"/static/{old_rel}"                           # /static/img/.../foo.jpg
-        key_map[old_rel]   = cdn_url
-        key_map[old_slash] = cdn_url
+        cdn_url = f"{R2_PUBLIC_URL}/{r2_key}"
+        print(f"  {action}\n    {rel}  →  {r2_key}")
+
+        if not DRY_RUN:
+            try:
+                raw = local_path.read_bytes()
+                if should_convert:
+                    from src.services.image_optimizer import convert_bytes_to_webp
+                    raw, _ = convert_bytes_to_webp(raw, local_path.name, force=suffix == ".webp")
+                    mime = "image/webp"
+                else:
+                    mime = _mime(local_path)
+                cdn_url = upload_bytes(raw, r2_key, mime)
+                uploaded += 1
+            except Exception as exc:
+                print(f"    ⚠  FAILED: {exc}")
+                errors += 1
+                continue
+
+        local_abs = str(local_path)
+        key_map[local_abs] = cdn_url
+
+        static_rel = str(rel)
+        static_slash = f"/static/{static_rel}"
+        key_map[static_rel]   = cdn_url
+        key_map[static_slash] = cdn_url
+
+        if should_convert:
+            old_rel   = str(rel.parent / local_path.name)
+            old_slash = f"/static/{old_rel}"
+            key_map[old_rel]   = cdn_url
+            key_map[old_slash] = cdn_url
 
 print(f"\n{'[DRY RUN] ' if DRY_RUN else ''}Summary: {uploaded} uploaded, {converted} converted, {errors} errors\n")
 
@@ -205,6 +202,17 @@ with app.app_context():
 
     def _map(val: str | None) -> str | None:
         if not val:
+            return None
+        # Already a full CDN URL — nothing to do.
+        if val.startswith("http://") or val.startswith("https://"):
+            return None
+        # In --db-only mode, derive the CDN URL directly from the path pattern.
+        if DB_ONLY:
+            normalized = val.lstrip("/")
+            if normalized.startswith("static/"):
+                normalized = normalized[len("static/"):]
+            if normalized.startswith("img/"):
+                return f"{R2_PUBLIC_URL}/{normalized}"
             return None
         return key_map.get(val) or key_map.get(val.lstrip("/"))
 
@@ -265,8 +273,11 @@ else:
     do_delete = answer == "y"
 
 if do_delete:
-    shutil.rmtree(IMG_ROOT)
-    print(f"✓  Deleted {IMG_ROOT}\n")
+    if IMG_ROOT.exists():
+        shutil.rmtree(IMG_ROOT)
+        print(f"✓  Deleted {IMG_ROOT}\n")
+    else:
+        print(f"(img directory already absent — nothing to delete)\n")
 else:
     print("Local files kept. You can delete them manually once you've verified R2.\n")
 
