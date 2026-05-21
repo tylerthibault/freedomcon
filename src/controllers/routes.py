@@ -212,6 +212,9 @@ def inject_global_urgency() -> dict[str, object]:
 	global _promo_cache, _promo_cache_at
 
 	def asset_url(path: str) -> str:
+		# Already an absolute URL (e.g. full CDN URL stored in DB) — return as-is.
+		if path.startswith("http://") or path.startswith("https://"):
+			return path
 		normalized = path.lstrip("/")
 		# Images served from Cloudflare R2 when R2_PUBLIC_URL is set.
 		if R2_PUBLIC_URL and normalized.startswith("img/"):
