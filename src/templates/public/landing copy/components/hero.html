@@ -3,10 +3,10 @@
 
   <!-- Freedom Con title / logo – full width across top -->
   <picture>
-    <source srcset="{{ url_for('static', filename='img/freedom_con_congress.webp') }}" type="image/webp">
+    <source srcset="{{ asset_url('img/freedom_con_congress.webp') }}" type="image/webp">
     <img class="d-block mx-auto img-fluid pt-3 pt-md-4"
          style="max-width: min(92vw, 1100px);"
-         src="{{ url_for('static', filename='img/freedom_con_congress.webp') }}"
+         src="{{ asset_url('img/freedom_con_congress.webp') }}"
          alt="Freedom Con – An American Congress of Christian Men">
   </picture>
 
@@ -17,7 +17,7 @@
     <div>
       <picture>
         <img class="d-block w-100"
-             src="{{ url_for('static', filename='img/guys_rise_of_the_statesmen_2.webp') }}"
+             src="{{ asset_url('img/guys_rise_of_the_statesmen_2.webp') }}"
              alt="Freedom Con speakers lineup – Rise of the Statesman">
       </picture>
     </div>
