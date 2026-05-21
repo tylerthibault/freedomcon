@@ -13,3 +13,4 @@ src/static/pdfs/FreedomCon Media Kit 2/
 # SQLite database
 *.db
 *.sqlite3
+src/static/img/

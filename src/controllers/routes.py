@@ -41,6 +41,7 @@ from src.services.main import (
 public_bp = Blueprint("public", __name__)
 SITE_URL = "https://www.freedomcon26.com"
 ASSET_BASE_URL = getenv("ASSET_BASE_URL", "").strip().rstrip("/")
+R2_PUBLIC_URL   = getenv("R2_PUBLIC_URL",   "").strip().rstrip("/")
 
 
 def extract_youtube_id(url: str) -> str:
@@ -212,6 +213,9 @@ def inject_global_urgency() -> dict[str, object]:
 
 	def asset_url(path: str) -> str:
 		normalized = path.lstrip("/")
+		# Images served from Cloudflare R2 when R2_PUBLIC_URL is set.
+		if R2_PUBLIC_URL and normalized.startswith("img/"):
+			return f"{R2_PUBLIC_URL}/{normalized}"
 		if ASSET_BASE_URL and normalized.startswith(("pdfs/", "downloads/", "media/")):
 			return f"{ASSET_BASE_URL}/{normalized}"
 		return url_for("static", filename=normalized)
@@ -226,6 +230,7 @@ def inject_global_urgency() -> dict[str, object]:
 	return {
 		"asset_url": asset_url,
 		"asset_base_url": ASSET_BASE_URL,
+		"r2_public_url": R2_PUBLIC_URL,
 		"global_promos": _promo_cache,
 	}
 

@@ -14,7 +14,7 @@ from PIL import Image, ImageOps
 
 Image.MAX_IMAGE_PIXELS = None
 
-SUPPORTED_INPUT = {".png", ".jpg", ".jpeg", ".gif", ".tiff", ".tif", ".bmp"}
+SUPPORTED_INPUT = {".webp", ".png", ".jpg", ".jpeg", ".gif", ".tiff", ".tif", ".bmp"}
 
 
 def _has_alpha(image: Image.Image) -> bool:
@@ -56,6 +56,57 @@ def _encode_webp(image: Image.Image, source_suffix: str, quality: int = 80) -> b
     else:
         image.save(buf, "WEBP", quality=quality, method=6)
     return buf.getvalue()
+
+
+def convert_bytes_to_webp(
+    data: bytes,
+    filename: str,
+    quality: int = 80,
+    max_width: int | None = None,
+    force: bool = False,
+) -> tuple[bytes, str]:
+    """Convert raw image bytes to WebP entirely in memory.
+
+    Applies the same EXIF transpose, resize, and RGBA/RGB handling as
+    ``convert_to_webp``.  No files are read from or written to disk.
+
+    Parameters
+    ----------
+    data:      Raw bytes of the source image.
+    filename:  Original filename, used only to detect the source extension
+               (e.g. ``"logo.png"`` → lossless WebP; ``"photo.jpg"`` → lossy).
+    quality:   WebP quality for lossy encoding (1-100, default 80).
+    max_width: If set, resize the image so its width does not exceed this value.
+
+    Returns
+    -------
+    (webp_bytes, new_filename)  where *new_filename* has the ``.webp`` extension.
+
+    Raises
+    ------
+    ValueError   if the file extension is not supported.
+    RuntimeError if Pillow fails to open or encode the image.
+    """
+    suffix = Path(filename).suffix.lower()
+
+    if suffix == ".webp" and not force:
+        # Already WebP — return as-is with the original filename.
+        webp_name = Path(filename).stem + ".webp"
+        return data, webp_name
+
+    if suffix not in SUPPORTED_INPUT:
+        raise ValueError(f"Unsupported image type: {suffix!r}")
+
+    webp_name = Path(filename).stem + ".webp"
+
+    try:
+        with Image.open(io.BytesIO(data)) as image:
+            prepared = _prepare(image, max_width)
+            webp_bytes = _encode_webp(prepared, suffix, quality=quality)
+    except Exception as exc:
+        raise RuntimeError(f"Failed to convert {filename!r} to WebP: {exc}") from exc
+
+    return webp_bytes, webp_name
 
 
 def convert_to_webp(file_path: str | Path, quality: int = 80, max_width: int | None = None) -> Path:

@@ -5,7 +5,7 @@ import os
 from flask import current_app, flash, redirect, render_template, request, url_for
 from flask_admin import Admin, AdminIndexView, BaseView, expose
 from flask_admin.contrib.sqla import ModelView
-from flask_admin.form.upload import FileUploadField
+from wtforms import FileField as _FileField
 from flask_login import current_user
 from wtforms import validators
 
@@ -168,20 +168,39 @@ class SpeakerAdmin(SecureModelView):
     }
 
 
-def _sponsor_logo_path():
-    return os.path.join(current_app.static_folder, "img", "sponsor_logos")
+# ---------------------------------------------------------------------------
+# R2 upload helper shared by all four image-upload admin views.
+# ---------------------------------------------------------------------------
+def _upload_image_to_r2(file_storage, r2_key_prefix: str) -> str | None:
+    """Convert a Werkzeug FileStorage to WebP in memory and upload to R2.
 
+    Returns the full CDN URL on success, or None if no file was provided.
+    Raises RuntimeError if the upload fails (caller should catch and log).
+    """
+    if file_storage is None or not getattr(file_storage, "filename", None):
+        return None
 
-def _church_logo_path():
-    return os.path.join(current_app.static_folder, "img", "churches")
+    raw = file_storage.read()
+    if not raw:
+        return None
 
+    from src.services.image_optimizer import convert_bytes_to_webp
+    from src.services.r2 import upload_bytes
 
-def _video_thumb_path():
-    return os.path.join(current_app.static_folder, "img", "videos")
+    filename = file_storage.filename
+    suffix = os.path.splitext(filename)[1].lower()
 
+    # SVGs and GIFs are kept as-is (no Pillow conversion).
+    if suffix in (".svg", ".gif"):
+        webp_bytes = raw
+        webp_name  = filename
+        mime       = "image/svg+xml" if suffix == ".svg" else "image/gif"
+    else:
+        webp_bytes, webp_name = convert_bytes_to_webp(raw, filename)
+        mime = "image/webp"
 
-def _podcast_thumb_path():
-    return os.path.join(current_app.static_folder, "img", "videos", "podcasts")
+    key = f"{r2_key_prefix.rstrip('/')}/{webp_name}"
+    return upload_bytes(webp_bytes, key, mime)
 
 
 class SponsorAdmin(SecureModelView):
@@ -194,15 +213,13 @@ class SponsorAdmin(SecureModelView):
         "show_on_sponsor_page", "background_color", "scale",
     )
     form_extra_fields = {
-        "logo_upload": FileUploadField(
+        "logo_upload": _FileField(
             "Upload Logo",
-            base_path=_sponsor_logo_path,
-            allowed_extensions=["webp", "png", "jpg", "jpeg", "svg", "gif"],
             validators=[validators.Optional()],
         )
     }
     column_descriptions = {
-        "logo_upload": "Upload a logo image (webp/png/jpg/svg). Will be auto-converted to WebP.",
+        "logo_upload": "Upload a logo image (webp/png/jpg/svg). Converted to WebP and stored on Cloudflare R2.",
         "scale": "1.0 = normal size. Greater than 1 = larger (e.g. 1.5 = 50% bigger). Less than 1 = smaller (e.g. 0.75 = 25% smaller).",
     }
 
@@ -245,19 +262,14 @@ class SponsorAdmin(SecureModelView):
         return True
 
     def on_model_change(self, form, model, is_created):
-        from pathlib import Path
-        from flask import current_app
-        from src.services.image_optimizer import convert_to_webp
-
-        raw = getattr(model, "logo_upload", None)
-        if raw and isinstance(raw, str):
-            abs_path = Path(current_app.static_folder) / "img" / "sponsor_logos" / raw
-            try:
-                webp_path = convert_to_webp(abs_path)
-                model.logo_url = f"/static/img/sponsor_logos/{webp_path.name}"
-            except Exception as exc:
-                current_app.logger.warning("Logo WebP conversion failed: %s", exc)
-                model.logo_url = f"/static/img/sponsor_logos/{raw}"
+        upload_field = getattr(form, "logo_upload", None)
+        file_storage = upload_field.data if upload_field else None
+        try:
+            cdn_url = _upload_image_to_r2(file_storage, "img/sponsor_logos")
+            if cdn_url:
+                model.logo_url = cdn_url
+        except Exception as exc:
+            current_app.logger.exception("Sponsor logo R2 upload failed: %s", exc)
         super().on_model_change(form, model, is_created)
 
 
@@ -291,10 +303,8 @@ class VideoAdmin(SecureModelView):
     column_searchable_list = ("title", "url")
     form_columns = ("url", "title", "thumbnail_upload")
     form_extra_fields = {
-        "thumbnail_upload": FileUploadField(
+        "thumbnail_upload": _FileField(
             "Upload Thumbnail",
-            base_path=_video_thumb_path,
-            allowed_extensions=["webp", "png", "jpg", "jpeg"],
             validators=[validators.Optional()],
         )
     }
@@ -302,7 +312,7 @@ class VideoAdmin(SecureModelView):
         "url": {"label": "YouTube URL"},
     }
     column_descriptions = {
-        "thumbnail_upload": "Upload mobile thumbnail (portrait, webp/jpg/png). Auto-converted to WebP.",
+        "thumbnail_upload": "Upload mobile thumbnail (portrait, webp/jpg/png). Converted to WebP and stored on Cloudflare R2.",
     }
     create_template = "admin/video_podcast_form.html"
     edit_template   = "admin/video_podcast_form.html"
@@ -324,17 +334,14 @@ class VideoAdmin(SecureModelView):
         return super().render(template, **kwargs)
 
     def on_model_change(self, form, model, is_created):
-        from pathlib import Path
-        from src.services.image_optimizer import convert_to_webp
-        raw = getattr(model, "thumbnail_upload", None)
-        if raw and isinstance(raw, str):
-            abs_path = Path(current_app.static_folder) / "img" / "videos" / raw
-            try:
-                webp_path = convert_to_webp(abs_path)
-                model.thumbnail_mobile = f"img/videos/{webp_path.name}"
-            except Exception as exc:
-                current_app.logger.warning("Video thumb WebP conversion failed: %s", exc)
-                model.thumbnail_mobile = f"img/videos/{raw}"
+        upload_field = getattr(form, "thumbnail_upload", None)
+        file_storage = upload_field.data if upload_field else None
+        try:
+            cdn_url = _upload_image_to_r2(file_storage, "img/videos")
+            if cdn_url:
+                model.thumbnail_mobile = cdn_url
+        except Exception as exc:
+            current_app.logger.exception("Video thumbnail R2 upload failed: %s", exc)
         super().on_model_change(form, model, is_created)
 
 
@@ -343,10 +350,8 @@ class PodcastAdmin(SecureModelView):
     column_searchable_list = ("title", "url")
     form_columns = ("url", "title", "thumbnail_upload")
     form_extra_fields = {
-        "thumbnail_upload": FileUploadField(
+        "thumbnail_upload": _FileField(
             "Upload Thumbnail",
-            base_path=_podcast_thumb_path,
-            allowed_extensions=["webp", "png", "jpg", "jpeg"],
             validators=[validators.Optional()],
         )
     }
@@ -354,7 +359,7 @@ class PodcastAdmin(SecureModelView):
         "url": {"label": "YouTube URL"},
     }
     column_descriptions = {
-        "thumbnail_upload": "Upload mobile thumbnail (portrait, webp/jpg/png). Auto-converted to WebP.",
+        "thumbnail_upload": "Upload mobile thumbnail (portrait, webp/jpg/png). Converted to WebP and stored on Cloudflare R2.",
     }
     create_template = "admin/video_podcast_form.html"
     edit_template   = "admin/video_podcast_form.html"
@@ -376,17 +381,14 @@ class PodcastAdmin(SecureModelView):
         return super().render(template, **kwargs)
 
     def on_model_change(self, form, model, is_created):
-        from pathlib import Path
-        from src.services.image_optimizer import convert_to_webp
-        raw = getattr(model, "thumbnail_upload", None)
-        if raw and isinstance(raw, str):
-            abs_path = Path(current_app.static_folder) / "img" / "videos" / "podcasts" / raw
-            try:
-                webp_path = convert_to_webp(abs_path)
-                model.thumbnail_mobile = f"img/videos/podcasts/{webp_path.name}"
-            except Exception as exc:
-                current_app.logger.warning("Podcast thumb WebP conversion failed: %s", exc)
-                model.thumbnail_mobile = f"img/videos/podcasts/{raw}"
+        upload_field = getattr(form, "thumbnail_upload", None)
+        file_storage = upload_field.data if upload_field else None
+        try:
+            cdn_url = _upload_image_to_r2(file_storage, "img/videos/podcasts")
+            if cdn_url:
+                model.thumbnail_mobile = cdn_url
+        except Exception as exc:
+            current_app.logger.exception("Podcast thumbnail R2 upload failed: %s", exc)
         super().on_model_change(form, model, is_created)
 
 
@@ -523,15 +525,13 @@ class ChurchAdmin(SecureModelView):
         "background_color", "scale", "active",
     )
     form_extra_fields = {
-        "logo_upload": FileUploadField(
+        "logo_upload": _FileField(
             "Upload Logo",
-            base_path=_church_logo_path,
-            allowed_extensions=["webp", "png", "jpg", "jpeg", "svg", "gif"],
             validators=[validators.Optional()],
         )
     }
     column_descriptions = {
-        "logo_upload": "Upload a logo image (webp/png/jpg/svg). Will be auto-converted to WebP.",
+        "logo_upload": "Upload a logo image (webp/png/jpg/svg). Converted to WebP and stored on Cloudflare R2.",
         "background_color": "Hex color for the card background, e.g. #ffffff for white. Leave blank for the default dark background.",
         "scale": "1.0 = normal size. Greater than 1 = larger (e.g. 1.5 = 50% bigger). Less than 1 = smaller.",
         "active": "Uncheck to hide this church from the public page without deleting it",
@@ -557,19 +557,14 @@ class ChurchAdmin(SecureModelView):
         return super().render(template, **kwargs)
 
     def on_model_change(self, form, model, is_created):
-        from pathlib import Path
-        from flask import current_app
-        from src.services.image_optimizer import convert_to_webp
-
-        raw = getattr(model, "logo_upload", None)
-        if raw and isinstance(raw, str):
-            abs_path = Path(current_app.static_folder) / "img" / "churches" / raw
-            try:
-                webp_path = convert_to_webp(abs_path)
-                model.logo_url = f"/static/img/churches/{webp_path.name}"
-            except Exception as exc:
-                current_app.logger.warning("Church logo WebP conversion failed: %s", exc)
-                model.logo_url = f"/static/img/churches/{raw}"
+        upload_field = getattr(form, "logo_upload", None)
+        file_storage = upload_field.data if upload_field else None
+        try:
+            cdn_url = _upload_image_to_r2(file_storage, "img/churches")
+            if cdn_url:
+                model.logo_url = cdn_url
+        except Exception as exc:
+            current_app.logger.exception("Church logo R2 upload failed: %s", exc)
         super().on_model_change(form, model, is_created)
 
 
