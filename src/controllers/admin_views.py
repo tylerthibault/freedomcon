@@ -408,6 +408,16 @@ class PromoAdmin(SecureModelView):
         "show_on_tickets": 'Show this promo as a card on the tickets page',
     }
 
+    def after_model_change(self, form, model, is_created):
+        super().after_model_change(form, model, is_created)
+        from src.controllers.routes import invalidate_promo_cache
+        invalidate_promo_cache()
+
+    def after_model_delete(self, model):
+        super().after_model_delete(model)
+        from src.controllers.routes import invalidate_promo_cache
+        invalidate_promo_cache()
+
 
 class SocialProofAdmin(SecureModelView):
     column_list = ("sort_order", "name", "title", "is_boys")
