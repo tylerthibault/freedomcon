@@ -3,7 +3,7 @@
 {% set items = section.get('items') or [] %}
 {% set initial_count = section.get('initial_count', 4) | int %}
 {% set reveal_count = section.get('reveal_count', 6) | int %}
-{% set media_fallback_src = url_for('static', filename='img/TheGuys-WithLogoNoFeet.avif') %}
+{% set media_fallback_src = asset_url('img/TheGuys-WithLogoNoFeet.avif') %}
 
 {% if items | length %}
 <section

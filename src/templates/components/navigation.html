@@ -7,8 +7,8 @@
         aria-label="Main navigation">
         <a class="landing12-brand" href="{{ url_for('public.landing') }}">
             <picture>
-                <source srcset="{{ url_for('static', filename='img/Freedom Con.webp') }}" type="image/webp">
-                <img src="{{ url_for('static', filename='img/Freedom Con.webp') }}" alt="Freedom Con"
+                <source srcset="{{ asset_url('img/Freedom Con.webp') }}" type="image/webp">
+                <img src="{{ asset_url('img/Freedom Con.webp') }}" alt="Freedom Con"
                     class="landing12-brand-logo">
             </picture>
         </a>
