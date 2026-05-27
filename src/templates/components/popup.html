@@ -1,4 +1,6 @@
 <!-- Promo Modal -->
+{% set popup_promos = global_promos | selectattr("show_in_popup") | list %}
+{% if popup_promos %}
 <div class="promo-modal" data-promo-modal hidden aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="promo-modal-title">
     <div class="promo-modal__backdrop" data-promo-close></div>
 
@@ -12,7 +14,6 @@
         <h2 class="promo-modal__title" id="promo-modal-title">Don't Miss Out on These Deals</h2>
         <div class="promo-modal__deals">
 
-            {% set popup_promos = global_promos | selectattr("show_in_popup") | list %}
             {% for promo in popup_promos %}
             <a class="promo-modal__deal" href="/tickets{% if promo.anchor %}#{{ promo.anchor }}{% endif %}">
                 <div class="promo-modal__deal-badge promo-modal__deal-badge--{{ promo.badge_style }}">{{ promo.badge }}</div>
@@ -34,3 +35,4 @@
 
     </div>
 </div>
+{% endif %}
