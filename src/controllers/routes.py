@@ -691,9 +691,7 @@ def press_page() -> str:
 	media_kit_download_url = getenv("MEDIA_KIT_DOWNLOAD_URL", "").strip() or url_for(
 		"static", filename="pdfs/FreedomCon-Media-Kit-v1.zip"
 	)
-	media_kit_image_url = getenv("MEDIA_KIT_IMAGE_URL", "").strip() or url_for(
-		"static", filename="img/freedom_con_media_kit_flyer.webp"
-	)
+	media_kit_image_url = getenv("MEDIA_KIT_IMAGE_URL", "").strip()
 	men_picture_url = getenv("PRESS_MEN_PICTURE_URL", "").strip() or url_for(
 		"static", filename="img/TheGuys-WithLogoNoFeet.avif"
 	)
