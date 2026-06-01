@@ -1580,3 +1580,57 @@ body:has(.landing12-header) .page-clip {
         gap: 1.5rem;
     }
 }
+
+/* ── Sticky Price Banner (global, all pages) ─────────────────── */
+#price-banner {
+  background: #BC2A27;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.55rem 3rem 0.55rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+#price-banner.is-hidden {
+  display: none;
+}
+
+#price-banner a.pb-cta {
+  display: inline-block;
+  background: #fff;
+  color: #BC2A27;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.3rem 0.9rem;
+  border-radius: 4px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+
+#price-banner a.pb-cta:hover { opacity: 0.85; }
+
+#price-banner .pb-close {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.2rem;
+}
+
+#price-banner .pb-close:hover { color: #fff; }

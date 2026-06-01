@@ -1141,3 +1141,26 @@ document.addEventListener("DOMContentLoaded", () => {
 	backdrop.addEventListener('click', function(e) { if (e.target === backdrop) closeModal(); });
 	document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 }());
+
+/* =================================================================
+   Price Banner — global dismiss handler (all pages)
+   ================================================================= */
+(function () {
+  var banner  = document.getElementById('price-banner');
+  var pbClose = document.getElementById('pb-close-btn');
+  if (!banner || !pbClose) return;
+
+  // Adjust page-clip padding to match actual header height (nav + banner)
+  function syncPageClip() {
+    var header = document.querySelector('.landing12-header');
+    var clip   = document.querySelector('.page-clip');
+    if (header && clip) clip.style.paddingTop = header.offsetHeight + 'px';
+  }
+  syncPageClip();
+  window.addEventListener('resize', syncPageClip);
+
+  pbClose.addEventListener('click', function () {
+    banner.classList.add('is-hidden');
+    syncPageClip();
+  });
+}());
