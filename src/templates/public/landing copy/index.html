@@ -492,18 +492,9 @@
 
   function onFirstScroll() {
     if (scrollFired) return;
-    if (window.scrollY < 30) return; // wait for meaningful scroll
+    if (window.scrollY < 30) return;
     scrollFired = true;
     window.removeEventListener('scroll', onFirstScroll, { passive: true });
-
-    // Show banner (unless dismissed this session)
-    try {
-      if (!sessionStorage.getItem('pb-dismissed')) {
-        banner.classList.add('is-visible');
-      }
-    } catch(e) {
-      banner.classList.add('is-visible');
-    }
 
     // Show popup (unless dismissed this session)
     try {
@@ -516,6 +507,15 @@
   }
 
   window.addEventListener('scroll', onFirstScroll, { passive: true });
+
+  // Show banner immediately on page load (unless dismissed)
+  try {
+    if (!sessionStorage.getItem('pb-dismissed')) {
+      banner.classList.add('is-visible');
+    }
+  } catch(e) {
+    banner.classList.add('is-visible');
+  }
 
   // Popup close
   function closePopup() {
