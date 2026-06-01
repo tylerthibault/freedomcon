@@ -255,6 +255,13 @@
 
 
 <main class="landing12 overflow-hidden px-3 ">
+
+  <!-- ── Sticky Price Banner ── -->
+  <div id="price-banner" role="alert">
+    <span>⏰ Ticket prices go up <strong>June 5th</strong> — lock in current pricing now.</span>
+    <a href="{{ url_for('public.tickets_page') }}" class="pb-cta">Get Tickets →</a>
+    <button class="pb-close" id="pb-close-btn" aria-label="Dismiss banner">×</button>
+  </div>
   {#
   {% if declaration_text %}
   <div class="landing12-declaration-bg" aria-hidden="true" data-declaration-bg>
@@ -408,7 +415,7 @@
 
   /* ── Sticky Banner ── */
   #price-banner {
-    position: fixed;
+    position: sticky;
     top: var(--nav-height, 68px);
     left: 0;
     right: 0;
@@ -423,13 +430,12 @@
     font-size: 0.88rem;
     font-weight: 700;
     letter-spacing: 0.05em;
-    transform: translateY(-110%);
-    transition: transform 300ms ease;
     flex-wrap: wrap;
     text-align: center;
+    margin: 0 -1rem; /* bleed past the px-3 padding on <main> */
   }
-  #price-banner.is-visible {
-    transform: translateY(0);
+  #price-banner.is-hidden {
+    display: none;
   }
   #price-banner a.pb-cta {
     display: inline-block;
@@ -460,13 +466,6 @@
   }
   #price-banner .pb-close:hover { color: #fff; }
 </style>
-
-<!-- Sticky banner (injected just before </body> effectively via block scripts) -->
-<div id="price-banner" role="alert" aria-live="polite">
-  <span>⏰ Ticket prices go up <strong>June 5th</strong> — lock in current pricing now.</span>
-  <a href="{{ url_for('public.tickets_page') }}" class="pb-cta">Get Tickets →</a>
-  <button class="pb-close" id="pb-close-btn" aria-label="Dismiss banner">×</button>
-</div>
 
 <!-- Popup modal -->
 <div id="price-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="pp-title">
@@ -506,16 +505,12 @@
     }
   }
 
-  window.addEventListener('scroll', onFirstScroll, { passive: true });
-
-  // Show banner immediately on page load (unless dismissed)
+  // Show banner immediately (unless dismissed this session)
   try {
-    if (!sessionStorage.getItem('pb-dismissed')) {
-      banner.classList.add('is-visible');
+    if (sessionStorage.getItem('pb-dismissed')) {
+      banner.classList.add('is-hidden');
     }
-  } catch(e) {
-    banner.classList.add('is-visible');
-  }
+  } catch(e) {}
 
   // Popup close
   function closePopup() {
@@ -531,33 +526,13 @@
     if (e.key === 'Escape') closePopup();
   });
 
+  window.addEventListener('scroll', onFirstScroll, { passive: true });
+
   // Banner close
   pbClose.addEventListener('click', function () {
-    banner.classList.remove('is-visible');
-    nudgePageClip(0);
+    banner.classList.add('is-hidden');
     try { sessionStorage.setItem('pb-dismissed', '1'); } catch(e) {}
   });
-
-  // Nudge page-clip so banner doesn't cover hero content
-  function nudgePageClip(extra) {
-    var clip = document.querySelector('.page-clip');
-    if (!clip) return;
-    var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height') || '68', 10);
-    clip.style.paddingTop = (navH + extra) + 'px';
-  }
-
-  // When banner slides in, add its height to the page-clip offset
-  var bannerObserver = new MutationObserver(function () {
-    if (banner.classList.contains('is-visible')) {
-      // Use rAF to measure after the transition begins
-      requestAnimationFrame(function () {
-        nudgePageClip(banner.offsetHeight);
-      });
-    } else {
-      nudgePageClip(0);
-    }
-  });
-  bannerObserver.observe(banner, { attributes: true, attributeFilter: ['class'] });
 })();
 </script>
 
