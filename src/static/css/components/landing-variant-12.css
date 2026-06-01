@@ -531,6 +531,9 @@ body.landing12-no-scroll {
     align-self: end;
     justify-self: center;
     margin-bottom: clamp(1.25rem, 3vw, 2.5rem);
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .landing12-cta-2__content {
