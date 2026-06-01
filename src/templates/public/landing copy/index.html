@@ -475,6 +475,21 @@
   var ppDismiss = document.getElementById('pp-dismiss-btn');
   var pbClose   = document.getElementById('pb-close-btn');
 
+  // ── Dismissal memory toggle ──────────────────────────
+  // Set to true to remember dismissals across the session,
+  // false to always show on every page load / fresh scroll.
+  var REMEMBER_DISMISSALS = false;
+  // ─────────────────────────────────────────────────────
+
+  function wasDismissed(key) {
+    if (!REMEMBER_DISMISSALS) return false;
+    try { return !!sessionStorage.getItem(key); } catch(e) { return false; }
+  }
+  function saveDismissal(key) {
+    if (!REMEMBER_DISMISSALS) return;
+    try { sessionStorage.setItem(key, '1'); } catch(e) {}
+  }
+
   var scrollFired = false;
 
   function onFirstScroll() {
@@ -484,21 +499,15 @@
     window.removeEventListener('scroll', onFirstScroll, { passive: true });
 
     // Show popup (unless dismissed this session)
-    try {
-      if (!sessionStorage.getItem('pp-dismissed')) {
-        overlay.classList.add('is-visible');
-      }
-    } catch(e) {
+    if (!wasDismissed('pp-dismissed')) {
       overlay.classList.add('is-visible');
     }
   }
 
   // Show banner immediately (unless dismissed this session)
-  try {
-    if (sessionStorage.getItem('pb-dismissed')) {
-      banner.classList.add('is-hidden');
-    }
-  } catch(e) {}
+  if (wasDismissed('pb-dismissed')) {
+    banner.classList.add('is-hidden');
+  }
 
   // Adjust page-clip padding to match actual header height (nav + banner)
   function syncPageClip() {
@@ -512,7 +521,7 @@
   // Popup close
   function closePopup() {
     overlay.classList.remove('is-visible');
-    try { sessionStorage.setItem('pp-dismissed', '1'); } catch(e) {}
+    saveDismissal('pp-dismissed');
   }
   ppClose.addEventListener('click', closePopup);
   ppDismiss.addEventListener('click', closePopup);
@@ -529,7 +538,7 @@
   pbClose.addEventListener('click', function () {
     banner.classList.add('is-hidden');
     syncPageClip();
-    try { sessionStorage.setItem('pb-dismissed', '1'); } catch(e) {}
+    saveDismissal('pb-dismissed');
   });
 })();
 </script>
