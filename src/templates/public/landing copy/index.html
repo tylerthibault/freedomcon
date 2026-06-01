@@ -255,13 +255,6 @@
 
 
 <main class="landing12 overflow-hidden px-3 ">
-
-  <!-- ── Sticky Price Banner ── -->
-  <div id="price-banner" role="alert">
-    <span>Ticket prices go up <strong>June 5th</strong> — lock in current pricing now.</span>
-    <a href="{{ url_for('public.tickets_page') }}" class="pb-cta">Get Tickets →</a>
-    <button class="pb-close" id="pb-close-btn" aria-label="Dismiss banner">×</button>
-  </div>
   {#
   {% if declaration_text %}
   <div class="landing12-declaration-bg" aria-hidden="true" data-declaration-bg>
@@ -415,11 +408,6 @@
 
   /* ── Sticky Banner ── */
   #price-banner {
-    position: sticky;
-    top: var(--nav-height, 68px);
-    left: 0;
-    right: 0;
-    z-index: 998;
     background: #BC2A27;
     color: #fff;
     display: flex;
@@ -432,7 +420,7 @@
     letter-spacing: 0.05em;
     flex-wrap: wrap;
     text-align: center;
-    margin: 0 -1rem; /* bleed past the px-3 padding on <main> */
+    width: 100%;
   }
   #price-banner.is-hidden {
     display: none;
@@ -512,7 +500,16 @@
     }
   } catch(e) {}
 
-  // Popup close
+  // Adjust page-clip padding to match actual header height (nav + banner)
+  function syncPageClip() {
+    var header = document.querySelector('.landing12-header');
+    var clip = document.querySelector('.page-clip');
+    if (header && clip) clip.style.paddingTop = header.offsetHeight + 'px';
+  }
+  syncPageClip();
+  window.addEventListener('resize', syncPageClip);
+
+  // Banner close
   function closePopup() {
     overlay.classList.remove('is-visible');
     try { sessionStorage.setItem('pp-dismissed', '1'); } catch(e) {}
@@ -531,6 +528,7 @@
   // Banner close
   pbClose.addEventListener('click', function () {
     banner.classList.add('is-hidden');
+    syncPageClip();
     try { sessionStorage.setItem('pb-dismissed', '1'); } catch(e) {}
   });
 })();
