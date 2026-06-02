@@ -754,7 +754,6 @@ def venue_map_page() -> str:
 			title="FREEDOM CON Venue Map | The Gorge Amphitheatre",
 			description="View the Freedom Con venue map for entrances, stage area, parking, camping zones, and key amenities at The Gorge Amphitheatre.",
 			path="/venue-map",
-			image_path="/static/img/Map_v1.webp",
 		),
 	)
 

@@ -129,8 +129,9 @@ def test_sitemap_xml_content_type(client):
 # Share preview metadata
 # ---------------------------------------------------------------------------
 
-def test_homepage_og_image_uses_featured_speakers(client):
-    response = client.get("/")
+@pytest.mark.parametrize("path", ["/", "/venue-map"])
+def test_shareable_pages_use_featured_speakers_image(client, path):
+    response = client.get(path)
     assert response.status_code == 200
     html = response.get_data(as_text=True)
     expected = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/img/guys_rise_of_the_statesmen.webp"
