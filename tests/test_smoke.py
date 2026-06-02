@@ -126,6 +126,19 @@ def test_sitemap_xml_content_type(client):
 
 
 # ---------------------------------------------------------------------------
+# Share preview metadata
+# ---------------------------------------------------------------------------
+
+def test_homepage_og_image_uses_featured_speakers(client):
+    response = client.get("/")
+    assert response.status_code == 200
+    html = response.get_data(as_text=True)
+    expected = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/img/guys_rise_of_the_statesmen_2.webp?v=20260602"
+    assert f'<meta property="og:image" content="{expected}">' in html
+    assert f'<meta name="twitter:image" content="{expected}">' in html
+
+
+# ---------------------------------------------------------------------------
 # 404 handler
 # ---------------------------------------------------------------------------
 

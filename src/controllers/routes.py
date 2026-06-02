@@ -246,7 +246,7 @@ def build_seo(
 	canonical_path: str | None = None,
 	robots: str = "index,follow",
 	og_type: str = "website",
-	image_path: str = "/static/img/Freedom_con_front_on_black.webp?v=20260417",
+	image_path: str = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/img/guys_rise_of_the_statesmen_2.webp?v=20260602",
 ) -> dict[str, str]:
 	resolved_canonical = canonical_path or path
 	resolved_image = image_path if image_path.startswith("http") else f"{SITE_URL}{image_path}"
