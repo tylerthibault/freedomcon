@@ -23,6 +23,35 @@
         </div>
     </section>
 
+    <!-- Download Section -->
+    <section class="prayer-guide-download" aria-label="Download 21 Day Prayer Guide">
+        <div class="prayer-guide-download__inner container-xl">
+            <div class="prayer-guide-download__grid">
+                <div class="prayer-guide-download__image-container">
+                    {% if prayer_guide_image_url %}
+                    <a class="prayer-guide-download__image-link" href="{{ prayer_guide_pdf_url }}"
+                        download="21-Day-Prayer-Guide-FreedomCon.pdf" target="_blank" rel="noopener noreferrer"
+                        aria-label="Download 21 Day Prayer Guide">
+                        <img class="prayer-guide-download__image" src="{{ prayer_guide_image_url }}"
+                            alt="21 Day Prayer Guide cover">
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="prayer-guide-download__content">
+                    <h2 class="prayer-guide-download__title">21 Day Prayer Guide</h2>
+                    <p class="prayer-guide-download__description">Join thousands of men committing to prayer, strength, and purpose. Prepare your heart and mind for Freedom Con.</p>
+                    {% if prayer_guide_pdf_url %}
+                    <a class="btn btn-primary btn-xxl prayer-guide-download__btn" href="{{ prayer_guide_pdf_url }}"
+                        download="21-Day-Prayer-Guide-FreedomCon.pdf" target="_blank" rel="noopener noreferrer">Download Here</a>
+                    {% else %}
+                    <span class="btn btn-primary btn-xxl disabled prayer-guide-download__btn"
+                        aria-disabled="true">Coming Soon</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Body -->
     <section class="prayer-guide-body" aria-label="Prayer guide content">
         <div class="prayer-guide-body__inner container-xl">

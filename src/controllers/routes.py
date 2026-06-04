@@ -855,9 +855,14 @@ def wives_page() -> str:
 
 @public_bp.get("/prayer_guide")
 def prayer_guide_page() -> str:
+	prayer_guide_pdf_url = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/21%20Day%20Prayer%20-%20FreedomCon.pdf"
+	prayer_guide_image_url = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/img/21%20day%20prayer.webp"
+	
 	return render_template(
 		"public/prayer_guide/index.html",
 		# prayer_guide=prayer_guide_data,
+		prayer_guide_pdf_url=prayer_guide_pdf_url,
+		prayer_guide_image_url=prayer_guide_image_url,
 		seo=build_seo(
 			title="Prayer Guide | Freedom Con 2026",
 			description="A prayer guide for attendees of Freedom Con 2026.",
