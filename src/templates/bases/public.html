@@ -178,13 +178,11 @@
 
     {% endblock %}
 
-    {% include 'components/popup.html' %}
     {% include 'components/speaker_bio_modal.html' %}
 
     <!-- bootstrap -->
     <script src="{{ url_for('static', filename='js/bootstrapjs/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/popup.js') }}"></script>
     {% block scripts %}
 
     {% endblock %}

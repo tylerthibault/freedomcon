@@ -140,6 +140,39 @@ def test_shareable_pages_use_featured_speakers_image(client, path):
 
 
 # ---------------------------------------------------------------------------
+# Ticket promo / price update checks
+# ---------------------------------------------------------------------------
+
+def test_sticky_banner_uses_freedom10_discount_copy(client):
+    response = client.get("/")
+    assert response.status_code == 200
+    html = response.get_data(as_text=True)
+    assert "Save 10% on tickets with code" in html
+    assert "FREEDOM10" in html
+    assert "Ticket prices go up" not in html
+    assert "June 5th" not in html
+
+
+def test_landing_price_change_popup_removed(client):
+    response = client.get("/")
+    assert response.status_code == 200
+    html = response.get_data(as_text=True)
+    assert "price-popup-overlay" not in html
+    assert "data-promo-modal" not in html
+    assert "promo.js" not in html
+
+
+def test_general_admission_price_updated(client):
+    response = client.get("/tickets")
+    assert response.status_code == 200
+    html = response.get_data(as_text=True)
+    assert '<p class="ticket-card__price">$199</p>' in html
+    assert "$209.06 with all taxes &amp; fees" in html
+    assert '<p class="ticket-card__price">$179</p>' not in html
+    assert "$188.72 with all taxes" not in html
+
+
+# ---------------------------------------------------------------------------
 # 404 handler
 # ---------------------------------------------------------------------------
 
