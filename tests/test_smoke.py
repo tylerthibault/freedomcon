@@ -177,17 +177,23 @@ def test_general_admission_price_updated(client):
 # Security page
 # ---------------------------------------------------------------------------
 
-def test_security_page_contains_exact_safety_copy(client):
+def test_security_page_contains_revised_safety_copy_and_gorge_link(client):
     response = client.get("/security")
     assert response.status_code == 200
     html = response.get_data(as_text=True)
     assert "Security and Safety at Freedom Conference" in html
-    assert "Safety is a top priority for the Freedom Conference." in html
-    assert "Security screening before entry" in html
-    assert "Bag checks and prohibited item enforcement (please refer to GORGE SAFETY page.)." in html
-    assert "Uniformed law enforcement for exterior and interior enforcement" in html
-    assert "K9 Units: Drug, Firearm, and Explosive Detection" in html
-    assert "CCTV and UAS surveillance" in html
+    assert "A comprehensive plan for a layered security and safety approach has been developed through extensive coordination between venue staff, event organizers, private security, medical teams, and local law enforcement agencies." in html
+    assert "While specific tactical procedures remain confidential for operational integrity" in html
+    assert "This disciplined preparation ensures the protection of all attendees, speakers, and staff while preserving the mission of the conference." in html
+    assert "Guests can generally expect the following security and safety measures:" in html
+    assert "Comprehensive security screening at all primary guest ingress points, including physical bag inspections, walk-through metal detection, and secondary screening as required." in html
+    assert "Strict enforcement of bag policies and prohibited item lists; attendees are encouraged to review the" in html
+    assert 'href="https://www.gorgeamphitheatre.com/safety-and-rules"' in html
+    assert "GORGE SAFETY page" in html
+    assert "Deployment of specialized K9 units trained for the detection of firearms and explosives." in html
+    assert "Advanced surveillance capabilities, including CCTV monitoring and drone-based operational monitoring of campgrounds, parking lots, and venue perimeters." in html
+    assert "Dedicated medical support, including ambulances, EMTs, and paramedics to address health emergencies throughout the event." in html
+    assert "All attendees are encouraged to report any safety concerns to venue staff or security personnel immediately." in html
 
 
 def test_more_dropdown_links_to_security_page(client):

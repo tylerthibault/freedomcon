@@ -61,6 +61,10 @@
     max-width: 880px;
 }
 
+.security-hero__lede--secondary {
+    margin-top: 1rem;
+}
+
 .security-details {
     padding: clamp(3rem, 8vw, 7rem) 0;
 }
@@ -117,6 +121,19 @@
     height: 0.75rem;
     transform: rotate(45deg);
     width: 0.75rem;
+}
+
+.security-expectations a {
+    color: #fff;
+    font-weight: 800;
+    text-decoration-color: var(--fc-accent);
+    text-decoration-thickness: 0.12em;
+    text-underline-offset: 0.18em;
+}
+
+.security-expectations a:hover,
+.security-expectations a:focus-visible {
+    color: var(--fc-accent);
 }
 
 .security-card--notice {
