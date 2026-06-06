@@ -46,6 +46,7 @@ PAGES_200 = [
     "/hotels",
     "/food-and-drinks",
     "/churches",
+    "/security",
 ]
 
 
@@ -170,6 +171,31 @@ def test_general_admission_price_updated(client):
     assert "$209.06 with all taxes &amp; fees" in html
     assert '<p class="ticket-card__price">$179</p>' not in html
     assert "$188.72 with all taxes" not in html
+
+
+# ---------------------------------------------------------------------------
+# Security page
+# ---------------------------------------------------------------------------
+
+def test_security_page_contains_exact_safety_copy(client):
+    response = client.get("/security")
+    assert response.status_code == 200
+    html = response.get_data(as_text=True)
+    assert "Security and Safety at Freedom Conference" in html
+    assert "Safety is a top priority for the Freedom Conference." in html
+    assert "Security screening before entry" in html
+    assert "Bag checks and prohibited item enforcement (please refer to GORGE SAFETY page.)." in html
+    assert "Uniformed law enforcement for exterior and interior enforcement" in html
+    assert "K9 Units: Drug, Firearm, and Explosive Detection" in html
+    assert "CCTV and UAS surveillance" in html
+
+
+def test_more_dropdown_links_to_security_page(client):
+    response = client.get("/")
+    assert response.status_code == 200
+    html = response.get_data(as_text=True)
+    assert 'href="/security"' in html
+    assert ">Security</a>" in html
 
 
 # ---------------------------------------------------------------------------

@@ -920,6 +920,7 @@ def sitemap_xml() -> Response:
 		"/camping",
 		"/hotels",
 		"/churches",
+		"/security",
 		"/food-and-drinks",
 		"/venue-map",
 		"/drinks",
@@ -947,6 +948,17 @@ def wives_page() -> str:
 			title="For the Wives | Freedom Con 2026",
 			description="A personal message from Sharon McPherson to the wives and families supporting the men of Freedom Con.",
 			path="/wives",
+		),
+	)
+
+@public_bp.get("/security")
+def security_page() -> str:
+	return render_template(
+		"public/security/index.html",
+		seo=build_seo(
+			title="Security and Safety | Freedom Con 2026",
+			description="Security and safety information for Freedom Con guests at The Gorge Amphitheatre.",
+			path="/security",
 		),
 	)
 

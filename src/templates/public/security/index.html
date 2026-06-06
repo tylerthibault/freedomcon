@@ -1,0 +1,50 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/security.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="security-page">
+    <section class="security-hero" aria-label="Security and Safety header">
+        <div class="security-hero__inner container-xl">
+            <p class="security-hero__eyebrow">Freedom Con 2026</p>
+            <h1 class="security-hero__title">Security and Safety at Freedom Conference</h1>
+            <p class="security-hero__lede">Safety is a top priority for the Freedom Conference. We understand that large events at outdoor venues create unique security challenges.  A plan for a layered security and safety approach that includes coordination between venue staff, event organizers, private security, medical teams, and law enforcements. While some specific security procedures are not publicly shared, guests can expect visible safety measures, trained personnel, and active planning for the event.</p>
+        </div>
+    </section>
+
+    <section class="security-details" aria-label="Guest safety expectations">
+        <div class="security-details__inner container-xl">
+            <div class="security-card security-card--intro">
+                <p class="security-card__label">On Site Safety</p>
+                <h2 class="security-card__heading">Guests can generally expect:</h2>
+            </div>
+
+            <ul class="security-expectations" aria-label="Guests can generally expect">
+                <li>Security screening before entry</li>
+                <li>Bag checks and prohibited item enforcement (please refer to GORGE SAFETY page.).</li>
+                <li>Ticket verification</li>
+                <li>Security and guest services staff on site</li>
+                <li>Medical support available during events</li>
+                <li>Uniformed law enforcement for exterior and interior enforcement</li>
+                <li>Traffic, parking, and crowd management</li>
+                <li>K9 Units: Drug, Firearm, and Explosive Detection</li>
+                <li>CCTV and UAS surveillance</li>
+            </ul>
+
+            <div class="security-card security-card--notice">
+                <p>Guests are encouraged to arrive prepared, follow Gorge policies, review event-specific rules before attending, and report any safety concerns to venue staff immediately.</p>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
