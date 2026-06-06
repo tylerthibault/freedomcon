@@ -123,6 +123,10 @@
     width: 0.75rem;
 }
 
+.security-expectations__text {
+    min-width: 0;
+}
+
 .security-expectations a {
     color: #fff;
     font-weight: 800;

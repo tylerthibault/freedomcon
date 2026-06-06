@@ -196,6 +196,13 @@ def test_security_page_contains_revised_safety_copy_and_gorge_link(client):
     assert "All attendees are encouraged to report any safety concerns to venue staff or security personnel immediately." in html
 
 
+def test_security_expectation_copy_wraps_link_inline(client):
+    response = client.get("/security")
+    assert response.status_code == 200
+    html = response.get_data(as_text=True)
+    assert '<li><span class="security-expectations__text">Strict enforcement of bag policies and prohibited item lists; attendees are encouraged to review the <a href="https://www.gorgeamphitheatre.com/safety-and-rules" target="_blank" rel="noopener noreferrer">GORGE SAFETY page</a> for specific details.</span></li>' in html
+
+
 def test_more_dropdown_links_to_security_page(client):
     response = client.get("/")
     assert response.status_code == 200
