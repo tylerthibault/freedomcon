@@ -2018,10 +2018,21 @@ body.landing12-no-scroll {
 @media (max-width: 480px) {
     .landing12-prayer-guides__card {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
     }
 
-    .landing12-prayer-guides__img-wrap {
-        width: 50%;
+    .landing12-prayer-guides__body {
+        align-items: center;
+        width: 100%;
+    }
+
+    .landing12-prayer-guides__btn {
+        align-self: center;
+    }
+
+    .landing12-prayer-guides__img-wrap,
+    .landing12-prayer-guides__img-wrap--featured {
+        width: min(72%, 260px);
     }
 }
