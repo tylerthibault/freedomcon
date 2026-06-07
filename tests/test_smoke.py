@@ -215,15 +215,15 @@ def test_more_dropdown_links_to_security_page(client):
 # Wives page
 # ---------------------------------------------------------------------------
 
-def test_wives_page_shows_prayer_guide_coming_soon_download_card(client):
+def test_wives_page_shows_prayer_guide_download_card(client):
     response = client.get("/wives")
     assert response.status_code == 200
     html = response.get_data(as_text=True)
     assert "14 Day Prayer Guide for Wives" in html
     assert "Freedom Con 14 Day Prayer Guide for Wives cover" in html
     assert "img/freedom-con-prayer-guide-for-wives.jpg" in html
-    assert '<span class="btn btn-primary btn-xxl disabled wives-guide-download__btn"' in html
-    assert "Coming Soon" in html
+    assert "14%20Day%20prayer%20guide%20for%20wives.pdf" in html
+    assert "Download Now" in html
 
 
 # ---------------------------------------------------------------------------
