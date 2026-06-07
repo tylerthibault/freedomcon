@@ -939,7 +939,7 @@ def sitemap_xml() -> Response:
 def wives_page() -> str:
 	formsubmit_action = getenv("WIVES_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/ladies.freedomcon26@strongermannation.com"
 	formsubmit_next = f"{SITE_URL}/thankyou"
-	wives_prayer_guide_pdf_url = ""
+	wives_prayer_guide_pdf_url = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/14%20Day%20prayer%20guide%20for%20wives.pdf"
 	wives_prayer_guide_image_url = url_for("static", filename="img/freedom-con-prayer-guide-for-wives.jpg")
 	return render_template(
 		"public/wives/index.html",
