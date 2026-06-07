@@ -939,11 +939,15 @@ def sitemap_xml() -> Response:
 def wives_page() -> str:
 	formsubmit_action = getenv("WIVES_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/ladies.freedomcon26@strongermannation.com"
 	formsubmit_next = f"{SITE_URL}/thankyou"
+	wives_prayer_guide_pdf_url = ""
+	wives_prayer_guide_image_url = url_for("static", filename="img/freedom-con-prayer-guide-for-wives.jpg")
 	return render_template(
 		"public/wives/index.html",
 		wives=get_wives(),
 		formsubmit_action=formsubmit_action,
 		formsubmit_next=formsubmit_next,
+		wives_prayer_guide_pdf_url=wives_prayer_guide_pdf_url,
+		wives_prayer_guide_image_url=wives_prayer_guide_image_url,
 		seo=build_seo(
 			title="For the Wives | Freedom Con 2026",
 			description="A personal message from Sharon McPherson to the wives and families supporting the men of Freedom Con.",

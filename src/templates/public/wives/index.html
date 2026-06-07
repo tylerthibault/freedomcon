@@ -26,6 +26,40 @@
 			</ol>
 			<p class="wives-coming-soon__copy">God bless!</p>
 			<p class="wives-coming-soon__signature fs-1">&#8212; Sharon McPherson</p>
+
+			<div class="wives-guide-download" aria-label="Download 14 Day Prayer Guide for Wives">
+				<div class="wives-guide-download__grid">
+					<div class="wives-guide-download__image-container">
+						{% if wives_prayer_guide_image_url %}
+							{% if wives_prayer_guide_pdf_url %}
+							<a class="wives-guide-download__image-link" href="{{ wives_prayer_guide_pdf_url }}"
+								download="FreedomCon-14-Day-Prayer-Guide-for-Wives.pdf" target="_blank" rel="noopener noreferrer"
+								aria-label="Download 14 Day Prayer Guide for Wives">
+								<img class="wives-guide-download__image" src="{{ wives_prayer_guide_image_url }}"
+									alt="Freedom Con 14 Day Prayer Guide for Wives cover">
+							</a>
+							{% else %}
+							<div class="wives-guide-download__image-link wives-guide-download__image-link--static">
+								<img class="wives-guide-download__image" src="{{ wives_prayer_guide_image_url }}"
+									alt="Freedom Con 14 Day Prayer Guide for Wives cover">
+							</div>
+							{% endif %}
+						{% endif %}
+					</div>
+					<div class="wives-guide-download__content">
+						<h2 class="wives-guide-download__title">14 Day Prayer Guide for Wives</h2>
+						<p class="wives-guide-download__description">A resource for wives to pray over their husbands, families, and the weekend leading into FREEDOM CON.</p>
+						{% if wives_prayer_guide_pdf_url %}
+						<a class="btn btn-primary btn-xxl wives-guide-download__btn" href="{{ wives_prayer_guide_pdf_url }}"
+							download="FreedomCon-14-Day-Prayer-Guide-for-Wives.pdf" target="_blank" rel="noopener noreferrer">Download Here</a>
+						{% else %}
+						<span class="btn btn-primary btn-xxl disabled wives-guide-download__btn"
+							aria-disabled="true">Coming Soon</span>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+
 			<div class="wives-form-wrap">
 				<form class="wives-form" method="post" action="{{ formsubmit_action }}">
 					<input type="hidden" name="_subject" value="Freedom Con Wives Resources Sign-Up">
