@@ -3,9 +3,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	const landing12Nav = document.querySelector(".landing12-nav");
 	if (landing12Nav) {
-		const mobileNavQuery = window.matchMedia("(max-width: 760px)");
+		const compactNavQuery = window.matchMedia("(max-width: 1120px)");
 		let landing12LastScrollY = window.scrollY;
 		let landing12ScrollTicking = false;
+		let landing12NavMenuControls = null;
+
+		const closeLanding12Menu = () => {
+			if (!landing12NavMenuControls) {
+				return;
+			}
+
+			const { menu, backdrop, toggle } = landing12NavMenuControls;
+			menu.classList.remove("is-open");
+			backdrop.classList.remove("is-open");
+			toggle.setAttribute("aria-expanded", "false");
+			document.body.classList.remove("landing12-no-scroll");
+		};
+
+		const updateLanding12NavCollapseState = () => {
+			const shouldCollapse = compactNavQuery.matches || landing12Nav.scrollWidth > landing12Nav.clientWidth + 8;
+			landing12Nav.classList.toggle("is-collapsed", shouldCollapse);
+
+			if (!shouldCollapse) {
+				closeLanding12Menu();
+			}
+		};
 
 		const syncLanding12MobileNavState = () => {
 			landing12ScrollTicking = false;
@@ -14,23 +36,16 @@ document.addEventListener("DOMContentLoaded", () => {
 			const isAtTop = currentScrollY <= 24;
 			const nearBottom = (currentScrollY + window.innerHeight) >= (document.documentElement.scrollHeight - 80);
 			landing12Nav.classList.toggle("is-at-top", isAtTop);
+			updateLanding12NavCollapseState();
 
-			if (mobileNavQuery.matches) {
-				// Mobile: always condensed once past the top
-				if (isAtTop) {
-					landing12Nav.classList.add("is-condensed");
-				} else {
-					landing12Nav.classList.add("is-condensed");
-				}
+			if (compactNavQuery.matches) {
+				landing12Nav.classList.add("is-condensed");
 				landing12LastScrollY = currentScrollY;
 				return;
-			} else {
-				// Desktop: full size at top, shrink when scrolling down
-				if (isAtTop) {
-					landing12Nav.classList.remove("is-condensed");
-					landing12LastScrollY = currentScrollY;
-					return;
-				}
+			} else if (isAtTop) {
+				landing12Nav.classList.remove("is-condensed");
+				landing12LastScrollY = currentScrollY;
+				return;
 			}
 
 			const scrollDelta = currentScrollY - landing12LastScrollY;
@@ -59,8 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		window.addEventListener("scroll", requestLanding12MobileNavStateSync, { passive: true });
 		window.addEventListener("resize", syncLanding12MobileNavState);
-		if (typeof mobileNavQuery.addEventListener === "function") {
-			mobileNavQuery.addEventListener("change", syncLanding12MobileNavState);
+		if (typeof compactNavQuery.addEventListener === "function") {
+			compactNavQuery.addEventListener("change", syncLanding12MobileNavState);
 		}
 		syncLanding12MobileNavState();
 
@@ -77,15 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		const toggle = landing12Nav.querySelector(".landing12-menu-toggle");
 		const menu = landing12Nav.querySelector(".landing12-links");
 		const backdrop = landing12Nav.querySelector(".landing12-menu-backdrop");
+		landing12NavMenuControls = { menu, backdrop, toggle };
 
 		if (toggle && menu && backdrop) {
-			const closeMenu = () => {
-				menu.classList.remove("is-open");
-				backdrop.classList.remove("is-open");
-				toggle.setAttribute("aria-expanded", "false");
-				document.body.classList.remove("landing12-no-scroll");
-			};
-
 			const openMenu = () => {
 				menu.classList.add("is-open");
 				backdrop.classList.add("is-open");
@@ -96,28 +105,26 @@ document.addEventListener("DOMContentLoaded", () => {
 			toggle.addEventListener("click", () => {
 				const isOpen = menu.classList.contains("is-open");
 				if (isOpen) {
-					closeMenu();
+					closeLanding12Menu();
 				} else {
 					openMenu();
 				}
 			});
 
-			backdrop.addEventListener("click", closeMenu);
+			backdrop.addEventListener("click", closeLanding12Menu);
 
 			window.addEventListener("keydown", (event) => {
 				if (event.key === "Escape") {
-					closeMenu();
+					closeLanding12Menu();
 				}
 			});
 
 			menu.querySelectorAll("a").forEach((link) => {
-				link.addEventListener("click", closeMenu);
+				link.addEventListener("click", closeLanding12Menu);
 			});
 
 			window.addEventListener("resize", () => {
-				if (window.innerWidth > 760) {
-					closeMenu();
-				}
+				updateLanding12NavCollapseState();
 			});
 		}
 	}

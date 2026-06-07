@@ -1484,11 +1484,6 @@ body.landing12-no-scroll {
 }
 
 @media (max-width: 767.98px) {
-    .landing12-nav {
-        flex-wrap: wrap;
-        padding: 1rem;
-    }
-
     .landing12-hero {
         padding-top: 0;
     }
@@ -1507,77 +1502,6 @@ body.landing12-no-scroll {
     .landing12-hero-lineup-image {
         width: min(1540px, 104vw);
         margin-top: clamp(-3rem, -5vw, -1.5rem);
-    }
-
-    .landing12-menu-toggle {
-        display: inline-flex;
-        margin-left: auto;
-    }
-
-    .landing12-links {
-        display: flex;
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100dvh;
-        width: min(320px, 86vw);
-        z-index: 80;
-        background: #060606;
-        border-left: 1px solid var(--fc-line);
-        box-shadow: -8px 0 28px rgba(0, 0, 0, 0.45);
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.45rem;
-        padding: 5.2rem 1rem 1rem;
-        transform: translateX(105%);
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: transform 260ms ease, opacity 220ms ease, visibility 220ms ease;
-    }
-
-    .landing12-links.is-open {
-        transform: translateX(0);
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-    }
-
-    .landing12-links a {
-        width: 100%;
-        padding: 0.5rem 0;
-    }
-
-    .landing12-nav>.landing12-btn {
-        display: none;
-    }
-
-    .landing12-menu-backdrop {
-        display: block;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.52);
-        z-index: 70;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 220ms ease, visibility 220ms ease;
-        border: 0;
-        padding: 0;
-    }
-
-    .landing12-menu-backdrop.is-open {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-    }
-
-    .landing12-links .landing12-links-ticket {
-        color: var(--fc-accent);
-    }
-
-    .landing12-wrap {
-        /* padding: 3.2rem 1rem; */
     }
 
     .landing12-liberty-inner {
@@ -1932,16 +1856,28 @@ body.landing12-no-scroll {
 
 /* ── Prayer Guides two-column section ── */
 .landing12-prayer-guides {
-    background: var(--fc-bg);
-    padding: 3.5rem 0;
+    background:
+        radial-gradient(circle at top, rgba(188, 42, 39, 0.16), transparent 42%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.08)),
+        var(--fc-bg);
+    padding: 4.25rem 0;
     position: relative;
     z-index: 1;
+}
+
+.landing12-prayer-guides::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    pointer-events: none;
 }
 
 .landing12-prayer-guides__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 2.25rem;
 }
 
 .landing12-prayer-guides__card {
@@ -1952,10 +1888,30 @@ body.landing12-no-scroll {
     background: var(--fc-surface);
     border: 1px solid var(--fc-line);
     border-radius: 4px;
-    padding: 1.5rem;
+    padding: 1.75rem;
     text-decoration: none;
     color: var(--fc-ink);
     transition: border-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.landing12-prayer-guides__card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at bottom right, rgba(188, 42, 39, 0.34) 0%, rgba(188, 42, 39, 0.18) 22%, rgba(0, 0, 0, 0.78) 56%, rgba(0, 0, 0, 0) 74%);
+    opacity: 0;
+    transform: scale(0.96);
+    transform-origin: bottom right;
+    transition: opacity 220ms ease, transform 280ms ease;
+    pointer-events: none;
+}
+
+.landing12-prayer-guides__card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .landing12-prayer-guides__card:hover,
@@ -1966,17 +1922,40 @@ body.landing12-no-scroll {
     text-decoration: none;
 }
 
+.landing12-prayer-guides__card:hover::after,
+.landing12-prayer-guides__card:focus-visible::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
 .landing12-prayer-guides__img-wrap {
     flex: 0 0 auto;
     width: clamp(90px, 22%, 130px);
+}
+
+.landing12-prayer-guides__img-wrap--featured {
+    width: clamp(145px, 34%, 210px);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--fc-accent);
 }
 
 .landing12-prayer-guides__img {
     display: block;
     width: 100%;
     height: auto;
-    border: 2px solid var(--fc-accent);
     border-radius: 2px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+.landing12-prayer-guides__img--featured {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .landing12-prayer-guides__body {
@@ -2017,9 +1996,22 @@ body.landing12-no-scroll {
 }
 
 @media (max-width: 768px) {
+    .landing12-prayer-guides {
+        padding: 3.5rem 0;
+    }
+
     .landing12-prayer-guides__grid {
         grid-template-columns: 1fr;
         gap: 1.25rem;
+    }
+
+    .landing12-prayer-guides__img-wrap--featured {
+        width: 58%;
+    }
+
+    .landing12-prayer-guides__img--featured {
+        width: 100%;
+        height: 100%;
     }
 }
 

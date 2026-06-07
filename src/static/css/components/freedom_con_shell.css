@@ -280,6 +280,7 @@ body:has(.landing12-header) .page-clip {
 }
 
 .landing12-menu-toggle {
+    display: none;
     /* show/hide: d-flex d-md-none on element */
     border: 0;
     background: var(--fc-accent);
@@ -395,6 +396,7 @@ body:has(.landing12-header) .page-clip {
 
     .landing12-menu-toggle {
         /* d-flex d-md-none handles show/hide; responsive sizing below */
+        display: inline-flex;
         margin-left: auto;
     }
 
@@ -492,6 +494,123 @@ body:has(.landing12-header) .page-clip {
     .landing12-footer-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.landing12-nav.is-collapsed {
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.landing12-nav.is-collapsed .landing12-menu-toggle {
+    display: inline-flex;
+    margin-left: auto;
+}
+
+.landing12-nav.is-collapsed .landing12-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: min(320px, 86vw);
+    z-index: 80;
+    background: #060606;
+    border-left: 1px solid var(--fc-line);
+    box-shadow: -8px 0 28px rgba(0, 0, 0, 0.45);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+    padding: 5.2rem 1rem 1rem;
+    transform: translateX(105%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 260ms ease, opacity 220ms ease, visibility 220ms ease;
+}
+
+.landing12-nav.is-collapsed .landing12-links.is-open {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.landing12-nav.is-collapsed .landing12-link-optional {
+    display: block;
+}
+
+.landing12-nav.is-collapsed .landing12-links-overflow {
+    display: none;
+}
+
+.landing12-nav.is-collapsed .landing12-links a {
+    width: 100%;
+    padding: 0.5rem 0;
+}
+
+.landing12-nav.is-collapsed .landing12-nav-urgency--inline {
+    margin: 0;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-size: 0.6rem;
+}
+
+.landing12-nav.is-collapsed.is-condensed {
+    gap: 0.7rem;
+}
+
+.landing12-nav.is-collapsed.is-condensed .landing12-brand {
+    font-size: clamp(1.2rem, 5.5vw, 1.55rem);
+}
+
+.landing12-nav.is-collapsed.is-condensed .landing12-menu-toggle {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+}
+
+.landing12-nav.is-collapsed > .landing12-btn {
+    display: none;
+}
+
+.landing12-nav.is-collapsed .landing12-menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.52);
+    z-index: 70;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 220ms ease, visibility 220ms ease;
+    border: 0;
+    padding: 0;
+}
+
+.landing12-nav.is-collapsed .landing12-menu-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.landing12-nav.is-collapsed .landing12-nav-dropdown {
+    width: 100%;
+}
+
+.landing12-nav.is-collapsed .landing12-nav-dropdown > summary {
+    width: 100%;
+    padding: 0.5rem 0;
+}
+
+.landing12-nav.is-collapsed .landing12-nav-dropdown-menu {
+    position: static;
+    border: 0;
+    border-left: 2px solid var(--fc-line);
+    background: transparent;
+    padding: 0.3rem 0.75rem;
+    margin-bottom: 0.25rem;
 }
 
 @media (max-width: 1100px) and (min-width: 768px) {
