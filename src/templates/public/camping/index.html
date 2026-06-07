@@ -31,31 +31,28 @@
 		<div class="camping-amenities__inner container-xl">
 			<div class="camping-amenity-strip">
 				<picture>
-					<source srcset="{{ url_for('static', filename='img/RV.webp') }}" type="image/webp">
-					<img src="{{ url_for('static', filename='img/RV.webp') }}" alt="RVs welcome" class="camping-amenity-strip__rv-img">
+					<source srcset="{{ asset_url('img/RV.webp') }}" type="image/webp">
+					<img src="{{ asset_url('img/RV.webp') }}" alt="RVs welcome" class="camping-amenity-strip__rv-img">
 				</picture>
 				<div class="camping-amenity-strip__body">
 					<p class="camping-amenity-strip__heading">RV Friendly</p>
-					<p class="camping-amenity-strip__detail">RVs welcome &mdash; no hookups, generators allowed. RVs
-						longer than 35&rsquo; will need two camping spots.</p>
+					<p class="camping-amenity-strip__detail">RVs welcome &mdash; no hookups but generators are allowed. RVs longer than 35&rsquo; you will need to purchase two camping spots.</p>
 				</div>
 			</div>
 			<div class="camping-amenity-strip">
 				<picture>
-					<source srcset="{{ url_for('static', filename='img/camping_icon.webp') }}" type="image/webp">
-					<img src="{{ url_for('static', filename='img/camping_icon.webp') }}" alt="Tent camping welcome" class="camping-amenity-strip__rv-img">
+					<source srcset="{{ asset_url('img/camping_icon.webp') }}" type="image/webp">
+					<img src="{{ asset_url('img/camping_icon.webp') }}" alt="Tent camping welcome" class="camping-amenity-strip__rv-img">
 				</picture>
 				<div class="camping-amenity-strip__body">
 					<p class="camping-amenity-strip__heading">Tent Camping Welcome</p>
-					<p class="camping-amenity-strip__detail">Bring your own tent and set up right on the grounds. Each
-						site fits up to 6 people on a ~20&rsquo; &times; 35&rsquo; plot — plenty of room for a full
-						crew.</p>
+					<p class="camping-amenity-strip__detail">Bring your own tent and set up right on the grounds. Each site fits up to 6 people on a ~20&rsquo; &times; 35&rsquo; plot — plenty of room for a full crew. Only 1 vehicle per site is allowed, but paid overnight parking is available nearby if needed.</p>
 				</div>
 			</div>
 			<div class="camping-amenity-strip camping-amenity-strip--alt">
 				<picture>
-					<source srcset="{{ url_for('static', filename='img/bathrooms_showers.webp') }}" type="image/webp">
-					<img src="{{ url_for('static', filename='img/bathrooms_showers.webp') }}" alt="Showers on site" class="camping-amenity-strip__rv-img">
+					<source srcset="{{ asset_url('img/bathrooms_showers.webp') }}" type="image/webp">
+					<img src="{{ asset_url('img/bathrooms_showers.webp') }}" alt="Showers on site" class="camping-amenity-strip__rv-img">
 				</picture>
 				<div class="camping-amenity-strip__body">
 					<p class="camping-amenity-strip__heading">Showers On Site</p>
@@ -82,7 +79,7 @@
 				<div class="camping-ticket__top">
 					<div class="camping-ticket__left">
 						<p class="camping-ticket__label">One Camping Ticket</p>
-						<p class="camping-ticket__desc">One ticket covers your campsite &mdash; tent or RV &mdash; for Friday night and Saturday night into Sunday morning. Add it when you purchase your event ticket at checkout.</p>
+						<p class="camping-ticket__desc">One ticket covers your campsite &mdash; tent or RV &mdash; for Friday night and Saturday night into Sunday morning. Add your camping ticket when you purchase your event ticket. Camping ticket does not include event admission and needs to be purchased separately.</p>
 						<ul class="camping-ticket__details">
 							<li><strong>Check-in:</strong> 12:00 PM on Friday</li>
 							<li><strong>Check-out:</strong> 11:00 AM on Sunday</li>
@@ -91,7 +88,6 @@
 					</div>
 					<div class="camping-ticket__right">
 						<p class="camping-ticket__price">$132</p>
-						<p class="camping-ticket__price-note">at checkout, when you purchase your event ticket</p>
 					</div>
 				</div>
 				{{ cta_buttons(
@@ -112,7 +108,7 @@
 	</section>
 
 	<!-- Camping Areas -->
-	<section class="camping-areas-section" aria-label="Camping areas">
+	<!-- <section class="camping-areas-section" aria-label="Camping areas">
 		<div class="camping-areas-section__inner container-xl">
 			<h2 class="camping-areas-section__heading">Camping Areas</h2>
 			<div class="camping-areas-list">
@@ -122,8 +118,7 @@
 				</article>
 			</div>
 		</div>
-
-	</section>
+	</section> -->
 
 
 	<!-- What to Bring -->
@@ -134,11 +129,11 @@
 				<li class="camping-logistics__item">Tent, RV, camper, or trailer</li>
 				<li class="camping-logistics__item">Food</li>
 				<li class="camping-logistics__item">Sleeping bags / bedding</li>
-				<li class="camping-logistics__item">Camp chairs</li>
+				<li class="camping-logistics__item">Camp chairs (for campsite only, not allowed in the venue)</li>
 				<li class="camping-logistics__item">Layers &mdash; nights at The Gorge get cold</li>
 				<li class="camping-logistics__item">Sunscreen and sunglasses for the day sessions</li>
 				<li class="camping-logistics__item">Reusable water bottle</li>
-				<li class="camping-logistics__item">Cash or card for food vendors</li>
+				<li class="camping-logistics__item">The Gorge is a cashless venue &mdash; bring a card for food, merch, and other purchases.</li>
 			</ul>
 		</div>
 	</section>

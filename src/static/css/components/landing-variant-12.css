@@ -531,6 +531,9 @@ body.landing12-no-scroll {
     align-self: end;
     justify-self: center;
     margin-bottom: clamp(1.25rem, 3vw, 2.5rem);
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .landing12-cta-2__content {
@@ -1925,4 +1928,108 @@ body.landing12-no-scroll {
 
 .landing12-father-son .landing12-cta-row {
     margin-top: 1.1rem;
+}
+
+/* ── Prayer Guides two-column section ── */
+.landing12-prayer-guides {
+    background: var(--fc-bg);
+    padding: 3.5rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.landing12-prayer-guides__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.landing12-prayer-guides__card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--fc-surface);
+    border: 1px solid var(--fc-line);
+    border-radius: 4px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--fc-ink);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.landing12-prayer-guides__card:hover,
+.landing12-prayer-guides__card:focus-visible {
+    border-color: var(--fc-accent);
+    transform: translateY(-3px);
+    color: var(--fc-ink);
+    text-decoration: none;
+}
+
+.landing12-prayer-guides__img-wrap {
+    flex: 0 0 auto;
+    width: clamp(90px, 22%, 130px);
+}
+
+.landing12-prayer-guides__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 2px solid var(--fc-accent);
+    border-radius: 2px;
+}
+
+.landing12-prayer-guides__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.landing12-prayer-guides__label {
+    margin: 0;
+    font-family: var(--font-oswald-bold, var(--font-regular));
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fc-accent);
+}
+
+.landing12-prayer-guides__title {
+    margin: 0;
+    font-family: var(--font-oswald-bold, var(--font-regular));
+    font-size: clamp(1.05rem, 2vw, 1.45rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    color: var(--fc-ink);
+}
+
+.landing12-prayer-guides__sub {
+    font-size: 0.85em;
+    color: var(--fc-muted);
+}
+
+.landing12-prayer-guides__btn {
+    align-self: flex-start;
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+}
+
+@media (max-width: 768px) {
+    .landing12-prayer-guides__grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing12-prayer-guides__card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .landing12-prayer-guides__img-wrap {
+        width: 50%;
+    }
 }

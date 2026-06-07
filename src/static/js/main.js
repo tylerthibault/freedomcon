@@ -344,7 +344,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 		const autoRevealSelector = [
-			"main > section",
 			"main .speakers-section__grid > *",
 			"main .tickets-grid > *",
 			"main .accommodations-list > *",
@@ -415,7 +414,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		}, {
 			root: null,
-			rootMargin: isMobile ? "0px 0px -22% 0px" : "0px 0px -10% 0px",
+			rootMargin: isMobile ? "0px 0px -5% 0px" : "0px 0px -4% 0px",
 			threshold: 0,
 		});
 
@@ -1141,4 +1140,27 @@ document.addEventListener("DOMContentLoaded", () => {
 	closeBtn.addEventListener('click', closeModal);
 	backdrop.addEventListener('click', function(e) { if (e.target === backdrop) closeModal(); });
 	document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+}());
+
+/* =================================================================
+   Price Banner — global dismiss handler (all pages)
+   ================================================================= */
+(function () {
+  var banner  = document.getElementById('price-banner');
+  var pbClose = document.getElementById('pb-close-btn');
+  if (!banner || !pbClose) return;
+
+  // Adjust page-clip padding to match actual header height (nav + banner)
+  function syncPageClip() {
+    var header = document.querySelector('.landing12-header');
+    var clip   = document.querySelector('.page-clip');
+    if (header && clip) clip.style.paddingTop = header.offsetHeight + 'px';
+  }
+  syncPageClip();
+  window.addEventListener('resize', syncPageClip);
+
+  pbClose.addEventListener('click', function () {
+    banner.classList.add('is-hidden');
+    syncPageClip();
+  });
 }());

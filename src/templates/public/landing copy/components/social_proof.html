@@ -1,7 +1,7 @@
 {% set testimonials = social_proof or [] %}
 {% set boys_testimonials = boys_social_proof or [] %}
 {% set mobile_preview_count = 4 %}
-{% set placeholder_avatar = url_for('static', filename='img/social_proof/placeholder.svg') %}
+{% set placeholder_avatar = asset_url('img/social_proof/placeholder.svg') %}
 
 {# ── Men's section ── #}
 <section id="social-proof" class="social-proof-section landing12-social-proof" aria-label="Social proof testimonials">

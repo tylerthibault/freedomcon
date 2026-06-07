@@ -12,7 +12,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url("{{ url_for('static', filename='img/contour_lines.webp') }}") center/cover repeat;
+        background: url("{{ asset_url('img/contour_lines.webp') }}") center/cover repeat;
         filter: invert(1);
         opacity: 0.07;
         pointer-events: none;

@@ -16,8 +16,8 @@
 		<div class="artists-section__inner container-xl">
 			{% for artist in artists %}
 			<article class="artist-card mt-3 artist-card--featured">
-				<div class="artist-card__media-shell artist-card__media-shell--featured" style="--artist-img: url('{{ url_for('static', filename=artist.image) }}')">
-					<img class="artist-card__media" src="{{ url_for('static', filename=artist.image) }}" alt="{{ artist.name }}">
+				<div class="artist-card__media-shell artist-card__media-shell--featured" style="--artist-img: url('{{ asset_url(artist.image) }}')">
+					<img class="artist-card__media" src="{{ asset_url(artist.image) }}" alt="{{ artist.name }}">
 				</div>
 				<div class="artist-card__body">
 					<h2 class="artist-card__name">{{ artist.name }}</h2>

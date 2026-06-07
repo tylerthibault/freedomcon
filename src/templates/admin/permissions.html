@@ -1,0 +1,135 @@
+{% extends 'admin/master.html' %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/static/css/admin_theme.css">
+  <style>
+    .perm-wrap      { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+    .perm-hero      { background:#000; border-bottom:2px solid #BC2A27; padding:2.5rem 1.5rem 2rem; margin-bottom:2rem; }
+    .perm-hero h1   { font-family:'Oswald',sans-serif; font-size:clamp(1.8rem,3vw,2.5rem); text-transform:uppercase; letter-spacing:.07em; color:#fff; margin:0 0 .4rem; }
+    .perm-hero p    { color:#777; font-size:.88rem; margin:0; }
+
+    .perm-card      { background:#0d0d0d; border:1px solid #1c1c1c; border-radius:10px; padding:1.4rem 1.6rem; margin-bottom:1.5rem; }
+    .perm-cat-label { font-size:.62rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#BC2A27; margin:0 0 .9rem; padding-bottom:.45rem; border-bottom:1px solid #1e1e1e; }
+
+    .perm-table     { width:100%; border-collapse:separate; border-spacing:0; }
+    .perm-table th  { font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:#888; padding:.55rem .9rem; border-bottom:1px solid #1e1e1e; text-align:left; }
+    .perm-table th.role-col { text-align:center; min-width:110px; color:#BC2A27; }
+    .perm-table td  { padding:.55rem .9rem; border-bottom:1px solid #0f0f0f; color:#ccc; font-size:.87rem; vertical-align:middle; }
+    .perm-table td.role-col { text-align:center; }
+    .perm-table tr:last-child td { border-bottom:none; }
+    .perm-table tr:hover td { background:rgba(255,255,255,.02); }
+
+    /* custom checkbox */
+    .perm-check { appearance:none; -webkit-appearance:none; width:18px; height:18px;
+      border:2px solid #444; border-radius:4px; background:#111; cursor:pointer;
+      position:relative; transition:border-color .15s, background .15s; vertical-align:middle; }
+    .perm-check:checked { background:#BC2A27; border-color:#BC2A27; }
+    .perm-check:checked::after { content:'✓'; position:absolute; top:-1px; left:2px; color:#fff; font-size:12px; line-height:1; }
+    .perm-check:hover { border-color:#BC2A27; }
+
+    .perm-btn { background:#BC2A27; border:none; color:#fff; font-family:'Oswald',sans-serif;
+      font-size:.85rem; letter-spacing:.12em; text-transform:uppercase; padding:.65rem 2.2rem;
+      border-radius:5px; cursor:pointer; transition:background .15s; }
+    .perm-btn:hover { background:#8c1a18; }
+
+    .perm-notice { background:#1a1a00; border:1px solid #4d4d00; color:#cccc55;
+      border-radius:6px; padding:.7rem 1rem; font-size:.82rem; margin-bottom:1.2rem; }
+
+    .all-col-toggle { font-size:.7rem; color:#888; display:block; margin-top:.25rem; cursor:pointer; text-decoration:underline; }
+    .all-col-toggle:hover { color:#BC2A27; }
+  </style>
+{% endblock %}
+
+{% block body %}
+<div class="perm-hero">
+  <div style="max-width:1100px; margin:0 auto;">
+    <h1>Role Permissions</h1>
+    <p>Control which views each role can access. Superadmin always has full access and is not listed here.</p>
+  </div>
+</div>
+
+<div class="perm-wrap">
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+    <div class="perm-notice" style="{% if category == 'success' %}background:#001a00;border-color:#004400;color:#55cc55;{% endif %}">
+      {{ message }}
+    </div>
+    {% endfor %}
+  {% endwith %}
+
+  {% if not roles %}
+  <div class="perm-card">
+    <p style="color:#888; font-size:.9rem; margin:0;">
+      No non-superadmin roles found. Create an <a href="/admin/adminuser/" style="color:#BC2A27;">Admin User</a> with role <code>admin</code> to start configuring permissions.
+    </p>
+  </div>
+  {% else %}
+
+  {% if all_open %}
+  <div class="perm-notice">
+    No permissions have been saved yet — all authenticated users can access everything.
+    Save this form to lock things down.
+  </div>
+  {% endif %}
+
+  <form method="POST">
+
+    {% for category, views in categories.items() %}
+    <div class="perm-card">
+      <p class="perm-cat-label">{{ category }}</p>
+      <table class="perm-table">
+        <thead>
+          <tr>
+            <th style="width:55%;">View</th>
+            {% for role in roles %}
+            <th class="role-col">
+              {{ role | upper }}
+              <span class="all-col-toggle" data-role="{{ role }}">toggle all</span>
+            </th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for ep, label in views %}
+          <tr>
+            <td>{{ label }}</td>
+            {% for role in roles %}
+            <td class="role-col">
+              <input
+                type="checkbox"
+                class="perm-check role-{{ role }}"
+                name="{{ role }}__{{ ep }}"
+                value="1"
+                {% if all_open or (role, ep) in existing %}checked{% endif %}
+              >
+            </td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endfor %}
+
+    <div style="display:flex; align-items:center; gap:1.5rem; margin-top:.5rem;">
+      <button type="submit" class="perm-btn">Save Permissions</button>
+      <span style="color:#555; font-size:.8rem;">Changes take effect immediately for all subsequent requests.</span>
+    </div>
+  </form>
+  {% endif %}
+</div>
+
+<script>
+  // "toggle all" per role column
+  document.querySelectorAll('.all-col-toggle').forEach(function(span) {
+    span.addEventListener('click', function() {
+      var role = this.dataset.role;
+      var boxes = document.querySelectorAll('.role-' + role);
+      var allChecked = Array.from(boxes).every(function(b) { return b.checked; });
+      boxes.forEach(function(b) { b.checked = !allChecked; });
+    });
+  });
+</script>
+{% endblock %}

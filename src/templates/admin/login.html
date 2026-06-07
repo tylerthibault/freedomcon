@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Freedom Con Admin — Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <style>
+    body { background: #f8f9fa; }
+    .login-card { max-width: 420px; margin: 80px auto; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="login-card card shadow-sm">
+    <div class="card-header bg-dark text-white text-center py-3">
+      <h4 class="mb-0">Freedom Con Admin</h4>
+    </div>
+    <div class="card-body p-4">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ 'danger' if category == 'error' else category }} py-2">{{ message }}</div>
+        {% endfor %}
+      {% endwith %}
+      <form method="post" action="{{ url_for('admin_auth.login_post') }}">
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="username">Username</label>
+          <input class="form-control" id="username" name="username" type="text" autocomplete="username" required autofocus>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="password">Password</label>
+          <input class="form-control" id="password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" id="remember" name="remember" type="checkbox" value="1">
+          <label class="form-check-label" for="remember">Remember me</label>
+        </div>
+        <button class="btn btn-dark w-100" type="submit">Sign In</button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

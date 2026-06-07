@@ -1,0 +1,368 @@
+/* ============================================================
+   Freedom Con Admin — global theme
+   Matches the site's dark/red/Oswald design language.
+   Loaded via extra_css on SecureModelView.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+
+/* ── Reset / base ─────────────────────────────────────────── */
+body {
+  background: #080808 !important;
+  color: #e0e0e0 !important;
+  font-family: 'Oswald', Arial, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', Arial, sans-serif !important;
+  color: #fff !important;
+  letter-spacing: .04em;
+}
+
+/* ── Navbar ───────────────────────────────────────────────── */
+.navbar.bg-dark {
+  background: #000 !important;
+  border-bottom: 2px solid #BC2A27 !important;
+}
+.navbar-brand {
+  font-family: 'Oswald', Arial, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  color: #fff !important;
+}
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-nav .dropdown-toggle {
+  color: #aaa !important;
+  font-family: 'Oswald', Arial, sans-serif !important;
+  font-size: .85rem !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  transition: color .15s !important;
+}
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .dropdown-toggle:hover,
+.navbar-dark .navbar-nav li.active > a {
+  color: #fff !important;
+}
+.navbar-dark .navbar-nav li.active > a {
+  color: #BC2A27 !important;
+}
+/* dropdown menu */
+.dropdown-menu {
+  background: #111 !important;
+  border: 1px solid #1e1e1e !important;
+  border-radius: 8px !important;
+  padding: .4rem 0 !important;
+}
+.dropdown-item {
+  color: #ccc !important;
+  font-family: 'Oswald', Arial, sans-serif !important;
+  font-size: .85rem !important;
+  letter-spacing: .05em !important;
+  text-transform: uppercase !important;
+  padding: .45rem 1.1rem !important;
+  transition: background .12s, color .12s !important;
+}
+.dropdown-item:hover,
+.dropdown-item.active {
+  background: #BC2A27 !important;
+  color: #fff !important;
+}
+
+/* ── Page title ───────────────────────────────────────────── */
+.container > h4,
+.container-fluid > h4 {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .06em !important;
+  color: #fff !important;
+  margin-bottom: 1.2rem !important;
+  padding-bottom: .6rem !important;
+  border-bottom: 1px solid #1e1e1e !important;
+}
+
+/* ── Flash messages ───────────────────────────────────────── */
+.alert {
+  font-family: 'Oswald', Arial, sans-serif !important;
+  border-radius: 8px !important;
+  border: none !important;
+  font-size: .9rem !important;
+  letter-spacing: .03em !important;
+}
+.alert-success { background: #0a2a0a !important; color: #5cb85c !important; border-left: 3px solid #5cb85c !important; }
+.alert-danger  { background: #2a0a0a !important; color: #e06060 !important; border-left: 3px solid #BC2A27 !important; }
+.alert-warning { background: #2a1a00 !important; color: #e0a830 !important; border-left: 3px solid #e0a830 !important; }
+.alert-info    { background: #0a1a2a !important; color: #5bc0de !important; border-left: 3px solid #5bc0de !important; }
+
+/* ── Table (list view) ────────────────────────────────────── */
+.table {
+  color: #d0d0d0 !important;
+  font-family: 'Oswald', Arial, sans-serif !important;
+  font-size: .88rem !important;
+  letter-spacing: .02em !important;
+}
+.table thead th {
+  background: #0d0d0d !important;
+  color: #BC2A27 !important;
+  font-weight: 600 !important;
+  font-size: .72rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: .18em !important;
+  border-bottom: 1px solid #1e1e1e !important;
+  border-top: none !important;
+  white-space: nowrap;
+}
+.table thead th a {
+  color: #BC2A27 !important;
+  text-decoration: none !important;
+}
+.table tbody tr {
+  border-bottom: 1px solid #141414 !important;
+  transition: background .12s !important;
+}
+.table tbody tr:hover td {
+  background: #111 !important;
+}
+.table td, .table th {
+  border-color: #1a1a1a !important;
+  vertical-align: middle !important;
+  padding: .6rem .75rem !important;
+}
+.table-striped tbody tr:nth-of-type(odd) td {
+  background: #0b0b0b !important;
+}
+.table-striped tbody tr:nth-of-type(even) td {
+  background: #080808 !important;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn {
+  font-family: 'Oswald', Arial, sans-serif !important;
+  font-size: .8rem !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+  border-radius: 5px !important;
+  transition: all .15s !important;
+}
+.btn-primary,
+.btn-default {
+  background: #BC2A27 !important;
+  border-color: #BC2A27 !important;
+  color: #fff !important;
+}
+.btn-primary:hover,
+.btn-default:hover {
+  background: #962220 !important;
+  border-color: #962220 !important;
+}
+.btn-secondary,
+.btn-default.btn-secondary {
+  background: #1a1a1a !important;
+  border-color: #2a2a2a !important;
+  color: #ccc !important;
+}
+.btn-secondary:hover { background: #2a2a2a !important; color: #fff !important; }
+.btn-danger {
+  background: #6b1211 !important;
+  border-color: #6b1211 !important;
+  color: #fff !important;
+}
+.btn-danger:hover { background: #8a1615 !important; border-color: #8a1615 !important; }
+.btn-warning {
+  background: #7a5000 !important;
+  border-color: #7a5000 !important;
+  color: #fff !important;
+}
+.btn-outline-secondary {
+  border-color: #333 !important;
+  color: #aaa !important;
+}
+.btn-outline-secondary:hover {
+  background: #1e1e1e !important;
+  border-color: #444 !important;
+  color: #fff !important;
+}
+.btn-info {
+  background: #1a3a4a !important;
+  border-color: #1a3a4a !important;
+  color: #fff !important;
+}
+
+/* ── Form controls ────────────────────────────────────────── */
+.form-control,
+.form-control:focus,
+select.form-control,
+textarea.form-control {
+  background: #111 !important;
+  border: 1px solid #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-radius: 6px !important;
+  font-family: 'Oswald', Arial, sans-serif !important;
+  font-size: .9rem !important;
+  transition: border-color .15s !important;
+}
+.form-control:focus {
+  border-color: #BC2A27 !important;
+  box-shadow: 0 0 0 2px rgba(188,42,39,.2) !important;
+}
+.form-control::placeholder { color: #555 !important; }
+
+.form-group label,
+.control-label {
+  font-family: 'Oswald', Arial, sans-serif !important;
+  font-size: .78rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .12em !important;
+  color: #888 !important;
+  margin-bottom: .4rem !important;
+}
+.field-description {
+  font-size: .78rem !important;
+  color: #555 !important;
+  margin-top: .25rem !important;
+  font-style: italic !important;
+}
+
+/* input[type=checkbox/radio] accent */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: #BC2A27;
+}
+
+/* file input */
+input[type="file"] {
+  background: #111 !important;
+  border: 1px solid #2a2a2a !important;
+  color: #aaa !important;
+  border-radius: 6px !important;
+  padding: .35rem .6rem !important;
+  font-size: .85rem !important;
+}
+
+/* select2 */
+.select2-container .select2-selection--single,
+.select2-container .select2-selection--multiple {
+  background: #111 !important;
+  border-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-radius: 6px !important;
+}
+.select2-container .select2-selection__rendered { color: #e0e0e0 !important; }
+.select2-dropdown {
+  background: #111 !important;
+  border-color: #2a2a2a !important;
+}
+.select2-results__option { color: #ccc !important; }
+.select2-results__option--highlighted { background: #BC2A27 !important; color: #fff !important; }
+.select2-search__field { background: #0d0d0d !important; color: #e0e0e0 !important; border-color: #2a2a2a !important; }
+
+/* ── Cards / panels ───────────────────────────────────────── */
+.card,
+.well,
+.panel {
+  background: #0d0d0d !important;
+  border: 1px solid #1c1c1c !important;
+  border-radius: 10px !important;
+  color: #e0e0e0 !important;
+}
+.card-header,
+.panel-heading {
+  background: #111 !important;
+  border-bottom: 1px solid #1e1e1e !important;
+  font-family: 'Oswald', Arial, sans-serif !important;
+  font-size: .78rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .12em !important;
+  color: #BC2A27 !important;
+}
+.card-body { background: #0d0d0d !important; }
+
+/* ── Pagination ───────────────────────────────────────────── */
+.pagination .page-link {
+  background: #111 !important;
+  border-color: #1e1e1e !important;
+  color: #aaa !important;
+  font-family: 'Oswald', Arial, sans-serif !important;
+  font-size: .8rem !important;
+  letter-spacing: .05em !important;
+}
+.pagination .page-link:hover { background: #BC2A27 !important; border-color: #BC2A27 !important; color: #fff !important; }
+.pagination .page-item.active .page-link { background: #BC2A27 !important; border-color: #BC2A27 !important; color: #fff !important; }
+.pagination .page-item.disabled .page-link { background: #0a0a0a !important; color: #333 !important; }
+
+/* ── Breadcrumb / nav tabs ────────────────────────────────── */
+.nav-tabs {
+  border-bottom: 1px solid #1e1e1e !important;
+}
+.nav-tabs .nav-link {
+  font-family: 'Oswald', Arial, sans-serif !important;
+  font-size: .8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: .08em !important;
+  color: #777 !important;
+  border: 1px solid transparent !important;
+  border-radius: 6px 6px 0 0 !important;
+  transition: color .15s !important;
+}
+.nav-tabs .nav-link:hover { color: #fff !important; border-color: #1e1e1e #1e1e1e transparent !important; }
+.nav-tabs .nav-link.active {
+  background: #0d0d0d !important;
+  border-color: #1e1e1e #1e1e1e #0d0d0d !important;
+  color: #fff !important;
+}
+
+/* ── Filters sidebar ──────────────────────────────────────── */
+.model-list-filter .filter-form,
+.filters .filter-form label,
+.filter-form .form-control {
+  font-family: 'Oswald', Arial, sans-serif !important;
+}
+
+/* ── Action checkbox column ───────────────────────────────── */
+.table .col-md-1 input[type="checkbox"] { accent-color: #BC2A27; }
+
+/* ── Action icons (edit / delete / details) ──────────────── */
+/* Flask-Admin wraps icons in <a class="icon"> or <form class="icon"><button> */
+
+/* Default: all action icons white */
+a.icon span,
+.icon button span {
+  color: #fff !important;
+}
+
+/* Pencil (edit) → white */
+.fa-pencil,
+.glyphicon-pencil {
+  color: #fff !important;
+}
+
+/* Eye (view/details) → white */
+.fa-eye,
+.glyphicon-eye-open {
+  color: #fff !important;
+}
+
+/* Trash (delete) → red */
+.fa-trash,
+.glyphicon-trash {
+  color: #BC2A27 !important;
+}
+
+/* Remove default button styling for delete form button */
+.icon button {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #BC2A27; }

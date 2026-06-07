@@ -39,4 +39,24 @@ podcasts = [
 		"title": "The Missing Piece in the Church Today | Road To Freedom Con Ep. 5",
 		"thumbnail_mobile": "img/videos/podcasts/statesmanship_ep5.webp",
 	},
+	{
+		"url": "https://www.youtube.com/watch?v=E5bvL-_IaMI",
+		"title": "Pulpits & Politics: Why Pastors SHOULDN’T Be Afraid to Speak Up!! | Live Free with Josh Howerton",
+		"thumbnail_mobile": "img/videos/podcasts/gospel_church_politics_josh_h.webp",
+	},
+	{
+		"url": "https://www.youtube.com/watch?v=6gG9bwFPuxw",
+		"title": "Josh McPherson - The Christian & Politics",
+		"thumbnail_mobile": "img/videos/podcasts/the_christian_politics_three_of_seven.webp",
+	},
+	{
+		"url": "https://www.youtube.com/watch?v=pfS1v_ydbyI",
+		"title": "Washington Is the Left's Testing Ground!",
+		"thumbnail_mobile": "img/videos/podcasts/coming_to_your_state.webp",
+	},
+	{
+		"url": "https://www.youtube.com/watch?v=M-Czt6mzvDU",
+		"title": "What is about to Happen in Washington State",
+		"thumbnail_mobile": "img/videos/podcasts/revolution_begins.webp",
+	},
 ]

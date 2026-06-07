@@ -1,0 +1,133 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/lib.html' as lib with context %}
+{% from 'admin/lib.html' import extra with context %}
+
+{% block head %}
+  {{ super() }}
+  {{ lib.form_css() }}
+  <style>
+    #media-preview-wrap {
+      position: sticky;
+      top: 20px;
+    }
+    #media-preview-bg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #dee2e6;
+      background: #111;
+      overflow: hidden;
+    }
+    #media-preview-img {
+      max-width: 100%;
+      max-height: 340px;
+      object-fit: contain;
+      border-radius: 6px;
+      display: none;
+    }
+    #media-preview-placeholder {
+      color: #adb5bd;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .preview-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #6c757d;
+      margin-bottom: 4px;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <ul class="nav nav-tabs mb-3">
+    <li class="nav-item">
+      <a href="{{ return_url }}" class="nav-link">{{ _gettext('List') }}</a>
+    </li>
+    {%- if admin_view.can_create -%}
+    <li class="nav-item">
+      <a href="{{ get_url('.create_view', url=return_url) }}"
+         class="nav-link{% if not is_edit %} active{% endif %}">{{ _gettext('Create') }}</a>
+    </li>
+    {%- endif -%}
+    {%- if is_edit -%}
+    <li class="nav-item">
+      <a href="javascript:void(0)" class="nav-link active">{{ _gettext('Edit') }}</a>
+    </li>
+    {%- endif -%}
+  </ul>
+
+  <div class="row">
+    {# left: form #}
+    <div class="col-lg-7">
+      {{ lib.render_form(form, return_url, extra(), form_opts) }}
+    </div>
+
+    {# right: thumbnail preview #}
+    <div class="col-lg-5">
+      <div id="media-preview-wrap">
+        <div class="card shadow-sm">
+          <div class="card-header d-flex align-items-center gap-2">
+            <span>Thumbnail Preview</span>
+            <small class="text-muted ms-auto">mobile size</small>
+          </div>
+          <div class="card-body text-center">
+            <p class="preview-label">thumbnail_mobile</p>
+            <div id="media-preview-bg">
+              <img id="media-preview-img" src="" alt="Thumbnail preview" />
+              <div id="media-preview-placeholder">
+                Upload a thumbnail to<br>see the preview
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block tail %}
+  {{ super() }}
+  {{ lib.form_js() }}
+  <script>
+  (function () {
+    const imgEl = document.getElementById('media-preview-img');
+    const phEl  = document.getElementById('media-preview-placeholder');
+
+    function showImg(src) {
+      if (src) {
+        imgEl.src = src;
+        imgEl.style.display = 'block';
+        phEl.style.display  = 'none';
+      } else {
+        imgEl.style.display = 'none';
+        imgEl.src = '';
+        phEl.style.display  = '';
+      }
+    }
+
+    // File-upload live preview
+    const uploadInput = document.querySelector('input[name="thumbnail_upload"]');
+    if (uploadInput) {
+      uploadInput.addEventListener('change', function () {
+        const file = this.files && this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => showImg(e.target.result);
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    // Pre-populate preview when editing an existing record
+    const currentThumb = {{ current_thumb_url | tojson }};
+    if (currentThumb) {
+      showImg(currentThumb);
+    }
+  })();
+  </script>
+{% endblock %}

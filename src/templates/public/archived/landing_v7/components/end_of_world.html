@@ -24,18 +24,18 @@
 <section class="eow eow--idle position-relative w-100 overflow-hidden user-select-none" id="eow">
 
     <img class="eow__good position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-1"
-         src="{{ url_for('static', filename='img/city_good.webp') }}"
+         src="{{ asset_url('img/city_good.webp') }}"
          alt="A thriving city">
 
     <img class="eow__bad position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-2"
-         src="{{ url_for('static', filename='img/city_bad.webp') }}"
+         src="{{ asset_url('img/city_bad.webp') }}"
          alt="A city in chaos">
 
     <div class="eow__divider position-absolute top-0 bottom-0 z-2 bg-white pe-none"
          id="eowDivider"></div>
 
     <img class="eow__man position-absolute bottom-0 start-50 translate-middle-x z-3 pe-none"
-         src="{{ url_for('static', filename='img/Man.webp') }}"
+         src="{{ asset_url('img/Man.webp') }}"
          alt="A man standing at the crossroads">
 
     <span class="eow__label-bad position-absolute top-0 mt-3 start-0 ms-3 z-3 pe-none fw-bold text-uppercase rounded-1 px-2 py-1"

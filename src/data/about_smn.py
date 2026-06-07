@@ -24,7 +24,7 @@ about_smn_conferences = [
 	},
 	{
 		"year": 2022,
-		"name": "Forge",
+		"name": "Forged",
 		"summary": "Josh McPherson",
 		"videos": [],
 	},

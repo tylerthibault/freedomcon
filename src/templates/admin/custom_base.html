@@ -1,0 +1,8 @@
+{% extends "admin/base.html" %}
+
+{% block access_control %}
+  <div class="navbar-text me-3 text-white-50 small">
+    Logged in as <strong class="text-white">{{ current_user.username }}</strong>
+  </div>
+  <a href="{{ url_for('admin_auth.logout') }}" class="btn btn-outline-light btn-sm">Logout</a>
+{% endblock %}

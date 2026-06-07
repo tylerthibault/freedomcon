@@ -9,3 +9,8 @@ src/static/pdfs/FreedomCon Media Kit 2/
 .env.*
 !.env.example
 .venv/
+
+# SQLite database
+*.db
+*.sqlite3
+src/static/img/

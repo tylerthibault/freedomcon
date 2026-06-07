@@ -181,11 +181,6 @@ body:has(.landing12-header) .page-clip {
     transition: opacity 220ms ease;
 }
 
-.landing12-nav.is-at-top .landing12-brand-logo {
-    opacity: 0;
-    pointer-events: none;
-}
-
 .landing12-links {
     /* layout: d-flex align-items-center flex-nowrap on element */
     gap: 1.2rem;
@@ -1380,3 +1375,262 @@ body:has(.landing12-header) .page-clip {
         grid-template-columns: 1fr;
     }
 }
+
+/* ── fc-events: Bringing the Fun at FreedomCon ────────────────── */
+.fc-events__intro {
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    color: rgba(255,255,255,0.7);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.fc-event-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 4px solid var(--color-primary, #BC2A27);
+    border-radius: 4px;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    margin-bottom: 1.75rem;
+}
+
+.fc-event-card--alt {
+    border-left-color: var(--color-accent, #BAFF29);
+}
+
+.fc-event-card__tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary, #BC2A27);
+    margin-bottom: 0.4rem;
+}
+
+.fc-event-card--alt .fc-event-card__tag {
+    color: var(--color-accent, #BAFF29);
+}
+
+.fc-event-card__title {
+    font-family: var(--font-secondary, 'Impact', sans-serif);
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #fff;
+    margin: 0 0 0.35rem;
+    line-height: 1.1;
+}
+
+.fc-event-card__hook {
+    font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    margin: 0 0 1.25rem;
+    line-height: 1.5;
+}
+
+.fc-event-card__desc {
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+}
+
+/* Workout block */
+.fc-event-card__workout {
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+    padding: 1.1rem 1.4rem;
+}
+
+.fc-event-card__workout-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary, #BC2A27);
+    margin-bottom: 0.6rem;
+}
+
+.fc-event-card__movements {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.fc-event-card__movements li {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding-left: 1.1rem;
+    position: relative;
+}
+
+.fc-event-card__movements li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary, #BC2A27);
+    font-weight: 700;
+}
+
+.fc-event-card__workout-note {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+    font-style: italic;
+}
+
+/* Stat row */
+.fc-event-card__stat-row {
+    display: flex;
+    gap: clamp(1rem, 5vw, 3rem);
+    flex-wrap: wrap;
+}
+
+.fc-event-card__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.fc-event-card__stat-num {
+    font-family: var(--font-secondary, 'Impact', sans-serif);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--color-accent, #BAFF29);
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+.fc-event-card__stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+}
+
+/* Challenges list */
+.fc-event-card__challenges {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.5rem 1.5rem;
+}
+
+.fc-event-card__challenges li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.fc-event-card__challenges li::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-primary, #BC2A27);
+    flex-shrink: 0;
+}
+
+.fc-event-card__patch-note {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+    font-style: italic;
+    margin: 0;
+}
+
+/* Features list */
+.fc-event-card__features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.fc-event-card__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.fc-event-card__feature svg {
+    flex-shrink: 0;
+    color: var(--color-accent, #BAFF29);
+    margin-top: 0.1rem;
+}
+
+@media (max-width: 520px) {
+    .fc-event-card__challenges {
+        grid-template-columns: 1fr;
+    }
+    .fc-event-card__stat-row {
+        gap: 1.5rem;
+    }
+}
+
+/* ── Sticky Price Banner (global, all pages) ─────────────────── */
+#price-banner {
+  background: #BC2A27;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.55rem 3rem 0.55rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+#price-banner.is-hidden {
+  display: none;
+}
+
+#price-banner a.pb-cta {
+  display: inline-block;
+  background: #fff;
+  color: #BC2A27;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.3rem 0.9rem;
+  border-radius: 4px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+
+#price-banner a.pb-cta:hover { opacity: 0.85; }
+
+#price-banner .pb-close {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.2rem;
+}
+
+#price-banner .pb-close:hover { color: #fff; }

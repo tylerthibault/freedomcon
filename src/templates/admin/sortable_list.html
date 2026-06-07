@@ -1,0 +1,96 @@
+{% extends 'admin/model/list.html' %}
+
+{% block tail %}
+  {{ super() }}
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.3/Sortable.min.js"></script>
+  <style>
+    .drag-handle {
+      cursor: grab;
+      color: #6c757d;
+      padding: 0 10px;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .drag-handle:active { cursor: grabbing; }
+    .drag-handle svg { display: block; }
+    .sortable-drag td { background: #2a2a2a !important; }
+  </style>
+  <script>
+  (function () {
+    const hasSortOrder = [...document.querySelectorAll('th')]
+      .some(th => th.textContent.trim().toUpperCase() === 'SORT ORDER');
+
+    if (!hasSortOrder) return;
+
+    const tbody = document.querySelector('table tbody');
+    if (!tbody) return;
+
+    // Hamburger SVG icon
+    const HANDLE_HTML = `<td class="drag-handle" title="Drag to reorder">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M2.5 3h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1 0-1zm0 4h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1 0-1zm0 4h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1 0-1z"/>
+      </svg>
+    </td>`;
+
+    function getPk(row) {
+      const a = row.querySelector('a[href*="?id="], a[href*="&id="]');
+      if (!a) return null;
+      const m = a.href.match(/[?&]id=(\d+)/);
+      return m ? parseInt(m[1], 10) : null;
+    }
+
+    // Inject handle cell + store pk
+    [...tbody.rows].forEach(tr => {
+      const pk = getPk(tr);
+      if (pk) {
+        tr.dataset.pk = pk;
+        tr.insertAdjacentHTML('afterbegin', HANDLE_HTML);
+      }
+    });
+
+    // Add a blank <th> to keep the header aligned
+    const thead = document.querySelector('table thead tr');
+    if (thead) thead.insertAdjacentHTML('afterbegin', '<th style="width:32px;"></th>');
+
+    const modelName = {{ admin_view.model.__name__ | lower | tojson }};
+
+    Sortable.create(tbody, {
+      animation: 150,
+      handle: '.drag-handle',
+      ghostClass: 'sortable-drag',
+      onEnd: function () {
+        const rows = [...tbody.rows].filter(tr => tr.dataset.pk);
+        const ids = rows.map(tr => parseInt(tr.dataset.pk, 10));
+
+        // Immediately update the sort_order cell in each row
+        rows.forEach((tr, i) => {
+          const cells = [...tr.cells];
+          // sort_order cell is right after the drag handle (index 1, since handle is index 0)
+          // Find it by checking which cell only contains a number
+          const sortCell = cells.find((td, idx) => idx > 0 && !td.querySelector('input,a,button') && /^\s*\d+\s*$/.test(td.textContent));
+          if (sortCell) sortCell.textContent = i;
+        });
+
+        fetch('/admin/reorder', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ model: modelName, ids: ids }),
+        })
+        .then(r => r.json())
+        .then(d => {
+          if (d.ok) {
+            const banner = document.createElement('div');
+            banner.textContent = 'Order saved';
+            banner.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#198754;color:#fff;padding:8px 18px;border-radius:6px;font-size:.85rem;z-index:9999;';
+            document.body.appendChild(banner);
+            setTimeout(() => banner.remove(), 2000);
+          } else {
+            alert('Reorder failed: ' + (d.error || 'unknown error'));
+          }
+        })
+        .catch(() => alert('Reorder request failed — check your connection.'));
+      }
+    });
+  })();
+  </script>
+{% endblock %}

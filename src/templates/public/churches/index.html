@@ -73,68 +73,20 @@
 	<section class="accommodations-section" aria-label="Churches list">
 		<div class="accommodations-section__inner container-xl">
 			<div class="churches-grid">
+				{% for church in churches %}
 				<article class="church-card">
-					<div class="church-card__logo-wrap bg-white">
-						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/GraceCity_MasterLogo-03.webp') }}" alt="Grace City Church logo" loading="lazy" decoding="async">
+					<div class="church-card__logo-wrap{% if church.logo_bg and not church.background_color %} bg-{{ church.logo_bg }}{% endif %}"
+					     {% if church.background_color %}style="background-color: {{ church.background_color }}"{% endif %}>
+						{% if church.logo_url %}
+						<img class="church-card__logo" src="{{ church.logo_url }}" alt="{{ church.name }} logo" loading="lazy" decoding="async"
+						     {% if church.scale and church.scale != 1.0 %}style="transform: scale({{ church.scale }}); transform-origin: center;"{% endif %}>
+						{% endif %}
 					</div>
-					<p class="church-card__name">Grace City Church (Wenatchee, WA)</p>
+					<p class="church-card__name">{{ church.name }}</p>
 				</article>
-
-				<article class="church-card">
-					<div class="church-card__logo-wrap">
-						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/GCR.webp') }}" alt="Grace City Rome logo" loading="lazy" decoding="async">
-					</div>
-					<p class="church-card__name">Grace City Rome, GA</p>
-				</article>
-
-				<article class="church-card">
-					<div class="church-card__logo-wrap bg-white">
-						<img class="church-card__logo" src="{{ url_for('static', filename='img/sponsor_logos/pursuit_logo.webp') }}" alt="The Pursuit logo" loading="lazy" decoding="async">
-					</div>
-					<p class="church-card__name">The Pursuit (Snohomish, Kirland, Seattle, Spokane, WA)</p>
-				</article>
-
-				<article class="church-card">
-					<div class="church-card__logo-wrap bg-white">
-						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/logo black long.webp') }}" alt="Father's House logo" loading="lazy" decoding="async">
-					</div>
-					<p class="church-card__name">Father's House (Longview, WA)</p>
-				</article>
-
-				<article class="church-card">
-					<div class="church-card__logo-wrap bg-white">
-						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/cropped-GC-Website-Logo.webp') }}" alt="Generation Church logo" loading="lazy" decoding="async">
-					</div>
-					<p class="church-card__name">Generation (Mesa, AZ)</p>
-				</article>
-
-				<article class="church-card">
-					<div class="church-card__logo-wrap bg-white">
-						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/Westside Church.webp') }}" alt="Westside Church logo" loading="lazy" decoding="async">
-					</div>
-					<p class="church-card__name">Westside Church</p>
-				</article>
-
-				<article class="church-card">
-					<div class="church-card__logo-wrap bg-white">
-						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/mercy fellowship logo.webp') }}" alt="Mercy Fellowship logo" loading="lazy" decoding="async">
-					</div>
-					<p class="church-card__name">Mercy Fellowship (Marysville, WA)</p>
-				</article>
-
-				<article class="church-card">
-					<div class="church-card__logo-wrap bg-white">
-						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/Lakepointe-logo-desktop-menu.webp') }}" alt="Lakepointe Church logo" loading="lazy" decoding="async">
-					</div>
-					<p class="church-card__name">Lakepointe Church (Rockwall, TX)</p>
-				</article>
-
-				<article class="church-card">
-					<div class="church-card__logo-wrap">
-						<img class="church-card__logo" src="{{ url_for('static', filename='img/churches/mercy-culture-logo.webp') }}" alt="Mercy Culture logo" loading="lazy" decoding="async">
-					</div>
-					<p class="church-card__name">Mercy Culture (Fort Worth, TX)</p>
-				</article>
+				{% else %}
+				<p class="text-muted">No partner churches listed yet.</p>
+				{% endfor %}
 			</div>
 		</div>
 	</section>

@@ -7,12 +7,12 @@ sponsors = {
                 'background_color': '#000000',
                 'scale': 2
             },
-            {
-                'name': 'Firefly',
-                'logo_url': '/static/img/sponsor_logos/Firefly_logo.webp',
-                'show_on_sponsor_page': True,
-                'background_color': "#FFFFFF"
-            },
+            # {
+            #     'name': 'Firefly',
+            #     'logo_url': '/static/img/sponsor_logos/Firefly_logo.webp',
+            #     'show_on_sponsor_page': True,
+            #     'background_color': "#FFFFFF"
+            # },
             {
                 'name': 'Speiro',
                 'logo_url': '/static/img/sponsor_logos/Speiro_logo.webp',
@@ -31,13 +31,13 @@ sponsors = {
                 'background_color': "#FFFFFF",
                 'scale': 2
             },
-            {
-                'name': 'Creative Spaces',
-                'logo_url': '/static/img/sponsor_logos/creative_spaces_logo.webp',
-                'show_on_sponsor_page': True,
-                'background_color': "#FFFFFF",
-                'scale': 1.5
-            },
+            # {
+            #     'name': 'Creative Spaces',
+            #     'logo_url': '/static/img/sponsor_logos/creative_spaces_logo.webp',
+            #     'show_on_sponsor_page': True,
+            #     'background_color': "#FFFFFF",
+            #     'scale': 1.5
+            # },
             {
                 'name': 'DogHouse',
                 'logo_url': '/static/img/sponsor_logos/DHM-Golf.webp',
@@ -75,10 +75,45 @@ sponsors = {
             },
             {
                 'name': 'Thacker E & T',
-                'logo_url': '/static/img/sponsor_logos/thacker_logo.webp',
+                'logo_url': '/static/img/sponsor_logos/thacker_logo_2.webp',
                 'show_on_sponsor_page': True,
                 'background_color': "#000000",
                 'scale': 1.5
+            },
+            {
+                'name': 'Cuts',
+                'logo_url': '/static/img/sponsor_logos/Cuts.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#FFFFFF",
+                'scale': 1
+            },
+            {
+                'name': 'American Reconstruction Concepts',
+                'logo_url': '/static/img/sponsor_logos/arc.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#FFFFFF",
+                'scale': 1
+            },
+            {
+                'name': 'APOC World LLC.',
+                'logo_url': '/static/img/sponsor_logos/apoc.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
+                'scale': 1.5
+            },
+            {
+                'name': 'McGregor Farms Bee',
+                'logo_url': '/static/img/sponsor_logos/mcgregor_farms_bee.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#FFFFFF",
+                'scale': 1.5
+            },
+            {
+                'name': 'Valley Mariine',
+                'logo_url': '/static/img/sponsor_logos/valley_marine.webp',
+                'show_on_sponsor_page': True,
+                'background_color': "#000000",
+                'scale': 1
             },
     ],
     'ministries': [
@@ -91,13 +126,15 @@ sponsors = {
                 'name': 'Warrior Poet Society',
                 'logo_url': '/static/img/sponsor_logos/wps_logo.webp',
                 'show_on_sponsor_page': True,
-                'background_color': "#000000"
+                'background_color': "#000000",
+                'scale': 1.5
             },
             {
                 'name': 'Stronger Man Nation',
                 'logo_url': '/static/img/sponsor_logos/SMN_logo.avif',
                 'show_on_sponsor_page': True,
-                'background_color': '#000000'
+                'background_color': '#000000',
+                'scale': 1.5
             }
     ],
     'churches': [

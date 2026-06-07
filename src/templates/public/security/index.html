@@ -1,0 +1,48 @@
+{% extends "bases/public.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/security.css') }}">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="security-page">
+    <section class="security-hero" aria-label="Security and Safety header">
+        <div class="security-hero__inner container-xl">
+            <p class="security-hero__eyebrow">Freedom Con 2026</p>
+            <h1 class="security-hero__title">Security and Safety at Freedom Conference</h1>
+            <p class="security-hero__lede">Safety is a top priority for the Freedom Conference. We understand that large events at outdoor venues create unique security challenges. A comprehensive plan for a layered security and safety approach has been developed through extensive coordination between venue staff, event organizers, private security, medical teams, and local law enforcement agencies. While specific tactical procedures remain confidential for operational integrity, guests can expect visible safety measures and professionally trained personnel throughout all phases of the event.</p>
+            <p class="security-hero__lede security-hero__lede--secondary">The security posture for this event reflects its unique identity as a values-driven gathering centered on faith and leadership. This disciplined preparation ensures the protection of all attendees, speakers, and staff while preserving the mission of the conference.</p>
+        </div>
+    </section>
+
+    <section class="security-details" aria-label="Guest safety expectations">
+        <div class="security-details__inner container-xl">
+            <div class="security-card security-card--intro">
+                <p class="security-card__label">On Site Safety</p>
+                <h2 class="security-card__heading">Guests can generally expect the following security and safety measures:</h2>
+            </div>
+
+            <ul class="security-expectations" aria-label="Guests can generally expect">
+                <li><span class="security-expectations__text">Comprehensive security screening at all primary guest ingress points, including physical bag inspections, walk-through metal detection, and secondary screening as required.</span></li>
+                <li><span class="security-expectations__text">Strict enforcement of bag policies and prohibited item lists; attendees are encouraged to review the <a href="https://www.gorgeamphitheatre.com/safety-and-rules" target="_blank" rel="noopener noreferrer">GORGE SAFETY page</a> for specific details.</span></li>
+                <li><span class="security-expectations__text">Visible presence of uniformed venue security personnel and uniformed law enforcement officers supporting crowd management and incident response.</span></li>
+                <li><span class="security-expectations__text">Deployment of specialized K9 units trained for the detection of firearms and explosives.</span></li>
+                <li><span class="security-expectations__text">Advanced surveillance capabilities, including CCTV monitoring and drone-based operational monitoring of campgrounds, parking lots, and venue perimeters.</span></li>
+                <li><span class="security-expectations__text">Dedicated medical support, including ambulances, EMTs, and paramedics to address health emergencies throughout the event.</span></li>
+            </ul>
+
+            <div class="security-card security-card--notice">
+                <p>All attendees are encouraged to report any safety concerns to venue staff or security personnel immediately.</p>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}

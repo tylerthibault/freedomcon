@@ -1,8 +1,8 @@
 ticket_prices = [
     {
         "name": "General Admission",
-        "price": "$179",
-        "tax_total": "$188.72 with all taxes & fees",
+        "price": "$199",
+        "tax_total": "$209.06 with all taxes & fees",
         "notes": [],
         "highlight": True,
     },
