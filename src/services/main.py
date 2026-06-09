@@ -13,7 +13,7 @@ from __future__ import annotations
 def get_speakers() -> list[dict]:
     from src.models.main import Speaker, db
     rows = db.session.execute(
-        db.select(Speaker).where(Speaker.is_gen_z == False).order_by(Speaker.sort_order)
+        db.select(Speaker).where(Speaker.is_gen_z == False, Speaker.is_visible == True).order_by(Speaker.sort_order)
     ).scalars().all()
     return [r.to_dict() for r in rows]
 
@@ -21,7 +21,7 @@ def get_speakers() -> list[dict]:
 def get_gen_z_speakers() -> list[dict]:
     from src.models.main import Speaker, db
     rows = db.session.execute(
-        db.select(Speaker).where(Speaker.is_gen_z == True).order_by(Speaker.sort_order)
+        db.select(Speaker).where(Speaker.is_gen_z == True, Speaker.is_visible == True).order_by(Speaker.sort_order)
     ).scalars().all()
     return [r.to_dict() for r in rows]
 
