@@ -181,7 +181,6 @@ class Speaker(db.Model):
     # JSON list of dicts e.g. [{"icon":"church","name":"...","subtitle":"..."}]
     orgs_json = db.Column(db.Text, default="[]")
     is_gen_z = db.Column(db.Boolean, default=False, nullable=False)
-    is_visible = db.Column(db.Boolean, default=True, nullable=False)
     sort_order = db.Column(db.Integer, default=0)
 
     def to_dict(self) -> dict:

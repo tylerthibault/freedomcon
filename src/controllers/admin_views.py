@@ -152,18 +152,15 @@ class SecureAdminIndexView(AdminIndexView):
 # ---------------------------------------------------------------------------
 
 class SpeakerAdmin(SecureModelView):
-    column_list = ("sort_order", "name", "is_visible", "is_gen_z", "shrink", "image")
-    column_sortable_list = ("sort_order", "name", "is_visible", "is_gen_z")
+    column_list = ("sort_order", "name", "is_gen_z", "shrink", "image")
+    column_sortable_list = ("sort_order", "name", "is_gen_z")
     column_searchable_list = ("name",)
-    column_filters = ("is_visible", "is_gen_z")
+    column_filters = ("is_gen_z",)
     form_columns = (
         "name", "image", "alt", "bio",
         "shrink", "image_x", "image_y",
-        "titles_json", "orgs_json", "is_gen_z", "is_visible",
+        "titles_json", "orgs_json", "is_gen_z",
     )
-    column_descriptions = {
-        "is_visible": "Uncheck to hide this speaker from the public lineup without deleting them.",
-    }
     column_descriptions = {
         "image": "Path relative to /static, e.g. /static/img/speakers/foo.webp",
         "titles_json": 'JSON array of title strings, e.g. ["Lead Pastor, Grace City Church"]',
