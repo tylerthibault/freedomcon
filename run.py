@@ -108,6 +108,18 @@ def create_app() -> Flask:
 	# --- Create tables if they don't exist yet ---
 	with app.app_context():
 		db.create_all()
+		# Lightweight column migrations: add new columns that may not exist on
+		# older databases without requiring Alembic.
+		with db.engine.connect() as _conn:
+			from sqlalchemy import text as _text
+			for _stmt in [
+				"ALTER TABLE speakers ADD COLUMN is_visible BOOLEAN NOT NULL DEFAULT 1",
+			]:
+				try:
+					_conn.execute(_text(_stmt))
+					_conn.commit()
+				except Exception:
+					pass  # column already exists — safe to ignore
 
 	# --- Flask-Admin ---
 	create_admin(app)
