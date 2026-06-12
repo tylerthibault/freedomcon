@@ -553,14 +553,18 @@ class SchedulePdfAdmin(SecureModelView):
 
     @expose("/")
     def index_view(self):
-        """Skip the list — redirect straight to the edit form for the schedule_pdf row."""
+        """Skip the list — redirect straight to the edit form for the schedule_pdf row.
+        If the row doesn't exist yet, create it first."""
+        import json as _json
         from src.models.main import SiteConfig, db as _db
         row = _db.session.execute(
             _db.select(SiteConfig).where(SiteConfig.key == "schedule_pdf")
         ).scalar_one_or_none()
-        if row:
-            return redirect(url_for(".edit_view", id=row.id))
-        return redirect(url_for(".index_view"))
+        if row is None:
+            row = SiteConfig(key="schedule_pdf", value_json=_json.dumps({"url": ""}))
+            _db.session.add(row)
+            _db.session.commit()
+        return redirect(url_for(".edit_view", id=row.id))
 
     def on_model_change(self, form, model, is_created):
         upload_field = getattr(form, "pdf_upload", None)
