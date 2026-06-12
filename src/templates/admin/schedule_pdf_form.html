@@ -1,0 +1,110 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/lib.html' as lib with context %}
+{% from 'admin/lib.html' import extra with context %}
+
+{% block head %}
+  {{ super() }}
+  {{ lib.form_css() }}
+  <style>
+    #pdf-preview-canvas-wrap {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 1rem;
+      max-height: 600px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    #pdf-preview-canvas-wrap canvas {
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+    }
+    #pdf-preview-placeholder {
+      color: #6c757d;
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.9rem;
+    }
+    .pdf-preview-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #6c757d;
+      margin-bottom: 6px;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <ul class="nav nav-tabs mb-3">
+    <li class="nav-item">
+      <a href="javascript:void(0)" class="nav-link active">Edit</a>
+    </li>
+  </ul>
+
+  <div class="row">
+    {# left: upload form #}
+    <div class="col-lg-5">
+      {{ lib.render_form(form, return_url, extra(), form_opts) }}
+    </div>
+
+    {# right: current PDF preview #}
+    <div class="col-lg-7">
+      <p class="pdf-preview-label">Current Schedule PDF</p>
+      <div id="pdf-preview-canvas-wrap">
+        {% if current_pdf_url %}
+          <div id="pdf-preview-placeholder" style="display:none">Loading preview…</div>
+        {% else %}
+          <div id="pdf-preview-placeholder">No PDF uploaded yet.</div>
+        {% endif %}
+      </div>
+      {% if current_pdf_url %}
+        <p class="mt-2 small text-muted">
+          <a href="{{ current_pdf_url }}" target="_blank" rel="noopener">Open PDF in new tab ↗</a>
+        </p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block tail %}
+  {{ super() }}
+  {{ lib.form_js() }}
+  {% if current_pdf_url %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script>
+  <script>
+  (function () {
+    const PDF_URL = '/schedule/pdf';
+    const wrap = document.getElementById('pdf-preview-canvas-wrap');
+    if (!PDF_URL || !wrap) return;
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    pdfjsLib.getDocument(PDF_URL).promise.then(function (pdf) {
+      wrap.innerHTML = '';
+      const renders = [];
+      for (let i = 1; i <= pdf.numPages; i++) {
+        renders.push(
+          pdf.getPage(i).then(function (page) {
+            const scale = Math.min(1.5, (wrap.clientWidth - 32) / page.getViewport({ scale: 1 }).width);
+            const viewport = page.getViewport({ scale });
+            const canvas = document.createElement('canvas');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            wrap.appendChild(canvas);
+            return page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+          })
+        );
+      }
+      return Promise.all(renders);
+    }).catch(function (err) {
+      wrap.innerHTML = '<p style="color:#dc3545;padding:1rem">Could not load PDF preview: ' + err.message + '</p>';
+    });
+  }());
+  </script>
+  {% endif %}
+{% endblock %}

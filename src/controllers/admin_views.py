@@ -59,6 +59,7 @@ ADMIN_VIEWS = [
     ("ticker",         "Tickers",          "Site",      False),
     ("backgroundtext", "Background Text",  "Site",      False),
     ("siteconfig",     "Site Config",      "Site",      False),
+    ("schedulepdf",    "Schedule PDF",     "Site",      False),
     # Always available to any authenticated user
     ("change_password","Change Password",  "Site",      False),
     # Superadmin-only — never appear in permison matrix
@@ -515,6 +516,71 @@ class SiteConfigAdmin(SecureModelView):
     }
 
 
+class SchedulePdfAdmin(SecureModelView):
+    """Dedicated admin view for uploading the schedule PDF to R2."""
+    # Reuses the SiteConfig model — only ever touches the 'schedule_pdf' row.
+    can_create = False
+    can_delete = False
+    form_columns = ("pdf_upload",)
+    form_extra_fields = {
+        "pdf_upload": _FileField(
+            "Upload Schedule PDF",
+            validators=[validators.Optional()],
+        )
+    }
+    column_descriptions = {
+        "pdf_upload": "Upload a PDF file. It will be stored on Cloudflare R2 and shown on the schedule page.",
+    }
+
+    edit_template = "admin/schedule_pdf_form.html"
+
+    def render(self, template, **kwargs):
+        if template == self.edit_template:
+            import json as _json
+            from flask import request as flask_request
+            model_id = flask_request.args.get("id")
+            current_pdf_url = ""
+            if model_id:
+                try:
+                    model = self.get_one(model_id)
+                    if model:
+                        val = _json.loads(model.value_json or "{}")
+                        current_pdf_url = val.get("url", "")
+                except Exception:
+                    pass
+            kwargs["current_pdf_url"] = current_pdf_url
+        return super().render(template, **kwargs)
+
+    @expose("/")
+    def index_view(self):
+        """Skip the list — redirect straight to the edit form for the schedule_pdf row."""
+        from src.models.main import SiteConfig, db as _db
+        row = _db.session.execute(
+            _db.select(SiteConfig).where(SiteConfig.key == "schedule_pdf")
+        ).scalar_one_or_none()
+        if row:
+            return redirect(url_for(".edit_view", id=row.id))
+        return redirect(url_for(".index_view"))
+
+    def on_model_change(self, form, model, is_created):
+        upload_field = getattr(form, "pdf_upload", None)
+        file_storage = upload_field.data if upload_field else None
+        if file_storage and getattr(file_storage, "filename", None):
+            raw = file_storage.read()
+            if raw:
+                import os as _os
+                from src.services.r2 import upload_bytes
+                filename = _os.path.basename(file_storage.filename)
+                key = f"pdfs/{filename}"
+                try:
+                    cdn_url = upload_bytes(raw, key, "application/pdf")
+                    import json as _json
+                    model.value_json = _json.dumps({"url": cdn_url})
+                except Exception as exc:
+                    current_app.logger.exception("Schedule PDF R2 upload failed: %s", exc)
+        super().on_model_change(form, model, is_created)
+
+
 class ChurchAdmin(SecureModelView):
     column_list = ("sort_order", "name", "logo_bg", "active")
     column_sortable_list = ("sort_order", "name")
@@ -770,6 +836,7 @@ def create_admin(app) -> Admin:
     admin.add_view(TickerAdmin(Ticker, db.session, name="Tickers", category="Site"))
     admin.add_view(BackgroundTextAdmin(BackgroundText, db.session, name="Background Text", category="Site"))
     admin.add_view(SiteConfigAdmin(SiteConfig, db.session, name="Site Config", category="Site"))
+    admin.add_view(SchedulePdfAdmin(SiteConfig, db.session, name="Schedule PDF", endpoint="schedulepdf", category="Site"))
     admin.add_view(AdminUserAdmin(AdminUser, db.session, name="Admin Users", category="Site"))
     admin.add_view(ChangePasswordView(name="Change Password", endpoint="change_password", category="Site"))
     admin.add_view(AuditLogAdmin(AuditLog, db.session, name="Audit Log", category="Site"))

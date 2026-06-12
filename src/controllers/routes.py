@@ -36,6 +36,7 @@ from src.services.main import (
     get_visible_sponsors,
     get_wives,
     get_churches,
+    get_schedule_pdf_url,
 )
 
 public_bp = Blueprint("public", __name__)
@@ -996,10 +997,33 @@ def invite_page() -> str:
 	)
 
 
+@public_bp.get("/schedule/pdf")
+def schedule_pdf_proxy():
+	"""Proxy the schedule PDF from R2 so PDF.js can load it without CORS issues."""
+	pdf_url = get_schedule_pdf_url()
+	if not pdf_url:
+		return Response("Not found", status=404)
+	try:
+		req = _urllib_req.Request(pdf_url, headers={"User-Agent": "Mozilla/5.0"})
+		ctx = _SSL_CTX if _SSL_CTX else None
+		with _urllib_req.urlopen(req, context=ctx, timeout=15) as resp:
+			data = resp.read()
+		return Response(
+			data,
+			status=200,
+			mimetype="application/pdf",
+			headers={"Cache-Control": "public, max-age=3600"},
+		)
+	except Exception as e:
+		return Response(f"Failed to load PDF: {e}", status=502)
+
+
 @public_bp.get("/schedule")
 def schedule_page() -> str:
+	pdf_url = get_schedule_pdf_url()
 	return render_template(
 		"public/schedule/index.html",
+		schedule_pdf_url="/schedule/pdf" if pdf_url else "",
 		seo=build_seo(
 			title="Schedule | Freedom Con 2026",
 			description="Full event schedule for Freedom Con 2026. Two days of speakers, worship, Danny Gokey, and Crowder at The Gorge Amphitheatre.",

@@ -217,6 +217,11 @@ def get_wives() -> dict:
     return _get_site_config("wives", {})
 
 
+def get_schedule_pdf_url() -> str:
+    cfg = _get_site_config("schedule_pdf", {})
+    return cfg.get("url", "")
+
+
 # ---------------------------------------------------------------------------
 # Past Conferences
 # ---------------------------------------------------------------------------
