@@ -1,0 +1,276 @@
+{% extends "bases/public.html" %}
+{% from "components/macros/cta_buttons.html" import cta_buttons %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/mancard.css') }}">
+<link rel="preload" as="image" href="https://images.pixieset.com/658079401/72ca5e8a5d4284280f4c9698cca95d38-large.jpg">
+<link rel="preload" as="image" href="https://images.pixieset.com/658079401/559ffe9c967987bb7aba0530b8ac5ef6-large.jpg">
+<link rel="preload" as="image" href="https://images.pixieset.com/658079401/7ec9a3d8467ce90f8be06d42ca9323ab-large.jpg">
+<link rel="preload" as="image" href="https://images.pixieset.com/658079401/32d858e4bee830ba1863c9e51391444e-large.jpg">
+{% endblock %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="mancard-page">
+	<section class="mancard-hero" aria-label="Man Card event intro">
+		<img
+			class="mancard-hero__image"
+			src="https://images.pixieset.com/658079401/72ca5e8a5d4284280f4c9698cca95d38-large.jpg"
+			alt="Men gathered at Project Man Card"
+			loading="eager"
+			fetchpriority="high"
+		>
+		<div class="mancard-hero__bg-shape mancard-hero__bg-shape--one" aria-hidden="true"></div>
+		<div class="mancard-hero__bg-shape mancard-hero__bg-shape--two" aria-hidden="true"></div>
+		<div class="mancard-hero__inner container-xl">
+			<p class="mancard-hero__eyebrow">Stronger Man Nation Presents</p>
+			<h1 class="mancard-hero__title">MAN CARD</h1>
+			<p class="mancard-hero__copy">A high-conviction gathering built to challenge men into real leadership, disciplined action, and unwavering faith.</p>
+			<div class="mancard-hero__chips" aria-label="Event highlights">
+				<span class="mancard-chip">Identity</span>
+				<span class="mancard-chip">Brotherhood</span>
+				<span class="mancard-chip">Purpose</span>
+				<span class="mancard-chip">Action</span>
+			</div>
+			<div class="mancard-hero__cta">
+				{{ cta_buttons(link_only=true, show_urgency=false, primary_text='Get Freedom Con Tickets', primary_href='/tickets', primary_class='mancard-btn') }}
+			</div>
+		</div>
+	</section>
+
+	<section class="mancard-story" aria-label="What Man Card is about">
+		<div class="mancard-story__inner container-xl">
+			<article class="mancard-story-card">
+				<h2 class="mancard-story-card__title">Why Man Card Exists</h2>
+				<p>Too many men are drifting through life without a clear mission, strong brotherhood, or a practical plan for leading well at home and in their communities.</p>
+				<p>Man Card is designed to change that. This event is about sharpening men through truth, accountability, and challenge so they return home stronger than they arrived.</p>
+			</article>
+			<article class="mancard-story-card mancard-story-card--accent">
+				<h2 class="mancard-story-card__title">What To Expect</h2>
+				<ul class="mancard-list" aria-label="What to expect at Man Card">
+					<li>Powerful talks focused on calling, character, and courage</li>
+					<li>Practical frameworks for leading your family with intention</li>
+					<li>A room full of men committed to growth and responsibility</li>
+					<li>Clear next steps to stay engaged after the event</li>
+				</ul>
+			</article>
+		</div>
+	</section>
+
+	<section class="mancard-momentum" aria-label="Momentum statement">
+		<div class="mancard-momentum__inner container-xl">
+			<h2 class="mancard-momentum__title">This Is More Than A Weekend</h2>
+			<p class="mancard-momentum__copy">Man Card is about igniting momentum that carries into your home, your work, your church, and your city. If you want updates, early announcements, and future opportunities, join the interest list below.</p>
+		</div>
+	</section>
+
+	<section class="mancard-gallery" aria-label="Man Card event photo gallery">
+		<div class="mancard-gallery__inner container-xl">
+			<div class="mancard-gallery__header">
+				<h2 class="mancard-gallery__title">See The Movement</h2>
+				<p class="mancard-gallery__copy">A glimpse into the intensity, brotherhood, and transformation happening at Man Card events.</p>
+			</div>
+
+			<div class="mancard-gallery__grid" id="mancard-gallery-grid">
+				<div class="mancard-gallery__tile" data-gallery-index="0" data-aspect="portrait" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/658079401/559ffe9c967987bb7aba0530b8ac5ef6-large.jpg" alt="Man Card event - training session" loading="eager" fetchpriority="high">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="1" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/658079401/7ec9a3d8467ce90f8be06d42ca9323ab-large.jpg" alt="Man Card event - group gathering" loading="eager" fetchpriority="high">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="2" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/658079401/32d858e4bee830ba1863c9e51391444e-large.jpg" alt="Man Card event - fellowship" loading="eager" fetchpriority="high">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="3" data-aspect="square" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/444589401/8dd2a69d0df4cf3fad22effd6e7b3da8-large.jpg" alt="Man Card cycle II - training" loading="eager" fetchpriority="high">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="4" data-aspect="portrait" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/444589401/0a8b86c6a0ab06cd648bfcc243179d8f-large.jpg" alt="Man Card cycle II - men gathering" loading="eager" fetchpriority="high">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="5" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/444589401/01126bf595160a31c14058d9cae0c2ab-large.jpg" alt="Man Card cycle II - event moment" loading="eager" fetchpriority="high">
+				</div>
+			</div>
+
+			<div id="mancard-gallery-hidden-tiles" style="display: none;">
+				<div class="mancard-gallery__tile" data-gallery-index="6" data-aspect="square" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/444589401/c390403e71ab8bb621d21186e868ccaf-large.jpg" alt="Man Card cycle II - group" loading="lazy">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="7" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/444589401/b83902ead8c887313d958cffc42aaf6c-large.jpg" alt="Man Card cycle II - activity" loading="lazy">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="8" data-aspect="portrait" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/444589401/089fcac85e8cbdf3d7d32d12a730935e-large.jpg" alt="Man Card cycle II - experience" loading="lazy">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="9" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/444589401/8c29c3d8da15e245412fd91354ab8043-large.jpg" alt="Man Card cycle II - brotherhood" loading="lazy">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="10" data-aspect="square" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/226203601/57c8d4230d372610e6a44b5bdad27b54-large.jpg" alt="Man Card cycle V - gathering" loading="lazy">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="11" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/226203601/cce409f1cd0904dc486bac58792b90ec-large.jpg" alt="Man Card cycle V - training" loading="lazy">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="12" data-aspect="portrait" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/226203601/a9fd4e3a235614ad71feca4c6dcf5749-large.jpg" alt="Man Card cycle V - moment" loading="lazy">
+				</div>
+				<div class="mancard-gallery__tile" data-gallery-index="13" data-aspect="portrait" role="button" tabindex="0" aria-label="View full image">
+				<img src="https://images.pixieset.com/226203601/dae649564eae22cab9ffb3f52116cb96-large.jpg" alt="Man Card cycle V - event" loading="lazy">
+				</div>
+			</div>
+
+			<button id="mancard-gallery-load-more" class="mancard-gallery__load-more">Load More Photos</button>
+		</div>
+	</section>
+
+	<div id="mancard-gallery-modal" class="mancard-gallery-modal" aria-hidden="true" role="dialog" aria-labelledby="mancard-gallery-modal-title">
+		<button class="mancard-gallery-modal__close" aria-label="Close image viewer"></button>
+		<div class="mancard-gallery-modal__container">
+			<img id="mancard-gallery-modal-image" src="" alt="" class="mancard-gallery-modal__image">
+		</div>
+		<div class="mancard-gallery-modal__nav">
+			<button id="mancard-gallery-prev" class="mancard-gallery-modal__btn mancard-gallery-modal__btn--prev" aria-label="Previous image"></button>
+			<button id="mancard-gallery-next" class="mancard-gallery-modal__btn mancard-gallery-modal__btn--next" aria-label="Next image"></button>
+		</div>
+	</div>
+
+	<section class="mancard-interest" id="mancard-interest" aria-label="Man Card email interest form">
+		<div class="mancard-interest__inner container-xl">
+			<div class="mancard-interest__intro">
+				<p class="mancard-interest__eyebrow">Stay In The Loop</p>
+				<h2 class="mancard-interest__title">Get Man Card Updates</h2>
+				<p class="mancard-interest__copy">Be the first to hear event announcements, launch dates, and important details.</p>
+			</div>
+
+			<form class="mancard-form" method="post" action="{{ formsubmit_action or '#' }}">
+				<input type="hidden" name="_subject" value="Man Card Interest List Signup">
+				<input type="hidden" name="_next" value="{{ formsubmit_next }}">
+				<input type="hidden" name="_captcha" value="false">
+				<input type="hidden" name="source" value="mancard-page">
+				<input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
+
+				<div class="mancard-form__row">
+					<div class="mancard-form__field">
+						<label for="mancard-name">Name</label>
+						<input id="mancard-name" name="name" type="text" placeholder="Your name" autocomplete="name">
+					</div>
+					<div class="mancard-form__field">
+						<label for="mancard-email">Email <span aria-hidden="true">*</span></label>
+						<input id="mancard-email" name="email" type="email" placeholder="you@example.com" required autocomplete="email">
+					</div>
+				</div>
+
+				<button class="mancard-btn mancard-form__submit" type="submit" {% if not formsubmit_action %}disabled{% endif %}>Join The Interest List</button>
+			</form>
+		</div>
+	</section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+	(function() {
+		const galleryItems = [
+			{src: 'https://images.pixieset.com/658079401/559ffe9c967987bb7aba0530b8ac5ef6-xxlarge.jpg', alt: 'Man Card event - training session'},
+			{src: 'https://images.pixieset.com/658079401/7ec9a3d8467ce90f8be06d42ca9323ab-xxlarge.jpg', alt: 'Man Card event - group gathering'},
+			{src: 'https://images.pixieset.com/658079401/32d858e4bee830ba1863c9e51391444e-xxlarge.jpg', alt: 'Man Card event - fellowship'},
+			{src: 'https://images.pixieset.com/444589401/8dd2a69d0df4cf3fad22effd6e7b3da8-xxlarge.jpg', alt: 'Man Card cycle II - training'},
+			{src: 'https://images.pixieset.com/444589401/0a8b86c6a0ab06cd648bfcc243179d8f-xxlarge.jpg', alt: 'Man Card cycle II - men gathering'},
+			{src: 'https://images.pixieset.com/444589401/01126bf595160a31c14058d9cae0c2ab-xxlarge.jpg', alt: 'Man Card cycle II - event moment'},
+			{src: 'https://images.pixieset.com/444589401/c390403e71ab8bb621d21186e868ccaf-xxlarge.jpg', alt: 'Man Card cycle II - group'},
+			{src: 'https://images.pixieset.com/444589401/b83902ead8c887313d958cffc42aaf6c-xxlarge.jpg', alt: 'Man Card cycle II - activity'},
+			{src: 'https://images.pixieset.com/444589401/089fcac85e8cbdf3d7d32d12a730935e-xxlarge.jpg', alt: 'Man Card cycle II - experience'},
+			{src: 'https://images.pixieset.com/444589401/8c29c3d8da15e245412fd91354ab8043-xxlarge.jpg', alt: 'Man Card cycle II - brotherhood'},
+			{src: 'https://images.pixieset.com/226203601/57c8d4230d372610e6a44b5bdad27b54-xxlarge.jpg', alt: 'Man Card cycle V - gathering'},
+			{src: 'https://images.pixieset.com/226203601/cce409f1cd0904dc486bac58792b90ec-xxlarge.jpg', alt: 'Man Card cycle V - training'},
+			{src: 'https://images.pixieset.com/226203601/a9fd4e3a235614ad71feca4c6dcf5749-xxlarge.jpg', alt: 'Man Card cycle V - moment'},
+			{src: 'https://images.pixieset.com/226203601/dae649564eae22cab9ffb3f52116cb96-xxlarge.jpg', alt: 'Man Card cycle V - event'}
+		];
+		
+		let currentIndex = 0;
+		const modal = document.getElementById('mancard-gallery-modal');
+		const modalImage = document.getElementById('mancard-gallery-modal-image');
+		const galleryTiles = document.querySelectorAll('[data-gallery-index]');
+		const loadMoreBtn = document.getElementById('mancard-gallery-load-more');
+		const hiddenTiles = document.getElementById('mancard-gallery-hidden-tiles');
+		const galleryGrid = document.getElementById('mancard-gallery-grid');
+
+		// If a thumbnail variant fails, retry with the larger original so tiles never appear blank.
+		document.querySelectorAll('.mancard-gallery__tile img').forEach((img) => {
+			img.addEventListener('error', () => {
+				if (img.dataset.fallbackTried === '1') return;
+				img.dataset.fallbackTried = '1';
+				img.src = img.src.replace('-large.jpg', '-xxlarge.jpg');
+			});
+		});
+		
+		function openModal(index) {
+			currentIndex = index;
+			modalImage.src = galleryItems[index].src;
+			modalImage.alt = galleryItems[index].alt;
+			modal.setAttribute('aria-hidden', 'false');
+			document.body.style.overflow = 'hidden';
+		}
+		
+		function closeModal() {
+			modal.setAttribute('aria-hidden', 'true');
+			document.body.style.overflow = '';
+		}
+		
+		function showPrev() {
+			currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+			modalImage.src = galleryItems[currentIndex].src;
+			modalImage.alt = galleryItems[currentIndex].alt;
+		}
+		
+		function showNext() {
+			currentIndex = (currentIndex + 1) % galleryItems.length;
+			modalImage.src = galleryItems[currentIndex].src;
+			modalImage.alt = galleryItems[currentIndex].alt;
+		}
+		
+		function bindTileEvents() {
+			document.querySelectorAll('[data-gallery-index]').forEach((tile, idx) => {
+				tile.addEventListener('click', () => openModal(idx));
+				tile.addEventListener('keydown', (e) => {
+					if (e.key === 'Enter') openModal(idx);
+				});
+			});
+		}
+		
+		loadMoreBtn.addEventListener('click', () => {
+			const children = Array.from(hiddenTiles.children);
+			children.forEach(child => {
+				galleryGrid.appendChild(child);
+			});
+			bindTileEvents();
+			loadMoreBtn.style.display = 'none';
+		});
+		
+		document.querySelector('.mancard-gallery-modal__close').addEventListener('click', closeModal);
+		document.getElementById('mancard-gallery-prev').addEventListener('click', showPrev);
+		document.getElementById('mancard-gallery-next').addEventListener('click', showNext);
+		
+		modal.addEventListener('click', (e) => {
+			if (e.target === modal) closeModal();
+		});
+		
+		document.addEventListener('keydown', (e) => {
+			if (modal.getAttribute('aria-hidden') === 'false') {
+				if (e.key === 'Escape') closeModal();
+				if (e.key === 'ArrowLeft') showPrev();
+				if (e.key === 'ArrowRight') showNext();
+			}
+		});
+		
+		bindTileEvents();
+	})();
+</script>
+{% endblock %}

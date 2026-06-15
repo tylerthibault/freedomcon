@@ -5,7 +5,7 @@ import os
 from flask import current_app, flash, redirect, render_template, request, url_for
 from flask_admin import Admin, AdminIndexView, BaseView, expose
 from flask_admin.contrib.sqla import ModelView
-from wtforms import FileField as _FileField
+from wtforms import FileField as _FileField, StringField as _StringField
 from flask_login import current_user
 from wtforms import validators
 
@@ -521,15 +521,20 @@ class SchedulePdfAdmin(SecureModelView):
     # Reuses the SiteConfig model — only ever touches the 'schedule_pdf' row.
     can_create = False
     can_delete = False
-    form_columns = ("pdf_upload",)
+    form_columns = ("pdf_upload", "pdf_url")
     form_extra_fields = {
         "pdf_upload": _FileField(
-            "Upload Schedule PDF",
+            "Upload PDF File",
             validators=[validators.Optional()],
-        )
+        ),
+        "pdf_url": _StringField(
+            "— OR — Paste Cloudflare URL",
+            validators=[validators.Optional(), validators.URL(require_tld=False)],
+        ),
     }
     column_descriptions = {
-        "pdf_upload": "Upload a PDF file. It will be stored on Cloudflare R2 and shown on the schedule page.",
+        "pdf_upload": "Upload a PDF file directly. It will be stored on Cloudflare R2.",
+        "pdf_url": "Paste an existing Cloudflare R2 URL (e.g. https://pub-xxx.r2.dev/file.pdf). If both are provided, the uploaded file takes priority.",
     }
 
     edit_template = "admin/schedule_pdf_form.html"
@@ -567,8 +572,12 @@ class SchedulePdfAdmin(SecureModelView):
         return redirect(url_for(".edit_view", id=row.id))
 
     def on_model_change(self, form, model, is_created):
+        import json as _json
         upload_field = getattr(form, "pdf_upload", None)
+        url_field = getattr(form, "pdf_url", None)
         file_storage = upload_field.data if upload_field else None
+        pasted_url = (url_field.data or "").strip() if url_field else ""
+
         if file_storage and getattr(file_storage, "filename", None):
             raw = file_storage.read()
             if raw:
@@ -578,10 +587,11 @@ class SchedulePdfAdmin(SecureModelView):
                 key = f"pdfs/{filename}"
                 try:
                     cdn_url = upload_bytes(raw, key, "application/pdf")
-                    import json as _json
                     model.value_json = _json.dumps({"url": cdn_url})
                 except Exception as exc:
                     current_app.logger.exception("Schedule PDF R2 upload failed: %s", exc)
+        elif pasted_url:
+            model.value_json = _json.dumps({"url": pasted_url})
         super().on_model_change(form, model, is_created)
 
 

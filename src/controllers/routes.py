@@ -929,6 +929,7 @@ def sitemap_xml() -> Response:
 		"/tickets",
 		"/invite",
 		"/wives",
+		"/mancard",
 	]
 	urls = [{"loc": f"{SITE_URL}{path}", "lastmod": lastmod} for path in pages]
 	xml = render_template("sitemap.xml", urls=urls)
@@ -953,6 +954,22 @@ def wives_page() -> str:
 			title="For the Wives | Freedom Con 2026",
 			description="A personal message from Sharon McPherson to the wives and families supporting the men of Freedom Con.",
 			path="/wives",
+		),
+	)
+
+
+@public_bp.get("/mancard")
+def mancard_page() -> str:
+	formsubmit_action = getenv("MANCARD_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/info@strongermannation.com"
+	formsubmit_next = f"{SITE_URL}/thankyou"
+	return render_template(
+		"public/mancard/index.html",
+		formsubmit_action=formsubmit_action,
+		formsubmit_next=formsubmit_next,
+		seo=build_seo(
+			title="Man Card | Stronger Man Nation",
+			description="Man Card is a focused call for men to step up in faith, family, and leadership. Get event details and join the interest list for updates.",
+			path="/mancard",
 		),
 	)
 
