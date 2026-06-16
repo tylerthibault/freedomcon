@@ -424,10 +424,11 @@
 }
 
 .mancard-gallery__load-more {
-	justify-self: center;
 	width: 100vw;
 	margin-left: calc(-50vw + 50%);
 	padding: 0.9rem 1.35rem;
+	padding-left: calc(1.35rem + (100vw - 100%) / 2);
+	padding-right: calc(1.35rem + (100vw - 100%) / 2);
 	border: 1px solid rgba(232, 220, 193, 0.6);
 	background: transparent;
 	color: #e8dcc1;
