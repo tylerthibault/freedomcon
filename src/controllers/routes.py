@@ -967,8 +967,8 @@ def mancard_page() -> str:
 		formsubmit_action=formsubmit_action,
 		formsubmit_next=formsubmit_next,
 		seo=build_seo(
-			title="Man Card | Stronger Man Nation",
-			description="Man Card is a focused call for men to step up in faith, family, and leadership. Get event details and join the interest list for updates.",
+			title="Project Man Card | Rite of Passage for Sons",
+			description="Help your son step into biblical manhood. Project Man Card equips dads to build rite-of-passage experiences that launch boys (14-17) into adventure, challenge, and purposeful living.",
 			path="/mancard",
 		),
 	)

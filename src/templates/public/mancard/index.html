@@ -27,13 +27,13 @@
 		<div class="mancard-hero__bg-shape mancard-hero__bg-shape--two" aria-hidden="true"></div>
 		<div class="mancard-hero__inner container-xl">
 			<p class="mancard-hero__eyebrow">Stronger Man Nation Presents</p>
-			<h1 class="mancard-hero__title">MAN CARD</h1>
-			<p class="mancard-hero__copy">A high-conviction gathering built to challenge men into real leadership, disciplined action, and unwavering faith.</p>
+			<h1 class="mancard-hero__title">PROJECT MAN CARD</h1>
+			<p class="mancard-hero__copy">Help dads build rite-of-passage experiences for their sons. Launch boys into manhood through challenge, adventure, and biblical purpose.</p>
 			<div class="mancard-hero__chips" aria-label="Event highlights">
-				<span class="mancard-chip">Identity</span>
-				<span class="mancard-chip">Brotherhood</span>
+				<span class="mancard-chip">Adventure</span>
+				<span class="mancard-chip">Challenge</span>
+				<span class="mancard-chip">Manhood</span>
 				<span class="mancard-chip">Purpose</span>
-				<span class="mancard-chip">Action</span>
 			</div>
 			<div class="mancard-hero__cta">
 				{{ cta_buttons(link_only=true, show_urgency=false, primary_text='Get Freedom Con Tickets', primary_href='/tickets', primary_class='mancard-btn') }}
@@ -44,34 +44,30 @@
 	<section class="mancard-story" aria-label="What Man Card is about">
 		<div class="mancard-story__inner container-xl">
 			<article class="mancard-story-card">
-				<h2 class="mancard-story-card__title">Why Man Card Exists</h2>
-				<p>Too many men are drifting through life without a clear mission, strong brotherhood, or a practical plan for leading well at home and in their communities.</p>
-				<p>Man Card is designed to change that. This event is about sharpening men through truth, accountability, and challenge so they return home stronger than they arrived.</p>
+				<h2 class="mancard-story-card__title">It's Time To Punch Back</h2>
+				<p>The enemy is making war on the boys of our nation. Dads, we are not victims—we're grown men made in God's image, fitted to fight.</p>
+				<p>Project Man Card equips fathers to actively lead their sons through formative years and into biblical manhood with clarity and conviction.</p>
 			</article>
 			<article class="mancard-story-card mancard-story-card--accent">
-				<h2 class="mancard-story-card__title">What To Expect</h2>
-				<ul class="mancard-list" aria-label="What to expect at Man Card">
-					<li>Powerful talks focused on calling, character, and courage</li>
-					<li>Practical frameworks for leading your family with intention</li>
-					<li>A room full of men committed to growth and responsibility</li>
-					<li>Clear next steps to stay engaged after the event</li>
-				</ul>
+				<h2 class="mancard-story-card__title">Process Not Destination</h2>
+				<p>Man Card experiences launch boys (ages 14–17) into a rhythm of tackling new challenges and taking on more responsibility as a way of life.</p>
+				<p>This isn't a one-time event. It's a framework for building momentum that carries forward, shaping young men into leaders who think biblically and act decisively.</p>
 			</article>
 		</div>
 	</section>
 
 	<section class="mancard-momentum" aria-label="Momentum statement">
 		<div class="mancard-momentum__inner container-xl">
-			<h2 class="mancard-momentum__title">This Is More Than A Weekend</h2>
-			<p class="mancard-momentum__copy">Man Card is about igniting momentum that carries into your home, your work, your church, and your city. If you want updates, early announcements, and future opportunities, join the interest list below.</p>
+			<h2 class="mancard-momentum__title">The High Country of Manhood Calls</h2>
+			<p class="mancard-momentum__copy">Boys were made to kill dragons. Let's show them how and set their hearts on fire with the anticipation, adventure, and glory of living into the noble calling of biblical manhood. This is about more than an experience—it's about raising sons who lead with conviction and courage.</p>
 		</div>
 	</section>
 
 	<section class="mancard-gallery" aria-label="Man Card event photo gallery">
 		<div class="mancard-gallery__inner container-xl">
 			<div class="mancard-gallery__header">
-				<h2 class="mancard-gallery__title">See The Movement</h2>
-				<p class="mancard-gallery__copy">A glimpse into the intensity, brotherhood, and transformation happening at Man Card events.</p>
+				<h2 class="mancard-gallery__title">Dads And Sons In Action</h2>
+				<p class="mancard-gallery__copy">Real fathers and sons experiencing challenge, adventure, and transformation through Project Man Card.</p>
 			</div>
 
 			<div class="mancard-gallery__grid" id="mancard-gallery-grid">
@@ -140,13 +136,13 @@
 	<section class="mancard-interest" id="mancard-interest" aria-label="Man Card email interest form">
 		<div class="mancard-interest__inner container-xl">
 			<div class="mancard-interest__intro">
-				<p class="mancard-interest__eyebrow">Stay In The Loop</p>
-				<h2 class="mancard-interest__title">Get Man Card Updates</h2>
-				<p class="mancard-interest__copy">Be the first to hear event announcements, launch dates, and important details.</p>
+				<p class="mancard-interest__eyebrow">Ready To Lead Your Son</p>
+				<h2 class="mancard-interest__title">Learn About The Next Cycle</h2>
+				<p class="mancard-interest__copy">Get details on upcoming Project Man Card cycles and how to register your son for his rite of passage.</p>
 			</div>
 
 			<form class="mancard-form" method="post" action="{{ formsubmit_action or '#' }}">
-				<input type="hidden" name="_subject" value="Man Card Interest List Signup">
+				<input type="hidden" name="_subject" value="Project Man Card Interest Inquiry">
 				<input type="hidden" name="_next" value="{{ formsubmit_next }}">
 				<input type="hidden" name="_captcha" value="false">
 				<input type="hidden" name="source" value="mancard-page">
@@ -163,7 +159,7 @@
 					</div>
 				</div>
 
-				<button class="mancard-btn mancard-form__submit" type="submit" {% if not formsubmit_action %}disabled{% endif %}>Join The Interest List</button>
+				<button class="mancard-btn mancard-form__submit" type="submit" {% if not formsubmit_action %}disabled{% endif %}>Get Cycle Details</button>
 			</form>
 		</div>
 	</section>
