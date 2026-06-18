@@ -97,7 +97,7 @@
 					"fontSize": {
 						"body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
 						"display-lg": ["96px", { "lineHeight": "96px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
-						"headline-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+						"headline-lg": ["50px", { "lineHeight": "64px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
 						"headline-md": ["36px", { "lineHeight": "44px", "letterSpacing": "0em", "fontWeight": "400" }],
 						"label-caps": ["14px", { "lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "700" }],
 						"body-lg": ["20px", { "lineHeight": "30px", "fontWeight": "500" }],
@@ -205,6 +205,10 @@
 		.desktop-nav a.active {
 			color: #ff0000 !important;
 		}
+
+		.font-display-lg {
+			font-size: clamp(2rem, 10vw, 3rem) !important;
+		}
 	</style>
 </head>
 
@@ -256,7 +260,7 @@
 	</div>
 	<!-- Hero Section -->
 	<header
-		class="relative min-h-screen flex items-center justify-start pt-24 overflow-hidden border-b-8 border-blood-red">
+		class="relative min-h-screen flex items-center justify-start overflow-hidden border-b-8 border-blood-red">
 		<div class="absolute inset-0 z-0">
 			<img alt="" class="w-full h-full object-cover object-center opacity-40 grayscale contrast-150"
 				src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwWjgQpvx4OfAbd6rwG246W-XtlSO4WpyJPju2OqY7rDEzloC6AmkH1HhUagPuwlF6LOIZ7KKxmZ7XQqm278KY9H6L8eApyZx5olDrtk-bY4CJ9_tAvb0vM-1hcPzfvsTKus5TILNRS7DMlz1wXPCKe-YztT_cYCGWXpHGT-eo596bVu__SQxK5wpsuVbvavC--z7ECVu684UDsGC4ILBoTUBdNAxNL3C-Uk9w_Z0gpp8vLeyU4cNP1YGNzL9p0JZ8cnr6lPWWRqIx" />
@@ -294,9 +298,9 @@
 	</header>
 	<main>
 		<!-- What It Is Section -->
-		<section class="py-32 md:py-48 bg-background relative" id="program">
+		<section class="pt-32 md:pt-48 bg-background relative" id="program">
 			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-				<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-24 items-center">
 					<div class="lg:col-span-6 lg:order-2">
 						<h2
 							class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-stark-white uppercase mb-8 leading-none">
@@ -311,15 +315,12 @@
 							other. It calls a soft man 'evolved' and a strong man 'a problem.' We are calling men to
 							push the other way.</p>
 					</div>
-					<div class="lg:col-span-6 lg:order-1 relative mt-16 lg:mt-0">
+					<div class="lg:col-span-6 lg:order-1 relative lg:mt-0">
 						<div
-							class="aspect-[3/4] bg-surface-container relative overflow-hidden transform -rotate-3 border-8 border-blood-red hover:rotate-0 transition-transform duration-500 z-10">
-							<img class="w-full h-full object-cover filter grayscale contrast-125 opacity-90"
+							class=" mx-auto relative left-1/2 -translate-x-1/2 aspect-[3/4] bg-surface-container overflow-hidden z-10">
+							<img class="w-full h-full object-cover filter opacity-90"
 								data-alt="A cinematic, high-contrast medium shot of a focused businessman in a dark, industrial-style boardroom setting. He is looking intently at architectural blueprints or strategic documents on a heavy wooden table. The lighting is moody, with warm overhead spotlights creating deep shadows. The color palette emphasizes deep charcoals, stark whites, and subtle metallic gold accents. The atmosphere conveys intense focus, strategic planning, and premium exclusivity."
-								src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNuW_pjAZsZizBCPaQ4PWMhhiZEiO7XIPQGMVxwUhlmutsFBUF9fq4nx5VxOw_Q-so3mJmjgPsLgXFo5zJtaCLNLhwjHstJyoiEIAub1VuX-HwAaMESCJJHoyB7NcTRNbwVmaumx0bOW78TSBjk2Z_Q6OVUi8PUx7g_4r0BqnD4iWTzIKZFa-uRtsgu1xUifyKDDM_ErgGR6QafJiGM2rqh9GNRErPS2KzLJdjEzQdDHRBYOA14RaAF2yxq-AG4vvUhNIoqnPeCN3v" />
-						</div>
-						<div
-							class="absolute -bottom-10 -right-10 w-full h-full border-8 border-stark-white/20 z-0 transform rotate-2 hidden lg:block">
+								src="{{ url_for('static', filename='img/fire_axe.png') }}"/>
 						</div>
 					</div>
 				</div>
