@@ -511,7 +511,7 @@
 						</div>
 						<form action="{{ formsubmit_action or '#' }}" class="space-y-10 relative z-10" method="POST">
 							<input type="hidden" name="_subject" value="Mancard for Businessmen Application">
-							<input type="hidden" name="_next" value="{{ formsubmit_next }}">
+							<input type="hidden" name="_next" value="{{ formsubmit_next or url_for('public.thankyou_page', _external=True) }}">
 							<input type="hidden" name="_captcha" value="false">
 							<input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off">
 							<!-- Personal Info -->
