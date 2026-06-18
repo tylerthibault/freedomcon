@@ -1,270 +1,714 @@
-{% extends "bases/public.html" %}
-{% from "components/macros/cta_buttons.html" import cta_buttons %}
+<!DOCTYPE html>
 
-{% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/mancard.css') }}">
-<link rel="preload" as="image" href="https://images.pixieset.com/658079401/72ca5e8a5d4284280f4c9698cca95d38-large.jpg">
-<link rel="preload" as="image" href="https://images.pixieset.com/658079401/559ffe9c967987bb7aba0530b8ac5ef6-large.jpg">
-<link rel="preload" as="image" href="https://images.pixieset.com/658079401/7ec9a3d8467ce90f8be06d42ca9323ab-large.jpg">
-<link rel="preload" as="image" href="https://images.pixieset.com/658079401/32d858e4bee830ba1863c9e51391444e-large.jpg">
-{% endblock %}
+<html class="dark overflow-x-hidden" lang="en">
 
-{% block navigation %}
-{% include "components/navigation.html" %}
-{% endblock %}
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title>Mancard for Businessmen - Brotherhood for CEOs & Founders</title>
+	<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap"
+		rel="stylesheet" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+		rel="stylesheet" />
+	<script id="tailwind-config">
+		tailwind.config = {
+			darkMode: "class",
+			theme: {
+				extend: {
+					"colors": {
+						"error-container": "#93000a",
+						"stark-white": "#FFFFFF",
+						"muted-silver": "#b3b3b3",
+						"on-surface": "#ffffff",
+						"secondary": "#ff0000",
+						"inverse-on-surface": "#313030",
+						"surface-tint": "#ff0000",
+						"on-tertiary-container": "#e3e0df",
+						"on-error-container": "#ffdad6",
+						"on-primary-container": "#ffd7d2",
+						"primary": "#ff0000",
+						"tertiary": "#c8c6c5",
+						"on-primary": "#ffffff",
+						"burnished-gold": "#ff0000",
+						"inverse-surface": "#e5e2e1",
+						"on-tertiary": "#313030",
+						"outline-variant": "#5a403e",
+						"surface-variant": "#222222",
+						"surface-container-highest": "#333333",
+						"background": "#000000",
+						"secondary-container": "#440000",
+						"surface-dim": "#000000",
+						"primary-fixed": "#ff0000",
+						"surface-bright": "#111111",
+						"on-tertiary-fixed": "#1c1b1b",
+						"error": "#ff0000",
+						"on-primary-fixed": "#ffffff",
+						"deep-obsidian": "#000000",
+						"on-secondary-fixed-variant": "#574500",
+						"primary-fixed-dim": "#cc0000",
+						"primary-container": "#ff0000",
+						"surface-container": "#111111",
+						"on-background": "#ffffff",
+						"on-tertiary-fixed-variant": "#474746",
+						"outline": "#444444",
+						"on-primary-fixed-variant": "#92040e",
+						"on-secondary-fixed": "#241a00",
+						"inverse-primary": "#ff0000",
+						"surface": "#000000",
+						"blood-red": "#ff0000",
+						"secondary-fixed": "#ff0000",
+						"on-surface-variant": "#ffffff",
+						"tertiary-fixed-dim": "#c8c6c5",
+						"surface-container-low": "#0a0a0a",
+						"on-error": "#ffffff",
+						"on-secondary": "#ffffff",
+						"surface-container-high": "#1a1a1a",
+						"surface-container-lowest": "#000000",
+						"on-secondary-container": "#ffffff",
+						"tertiary-container": "#646363",
+						"secondary-fixed-dim": "#cc0000",
+						"tertiary-fixed": "#e5e2e1"
+					},
+					"borderRadius": {
+						"DEFAULT": "0",
+						"lg": "0",
+						"xl": "0",
+						"full": "9999px"
+					},
+					"spacing": {
+						"margin-desktop": "100px",
+						"container-max": "1400px",
+						"unit": "8px",
+						"gutter": "32px",
+						"margin-mobile": "24px"
+					},
+					"fontFamily": {
+						"body-md": ["Hanken Grotesk", "sans-serif"],
+						"display-lg": ["Archivo Black", "sans-serif"],
+						"headline-lg": ["Archivo Black", "sans-serif"],
+						"headline-md": ["Archivo Black", "sans-serif"],
+						"label-caps": ["JetBrains Mono", "monospace"],
+						"body-lg": ["Hanken Grotesk", "sans-serif"],
+						"headline-lg-mobile": ["Archivo Black", "sans-serif"]
+					},
+					"fontSize": {
+						"body-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+						"display-lg": ["96px", { "lineHeight": "96px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+						"headline-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+						"headline-md": ["36px", { "lineHeight": "44px", "letterSpacing": "0em", "fontWeight": "400" }],
+						"label-caps": ["14px", { "lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "700" }],
+						"body-lg": ["20px", { "lineHeight": "30px", "fontWeight": "500" }],
+						"headline-lg-mobile": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "400" }]
+					}
+				}
+			}
+		}
+	</script>
+	<style>
+		.texture-overlay {
+			background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+			opacity: 0.15;
+			pointer-events: none;
+			mix-blend-mode: overlay;
+		}
 
-{% block content %}
-<main class="mancard-page">
-	<section class="mancard-hero" aria-label="Man Card event intro">
-		<img
-			class="mancard-hero__image"
-			src="https://images.pixieset.com/658079401/72ca5e8a5d4284280f4c9698cca95d38-large.jpg"
-			alt="Men gathered at Project Man Card"
-			loading="eager"
-			fetchpriority="high"
-		>
-		<div class="mancard-hero__bg-shape mancard-hero__bg-shape--one" aria-hidden="true"></div>
-		<div class="mancard-hero__bg-shape mancard-hero__bg-shape--two" aria-hidden="true"></div>
-		<div class="mancard-hero__inner container-xl">
-			<p class="mancard-hero__eyebrow">Stronger Man Nation Presents</p>
-			<h1 class="mancard-hero__title">PROJECT MAN CARD</h1>
-			<p class="mancard-hero__copy">Help dads build rite-of-passage experiences for their sons. Launch boys into manhood through challenge, adventure, and biblical purpose.</p>
-			<div class="mancard-hero__chips" aria-label="Event highlights">
-				<span class="mancard-chip">Adventure</span>
-				<span class="mancard-chip">Challenge</span>
-				<span class="mancard-chip">Manhood</span>
-				<span class="mancard-chip">Purpose</span>
+		.hero-gradient {
+			background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.8) 100%);
+		}
+
+		.card-gradient {
+			background: #111111;
+		}
+
+		.glitch-effect {
+			position: relative;
+		}
+
+		.glitch-effect::before,
+		.glitch-effect::after {
+			content: attr(data-text);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0.8;
+		}
+
+		.glitch-effect::before {
+			left: 2px;
+			text-shadow: -2px 0 #ff0000;
+			clip: rect(24px, 550px, 90px, 0);
+			animation: glitch-anim-2 3s infinite linear alternate-reverse;
+		}
+
+		.glitch-effect::after {
+			left: -2px;
+			text-shadow: -2px 0 #00ffff;
+			clip: rect(85px, 550px, 140px, 0);
+			animation: glitch-anim 2.5s infinite linear alternate-reverse;
+		}
+
+		@media (max-width: 767px) {
+			.mobile-wrap {
+				overflow-wrap: anywhere;
+				word-break: break-word;
+			}
+		}
+
+		/* Mobile Side Menu Animation */
+		.mobile-menu-backdrop {
+			position: fixed;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.7);
+			z-index: 40;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.3s ease-in-out;
+		}
+
+		.mobile-menu-backdrop.active {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		#landing12MobileMenu {
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 100%;
+			max-width: 300px;
+			height: 100vh;
+			background: #000000;
+			border-left: 4px solid #ff0000;
+			z-index: 50;
+			transform: translateX(100%);
+			transition: transform 0.3s ease-in-out;
+			overflow-y: auto;
+			display: flex;
+			flex-direction: column;
+			padding-top: 100px;
+		}
+
+		#landing12MobileMenu.active {
+			transform: translateX(0);
+		}
+
+		/* Active menu item styling */
+		a.nav-link.active {
+			color: #ff0000 !important;
+		}
+
+		.desktop-nav a.active {
+			color: #ff0000 !important;
+		}
+	</style>
+</head>
+
+<body
+	class="bg-background text-stark-white font-body-md antialiased relative min-h-screen overflow-x-hidden selection:bg-blood-red selection:text-stark-white">
+	<div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
+	<div class="fixed inset-0 texture-overlay z-50"></div>
+	<!-- TopNavBar Component -->
+	<nav class="fixed top-0 w-full z-50 bg-background/90 dark:bg-background/90 border-b-4 border-blood-red backdrop-blur-md transition-all duration-300"
+		id="main-nav">
+		<div
+			class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-24">
+			<div
+				class="font-headline-md text-2xl md:text-headline-md tracking-tighter text-stark-white dark:text-on-background uppercase">
+				MANCARD FOR <span class="text-blood-red">BUSINESSMEN</span>
 			</div>
-			<div class="mancard-hero__cta">
-				{{ cta_buttons(link_only=true, show_urgency=false, primary_text='Get Freedom Con Tickets', primary_href='/tickets', primary_class='mancard-btn') }}
+			<div class="hidden md:flex items-center space-x-12 desktop-nav">
+			<a class="font-label-caps text-label-caps uppercase tracking-widest text-blood-red dark:text-primary hover:text-stark-white transition-all duration-300 nav-link"
+				href="#program" data-section="program">PROGRAM</a>
+			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver dark:text-on-tertiary-container hover:text-blood-red transition-all duration-300 nav-link"
+				href="#instructors" data-section="instructors">INSTRUCTORS</a>
+			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver dark:text-on-tertiary-container hover:text-blood-red transition-all duration-300 nav-link"
+				href="#curriculum" data-section="curriculum">CURRICULUM</a>
+			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver dark:text-on-tertiary-container hover:text-blood-red transition-all duration-300 nav-link"
+				href="#logistics" data-section="logistics">LOGISTICS</a>
 			</div>
+			<a class="hidden md:inline-flex items-center justify-center bg-blood-red text-stark-white font-label-caps text-label-caps uppercase tracking-widest px-8 py-4 hover:bg-stark-white hover:text-background transition-colors duration-300"
+				href="#apply">
+				APPLY NOW
+			</a>
+			<!-- Mobile Menu Button -->
+			<button class="md:hidden text-stark-white" id="mobileMenuToggle" aria-expanded="false" aria-controls="landing12MobileMenu">
+				<span class="material-symbols-outlined text-4xl">menu</span>
+			</button>
 		</div>
-	</section>
-
-	<section class="mancard-story" aria-label="What Man Card is about">
-		<div class="mancard-story__inner container-xl">
-			<article class="mancard-story-card">
-				<h2 class="mancard-story-card__title">It's Time To Punch Back</h2>
-				<p>The enemy is making war on the boys of our nation. Dads, we are not victims—we're grown men made in God's image, fitted to fight.</p>
-			</article>
-			<article class="mancard-story-card mancard-story-card--accent">
-				<h2 class="mancard-story-card__title">Process Not Destination</h2>
-				<p>Man Card experiences launch boys (ages 14–17) into a rhythm of tackling new challenges and taking on more responsibility as a way of life.</p>
-			</article>
-		</div>
-	</section>
-
-	<section class="mancard-momentum" aria-label="Momentum statement">
-		<div class="mancard-momentum__inner container-xl">
-			<h2 class="mancard-momentum__title">The High Country of Manhood Calls</h2>
-			<p class="mancard-momentum__copy">Boys were made to kill dragons. Let's show them how and set their hearts on fire with the anticipation, adventure, and glory of living into the noble calling of biblical manhood.</p>
-		</div>
-	</section>
-
-	<section class="mancard-gallery" aria-label="Man Card event photo gallery">
-		<div class="mancard-gallery__inner container-xl">
-			<div class="mancard-gallery__header">
-				<h2 class="mancard-gallery__title">Dads And Sons In Action</h2>
-				<p class="mancard-gallery__copy">Real fathers and sons experiencing challenge, adventure, and transformation through Project Man Card.</p>
-			</div>
-
-			<div class="mancard-gallery__grid" id="mancard-gallery-grid">
-				<div class="mancard-gallery__tile" data-gallery-index="0" data-aspect="portrait" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/658079401/559ffe9c967987bb7aba0530b8ac5ef6-large.jpg" alt="Man Card event - training session" loading="eager" fetchpriority="high">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="1" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/658079401/7ec9a3d8467ce90f8be06d42ca9323ab-large.jpg" alt="Man Card event - group gathering" loading="eager" fetchpriority="high">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="2" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/658079401/32d858e4bee830ba1863c9e51391444e-large.jpg" alt="Man Card event - fellowship" loading="eager" fetchpriority="high">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="3" data-aspect="square" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/444589401/8dd2a69d0df4cf3fad22effd6e7b3da8-large.jpg" alt="Man Card cycle II - training" loading="eager" fetchpriority="high">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="4" data-aspect="portrait" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/444589401/0a8b86c6a0ab06cd648bfcc243179d8f-large.jpg" alt="Man Card cycle II - men gathering" loading="eager" fetchpriority="high">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="5" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/444589401/01126bf595160a31c14058d9cae0c2ab-large.jpg" alt="Man Card cycle II - event moment" loading="eager" fetchpriority="high">
-				</div>
-			</div>
-
-			<div id="mancard-gallery-hidden-tiles" style="display: none;">
-				<div class="mancard-gallery__tile" data-gallery-index="6" data-aspect="square" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/444589401/c390403e71ab8bb621d21186e868ccaf-large.jpg" alt="Man Card cycle II - group" loading="lazy">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="7" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/444589401/b83902ead8c887313d958cffc42aaf6c-large.jpg" alt="Man Card cycle II - activity" loading="lazy">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="8" data-aspect="portrait" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/444589401/089fcac85e8cbdf3d7d32d12a730935e-large.jpg" alt="Man Card cycle II - experience" loading="lazy">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="9" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/444589401/8c29c3d8da15e245412fd91354ab8043-large.jpg" alt="Man Card cycle II - brotherhood" loading="lazy">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="10" data-aspect="square" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/226203601/57c8d4230d372610e6a44b5bdad27b54-large.jpg" alt="Man Card cycle V - gathering" loading="lazy">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="11" data-aspect="landscape" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/226203601/cce409f1cd0904dc486bac58792b90ec-large.jpg" alt="Man Card cycle V - training" loading="lazy">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="12" data-aspect="portrait" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/226203601/a9fd4e3a235614ad71feca4c6dcf5749-large.jpg" alt="Man Card cycle V - moment" loading="lazy">
-				</div>
-				<div class="mancard-gallery__tile" data-gallery-index="13" data-aspect="portrait" role="button" tabindex="0" aria-label="View full image">
-				<img src="https://images.pixieset.com/226203601/dae649564eae22cab9ffb3f52116cb96-large.jpg" alt="Man Card cycle V - event" loading="lazy">
-				</div>
-			</div>
-
-			<button id="mancard-gallery-load-more" class="mancard-gallery__load-more">Load More Photos</button>
-		</div>
-	</section>
-
-	<div id="mancard-gallery-modal" class="mancard-gallery-modal" aria-hidden="true" role="dialog" aria-labelledby="mancard-gallery-modal-title">
-		<button class="mancard-gallery-modal__close" aria-label="Close image viewer"></button>
-		<div class="mancard-gallery-modal__container">
-			<img id="mancard-gallery-modal-image" src="" alt="" class="mancard-gallery-modal__image">
-		</div>
-		<div class="mancard-gallery-modal__nav">
-			<button id="mancard-gallery-prev" class="mancard-gallery-modal__btn mancard-gallery-modal__btn--prev" aria-label="Previous image"></button>
-			<button id="mancard-gallery-next" class="mancard-gallery-modal__btn mancard-gallery-modal__btn--next" aria-label="Next image"></button>
-		</div>
+	</nav>
+	<!-- Mobile Side Menu Drawer -->
+	<div id="landing12MobileMenu">
+			<a class="font-label-caps text-label-caps uppercase tracking-widest text-blood-red px-margin-mobile py-4 hover:text-stark-white transition-all duration-300 nav-link"
+				href="#program" data-section="program">PROGRAM</a>
+			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver px-margin-mobile py-4 hover:text-blood-red transition-all duration-300 nav-link"
+				href="#instructors" data-section="instructors">INSTRUCTORS</a>
+			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver px-margin-mobile py-4 hover:text-blood-red transition-all duration-300 nav-link"
+				href="#curriculum" data-section="curriculum">CURRICULUM</a>
+			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver px-margin-mobile py-4 hover:text-blood-red transition-all duration-300 nav-link"
+				href="#logistics" data-section="logistics">LOGISTICS</a>
+		<a class="inline-flex items-center justify-center bg-blood-red text-stark-white font-label-caps text-label-caps uppercase tracking-widest px-8 py-4 m-margin-mobile hover:bg-stark-white hover:text-background transition-colors duration-300"
+			href="#apply">APPLY NOW</a>
 	</div>
-
-	<section class="mancard-interest" id="mancard-interest" aria-label="Man Card email interest form">
-		<div class="mancard-interest__inner container-xl">
-			<div class="mancard-interest__intro">
-				<p class="mancard-interest__eyebrow">Ready To Lead Your Son</p>
-				<h2 class="mancard-interest__title">Learn About The Next Cycle</h2>
-				<p class="mancard-interest__copy">Get details on upcoming Project Man Card cycles and how to register your son for his rite of passage.</p>
-			</div>
-
-			<form class="mancard-form" method="post" action="{{ formsubmit_action or '#' }}">
-				<input type="hidden" name="_subject" value="Project Man Card Interest Inquiry">
-				<input type="hidden" name="_next" value="{{ formsubmit_next }}">
-				<input type="hidden" name="_captcha" value="false">
-				<input type="hidden" name="source" value="mancard-page">
-				<input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
-
-				<div class="mancard-form__row">
-					<div class="mancard-form__field">
-						<label for="mancard-name">Name</label>
-						<input id="mancard-name" name="name" type="text" placeholder="Your name" autocomplete="name">
-					</div>
-					<div class="mancard-form__field">
-						<label for="mancard-email">Email <span aria-hidden="true">*</span></label>
-						<input id="mancard-email" name="email" type="email" placeholder="you@example.com" required autocomplete="email">
+	<!-- Hero Section -->
+	<header
+		class="relative min-h-screen flex items-center justify-start pt-24 overflow-hidden border-b-8 border-blood-red">
+		<div class="absolute inset-0 z-0">
+			<img alt="" class="w-full h-full object-cover object-center opacity-40 grayscale contrast-150"
+				src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwWjgQpvx4OfAbd6rwG246W-XtlSO4WpyJPju2OqY7rDEzloC6AmkH1HhUagPuwlF6LOIZ7KKxmZ7XQqm278KY9H6L8eApyZx5olDrtk-bY4CJ9_tAvb0vM-1hcPzfvsTKus5TILNRS7DMlz1wXPCKe-YztT_cYCGWXpHGT-eo596bVu__SQxK5wpsuVbvavC--z7ECVu684UDsGC4ILBoTUBdNAxNL3C-Uk9w_Z0gpp8vLeyU4cNP1YGNzL9p0JZ8cnr6lPWWRqIx" />
+			<div class="absolute inset-0 hero-gradient"></div>
+		</div>
+		<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
+			<div class="md:w-3/4 lg:w-2/3">
+				<span
+					class="inline-block bg-blood-red text-stark-white px-4 py-2 mb-8 font-label-caps text-label-caps uppercase tracking-widest transform -skew-x-12">A
+					Private Intensive</span>
+				<h1
+					class="mobile-wrap font-display-lg text-headline-lg-mobile md:text-display-lg text-stark-white uppercase mb-8 leading-none text-4xl">
+					You Were Not Called to Be Comfortable. <br /><span class="text-blood-red">You Were Called to
+						Lead.</span></h1>
+				<div class="w-24 h-2 bg-blood-red mb-8"></div>
+				<p
+					class="font-body-lg text-body-lg text-stark-white mb-10 md:mb-16 text-xl md:text-2xl leading-snug font-bold max-w-2xl">
+					Mancard for Businessmen is a brotherhood of CEOs and Founders who refuse the soft, hollowed-out version of
+					manhood the world is selling — and who believe their lives and their companies were built for more
+					than the next dollar. We forge stronger men in body, mind, and spirit, and send them home as better
+					fathers, sharper leaders, and men who serve Jesus with everything they have.</p>
+				<div class="flex flex-col sm:flex-row items-start gap-6">
+					<a class="inline-flex items-center justify-center bg-blood-red text-stark-white font-label-caps text-label-caps uppercase tracking-widest px-12 py-6 hover:bg-stark-white hover:text-background transition-all duration-300 w-full sm:w-auto text-center text-lg"
+						href="#apply">Accept the Challenge</a>
+					<div class="border-l-4 border-blood-red pl-6 py-2">
+						<p class="font-body-md text-muted-silver max-w-md italic font-bold">
+							"This is not a conference. It is a hands-on, high-challenge, high-access experience for
+							self-starting, humble, motivated Kingdom men who are serious about building what God has
+							entrusted to them."
+						</p>
 					</div>
 				</div>
-
-				<button class="mancard-btn mancard-form__submit" type="submit" {% if not formsubmit_action %}disabled{% endif %}>Get Cycle Details</button>
-			</form>
+			</div>
 		</div>
-	</section>
-</main>
-{% endblock %}
+	</header>
+	<main>
+		<!-- What It Is Section -->
+		<section class="py-32 md:py-48 bg-background relative" id="program">
+			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+					<div class="lg:col-span-6 lg:order-2">
+						<h2
+							class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-stark-white uppercase mb-8 leading-none">
+							THE PROVOCATION</h2>
+						<div class="w-full h-1 bg-blood-red mb-10"></div>
+						<p class="font-body-lg text-body-lg text-muted-silver mb-12 text-xl">You've already won the game
+							most men are still playing. You've built the company. Carried the payroll. Made the calls no
+							one else would make. You've reached the top of the mountain — and found it quieter, and
+							lonelier, than anyone warned you it would be. So let's tell the truth: there is a war on for
+							what it means to be a man. The culture wants you soft. Agreeable. Easy to manage. It will
+							hand you success with one hand and quietly ask for your conviction, and your spine with the
+							other. It calls a soft man 'evolved' and a strong man 'a problem.' We are calling men to
+							push the other way.</p>
+					</div>
+					<div class="lg:col-span-6 lg:order-1 relative mt-16 lg:mt-0">
+						<div
+							class="aspect-[3/4] bg-surface-container relative overflow-hidden transform -rotate-3 border-8 border-blood-red hover:rotate-0 transition-transform duration-500 z-10">
+							<img class="w-full h-full object-cover filter grayscale contrast-125 opacity-90"
+								data-alt="A cinematic, high-contrast medium shot of a focused businessman in a dark, industrial-style boardroom setting. He is looking intently at architectural blueprints or strategic documents on a heavy wooden table. The lighting is moody, with warm overhead spotlights creating deep shadows. The color palette emphasizes deep charcoals, stark whites, and subtle metallic gold accents. The atmosphere conveys intense focus, strategic planning, and premium exclusivity."
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNuW_pjAZsZizBCPaQ4PWMhhiZEiO7XIPQGMVxwUhlmutsFBUF9fq4nx5VxOw_Q-so3mJmjgPsLgXFo5zJtaCLNLhwjHstJyoiEIAub1VuX-HwAaMESCJJHoyB7NcTRNbwVmaumx0bOW78TSBjk2Z_Q6OVUi8PUx7g_4r0BqnD4iWTzIKZFa-uRtsgu1xUifyKDDM_ErgGR6QafJiGM2rqh9GNRErPS2KzLJdjEzQdDHRBYOA14RaAF2yxq-AG4vvUhNIoqnPeCN3v" />
+						</div>
+						<div
+							class="absolute -bottom-10 -right-10 w-full h-full border-8 border-stark-white/20 z-0 transform rotate-2 hidden lg:block">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- What You Leave With Section -->
+		<section class="py-32 md:py-48 bg-surface-container relative border-t-8 border-stark-white/10" id="curriculum">
+			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+				<div class="flex flex-col md:flex-row justify-between items-end mb-20 md:mb-32">
+					<div>
+						<span
+							class="inline-block bg-blood-red text-stark-white px-3 py-1 mb-6 font-label-caps text-label-caps uppercase tracking-widest">The
+							Arsenal</span>
+						<h2
+							class="font-headline-lg text-headline-lg-mobile md:text-display-lg text-stark-white uppercase leading-none m-0">
+							A SUMMONS, NOT A SEMINAR</h2>
+					</div>
+					<div class="w-32 h-2 bg-blood-red hidden md:block mb-4"></div>
+					<p class="font-body-lg text-body-lg text-muted-silver mt-8 text-xl max-w-4xl">Biblical manhood isn't
+						an aesthetic. It's an assignment. You were built to protect what's yours. To provide without
+						flinching. To lead a home and a company under the lordship of Christ, and to stand in the gap
+						when other men step back. That man doesn't get formed in a boardroom or a Bible study alone. He
+						gets forged — under load, under pressure, in the hours where every reasonable instinct says quit
+						and you choose to plant your feet instead. That's what Mancard for Businessmen is. Not a conference. Not a
+						retreat with good coffee and a worship set. A crucible — built to find out what you're actually
+						made of, and to leave you stronger than it found you. Iron sharpens iron. We've found that men
+						sharpen best when the iron is real and the stakes are felt.</p>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+					<!-- Card 1 -->
+					<div class="card-gradient md:p-16 border-l-8 border-blood-red relative overflow-hidden group p-6">
+						<h3
+							class="font-headline-md text-3xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
+							Body</h3>
+						<p class="font-body-md text-muted-silver relative z-10 text-xl font-medium">We push you past the
+							line where your mind starts negotiating. What you discover on the far side of “I can't” is
+							where the learning begins.</p>
+					</div>
+					<!-- Card 2 -->
+					<div
+						class="card-gradient md:p-16 border-l-8 border-stark-white hover:border-blood-red transition-all duration-300 relative overflow-hidden group p-6">
+						<h3
+							class="font-headline-md text-3xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
+							Mind</h3>
+						<p class="font-body-md text-muted-silver relative z-10 text-xl font-medium">We pull up the
+							floorboards of how your life has been wired — the drivers, the wounds, the lies you've
+							mistaken for ambition — and ask whether the foundation can carry the weight of the man, the
+							family, and the company you're called to build.</p>
+					</div>
+					<!-- Card 3 -->
+					<div
+						class="card-gradient md:p-16 border-l-8 border-stark-white hover:border-blood-red transition-all duration-300 relative overflow-hidden group md:mt-16 p-6">
+						<h3
+							class="font-headline-md text-3xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
+							Spirit</h3>
+						<p class="font-body-md text-muted-silver relative z-10 text-xl font-medium">We call you to fight
+							the right battle. To develop a Kingdom mindset. To lead generously instead of clinging. To
+							take the ground God gave you and steward it like a man who knows Whose it is. You'll come
+							home anchored instead of anxious. Generous instead of guarded. Carrying a different kind of
+							strength into rooms that have never seen it.</p>
+					</div>
+					<!-- Card 4 -->
+				</div>
+			</div>
+		</section>
+		<!-- Instructors Section -->
+		<section class="py-32 md:py-48 bg-background border-y-8 border-blood-red relative overflow-hidden"
+			id="instructors">
+			<div class="absolute inset-0 z-0 flex opacity-10 pointer-events-none">
+				<div class="w-1/2 h-full bg-stark-white transform -skew-x-12 translate-x-1/2"></div>
+			</div>
+			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+				<div class="mb-20">
+					<h2
+						class="mobile-wrap font-headline-lg text-[clamp(2rem,10vw,3rem)] md:text-display-lg text-stark-white uppercase leading-none max-w-4xl">
+						LED BY PROVEN PRACTITIONERS</h2>
+					<div class="w-32 h-2 bg-blood-red mt-8 mb-8"></div>
+					<p class="font-body-md text-muted-silver text-2xl max-w-2xl font-bold">Learn directly from men who
+						are actively in the arena, building significant enterprises with Kingdom impact.</p>
+				</div>
+				<div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-4"><!-- Josh McPherson -->
+					<div class="group relative">
+						<div
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							<img class="w-full h-full object-cover filter grayscale contrast-150 group-hover:scale-110 transition-transform duration-700"
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Y4gnYrGrXi3Ang-j1vI-j4bAV3QwKSVf43yo0TQtfvfU3eRuRWzwKf6QytOb4W0GgXcQ6SI6CmKEKowqTtTdNx5fFTkWz_bdLNSapJjAsVSUprsl6tE5BHxt9lU9q3ZGJ8CYx2d9MzKjhrjps4_XiqFrad4Dvd2yB8rtZx_Q9iQbSEk-Z5StBNS40XQoOXRxqYy_f-f0jzQ70La_9M6kX7rN6tRqmxDjHQq8UpKENzwYQW9sp3DwBzKjx3BC8_qUXVsw1nX7Qh6E" />
+							<div
+								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
+								<h4
+									class="font-headline-md text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									Josh McPherson</h4>
+							</div>
+						</div>
+					</div><!-- Don -->
+					<div class="group relative md:mt-12">
+						<div
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							<img class="w-full h-full object-cover filter grayscale contrast-150 group-hover:scale-110 transition-transform duration-700"
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmDR-HAl35pHuvSgm2jEUzkgI7STcIweRa2yVExT_YGqbkafjBTqN_gTrZy3eX-H_-2gcLSU6e7ACqlr7NiU-gvy-Htv12OKH3W-dKk3Rv4kensbbvIoGc6ATexdhltIAQJLtmjOgDaTfAN4s80YZlfmHvdBtaWZBxv8IgIr75149jUGbSccpGRioLiFYZa9R3Y4vSVv-OFtKW1mMW6Bg4IYvQd32oESWBZ9m9PIMZlqlGFRVc0OmRPJKQHVaXUN3b8W7xnqrVlRBb" />
+							<div
+								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
+								<h4
+									class="font-headline-md text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									Don</h4>
+							</div>
+						</div>
+					</div><!-- Jeff Webber -->
+					<div class="group relative">
+						<div
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							<img class="w-full h-full object-cover filter grayscale contrast-150 group-hover:scale-110 transition-transform duration-700"
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1bz_14ld2bnTG_4PS1Wy5B287YecM5S2bS9JUCUsF-6qtvh35xEMV3RkGvLhT5XT2KIm4Vsy2joPgVzENkp2KKreDU3MaTR5XdMRC_PK74KD41DnJefG8uVoTF86DEIW4ETTAo6pENJVECHg2VlbZ2OArNT7EbN-uRQpyktySKk08Q29E0pmn7oOgDTq4O7jRD2qI0ZtZZsovuN_tFgRfe9rZTRP6SiS5XdArkOXqBU9pl_a7aLNGO8MwMYhmSes7Za72kudPcxyb" />
+							<div
+								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
+								<h4
+									class="font-headline-md text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									Jeff Webber</h4>
+							</div>
+						</div>
+					</div><!-- Josh Carlson -->
+					<div class="group relative md:mt-12">
+						<div
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							<img class="w-full h-full object-cover filter grayscale contrast-150 group-hover:scale-110 transition-transform duration-700"
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTe63l2Xcwl3_YFOq0u5LFVZRQ-AEn_rpqBI6i2gwgpK5e3s6g44rJLxTV9Me8HTmPGJtPK8JeSz3LO9jao1Vs_spEH1vVrTujFBNAKVDg7AuJwRM7S8wzcKsF-AvTSx-g7Uwr-MLEYYMtC8aXl_sq3X9RfSKLRKL0gRsBXp7UzYUA8u7VDTI3sBkcwqFv0y7KvyCns9tUJ14ZP01qqVZ-fySpdZ9cAGpgZJTFz18zfdsZoNA_BqV7YSiOqC2BicQx_r1e0VhEjxrZ" />
+							<div
+								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
+								<h4
+									class="font-headline-md text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									Josh Carlson</h4>
+							</div>
+						</div>
+					</div><!-- Brent Frank -->
+					<div class="group relative">
+						<div
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							<img class="w-full h-full object-cover filter grayscale contrast-150 group-hover:scale-110 transition-transform duration-700"
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2rQcwkZxFDm-GTH4Z_ORYQ4sQym5hnHdGVtatOfnJrPu3DMFL1tDB5fxLlLjUZBcJUd0ue6EODzwZS8YKS4aizVp1vLszHNDZGqg7gJmWQNv_uOMoxWKg9clH-Ev9SjR-NCaV8XprWQd7qeZdGGxEewOZh3AP7qsiCu94Eqgov-NAKsjyIDuDbFI8CUFKSphEEQkDfrZI88zbso2Rp6BTNXiOyO8si-AgdoEm1Y5xf0I0tRyLIC_JQpL8oSM7V4QEGwacexXnL8hp" />
+							<div
+								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
+								<h4
+									class="font-headline-md text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									Brent Frank</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Final Application Form Section -->
+		<section class="py-32 md:py-48 bg-surface-container relative overflow-hidden" id="apply">
+			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+				<div class="grid grid-cols-1 xl:grid-cols-2 gap-16 lg:gap-32 items-start">
+					<!-- Form Context -->
+					<div class="order-2 xl:order-1">
+						<h2
+							class="font-headline-lg text-headline-lg-mobile md:text-7xl text-blood-red uppercase mb-8 leading-none">
+							WHO THIS IS FOR</h2>
+						<p class="font-body-lg text-body-lg text-stark-white mb-12 text-2xl font-bold">This is for the
+							man who has already proven he can win — and suspects winning in the worlds terms was never
+							the assignment. The Founder. The CEO. The man who has risen to the top and felt the air thin
+							out and the company go quiet around him. If you've built what you set out to build and still
+							feel the pull toward more — not more money, more meaning — you already know why you're still
+							reading. If you want to stay comfortable, there are easier rooms. This isn't one of them.
+						</p>
+						<h3 class="font-headline-md text-3xl md:text-5xl text-stark-white uppercase mb-6 leading-none">
+							THE BROTHERHOOD</h3>
+						<p
+							class="font-body-md text-muted-silver mb-12 text-xl font-medium border-l-4 border-blood-red pl-6">
+							You won't do this alone. You'll stand shoulder to shoulder with men who carry the same
+							weight you do — men who lead, who provide, who feel the same quiet hunger to be worth more
+							than their balance sheet. Men willing to push against the tide instead of drifting with it.
+							This is the brotherhood you stopped believing was available to men in your position. It is
+							available. It's just on the far side of the challenge — where the masks come off and real
+							men finally get to look each other in the eye.</p>
+						<div
+							class="w-full aspect-video bg-background mt-16 border-8 border-stark-white/10 overflow-hidden relative grayscale contrast-150 transform -rotate-2">
+							<img alt="" class="w-full h-full object-cover opacity-80"
+								src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwWjgQpvx4OfAbd6rwG246W-XtlSO4WpyJPju2OqY7rDEzloC6AmkH1HhUagPuwlF6LOIZ7KKxmZ7XQqm278KY9H6L8eApyZx5olDrtk-bY4CJ9_tAvb0vM-1hcPzfvsTKus5TILNRS7DMlz1wXPCKe-YztT_cYCGWXpHGT-eo596bVu__SQxK5wpsuVbvavC--z7ECVu684UDsGC4ILBoTUBdNAxNL3C-Uk9w_Z0gpp8vLeyU4cNP1YGNzL9p0JZ8cnr6lPWWRqIx" />
+							<div class="absolute inset-0 bg-black/40 flex items-center justify-center p-8 text-center">
+								<span
+									class="mobile-wrap font-display-lg text-4xl md:text-7xl text-stark-white uppercase tracking-tighter leading-none text-shadow-xl"
+									style="text-shadow: 4px 4px 0 #ff0000;">STRENGTH THROUGH STRUGGLE</span>
+							</div>
+						</div>
+					</div>
+					<!-- The Form -->
+					<div
+						class="bg-background p-8 md:p-16 border-t-8 border-blood-red relative order-1 xl:order-2 shadow-2xl">
+						<div
+							class="absolute top-0 right-0 w-32 h-32 bg-blood-red/10 transform translate-x-1/2 -translate-y-1/2 rotate-45 pointer-events-none hidden md:block">
+						</div>
+						<form action="#" class="space-y-10 relative z-10" method="POST">
+							<!-- Personal Info -->
+							<div class="space-y-8">
+								<div>
+									<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
+										for="name">Full Name</label>
+									<input
+										class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
+										id="name" name="name" placeholder="John Doe" type="text" />
+								</div>
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+									<div>
+										<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
+											for="email">Email Address</label>
+										<input
+											class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
+											id="email" name="email" placeholder="john@company.com" type="email" />
+									</div>
+									<div>
+										<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
+											for="phone">Phone Number</label>
+										<input
+											class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
+											id="phone" name="phone" placeholder="(555) 555-5555" type="tel" />
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-1 bg-stark-white/10 my-12"></div>
+							<!-- Business Info -->
+							<div class="space-y-8">
+								<div>
+									<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
+										for="company">Company Name</label>
+									<input
+										class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
+										id="company" name="company" type="text" />
+								</div>
+								<div>
+									<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
+										for="role">Your Role / Title</label>
+									<input
+										class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
+										id="role" name="role" type="text" />
+								</div>
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+									<div>
+										<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
+											for="revenue">Annual Revenue Range</label>
+										<select
+											class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl appearance-none [&amp;&gt;option]:bg-background [&amp;&gt;option]:text-stark-white"
+											id="revenue" name="revenue">
+											<option disabled="" selected="" value="">Select Range...</option>
+											<option value="under1m">Under $1M</option>
+											<option value="1m-5m">$1M - $5M</option>
+											<option value="5m-20m">$5M - $20M</option>
+											<option value="20m+">$20M+</option>
+										</select>
+									</div>
+									<div>
+										<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
+											for="employees">Number of Employees</label>
+										<select
+											class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl appearance-none [&amp;&gt;option]:bg-background [&amp;&gt;option]:text-stark-white"
+											id="employees" name="employees">
+											<option disabled="" selected="" value="">Select Size...</option>
+											<option value="1-10">1-10</option>
+											<option value="11-50">11-50</option>
+											<option value="51-200">51-200</option>
+											<option value="200+">200+</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-1 bg-stark-white/10 my-12"></div>
+							<div class="pt-8">
+								<button
+									class="w-full bg-blood-red text-stark-white font-headline-md text-3xl uppercase py-6 hover:bg-stark-white hover:text-background transition-colors duration-300 flex items-center justify-center gap-4"
+									type="submit">Answer the Call <span
+										class="material-symbols-outlined text-4xl">double_arrow</span></button>
+								<p
+									class="text-center text-muted-silver font-label-caps text-sm uppercase tracking-widest mt-6 font-bold bg-surface-container py-2 border border-stark-white/10">
+									All applications are reviewed manually by our board.</p>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<!-- Footer Component -->
+	<footer class="relative w-full py-24 bg-background border-t-8 border-stark-white">
+		<div
+			class="flex flex-col lg:flex-row justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop gap-12">
+			<div
+				class="font-headline-lg text-headline-md text-stark-white uppercase tracking-tighter leading-none text-center lg:text-left">
+				MANCARD FOR<br /><span class="text-blood-red">BUSINESSMEN</span>
+			</div>
+			<div class="font-body-md text-body-md text-muted-silver text-center lg:text-right font-bold text-lg">
+				© 2026 MANCARD FOR <span class="text-blood-red">BUSINESSMEN</span>.<br /> KINGDOM-MINDED STEWARDSHIP.
+			</div>
+		</div>
+	</footer>
+	<script>
+		// Active section highlighting
+		const sections = {
+			program: document.getElementById('program'),
+			instructors: document.getElementById('instructors'),
+			curriculum: document.getElementById('curriculum'),
+			logistics: document.getElementById('logistics'),
+			apply: document.getElementById('apply')
+		};
 
-{% block footer %}
-{% include "components/footer.html" %}
-{% endblock %}
+		const navLinks = document.querySelectorAll('a.nav-link');
 
-{% block scripts %}
-<script>
-	(function() {
-		const galleryItems = [
-			{src: 'https://images.pixieset.com/658079401/559ffe9c967987bb7aba0530b8ac5ef6-xxlarge.jpg', alt: 'Man Card event - training session'},
-			{src: 'https://images.pixieset.com/658079401/7ec9a3d8467ce90f8be06d42ca9323ab-xxlarge.jpg', alt: 'Man Card event - group gathering'},
-			{src: 'https://images.pixieset.com/658079401/32d858e4bee830ba1863c9e51391444e-xxlarge.jpg', alt: 'Man Card event - fellowship'},
-			{src: 'https://images.pixieset.com/444589401/8dd2a69d0df4cf3fad22effd6e7b3da8-xxlarge.jpg', alt: 'Man Card cycle II - training'},
-			{src: 'https://images.pixieset.com/444589401/0a8b86c6a0ab06cd648bfcc243179d8f-xxlarge.jpg', alt: 'Man Card cycle II - men gathering'},
-			{src: 'https://images.pixieset.com/444589401/01126bf595160a31c14058d9cae0c2ab-xxlarge.jpg', alt: 'Man Card cycle II - event moment'},
-			{src: 'https://images.pixieset.com/444589401/c390403e71ab8bb621d21186e868ccaf-xxlarge.jpg', alt: 'Man Card cycle II - group'},
-			{src: 'https://images.pixieset.com/444589401/b83902ead8c887313d958cffc42aaf6c-xxlarge.jpg', alt: 'Man Card cycle II - activity'},
-			{src: 'https://images.pixieset.com/444589401/089fcac85e8cbdf3d7d32d12a730935e-xxlarge.jpg', alt: 'Man Card cycle II - experience'},
-			{src: 'https://images.pixieset.com/444589401/8c29c3d8da15e245412fd91354ab8043-xxlarge.jpg', alt: 'Man Card cycle II - brotherhood'},
-			{src: 'https://images.pixieset.com/226203601/57c8d4230d372610e6a44b5bdad27b54-xxlarge.jpg', alt: 'Man Card cycle V - gathering'},
-			{src: 'https://images.pixieset.com/226203601/cce409f1cd0904dc486bac58792b90ec-xxlarge.jpg', alt: 'Man Card cycle V - training'},
-			{src: 'https://images.pixieset.com/226203601/a9fd4e3a235614ad71feca4c6dcf5749-xxlarge.jpg', alt: 'Man Card cycle V - moment'},
-			{src: 'https://images.pixieset.com/226203601/dae649564eae22cab9ffb3f52116cb96-xxlarge.jpg', alt: 'Man Card cycle V - event'}
-		];
-		
-		let currentIndex = 0;
-		const modal = document.getElementById('mancard-gallery-modal');
-		const modalImage = document.getElementById('mancard-gallery-modal-image');
-		const galleryTiles = document.querySelectorAll('[data-gallery-index]');
-		const loadMoreBtn = document.getElementById('mancard-gallery-load-more');
-		const hiddenTiles = document.getElementById('mancard-gallery-hidden-tiles');
-		const galleryGrid = document.getElementById('mancard-gallery-grid');
+		const observer = new IntersectionObserver((entries) => {
+			let currentSection = null;
+			let maxVisibility = 0;
 
-		// If a thumbnail variant fails, retry with the larger original so tiles never appear blank.
-		document.querySelectorAll('.mancard-gallery__tile img').forEach((img) => {
-			img.addEventListener('error', () => {
-				if (img.dataset.fallbackTried === '1') return;
-				img.dataset.fallbackTried = '1';
-				img.src = img.src.replace('-large.jpg', '-xxlarge.jpg');
+			entries.forEach(entry => {
+				if (entry.isIntersecting && entry.intersectionRatio > maxVisibility) {
+					maxVisibility = entry.intersectionRatio;
+					currentSection = entry.target.id;
+				}
 			});
+
+			// Update active state for all links
+			navLinks.forEach(link => {
+				const linkSection = link.getAttribute('data-section');
+				if (linkSection === currentSection) {
+					link.classList.add('active');
+				} else {
+					link.classList.remove('active');
+				}
+			});
+		}, {
+			threshold: [0, 0.1, 0.25, 0.5, 0.75, 0.9, 1]
 		});
+
+		// Observe all sections
+		Object.values(sections).forEach(section => {
+			if (section) observer.observe(section);
+		});
+
+		// Mobile side menu toggle
+		const menuToggle = document.getElementById('mobileMenuToggle');
+		const mobileMenu = document.getElementById('landing12MobileMenu');
+		const backdrop = document.getElementById('mobileMenuBackdrop');
 		
-		function openModal(index) {
-			currentIndex = index;
-			modalImage.src = galleryItems[index].src;
-			modalImage.alt = galleryItems[index].alt;
-			modal.setAttribute('aria-hidden', 'false');
-			document.body.style.overflow = 'hidden';
-		}
-		
-		function closeModal() {
-			modal.setAttribute('aria-hidden', 'true');
-			document.body.style.overflow = '';
-		}
-		
-		function showPrev() {
-			currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-			modalImage.src = galleryItems[currentIndex].src;
-			modalImage.alt = galleryItems[currentIndex].alt;
-		}
-		
-		function showNext() {
-			currentIndex = (currentIndex + 1) % galleryItems.length;
-			modalImage.src = galleryItems[currentIndex].src;
-			modalImage.alt = galleryItems[currentIndex].alt;
-		}
-		
-		function bindTileEvents() {
-			document.querySelectorAll('[data-gallery-index]').forEach((tile, idx) => {
-				tile.addEventListener('click', () => openModal(idx));
-				tile.addEventListener('keydown', (e) => {
-					if (e.key === 'Enter') openModal(idx);
-				});
+		if (menuToggle && mobileMenu && backdrop) {
+			menuToggle.addEventListener('click', () => {
+				const isActive = mobileMenu.classList.contains('active');
+				if (!isActive) {
+					mobileMenu.classList.add('active');
+					backdrop.classList.add('active');
+					document.body.style.overflow = 'hidden';
+					menuToggle.setAttribute('aria-expanded', 'true');
+				} else {
+					closeMenu();
+				}
+			});
+			
+			function closeMenu() {
+				mobileMenu.classList.remove('active');
+				backdrop.classList.remove('active');
+				document.body.style.overflow = '';
+				menuToggle.setAttribute('aria-expanded', 'false');
+			}
+			
+			// Close menu when backdrop is clicked
+			backdrop.addEventListener('click', closeMenu);
+			
+			// Close menu when a link is clicked
+			const mobileLinks = mobileMenu.querySelectorAll('a');
+			mobileLinks.forEach(link => {
+				link.addEventListener('click', closeMenu);
+			});
+			
+			// Close menu on escape key
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+					closeMenu();
+				}
 			});
 		}
 		
-		loadMoreBtn.addEventListener('click', () => {
-			const children = Array.from(hiddenTiles.children);
-			children.forEach(child => {
-				galleryGrid.appendChild(child);
-			});
-			bindTileEvents();
-			loadMoreBtn.style.display = 'none';
-		});
-		
-		document.querySelector('.mancard-gallery-modal__close').addEventListener('click', closeModal);
-		document.getElementById('mancard-gallery-prev').addEventListener('click', showPrev);
-		document.getElementById('mancard-gallery-next').addEventListener('click', showNext);
-		
-		modal.addEventListener('click', (e) => {
-			if (e.target === modal) closeModal();
-		});
-		
-		document.addEventListener('keydown', (e) => {
-			if (modal.getAttribute('aria-hidden') === 'false') {
-				if (e.key === 'Escape') closeModal();
-				if (e.key === 'ArrowLeft') showPrev();
-				if (e.key === 'ArrowRight') showNext();
+		// Simple nav background scroll effect
+		window.addEventListener('scroll', () => {
+			const nav = document.getElementById('main-nav');
+			if (window.scrollY > 50) {
+				nav.classList.add('shadow-2xl');
+				nav.classList.add('border-b-8');
+			} else {
+				nav.classList.remove('shadow-2xl');
+				nav.classList.remove('border-b-8');
 			}
 		});
-		
-		bindTileEvents();
-	})();
-</script>
-{% endblock %}
+	</script>
+</body>
+
+</html>

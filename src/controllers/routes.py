@@ -929,7 +929,7 @@ def sitemap_xml() -> Response:
 		"/tickets",
 		"/invite",
 		"/wives",
-		"/mancard",
+		"/mancard-for-businessmen",
 	]
 	urls = [{"loc": f"{SITE_URL}{path}", "lastmod": lastmod} for path in pages]
 	xml = render_template("sitemap.xml", urls=urls)
@@ -958,7 +958,7 @@ def wives_page() -> str:
 	)
 
 
-@public_bp.get("/mancard")
+@public_bp.get("/mancard-for-businessmen")
 def mancard_page() -> str:
 	formsubmit_action = getenv("MANCARD_FORMSUBMIT_ACTION", "").strip() or "https://formsubmit.co/info@strongermannation.com"
 	formsubmit_next = f"{SITE_URL}/thankyou"
@@ -967,9 +967,9 @@ def mancard_page() -> str:
 		formsubmit_action=formsubmit_action,
 		formsubmit_next=formsubmit_next,
 		seo=build_seo(
-			title="Project Man Card | Rite of Passage for Sons",
-			description="Help your son step into biblical manhood. Project Man Card equips dads to build rite-of-passage experiences that launch boys (14-17) into adventure, challenge, and purposeful living.",
-			path="/mancard",
+			title="Mancard for Businessmen | Brotherhood for CEOs & Founders",
+			description="A brotherhood for CEOs and Founders who refuse the soft version of manhood. Forge stronger men in body, mind, and spirit. Accept the challenge.",
+			path="/mancard-for-businessmen",
 		),
 	)
 

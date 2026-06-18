@@ -98,7 +98,7 @@
 
 .mancard-hero__eyebrow {
 	margin: 0;
-	font-family: var(--font-american-scribe);
+	/* font-family: var(--font-american-scribe); */
 	font-size: clamp(1.4rem, 3.4vw, 2.1rem);
 	line-height: 1;
 	color: #f0e2be;
@@ -106,10 +106,10 @@
 
 .mancard-hero__title {
 	margin: 0;
-	font-family: var(--font-ghost-factory);
+	font-family: var(--font-secondary);
 	font-size: clamp(3.2rem, 12vw, 9rem);
-	line-height: 0.95;
-	letter-spacing: 0.02em;
+	line-height: 1.05;
+	letter-spacing: 0.06em;
 	text-transform: uppercase;
 	text-shadow: 0 6px 30px rgba(188, 42, 39, 0.45);
 }
@@ -557,6 +557,183 @@
 
 .mancard-gallery-modal__btn--next::before {
 	content: '›';
+}
+
+/* Three Fronts Section */
+.mancard-three-fronts {
+	padding: 3.2rem 1.25rem;
+	background: rgba(232, 220, 193, 0.03);
+	border-top: 1px solid rgba(232, 220, 193, 0.1);
+	border-bottom: 1px solid rgba(232, 220, 193, 0.1);
+}
+
+.mancard-three-fronts__inner {
+	max-width: var(--container-xl);
+	margin: 0 auto;
+}
+
+.mancard-three-fronts__title {
+	font-size: clamp(1.8rem, 4vw, 2.4rem);
+	font-family: var(--font-primary);
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	margin: 0 0 1.2rem;
+	color: #e8dcc1;
+	text-transform: uppercase;
+}
+
+.mancard-three-fronts__intro {
+	font-size: 1.1rem;
+	line-height: 1.6;
+	margin: 0 0 2rem;
+	color: rgba(247, 246, 243, 0.9);
+}
+
+.mancard-three-fronts__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 2rem;
+	margin: 2rem 0;
+}
+
+.mancard-three-fronts__card {
+	padding: 1.6rem;
+	background: rgba(188, 42, 39, 0.08);
+	border: 1px solid rgba(188, 42, 39, 0.2);
+	border-radius: 0.4rem;
+}
+
+.mancard-three-fronts__card-title {
+	font-size: 1.3rem;
+	font-family: var(--font-secondary);
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	color: #bc2a27;
+	margin: 0 0 0.8rem;
+}
+
+.mancard-three-fronts__card p {
+	font-size: 1rem;
+	line-height: 1.6;
+	color: rgba(247, 246, 243, 0.85);
+	margin: 0;
+}
+
+.mancard-three-fronts__outcome {
+	font-size: 1.1rem;
+	line-height: 1.7;
+	margin: 2rem 0 0;
+	color: rgba(232, 220, 193, 0.95);
+	font-style: italic;
+}
+
+/* Who This Is For Section */
+.mancard-who-this-is-for {
+	padding: 3.2rem 1.25rem;
+	background: linear-gradient(135deg, rgba(188, 42, 39, 0.04), rgba(232, 220, 193, 0.02));
+}
+
+.mancard-who-this-is-for__inner {
+	max-width: var(--container-xl);
+	margin: 0 auto;
+}
+
+.mancard-who-this-is-for__title {
+	font-size: clamp(1.8rem, 4vw, 2.4rem);
+	font-family: var(--font-primary);
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	margin: 0 0 1.6rem;
+	color: #e8dcc1;
+	text-transform: uppercase;
+}
+
+.mancard-who-this-is-for__inner p {
+	font-size: 1.1rem;
+	line-height: 1.7;
+	margin: 0 0 1.2rem;
+	color: rgba(247, 246, 243, 0.9);
+}
+
+.mancard-who-this-is-for__inner p:last-child {
+	margin-bottom: 0;
+}
+
+/* Brotherhood Section */
+.mancard-brotherhood {
+	padding: 3.2rem 1.25rem;
+	background: rgba(188, 42, 39, 0.08);
+	border-top: 2px solid rgba(188, 42, 39, 0.3);
+	border-bottom: 2px solid rgba(188, 42, 39, 0.3);
+}
+
+.mancard-brotherhood__inner {
+	max-width: var(--container-xl);
+	margin: 0 auto;
+}
+
+.mancard-brotherhood__title {
+	font-size: clamp(1.8rem, 4vw, 2.4rem);
+	font-family: var(--font-primary);
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	margin: 0 0 1.6rem;
+	color: #e8dcc1;
+	text-transform: uppercase;
+}
+
+.mancard-brotherhood__inner p {
+	font-size: 1.1rem;
+	line-height: 1.7;
+	margin: 0 0 1.2rem;
+	color: rgba(247, 246, 243, 0.9);
+}
+
+.mancard-brotherhood__inner p:last-child {
+	margin-bottom: 0;
+}
+
+/* Question Section */
+.mancard-question {
+	padding: 3.2rem 1.25rem;
+	background: linear-gradient(135deg, rgba(232, 220, 193, 0.05), rgba(188, 42, 39, 0.04));
+}
+
+.mancard-question__inner {
+	max-width: var(--container-xl);
+	margin: 0 auto;
+}
+
+.mancard-question__title {
+	font-size: clamp(1.8rem, 4vw, 2.4rem);
+	font-family: var(--font-primary);
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	margin: 0 0 1.6rem;
+	color: #e8dcc1;
+	text-transform: uppercase;
+}
+
+.mancard-question__inner p {
+	font-size: 1.05rem;
+	line-height: 1.8;
+	margin: 0 0 1.2rem;
+	color: rgba(247, 246, 243, 0.9);
+}
+
+.mancard-question__highlight {
+	font-size: 1.2rem;
+	color: #bc2a27;
+	font-weight: 600;
+	margin: 1.6rem 0 1.2rem;
+	display: block;
+}
+
+.mancard-question__closing {
+	font-size: 1.1rem;
+	color: rgba(232, 220, 193, 0.95);
+	font-weight: 600;
+	margin: 1.6rem 0 0;
 }
 
 @media (max-width: 1400px) {
