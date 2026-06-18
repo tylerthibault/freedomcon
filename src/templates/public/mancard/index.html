@@ -509,11 +509,12 @@
 						<div
 							class="absolute top-0 right-0 w-32 h-32 bg-blood-red/10 transform translate-x-1/2 -translate-y-1/2 rotate-45 pointer-events-none hidden md:block">
 						</div>
-						<form action="{{ formsubmit_action or '#' }}" class="space-y-10 relative z-10" method="POST">
+						<form action="https://formsubmit.co/info@strongermannation.com" class="space-y-10 relative z-10" method="POST">
 							<input type="hidden" name="_subject" value="Mancard for Businessmen Application">
-							<input type="hidden" name="_next" value="{{ formsubmit_next or url_for('public.thankyou_page', _external=True) }}">
+							<input type="hidden" name="_next" value="https://www.freedomcon26.com/thankyou">
 							<input type="hidden" name="_captcha" value="false">
-							<input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off">
+							<!-- <input type="hidden" name="_template" value="table"> -->
+							<!-- <input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off"> -->
 							<!-- Personal Info -->
 							<div class="space-y-8">
 								<div>
@@ -521,7 +522,7 @@
 										for="name">Full Name</label>
 									<input
 										class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
-										id="name" name="name" placeholder="John Doe" type="text" />
+										id="name" name="name" placeholder="John Doe" type="text" required />
 								</div>
 								<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 									<div>
@@ -529,7 +530,7 @@
 											for="email">Email Address</label>
 										<input
 											class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
-											id="email" name="email" placeholder="john@company.com" type="email" />
+											id="email" name="email" placeholder="john@company.com" type="email" required />
 									</div>
 									<div>
 										<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
