@@ -509,7 +509,11 @@
 						<div
 							class="absolute top-0 right-0 w-32 h-32 bg-blood-red/10 transform translate-x-1/2 -translate-y-1/2 rotate-45 pointer-events-none hidden md:block">
 						</div>
-						<form action="#" class="space-y-10 relative z-10" method="POST">
+						<form action="{{ formsubmit_action or '#' }}" class="space-y-10 relative z-10" method="POST">
+							<input type="hidden" name="_subject" value="Mancard for Businessmen Application">
+							<input type="hidden" name="_next" value="{{ formsubmit_next }}">
+							<input type="hidden" name="_captcha" value="false">
+							<input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off">
 							<!-- Personal Info -->
 							<div class="space-y-8">
 								<div>
