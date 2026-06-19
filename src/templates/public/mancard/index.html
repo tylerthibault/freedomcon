@@ -220,12 +220,12 @@
 	<nav class="fixed top-0 w-full z-50 bg-background/90 dark:bg-background/90 border-b-4 border-blood-red backdrop-blur-md transition-all duration-300"
 		id="main-nav">
 		<div
-			class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-24">
+			class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20 lg:h-24">
 			<div
-				class="font-headline-md text-2xl md:text-headline-md tracking-tighter text-stark-white dark:text-on-background uppercase">
+				class="font-headline-md text-lg sm:text-xl md:text-2xl lg:text-headline-md leading-none tracking-tighter text-stark-white dark:text-on-background uppercase whitespace-nowrap max-w-[calc(100%-4rem)] md:max-w-none pr-3">
 				MANCARD FOR <span class="text-blood-red">BUSINESSMEN</span>
 			</div>
-			<div class="hidden md:flex items-center space-x-12 desktop-nav">
+			<div class="hidden lg:flex items-center space-x-12 desktop-nav">
 			<a class="font-label-caps text-label-caps uppercase tracking-widest text-blood-red dark:text-primary hover:text-stark-white transition-all duration-300 nav-link"
 				href="#program" data-section="program">PROGRAM</a>
 			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver dark:text-on-tertiary-container hover:text-blood-red transition-all duration-300 nav-link"
@@ -233,13 +233,13 @@
 			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver dark:text-on-tertiary-container hover:text-blood-red transition-all duration-300 nav-link"
 				href="#curriculum" data-section="curriculum">CURRICULUM</a>
 			</div>
-			<a class="hidden md:inline-flex items-center justify-center bg-blood-red text-stark-white font-label-caps text-label-caps uppercase tracking-widest px-8 py-4 hover:bg-stark-white hover:text-background transition-colors duration-300"
+			<a class="hidden lg:inline-flex items-center justify-center bg-blood-red text-stark-white font-label-caps text-label-caps uppercase tracking-widest px-8 py-4 hover:bg-stark-white hover:text-background transition-colors duration-300"
 				href="#apply">
 				APPLY NOW
 			</a>
 			<!-- Mobile Menu Button -->
-			<button class="md:hidden text-stark-white" id="mobileMenuToggle" aria-expanded="false" aria-controls="landing12MobileMenu">
-				<span class="material-symbols-outlined text-4xl">menu</span>
+			<button class="lg:hidden text-stark-white" id="mobileMenuToggle" aria-expanded="false" aria-controls="landing12MobileMenu">
+				<span class="material-symbols-outlined text-3xl">menu</span>
 			</button>
 		</div>
 	</nav>
@@ -256,7 +256,7 @@
 	</div>
 	<!-- Hero Section -->
 	<header
-		class="relative min-h-screen flex items-center justify-start overflow-hidden border-b-8 border-blood-red">
+		class="relative min-h-screen pt-28 pb-16 md:py-0 flex items-center justify-start overflow-hidden border-b-8 border-blood-red">
 		<div class="absolute inset-0 z-0">
 			<img alt="" class="w-full h-full object-cover object-center opacity-40 grayscale contrast-150"
 				src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwWjgQpvx4OfAbd6rwG246W-XtlSO4WpyJPju2OqY7rDEzloC6AmkH1HhUagPuwlF6LOIZ7KKxmZ7XQqm278KY9H6L8eApyZx5olDrtk-bY4CJ9_tAvb0vM-1hcPzfvsTKus5TILNRS7DMlz1wXPCKe-YztT_cYCGWXpHGT-eo596bVu__SQxK5wpsuVbvavC--z7ECVu684UDsGC4ILBoTUBdNAxNL3C-Uk9w_Z0gpp8vLeyU4cNP1YGNzL9p0JZ8cnr6lPWWRqIx" />
@@ -268,20 +268,20 @@
 					class="inline-block bg-blood-red text-stark-white px-4 py-2 mb-8 font-label-caps text-label-caps uppercase tracking-widest transform -skew-x-12">A
 					Private Intensive</span>
 				<h1
-					class="mobile-wrap font-display-lg text-headline-lg-mobile md:text-display-lg text-stark-white uppercase mb-8 leading-none text-4xl">
+					class="mobile-wrap font-display-lg text-[clamp(2.2rem,11vw,4rem)] md:text-display-lg text-stark-white uppercase mb-8 leading-[0.95] max-w-4xl pt-5">
 					You Were Not Called to Be Comfortable. <br /><span class="text-blood-red">You Were Called to
 						Lead.</span></h1>
 				<div class="w-24 h-2 bg-blood-red mb-8"></div>
 				<p
-					class="font-body-lg text-body-lg text-stark-white mb-10 md:mb-16 text-xl md:text-2xl leading-snug font-bold max-w-2xl">
+					class="font-body-lg text-body-lg text-stark-white mb-10 md:mb-16 text-base sm:text-lg md:text-2xl leading-snug font-bold max-w-2xl">
 					Mancard for Businessmen is a brotherhood of CEOs and Founders who refuse the soft, hollowed-out version of
 					manhood the world is selling — and who believe their lives and their companies were built for more
 					than the next dollar. We forge stronger men in body, mind, and spirit, and send them home as better
 					fathers, sharper leaders, and men who serve Jesus with everything they have.</p>
-				<div class="flex flex-col sm:flex-row items-start gap-6">
+				<div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6">
 					<a class="inline-flex items-center justify-center bg-blood-red text-stark-white font-label-caps text-label-caps uppercase tracking-widest px-12 py-6 hover:bg-stark-white hover:text-background transition-all duration-300 w-full sm:w-auto text-center text-lg"
 						href="#apply">Accept the Challenge</a>
-					<div class="border-l-4 border-blood-red pl-6 py-2">
+					<div class="border-l-4 border-blood-red pl-4 sm:pl-6 py-2">
 						<p class="font-body-md text-muted-silver max-w-md italic font-bold">
 							"This is not a conference. It is a hands-on, high-challenge, high-access experience for
 							self-starting, humble, motivated Kingdom men who are serious about building what God has
@@ -294,7 +294,7 @@
 	</header>
 	<main>
 		<!-- What It Is Section -->
-		<section class="pt-32 md:pt-48 bg-background relative" id="program">
+		<section class="pt-24 md:pt-48 bg-background relative" id="program">
 			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 				<div class="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-24 items-center">
 					<div class="lg:col-span-6 lg:order-2">
@@ -323,7 +323,7 @@
 			</div>
 		</section>
 		<!-- What You Leave With Section -->
-		<section class="py-32 md:py-48 bg-surface-container relative border-t-8 border-stark-white/10" id="curriculum">
+		<section class="py-24 md:py-48 bg-surface-container relative border-t-8 border-stark-white/10" id="curriculum">
 			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 				<div class="flex flex-col md:flex-row justify-between items-end mb-20 md:mb-32">
 					<div>
@@ -335,7 +335,7 @@
 							A SUMMONS, NOT A SEMINAR</h2>
 					</div>
 					<div class="w-32 h-2 bg-blood-red hidden md:block mb-4"></div>
-					<p class="font-body-lg text-body-lg text-muted-silver mt-8 text-xl max-w-4xl">Biblical manhood isn't
+					<p class="font-body-lg text-body-lg text-muted-silver mt-8 text-base sm:text-lg md:text-xl max-w-4xl">Biblical manhood isn't
 						an aesthetic. It's an assignment. You were built to protect what's yours. To provide without
 						flinching. To lead a home and a company under the lordship of Christ, and to stand in the gap
 						when other men step back. That man doesn't get formed in a boardroom or a Bible study alone. He
@@ -349,9 +349,9 @@
 					<!-- Card 1 -->
 					<div class="card-gradient md:p-16 border-l-8 border-blood-red relative overflow-hidden group p-6">
 						<h3
-							class="font-headline-md text-3xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
+							class="font-headline-md text-2xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
 							Body</h3>
-						<p class="font-body-md text-muted-silver relative z-10 text-xl font-medium">We push you past the
+						<p class="font-body-md text-muted-silver relative z-10 text-lg md:text-xl font-medium">We push you past the
 							line where your mind starts negotiating. What you discover on the far side of “I can't” is
 							where the learning begins.</p>
 					</div>
@@ -359,9 +359,9 @@
 					<div
 						class="card-gradient md:p-16 border-l-8 border-stark-white hover:border-blood-red transition-all duration-300 relative overflow-hidden group p-6">
 						<h3
-							class="font-headline-md text-3xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
+							class="font-headline-md text-2xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
 							Mind</h3>
-						<p class="font-body-md text-muted-silver relative z-10 text-xl font-medium">We pull up the
+						<p class="font-body-md text-muted-silver relative z-10 text-lg md:text-xl font-medium">We pull up the
 							floorboards of how your life has been wired — the drivers, the wounds, the lies you've
 							mistaken for ambition — and ask whether the foundation can carry the weight of the man, the
 							family, and the company you're called to build.</p>
@@ -370,9 +370,9 @@
 					<div
 						class="card-gradient md:p-16 border-l-8 border-stark-white hover:border-blood-red transition-all duration-300 relative overflow-hidden group md:mt-16 p-6">
 						<h3
-							class="font-headline-md text-3xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
+							class="font-headline-md text-2xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
 							Spirit</h3>
-						<p class="font-body-md text-muted-silver relative z-10 text-xl font-medium">We call you to fight
+						<p class="font-body-md text-muted-silver relative z-10 text-lg md:text-xl font-medium">We call you to fight
 							the right battle. To develop a Kingdom mindset. To lead generously instead of clinging. To
 							take the ground God gave you and steward it like a man who knows Whose it is. You'll come
 							home anchored instead of anxious. Generous instead of guarded. Carrying a different kind of
@@ -383,7 +383,7 @@
 			</div>
 		</section>
 		<!-- Instructors Section -->
-		<section class="py-32 md:py-48 bg-background border-y-8 border-blood-red relative overflow-hidden"
+		<section class="py-24 md:py-48 bg-background border-y-8 border-blood-red relative overflow-hidden"
 			id="instructors">
 			<div class="absolute inset-0 z-0 flex opacity-10 pointer-events-none">
 				<div class="w-1/2 h-full bg-stark-white transform -skew-x-12 translate-x-1/2"></div>
@@ -394,45 +394,48 @@
 						class="mobile-wrap font-headline-lg text-[clamp(2rem,10vw,3rem)] md:text-display-lg text-stark-white uppercase leading-none max-w-4xl">
 						LED BY PROVEN PRACTITIONERS</h2>
 					<div class="w-32 h-2 bg-blood-red mt-8 mb-8"></div>
-					<p class="font-body-md text-muted-silver text-2xl max-w-2xl font-bold">Learn directly from men who
+					<p class="font-body-md text-muted-silver text-lg md:text-2xl max-w-2xl font-bold">Learn directly from men who
 						are actively in the arena, building significant enterprises with Kingdom impact.</p>
 				</div>
-				<div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-4"><!-- Josh McPherson -->
-					<div class="group relative">
+				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-4"><!-- Josh McPherson -->
+					<div class="group relative js-speaker-card cursor-pointer" data-speaker-id="josh-mcpherson" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Josh McPherson">
 						<div
 							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							<div class="absolute top-3 right-3 z-20 bg-blood-red text-stark-white text-[11px] uppercase tracking-widest px-2 py-1 font-label-caps border border-stark-white/30">Bio</div>
 							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
 								src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Y4gnYrGrXi3Ang-j1vI-j4bAV3QwKSVf43yo0TQtfvfU3eRuRWzwKf6QytOb4W0GgXcQ6SI6CmKEKowqTtTdNx5fFTkWz_bdLNSapJjAsVSUprsl6tE5BHxt9lU9q3ZGJ8CYx2d9MzKjhrjps4_XiqFrad4Dvd2yB8rtZx_Q9iQbSEk-Z5StBNS40XQoOXRxqYy_f-f0jzQ70La_9M6kX7rN6tRqmxDjHQq8UpKENzwYQW9sp3DwBzKjx3BC8_qUXVsw1nX7Qh6E" />
 							<div
 								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
 								<h4
-									class="font-headline-md text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									class="font-headline-md text-[10px] sm:text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
 									Josh McPherson</h4>
 							</div>
 						</div>
 					</div><!-- Don -->
-					<div class="group relative md:mt-12">
+					<div class="group relative md:mt-12 js-speaker-card cursor-pointer" data-speaker-id="don-odegard" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Don Odegard">
 						<div
 							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							<div class="absolute top-3 right-3 z-20 bg-blood-red text-stark-white text-[11px] uppercase tracking-widest px-2 py-1 font-label-caps border border-stark-white/30">Bio</div>
 							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
 								src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmDR-HAl35pHuvSgm2jEUzkgI7STcIweRa2yVExT_YGqbkafjBTqN_gTrZy3eX-H_-2gcLSU6e7ACqlr7NiU-gvy-Htv12OKH3W-dKk3Rv4kensbbvIoGc6ATexdhltIAQJLtmjOgDaTfAN4s80YZlfmHvdBtaWZBxv8IgIr75149jUGbSccpGRioLiFYZa9R3Y4vSVv-OFtKW1mMW6Bg4IYvQd32oESWBZ9m9PIMZlqlGFRVc0OmRPJKQHVaXUN3b8W7xnqrVlRBb" />
 							<div
 								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
 								<h4
-									class="font-headline-md text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									class="font-headline-md text-[10px] sm:text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
 									Don Odegard</h4>
 							</div>
 						</div>
 					</div><!-- Jeff Webber -->
-					<div class="group relative">
+					<div class="group relative js-speaker-card cursor-pointer" data-speaker-id="jeff-webber" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Jeff Webber">
 						<div
 							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							<div class="absolute top-3 right-3 z-20 bg-blood-red text-stark-white text-[11px] uppercase tracking-widest px-2 py-1 font-label-caps border border-stark-white/30">Bio</div>
 							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
 								src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1bz_14ld2bnTG_4PS1Wy5B287YecM5S2bS9JUCUsF-6qtvh35xEMV3RkGvLhT5XT2KIm4Vsy2joPgVzENkp2KKreDU3MaTR5XdMRC_PK74KD41DnJefG8uVoTF86DEIW4ETTAo6pENJVECHg2VlbZ2OArNT7EbN-uRQpyktySKk08Q29E0pmn7oOgDTq4O7jRD2qI0ZtZZsovuN_tFgRfe9rZTRP6SiS5XdArkOXqBU9pl_a7aLNGO8MwMYhmSes7Za72kudPcxyb" />
 							<div
 								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
 								<h4
-									class="font-headline-md text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									class="font-headline-md text-[10px] sm:text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
 									Jeff Webber</h4>
 							</div>
 						</div>
@@ -445,7 +448,7 @@
 							<div
 								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
 								<h4
-									class="font-headline-md text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									class="font-headline-md text-[10px] sm:text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
 									Josh Carlson</h4>
 							</div>
 						</div>
@@ -458,18 +461,126 @@
 							<div
 								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
 								<h4
-									class="font-headline-md text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									class="font-headline-md text-[10px] sm:text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
 									Brent Frank</h4>
+							</div>
+						</div>
+					</div><!-- Joe Schlegel -->
+					<div class="group relative md:mt-12 js-speaker-card cursor-pointer" data-speaker-id="joe-schlegel" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Joseph Schlegel">
+						<div
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							<div class="absolute top-3 right-3 z-20 bg-blood-red text-stark-white text-[11px] uppercase tracking-widest px-2 py-1 font-label-caps border border-stark-white/30">Bio</div>
+							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
+								src="{{ url_for('static', filename='img/mancard_speakers/JoeS.webp') }}" />
+							<div
+								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
+								<h4
+									class="font-headline-md text-[10px] sm:text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									Joseph Schlegel</h4>
+							</div>
+						</div>
+					</div><!-- Ryan Ratchford -->
+					<div class="group relative">
+						<div
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
+								src="{{ url_for('static', filename='img/mancard_speakers/Ryan.webp') }}" />
+							<div
+								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
+								<h4
+									class="font-headline-md text-[10px] sm:text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									Ryan Ratchford</h4>
+							</div>
+						</div>
+					</div><!-- Josh Draper -->
+					<div class="group relative">
+						<div
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
+								src="{{ url_for('static', filename='img/mancard_speakers/speaker_placeholder.webp') }}" />
+							<div
+								class="absolute bottom-0 left-0 w-full bg-blood-red p-2 transform transition-transform duration-300 translate-y-0">
+								<h4
+									class="font-headline-md text-[10px] sm:text-sm md:text-2xl text-stark-white uppercase m-0 leading-none text-center">
+									Josh Draper</h4>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!-- Final Application Form Section -->
-		<section class="py-32 md:py-48 bg-surface-container relative overflow-hidden" id="apply">
+		<div id="speakerBioModal" class="fixed inset-0 z-[100] hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="speakerBioModalName">
+			<div id="speakerBioModalBackdrop" class="absolute inset-0 bg-black/80"></div>
+			<div class="relative h-full w-full flex items-center justify-center p-4 md:p-10">
+				<div class="w-full max-w-4xl max-h-[90vh] overflow-hidden bg-background border-2 border-blood-red shadow-2xl">
+					<div class="flex items-start justify-between gap-4 p-5 md:p-8 border-b border-stark-white/20">
+						<div>
+							<h3 id="speakerBioModalName" class="font-headline-md text-2xl md:text-4xl text-stark-white uppercase leading-none m-0"></h3>
+							<p id="speakerBioModalTitle" class="font-label-caps text-label-caps text-blood-red uppercase tracking-widest mt-3 m-0"></p>
+						</div>
+						<button id="speakerBioModalClose" type="button" class="inline-flex items-center justify-center w-10 h-10 border border-stark-white/30 text-stark-white hover:bg-blood-red hover:border-blood-red transition-colors" aria-label="Close speaker bio">
+							<span class="material-symbols-outlined">close</span>
+						</button>
+					</div>
+					<div id="speakerBioModalBody" class="p-5 md:p-8 overflow-y-auto max-h-[65vh] space-y-5 text-base md:text-lg text-muted-silver leading-relaxed"></div>
+				</div>
+			</div>
+		</div>
+		<!-- ManCard Cycles Section -->
+		<section class="py-20 md:py-32 bg-background border-y-8 border-stark-white/10" id="cycles">
 			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-				<div class="grid grid-cols-1 xl:grid-cols-2 gap-16 lg:gap-32 items-start">
+				<div class="mb-12 md:mb-16">
+					<span class="inline-block bg-blood-red text-stark-white px-3 py-1 mb-5 font-label-caps text-label-caps uppercase tracking-widest">Upcoming Dates</span>
+					<h2 class="font-headline-lg text-headline-lg-mobile md:text-6xl text-stark-white uppercase leading-none m-0">ManCard Cycles</h2>
+					<p class="font-body-lg text-body-lg text-muted-silver mt-6 text-xl max-w-3xl">Choose your next available cycle. Spaces fill quickly and each class is intentionally kept small.</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10 md:mb-12">
+					<div class="relative bg-surface-container border-2 border-stark-white/20 p-6 md:p-8 min-h-[220px] md:min-h-[300px] overflow-hidden flex flex-col justify-between">
+						<div>
+							<p class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver mb-3">Cycle 01</p>
+							<h3 class="font-headline-md text-2xl md:text-4xl text-stark-white uppercase leading-none m-0">August 17th-19th</h3>
+						</div>
+						<p class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver">Full</p>
+						<div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+							<img
+								class="w-[175%] md:w-[160%] max-w-none -rotate-[17deg] opacity-95"
+								src="{{ url_for('static', filename='img/filled.png') }}"
+								alt="Filled" />
+						</div>
+					</div>
+
+					<div class="bg-surface-container border-2 border-stark-white/20 p-6 md:p-8 min-h-[220px] md:min-h-[300px] flex flex-col justify-between">
+						<div>
+							<p class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver mb-3">Cycle 02</p>
+							<h3 class="font-headline-md text-2xl md:text-4xl text-stark-white uppercase leading-none m-0">September 14-16th</h3>
+						</div>
+						<p class="font-label-caps text-label-caps uppercase tracking-widest text-blood-red">Almost Full</p>
+					</div>
+
+					<div class="bg-surface-container border-2 border-stark-white/20 p-6 md:p-8 min-h-[220px] md:min-h-[300px] flex flex-col justify-between">
+						<div>
+							<p class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver mb-3">Cycle 03</p>
+							<h3 class="font-headline-md text-2xl md:text-4xl text-stark-white uppercase leading-none m-0">April 5-7th</h3>
+						</div>
+						<p class="font-label-caps text-label-caps uppercase tracking-widest text-[#8cff8c]">Space Available</p>
+					</div>
+				</div>
+
+				<div class="border-l-4 border-blood-red pl-5 md:pl-6">
+					<ul class="space-y-4 text-muted-silver text-base md:text-lg font-body-md leading-relaxed">
+						<li>Spaces fill up fast.</li>
+						<li>Selection happens on a case-by-case basis, based off information shared in registration and sole discretion of the ManCard team for assessment of fit of each candidate for our program. We're not looking for warm bodies; we're looking for the right men who are worth investing in.</li>
+						<li>Class sizes are kept intentionally small to facilitate personal interaction and increase life-specific coaching.</li>
+						<li>Cost and details of the event are shared after an email of interest is received.</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<!-- Final Application Form Section -->
+		<section class="py-20 md:py-48 bg-surface-container relative overflow-hidden" id="apply">
+			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+				<div class="grid grid-cols-1 xl:grid-cols-2 gap-10 md:gap-16 lg:gap-32 items-start">
 					<!-- Form Context -->
 					<div class="order-2 xl:order-1">
 						<h2
@@ -505,7 +616,7 @@
 					</div>
 					<!-- The Form -->
 					<div
-						class="bg-background p-8 md:p-16 border-t-8 border-blood-red relative order-1 xl:order-2 shadow-2xl">
+						class="bg-background p-6 md:p-16 border-t-8 border-blood-red relative order-1 xl:order-2 shadow-2xl">
 						<div
 							class="absolute top-0 right-0 w-32 h-32 bg-blood-red/10 transform translate-x-1/2 -translate-y-1/2 rotate-45 pointer-events-none hidden md:block">
 						</div>
@@ -709,6 +820,115 @@
 				nav.classList.remove('border-b-8');
 			}
 		});
+
+		const speakerBios = {
+			'josh-mcpherson': {
+				name: 'Josh McPherson',
+				title: 'Lead Pastor, Grace City Church | Founder, Stronger Man Nation',
+				paragraphs: [
+					'I believe ambitious men should be challenged to build more than successful companies. They should be equipped to build businesses that strengthen their families, serve the Church, create opportunity, and advance the Kingdom of God.',
+					'This experience is designed for driven business owners, entrepreneurs, and emerging leaders who are hungry to grow. These are men who are not satisfied with coasting. They want to lead better, make wiser decisions, build stronger teams, develop healthy cultures, and turn their vision into measurable results.',
+					'We will bring together a carefully selected group of just 36 men for an intensive three-day, two-night experience. The small-group environment is intentional. It allows us to move beyond generic conference content and create space for honest conversations, practical coaching, meaningful relationships, and direct application.',
+					'The experience will combine demanding physical challenges, leadership development, business strategy, mission execution, and personal reflection. Participants will be pushed to evaluate how they lead themselves, their families, their teams, and their organizations.',
+					'Brent Frank will lead instruction in physical fitness, leadership, culture, and mission execution. His experience developing people and leading in high-pressure environments will challenge men to become more disciplined, decisive, and effective.',
+					'Jeff Weber will bring decades of entrepreneurial, executive, and investment experience to the areas of start-ups, business growth, strategic leadership, and generosity. He will help participants think more clearly about building companies that create lasting value and become powerful instruments for impact.',
+					'Don Odegard will contribute the perspective of an accomplished executive and proven organizational leader. His experience producing results at the highest levels of business will help men understand how to scale effectively, build capable teams, create strong cultures, navigate difficult decisions, and lead with clarity through seasons of growth.',
+					'This is not simply a business seminar, leadership retreat, or men\'s conference. It is an immersive experience for men who are serious about becoming fruitful in every area of life.',
+					'Everything will be rooted in a clear order of priorities: Christ first, then family, the local church, and the work God has entrusted to us. We are not asking men to choose between faithfulness and effectiveness. We want to help them become both.',
+					'The goal is for every participant to leave with greater clarity, stronger relationships, practical tools, and a focused plan for the next stage of his leadership and business. We want men to return home prepared to lead with courage, build with excellence, give with generosity, and use everything God has placed in their hands for a purpose greater than themselves.',
+					'-- Josh McPherson'
+				]
+			},
+			'jeff-webber': {
+				name: 'Jeff Weber',
+				title: 'CEO, Speiro Holdings',
+				paragraphs: [
+					'Jeff Weber is a serial entrepreneur, experienced executive, and investor with more than 30 years of leadership experience. Throughout his career, he has launched and scaled successful companies across a range of industries, including technology, skilled trades, and quick-service restaurants.',
+					'Jeff currently serves as CEO of Speiro Holdings, where he leads the organization\'s efforts to invest in and build strong, sustainable companies. His work is driven by a deep commitment not only to business growth, but also to developing the next generation of leaders.',
+					'Through mentorship, strategic investment, and hands-on guidance, Jeff helps emerging entrepreneurs and executives turn promising ideas into thriving organizations. His leadership reflects a passion for creating lasting value, empowering others, and using business as a platform for meaningful impact.'
+				]
+			},
+			'don-odegard': {
+				name: 'Don Odegard',
+				title: 'Chief Executive Officer, Starr Ranch Growers',
+				paragraphs: [
+					'Don Odegard serves as Chief Executive Officer of Starr Ranch Growers, bringing extensive agribusiness experience and a strong record of leadership, innovation, and growth.',
+					'Known for his strategic mindset and deep understanding of the fresh produce industry, Don has built his career around strengthening partnerships, improving operations, and identifying new opportunities for long-term success. His leadership approach combines industry expertise with a commitment to quality, sustainability, and exceptional customer service.',
+					'As CEO, Don is guiding Starr Ranch Growers into its next chapter while building on the company\'s more than 85-year legacy in the fresh produce market. He is focused on expanding the company\'s market presence, supporting sustainable farming practices, and ensuring Starr Ranch Growers continues to deliver premium products to customers nationwide.',
+					'Don is honored to lead the Starr Ranch Growers team and is passionate about working alongside its growers, employees, and industry partners to carry forward the company\'s tradition of excellence and innovation.'
+				]
+			},
+			'joe-schlegel': {
+				name: 'Joseph Schlegel',
+				title: 'COO & EOS Integrator',
+				paragraphs: [
+					'Joe Schlegel is an innovative operational executive and culture champion who specializes in building fast-growing organizations where high-level financial results and healthy organizational accountability reinforce each other. As the Chief Operating Officer and EOS Integrator for a family-owned, multi-division construction enterprise in Idaho\'s Treasure Valley, he directs day-to-day operations across 11 distinct divisions.',
+					'Over his seven-plus-year tenure, Joe has mastered the art of sustainable scale, nearly tripling the company\'s annual revenue, more than tripling net profits, and driving profit margins from single digits into best-in-class double digits. He achieved these landmark results from within, self-implementing the Entrepreneurial Operating System (EOS) companywide while modernizing operations through aggressive digital transformation.',
+					'Joe\'s foundational methodology, which he frames as "adding engines and eliminating anchors," was forged across a diverse, 25-year leadership arc built inside some of the world\'s most high-stakes environments. He sharpened his data and strategy skills in marketing at Xerox, a Fortune 500 technology corporation, before overseeing quality assurance and human resources for The Ritz-Carlton, a premier luxury hospitality brand.',
+					'Joe then transitioned his operational expertise to major regional ministries and non-profits. During the Great Recession, he engineered a full financial turnaround and infrastructure stabilization for an organization overseeing a private school and church network. He later served as Chief Creative Officer for one of the largest churches in the nation through a rapid multi-campus expansion with weekly crowds of over 20,000.',
+					'For rising entrepreneurs, leaders, and business executives, Joe serves as a tactical guide who operates directly in the trenches alongside them. Backed by executive AI credentials from both MIT and Kellogg, he regularly speaks on modern operational excellence, specifically how to leverage generative AI and virtual assistants to create staff margin and absorb growth without inflating headcount.',
+					'He actively pours back into the executive community as a Vistage member, founder of the Boise Integrator Peer Collective, and leader of a mastermind group for Christian chief executives. Anchored by his core values of integrity, gratitude, wonder, and accountability, Joe lives in Boise with his wife of 20 years, Becky; together, they raise their three children and manage a small farm where they breed Highland cows.'
+				]
+			}
+		};
+
+		const speakerCards = document.querySelectorAll('.js-speaker-card[data-has-bio="true"]');
+		const speakerBioModal = document.getElementById('speakerBioModal');
+		const speakerBioModalBackdrop = document.getElementById('speakerBioModalBackdrop');
+		const speakerBioModalClose = document.getElementById('speakerBioModalClose');
+		const speakerBioModalName = document.getElementById('speakerBioModalName');
+		const speakerBioModalTitle = document.getElementById('speakerBioModalTitle');
+		const speakerBioModalBody = document.getElementById('speakerBioModalBody');
+
+		if (speakerBioModal && speakerBioModalBackdrop && speakerBioModalClose && speakerBioModalName && speakerBioModalTitle && speakerBioModalBody) {
+			const openBioModal = (speakerId) => {
+				const bio = speakerBios[speakerId];
+				if (!bio) return;
+
+				speakerBioModalName.textContent = bio.name;
+				speakerBioModalTitle.textContent = bio.title;
+				speakerBioModalBody.innerHTML = '';
+
+				bio.paragraphs.forEach((paragraph) => {
+					const p = document.createElement('p');
+					p.className = 'font-body-md text-muted-silver m-0';
+					p.textContent = paragraph;
+					speakerBioModalBody.appendChild(p);
+				});
+
+				speakerBioModal.classList.remove('hidden');
+				speakerBioModal.setAttribute('aria-hidden', 'false');
+				document.body.style.overflow = 'hidden';
+			};
+
+			const closeBioModal = () => {
+				speakerBioModal.classList.add('hidden');
+				speakerBioModal.setAttribute('aria-hidden', 'true');
+				document.body.style.overflow = '';
+			};
+
+			speakerCards.forEach((card) => {
+				card.addEventListener('click', () => {
+					openBioModal(card.getAttribute('data-speaker-id'));
+				});
+
+				card.addEventListener('keydown', (event) => {
+					if (event.key === 'Enter' || event.key === ' ') {
+						event.preventDefault();
+						openBioModal(card.getAttribute('data-speaker-id'));
+					}
+				});
+			});
+
+			speakerBioModalClose.addEventListener('click', closeBioModal);
+			speakerBioModalBackdrop.addEventListener('click', closeBioModal);
+
+			document.addEventListener('keydown', (event) => {
+				if (event.key === 'Escape' && !speakerBioModal.classList.contains('hidden')) {
+					closeBioModal();
+				}
+			});
+		}
 	</script>
 </body>
 
