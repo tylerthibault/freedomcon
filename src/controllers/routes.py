@@ -1003,6 +1003,7 @@ def prayer_guide_page() -> str:
 
 @public_bp.get("/george-washington-declaration")
 def george_washington_declaration_page() -> str:
+	return redirect("/")
 	declaration_pdf_url = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/STATESMAN%20DECLARATION%20FINAL.pdf"
 	return render_template(
 		"public/george_washington_declaration/index.html",
