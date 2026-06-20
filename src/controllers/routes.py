@@ -1001,6 +1001,19 @@ def prayer_guide_page() -> str:
 		),
 	)
 
+@public_bp.get("/george-washington-declaration")
+def george_washington_declaration_page() -> str:
+	declaration_pdf_url = "https://pub-fc470c82f793409f9e6c126deeb0387d.r2.dev/STATESMAN%20DECLARATION%20FINAL.pdf"
+	return render_template(
+		"public/george_washington_declaration/index.html",
+		declaration_pdf_url=declaration_pdf_url,
+		seo=build_seo(
+			title="George Washington Declaration | Freedom Con 2026",
+			description="Download the George Washington Declaration document.",
+			path="/george-washington-declaration",
+		),
+	)
+
 @public_bp.get("/invite")
 def invite_page() -> str:
 	return render_template(

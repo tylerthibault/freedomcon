@@ -1,0 +1,33 @@
+{% extends "bases/public.html" %}
+
+{% block navigation %}
+{% include "components/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="py-5">
+    <section class="container-xl py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 col-xl-8">
+                <div class="p-4 p-md-5 border bg-black text-white">
+                    <p class="text-uppercase fw-semibold mb-2">Freedom Con 2026</p>
+                    <h1 class="display-5 fw-bold mb-3">George, Washington Declaration</h1>
+                    <p class="lead mb-4">Download the George, Washington Declaration document using the button below.</p>
+
+                    <a class="btn btn-primary btn-lg"
+                        href="{{ declaration_pdf_url }}"
+                        download="STATESMAN DECLARATION FINAL.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Download George Washington Declaration
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock %}

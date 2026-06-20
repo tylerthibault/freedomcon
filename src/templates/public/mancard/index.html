@@ -13,6 +13,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
 		rel="stylesheet" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrapcss/bootstrap.min.css') }}" />
 	<script id="tailwind-config">
 		tailwind.config = {
 			darkMode: "class",
@@ -159,42 +160,25 @@
 			}
 		}
 
-		/* Mobile Side Menu Animation */
-		.mobile-menu-backdrop {
-			position: fixed;
-			inset: 0;
-			background: rgba(0, 0, 0, 0.7);
-			z-index: 40;
-			opacity: 0;
-			pointer-events: none;
-			transition: opacity 0.3s ease-in-out;
+		.mancard-container {
+			width: min(100%, 1400px);
 		}
 
-		.mobile-menu-backdrop.active {
-			opacity: 1;
-			pointer-events: auto;
+		.mancard-navbar .navbar-toggler {
+			border: 0;
+			box-shadow: none;
 		}
 
-		#landing12MobileMenu {
-			position: fixed;
-			top: 0;
-			right: 0;
-			width: 100%;
-			max-width: 300px;
-			height: 100vh;
-			background: #000000;
-			border-left: 4px solid #ff0000;
-			z-index: 50;
-			transform: translateX(100%);
-			transition: transform 0.3s ease-in-out;
-			overflow-y: auto;
+		.mancard-navbar .navbar-toggler:focus {
+			box-shadow: none;
+		}
+
+		.mancard-speaker-grid > [class*="col-"] {
 			display: flex;
-			flex-direction: column;
-			padding-top: 100px;
 		}
 
-		#landing12MobileMenu.active {
-			transform: translateX(0);
+		.mancard-speaker-grid .speaker-card-shell {
+			width: 100%;
 		}
 
 		/* Active menu item styling */
@@ -209,51 +193,73 @@
 		.font-display-lg {
 			font-size: clamp(2rem, 10vw, 3rem) !important;
 		}
+
+		@media (max-width: 991.98px) {
+			.mancard-navbar .navbar-collapse {
+				background: rgba(0, 0, 0, 0.98);
+				border-top: 4px solid #ff0000;
+				margin-top: 1rem;
+				padding: 1rem 1.25rem 1.5rem;
+			}
+
+			.mancard-navbar .navbar-nav {
+				gap: 0.5rem;
+			}
+
+			.mancard-navbar .navbar-nav .nav-link,
+			.mancard-navbar .navbar-nav .mancard-apply-link {
+				display: block;
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+
+		@media (max-width: 575.98px) {
+			.mancard-brand {
+				max-width: calc(100% - 3.5rem);
+			}
+
+			.mancard-form-panel,
+			.mancard-cycle-card,
+			.mancard-arsenal-card {
+				padding: 1.5rem !important;
+			}
+
+			.mancard-hero-quote {
+				padding-left: 1rem;
+			}
+		}
 	</style>
 </head>
 
 <body
 	class="bg-background text-stark-white font-body-md antialiased relative min-h-screen overflow-x-hidden selection:bg-blood-red selection:text-stark-white">
-	<div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
 	<div class="fixed inset-0 texture-overlay z-50"></div>
 	<!-- TopNavBar Component -->
-	<nav class="fixed top-0 w-full z-50 bg-background/90 dark:bg-background/90 border-b-4 border-blood-red backdrop-blur-md transition-all duration-300"
+	<nav class="navbar navbar-expand-lg fixed-top w-full z-50 bg-background/90 dark:bg-background/90 border-b-4 border-blood-red backdrop-blur-md transition-all duration-300 mancard-navbar"
 		id="main-nav">
-		<div
-			class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20 lg:h-24">
+		<div class="container-fluid mancard-container px-4 px-md-5 px-xl-0 align-items-center">
 			<div
-				class="font-headline-md text-lg sm:text-xl md:text-2xl lg:text-headline-md leading-none tracking-tighter text-stark-white dark:text-on-background uppercase whitespace-nowrap max-w-[calc(100%-4rem)] md:max-w-none pr-3">
+				class="navbar-brand mb-0 font-headline-md text-lg sm:text-xl md:text-2xl lg:text-headline-md leading-none tracking-tighter text-stark-white dark:text-on-background uppercase whitespace-nowrap mancard-brand pr-3">
 				MANCARD FOR <span class="text-blood-red">BUSINESSMEN</span>
 			</div>
-			<div class="hidden lg:flex items-center space-x-12 desktop-nav">
-			<a class="font-label-caps text-label-caps uppercase tracking-widest text-blood-red dark:text-primary hover:text-stark-white transition-all duration-300 nav-link"
-				href="#program" data-section="program">PROGRAM</a>
-			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver dark:text-on-tertiary-container hover:text-blood-red transition-all duration-300 nav-link"
-				href="#instructors" data-section="instructors">INSTRUCTORS</a>
-			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver dark:text-on-tertiary-container hover:text-blood-red transition-all duration-300 nav-link"
-				href="#curriculum" data-section="curriculum">CURRICULUM</a>
-			</div>
-			<a class="hidden lg:inline-flex items-center justify-center bg-blood-red text-stark-white font-label-caps text-label-caps uppercase tracking-widest px-8 py-4 hover:bg-stark-white hover:text-background transition-colors duration-300"
-				href="#apply">
-				APPLY NOW
-			</a>
-			<!-- Mobile Menu Button -->
-			<button class="lg:hidden text-stark-white" id="mobileMenuToggle" aria-expanded="false" aria-controls="landing12MobileMenu">
+			<button class="navbar-toggler p-0 text-stark-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbarNav" aria-controls="mainNavbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="material-symbols-outlined text-3xl">menu</span>
 			</button>
+			<div class="collapse navbar-collapse justify-content-lg-end" id="mainNavbarNav">
+				<div class="navbar-nav ms-lg-auto align-items-lg-center gap-lg-4 desktop-nav pt-3 pt-lg-0">
+					<a class="font-label-caps text-label-caps uppercase tracking-widest text-blood-red dark:text-primary hover:text-stark-white transition-all duration-300 nav-link"
+						href="#program" data-section="program">PROGRAM</a>
+					<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver dark:text-on-tertiary-container hover:text-blood-red transition-all duration-300 nav-link"
+						href="#instructors" data-section="instructors">INSTRUCTORS</a>
+					<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver dark:text-on-tertiary-container hover:text-blood-red transition-all duration-300 nav-link"
+						href="#curriculum" data-section="curriculum">CURRICULUM</a>
+					<a class="mancard-apply-link inline-flex items-center justify-center bg-blood-red text-stark-white font-label-caps text-label-caps uppercase tracking-widest px-8 py-4 hover:bg-stark-white hover:text-background transition-colors duration-300 ms-lg-4 mt-3 mt-lg-0"
+						href="#apply">APPLY NOW</a>
+				</div>
+			</div>
 		</div>
 	</nav>
-	<!-- Mobile Side Menu Drawer -->
-	<div id="landing12MobileMenu">
-			<a class="font-label-caps text-label-caps uppercase tracking-widest text-blood-red px-margin-mobile py-4 hover:text-stark-white transition-all duration-300 nav-link"
-				href="#program" data-section="program">PROGRAM</a>
-			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver px-margin-mobile py-4 hover:text-blood-red transition-all duration-300 nav-link"
-				href="#instructors" data-section="instructors">INSTRUCTORS</a>
-			<a class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver px-margin-mobile py-4 hover:text-blood-red transition-all duration-300 nav-link"
-				href="#curriculum" data-section="curriculum">CURRICULUM</a>
-		<a class="inline-flex items-center justify-center bg-blood-red text-stark-white font-label-caps text-label-caps uppercase tracking-widest px-8 py-4 m-margin-mobile hover:bg-stark-white hover:text-background transition-colors duration-300"
-			href="#apply">APPLY NOW</a>
-	</div>
 	<!-- Hero Section -->
 	<header
 		class="relative min-h-screen pt-28 pb-16 md:py-0 flex items-center justify-start overflow-hidden border-b-8 border-blood-red">
@@ -262,8 +268,8 @@
 				src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwWjgQpvx4OfAbd6rwG246W-XtlSO4WpyJPju2OqY7rDEzloC6AmkH1HhUagPuwlF6LOIZ7KKxmZ7XQqm278KY9H6L8eApyZx5olDrtk-bY4CJ9_tAvb0vM-1hcPzfvsTKus5TILNRS7DMlz1wXPCKe-YztT_cYCGWXpHGT-eo596bVu__SQxK5wpsuVbvavC--z7ECVu684UDsGC4ILBoTUBdNAxNL3C-Uk9w_Z0gpp8vLeyU4cNP1YGNzL9p0JZ8cnr6lPWWRqIx" />
 			<div class="absolute inset-0 hero-gradient"></div>
 		</div>
-		<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
-			<div class="md:w-3/4 lg:w-2/3">
+		<div class="relative z-10 container-fluid mancard-container px-4 px-md-5 px-xl-0 w-full">
+			<div class="col-12 col-md-9 col-lg-8 px-0">
 				<span
 					class="inline-block bg-blood-red text-stark-white px-4 py-2 mb-8 font-label-caps text-label-caps uppercase tracking-widest transform -skew-x-12">A
 					Private Intensive</span>
@@ -278,10 +284,10 @@
 					manhood the world is selling — and who believe their lives and their companies were built for more
 					than the next dollar. We forge stronger men in body, mind, and spirit, and send them home as better
 					fathers, sharper leaders, and men who serve Jesus with everything they have.</p>
-				<div class="flex flex-col sm:flex-row items-stretch sm:items-start gap-6">
+				<div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-start gap-4 sm:gap-6">
 					<a class="inline-flex items-center justify-center bg-blood-red text-stark-white font-label-caps text-label-caps uppercase tracking-widest px-12 py-6 hover:bg-stark-white hover:text-background transition-all duration-300 w-full sm:w-auto text-center text-lg"
 						href="#apply">Accept the Challenge</a>
-					<div class="border-l-4 border-blood-red pl-4 sm:pl-6 py-2">
+					<div class="border-l-4 border-blood-red pl-4 sm:pl-6 py-2 mancard-hero-quote">
 						<p class="font-body-md text-muted-silver max-w-md italic font-bold">
 							"This is not a conference. It is a hands-on, high-challenge, high-access experience for
 							self-starting, humble, motivated Kingdom men who are serious about building what God has
@@ -295,9 +301,9 @@
 	<main>
 		<!-- What It Is Section -->
 		<section class="pt-24 md:pt-48 bg-background relative" id="program">
-			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-				<div class="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-24 items-center">
-					<div class="lg:col-span-6 lg:order-2">
+			<div class="container-fluid mancard-container px-4 px-md-5 px-xl-0">
+				<div class="row g-4 g-lg-5 align-items-center">
+					<div class="col-12 col-lg-6 order-lg-2">
 						<h2
 							class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-stark-white uppercase mb-8 leading-none">
 							THE PROVOCATION</h2>
@@ -311,9 +317,9 @@
 							other. It calls a soft man 'evolved' and a strong man 'a problem.' We are calling men to
 							push the other way.</p>
 					</div>
-					<div class="lg:col-span-6 lg:order-1 relative lg:mt-0">
+					<div class="col-12 col-lg-6 order-lg-1 relative lg:mt-0">
 						<div
-							class=" mx-auto relative left-1/2 -translate-x-1/2 aspect-[3/4] bg-surface-container overflow-hidden z-10">
+							class="mx-auto relative left-1/2 -translate-x-1/2 aspect-[3/4] bg-surface-container overflow-hidden z-10 w-100">
 							<img class="w-full h-full object-cover filter opacity-90"
 								data-alt="A cinematic, high-contrast medium shot of a focused businessman in a dark, industrial-style boardroom setting. He is looking intently at architectural blueprints or strategic documents on a heavy wooden table. The lighting is moody, with warm overhead spotlights creating deep shadows. The color palette emphasizes deep charcoals, stark whites, and subtle metallic gold accents. The atmosphere conveys intense focus, strategic planning, and premium exclusivity."
 								src="{{ url_for('static', filename='img/fire_axe.webp') }}"/>
@@ -324,9 +330,9 @@
 		</section>
 		<!-- What You Leave With Section -->
 		<section class="py-24 md:py-48 bg-surface-container relative border-t-8 border-stark-white/10" id="curriculum">
-			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-				<div class="flex flex-col md:flex-row justify-between items-end mb-20 md:mb-32">
-					<div>
+			<div class="container-fluid mancard-container px-4 px-md-5 px-xl-0">
+				<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-4 mb-20 md:mb-32">
+					<div class="flex-grow-1">
 						<span
 							class="inline-block bg-blood-red text-stark-white px-3 py-1 mb-6 font-label-caps text-label-caps uppercase tracking-widest">The
 							Arsenal</span>
@@ -345,19 +351,22 @@
 						made of, and to leave you stronger than it found you. Iron sharpens iron. We've found that men
 						sharpen best when the iron is real and the stakes are felt.</p>
 				</div>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+				<div class="row g-4 g-xl-5">
 					<!-- Card 1 -->
-					<div class="card-gradient md:p-16 border-l-8 border-blood-red relative overflow-hidden group p-6">
+					<div class="col-12 col-md-6">
+						<div class="card-gradient md:p-16 border-l-8 border-blood-red relative overflow-hidden group p-6 mancard-arsenal-card h-100">
 						<h3
 							class="font-headline-md text-2xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
 							Body</h3>
 						<p class="font-body-md text-muted-silver relative z-10 text-lg md:text-xl font-medium">We push you past the
 							line where your mind starts negotiating. What you discover on the far side of “I can't” is
 							where the learning begins.</p>
+						</div>
 					</div>
 					<!-- Card 2 -->
-					<div
-						class="card-gradient md:p-16 border-l-8 border-stark-white hover:border-blood-red transition-all duration-300 relative overflow-hidden group p-6">
+					<div class="col-12 col-md-6">
+						<div
+							class="card-gradient md:p-16 border-l-8 border-stark-white hover:border-blood-red transition-all duration-300 relative overflow-hidden group p-6 mancard-arsenal-card h-100">
 						<h3
 							class="font-headline-md text-2xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
 							Mind</h3>
@@ -365,10 +374,12 @@
 							floorboards of how your life has been wired — the drivers, the wounds, the lies you've
 							mistaken for ambition — and ask whether the foundation can carry the weight of the man, the
 							family, and the company you're called to build.</p>
+						</div>
 					</div>
 					<!-- Card 3 -->
-					<div
-						class="card-gradient md:p-16 border-l-8 border-stark-white hover:border-blood-red transition-all duration-300 relative overflow-hidden group md:mt-16 p-6">
+					<div class="col-12 col-md-6">
+						<div
+							class="card-gradient md:p-16 border-l-8 border-stark-white hover:border-blood-red transition-all duration-300 relative overflow-hidden group md:mt-16 p-6 mancard-arsenal-card h-100">
 						<h3
 							class="font-headline-md text-2xl md:text-5xl text-stark-white uppercase mb-6 relative z-10 leading-none">
 							Spirit</h3>
@@ -377,6 +388,7 @@
 							take the ground God gave you and steward it like a man who knows Whose it is. You'll come
 							home anchored instead of anxious. Generous instead of guarded. Carrying a different kind of
 							strength into rooms that have never seen it.</p>
+						</div>
 					</div>
 					<!-- Card 4 -->
 				</div>
@@ -388,7 +400,7 @@
 			<div class="absolute inset-0 z-0 flex opacity-10 pointer-events-none">
 				<div class="w-1/2 h-full bg-stark-white transform -skew-x-12 translate-x-1/2"></div>
 			</div>
-			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+			<div class="container-fluid mancard-container px-4 px-md-5 px-xl-0 relative z-10">
 				<div class="mb-20">
 					<h2
 						class="mobile-wrap font-headline-lg text-[clamp(2rem,10vw,3rem)] md:text-display-lg text-stark-white uppercase leading-none max-w-4xl">
@@ -397,10 +409,11 @@
 					<p class="font-body-md text-muted-silver text-lg md:text-2xl max-w-2xl font-bold">Learn directly from men who
 						are actively in the arena, building significant enterprises with Kingdom impact.</p>
 				</div>
-				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-4"><!-- Josh McPherson -->
-					<div class="group relative js-speaker-card cursor-pointer" data-speaker-id="josh-mcpherson" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Josh McPherson">
+				<div class="row row-cols-2 row-cols-sm-3 row-cols-xl-5 g-3 g-md-4 mancard-speaker-grid"><!-- Josh McPherson -->
+					<div class="col">
+						<div class="group relative js-speaker-card cursor-pointer speaker-card-shell" data-speaker-id="josh-mcpherson" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Josh McPherson">
 						<div
-							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative h-100">
 							<div class="absolute top-3 right-3 z-20 bg-blood-red text-stark-white text-[11px] uppercase tracking-widest px-2 py-1 font-label-caps border border-stark-white/30">Bio</div>
 							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
 								src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Y4gnYrGrXi3Ang-j1vI-j4bAV3QwKSVf43yo0TQtfvfU3eRuRWzwKf6QytOb4W0GgXcQ6SI6CmKEKowqTtTdNx5fFTkWz_bdLNSapJjAsVSUprsl6tE5BHxt9lU9q3ZGJ8CYx2d9MzKjhrjps4_XiqFrad4Dvd2yB8rtZx_Q9iQbSEk-Z5StBNS40XQoOXRxqYy_f-f0jzQ70La_9M6kX7rN6tRqmxDjHQq8UpKENzwYQW9sp3DwBzKjx3BC8_qUXVsw1nX7Qh6E" />
@@ -412,9 +425,10 @@
 							</div>
 						</div>
 					</div><!-- Don -->
-					<div class="group relative md:mt-12 js-speaker-card cursor-pointer" data-speaker-id="don-odegard" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Don Odegard">
+					<div class="col">
+						<div class="group relative md:mt-12 js-speaker-card cursor-pointer speaker-card-shell" data-speaker-id="don-odegard" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Don Odegard">
 						<div
-							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative h-100">
 							<div class="absolute top-3 right-3 z-20 bg-blood-red text-stark-white text-[11px] uppercase tracking-widest px-2 py-1 font-label-caps border border-stark-white/30">Bio</div>
 							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
 								src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmDR-HAl35pHuvSgm2jEUzkgI7STcIweRa2yVExT_YGqbkafjBTqN_gTrZy3eX-H_-2gcLSU6e7ACqlr7NiU-gvy-Htv12OKH3W-dKk3Rv4kensbbvIoGc6ATexdhltIAQJLtmjOgDaTfAN4s80YZlfmHvdBtaWZBxv8IgIr75149jUGbSccpGRioLiFYZa9R3Y4vSVv-OFtKW1mMW6Bg4IYvQd32oESWBZ9m9PIMZlqlGFRVc0OmRPJKQHVaXUN3b8W7xnqrVlRBb" />
@@ -426,9 +440,10 @@
 							</div>
 						</div>
 					</div><!-- Jeff Webber -->
-					<div class="group relative js-speaker-card cursor-pointer" data-speaker-id="jeff-webber" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Jeff Webber">
+					<div class="col">
+						<div class="group relative js-speaker-card cursor-pointer speaker-card-shell" data-speaker-id="jeff-webber" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Jeff Webber">
 						<div
-							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative h-100">
 							<div class="absolute top-3 right-3 z-20 bg-blood-red text-stark-white text-[11px] uppercase tracking-widest px-2 py-1 font-label-caps border border-stark-white/30">Bio</div>
 							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
 								src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1bz_14ld2bnTG_4PS1Wy5B287YecM5S2bS9JUCUsF-6qtvh35xEMV3RkGvLhT5XT2KIm4Vsy2joPgVzENkp2KKreDU3MaTR5XdMRC_PK74KD41DnJefG8uVoTF86DEIW4ETTAo6pENJVECHg2VlbZ2OArNT7EbN-uRQpyktySKk08Q29E0pmn7oOgDTq4O7jRD2qI0ZtZZsovuN_tFgRfe9rZTRP6SiS5XdArkOXqBU9pl_a7aLNGO8MwMYhmSes7Za72kudPcxyb" />
@@ -440,9 +455,10 @@
 							</div>
 						</div>
 					</div><!-- Josh Carlson -->
-					<div class="group relative md:mt-12">
+					<div class="col">
+						<div class="group relative md:mt-12 speaker-card-shell">
 						<div
-							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative h-100">
 							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
 								src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTe63l2Xcwl3_YFOq0u5LFVZRQ-AEn_rpqBI6i2gwgpK5e3s6g44rJLxTV9Me8HTmPGJtPK8JeSz3LO9jao1Vs_spEH1vVrTujFBNAKVDg7AuJwRM7S8wzcKsF-AvTSx-g7Uwr-MLEYYMtC8aXl_sq3X9RfSKLRKL0gRsBXp7UzYUA8u7VDTI3sBkcwqFv0y7KvyCns9tUJ14ZP01qqVZ-fySpdZ9cAGpgZJTFz18zfdsZoNA_BqV7YSiOqC2BicQx_r1e0VhEjxrZ" />
 							<div
@@ -453,9 +469,10 @@
 							</div>
 						</div>
 					</div><!-- Brent Frank -->
-					<div class="group relative">
+					<div class="col">
+						<div class="group relative speaker-card-shell">
 						<div
-							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative h-100">
 							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
 								src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2rQcwkZxFDm-GTH4Z_ORYQ4sQym5hnHdGVtatOfnJrPu3DMFL1tDB5fxLlLjUZBcJUd0ue6EODzwZS8YKS4aizVp1vLszHNDZGqg7gJmWQNv_uOMoxWKg9clH-Ev9SjR-NCaV8XprWQd7qeZdGGxEewOZh3AP7qsiCu94Eqgov-NAKsjyIDuDbFI8CUFKSphEEQkDfrZI88zbso2Rp6BTNXiOyO8si-AgdoEm1Y5xf0I0tRyLIC_JQpL8oSM7V4QEGwacexXnL8hp" />
 							<div
@@ -466,9 +483,10 @@
 							</div>
 						</div>
 					</div><!-- Joe Schlegel -->
-					<div class="group relative md:mt-12 js-speaker-card cursor-pointer" data-speaker-id="joe-schlegel" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Joseph Schlegel">
+					<div class="col">
+						<div class="group relative md:mt-12 js-speaker-card cursor-pointer speaker-card-shell" data-speaker-id="joe-schlegel" data-has-bio="true" role="button" tabindex="0" aria-label="Open bio for Joseph Schlegel">
 						<div
-							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative h-100">
 							<div class="absolute top-3 right-3 z-20 bg-blood-red text-stark-white text-[11px] uppercase tracking-widest px-2 py-1 font-label-caps border border-stark-white/30">Bio</div>
 							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
 								src="{{ url_for('static', filename='img/mancard_speakers/JoeS.webp') }}" />
@@ -480,9 +498,10 @@
 							</div>
 						</div>
 					</div><!-- Ryan Ratchford -->
-					<div class="group relative">
+					<div class="col">
+						<div class="group relative speaker-card-shell">
 						<div
-							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative h-100">
 							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
 								src="{{ url_for('static', filename='img/mancard_speakers/Ryan.webp') }}" />
 							<div
@@ -493,9 +512,10 @@
 							</div>
 						</div>
 					</div><!-- Josh Draper -->
-					<div class="group relative">
+					<div class="col">
+						<div class="group relative speaker-card-shell">
 						<div
-							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative">
+							class="aspect-[3/4] bg-surface-container overflow-hidden border-2 border-stark-white/20 group-hover:border-blood-red transition-colors duration-300 relative h-100">
 							<img class="w-full h-full object-cover filter group-hover:scale-110 transition-transform duration-700"
 								src="{{ url_for('static', filename='img/mancard_speakers/speaker_placeholder.webp') }}" />
 							<div
@@ -505,6 +525,7 @@
 									Josh Draper</h4>
 							</div>
 						</div>
+					</div>
 					</div>
 				</div>
 			</div>
@@ -528,15 +549,16 @@
 		</div>
 		<!-- ManCard Cycles Section -->
 		<section class="py-20 md:py-32 bg-background border-y-8 border-stark-white/10" id="cycles">
-			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+			<div class="container-fluid mancard-container px-4 px-md-5 px-xl-0">
 				<div class="mb-12 md:mb-16">
 					<span class="inline-block bg-blood-red text-stark-white px-3 py-1 mb-5 font-label-caps text-label-caps uppercase tracking-widest">Upcoming Dates</span>
 					<h2 class="font-headline-lg text-headline-lg-mobile md:text-6xl text-stark-white uppercase leading-none m-0">ManCard Cycles</h2>
 					<p class="font-body-lg text-body-lg text-muted-silver mt-6 text-xl max-w-3xl">Choose your next available cycle. Spaces fill quickly and each class is intentionally kept small.</p>
 				</div>
 
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10 md:mb-12">
-					<div class="relative bg-surface-container border-2 border-stark-white/20 p-6 md:p-8 min-h-[220px] md:min-h-[300px] overflow-hidden flex flex-col justify-between">
+				<div class="row row-cols-1 row-cols-md-3 g-4 mb-10 md:mb-12">
+					<div class="col">
+						<div class="relative bg-surface-container border-2 border-stark-white/20 p-6 md:p-8 min-h-[220px] md:min-h-[300px] overflow-hidden flex flex-col justify-between mancard-cycle-card h-100">
 						<div>
 							<p class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver mb-3">Cycle 01</p>
 							<h3 class="font-headline-md text-2xl md:text-4xl text-stark-white uppercase leading-none m-0">August 17th-19th</h3>
@@ -548,22 +570,28 @@
 								src="{{ url_for('static', filename='img/filled.png') }}"
 								alt="Filled" />
 						</div>
+						</div>
 					</div>
 
-					<div class="bg-surface-container border-2 border-stark-white/20 p-6 md:p-8 min-h-[220px] md:min-h-[300px] flex flex-col justify-between">
+					<div class="col">
+						<div class="bg-surface-container border-2 border-stark-white/20 p-6 md:p-8 min-h-[220px] md:min-h-[300px] flex flex-col justify-between mancard-cycle-card h-100">
 						<div>
 							<p class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver mb-3">Cycle 02</p>
 							<h3 class="font-headline-md text-2xl md:text-4xl text-stark-white uppercase leading-none m-0">September 14-16th</h3>
 						</div>
 						<p class="font-label-caps text-label-caps uppercase tracking-widest text-blood-red">Almost Full</p>
+						</div>
 					</div>
 
-					<div class="bg-surface-container border-2 border-stark-white/20 p-6 md:p-8 min-h-[220px] md:min-h-[300px] flex flex-col justify-between">
+					<div class="col">
+						<div class="bg-surface-container border-2 border-stark-white/20 p-6 md:p-8 min-h-[220px] md:min-h-[300px] flex flex-col justify-between mancard-cycle-card h-100">
 						<div>
 							<p class="font-label-caps text-label-caps uppercase tracking-widest text-muted-silver mb-3">Cycle 03</p>
 							<h3 class="font-headline-md text-2xl md:text-4xl text-stark-white uppercase leading-none m-0">April 5-7th</h3>
 						</div>
 						<p class="font-label-caps text-label-caps uppercase tracking-widest text-[#8cff8c]">Space Available</p>
+						</div>
+					</div>
 					</div>
 				</div>
 
@@ -579,10 +607,10 @@
 		</section>
 		<!-- Final Application Form Section -->
 		<section class="py-20 md:py-48 bg-surface-container relative overflow-hidden" id="apply">
-			<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-				<div class="grid grid-cols-1 xl:grid-cols-2 gap-10 md:gap-16 lg:gap-32 items-start">
+			<div class="container-fluid mancard-container px-4 px-md-5 px-xl-0">
+				<div class="row g-4 g-xl-5 align-items-start">
 					<!-- Form Context -->
-					<div class="order-2 xl:order-1">
+					<div class="col-12 col-xl-6 order-2 order-xl-1">
 						<h2
 							class="font-headline-lg text-headline-lg-mobile md:text-7xl text-blood-red uppercase mb-8 leading-none">
 							WHO THIS IS FOR</h2>
@@ -615,14 +643,15 @@
 						</div>
 					</div>
 					<!-- The Form -->
-					<div
-						class="bg-background p-6 md:p-16 border-t-8 border-blood-red relative order-1 xl:order-2 shadow-2xl">
+					<div class="col-12 col-xl-6 order-1 order-xl-2">
+						<div
+							class="bg-background p-6 md:p-16 border-t-8 border-blood-red relative shadow-2xl mancard-form-panel">
 						<div
 							class="absolute top-0 right-0 w-32 h-32 bg-blood-red/10 transform translate-x-1/2 -translate-y-1/2 rotate-45 pointer-events-none hidden md:block">
 						</div>
-						<form action="https://formsubmit.co/info@strongermannation.com" class="space-y-10 relative z-10" method="POST">
+						<form action="{{ formsubmit_action }}" class="space-y-10 relative z-10" method="POST">
 							<input type="hidden" name="_subject" value="Mancard for Businessmen Application">
-							<input type="hidden" name="_next" value="https://www.freedomcon26.com/thankyou">
+							<input type="hidden" name="_next" value="{{ formsubmit_next }}">
 							<input type="hidden" name="_captcha" value="false">
 							<!-- <input type="hidden" name="_template" value="table"> -->
 							<!-- <input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off"> -->
@@ -635,19 +664,19 @@
 										class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
 										id="name" name="name" placeholder="John Doe" type="text" required />
 								</div>
-								<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-									<div>
+								<div class="row g-4">
+									<div class="col-12 col-md-6">
 										<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
 											for="email">Email Address</label>
 										<input
-											class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
+											class="form-control w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
 											id="email" name="email" placeholder="john@company.com" type="email" required />
 									</div>
-									<div>
+									<div class="col-12 col-md-6">
 										<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
 											for="phone">Phone Number</label>
 										<input
-											class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
+											class="form-control w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
 											id="phone" name="phone" placeholder="(555) 555-5555" type="tel" />
 									</div>
 								</div>
@@ -669,12 +698,12 @@
 										class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl"
 										id="role" name="role" type="text" />
 								</div>
-								<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-									<div>
+								<div class="row g-4">
+									<div class="col-12 col-md-6">
 										<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
 											for="revenue">Annual Revenue Range</label>
 										<select
-											class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl appearance-none [&amp;&gt;option]:bg-background [&amp;&gt;option]:text-stark-white"
+											class="form-select w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl appearance-none [&amp;&gt;option]:bg-background [&amp;&gt;option]:text-stark-white"
 											id="revenue" name="revenue">
 											<option disabled="" selected="" value="">Select Range...</option>
 											<option value="under1m">Under $1M</option>
@@ -683,11 +712,11 @@
 											<option value="20m+">$20M+</option>
 										</select>
 									</div>
-									<div>
+									<div class="col-12 col-md-6">
 										<label class="block font-headline-md text-stark-white uppercase mb-4 text-lg"
 											for="employees">Number of Employees</label>
 										<select
-											class="w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl appearance-none [&amp;&gt;option]:bg-background [&amp;&gt;option]:text-stark-white"
+											class="form-select w-full bg-surface-container border-2 border-stark-white/20 focus:border-blood-red focus:ring-0 text-stark-white font-body-lg px-6 py-4 transition-colors font-bold text-xl appearance-none [&amp;&gt;option]:bg-background [&amp;&gt;option]:text-stark-white"
 											id="employees" name="employees">
 											<option disabled="" selected="" value="">Select Size...</option>
 											<option value="1-10">1-10</option>
@@ -709,6 +738,7 @@
 									All applications are reviewed manually by our board.</p>
 							</div>
 						</form>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -717,7 +747,7 @@
 	<!-- Footer Component -->
 	<footer class="relative w-full py-24 bg-background border-t-8 border-stark-white">
 		<div
-			class="flex flex-col lg:flex-row justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop gap-12">
+			class="container-fluid mancard-container px-4 px-md-5 px-xl-0 d-flex flex-column flex-lg-row justify-content-between align-items-center gap-12">
 			<div
 				class="font-headline-lg text-headline-md text-stark-white uppercase tracking-tighter leading-none text-center lg:text-left">
 				MANCARD FOR<br /><span class="text-blood-red">BUSINESSMEN</span>
@@ -727,6 +757,7 @@
 			</div>
 		</div>
 	</footer>
+	<script src="{{ url_for('static', filename='js/bootstrapjs/bootstrap.bundle.min.js') }}"></script>
 	<script>
 		// Active section highlighting
 		const sections = {
@@ -737,6 +768,10 @@
 		};
 
 		const navLinks = document.querySelectorAll('a.nav-link');
+		const navCollapseElement = document.getElementById('mainNavbarNav');
+		const navCollapseInstance = navCollapseElement && typeof bootstrap !== 'undefined'
+			? bootstrap.Collapse.getOrCreateInstance(navCollapseElement, { toggle: false })
+			: null;
 
 		const observer = new IntersectionObserver((entries) => {
 			let currentSection = null;
@@ -767,45 +802,14 @@
 			if (section) observer.observe(section);
 		});
 
-		// Mobile side menu toggle
-		const menuToggle = document.getElementById('mobileMenuToggle');
-		const mobileMenu = document.getElementById('landing12MobileMenu');
-		const backdrop = document.getElementById('mobileMenuBackdrop');
-		
-		if (menuToggle && mobileMenu && backdrop) {
-			menuToggle.addEventListener('click', () => {
-				const isActive = mobileMenu.classList.contains('active');
-				if (!isActive) {
-					mobileMenu.classList.add('active');
-					backdrop.classList.add('active');
-					document.body.style.overflow = 'hidden';
-					menuToggle.setAttribute('aria-expanded', 'true');
-				} else {
-					closeMenu();
-				}
-			});
-			
-			function closeMenu() {
-				mobileMenu.classList.remove('active');
-				backdrop.classList.remove('active');
-				document.body.style.overflow = '';
-				menuToggle.setAttribute('aria-expanded', 'false');
-			}
-			
-			// Close menu when backdrop is clicked
-			backdrop.addEventListener('click', closeMenu);
-			
-			// Close menu when a link is clicked
-			const mobileLinks = mobileMenu.querySelectorAll('a');
-			mobileLinks.forEach(link => {
-				link.addEventListener('click', closeMenu);
-			});
-			
-			// Close menu on escape key
-			document.addEventListener('keydown', (e) => {
-				if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-					closeMenu();
-				}
+		if (navCollapseElement && navCollapseInstance) {
+			const collapsibleLinks = navCollapseElement.querySelectorAll('a.nav-link, a.mancard-apply-link');
+			collapsibleLinks.forEach((link) => {
+				link.addEventListener('click', () => {
+					if (window.innerWidth < 992 && navCollapseElement.classList.contains('show')) {
+						navCollapseInstance.hide();
+					}
+				});
 			});
 		}
 		
